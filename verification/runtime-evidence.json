@@ -1,0 +1,84 @@
+{
+  "verifiedOn": "2026-10-18",
+  "romSha256": "644d047c07fe9ade8c14b87c42faa5720b026e0a13c017c4326be604adebbc87",
+  "priorValidatedRomSha256": "2dcc918b9609f014a2e5eeafeb2c342a915a0153f608d637feb1676c2da4faf6",
+  "headingOnlyDelta": {
+    "changedBytes": 12,
+    "fileOffsets": [
+      33851,
+      33852,
+      33853,
+      33854,
+      33855,
+      33856,
+      63945,
+      63946,
+      63947,
+      63948,
+      63949,
+      63950
+    ],
+    "confinedToBootAndPauseRestoreHeadingRows": true,
+    "allOtherRomBytesIdentical": true
+  },
+  "priorLinkedAudit": {
+    "passed": true,
+    "summarySha256": "551bc31233ceacfe06730d8d4d23d817196d85c1660f3b362272181e48cdeaaa",
+    "actualNmiCalls": 912,
+    "titleControllerCases": 512,
+    "loadingControllerBankCases": 768,
+    "ordinaryUploadCases": 68,
+    "worstLastPpuWriteCycle": 2218,
+    "conservativeVblankMarginCycles": 48.333333333333485
+  },
+  "priorStockNtscRuntime": [
+    {
+      "coverage": "Full level, pause, completion and restart",
+      "passed": true,
+      "checks": 89,
+      "capturedSummarySha256": "3e2ebd2c6859721ed704a0beed46d0c4ee1fc2a042411f070abb6ba0cf29b172",
+      "frames": 15046
+    },
+    {
+      "coverage": "Death and direct retry",
+      "passed": true,
+      "checks": 29,
+      "capturedSummarySha256": "5155ed255d26921802d1fb05ed21e13e6e69a473c83b8b787c06043bff2e2c31",
+      "frames": 4146
+    },
+    {
+      "coverage": "Held inputs during initial loading",
+      "passed": true,
+      "checks": 19,
+      "capturedSummarySha256": "83e1fced7e12ca8cafb38f32cf2cd45d42fe11f9c08691a739844959f5361d3d",
+      "frames": 385
+    }
+  ],
+  "releaseScreenshots": {
+    "romSha256": "644d047c07fe9ade8c14b87c42faa5720b026e0a13c017c4326be604adebbc87",
+    "stockNtsc": true,
+    "extraScanlines": 0,
+    "originalSpriteLimits": true,
+    "controllerOnly": true,
+    "unmodifiedScreenBuffers": true,
+    "images": [
+      {
+        "file": "docs/images/opening-room.png",
+        "sha256": "fc840bcb3ddfb71054e62d9aa121b39c5228f17c2194a78fdb01323ee4aeb9c3",
+        "frame": 473,
+        "captureId": "opening-room-angled"
+      },
+      {
+        "file": "docs/images/encounter.png",
+        "sha256": "811a0cdb13cc2d55e9fed102a63f054030855a345cad7461686a40b86556a76a",
+        "frame": 2551,
+        "captureId": "closer-encounter"
+      }
+    ]
+  },
+  "limitations": [
+    "Historical linked audit scripts and emulator traces are not included in this standalone source package. Their summaries are identified by checksum here.",
+    "The isolated package build verifies exact ROM identity; it does not rerun the historical gameplay captures.",
+    "No physical console, flash cartridge or browser-emulator compatibility test is claimed."
+  ]
+}

@@ -1,0 +1,658 @@
+; Sample128even screen columns and duplicate each into its odd neighbour.
+; Preserve every verticalpixel; only horizontal geometry/classification is reduced.
+; Classify each8-pixel vertical cell before composing its pixels. Whole-cell
+; spans store only material0..3; partial boundary cells hold two bitplane bytes
+; and marker4. Eight matching solid markers select a shared tile immediately.
+; Only boundary/mixed tiles gather pixels, transpose and enter the pattern cache.
+; Each paired column is gathered once; four transposed bits expand to eight
+; with a16-byte table. Output patterns/cache order stay byte-identical.
+; No full-height pixel-strip initialization or painting of solid interiors.
+.setcpu "6502"
+.macpack longbranch
+.import geometry_begin, geometry_column, span_count, span_top, span_bottom, span_material
+.import pattern_base_hi, name_base_hi, nt_dirty_name
+.importzp render_buffer, render_mode, overflow_flag
+.importzp cell_col, cell_x, cell_y, cell_row, column_index, name_ptr
+.importzp tile_ptr, tile_number, tile_count, copy_ptr, temp, temp2
+.importzp mask_wall, mask_ceiling, mask_floor, vertical0, vertical1
+.export opening_render, opening_spans_ready, opening_strip_ready
+.ifdef LATENCY_RESTART
+.import latency_checkpoint
+.export latency_strip_checkpoint
+.endif
+.export opening_plane0, opening_plane1, opening_cell_color, opening_candidate, opening_cache
+.export opening_cache_hits, opening_cache_misses
+
+.segment "BSS"
+; For each tile row, eight column markers: material0..3 or mixed4.
+; Pixel bytes below are valid only for mixed markers. Solid cells never need
+; initialization or full-span pixel writes.
+opening_cell_color: .res 144
+opening_plane0: .res 144
+opening_plane1: .res 144
+opening_candidate: .res 16
+; Two ways per hash bucket: newest allocation at0..63, previous at64..127.
+opening_cache: .res 128
+opening_cache_hits: .res 2
+opening_cache_misses: .res 2
+span_index: .res 1
+span_last: .res 1
+span_last_mask: .res 1
+span_color0: .res 1
+span_color1: .res 1
+cache_slot: .res 1
+solid0: .res 1
+solid1: .res 1
+pattern_or: .res 1
+transpose_kind: .res 1
+previous_count: .res 1
+previous_top: .res 16
+previous_bottom: .res 16
+previous_material: .res 16
+; Conservative suffix coverage removes only rows wholly hidden by later spans.
+clipped_bottom: .res 16
+covered_top: .res 1
+
+.segment "RODATA"
+start_masks: .byte $FF,$FE,$FC,$F8,$F0,$E0,$C0,$80
+end_masks: .byte $FF,$01,$03,$07,$0F,$1F,$3F,$7F
+material_plane0: .byte $00,$FF,$00,$FF
+material_plane1: .byte $00,$00,$FF,$FF
+
+.segment "CODE"
+.proc opening_render
+ jsr geometry_begin
+ lda #0
+ sta opening_cache_hits
+ sta opening_cache_hits+1
+ sta opening_cache_misses
+ sta opening_cache_misses+1
+ ldx #127
+cache_clear:
+ sta opening_cache,x
+ dex
+ bpl cache_clear
+ sta cell_col
+ sta cell_x
+strip:
+ lda #0
+ sta column_index
+column:
+ ldx cell_x
+ jsr geometry_column
+spans_ready:
+ ; Exact equal span lists imply identical sample pairs. Reuse material markers and
+ ; copy pixel bytes only for the mixed cells that actually contain boundaries.
+ lda column_index
+ jeq remember_column
+ lda span_count
+ cmp previous_count
+ jne remember_column
+ tay
+ beq reuse_column
+ dey
+compare_column:
+ lda span_top,y
+ cmp previous_top,y
+ jne remember_column
+ lda span_bottom,y
+ cmp previous_bottom,y
+ jne remember_column
+ lda span_material,y
+ cmp previous_material,y
+ jne remember_column
+ dey
+ bpl compare_column
+reuse_column:
+ ldx column_index
+ .repeat 18,I
+ lda opening_cell_color+I*8-1,x
+ sta opening_cell_color+I*8,x
+ sta opening_cell_color+I*8+1,x
+ cmp #4
+ bne :+
+ lda opening_plane0+I*8-1,x
+ sta opening_plane0+I*8,x
+ sta opening_plane0+I*8+1,x
+ lda opening_plane1+I*8-1,x
+ sta opening_plane1+I*8,x
+ sta opening_plane1+I*8+1,x
+:
+ .endrepeat
+ jmp column_done
+remember_column:
+ lda span_count
+ sta previous_count
+ tay
+ beq begin_spans
+ dey
+remember_spans:
+ lda span_top,y
+ sta previous_top,y
+ lda span_bottom,y
+ sta previous_bottom,y
+ lda span_material,y
+ sta previous_material,y
+ dey
+ bpl remember_spans
+begin_spans:
+ ; Initialize only compact material markers, never a complete pixel strip.
+ ldx column_index
+ lda #0
+ .repeat 9,I
+ sta opening_cell_color+I*8,x
+ sta opening_cell_color+I*8+1,x
+ .endrepeat
+ lda #3
+ .repeat 9,I
+ sta opening_cell_color+72+I*8,x
+ sta opening_cell_color+72+I*8+1,x
+ .endrepeat
+ ; Keep producer spans unchanged. Walking backward proves a covered suffix;
+ ; clipping farther bottoms to it cannot change their eventual visible pixels.
+ ; Any gaps conservatively leave extra painting instead of removing coverage.
+ lda #144
+ sta covered_top
+ ldy span_count
+ beq spans_clipped
+ dey
+clip_span:
+ lda span_bottom,y
+ cmp covered_top
+ bcc keep_bottom
+ lda covered_top
+ sta clipped_bottom,y
+ lda span_top,y
+ cmp covered_top
+ bcs clipped
+ sta covered_top
+ jmp clipped
+keep_bottom:
+ sta clipped_bottom,y
+clipped:
+ dey
+ bpl clip_span
+spans_clipped:
+ lda #0
+ sta span_index
+span:
+ ldy span_index
+ cpy span_count
+ jeq column_done
+ lda span_top,y
+ cmp clipped_bottom,y
+ bcs next_span
+ and #7
+ tax
+ lda start_masks,x
+ sta mask_wall
+ lda clipped_bottom,y
+ and #7
+ tax
+ lda end_masks,x
+ sta span_last_mask
+ lda clipped_bottom,y
+ sec
+ sbc #1
+ and #$F8
+ ora column_index
+ sta span_last
+ lda span_material,y
+ sta temp2
+ lsr a
+ lda #0
+ sbc #0                    ; C=1 material low bit:0, invert for set bits
+ eor #$FF
+ sta span_color0
+ lda span_material,y
+ and #2
+ beq :+
+ lda #$FF
+:
+ sta span_color1
+ lda span_top,y
+ and #$F8
+ ora column_index
+ tax
+ cpx span_last
+ bne :+
+ lda mask_wall
+ and span_last_mask
+ sta mask_wall
+:
+ jsr masked_span_byte
+ cpx span_last
+ beq next_span
+full_rows:
+ txa
+ clc
+ adc #8
+ tax
+ cpx span_last
+ beq last_row
+ lda temp2
+ sta opening_cell_color,x
+ sta opening_cell_color+1,x
+ jmp full_rows
+last_row:
+ lda span_last_mask
+ sta mask_wall
+ jsr masked_span_byte
+next_span:
+ inc span_index
+ jmp span
+column_done:
+ ; All marker and mixed-plane writes already fill the two-pixel pair.
+ inc cell_x
+ inc cell_x
+ inc column_index
+ inc column_index
+ lda column_index
+ cmp #8
+ jne column
+strip_ready:
+ ; Column-major traversal suits streamed geometry. Name writes still use
+ ; the same dirty16-byte-block uploader and immutable staging ownership.
+ lda cell_col
+ clc
+ adc #$60
+ sta name_ptr
+ ldx render_buffer
+ lda name_base_hi,x
+ sta name_ptr+1
+ lda #0
+ sta cell_y
+ sta cell_row
+tile:
+ jsr strip_tile
+ ldy #0
+ cmp (name_ptr),y
+ beq :+
+ jsr nt_dirty_name
+:
+ sta (name_ptr),y
+ clc
+ lda name_ptr
+ adc #32
+ sta name_ptr
+ bcc :+
+ inc name_ptr+1
+:
+ clc
+ lda cell_y
+ adc #8
+ sta cell_y
+ inc cell_row
+ lda cell_row
+ cmp #18
+ bne tile
+ inc cell_col
+.ifdef LATENCY_RESTART
+strip_checkpoint:
+ ; Finish all eighteen tile/name writes before abandoning this attempt.
+ ; Normal RTS unwinds opening_render; geometry/cache reset on the retry.
+ jsr latency_checkpoint
+ bcs aborted
+.endif
+ lda cell_col
+ cmp #32
+ jne strip
+.ifdef LATENCY_RESTART
+ clc
+.endif
+ rts
+.ifdef LATENCY_RESTART
+aborted:
+ sec
+ rts
+.endif
+.endproc
+.ifdef LATENCY_RESTART
+latency_strip_checkpoint = opening_render::strip_checkpoint
+.endif
+opening_spans_ready = opening_render::spans_ready
+opening_strip_ready = opening_render::strip_ready
+
+.proc masked_span_byte
+ lda mask_wall
+ cmp #$FF
+ bne partial
+ ; An aligned whole cell requires only its material marker.
+ lda temp2
+ sta opening_cell_color,x
+ sta opening_cell_color+1,x
+ rts
+partial:
+ lda opening_cell_color,x
+ cmp #4
+ beq compose
+ ; Materialize the previous solid color only when a partial boundary needs it.
+ tay
+ lda material_plane0,y
+ sta opening_plane0,x
+ sta opening_plane0+1,x
+ lda material_plane1,y
+ sta opening_plane1,x
+ sta opening_plane1+1,x
+ lda #4
+ sta opening_cell_color,x
+ sta opening_cell_color+1,x
+compose:
+ lda mask_wall
+ eor #$FF
+ sta mask_ceiling
+ lda span_color0
+ and mask_wall
+ sta mask_floor
+ lda opening_plane0,x
+ and mask_ceiling
+ ora mask_floor
+ sta opening_plane0,x
+ sta opening_plane0+1,x
+ lda span_color1
+ and mask_wall
+ sta mask_floor
+ lda opening_plane1,x
+ and mask_ceiling
+ ora mask_floor
+ sta opening_plane1,x
+ sta opening_plane1+1,x
+ rts
+.endproc
+
+.proc strip_tile
+ lda render_mode
+ beq @precise
+ lda cell_y
+ ora #4
+ tax
+ lda opening_cell_color,x
+ cmp #4
+ bne @return_solid
+ lda opening_plane0,x
+ and #$10
+ beq :+
+ lda #1
+:
+ sta temp
+ lda opening_plane1,x
+ and #$10
+ beq :+
+ lda #2
+:
+ ora temp
+@return_solid:
+ rts
+@precise:
+ ldx cell_y
+ lda opening_cell_color,x
+ cmp #4
+ bcs @gather
+ ; A whole tile's four distinct paired markers agree: select its pre-existing
+ ; shared solid pattern without ever creating a pixel representation.
+ .repeat 3,I
+ cmp opening_cell_color+I*2+2,x
+ bne @gather
+ .endrepeat
+ rts
+@gather:
+ ; Gather only the even source column from each proven identical pair.
+ ; Compact scratch stores four vertical bytes per plane; no RAM layout change.
+ .repeat 4,I
+ lda opening_cell_color+I*2,x
+ cmp #4
+ beq :+
+ tay
+ lda material_plane0,y
+ sta vertical0+I
+ lda material_plane1,y
+ sta vertical1+I
+ jmp :++
+:
+ lda opening_plane0+I*2,x
+ sta vertical0+I
+ lda opening_plane1+I*2,x
+ sta vertical1+I
+:
+ .endrepeat
+@transpose:
+ ; Two-colour boundary cells usually have a constant, identical or inverted
+ ; second bitplane. Recognize those exact byte relationships before shifting
+ ; the columns: every source byte must agree, with a generic fallback.
+ lda #0
+ sta transpose_kind
+ lda vertical0
+ beq @check_constant0
+ cmp #$FF
+ bne @try_constant1
+@check_constant0:
+ .repeat 3,I
+ cmp vertical0+I+1
+ bne @try_constant1
+ .endrepeat
+ ; A conservative mixed marker may become uniform after later overwrites.
+ ; Reuse shared solid IDs here too, preserving the existing cache allocation
+ ; semantics. This check reuses the already proved constant first plane.
+ sta solid0
+ lda vertical1
+ sta solid1
+ beq @check_solid1
+ cmp #$FF
+ bne @constant0_only
+@check_solid1:
+ .repeat 3,I
+ cmp vertical1+I+1
+ bne @constant0_only
+ .endrepeat
+ lda solid0
+ and #1
+ sta temp
+ lda solid1
+ and #2
+ ora temp
+ rts
+@constant0_only:
+ lda solid0
+ .repeat 8,I
+ sta opening_candidate+I
+ .endrepeat
+ ldy #8
+ jmp @plane1
+@try_constant1:
+ lda vertical1
+ sta solid1
+ beq @check_constant1
+ cmp #$FF
+ bne @try_related
+@check_constant1:
+ .repeat 3,I
+ cmp vertical1+I+1
+ bne @try_related
+ .endrepeat
+ lda #1
+ sta transpose_kind
+ jmp @transpose0
+@try_related:
+ lda vertical0
+ eor vertical1
+ beq @check_related
+ cmp #$FF
+ jne @transpose0
+@check_related:
+ sta pattern_or
+ .repeat 3,I
+ lda vertical0+I+1
+ eor vertical1+I+1
+ cmp pattern_or
+ bne @transpose0
+ .endrepeat
+ lda #2
+ sta transpose_kind
+@transpose0:
+ ldy #0
+@plane0:
+ lda #0
+ .repeat 4,I
+ lsr vertical0+I
+ rol a
+ .endrepeat
+ tax
+ lda opening_pair_expand,x
+ sta opening_candidate,y
+ iny
+ cpy #8
+ bne @plane0
+ lda transpose_kind
+ beq @plane1
+ cmp #1
+ beq @fill_constant1
+ .repeat 8,I
+ lda opening_candidate+I
+ eor pattern_or
+ sta opening_candidate+I+8
+ .endrepeat
+ jmp @hashed_planes
+@fill_constant1:
+ lda solid1
+ .repeat 8,I
+ sta opening_candidate+I+8
+ .endrepeat
+ jmp @hashed_planes
+@plane1:
+ lda #0
+ .repeat 4,I
+ lsr vertical1+I
+ rol a
+ .endrepeat
+ tax
+ lda opening_pair_expand,x
+ sta opening_candidate,y
+ iny
+ cpy #16
+ bne @plane1
+@hashed_planes:
+.ifdef FLOOR_DITHER
+ ; The marker/strip buffers retain semantic material colours, including the
+ ; coarse centre sample. Only final mixed patterns receive floor shading.
+ ; Material3 is the surrounding floor: clear its two set bits on alternating
+ ; pixels, leaving materials0..2 untouched. Fixed tile3 uses the same phase.
+ ; Every tile origin is a multiple of8 (viewport Y=24), so no position state
+ ; is needed: row0 retains $AA, row1 retains $55, in both pattern planes.
+ .repeat 8,I
+ lda opening_candidate+I
+ and opening_candidate+I+8
+ and #($55 << (I & 1))
+ eor #$FF
+ sta temp
+ and opening_candidate+I
+ sta opening_candidate+I
+ lda temp
+ and opening_candidate+I+8
+ sta opening_candidate+I+8
+ .endrepeat
+.endif
+ ; Rotate-then-add avoids XOR cancellation for equal NES bitplanes.
+ ; Hash selects a two-way bucket; all16bytes must match before ID reuse.
+ lda #0
+ ldy #15
+@hash:
+ asl a
+ adc #0
+ clc
+ adc opening_candidate,y
+ dey
+ bpl @hash
+ and #63
+ sta cache_slot
+ tax
+ lda opening_cache,x
+ beq @allocate
+@probe:
+ sta tile_number
+ asl a
+ asl a
+ asl a
+ asl a
+ sta copy_ptr
+ lda tile_number
+ lsr a
+ lsr a
+ lsr a
+ lsr a
+ sec
+ sbc #4
+ ldx render_buffer
+ clc
+ adc pattern_base_hi,x
+ sta copy_ptr+1
+ ldy #15
+@compare:
+ lda opening_candidate,y
+ cmp (copy_ptr),y
+ bne @next_way
+ dey
+ bpl @compare
+ inc opening_cache_hits
+ bne :+
+ inc opening_cache_hits+1
+:
+ lda tile_number
+ rts
+@next_way:
+ lda cache_slot
+ and #64
+ bne @allocate
+ lda cache_slot
+ ora #64
+ sta cache_slot
+ tax
+ lda opening_cache,x
+ bne @probe
+@allocate:
+ lda tile_count
+ cmp #184             ; tiles248..255 are reserved for immediate corpse
+ bcc :+
+ lda #1
+ sta overflow_flag
+ lda #0
+ rts
+:
+ clc
+ adc #64
+ sta tile_number
+ lda cache_slot
+ and #63
+ tax
+ lda opening_cache,x
+ sta opening_cache+64,x
+ lda tile_number
+ sta opening_cache,x
+ ldy #15
+@copy:
+ lda opening_candidate,y
+ sta (tile_ptr),y
+ dey
+ bpl @copy
+ clc
+ lda tile_ptr
+ adc #16
+ sta tile_ptr
+ bcc :+
+ inc tile_ptr+1
+:
+ inc tile_count
+ inc opening_cache_misses
+ bne :+
+ inc opening_cache_misses+1
+:
+ lda tile_number
+ rts
+.endproc
+
+; Four distinct column bits become the same horizontally doubled NES row.
+; Align16 so indexed reads never cross a page. Fixed code has room; retain
+; the remaining shared-ROM space and all existing data/RAM addresses.
+.align 16
+.export opening_pair_expand
+opening_pair_expand:
+.byte $00,$03,$0C,$0F,$30,$33,$3C,$3F,$C0,$C3,$CC,$CF,$F0,$F3,$FC,$FF

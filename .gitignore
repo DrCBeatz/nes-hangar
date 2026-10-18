@@ -1,0 +1,14 @@
+/build/
+/artifacts/
+__pycache__/
+*.py[cod]
+.DS_Store
+.env
+.env.*
+!.env.example
+*.nes
+!/release/hangar-ntsc.nes
+*.o
+*.lst
+*.dbg
+*.lbl

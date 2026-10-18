@@ -15,7 +15,12 @@ prototype, not a port of the Doom engine or the complete original level.
 [Technical notes](#how-it-renders) ·
 [Provenance](docs/PROVENANCE.md)
 
-![Title and controls screen](docs/images/title.png)
+<p align="center">
+  <img src="docs/images/opening-gameplay.gif" width="512" alt="Six seconds of Hangar gameplay: walking and turning among the opening room’s pillars and recessed floor." />
+</p>
+<p align="center">
+  Actual ROM gameplay at normal NTSC timing in JSNES · <a href="docs/images/opening-gameplay.png">View the opening still</a> · <a href="docs/images/title.png">Title and controls screen</a>
+</p>
 
 ## Play
 
@@ -31,7 +36,8 @@ prepare at normal NTSC speed; the level timer starts when that view appears.
 
 For a browser trial, open [Play Hangar](https://8bitpocket.app/?game=hangar),
 click **Play Hangar**, then press **Start** on the game title screen. Hangar is
-also in the site’s hosted-game picker. **Open ROM** still supports downloaded
+also in the site’s hosted-game picker. A keyboard guide appears before Play;
+use **Controls** to reopen it during gameplay. **Open ROM** still supports downloaded
 files. Browser speed, palette and presentation may differ from Mesen. See
 the [browser deployment notes](docs/DEPLOYMENT.md).
 

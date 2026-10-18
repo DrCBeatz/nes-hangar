@@ -21,9 +21,15 @@ configuration changed.
 - The manifest and attribution file link back to this repository and its
   separate code/content license scope.
 
+The [keyboard-guide update](https://github.com/DrCBeatz/nes-emulator-mobile-web-app/commit/0ba0347)
+shows Hangar’s default keyboard bindings before Play, from both the direct
+link and hosted picker. Controls reopens the guide during gameplay and pauses
+the emulator while it covers the view; closing it preserves the prior pause
+state. This does not alter the ROM or replace saved custom keyboard bindings.
+
 ## Verification and limits
 
-`npm test` in the emulator repository passes 12 tests: 11 loading/audio/race
+`npm test` in the emulator repository passes 18 tests: 17 loading/audio/guide
 cases and one real-core gameplay test. The latter runs 2,427 normal NTSC
 frames through the pinned JSNES core with controller input, covering title,
 loading, pause/resume, movement, soldier attacks, a three-hit kill and corpse

@@ -58,6 +58,20 @@ using controller input, zero extra scanlines and the original sprite limits.
 They are lossless conversions of the emulator's 256×240 screen buffers,
 without compositing or retouching.
 
+## README gameplay preview
+
+The opening animation is a six-second, controller-driven capture of this exact
+release using the same pinned JSNES core as the browser app. It starts at the
+first gameplay view and preserves normal NTSC timing, including repeated
+pictures while the world renderer works. No overclock, motion interpolation
+or game-state injection was used. The GIF has no sound.
+
+The 256×240 source frames are enlarged exactly 2× with nearest-neighbor pixels.
+All 90 decoded GIF frames match their sampled source buffers; the linked PNG
+is the native first frame. The ROM hash, input sequence, palette, duration and
+artifact checksums are in [opening-gameplay.json](../verification/opening-gameplay.json).
+This preview records emulated output, not measured browser/device performance.
+
 ## Package checks and limits
 
 The public files were scanned for personal absolute paths, common credential

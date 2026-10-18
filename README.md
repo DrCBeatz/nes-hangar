@@ -58,7 +58,7 @@ Resuming restores the level heading and plays an ascending cue. Gameplay and
 the completion timer stop during pause. Hardware/emulator Reset returns to
 the title; retries go directly back into the level.
 
-With no ammunition, a fresh B press plays a short empty-gun click. Holding B
+With no ammunition, a fresh B press plays a short, low-pitched empty-gun click. Holding B
 does not repeat the click or count as a fired shot.
 
 ## The current level
@@ -151,7 +151,7 @@ The included release is 65,552 bytes (a 16-byte header plus 64 KiB PRG), with
 SHA-256:
 
 ```text
-fcc47032e871a1b62c391b3a641552eb148dfcec44cb2ce2ff91ac461b4076c2
+e7bc3df411d5f2d45aa325329ead3db7c75ebb8a51a0607df15777ce8456a8a9
 ```
 
 The checksum and cartridge metadata are also in [release/](release/).

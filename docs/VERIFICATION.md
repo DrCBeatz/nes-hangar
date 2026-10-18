@@ -3,10 +3,28 @@
 The accepted release is `release/hangar-ntsc.nes`, 65,552 bytes, with SHA-256:
 
 ```text
-fcc47032e871a1b62c391b3a641552eb148dfcec44cb2ce2ff91ac461b4076c2
+e7bc3df411d5f2d45aa325329ead3db7c75ebb8a51a0607df15777ce8456a8a9
 ```
 
-## Current gameplay update
+## Lower-pitched empty-gun click
+
+The `prototype-2026-10-18-low-click` release changes one byte relative to the
+previous gameplay release (`fcc47032…`): the short-noise period written to
+`$400E` changes from index 2 to index 4 (16 to 64 CPU cycles). This gives a
+lower click while retaining volume 8, the two-refresh duration and all input
+behavior. Code size, RAM use and linked addresses are identical.
+
+[dry-fire-pitch-change.json](../verification/dry-fire-pitch-change.json)
+records the exact byte comparison after rebuilding from source.
+[dry-fire-pitch-fixtures.json](../verification/dry-fire-pitch-fixtures.json)
+records the current ROM's 10 passing helper checks, including sound-channel
+ownership, pause/resume and the unchanged pickup/exit boundaries. These use
+the same controlled CPU/RAM fixtures described below. All 18 browser tests
+and the production build also passed; the controller-only route again
+completed 7,493 stock NTSC refreshes. Earlier reports retain
+their original ROM and driver hashes; their tested source remains in Git.
+
+## Previous gameplay update
 
 The `prototype-2026-10-18-gameplay` release tightens the ammo clip's pickup
 radius from six to four world units; the medkit stays at six. Both previously

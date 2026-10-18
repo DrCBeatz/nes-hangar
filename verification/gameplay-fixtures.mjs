@@ -190,7 +190,7 @@ candidate.call(c, "pistol_tick");
 assert.deepEqual(protectedState(c), unchanged);
 assert.equal(candidate.get(c, "pistol_flash_timer"), 0x82);
 assert.equal(candidate.get(c, "pistol_cooldown"), 15);
-assert.deepEqual(c.writes, [[0x4015, 15], [0x400c, 0x18], [0x400e, 0x82], [0x400f, 0xf8]]);
+assert.deepEqual(c.writes, [[0x4015, 15], [0x400c, 0x18], [0x400e, 0x84], [0x400f, 0xf8]]);
 assert.equal(candidate.get(c, "pause_sound_noise"), 0x18);
 checks.emptyClickHasExactShortNoiseCueWithoutShotOrHudMutation = true;
 const clickWrites = [{ tick: 0, writes: c.writes }];
@@ -202,7 +202,7 @@ for (let tick = 1; tick <= 40; tick++) {
   if (tick === 1) assert.equal(candidate.get(c, "pistol_flash_timer"), 0x81);
   if (tick >= 2) assert.equal(candidate.get(c, "pistol_flash_timer"), 0);
 }
-assert.deepEqual(clickWrites, [{ tick: 0, writes: [[0x4015, 15], [0x400c, 0x18], [0x400e, 0x82], [0x400f, 0xf8]] }, { tick: 2, writes: [[0x400c, 0x30], [0x4015, 7]] }]);
+assert.deepEqual(clickWrites, [{ tick: 0, writes: [[0x4015, 15], [0x400c, 0x18], [0x400e, 0x84], [0x400f, 0xf8]] }, { tick: 2, writes: [[0x400c, 0x30], [0x4015, 7]] }]);
 examples.dryFireWrites = clickWrites;
 checks.emptyClickStopsAfterTwoActiveTicksAndHeldBDoesNotRepeat = true;
 candidate.put(c, "button_edges", 0x40);candidate.call(c, "pistol_tick");

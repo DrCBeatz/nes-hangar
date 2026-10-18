@@ -1,0 +1,211 @@
+{
+  "passed": true,
+  "scope": "Injected CPU/RAM boundary fixtures execute assembled ROM routines with automatic interrupts suppressed. This is distinct from controller-only traversal and does not certify PPU/VBlank timing.",
+  "candidateRomSha256": "e7bc3df411d5f2d45aa325329ead3db7c75ebb8a51a0607df15777ce8456a8a9",
+  "candidateLabelsSha256": "a8c98ae87343e56f4fb4eaace1782f198a7245eb50177f51d2e224790bade4ef",
+  "baselineRomSha256": null,
+  "coreCpuSha256": "17469b310738c4b3092d648289c8537a4584f6b45bc1735adb540968a75308f2",
+  "coreCommit": "5b27c4243f1cb2528c54941e13c29c4ced7d5a45",
+  "driverSha256": "2fcfdbbf0aad82321c9115707b66369345c036cadcf65e320f839cf905f5121a",
+  "checks": {
+    "exactFractionalPickupCirclesMatchIndependentOracle": true,
+    "exitRectangleAndAngleEdgesAreExact": true,
+    "exitStillRequiresFreshAAndRejectsBothStrafeDirections": true,
+    "emptyClickHasExactShortNoiseCueWithoutShotOrHudMutation": true,
+    "emptyClickStopsAfterTwoActiveTicksAndHeldBDoesNotRepeat": true,
+    "freshBRearmsOnlyAfterCooldown": true,
+    "pausePreservesAndRestoresTheClickWithoutDisablingOtherChannels": true,
+    "resetDeathAndCompletionCancelClickAndPreserveTriangleEnable": true,
+    "deadCompletedAndCoolingDownPlayersCannotStartClick": true,
+    "doorAndGuardNoiseOwnersYieldWithoutRevivingTheirTails": true
+  },
+  "counts": {
+    "pickupBoundaryCases": 2664,
+    "exitBoundaryCases": 2808
+  },
+  "examples": {
+    "pickupOldVersusNew": [
+      {
+        "dx": 0,
+        "dz": 0,
+        "new": true
+      },
+      {
+        "dx": 3.5,
+        "dz": 0,
+        "new": true
+      },
+      {
+        "dx": 0,
+        "dz": -3.5,
+        "new": true
+      },
+      {
+        "dx": 4,
+        "dz": 0,
+        "new": false
+      },
+      {
+        "dx": 0,
+        "dz": -4,
+        "new": false
+      },
+      {
+        "dx": 5,
+        "dz": 0,
+        "new": false
+      },
+      {
+        "dx": 3,
+        "dz": 3,
+        "new": false
+      },
+      {
+        "dx": 2.75,
+        "dz": 2.75,
+        "new": true
+      },
+      {
+        "dx": 3.875,
+        "dz": 0.125,
+        "new": true
+      },
+      {
+        "dx": 3.875,
+        "dz": 1,
+        "new": false
+      }
+    ],
+    "exitOldVersusNew": [
+      {
+        "x": 289,
+        "z": 28,
+        "angle": 192,
+        "new": true
+      },
+      {
+        "x": 293.5,
+        "z": 28,
+        "angle": 192,
+        "new": true
+      },
+      {
+        "x": 289,
+        "z": 22,
+        "angle": 192,
+        "new": true
+      },
+      {
+        "x": 289,
+        "z": 34,
+        "angle": 192,
+        "new": true
+      },
+      {
+        "x": 289,
+        "z": 28,
+        "angle": 172,
+        "new": true
+      },
+      {
+        "x": 289,
+        "z": 28,
+        "angle": 212,
+        "new": true
+      },
+      {
+        "x": 294,
+        "z": 28,
+        "angle": 192,
+        "new": false
+      },
+      {
+        "x": 289,
+        "z": 34.00390625,
+        "angle": 192,
+        "new": false
+      },
+      {
+        "x": 289,
+        "z": 28,
+        "angle": 213,
+        "new": false
+      }
+    ],
+    "dryFireWrites": [
+      {
+        "tick": 0,
+        "writes": [
+          [
+            16405,
+            15
+          ],
+          [
+            16396,
+            24
+          ],
+          [
+            16398,
+            132
+          ],
+          [
+            16399,
+            248
+          ]
+        ]
+      },
+      {
+        "tick": 2,
+        "writes": [
+          [
+            16396,
+            48
+          ],
+          [
+            16405,
+            7
+          ]
+        ]
+      }
+    ]
+  },
+  "candidateCalls": {
+    "movement_init": 37,
+    "pistol_reset": 38,
+    "zombie_reset": 37,
+    "medkit_reset": 37,
+    "exit_reset": 37,
+    "results_reset": 37,
+    "pause_init": 37,
+    "medkit_in_range": 2674,
+    "exit_eligible": 2817,
+    "exit_tick": 5,
+    "pistol_tick": 58,
+    "pause_poll": 32,
+    "pause_cue_tick": 30,
+    "exit_complete": 1,
+    "player_damage": 1,
+    "door_sound_tick": 3,
+    "zombie_attack_tick": 3
+  },
+  "candidateMaximumHelperCycles": {
+    "movement_init": 66,
+    "pistol_reset": 251,
+    "zombie_reset": 497,
+    "medkit_reset": 27,
+    "exit_reset": 65,
+    "results_reset": 69,
+    "pause_init": 45,
+    "medkit_in_range": 394,
+    "exit_eligible": 109,
+    "exit_tick": 422,
+    "pistol_tick": 126,
+    "pause_poll": 1562,
+    "pause_cue_tick": 73,
+    "exit_complete": 256,
+    "player_damage": 156,
+    "door_sound_tick": 89,
+    "zombie_attack_tick": 103
+  },
+  "baselineMaximumHelperCycles": null
+}

@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "romSha256": "e7bc3df411d5f2d45aa325329ead3db7c75ebb8a51a0607df15777ce8456a8a9",
+  "previousRomSha256": "fcc47032e871a1b62c391b3a641552eb148dfcec44cb2ce2ff91ac461b4076c2",
+  "romBytes": 65552,
+  "changedBytes": [
+    {
+      "romFileOffset": 58087,
+      "old": 130,
+      "new": 132
+    }
+  ],
+  "onlyChange": "Immediate APU $400E noise-period value: short mode index2 to index4",
+  "noisePeriodCpuCycles": {
+    "previous": 16,
+    "current": 64
+  },
+  "shortMode": true,
+  "noiseClockRatio": 0.25,
+  "volume": 8,
+  "durationRefreshes": 2,
+  "linkedSymbolAddressesUnchanged": true,
+  "labelSha256": "a8c98ae87343e56f4fb4eaace1782f198a7245eb50177f51d2e224790bade4ef",
+  "codeSizeChange": 0,
+  "ramChange": 0,
+  "scope": "Exact byte comparison after a full source build; only the dry-fire noise period changes. No new graphics timing claim or listening test.",
+  "browserRegression": {
+    "tests": 18,
+    "passed": 18,
+    "frames": 7493,
+    "controllerOnly": true,
+    "stockTiming": true,
+    "jsnesCommit": "5b27c4243f1cb2528c54941e13c29c4ced7d5a45",
+    "driverRepository": "https://github.com/DrCBeatz/nes-emulator-mobile-web-app",
+    "driverPath": "test/hangar.test.mjs",
+    "driverSha256": "455e73b4dc25d6794355a5ac2f97cd1cb37ee60b3ec4da09caf26f04adaee39b",
+    "productionBuildPassed": true
+  }
+}

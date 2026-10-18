@@ -13,7 +13,7 @@ invalidation. This used the existing hosting; no AWS infrastructure or domain
 configuration changed.
 
 - A versioned copy of the release is hosted at
-  `/roms/hangar-ntsc-fcc47032.nes` with the same SHA-256 as this repository.
+  `/roms/hangar-ntsc-e7bc3df4.nes` with the same SHA-256 as this repository.
 - The hosted manifest has stable ID `hangar`. Query strings resolve only
   known manifest IDs; an unknown ID leaves the picker and file loader usable.
 - The page waits for a Play gesture before fetching/starting the game. Audio
@@ -29,9 +29,10 @@ state. This does not alter the ROM or replace saved custom keyboard bindings.
 
 ## Gameplay update
 
-The `prototype-2026-10-18-gameplay` ROM is hosted as
-`/roms/hangar-ntsc-fcc47032.nes`. It tightens the ammo pickup, adds an empty-gun
-click and widens exit-switch activation. The stable Play link and controls
+The `prototype-2026-10-18-low-click` ROM is hosted as
+`/roms/hangar-ntsc-e7bc3df4.nes`. It tightens the ammo pickup, adds an empty-gun
+click and widens exit-switch activation. The latest revision lowers only the
+empty-gun click pitch, retaining its volume and short duration. The stable Play link and controls
 remain the same.
 
 The updated `test/hangar.test.mjs` runs 7,493 normal NTSC refreshes with only

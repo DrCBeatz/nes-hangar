@@ -1,13 +1,13 @@
 {
   "title": "Hangar \u2014 an NES FPS prototype",
   "rom": "hangar-ntsc.nes",
-  "sha256": "fcc47032e871a1b62c391b3a641552eb148dfcec44cb2ce2ff91ac461b4076c2",
+  "sha256": "e7bc3df411d5f2d45aa325329ead3db7c75ebb8a51a0607df15777ce8456a8a9",
   "bytes": 65552,
   "region": "NTSC",
   "mapper": "MMC1",
   "prgBytes": 65536,
   "chrRamBytes": 8192,
   "workRamBytes": 8192,
-  "version": "prototype-2026-10-18-gameplay",
+  "version": "prototype-2026-10-18-low-click",
   "sourceBuild": "python3 tools/build.py --verify"
 }

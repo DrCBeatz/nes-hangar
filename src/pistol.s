@@ -228,7 +228,7 @@ dry_accepted:
  lda #$18                   ; constant volume8, no length-counter halt
  sta pause_sound_noise
  sta $400C
- lda #$82                   ; short LFSR, period2
+ lda #$84                   ; short LFSR, period4: lower-pitched mechanical click
  sta $400E
  lda #$F8
  sta $400F

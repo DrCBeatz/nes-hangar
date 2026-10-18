@@ -30,8 +30,8 @@ python3 tools/build.py --verify
 ```
 
 Normal builds omit `--verify` to allow deliberate source or asset changes.
-The GitHub Actions workflow is prepared to run verification on Linux; it had
-not run on GitHub when this local package was prepared.
+The initial [GitHub Actions build](https://github.com/DrCBeatz/nes-hangar/actions/runs/39169799691)
+also passed on Linux after publication, reproducing the committed ROM.
 
 ## Gameplay and timing evidence
 
@@ -67,8 +67,10 @@ they are not a general security certification. The only included `.nes` file
 is the checksum-verified Hangar release. Generated `build/` files and local
 Git metadata are excluded from the public-file scan.
 
-No physical NES, flash-cartridge or live browser-emulator compatibility test
-is claimed. Mesen timing and build verification support further hardware
-testing; they do not replace it. Content origins and license scope are
+The exact release was subsequently tested in the pinned JSNES core and in
+desktop Safari at the live browser link; see [DEPLOYMENT.md](DEPLOYMENT.md)
+for that check’s scope. No physical NES or flash-cartridge test is claimed.
+Mesen timing and build verification support further hardware testing; they
+do not replace it. Content origins and license scope are
 documented separately in [PROVENANCE.md](PROVENANCE.md) and
 [LICENSE-SCOPE.md](../LICENSE-SCOPE.md).

@@ -9,7 +9,8 @@ The renderer constructs solid surfaces and their boundary tiles at runtime
 on the NES CPU. This is a custom engine and a compact technical/gameplay
 prototype, not a port of the Doom engine or the complete original level.
 
-**[Download the ROM](release/hangar-ntsc.nes)** ·
+**[Play in browser](https://8bitpocket.app/?game=hangar)** ·
+[Download the ROM](release/hangar-ntsc.nes) ·
 [Build from source](#build-from-source) ·
 [Technical notes](#how-it-renders) ·
 [Provenance](docs/PROVENANCE.md)
@@ -28,10 +29,11 @@ required to finish the level.
 Press Start on the title screen. The first room takes about 0.8 seconds to
 prepare at normal NTSC speed; the level timer starts when that view appears.
 
-For a browser trial, open [8-Bit Pocket](https://8bitpocket.app/) and use
-**Open ROM** to select the downloaded file. Hangar is not yet installed in
-that site's hosted-game list. Browser speed, palette and presentation may
-differ from Mesen. See the [browser deployment plan](docs/DEPLOYMENT.md).
+For a browser trial, open [Play Hangar](https://8bitpocket.app/?game=hangar),
+click **Play Hangar**, then press **Start** on the game title screen. Hangar is
+also in the site’s hosted-game picker. **Open ROM** still supports downloaded
+files. Browser speed, palette and presentation may differ from Mesen. See
+the [browser deployment notes](docs/DEPLOYMENT.md).
 
 ## Controls
 
@@ -243,11 +245,11 @@ The suggested repository name is **`nes-hangar`**; the display title is
 only this folder needs to be published, not the surrounding research workspace.
 See [publishing instructions](docs/PUBLISHING.md).
 
-The proposed next step is a small static project page with a ROM download and
-a Play button leading to the maintained 8-Bit Pocket emulator. Its existing
-hosted-ROM mechanism can serve Hangar; a direct game-selection URL would be
-a new feature. The [deployment plan](docs/DEPLOYMENT.md) covers integration,
-aspect ratio, palette and S3/CloudFront ownership.
+The maintained 8-Bit Pocket emulator now hosts the exact release ROM and
+supports the [direct Play Hangar link](https://8bitpocket.app/?game=hangar).
+A dedicated landing page with download and play buttons can follow. The
+[deployment notes](docs/DEPLOYMENT.md) describe the current integration,
+remaining display work and options for a later custom domain.
 
 ## Credits and licensing
 

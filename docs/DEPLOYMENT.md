@@ -1,32 +1,42 @@
-# Browser release plan
+# Browser deployment
 
-Keep Hangar's source and versioned ROM releases in this repository. For the next web iteration, use a small landing page with **Download ROM** and **Play in browser** buttons, backed by the existing [8-Bit Pocket emulator](https://8bitpocket.app/). Maintain one emulator implementation initially; a separate branded build can come later if it needs different behavior.
+[Play Hangar](https://8bitpocket.app/?game=hangar) is live on the maintained
+8-Bit Pocket site. Click **Play Hangar**, then press **Start** on the game title
+screen. The ordinary hosted picker and local **Open ROM** loader remain available.
 
-This is a plan, not a deployed integration. No website, emulator source, AWS resource or public release was changed during this review.
+## Deployed integration
 
-## What is verified
+The emulator update is [commit b2e8312](https://github.com/DrCBeatz/nes-emulator-mobile-web-app/commit/b2e8312ebb59a315d5603ca80d596843cdfd1f8d).
+Its [deployment workflow](https://github.com/DrCBeatz/nes-emulator-mobile-web-app/actions/runs/39170142984)
+passed on 2026-10-18, including tests, the Vite build, S3 upload and CloudFront
+invalidation. This used the existing hosting; no AWS infrastructure or domain
+configuration changed.
 
-Reviewed on 2026-10-18 against emulator commit [`222b086`](https://github.com/DrCBeatz/nes-emulator-mobile-web-app/tree/222b0865e4494906527f8192619866e6170aa4bb). The local checkout's relevant application, CSS, manifest, package and deployment files matched that public commit. Direct HTTPS requests returned the live site's HTML and ROM manifest; the manifest listed only Melo-Jellos 2. **Hangar gameplay was not tested in the live browser emulator.** Mesen validation does not establish JSNES compatibility or mobile performance.
+- A versioned copy of the release is hosted at
+  `/roms/hangar-ntsc-644d047c.nes` with the same SHA-256 as this repository.
+- The hosted manifest has stable ID `hangar`. Query strings resolve only
+  known manifest IDs; an unknown ID leaves the picker and file loader usable.
+- The page waits for a Play gesture before fetching/starting the game. Audio
+  startup is preserved across the asynchronous fetch and rapid pause/switch actions.
+- The manifest and attribution file link back to this repository and its
+  separate code/content license scope.
 
-| Existing capability | Concrete hook |
-| --- | --- |
-| Load a local `.nes` without uploading it | `src/main.js`: `loadRomFromFile()` reads `file.arrayBuffer()`, then calls `loadRomData()`. |
-| List and fetch hosted ROMs | `loadHostedRomManifest()` fetches `/roms/manifest.json`; the picker calls `loadRomFromUrl()`, which uses `Browser.loadROMFromURL()`. |
-| Start either kind of ROM | `loadRomData()` initializes the emulator, starts the ROM, applies mono audio and fits the screen. |
-| Select a game through its URL | **Not implemented.** There is no query-string game resolver in the reviewed application. |
+## Verification and limits
 
-These hooks are in the pinned [application source](https://github.com/DrCBeatz/nes-emulator-mobile-web-app/blob/222b0865e4494906527f8192619866e6170aa4bb/src/main.js); the current [manifest](https://github.com/DrCBeatz/nes-emulator-mobile-web-app/blob/222b0865e4494906527f8192619866e6170aa4bb/public/roms/manifest.json) contains title, URL and attribution fields.
+`npm test` in the emulator repository passes 12 tests: 11 loading/audio/race
+cases and one real-core gameplay test. The latter runs 2,427 normal NTSC
+frames through the pinned JSNES core with controller input, covering title,
+loading, pause/resume, movement, soldier attacks, a three-hit kill and corpse
+state. It generates frame buffers and finite audio samples without injecting
+game RAM or save states. The tests run before production deployment.
 
-The immediate manual option is to download [release/hangar-ntsc.nes](../release/hangar-ntsc.nes), open 8-Bit Pocket, choose **Open ROM**, and select that file. This uses an existing loading feature; it is not a claim that this ROM has passed browser testing.
-
-## Proposed integration
-
-1. Test that exact release ROM locally with the existing emulator. Check title/Start, movement and strafing, combat, pickups, slime, the exit door, pause/resume and results/restart. Compare with stock NTSC Mesen, then check desktop browsers and mobile Safari/Chrome, including landscape controls and audio after a user gesture.
-2. Add a versioned ROM under the emulator's `public/roms/`, a narrow `.gitignore` exception, and an attributed manifest entry. Add an explicit stable `id: "hangar"`; IDs are a proposed extension, not a current feature. Keep the release checksum alongside the download.
-3. Extend `loadHostedRomManifest()` to retain entries by ID. Read `new URLSearchParams(location.search).get("game")`, resolve only a known manifest entry, and route it through the existing loader. Show a **Play Hangar** confirmation button so loading/audio startup can begin from a user gesture; show a useful message for an unknown ID. Preserve the ordinary hosted picker and local file loader.
-4. After that implementation is tested and deployed, link the landing page's play button to `https://8bitpocket.app/?game=hangar`. **That address does not currently select Hangar.** Until then, label the link **Open emulator** and explain the local-file step.
-
-Use a same-origin hosted ROM URL for the first integration. This fits the existing loader and avoids making cross-origin ROM hosting part of the initial change. A separately hosted landing page can still link to the maintained emulator.
+Desktop Safari checks covered the direct Play link, title/start, movement,
+firing, game pause, emulator pause/resume, switching to Melo-Jellos 2, local
+ROM selection and an unknown game ID. The deployed link was also opened and
+started, and the live ROM checksum and JavaScript bundle matched the local
+production build. These are targeted checks, not a complete browser playthrough
+or a certification of mobile Safari/Chrome, audible sound quality, rendering
+accuracy or device performance. Phone testing remains a useful next step.
 
 ## Display, palette and speed
 
@@ -36,10 +46,30 @@ There is no palette selector in the application. The pinned [PPU initialization]
 
 The browser [frame timer](https://github.com/taiyuuki/jsnes/blob/5b27c4243f1cb2528c54941e13c29c4ced7d5a45/src/browser/frame-timer.js) targets about 60.098 emulated frames per second. The app's `papu.setFrameRate(60)` synchronizes audio calculations; it is not a Mesen-style extra-scanline overclock. There is no exposed speed/overclock setting. Measure browser emulation speed separately from Hangar's world-rendering rate: a browser sustaining full emulation speed can still show the ROM's normal hardware-limited redraw cadence. Keep the first comparison at normal speed.
 
-## Hosting and release boundary
+## Landing page and custom domain
 
-The existing [infrastructure template](https://github.com/DrCBeatz/nes-emulator-mobile-web-app/blob/222b0865e4494906527f8192619866e6170aa4bb/infrastructure/cloudformation.yml) describes a private S3 origin behind CloudFront, HTTPS and Route 53. Query strings are not forwarded to the origin, which is compatible with the proposed client-side game resolver: the same HTML can read `?game=hangar` in the browser.
+A dedicated project page can add screenshots, a ROM download and the existing
+Play link. Maintain one emulator implementation initially. A separate branded
+emulator build is optional and adds another deployment to maintain.
 
-The [deployment workflow](https://github.com/DrCBeatz/nes-emulator-mobile-web-app/blob/222b0865e4494906527f8192619866e6170aa4bb/.github/workflows/deploy.yml) builds Vite's `dist/`, synchronizes it to S3 **with deletion**, then invalidates CloudFront. If the landing page lives at the same site, include it and its downloads in that maintained build output; manually copied files can disappear on the next deploy. Alternatively, host the landing page separately and link to the emulator. A subdirectory page should use an explicit static URL such as `/hangar/index.html` unless routing is deliberately configured.
+The current [CloudFormation template](https://github.com/DrCBeatz/nes-emulator-mobile-web-app/blob/b2e8312ebb59a315d5603ca80d596843cdfd1f8d/infrastructure/cloudformation.yml)
+uses a private S3 origin, CloudFront, ACM HTTPS and Route 53. Use CloudFormation
+and a reviewed [change set](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html)
+for later infrastructure changes. If creating a separate site, define its
+bucket, distribution and policy together. There is no need to enable public
+S3 website hosting when using a private S3 origin behind CloudFront.
 
-The next implementation can prepare these changes for review. This repository preparation does not publish them or change the emulator's deployment workflow.
+Test the game at the existing URL before configuring a separate domain. A
+preferred domain can be registered earlier if desired, but registration is
+independent of deployment. Connecting it later needs CloudFront aliases, a
+covering ACM certificate in us-east-1 and DNS records. The existing template’s
+DomainName parameter replaces its current apex/www aliases; do not change it
+just to add a separate Hangar brand. See [AWS certificate requirements](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cnames-and-https-requirements.html)
+and [Route 53 routing](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-cloudfront-distribution.html).
+
+The emulator deploy runs `aws s3 sync dist ... --delete`. If the landing page
+shares that bucket, include it and its downloads in the maintained Vite build;
+manual bucket uploads absent from dist can be deleted at the next deployment.
+Alternatively, use a separate stack/bucket for the landing page and link to
+8-Bit Pocket. A page at the existing site can use `/hangar/index.html` without
+adding new domain infrastructure.

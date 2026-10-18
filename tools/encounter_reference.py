@@ -13,7 +13,7 @@ OFFSET = (0,160)
 BOUNDS = ((132,238,114,206),(280,296,44,74))
 SPAWNS = ((176,152),(294,58))
 GATE = dict(forward_x=248, reverse_x=244, reverse_z_min=8)
-AMMO = dict(x=274,z=92,floor=2,pickup_radius=6,amount=10,maximum=99,
+AMMO = dict(x=274,z=92,floor=2,pickup_radius=4,amount=10,maximum=99,
     kind='collectible_ammo',at_full_ammo='remain',encounter_id=1,
     location='Dry left entrance apron of the zigzag room, before the second soldier',
     width=2,height=1.5,blocking=False)

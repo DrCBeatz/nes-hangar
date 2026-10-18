@@ -6,14 +6,14 @@ screen. The ordinary hosted picker and local **Open ROM** loader remain availabl
 
 ## Deployed integration
 
-The emulator update is [commit b2e8312](https://github.com/DrCBeatz/nes-emulator-mobile-web-app/commit/b2e8312ebb59a315d5603ca80d596843cdfd1f8d).
+The initial emulator integration is [commit b2e8312](https://github.com/DrCBeatz/nes-emulator-mobile-web-app/commit/b2e8312ebb59a315d5603ca80d596843cdfd1f8d).
 Its [deployment workflow](https://github.com/DrCBeatz/nes-emulator-mobile-web-app/actions/runs/39170142984)
 passed on 2026-10-18, including tests, the Vite build, S3 upload and CloudFront
 invalidation. This used the existing hosting; no AWS infrastructure or domain
 configuration changed.
 
 - A versioned copy of the release is hosted at
-  `/roms/hangar-ntsc-644d047c.nes` with the same SHA-256 as this repository.
+  `/roms/hangar-ntsc-fcc47032.nes` with the same SHA-256 as this repository.
 - The hosted manifest has stable ID `hangar`. Query strings resolve only
   known manifest IDs; an unknown ID leaves the picker and file loader usable.
 - The page waits for a Play gesture before fetching/starting the game. Audio
@@ -27,9 +27,22 @@ link and hosted picker. Controls reopens the guide during gameplay and pauses
 the emulator while it covers the view; closing it preserves the prior pause
 state. This does not alter the ROM or replace saved custom keyboard bindings.
 
-## Verification and limits
+## Gameplay update
 
-`npm test` in the emulator repository passes 18 tests: 17 loading/audio/guide
+The `prototype-2026-10-18-gameplay` ROM is hosted as
+`/roms/hangar-ntsc-fcc47032.nes`. It tightens the ammo pickup, adds an empty-gun
+click and widens exit-switch activation. The stable Play link and controls
+remain the same.
+
+The updated `test/hangar.test.mjs` runs 7,493 normal NTSC refreshes with only
+controller input, including both encounters, both pickups, zero-ammo feedback,
+the door, completion from the expanded switch area and restart. All 18 tests
+and the production build passed locally. Boundary and timing results for this
+exact ROM are linked in [VERIFICATION.md](VERIFICATION.md).
+
+## Initial verification and limits
+
+The initial `npm test` run in the emulator repository passed 18 tests: 17 loading/audio/guide
 cases and one real-core gameplay test. The latter runs 2,427 normal NTSC
 frames through the pinned JSNES core with controller input, covering title,
 loading, pause/resume, movement, soldier attacks, a three-hit kill and corpse

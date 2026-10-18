@@ -19,8 +19,12 @@
 .export pickup_x_lo, pickup_x_hi, pickup_z_lo, pickup_z_hi
 .include "medkit-config.inc"
 .include "ammo-config.inc"
-.assert MEDKIT_PICKUP_RADIUS = 6, error, "Pickup square comparison assumes radius six"
-.assert AMMO_PICKUP_RADIUS = MEDKIT_PICKUP_RADIUS, error, "Both pickups share the radius-six comparison"
+; Squared radii must be whole high bytes for the comparison below. Keep the
+; quantized axes inside the existing 256-entry square tables.
+.assert MEDKIT_PICKUP_RADIUS > 0 .and MEDKIT_PICKUP_RADIUS < 32, error, "Medkit radius exceeds square table"
+.assert AMMO_PICKUP_RADIUS > 0 .and AMMO_PICKUP_RADIUS < 32, error, "Ammo radius exceeds square table"
+.assert <((MEDKIT_PICKUP_RADIUS*8)*(MEDKIT_PICKUP_RADIUS*8)) = 0, error, "Medkit squared radius needs a low-byte comparison"
+.assert <((AMMO_PICKUP_RADIUS*8)*(AMMO_PICKUP_RADIUS*8)) = 0, error, "Ammo squared radius needs a low-byte comparison"
 
 ; bit7 health collected, bit6 ammo collected, bit5 ammo sound type;
 ; low five bits count the independent pulse2 sound, regardless of active area.
@@ -34,6 +38,10 @@ pickup_x_lo: .byte <MEDKIT_X, <AMMO_X
 pickup_x_hi: .byte >MEDKIT_X, >AMMO_X
 pickup_z_lo: .byte <MEDKIT_Z, <AMMO_Z
 pickup_z_hi: .byte >MEDKIT_Z, >AMMO_Z
+pickup_radius: .byte MEDKIT_PICKUP_RADIUS, AMMO_PICKUP_RADIUS
+pickup_radius_squared_hi:
+ .byte >((MEDKIT_PICKUP_RADIUS*8)*(MEDKIT_PICKUP_RADIUS*8))
+ .byte >((AMMO_PICKUP_RADIUS*8)*(AMMO_PICKUP_RADIUS*8))
 
 .segment "CODE"
 .proc medkit_reset
@@ -192,8 +200,9 @@ stop:
  rts
 .endproc
 
-; C=1 iff ceil(|dxQ8|/32)^2 + ceil(|dzQ8|/32)^2 < (6*8)^2.
-; The conservative eighth-unit circle never expands beyond radius six.
+; C=1 iff ceil(|dxQ8|/32)^2 + ceil(|dzQ8|/32)^2 < (radius*8)^2.
+; The conservative eighth-unit circle never expands beyond the selected
+; radius: six for the medkit, four for the narrower ammo clip.
 ; Full unsignedQ16.8 subtraction precedes absolute magnitude and far rejection;
 ; only proven nearby deltas enter the original low-word square tables.
 .proc medkit_in_range
@@ -238,8 +247,8 @@ stop:
  lda zombie_square_hi,x
  adc zombie_square+1
  jcs outside
- cmp #>((MEDKIT_PICKUP_RADIUS*8)*(MEDKIT_PICKUP_RADIUS*8))
- jcs outside                ; radius6 squared is $0900, no low-byte test needed
+ cmp pickup_radius_squared_hi,y
+ jcs outside                ; squared radii $0900/$0400 need no low-byte test
  sec
  rts
 outside:
@@ -249,7 +258,7 @@ outside:
 
 .proc quantize_axis
  lda zombie_delta+1
- cmp #MEDKIT_PICKUP_RADIUS
+ cmp pickup_radius,y
  bcs done
  lda zombie_delta
  clc

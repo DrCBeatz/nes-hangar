@@ -58,6 +58,9 @@ Resuming restores the level heading and plays an ascending cue. Gameplay and
 the completion timer stop during pause. Hardware/emulator Reset returns to
 the title; retries go directly back into the level.
 
+With no ammunition, a fresh B press plays a short empty-gun click. Holding B
+does not repeat the click or count as a fired shot.
+
 ## The current level
 
 Find the exit switch beyond the slime room and the openable door. The level
@@ -82,8 +85,9 @@ omits much of the original map's geometry, branches, lighting and decoration.
 | --- | --- |
 | ![Recessed floor and pillars](docs/images/opening-room.png) | ![Soldier encounter](docs/images/encounter.png) |
 
-These are native 256 × 240 captures from the included ROM in Mesen at normal
-NTSC timing, with the hardware sprite limit enabled.
+These are native 256 × 240 captures from the initial public build in Mesen at
+normal NTSC timing, with the hardware sprite limit enabled. The current build
+retains the same artwork and level geometry.
 
 ## Build from source
 
@@ -147,7 +151,7 @@ The included release is 65,552 bytes (a 16-byte header plus 64 KiB PRG), with
 SHA-256:
 
 ```text
-644d047c07fe9ade8c14b87c42faa5720b026e0a13c017c4326be604adebbc87
+fcc47032e871a1b62c391b3a641552eb148dfcec44cb2ce2ff91ac461b4076c2
 ```
 
 The checksum and cartridge metadata are also in [release/](release/).

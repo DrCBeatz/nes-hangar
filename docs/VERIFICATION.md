@@ -3,10 +3,60 @@
 The accepted release is `release/hangar-ntsc.nes`, 65,552 bytes, with SHA-256:
 
 ```text
-644d047c07fe9ade8c14b87c42faa5720b026e0a13c017c4326be604adebbc87
+fcc47032e871a1b62c391b3a641552eb148dfcec44cb2ce2ff91ac461b4076c2
 ```
 
-## Standalone build
+## Current gameplay update
+
+The `prototype-2026-10-18-gameplay` release tightens the ammo clip's pickup
+radius from six to four world units; the medkit stays at six. Both previously
+used the same circle, but the clip's narrower visible artwork made its trigger
+feel more generous. The exit now accepts X `[286,294)`, Z `[22,34]`, and heading
+`172..212` on the 256-angle circle, while retaining fresh-A and no-strafe guards.
+A fresh empty B press produces a two-refresh mechanical click without a shot,
+muzzle flash, damage or enemy alert. Holding B does not repeat it.
+
+A clean copy outside the research workspace rebuilt byte-for-byte with
+`python3 -I -S -B tools/build.py --verify`; see
+[gameplay-build.json](../verification/gameplay-build.json). The change adds
+75 code bytes and four table bytes, with no added RAM or graphics storage.
+
+[gameplay-tweaks.json](../verification/gameplay-tweaks.json) records execution
+of the assembled pickup, exit and sound helpers using controlled CPU/RAM
+fixtures. The old/new comparisons cover 5,328 fractional pickup cases and
+5,616 exit boundary cases, plus input guards, dry-click lifetime, pause,
+cleanup and shared sound-channel behavior. These are injected boundary tests,
+not normal play. After building, run the candidate fixtures with an existing
+installation of the pinned JSNES core:
+
+```sh
+node verification/gameplay-fixtures.mjs --core /path/to/jsnes/src/index.js
+```
+
+The core is `taiyuuki/jsnes` commit `5b27c4243f1cb2528c54941e13c29c4ced7d5a45`,
+also pinned by the browser app. Optional `--baseline /path/to/old-build`
+compares the initial public ROM, its `hangar.lbl` and generated `map.json`.
+No npm dependency is needed for the normal ROM build.
+
+Separately, the browser repository's controller-only test completed 7,493
+stock NTSC refreshes without state injection: title/loading, pause and edge
+view, both soldiers, medkit, ammunition exhaustion, empty click and its
+pause/resume, replenishment from zero to ten rounds, door, the widened exit,
+completion counts and restart. All 18 browser repository tests and its
+production build passed. The controller trace summary is in
+[gameplay-browser.json](../verification/gameplay-browser.json); see
+[DEPLOYMENT.md](DEPLOYMENT.md) for publication.
+
+[gameplay-feedback-nmi.json](../verification/gameplay-feedback-nmi.json)
+records 96 focused linked-instruction timing fixtures. The maximum world PPU
+write remains at cycle 2,218, leaving the previous conservative 48.33-cycle
+NTSC VBlank margin. The instruction model and historical adapters remain
+outside this package; this is not an exhaustive timing proof or hardware test.
+
+## Initial public build
+
+The initial public ROM (`644d047c…`) is preserved in Git history. Its reports
+below describe that baseline, not the revised gameplay ROM above.
 
 On 2026-10-18, the source package was copied to a temporary directory outside
 the research workspace and built with Python 3.13.5 and cc65's `ca65`/`ld65`
@@ -17,7 +67,7 @@ the assembler and linker were permitted as build subprocesses. Assembly
 include paths were checked separately for references outside the package.
 No WAD or sibling project was needed.
 
-The generated ROM matched the included release byte for byte. Source inputs
+The generated ROM matched that initial release byte for byte. Source inputs
 were unchanged by the build. The builder also checked the cartridge header,
 linked segment capacities and the mirrored common-bank/reset-vector data.
 The input hashes, tool versions and package scan results are recorded in
@@ -33,7 +83,7 @@ Normal builds omit `--verify` to allow deliberate source or asset changes.
 The initial [GitHub Actions build](https://github.com/DrCBeatz/nes-hangar/actions/runs/39169799691)
 also passed on Linux after publication, reproducing the committed ROM.
 
-## Gameplay and timing evidence
+## Initial gameplay and timing evidence
 
 Before packaging, the title-screen build passed 89 full-route checks, 29
 death/retry checks and 19 loading-input checks in Mesen at stock NTSC timing.
@@ -44,7 +94,7 @@ NMI calls. Across 68 upload/publication timing fixtures, the latest PPU write
 was at cycle 2,218, leaving a conservative 48.33-cycle VBlank margin. These are
 specific tested paths, not a proof of every possible execution.
 
-The packaged ROM differs from that tested title build in exactly 12 heading
+The initial packaged ROM differs from that tested title build in exactly 12 heading
 glyph bytes: the boot HUD heading and the same heading restored after pause.
 All other ROM bytes are identical. The byte comparison, previous report
 checksums and test counts are recorded in
@@ -53,16 +103,17 @@ emulator traces and linked test harnesses remain outside this standalone
 package; the build command does not rerun those gameplay tests.
 
 The [opening-room](images/opening-room.png) and [encounter](images/encounter.png)
-screenshots were subsequently captured from this exact release in Mesen,
+screenshots were subsequently captured from the initial public release in Mesen,
 using controller input, zero extra scanlines and the original sprite limits.
 They are lossless conversions of the emulator's 256×240 screen buffers,
 without compositing or retouching.
 
 ## README gameplay preview
 
-The opening animation is a six-second, controller-driven capture of this exact
-release using the same pinned JSNES core as the browser app. It starts at the
-first gameplay view and preserves normal NTSC timing, including repeated
+The opening animation is a six-second, controller-driven capture of the
+initial public release (`644d047c…`) using the same pinned JSNES core as the
+browser app. Its artwork and opening level geometry also represent the current
+build. It starts at the first gameplay view and preserves normal NTSC timing, including repeated
 pictures while the world renderer works. No overclock, motion interpolation
 or game-state injection was used. The GIF has no sound.
 
@@ -81,9 +132,10 @@ they are not a general security certification. The only included `.nes` file
 is the checksum-verified Hangar release. Generated `build/` files and local
 Git metadata are excluded from the public-file scan.
 
-The exact release was subsequently tested in the pinned JSNES core and in
+The initial release was subsequently tested in the pinned JSNES core and in
 desktop Safari at the live browser link; see [DEPLOYMENT.md](DEPLOYMENT.md)
-for that check’s scope. No physical NES or flash-cartridge test is claimed.
+for the original checks and subsequent release verification. No physical NES
+or flash-cartridge test is claimed.
 Mesen timing and build verification support further hardware testing; they
 do not replace it. Content origins and license scope are
 documented separately in [PROVENANCE.md](PROVENANCE.md) and

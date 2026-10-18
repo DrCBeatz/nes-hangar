@@ -13,6 +13,7 @@
 .export pistol_prepare_oam
 .export pistol_init, pistol_tick, pistol_reset, pistol_upload
 .export pistol_shot_accepted, pistol_upload_done
+.export pistol_dry_fire_accepted
 .export pistol_state_begin, pistol_state_end
 .export player_damage, player_heal, player_add_ammo, player_defeat, player_feedback_tick
 .exportzp player_hurt_timer
@@ -21,6 +22,7 @@
 
 PISTOL_COOLDOWN = 15          ; four shots/second at normal NTSC timing
 PISTOL_FLASH_FRAMES = 6       ; independently timed 100 ms flash/recoil
+PISTOL_DRY_FRAMES = 2         ; 33 ms mechanical click, only on a fresh B press
 .include "ammo-config.inc"
 .include "balance-config.inc"
 
@@ -32,7 +34,7 @@ pistol_state_begin:
 pistol_health: .res 1
 pistol_ammo: .res 1
 pistol_cooldown: .res 1
-pistol_flash_timer: .res 1
+pistol_flash_timer: .res 1    ; bit7 = sound-only dry click; low7 = noise frames
 pistol_pose: .res 1           ; 0 idle, 1 firing art
 pistol_dirty: .res 1          ; bit0 OAM, bit1 digits, bit2 status line, bit3 HUD color
 pistol_shot_count: .res 2
@@ -132,6 +134,22 @@ pistol_noise_volume: .byte 0,3,5,7,9,12,15
 :
  lda pistol_flash_timer
  beq @input
+ bpl @flash
+ ; Keep the existing shared-noise ownership byte nonzero during the click,
+ ; without selecting firing art, touching HUD/OAM dirty bits or firing a shot.
+ dec pistol_flash_timer
+ lda pistol_flash_timer
+ cmp #$80
+ bne @input
+ lda #0
+ sta pistol_flash_timer
+ lda #$30
+ sta pause_sound_noise
+ sta $400C
+ lda #$07                   ; stop noise; retain both pulse cues and triangle
+ sta $4015
+ jmp @input
+@flash:
  dec pistol_flash_timer
  beq @idle
  ldx pistol_flash_timer
@@ -158,7 +176,7 @@ pistol_noise_volume: .byte 0,3,5,7,9,12,15
  lda pistol_cooldown
  bne done
  lda pistol_ammo
- beq done
+ beq dry_fire
 accepted:
  jsr zombie_damage
  dec pistol_ammo
@@ -193,8 +211,31 @@ accepted:
  sta $400F
 done:
  rts
+dry_fire:
+ lda button_edges
+ and #$40
+ beq done                   ; holding an empty trigger never repeats the click
+dry_accepted:
+ lda #PISTOL_COOLDOWN
+ sta pistol_cooldown
+ lda #($80 | PISTOL_DRY_FRAMES)
+ sta pistol_flash_timer
+ ; Short-mode noise is a brief metallic click, distinct from either gun's
+ ; long-mode white-noise blast. Existing player priority also cancels a door
+ ; or enemy noise tail; warning/pickup pulse channels remain independent.
+ lda #$0F
+ sta $4015
+ lda #$18                   ; constant volume8, no length-counter halt
+ sta pause_sound_noise
+ sta $400C
+ lda #$82                   ; short LFSR, period2
+ sta $400E
+ lda #$F8
+ sta $400F
+ rts
 .endproc
 pistol_shot_accepted = pistol_tick::accepted
+pistol_dry_fire_accepted = pistol_tick::dry_accepted
 
 ; A=damage. Saturate health at zero; schedule graphics for a later VBlank.
 ; Called after player input/weapon processing, never from the PPU upload path.

@@ -1,0 +1,991 @@
+{
+  "schemaVersion": 1,
+  "createdUtc": "2026-10-18T22:37:32.986003+00:00",
+  "passed": true,
+  "romSha256": "fcc47032e871a1b62c391b3a641552eb148dfcec44cb2ce2ff91ac461b4076c2",
+  "romBytes": 65552,
+  "scope": "Focused assembled-NMI instruction timing and register/mapper preservation for the ammo, exit and dry-fire update.",
+  "method": "Unmodified historical fixtures run on temporary copies of the standalone build. The adapter and historical harness remain outside the public package.",
+  "limitations": [
+    "The model accounts for instruction/page timing and conservative OAM DMA, but does not emulate PPU scanlines or APU analog behavior.",
+    "This is a focused regression audit, not exhaustive uploader proof or physical-console validation.",
+    "Gameplay/controller behavior and actual PPU timing require the separate emulator checks."
+  ],
+  "fixtureCounts": {
+    "worldUploadAndPublication": 68,
+    "statusAndActorOverlay": 25,
+    "pauseTransitionAndHold": 3,
+    "totalNmiExecutions": 96
+  },
+  "allNmisPreserveRegistersAndMapper": true,
+  "noNmiReadsFromSwitchableDataWindow": true,
+  "worldUploadAndPublication": {
+    "passed": true,
+    "cases": 68,
+    "worst": {
+      "kind": "transfer",
+      "bank": 0,
+      "initialPatterns": 0,
+      "refresh": 0,
+      "lastPpuWriteCycle": 2218,
+      "conservativeVblankMarginCycles": 48.333333333333485,
+      "ppudataBytes": 96,
+      "dmaWrites": 0
+    },
+    "records": [
+      {
+        "kind": "transfer",
+        "bank": 0,
+        "initialPatterns": 0,
+        "refresh": 0,
+        "lastPpuWriteCycle": 2218,
+        "conservativeVblankMarginCycles": 48.333333333333485,
+        "ppudataBytes": 96,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "transfer",
+        "bank": 0,
+        "initialPatterns": 0,
+        "refresh": 1,
+        "lastPpuWriteCycle": 2143,
+        "conservativeVblankMarginCycles": 123.33333333333348,
+        "ppudataBytes": 96,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "transfer",
+        "bank": 0,
+        "initialPatterns": 1,
+        "refresh": 0,
+        "lastPpuWriteCycle": 2168,
+        "conservativeVblankMarginCycles": 98.33333333333348,
+        "ppudataBytes": 96,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "transfer",
+        "bank": 0,
+        "initialPatterns": 1,
+        "refresh": 1,
+        "lastPpuWriteCycle": 2143,
+        "conservativeVblankMarginCycles": 123.33333333333348,
+        "ppudataBytes": 96,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "transfer",
+        "bank": 0,
+        "initialPatterns": 6,
+        "refresh": 0,
+        "lastPpuWriteCycle": 1925,
+        "conservativeVblankMarginCycles": 341.3333333333335,
+        "ppudataBytes": 96,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "transfer",
+        "bank": 0,
+        "initialPatterns": 6,
+        "refresh": 1,
+        "lastPpuWriteCycle": 2143,
+        "conservativeVblankMarginCycles": 123.33333333333348,
+        "ppudataBytes": 96,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "transfer",
+        "bank": 0,
+        "initialPatterns": 7,
+        "refresh": 0,
+        "lastPpuWriteCycle": 2150,
+        "conservativeVblankMarginCycles": 116.33333333333348,
+        "ppudataBytes": 112,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "transfer",
+        "bank": 0,
+        "initialPatterns": 7,
+        "refresh": 1,
+        "lastPpuWriteCycle": 2156,
+        "conservativeVblankMarginCycles": 110.33333333333348,
+        "ppudataBytes": 96,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "transfer",
+        "bank": 0,
+        "initialPatterns": 8,
+        "refresh": 0,
+        "lastPpuWriteCycle": 2150,
+        "conservativeVblankMarginCycles": 116.33333333333348,
+        "ppudataBytes": 112,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "transfer",
+        "bank": 0,
+        "initialPatterns": 8,
+        "refresh": 1,
+        "lastPpuWriteCycle": 2106,
+        "conservativeVblankMarginCycles": 160.33333333333348,
+        "ppudataBytes": 96,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "transfer",
+        "bank": 1,
+        "initialPatterns": 0,
+        "refresh": 0,
+        "lastPpuWriteCycle": 2218,
+        "conservativeVblankMarginCycles": 48.333333333333485,
+        "ppudataBytes": 96,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "transfer",
+        "bank": 1,
+        "initialPatterns": 0,
+        "refresh": 1,
+        "lastPpuWriteCycle": 2143,
+        "conservativeVblankMarginCycles": 123.33333333333348,
+        "ppudataBytes": 96,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "transfer",
+        "bank": 1,
+        "initialPatterns": 1,
+        "refresh": 0,
+        "lastPpuWriteCycle": 2168,
+        "conservativeVblankMarginCycles": 98.33333333333348,
+        "ppudataBytes": 96,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "transfer",
+        "bank": 1,
+        "initialPatterns": 1,
+        "refresh": 1,
+        "lastPpuWriteCycle": 2143,
+        "conservativeVblankMarginCycles": 123.33333333333348,
+        "ppudataBytes": 96,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "transfer",
+        "bank": 1,
+        "initialPatterns": 6,
+        "refresh": 0,
+        "lastPpuWriteCycle": 1925,
+        "conservativeVblankMarginCycles": 341.3333333333335,
+        "ppudataBytes": 96,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "transfer",
+        "bank": 1,
+        "initialPatterns": 6,
+        "refresh": 1,
+        "lastPpuWriteCycle": 2143,
+        "conservativeVblankMarginCycles": 123.33333333333348,
+        "ppudataBytes": 96,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "transfer",
+        "bank": 1,
+        "initialPatterns": 7,
+        "refresh": 0,
+        "lastPpuWriteCycle": 2150,
+        "conservativeVblankMarginCycles": 116.33333333333348,
+        "ppudataBytes": 112,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "transfer",
+        "bank": 1,
+        "initialPatterns": 7,
+        "refresh": 1,
+        "lastPpuWriteCycle": 2156,
+        "conservativeVblankMarginCycles": 110.33333333333348,
+        "ppudataBytes": 96,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "transfer",
+        "bank": 1,
+        "initialPatterns": 8,
+        "refresh": 0,
+        "lastPpuWriteCycle": 2150,
+        "conservativeVblankMarginCycles": 116.33333333333348,
+        "ppudataBytes": 112,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "transfer",
+        "bank": 1,
+        "initialPatterns": 8,
+        "refresh": 1,
+        "lastPpuWriteCycle": 2106,
+        "conservativeVblankMarginCycles": 160.33333333333348,
+        "ppudataBytes": 96,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "publication",
+        "bank": 0,
+        "weaponPose": 0,
+        "itemSwap": 0,
+        "actor": "living",
+        "epochMatches": false,
+        "lastPpuWriteCycle": 381,
+        "conservativeVblankMarginCycles": 1885.3333333333335,
+        "ppudataBytes": 0,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "publication",
+        "bank": 0,
+        "weaponPose": 0,
+        "itemSwap": 0,
+        "actor": "living",
+        "epochMatches": true,
+        "lastPpuWriteCycle": 1822,
+        "conservativeVblankMarginCycles": 444.3333333333335,
+        "ppudataBytes": 1,
+        "dmaWrites": 1
+      },
+      {
+        "kind": "publication",
+        "bank": 0,
+        "weaponPose": 0,
+        "itemSwap": 0,
+        "actor": "absent",
+        "epochMatches": false,
+        "lastPpuWriteCycle": 381,
+        "conservativeVblankMarginCycles": 1885.3333333333335,
+        "ppudataBytes": 0,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "publication",
+        "bank": 0,
+        "weaponPose": 0,
+        "itemSwap": 0,
+        "actor": "absent",
+        "epochMatches": true,
+        "lastPpuWriteCycle": 2112,
+        "conservativeVblankMarginCycles": 154.33333333333348,
+        "ppudataBytes": 1,
+        "dmaWrites": 1
+      },
+      {
+        "kind": "publication",
+        "bank": 0,
+        "weaponPose": 0,
+        "itemSwap": 0,
+        "actor": "corpse",
+        "epochMatches": false,
+        "lastPpuWriteCycle": 381,
+        "conservativeVblankMarginCycles": 1885.3333333333335,
+        "ppudataBytes": 0,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "publication",
+        "bank": 0,
+        "weaponPose": 0,
+        "itemSwap": 0,
+        "actor": "corpse",
+        "epochMatches": true,
+        "lastPpuWriteCycle": 1863,
+        "conservativeVblankMarginCycles": 403.3333333333335,
+        "ppudataBytes": 1,
+        "dmaWrites": 1
+      },
+      {
+        "kind": "publication",
+        "bank": 0,
+        "weaponPose": 0,
+        "itemSwap": 1,
+        "actor": "living",
+        "epochMatches": false,
+        "lastPpuWriteCycle": 381,
+        "conservativeVblankMarginCycles": 1885.3333333333335,
+        "ppudataBytes": 0,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "publication",
+        "bank": 0,
+        "weaponPose": 0,
+        "itemSwap": 1,
+        "actor": "living",
+        "epochMatches": true,
+        "lastPpuWriteCycle": 1822,
+        "conservativeVblankMarginCycles": 444.3333333333335,
+        "ppudataBytes": 1,
+        "dmaWrites": 1
+      },
+      {
+        "kind": "publication",
+        "bank": 0,
+        "weaponPose": 0,
+        "itemSwap": 1,
+        "actor": "absent",
+        "epochMatches": false,
+        "lastPpuWriteCycle": 381,
+        "conservativeVblankMarginCycles": 1885.3333333333335,
+        "ppudataBytes": 0,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "publication",
+        "bank": 0,
+        "weaponPose": 0,
+        "itemSwap": 1,
+        "actor": "absent",
+        "epochMatches": true,
+        "lastPpuWriteCycle": 2111,
+        "conservativeVblankMarginCycles": 155.33333333333348,
+        "ppudataBytes": 1,
+        "dmaWrites": 1
+      },
+      {
+        "kind": "publication",
+        "bank": 0,
+        "weaponPose": 0,
+        "itemSwap": 1,
+        "actor": "corpse",
+        "epochMatches": false,
+        "lastPpuWriteCycle": 381,
+        "conservativeVblankMarginCycles": 1885.3333333333335,
+        "ppudataBytes": 0,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "publication",
+        "bank": 0,
+        "weaponPose": 0,
+        "itemSwap": 1,
+        "actor": "corpse",
+        "epochMatches": true,
+        "lastPpuWriteCycle": 1863,
+        "conservativeVblankMarginCycles": 403.3333333333335,
+        "ppudataBytes": 1,
+        "dmaWrites": 1
+      },
+      {
+        "kind": "publication",
+        "bank": 0,
+        "weaponPose": 1,
+        "itemSwap": 0,
+        "actor": "living",
+        "epochMatches": false,
+        "lastPpuWriteCycle": 381,
+        "conservativeVblankMarginCycles": 1885.3333333333335,
+        "ppudataBytes": 0,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "publication",
+        "bank": 0,
+        "weaponPose": 1,
+        "itemSwap": 0,
+        "actor": "living",
+        "epochMatches": true,
+        "lastPpuWriteCycle": 1824,
+        "conservativeVblankMarginCycles": 442.3333333333335,
+        "ppudataBytes": 1,
+        "dmaWrites": 1
+      },
+      {
+        "kind": "publication",
+        "bank": 0,
+        "weaponPose": 1,
+        "itemSwap": 0,
+        "actor": "absent",
+        "epochMatches": false,
+        "lastPpuWriteCycle": 381,
+        "conservativeVblankMarginCycles": 1885.3333333333335,
+        "ppudataBytes": 0,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "publication",
+        "bank": 0,
+        "weaponPose": 1,
+        "itemSwap": 0,
+        "actor": "absent",
+        "epochMatches": true,
+        "lastPpuWriteCycle": 2114,
+        "conservativeVblankMarginCycles": 152.33333333333348,
+        "ppudataBytes": 1,
+        "dmaWrites": 1
+      },
+      {
+        "kind": "publication",
+        "bank": 0,
+        "weaponPose": 1,
+        "itemSwap": 0,
+        "actor": "corpse",
+        "epochMatches": false,
+        "lastPpuWriteCycle": 381,
+        "conservativeVblankMarginCycles": 1885.3333333333335,
+        "ppudataBytes": 0,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "publication",
+        "bank": 0,
+        "weaponPose": 1,
+        "itemSwap": 0,
+        "actor": "corpse",
+        "epochMatches": true,
+        "lastPpuWriteCycle": 1865,
+        "conservativeVblankMarginCycles": 401.3333333333335,
+        "ppudataBytes": 1,
+        "dmaWrites": 1
+      },
+      {
+        "kind": "publication",
+        "bank": 0,
+        "weaponPose": 1,
+        "itemSwap": 1,
+        "actor": "living",
+        "epochMatches": false,
+        "lastPpuWriteCycle": 381,
+        "conservativeVblankMarginCycles": 1885.3333333333335,
+        "ppudataBytes": 0,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "publication",
+        "bank": 0,
+        "weaponPose": 1,
+        "itemSwap": 1,
+        "actor": "living",
+        "epochMatches": true,
+        "lastPpuWriteCycle": 1824,
+        "conservativeVblankMarginCycles": 442.3333333333335,
+        "ppudataBytes": 1,
+        "dmaWrites": 1
+      },
+      {
+        "kind": "publication",
+        "bank": 0,
+        "weaponPose": 1,
+        "itemSwap": 1,
+        "actor": "absent",
+        "epochMatches": false,
+        "lastPpuWriteCycle": 381,
+        "conservativeVblankMarginCycles": 1885.3333333333335,
+        "ppudataBytes": 0,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "publication",
+        "bank": 0,
+        "weaponPose": 1,
+        "itemSwap": 1,
+        "actor": "absent",
+        "epochMatches": true,
+        "lastPpuWriteCycle": 2113,
+        "conservativeVblankMarginCycles": 153.33333333333348,
+        "ppudataBytes": 1,
+        "dmaWrites": 1
+      },
+      {
+        "kind": "publication",
+        "bank": 0,
+        "weaponPose": 1,
+        "itemSwap": 1,
+        "actor": "corpse",
+        "epochMatches": false,
+        "lastPpuWriteCycle": 381,
+        "conservativeVblankMarginCycles": 1885.3333333333335,
+        "ppudataBytes": 0,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "publication",
+        "bank": 0,
+        "weaponPose": 1,
+        "itemSwap": 1,
+        "actor": "corpse",
+        "epochMatches": true,
+        "lastPpuWriteCycle": 1865,
+        "conservativeVblankMarginCycles": 401.3333333333335,
+        "ppudataBytes": 1,
+        "dmaWrites": 1
+      },
+      {
+        "kind": "publication",
+        "bank": 1,
+        "weaponPose": 0,
+        "itemSwap": 0,
+        "actor": "living",
+        "epochMatches": false,
+        "lastPpuWriteCycle": 381,
+        "conservativeVblankMarginCycles": 1885.3333333333335,
+        "ppudataBytes": 0,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "publication",
+        "bank": 1,
+        "weaponPose": 0,
+        "itemSwap": 0,
+        "actor": "living",
+        "epochMatches": true,
+        "lastPpuWriteCycle": 1822,
+        "conservativeVblankMarginCycles": 444.3333333333335,
+        "ppudataBytes": 1,
+        "dmaWrites": 1
+      },
+      {
+        "kind": "publication",
+        "bank": 1,
+        "weaponPose": 0,
+        "itemSwap": 0,
+        "actor": "absent",
+        "epochMatches": false,
+        "lastPpuWriteCycle": 381,
+        "conservativeVblankMarginCycles": 1885.3333333333335,
+        "ppudataBytes": 0,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "publication",
+        "bank": 1,
+        "weaponPose": 0,
+        "itemSwap": 0,
+        "actor": "absent",
+        "epochMatches": true,
+        "lastPpuWriteCycle": 2112,
+        "conservativeVblankMarginCycles": 154.33333333333348,
+        "ppudataBytes": 1,
+        "dmaWrites": 1
+      },
+      {
+        "kind": "publication",
+        "bank": 1,
+        "weaponPose": 0,
+        "itemSwap": 0,
+        "actor": "corpse",
+        "epochMatches": false,
+        "lastPpuWriteCycle": 381,
+        "conservativeVblankMarginCycles": 1885.3333333333335,
+        "ppudataBytes": 0,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "publication",
+        "bank": 1,
+        "weaponPose": 0,
+        "itemSwap": 0,
+        "actor": "corpse",
+        "epochMatches": true,
+        "lastPpuWriteCycle": 1863,
+        "conservativeVblankMarginCycles": 403.3333333333335,
+        "ppudataBytes": 1,
+        "dmaWrites": 1
+      },
+      {
+        "kind": "publication",
+        "bank": 1,
+        "weaponPose": 0,
+        "itemSwap": 1,
+        "actor": "living",
+        "epochMatches": false,
+        "lastPpuWriteCycle": 381,
+        "conservativeVblankMarginCycles": 1885.3333333333335,
+        "ppudataBytes": 0,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "publication",
+        "bank": 1,
+        "weaponPose": 0,
+        "itemSwap": 1,
+        "actor": "living",
+        "epochMatches": true,
+        "lastPpuWriteCycle": 1822,
+        "conservativeVblankMarginCycles": 444.3333333333335,
+        "ppudataBytes": 1,
+        "dmaWrites": 1
+      },
+      {
+        "kind": "publication",
+        "bank": 1,
+        "weaponPose": 0,
+        "itemSwap": 1,
+        "actor": "absent",
+        "epochMatches": false,
+        "lastPpuWriteCycle": 381,
+        "conservativeVblankMarginCycles": 1885.3333333333335,
+        "ppudataBytes": 0,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "publication",
+        "bank": 1,
+        "weaponPose": 0,
+        "itemSwap": 1,
+        "actor": "absent",
+        "epochMatches": true,
+        "lastPpuWriteCycle": 2111,
+        "conservativeVblankMarginCycles": 155.33333333333348,
+        "ppudataBytes": 1,
+        "dmaWrites": 1
+      },
+      {
+        "kind": "publication",
+        "bank": 1,
+        "weaponPose": 0,
+        "itemSwap": 1,
+        "actor": "corpse",
+        "epochMatches": false,
+        "lastPpuWriteCycle": 381,
+        "conservativeVblankMarginCycles": 1885.3333333333335,
+        "ppudataBytes": 0,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "publication",
+        "bank": 1,
+        "weaponPose": 0,
+        "itemSwap": 1,
+        "actor": "corpse",
+        "epochMatches": true,
+        "lastPpuWriteCycle": 1863,
+        "conservativeVblankMarginCycles": 403.3333333333335,
+        "ppudataBytes": 1,
+        "dmaWrites": 1
+      },
+      {
+        "kind": "publication",
+        "bank": 1,
+        "weaponPose": 1,
+        "itemSwap": 0,
+        "actor": "living",
+        "epochMatches": false,
+        "lastPpuWriteCycle": 381,
+        "conservativeVblankMarginCycles": 1885.3333333333335,
+        "ppudataBytes": 0,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "publication",
+        "bank": 1,
+        "weaponPose": 1,
+        "itemSwap": 0,
+        "actor": "living",
+        "epochMatches": true,
+        "lastPpuWriteCycle": 1824,
+        "conservativeVblankMarginCycles": 442.3333333333335,
+        "ppudataBytes": 1,
+        "dmaWrites": 1
+      },
+      {
+        "kind": "publication",
+        "bank": 1,
+        "weaponPose": 1,
+        "itemSwap": 0,
+        "actor": "absent",
+        "epochMatches": false,
+        "lastPpuWriteCycle": 381,
+        "conservativeVblankMarginCycles": 1885.3333333333335,
+        "ppudataBytes": 0,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "publication",
+        "bank": 1,
+        "weaponPose": 1,
+        "itemSwap": 0,
+        "actor": "absent",
+        "epochMatches": true,
+        "lastPpuWriteCycle": 2114,
+        "conservativeVblankMarginCycles": 152.33333333333348,
+        "ppudataBytes": 1,
+        "dmaWrites": 1
+      },
+      {
+        "kind": "publication",
+        "bank": 1,
+        "weaponPose": 1,
+        "itemSwap": 0,
+        "actor": "corpse",
+        "epochMatches": false,
+        "lastPpuWriteCycle": 381,
+        "conservativeVblankMarginCycles": 1885.3333333333335,
+        "ppudataBytes": 0,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "publication",
+        "bank": 1,
+        "weaponPose": 1,
+        "itemSwap": 0,
+        "actor": "corpse",
+        "epochMatches": true,
+        "lastPpuWriteCycle": 1865,
+        "conservativeVblankMarginCycles": 401.3333333333335,
+        "ppudataBytes": 1,
+        "dmaWrites": 1
+      },
+      {
+        "kind": "publication",
+        "bank": 1,
+        "weaponPose": 1,
+        "itemSwap": 1,
+        "actor": "living",
+        "epochMatches": false,
+        "lastPpuWriteCycle": 381,
+        "conservativeVblankMarginCycles": 1885.3333333333335,
+        "ppudataBytes": 0,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "publication",
+        "bank": 1,
+        "weaponPose": 1,
+        "itemSwap": 1,
+        "actor": "living",
+        "epochMatches": true,
+        "lastPpuWriteCycle": 1824,
+        "conservativeVblankMarginCycles": 442.3333333333335,
+        "ppudataBytes": 1,
+        "dmaWrites": 1
+      },
+      {
+        "kind": "publication",
+        "bank": 1,
+        "weaponPose": 1,
+        "itemSwap": 1,
+        "actor": "absent",
+        "epochMatches": false,
+        "lastPpuWriteCycle": 381,
+        "conservativeVblankMarginCycles": 1885.3333333333335,
+        "ppudataBytes": 0,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "publication",
+        "bank": 1,
+        "weaponPose": 1,
+        "itemSwap": 1,
+        "actor": "absent",
+        "epochMatches": true,
+        "lastPpuWriteCycle": 2113,
+        "conservativeVblankMarginCycles": 153.33333333333348,
+        "ppudataBytes": 1,
+        "dmaWrites": 1
+      },
+      {
+        "kind": "publication",
+        "bank": 1,
+        "weaponPose": 1,
+        "itemSwap": 1,
+        "actor": "corpse",
+        "epochMatches": false,
+        "lastPpuWriteCycle": 381,
+        "conservativeVblankMarginCycles": 1885.3333333333335,
+        "ppudataBytes": 0,
+        "dmaWrites": 0
+      },
+      {
+        "kind": "publication",
+        "bank": 1,
+        "weaponPose": 1,
+        "itemSwap": 1,
+        "actor": "corpse",
+        "epochMatches": true,
+        "lastPpuWriteCycle": 1865,
+        "conservativeVblankMarginCycles": 401.3333333333335,
+        "ppudataBytes": 1,
+        "dmaWrites": 1
+      }
+    ],
+    "conservativeDmaCycles": 514,
+    "instructionBoundaryAllowance": 7,
+    "allCasesIncludeNmiCounterCarry": true,
+    "limitation": "Focused transfer/publication edge fixtures; no new exhaustive uploader equivalence claim."
+  },
+  "statusAndActorOverlay": {
+    "passed": true,
+    "cases": [
+      {
+        "status": "alive",
+        "actor": "none",
+        "lastPpuWriteCycle": 1123
+      },
+      {
+        "status": "alive",
+        "actor": "normal",
+        "lastPpuWriteCycle": 1268
+      },
+      {
+        "status": "alive",
+        "actor": "warning",
+        "lastPpuWriteCycle": 1370
+      },
+      {
+        "status": "alive",
+        "actor": "fire",
+        "lastPpuWriteCycle": 1294
+      },
+      {
+        "status": "alive",
+        "actor": "hidden",
+        "lastPpuWriteCycle": 1268
+      },
+      {
+        "status": "door",
+        "actor": "none",
+        "lastPpuWriteCycle": 1185
+      },
+      {
+        "status": "door",
+        "actor": "normal",
+        "lastPpuWriteCycle": 1330
+      },
+      {
+        "status": "door",
+        "actor": "warning",
+        "lastPpuWriteCycle": 1432
+      },
+      {
+        "status": "door",
+        "actor": "fire",
+        "lastPpuWriteCycle": 1356
+      },
+      {
+        "status": "door",
+        "actor": "hidden",
+        "lastPpuWriteCycle": 1330
+      },
+      {
+        "status": "exit",
+        "actor": "none",
+        "lastPpuWriteCycle": 1182
+      },
+      {
+        "status": "exit",
+        "actor": "normal",
+        "lastPpuWriteCycle": 1327
+      },
+      {
+        "status": "exit",
+        "actor": "warning",
+        "lastPpuWriteCycle": 1429
+      },
+      {
+        "status": "exit",
+        "actor": "fire",
+        "lastPpuWriteCycle": 1353
+      },
+      {
+        "status": "exit",
+        "actor": "hidden",
+        "lastPpuWriteCycle": 1327
+      },
+      {
+        "status": "dead",
+        "actor": "none",
+        "lastPpuWriteCycle": 1104
+      },
+      {
+        "status": "dead",
+        "actor": "normal",
+        "lastPpuWriteCycle": 1249
+      },
+      {
+        "status": "dead",
+        "actor": "warning",
+        "lastPpuWriteCycle": 1322
+      },
+      {
+        "status": "dead",
+        "actor": "fire",
+        "lastPpuWriteCycle": 1266
+      },
+      {
+        "status": "dead",
+        "actor": "hidden",
+        "lastPpuWriteCycle": 1249
+      },
+      {
+        "status": "complete",
+        "actor": "none",
+        "lastPpuWriteCycle": 1178
+      },
+      {
+        "status": "complete",
+        "actor": "normal",
+        "lastPpuWriteCycle": 1323
+      },
+      {
+        "status": "complete",
+        "actor": "warning",
+        "lastPpuWriteCycle": 1425
+      },
+      {
+        "status": "complete",
+        "actor": "fire",
+        "lastPpuWriteCycle": 1349
+      },
+      {
+        "status": "complete",
+        "actor": "hidden",
+        "lastPpuWriteCycle": 1323
+      }
+    ],
+    "maximumLastPpuWriteCycle": 1432,
+    "approximateNtscVblankCpuCycles": 2273,
+    "limitation": "Instruction-level timing estimate; stock-Mesen scanlines are authoritative."
+  },
+  "pauseTransitions": [
+    {
+      "kind": "enter",
+      "lastPpuWriteCycle": 1789,
+      "conservativeVblankMarginCycles": 477.3333333333335,
+      "ppudataBytes": 128
+    },
+    {
+      "kind": "held-release",
+      "lastPpuWriteCycle": 0,
+      "conservativeVblankMarginCycles": 2266.3333333333335,
+      "ppudataBytes": 0
+    },
+    {
+      "kind": "resume",
+      "lastPpuWriteCycle": 1738,
+      "conservativeVblankMarginCycles": 528.3333333333335,
+      "ppudataBytes": 128
+    }
+  ],
+  "inputsSha256": {
+    "hangar-ntsc.nes": "fcc47032e871a1b62c391b3a641552eb148dfcec44cb2ce2ff91ac461b4076c2",
+    "hangar.lbl": "a8c98ae87343e56f4fb4eaace1782f198a7245eb50177f51d2e224790bade4ef",
+    "map.json": "8abde766c0dd905c8319fee3dc269217c7c9fdb2a7ae39cdad76b0d77b50d3a1",
+    "nametable.bin": "c57d8435eabe6149bd434675b6d620084a64b3d5dff4f085a372db7caf137988",
+    "fixed-patterns.bin": "6aef86255690d015da175356f3e8c23a84e4d71e97123775c13385964bc13aef",
+    "manifest.json": "86541395e25b00bf4b31fed1d8d4e2eae070507e9d33e49078fce26fd281e812"
+  },
+  "historicalHarnessSha256": {
+    "audit_e1m1_pause.py": "52d22652c1fc258aba9b7352b5e0d22387f76a41240f460442615d601ff49ec1",
+    "audit_e1m1_results.py": "89a233a6e492ce098bded97544defd77d9e5a0ac39f39af83843df4b94b3c4df",
+    "audit_e1m1_wide_coordinates.py": "5f8e2c9c9adecd8d426013f39a5974415c7257001e9831959b41c9dbd221cf96",
+    "audit_e1m1_pursuit_ai.py": "e3e9097842050a2591a5e58c0369bea3f9f1905cc3640677874f3f56cd43f254",
+    "audit_room_corner.py": "0e05ff85108cbed1a7a3e114489c49588e4471f01d9c032c531b2abce5d15295",
+    "audit_sprite_combat.py": "8b16f12dad17d81d6769aa497bc65fca2748376bcb109f673cfa88d1b80db3c8",
+    "coordinate-fixture-baseline-map.json": "56858774caa632040e5761e20dc9a7b15a517e9a55fa1e6aa970a5102cb07494"
+  },
+  "externalAdapterSha256": "9da85e3c4f8ae6c6c3c6103f6ff6b045de1385c12895b5b815ea239c27b21414",
+  "pythonVersion": "3.13.5",
+  "inputsUnchangedDuringAudit": true
+}

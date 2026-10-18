@@ -3,10 +3,28 @@
 The accepted release is `release/hangar-ntsc.nes`, 65,552 bytes, with SHA-256:
 
 ```text
-e7bc3df411d5f2d45aa325329ead3db7c75ebb8a51a0607df15777ce8456a8a9
+08ba1092db774a1c543345274f0835c8ca2413a725484a870286a746fa9c2462
 ```
 
-## Lower-pitched empty-gun click
+## Deep empty-gun buzz
+
+The `prototype-2026-10-18-empty-buzz` release replaces the short click with
+an eight-refresh (~133 ms) low buzz. Short-noise period index 12 runs at 762
+CPU cycles, compared with the preceding index 4 at 64 cycles; constant volume
+increases from 8 to 10. Fresh-press, cooldown and sound-channel ownership
+rules are unchanged. It does not flash the weapon or count as a shot.
+
+[empty-buzz-change.json](../verification/empty-buzz-change.json) records
+exactly three changed ROM bytes after a full source build: cue duration,
+volume and period. Linked addresses, code size and RAM use are unchanged.
+[empty-buzz-fixtures.json](../verification/empty-buzz-fixtures.json) records
+10 passing helper checks, including the full eight-tick lifetime, pause,
+cleanup, shared sound-channel ownership and unchanged pickup/exit boundaries.
+All 18 browser tests and the production build passed; the controller-only
+route completed 7,500 stock NTSC refreshes. Earlier reports below retain
+their original release hashes and describe those preceding builds.
+
+## Previous lower-pitched click
 
 The `prototype-2026-10-18-low-click` release changes one byte relative to the
 previous gameplay release (`fcc47032…`): the short-noise period written to

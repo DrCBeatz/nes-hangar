@@ -22,7 +22,7 @@
 
 PISTOL_COOLDOWN = 15          ; four shots/second at normal NTSC timing
 PISTOL_FLASH_FRAMES = 6       ; independently timed 100 ms flash/recoil
-PISTOL_DRY_FRAMES = 2         ; 33 ms mechanical click, only on a fresh B press
+PISTOL_DRY_FRAMES = 8         ; 133 ms low empty-gun buzz, only on a fresh B press
 .include "ammo-config.inc"
 .include "balance-config.inc"
 
@@ -34,7 +34,7 @@ pistol_state_begin:
 pistol_health: .res 1
 pistol_ammo: .res 1
 pistol_cooldown: .res 1
-pistol_flash_timer: .res 1    ; bit7 = sound-only dry click; low7 = noise frames
+pistol_flash_timer: .res 1    ; bit7 = sound-only empty-gun cue; low7 = noise frames
 pistol_pose: .res 1           ; 0 idle, 1 firing art
 pistol_dirty: .res 1          ; bit0 OAM, bit1 digits, bit2 status line, bit3 HUD color
 pistol_shot_count: .res 2
@@ -135,7 +135,7 @@ pistol_noise_volume: .byte 0,3,5,7,9,12,15
  lda pistol_flash_timer
  beq @input
  bpl @flash
- ; Keep the existing shared-noise ownership byte nonzero during the click,
+ ; Keep the existing shared-noise ownership byte nonzero during the cue,
  ; without selecting firing art, touching HUD/OAM dirty bits or firing a shot.
  dec pistol_flash_timer
  lda pistol_flash_timer
@@ -214,21 +214,21 @@ done:
 dry_fire:
  lda button_edges
  and #$40
- beq done                   ; holding an empty trigger never repeats the click
+ beq done                   ; holding an empty trigger never repeats the cue
 dry_accepted:
  lda #PISTOL_COOLDOWN
  sta pistol_cooldown
  lda #($80 | PISTOL_DRY_FRAMES)
  sta pistol_flash_timer
- ; Short-mode noise is a brief metallic click, distinct from either gun's
+ ; Short-mode noise is a low, sustained buzz, distinct from either gun's
  ; long-mode white-noise blast. Existing player priority also cancels a door
  ; or enemy noise tail; warning/pickup pulse channels remain independent.
  lda #$0F
  sta $4015
- lda #$18                   ; constant volume8, no length-counter halt
+ lda #$1A                   ; constant volume10, no length-counter halt
  sta pause_sound_noise
  sta $400C
- lda #$84                   ; short LFSR, period4: lower-pitched mechanical click
+ lda #$8C                   ; short LFSR, period12: deep empty-trigger buzz
  sta $400E
  lda #$F8
  sta $400F

@@ -188,27 +188,27 @@ const protectedState = (c) => ["pistol_ammo", "pistol_pose", "pistol_dirty", "zo
 const c = dryFixture(), unchanged = protectedState(c);
 candidate.call(c, "pistol_tick");
 assert.deepEqual(protectedState(c), unchanged);
-assert.equal(candidate.get(c, "pistol_flash_timer"), 0x82);
+assert.equal(candidate.get(c, "pistol_flash_timer"), 0x88);
 assert.equal(candidate.get(c, "pistol_cooldown"), 15);
-assert.deepEqual(c.writes, [[0x4015, 15], [0x400c, 0x18], [0x400e, 0x84], [0x400f, 0xf8]]);
-assert.equal(candidate.get(c, "pause_sound_noise"), 0x18);
-checks.emptyClickHasExactShortNoiseCueWithoutShotOrHudMutation = true;
-const clickWrites = [{ tick: 0, writes: c.writes }];
+assert.deepEqual(c.writes, [[0x4015, 15], [0x400c, 0x1a], [0x400e, 0x8c], [0x400f, 0xf8]]);
+assert.equal(candidate.get(c, "pause_sound_noise"), 0x1a);
+checks.emptyCueHasExactShortNoiseCueWithoutShotOrHudMutation = true;
+const cueWrites = [{ tick: 0, writes: c.writes }];
 candidate.put(c, "button_edges", 0);
 for (let tick = 1; tick <= 40; tick++) {
   candidate.call(c, "pistol_tick");
   assert.deepEqual(protectedState(c), unchanged);
-  if (c.writes.length) clickWrites.push({ tick, writes: c.writes });
-  if (tick === 1) assert.equal(candidate.get(c, "pistol_flash_timer"), 0x81);
-  if (tick >= 2) assert.equal(candidate.get(c, "pistol_flash_timer"), 0);
+  if (c.writes.length) cueWrites.push({ tick, writes: c.writes });
+  if (tick < 8) assert.equal(candidate.get(c, "pistol_flash_timer"), 0x88 - tick);
+  else assert.equal(candidate.get(c, "pistol_flash_timer"), 0);
 }
-assert.deepEqual(clickWrites, [{ tick: 0, writes: [[0x4015, 15], [0x400c, 0x18], [0x400e, 0x84], [0x400f, 0xf8]] }, { tick: 2, writes: [[0x400c, 0x30], [0x4015, 7]] }]);
-examples.dryFireWrites = clickWrites;
-checks.emptyClickStopsAfterTwoActiveTicksAndHeldBDoesNotRepeat = true;
+assert.deepEqual(cueWrites, [{ tick: 0, writes: [[0x4015, 15], [0x400c, 0x1a], [0x400e, 0x8c], [0x400f, 0xf8]] }, { tick: 8, writes: [[0x400c, 0x30], [0x4015, 7]] }]);
+examples.dryFireWrites = cueWrites;
+checks.emptyCueStopsAfterEightActiveTicksAndHeldBDoesNotRepeat = true;
 candidate.put(c, "button_edges", 0x40);candidate.call(c, "pistol_tick");
-assert.equal(candidate.get(c, "pistol_flash_timer"), 0x82);
+assert.equal(candidate.get(c, "pistol_flash_timer"), 0x88);
 candidate.put(c, "button_edges", 0x40);candidate.call(c, "pistol_tick");
-assert.equal(candidate.get(c, "pistol_flash_timer"), 0x81);
+assert.equal(candidate.get(c, "pistol_flash_timer"), 0x87);
 assert.deepEqual(c.writes, []);
 checks.freshBRearmsOnlyAfterCooldown = true;
 
@@ -228,12 +228,12 @@ for (let i = 0; i < 30; i++) {
 assert.equal(candidate.get(p, "pistol_flash_timer"), timer);
 assert.equal(candidate.get(p, "pistol_cooldown"), cooldown);
 candidate.put(p, "button_edges", 0x10);assert.equal(candidate.call(p, "pause_poll"), true);
-assert.ok(p.writes.some(([a, v]) => a === 0x400c && v === 0x18));
+assert.ok(p.writes.some(([a, v]) => a === 0x400c && v === 0x1a));
 assert.ok(!p.writes.some(([a]) => a === 0x4015));
 candidate.put(p, "button_edges", 0);candidate.put(p, "input_buttons", 0);
-candidate.call(p, "pistol_tick");candidate.call(p, "pistol_tick");
+for (let tick = 0; tick < 8; tick++) candidate.call(p, "pistol_tick");
 assert.equal(candidate.get(p, "pistol_flash_timer"), 0);
-checks.pausePreservesAndRestoresTheClickWithoutDisablingOtherChannels = true;
+checks.pausePreservesAndRestoresTheCueWithoutDisablingOtherChannels = true;
 
 for (const stop of ["pistol_reset", "exit_complete", "player_damage"]) {
   const s = dryFixture();candidate.call(s, "pistol_tick");candidate.call(s, stop, stop === "player_damage" ? 100 : undefined);
@@ -242,16 +242,16 @@ for (const stop of ["pistol_reset", "exit_complete", "player_damage"]) {
   const channelWrites = s.writes.filter(([a]) => a === 0x4015);
   assert.ok(channelWrites.length && channelWrites.every(([, v]) => !(v & 8) && (v & 4)));
 }
-checks.resetDeathAndCompletionCancelClickAndPreserveTriangleEnable = true;
+checks.resetDeathAndCompletionCancelCueAndPreserveTriangleEnable = true;
 for (const [field, value] of [["pistol_health", 0], ["exit_flags", 128], ["pistol_cooldown", 2]]) {
   const s = dryFixture();candidate.put(s, field, value);candidate.call(s, "pistol_tick");
   assert.ok(!s.writes.some(([a]) => a === 0x400f));
   assert.equal(candidate.get(s, "pistol_flash_timer"), 0);
 }
-checks.deadCompletedAndCoolingDownPlayersCannotStartClick = true;
+checks.deadCompletedAndCoolingDownPlayersCannotStartCue = true;
 
 // Use the actual competing sound owners, not just their condition flags.
-// An interrupted tail must stay cancelled when the dry click finishes; a new
+// An interrupted tail must stay cancelled when the dry cue finishes; a new
 // door/guard sound can take ownership normally after that point.
 for (const [routine, timerName, timerValue] of [["door_sound_tick", "door_sound_timer", 12], ["zombie_attack_tick", "zombie_audio_timer", 5]]) {
   const s = dryFixture();
@@ -261,10 +261,10 @@ for (const [routine, timerName, timerValue] of [["door_sound_tick", "door_sound_
   candidate.call(s, "pistol_tick");
   candidate.call(s, routine);
   assert.equal(candidate.get(s, timerName), 0, `${routine} permanently drops its preempted tail`);
-  assert.deepEqual(s.writes, [], `${routine} cannot alter the player's live click`);
-  assert.equal(candidate.get(s, "pause_sound_noise"), 0x18);
+  assert.deepEqual(s.writes, [], `${routine} cannot alter the player's live cue`);
+  assert.equal(candidate.get(s, "pause_sound_noise"), 0x1a);
   candidate.put(s, "button_edges", 0);candidate.put(s, "input_buttons", 0);
-  candidate.call(s, "pistol_tick");candidate.call(s, "pistol_tick");
+  for (let tick = 0; tick < 8; tick++) candidate.call(s, "pistol_tick");
   candidate.call(s, routine);
   assert.deepEqual(s.writes, [], `${routine} cannot revive its stale tail`);
   assert.equal(candidate.get(s, "pause_sound_noise"), 0x30);

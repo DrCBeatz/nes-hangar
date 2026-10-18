@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "romSha256": "08ba1092db774a1c543345274f0835c8ca2413a725484a870286a746fa9c2462",
+  "previousRomSha256": "e7bc3df411d5f2d45aa325329ead3db7c75ebb8a51a0607df15777ce8456a8a9",
+  "romBytes": 65552,
+  "changedBytes": [
+    {
+      "romFileOffset": 58069,
+      "old": 130,
+      "new": 136
+    },
+    {
+      "romFileOffset": 58079,
+      "old": 24,
+      "new": 26
+    },
+    {
+      "romFileOffset": 58087,
+      "old": 132,
+      "new": 140
+    }
+  ],
+  "onlyChanges": "Empty-trigger duration, noise volume and short-noise period immediates",
+  "noisePeriodCpuCycles": {
+    "previous": 64,
+    "current": 762
+  },
+  "volume": {
+    "previous": 8,
+    "current": 10
+  },
+  "durationRefreshes": {
+    "previous": 2,
+    "current": 8
+  },
+  "shortMode": true,
+  "linkedSymbolAddressesUnchanged": true,
+  "labelSha256": "a8c98ae87343e56f4fb4eaace1782f198a7245eb50177f51d2e224790bade4ef",
+  "codeSizeChange": 0,
+  "ramChange": 0,
+  "scope": "Exact byte comparison after full source build. Sound lifetime/ownership are checked separately by linked CPU fixtures and controller-only regression. No physical hardware or human listening test is claimed.",
+  "browserRegression": {
+    "tests": 18,
+    "passed": 18,
+    "frames": 7500,
+    "controllerOnly": true,
+    "stockTiming": true,
+    "jsnesCommit": "5b27c4243f1cb2528c54941e13c29c4ced7d5a45",
+    "driverRepository": "https://github.com/DrCBeatz/nes-emulator-mobile-web-app",
+    "driverPath": "test/hangar.test.mjs",
+    "driverSha256": "f8cc9f04ae9487827e4361a0ccc26e7a58fdab06292824fa90eafcddbf7b0070",
+    "productionBuildPassed": true
+  }
+}

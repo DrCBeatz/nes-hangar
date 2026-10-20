@@ -10,15 +10,18 @@ import os
 from functools import lru_cache
 from pathlib import Path
 import door_reference
+import inner_visibility
 
 HERE = Path(__file__).resolve().parent
 SCENE = json.loads(Path(os.environ.get("E1M1_MAP_PATH", HERE.parent / "assets/map.json")).read_text())
+door_reference.configure(SCENE)
+INNER_VISIBILITY = inner_visibility.compile_filter(SCENE)
 WORLD_INTEGER_MAX = 1023
 SEGMENTS = SCENE["segments"]
 RECESS_DEPTH = SCENE["recess_depth"]
 OUTER_FLOOR = SCENE["outer_floor_height"]
 LOWER_FLOOR = OUTER_FLOOR - RECESS_DEPTH
-OPAQUE_COUNT = next(i for i,s in enumerate(SEGMENTS) if s.get("kind") not in ("outer","pillar","door"))
+OPAQUE_COUNT = next(i for i,s in enumerate(SEGMENTS) if s.get("kind") not in ("outer","pillar","inner","door"))
 RECESS_ENTRY_BEGIN = next(i for i,s in enumerate(SEGMENTS) if i>=OPAQUE_COUNT and s["bottom"]==s["top"])
 SLIME_BEGIN = next(i for i,s in enumerate(SEGMENTS) if s.get("kind")=="floor_material")
 SLIME_EDGE_COUNT = (len(SEGMENTS)-SLIME_BEGIN)//2
@@ -106,7 +109,15 @@ def candidates_for_pose(x_q8,z_q8,*,unfiltered=False):
     x=(x_q8//256-grid['x_min'])//16
     z=(z_q8//256-grid['z_min'])//16
     if not(0<=x<grid['cols'] and 0<=z<grid['rows']):return range(len(SEGMENTS))
-    return data['lists'][data['cells'][z*grid['cols']+x]]
+    candidates=data['lists'][data['cells'][z*grid['cols']+x]]
+    domain=INNER_VISIBILITY['domain']
+    if (domain['x'][0]*256<=x_q8<domain['x'][1]*256 and
+            domain['z'][0]*256<=z_q8<domain['z'][1]*256):
+        row=z_q8//256-domain['z'][0]
+        if x_q8//256-domain['x'][0]<INNER_VISIBILITY['x_cutoff'][row]:
+            limits=INNER_VISIBILITY['constants']
+            candidates=[i for i in candidates if not limits['INNER_VISIBILITY_FIRST']<=i<limits['INNER_VISIBILITY_END']]
+    return candidates
 
 
 def slime_palette_candidate(x_q8,z_q8,angle,*,unfiltered=False,door_open=True,door_cull=True):

@@ -13,7 +13,7 @@ invalidation. This used the existing hosting; no AWS infrastructure or domain
 configuration changed.
 
 - A versioned copy of the release is hosted at
-  `/roms/hangar-ntsc-08ba1092.nes` with the same SHA-256 as this repository.
+  `/roms/hangar-ntsc-277422aa.nes` with the same SHA-256 as this repository.
 - The hosted manifest has stable ID `hangar`. Query strings resolve only
   known manifest IDs; an unknown ID leaves the picker and file loader usable.
 - The page waits for a Play gesture before fetching/starting the game. Audio
@@ -27,7 +27,27 @@ link and hosted picker. Controls reopens the guide during gameplay and pauses
 the emulator while it covers the view; closing it preserves the prior pause
 state. This does not alter the ROM or replace saved custom keyboard bindings.
 
-## Gameplay update
+## Enclosure and third-encounter update
+
+The current release is `prototype-2026-10-19-third-encounter`, served as
+`/roms/hangar-ntsc-277422aa.nes`. It includes the inner enclosure, tighter ammo
+pickup, conservative visibility optimization and third soldier encounter.
+The stable `?game=hangar` link, emulator controls and infrastructure are unchanged.
+
+All 18 emulator tests and the production build pass for this ROM. The updated
+controller-only JSNES test runs 7,555 normal NTSC refreshes through all three
+encounters, both pickups, the door, completion and restart. It deliberately
+wastes three rounds to test empty-gun feedback, then finishes with 12 shots,
+nine hits, three kills and four rounds. All 46 read-only test symbols were
+checked against this release's linker output. The built site's ROM is
+byte-identical to the source repository's release. The evidence is in
+[current-browser.json](../verification/current-browser.json).
+
+Publication uses the existing GitHub Actions workflow: tests, production
+build, S3 synchronization and CloudFront invalidation. The ROM's hash-based
+filename prevents an older cached ROM from being substituted for this release.
+
+## Previous gameplay update
 
 The `prototype-2026-10-18-empty-buzz` ROM is hosted as
 `/roms/hangar-ntsc-08ba1092.nes`. It tightens the ammo pickup, adds an empty-gun

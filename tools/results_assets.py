@@ -3,7 +3,8 @@ from pathlib import Path
 import json
 
 
-def write_assets(build, font):
+def write_assets(build, font, *, enemy_total=2):
+    assert 1 <= enemy_total <= 9, 'Completion count uses a single font digit'
     build = Path(build)
     name = bytearray(1024)
     lines = []
@@ -22,7 +23,7 @@ def write_assets(build, font):
     line(5, 'E1M1', 2)
     line(7, 'HANGAR', 2)
     line(10, 'LEVEL COMPLETE')
-    kills = line(14, 'KILLS     0 / 2', col=8)+10
+    kills = line(14, f'KILLS     0 / {enemy_total}', col=8)+10
     items = line(16, 'ITEMS     0 / 2', col=8)+10
     time = line(18, 'TIME      00:00', col=8)+10
     line(24, 'PRESS START TO RESTART', 3)
@@ -39,7 +40,7 @@ def write_assets(build, font):
     (build/'results-config.inc').write_text(''.join(f'{k} = ${v:04X}\n' for k,v in config.items()))
     report = dict(lines=lines, addresses=config, palette=list(palette),
                   fontMap=font, timerFormat='MM:SS, saturates at99:59',
-                  enemyTotal=2, itemTotal=2, nametable=0, patternTable=0,
+                  enemyTotal=enemy_total, itemTotal=2, nametable=0, patternTable=0,
                   spriteRendering=False)
     (build/'results-layout.json').write_text(json.dumps(report, indent=2)+'\n')
     return report

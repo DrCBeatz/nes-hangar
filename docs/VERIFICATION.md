@@ -3,16 +3,62 @@
 The accepted release is `release/hangar-ntsc.nes`, 65,552 bytes, with SHA-256:
 
 ```text
-08ba1092db774a1c543345274f0835c8ca2413a725484a870286a746fa9c2462
+277422aa65613d5f1a581fece1e398c161948d473741b0aa2b47b2d11113e4a2
 ```
 
-## Deep empty-gun buzz
+## Enclosure, visibility and third encounter
+
+The `prototype-2026-10-19-third-encounter` release combines the first room's
+sealed inner enclosure, three-unit ammo pickup radius, conservative visibility
+filter for selected slime-room views, and third soldier beyond the openable
+door. The [release notes](RELEASE-NOTES.md) describe the gameplay changes.
+
+[current-release.json](../verification/current-release.json) is the portable
+evidence record for this exact ROM. It includes source and artifact hashes,
+cartridge and linked-memory sizes, geometry proofs, focused helper checks,
+producer comparisons, and summaries of two controller-only Mesen routes.
+Detailed research traces, old ROM baselines and workspace-specific harnesses
+are retained separately; they are not part of the standalone source package.
+
+The Mesen routes ran with normal NTSC timing, zero extra scanlines, the original
+sprite limit and no run-ahead, with no writes to game RAM or ROM by the test
+driver. Together they covered 23,062 refreshes and 55 exact background/palette
+comparisons. The full-clear route finished with nine shots, seven rounds,
+3/3 kills and 2/2 items, then checked restart state. The other route left the
+second soldier alive and verified the third soldier's health and defeated
+state across backtracking. No illegal rendering-time PPU writes, nested NMI,
+record ownership violations or resource overflows were observed.
+
+Separate linked fixtures inject controlled state to check fractional gates,
+movement and sight, attacks, item absence in the third encounter, all eight
+alive/dead combinations, and persistent-record ownership across the three
+PRG mappings. Fourteen matched producer poses retain identical background
+pixels and match the all-face reference. Their CPU-cycle measurements exclude
+interrupts and uploading; they are not gameplay frame rates.
+
+Rebuild and compare the current release with `python3 tools/build.py --verify`.
+The [fresh standalone build](../verification/current-build.json) reproduced
+this exact ROM with `python3 -I -S -B tools/build.py --verify`, in a new copy
+outside the research workspace with no prior build output. The portable
+pickup/exit/sound helper suite also passed from that copy.
+The normal build does not rerun the research emulator harnesses. The cartridge
+remains MMC1 with 64 KiB PRG, 8 KiB CHR-RAM and 8 KiB work RAM. Only one of the
+three enemy encounters simulates and renders at a time. No physical NES or
+flash-cartridge test is claimed. Browser publication checks are recorded
+separately in [DEPLOYMENT.md](DEPLOYMENT.md).
+
+The following sections preserve earlier releases and their original evidence.
+
+## Previous deep empty-gun buzz
 
 The `prototype-2026-10-18-empty-buzz` release replaces the short click with
 an eight-refresh (~133 ms) low buzz. Short-noise period index 12 runs at 762
 CPU cycles, compared with the preceding index 4 at 64 cycles; constant volume
 increases from 8 to 10. Fresh-press, cooldown and sound-channel ownership
 rules are unchanged. It does not flash the weapon or count as a shot.
+
+Its historical ROM SHA-256 is
+`08ba1092db774a1c543345274f0835c8ca2413a725484a870286a746fa9c2462`.
 
 [empty-buzz-change.json](../verification/empty-buzz-change.json) records
 exactly three changed ROM bytes after a full source build: cue duration,

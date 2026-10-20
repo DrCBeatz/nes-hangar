@@ -11,6 +11,7 @@
 .include "slime-memory.inc"
 .include "door-memory.inc"
 .include "door-config.inc"
+.include "inner-visibility-config.inc"
 .exportzp render_slime_palette
 .include "coordinate-memory.inc"
 .export geometry_begin, geometry_column, geometry_zombie_transform
@@ -18,6 +19,8 @@
 .export transform_vertex, geometry_vertex_cache_hits, geometry_vertex_cache_misses
 .exportzp room_zone, candidate_count
 .export geometry_pair_cache_init, geometry_pair_cache_ready
+.export geometry_inner_visibility_begin
+.exportzp g_inner_face_mask
 .import zombie_begin, zombie_occlude, medkit_begin, medkit_occlude
 .exportzp g_camera_x, g_camera_z, g_acc, g_mul_a, g_mul_b, g_value, g_den, g_rem
 .exportzp g_num, g_ray_x, g_ray_z, g_step_x, g_step_z, g_project, g_left, g_right
@@ -74,6 +77,9 @@ g_factor: .res 1
 g_scaled: .res 3
 g_cursor: .res 1
 g_floor_top: .res 1
+; Floor clipping starts only after begin-frame projection finishes. Reuse this
+; producer-only byte for the two inner-face allow bits during that setup loop.
+g_inner_face_mask = g_floor_top
 room_zone: .res 1
 candidate_count: .res 1
 g_candidate_ptr: .res 2
@@ -150,6 +156,7 @@ clear_vertex_tags:
     dex
     bpl clear_vertex_tags
     jsr select_candidates
+    jsr inner_visibility_begin
     ldy render_angle
     lda geom_sine_low,y
     sta g_s
@@ -351,9 +358,21 @@ finished:
     rts
 .endproc
 
-; C=1 admits X's face for this immutable camera/door snapshot. The full-height
-; crosscut is the sole connection between the two proven map partitions.
+; C=1 admits X's face for this immutable camera/door snapshot. The inner
+; enclosure uses a conservative portal-cone gate before any plane transform.
+; g_half is the existing bitmap bit for this candidate (bits6/7 at IDs86/87).
+; The door crosscut remains the sole connection between its map partitions.
 .proc door_face_enabled
+.ifndef ROOMS_UNFILTERED
+    cpx #INNER_VISIBILITY_FIRST
+    bcc door
+    cpx #INNER_VISIBILITY_END
+    bcs door
+    lda g_inner_face_mask
+    and g_half
+    beq hidden
+door:
+.endif
     cpx #DOOR_FIRST
     bcc ordinary
     cpx #DOOR_END
@@ -391,6 +410,41 @@ hidden:
     clc
     rts
 .endproc
+
+; Compute once per immutable render snapshot. Each table entry is a guarded
+; lower bound on the X coordinate needed to see the enclosure through the
+; slime-room portal for the complete closed integer-Z slab. If even floor(X)
+; is below that cutoff, both exposed enclosure faces are certainly hidden.
+; All out-of-domain positions and diagnostic unfiltered builds retain them.
+.proc inner_visibility_begin
+    lda #$C0
+    sta g_inner_face_mask
+.ifndef ROOMS_UNFILTERED
+    lda render_x_hi
+    cmp #INNER_VISIBILITY_X_PAGE
+    bne done
+    lda render_x+1
+    cmp #<INNER_VISIBILITY_X_MAX
+    bcs done
+    lda render_z+1
+    sec
+    sbc #<INNER_VISIBILITY_Z_MIN
+    tax
+    lda render_z_hi
+    sbc #>INNER_VISIBILITY_Z_MIN
+    bne done
+    cpx #INNER_VISIBILITY_ROWS
+    bcs done
+    lda render_x+1
+    cmp inner_visibility_x_cut,x
+    bcs done
+    lda #0
+    sta g_inner_face_mask
+.endif
+done:
+    rts
+.endproc
+geometry_inner_visibility_begin = inner_visibility_begin
 
 geometry_pair_cache_init = geometry_begin::pair_cache_init
 geometry_pair_cache_ready = geometry_begin::pair_cache_ready
@@ -2237,5 +2291,10 @@ done:
 ; Producer-only tables. Keep bank0 selected throughout world geometry.
 .include "geometry-data.inc"
 .include "visibility-data.inc"
+.include "inner-visibility-data.inc"
 .assert VERTEX_COUNT <255, error, "Vertex255 is reserved for the invalid cache tag"
 .assert WALL_COUNT <256, error, "Global wall IDs must fit one byte"
+
+.assert INNER_VISIBILITY_FIRST / 8 = (INNER_VISIBILITY_END-1) / 8, error, "Inner visibility mask spans bitmap bytes"
+.assert (INNER_VISIBILITY_FIRST & 7) = 6 .and (INNER_VISIBILITY_END & 7) = 0, error, "Inner visibility mask requires bits6/7"
+.assert INNER_VISIBILITY_X_MAX > INNER_VISIBILITY_X_PAGE*256 .and INNER_VISIBILITY_X_MAX < (INNER_VISIBILITY_X_PAGE+1)*256, error, "Inner X bound must share the guarded page"

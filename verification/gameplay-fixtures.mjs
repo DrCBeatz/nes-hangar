@@ -108,7 +108,7 @@ const candidate = new Machine(resolve(options["--candidate"] || resolve(root, "b
 const baseline = options["--baseline"] ? new Machine(resolve(options["--baseline"])) : null;
 if (baseline) assert.equal(hash(baseline.rom), "644d047c07fe9ade8c14b87c42faa5720b026e0a13c017c4326be604adebbc87");
 assert.equal(candidate.scene.medkit.pickup_radius, 6);
-assert.equal(candidate.scene.ammo.pickup_radius, 4);
+assert.equal(candidate.scene.ammo.pickup_radius, 3);
 assert.deepEqual([candidate.scene.exit.x_min, candidate.scene.exit.x_max, candidate.scene.exit.z_min, candidate.scene.exit.z_max, candidate.scene.exit.angle_min, candidate.scene.exit.angle_max], [286, 294, 22, 34, 172, 212]);
 const checks = {}, counts = {}, examples = {};
 

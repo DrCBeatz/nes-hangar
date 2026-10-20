@@ -111,7 +111,7 @@ def main():
     ammo=scene['ammo']
     (BUILD/'ammo-config.inc').write_text(''.join('AMMO_'+k.upper()+' = '+str(ammo[k])+'\n' for k in ('x','z','floor','amount','maximum','pickup_radius')))
     font=art['fontMap']
-    results_layout=load('results_assets',TOOLS/'results_assets.py').write_assets(BUILD,font)
+    results_layout=load('results_assets',TOOLS/'results_assets.py').write_assets(BUILD,font,enemy_total=len(scene['encounters']))
     title_layout=load('title_assets',TOOLS/'title_assets.py').write_assets(BUILD,font,PREVIEWS)
     death_text='YOU DIED - START TO RESTART'
     death_line=[0]*32
@@ -164,6 +164,7 @@ def main():
     print('Generating geometry and visibility tables...', flush=True)
     generated={stem:load(stem,TOOLS/(stem+'.py')).write_assets(BUILD,recess_depth=scene['recess_depth'])
                for stem in ('movement_reference','geometry_reference')}
+    generated['innerVisibility']=load('inner_visibility',TOOLS/'inner_visibility.py').write_assets(BUILD,scene)
     visibility=load('rooms_visibility',TOOLS/'visibility.py')
     generated['visibility']=visibility.write_assets(BUILD,scene)
     generated['collisionVisibility']=visibility.write_collision_assets(BUILD,scene)

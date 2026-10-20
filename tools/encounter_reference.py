@@ -10,15 +10,17 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 OFFSET = (0,160)
-BOUNDS = ((132,238,114,206),(280,296,44,74))
-SPAWNS = ((176,152),(294,58))
+BOUNDS = ((132,238,114,206),(280,296,44,74),(282,310,-84,-68))
+SPAWNS = ((176,152),(294,58),(296,-76))
 GATE = dict(forward_x=248, reverse_x=244, reverse_z_min=8)
-AMMO = dict(x=274,z=92,floor=2,pickup_radius=4,amount=10,maximum=99,
+THIRD_GATE = dict(forward_z=-32, reverse_z=-24)
+THIRD_LOS = (256,336,-104,-40)
+AMMO = dict(x=274,z=92,floor=2,pickup_radius=3,amount=10,maximum=99,
     kind='collectible_ammo',at_full_ammo='remain',encounter_id=1,
     location='Dry left entrance apron of the zigzag room, before the second soldier',
     width=2,height=1.5,blocking=False)
 AMMO_APPROACH = [[288,112],[290,96],[274,92]]
-ROUTE = [[152,152],[208,152],[228,136],[244,136],[260,130],[276,124],
+ROUTE = [[152,152],[172,152],[172,132],[220,132],[228,136],[244,136],[260,130],[276,124],
          [288,112],[290,96],[296,80],[304,56],[304,32],[296,16],[296,12]]
 
 
@@ -32,11 +34,13 @@ def shared_geometry():
 
 
 def select(active,x,z,offset=OFFSET):
-    """Keep the far encounter in the southern extension, even west of X260."""
+    """Two hysteresis gates select one of three independently saved actors."""
     x-=offset[0]*256
     z-=offset[1]*256
     if active==0 and x>=GATE['forward_x']*256:return 1
+    if active==1 and z<=THIRD_GATE['forward_z']*256:return 2
     if active==1 and z>=GATE['reverse_z_min']*256 and x<=GATE['reverse_x']*256:return 0
+    if active==2 and z>=THIRD_GATE['reverse_z']*256:return 1
     return active
 
 
@@ -78,6 +82,13 @@ def second_los(x,z,px,pz,offset=OFFSET):
     ox,oz=offset; a,b,c,d=BOUNDS[1]
     return ((a+ox)*256<=x<=(b+ox)*256 and (c+oz)*256<=z<=(d+oz)*256 and
             (264+ox)*256<=px<=(352+ox)*256 and (8+oz)*256<=pz<=(100+oz)*256)
+
+
+def third_los(x,z,px,pz,offset=OFFSET):
+    """Player must be legal; the actor box lies in the whole room's kernel."""
+    ox,oz=offset; a,b,c,d=BOUNDS[2]; pa,pb,pc,pd=THIRD_LOS
+    return ((a+ox)*256<=x<=(b+ox)*256 and (c+oz)*256<=z<=(d+oz)*256 and
+            (pa+ox)*256<=px<=(pb+ox)*256 and (pc+oz)*256<=pz<=(pd+oz)*256)
 
 
 def incoming_visibility(scene,footprint_bounds=None):
@@ -189,6 +200,74 @@ def validate_ammo(scene):
         pickupCircleClearOfEnemyContactBounds=True,incomingItemHiddenBeforeActivation=visibility)
 
 
+def validate_third(scene,original):
+    """Prove continuous room sight, doorway clearance and walkaround routes."""
+    common=shared_geometry(); ox,oz=OFFSET
+    area=next(a for a in scene['areas'] if a['id']=='pre_exit')
+    room=area['polygon']; a,b,c,d=BOUNDS[2]
+    assert area['enemy_pursuit_allowed'] and area['ai_visibility_domain']=='pre_exit'
+    assert tuple(area['enemy_pursuit_bounds'])==BOUNDS[2]
+    assert tuple(area['bounds']['x']+area['bounds']['z'])==THIRD_LOS
+    assert area['flat'] and area['floor']==2 and area['ceiling']==10
+    assert a<=SPAWNS[2][0]<=b and c<=SPAWNS[2][1]<=d
+    sprite=[(x,z) for x in (a-1,b+1) for z in (c-1,d+1)]
+    margins=[common.cross(u,v,p) for u,v in zip(room,room[1:]+room[:1]) for p in sprite]
+    assert min(margins)>0, 'Third actor sprite leaves room visibility kernel'
+    # Any legal point accepted by the cheap LOS rectangle is in this room:
+    # every other authored area's bounds has disjoint interior.
+    pa,pb,pc,pd=THIRD_LOS
+    for other in scene['areas']:
+        if other['id']=='pre_exit':continue
+        polygon=other.get('polygon')
+        if polygon:
+            xs,zs=zip(*polygon)
+            assert max(xs)<=pa or min(xs)>=pb or max(zs)<=pc or min(zs)>=pd, ('LOS domain intersects another room',other['id'])
+    walls=[s for s in scene['segments'] if s['collision']]
+    contact=common.hull([(x,z) for x in (a-8,b+8) for z in (c-8,d+8)])
+    assert all(common.inside(room,p) for p in contact)
+    for wall in walls:
+        assert not common.touches_hull(contact,(wall['x1'],wall['z1']),(wall['x2'],wall['z2'])),('third contact touches wall',wall['id'])
+    # Radius-two routes pass either side even while the actor occupies any
+    # permitted position. The door is assumed opened before crossing Z120.
+    routes=[[[296,-44],[296,-56],[x,-56],[x,-96],[296,-96],[296,-108]] for x in (268,324)]
+    second_bypass=[[274,92],[290,92],[316,80],[316,48],[320,24],[296,20],[296,-24]]
+    checks=0
+    for index,route in enumerate(routes+[second_bypass]):
+        bounds=BOUNDS[2 if index<2 else 1]
+        obstacle=common.hull([(x,z) for x in (bounds[0]-8,bounds[1]+8) for z in (bounds[2]-8,bounds[3]+8)])
+        for u,v in zip(route,route[1:]):
+            assert not common.blocked(scene,*u) and not common.blocked(scene,*v)
+            swept=common.hull([(p[0]+dx,p[1]+dz) for p in (u,v) for dx in (-2,2) for dz in (-2,2)])
+            for wall in walls:
+                assert not common.touches_hull(swept,(wall['x1'],wall['z1']),(wall['x2'],wall['z2'])),('third route touches wall',index,u,v,wall['id'])
+                checks+=1
+            # Contact radius already applies to player center, so do not
+            # inflate it again by the wall-collision footprint.
+            assert not common.touches_hull(obstacle,u,v),('route enters actor contact bounds',index,u,v)
+    authored=original['encounter_handoff']['third']
+    assert authored['forward_z']==THIRD_GATE['forward_z']+oz
+    assert authored['reverse_z']==THIRD_GATE['reverse_z']+oz
+    assert authored['player_los_bounds']==[pa+ox,pb+ox,pc+oz,pd+oz]
+    assert authored['hysteresis_width']==THIRD_GATE['reverse_z']-THIRD_GATE['forward_z']==8
+    assert original['door']['z']==pd+oz==120
+    assert original['exit_extension']['extra_actors']==1
+    # Exact 16.8 threshold boundaries, including one fractional quantum.
+    qx=(296+ox)*256; forward=authored['forward_z']*256; reverse=authored['reverse_z']*256
+    cases=[(1,forward+1,1),(1,forward,2),(2,forward,2),(2,reverse-1,2),(2,reverse,1)]
+    for state,z,want in cases:assert select(state,qx,z)==want
+    return dict(passed=True,spawn=[SPAWNS[2][0]+ox,SPAWNS[2][1]+oz],
+        movementBounds=[a+ox,b+ox,c+oz,d+oz],playerLosBounds=authored['player_los_bounds'],
+        spriteFootprintInsideWholeRoomVisibilityKernel=True,minimumEdgeCrossProduct=min(margins),
+        actorContactBoundsEntirelyInRoom=True,doorPlaneClearanceFromContactBounds=120-(d+oz+8),
+        southOpeningClearanceFromContactBounds=c+oz-8-56,
+        walkaroundRoutes=[[[x+ox,z+oz] for x,z in route] for route in routes],
+        secondAliveBypass=[[x+ox,z+oz] for x,z in second_bypass],continuousSweptRadius2Checks=checks,
+        forwardZ=authored['forward_z'],reverseZ=authored['reverse_z'],fractionalGateCases=len(cases),
+        closedDoorSafety='The opaque door hides the sprite; LOS accepts only legal players on the room side at Z<=120, so rays never cross the closed door plane. The state handoff occurs earlier, at Z<=128.',
+        visibilityProof='The expanded actor rectangle is strictly inside every inward room-edge halfplane, hence inside the polygon visibility kernel. Every legal player point accepted by the LOS bounding rectangle is in this room. This proves continuous sight segments, including fractional coordinates and the entry neck.',
+        handoffLimitation='Only one actor simulates/renders. If an earlier soldier survives, its saved state is restored on return, but an outgoing actor may visibly disappear when crossing a handoff after the door has opened.')
+
+
 def validate_layout(scene):
     """Validate authored placements, activation, approach and contact safety."""
     common=shared_geometry()
@@ -206,7 +285,7 @@ def validate_layout(scene):
     assert scene['medkit']['encounter_id']==0
     first_areas={'opening','passage','encounter','next_passage','zigzag_room'}
     for area in scene['areas']:
-        if area['id'] not in first_areas:
+        if area['id'] not in first_areas and area['id']!='pre_exit':
             assert area.get('enemy_pursuit_allowed') is False
     room=next(a['polygon'] for a in scene['areas'] if a['id']=='zigzag_room')
     for radius in (1,):
@@ -232,7 +311,7 @@ def validate_layout(scene):
     expected_gate=dict(forward_x=GATE['forward_x']+ox,reverse_x=GATE['reverse_x']+ox,reverse_z_min=GATE['reverse_z_min']+oz)
     assert all(original['encounter_handoff'][k]==v for k,v in expected_gate.items())
     # New floor west of the old X gate is wholly south of the old map cap.
-    # The reverse-Z condition makes that area retain encounter 1 indefinitely.
+    # The reverse-Z condition prevents reactivating encounter 0 here.
     exit_areas=[a for a in original['areas'] if a['id'] not in first_areas]
     assert exit_areas and all(z<=8+oz for area in exit_areas for x,z in area['polygon'])
     return dict(passed=True,coordinateOffset=list(OFFSET),
@@ -240,7 +319,8 @@ def validate_layout(scene):
         actorPlacements=[[e['x'],e['z']] for e in original['encounters']],
         encounterStateRulesValidated=True,
         forwardThreshold=GATE['forward_x']+ox,reverseThreshold=GATE['reverse_x']+ox,reverseMinimumZ=8+oz,
-        hysteresisWidth=4,extensionRetainsFarEncounter=True,
+        hysteresisWidth=4,extensionCannotReactivateFirstEncounter=True,
+        thirdEncounter=validate_third(scene,original),
         secondActorSpriteFootprintInsideRoomVisibilityKernel=True,
         secondActorContactBoxInsideActualRoom=True,
         secondActorSpawnFeetDry=True,spawnFeetHull=spawn_feet,
@@ -249,7 +329,7 @@ def validate_layout(scene):
         ammoPlacement=validate_ammo(scene),
         roomThroatWidth=22,continuousSweptRadius2Checks=swept_checks,
         route=[[x+ox,z+oz] for x,z in ROUTE],invisibleHandoffGuaranteed=False,
-        scope='The second soldier starts on the central dry zigzag and keeps a 16x30 pursuit rectangle; it may subsequently cross slime. The ammo pickup circle and radius-two entry approach are entirely dry and clear of enemy contact bounds. Earlier activation is proven to occur before the moving incoming sprite can be visible. The southern extension cannot reactivate the first encounter. Finite planes and floor topology are separately checked by the geometry generator.')
+        scope='The second soldier starts on the dry zigzag and may subsequently cross slime. The third soldier is confined to the pre-exit room visibility kernel and leaves both doorways and both side routes clear. Three persistent actors share one active slot. The ammo pickup and its entry approach remain dry and clear of enemy contact bounds. The southern extension cannot reactivate the first encounter. Finite planes and floor topology are separately checked by the geometry generator.')
 
 
 def write_assets(directory):
@@ -258,12 +338,15 @@ def write_assets(directory):
     scene=json.loads(scene_path.read_text())
     proof=validate_layout(scene)
     ox,oz=scene['coordinate_offset']
-    second=scene['encounters'][1]
     lines=['; Generated encounter placement and area-activation thresholds.',
-           f'ENCOUNTER1_X = {second["x"]}',f'ENCOUNTER1_Z = {second["z"]}']
-    lines += [f'ENCOUNTER1_{key} = {value}' for key,value in zip(('X_MIN','X_MAX','Z_MIN','Z_MAX'),second['movement_bounds'])]
-    lines += [f'ENCOUNTER1_LOS_{key} = {value}' for key,value in zip(('X_MIN','X_MAX','Z_MIN','Z_MAX'),(264+ox,352+ox,8+oz,100+oz))]
+           f'ENCOUNTER_COUNT = {len(scene["encounters"])}']
+    for index,los in ((1,(264+ox,352+ox,8+oz,100+oz)),(2,(256+ox,336+ox,-104+oz,-40+oz))):
+        actor=scene['encounters'][index]
+        lines += [f'ENCOUNTER{index}_X = {actor["x"]}',f'ENCOUNTER{index}_Z = {actor["z"]}']
+        lines += [f'ENCOUNTER{index}_{key} = {value}' for key,value in zip(('X_MIN','X_MAX','Z_MIN','Z_MAX'),actor['movement_bounds'])]
+        lines += [f'ENCOUNTER{index}_LOS_{key} = {value}' for key,value in zip(('X_MIN','X_MAX','Z_MIN','Z_MAX'),los)]
     lines += [f'ENCOUNTER_GATE_{key.upper()} = {scene["encounter_handoff"][key]}' for key in GATE]
+    lines += [f'ENCOUNTER2_GATE_{key.upper()} = {scene["encounter_handoff"]["third"][key]}' for key in THIRD_GATE]
     (directory/'encounters-config.inc').write_text('\n'.join(lines)+'\n')
     proof['inputSha256']={str(scene_path.relative_to(ROOT)):sha(scene_path),
         str(Path(__file__).relative_to(ROOT)):sha(Path(__file__))}

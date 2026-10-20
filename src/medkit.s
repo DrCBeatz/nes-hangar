@@ -19,12 +19,10 @@
 .export pickup_x_lo, pickup_x_hi, pickup_z_lo, pickup_z_hi
 .include "medkit-config.inc"
 .include "ammo-config.inc"
-; Squared radii must be whole high bytes for the comparison below. Keep the
-; quantized axes inside the existing 256-entry square tables.
+; Keep quantized axes inside the existing 256-entry square tables. The
+; full 16-bit comparison also permits radii with a nonzero squared low byte.
 .assert MEDKIT_PICKUP_RADIUS > 0 .and MEDKIT_PICKUP_RADIUS < 32, error, "Medkit radius exceeds square table"
 .assert AMMO_PICKUP_RADIUS > 0 .and AMMO_PICKUP_RADIUS < 32, error, "Ammo radius exceeds square table"
-.assert <((MEDKIT_PICKUP_RADIUS*8)*(MEDKIT_PICKUP_RADIUS*8)) = 0, error, "Medkit squared radius needs a low-byte comparison"
-.assert <((AMMO_PICKUP_RADIUS*8)*(AMMO_PICKUP_RADIUS*8)) = 0, error, "Ammo squared radius needs a low-byte comparison"
 
 ; bit7 health collected, bit6 ammo collected, bit5 ammo sound type;
 ; low five bits count the independent pulse2 sound, regardless of active area.
@@ -39,6 +37,9 @@ pickup_x_hi: .byte >MEDKIT_X, >AMMO_X
 pickup_z_lo: .byte <MEDKIT_Z, <AMMO_Z
 pickup_z_hi: .byte >MEDKIT_Z, >AMMO_Z
 pickup_radius: .byte MEDKIT_PICKUP_RADIUS, AMMO_PICKUP_RADIUS
+pickup_radius_squared_lo:
+ .byte <((MEDKIT_PICKUP_RADIUS*8)*(MEDKIT_PICKUP_RADIUS*8))
+ .byte <((AMMO_PICKUP_RADIUS*8)*(AMMO_PICKUP_RADIUS*8))
 pickup_radius_squared_hi:
  .byte >((MEDKIT_PICKUP_RADIUS*8)*(MEDKIT_PICKUP_RADIUS*8))
  .byte >((AMMO_PICKUP_RADIUS*8)*(AMMO_PICKUP_RADIUS*8))
@@ -55,17 +56,23 @@ pickup_radius_squared_hi:
  rts
 .endproc
 
-; A bit7=selected item collected, bit6=item type; X=active encounter.
+; A bit7=selected item collected/absent, bit6=item type; X=active encounter.
+; The third encounter has no item; never index the two-item coordinate tables.
 .proc medkit_selected_state
  lda medkit_state
  ldx active_encounter
  beq health
+ cpx #2
+ bcs absent
  asl a
  and #$80
  ora #$40
  rts
 health:
  and #$80
+ rts
+absent:
+ lda #$80
  rts
 .endproc
 
@@ -106,6 +113,9 @@ done:
 
 .proc medkit_collect
  lda active_encounter
+ cmp #2
+ bcs done
+ cmp #0
  bne ammo_collect
  ; Independent collected guards let either pickup be collected first.
  lda medkit_state
@@ -202,11 +212,13 @@ stop:
 
 ; C=1 iff ceil(|dxQ8|/32)^2 + ceil(|dzQ8|/32)^2 < (radius*8)^2.
 ; The conservative eighth-unit circle never expands beyond the selected
-; radius: six for the medkit, four for the narrower ammo clip.
+; radius: six for the medkit, three for the narrower ammo clip.
 ; Full unsignedQ16.8 subtraction precedes absolute magnitude and far rejection;
 ; only proven nearby deltas enter the original low-word square tables.
 .proc medkit_in_range
  ldy active_encounter
+ cpy #2
+ jcs outside
  lda player_x
  sec
  sbc #0
@@ -244,11 +256,17 @@ stop:
  clc
  lda zombie_square_lo,x
  adc zombie_square
+ sta zombie_square
  lda zombie_square_hi,x
  adc zombie_square+1
  jcs outside
  cmp pickup_radius_squared_hi,y
- jcs outside                ; squared radii $0900/$0400 need no low-byte test
+ bcc inside
+ bne outside
+ lda zombie_square
+ cmp pickup_radius_squared_lo,y
+ bcs outside
+inside:
  sec
  rts
 outside:

@@ -232,6 +232,12 @@ done:
 ; Candidate ai_a[4] versus live player. C=1 if quantized radius9 is clear.
 ; Quantization rounds distance down, so accepted candidates are never too close.
 .proc zombie_separated
+ .if ::AI_INNER_ENABLED
+ jsr ai_inner_separated
+ bcs :+
+ rts
+:
+ .endif
  lda ai_a
  sec
  sbc player_x
@@ -590,8 +596,12 @@ next:
  cmp #ZOMBIE_AI_CONSTRAINTS
  jne corner
 visible:
+ .if ::AI_INNER_ENABLED
+ jmp ai_inner_line_of_sight
+ .else
  sec
  rts
+ .endif
 hidden:
  clc
  rts
@@ -760,3 +770,204 @@ outside:
  sta zombie_ai_last_tick
  rts
 .endproc
+
+; Fixed CODE keeps NMI-private obstacle tests out of the full common window.
+; The only interior occluder is a sealed, full-height axis-aligned rectangle.
+; ai_localize has already established the local 0..255-coordinate domain.
+.segment "CODE"
+.if ::AI_INNER_ENABLED
+.export ai_inner_line_of_sight, ai_inner_separated
+
+; Candidate ai_a Q16.8 center must stay outside the radius-two-expanded box.
+; Do not alter candidate bytes, high bytes or the AI's successful-axis flag.
+.proc ai_inner_separated
+ lda active_encounter
+ bne clear
+ lda ai_candidate_x_hi
+ cmp #>AI_INNER_MOVE_X_MIN
+ bne clear
+ lda ai_a+1
+ cmp #<AI_INNER_MOVE_X_MIN
+ bcc clear
+ cmp #<AI_INNER_MOVE_X_MAX
+ bcc x_inside
+ bne clear
+ lda ai_a
+ bne clear
+x_inside:
+ lda ai_candidate_z_hi
+ cmp #>AI_INNER_MOVE_Z_MIN
+ bne clear
+ lda ai_a+3
+ cmp #<AI_INNER_MOVE_Z_MIN
+ bcc clear
+ cmp #<AI_INNER_MOVE_Z_MAX
+ bcc blocked
+ bne clear
+ lda ai_a+2
+ bne clear
+blocked:
+ clc
+ rts
+clear:
+ sec
+ rts
+.endproc
+
+; Separating-axis test for an exact finite sight segment and the closed box.
+; First reject disjoint X/Z intervals. Only overlapping intervals need the
+; two extreme corner orientations, reusing the existing exact 16x16 products.
+; Touching an edge/corner blocks sight. No quantized sampling or divisions.
+.proc ai_inner_line_of_sight
+ .repeat 2,AXIS
+ .if AXIS = 0
+ INNER_MIN .set ::AI_INNER_X_MIN
+ INNER_MAX .set ::AI_INNER_X_MAX
+ .else
+ INNER_MIN .set ::AI_INNER_Z_MIN
+ INNER_MAX .set ::AI_INNER_Z_MAX
+ .endif
+ lda ai_player_ix+AXIS
+ cmp #INNER_MIN
+ bcs :+
+ lda ai_zombie_ix+AXIS
+ cmp #INNER_MIN
+ jcc clear
+:
+ lda ai_player_ix+AXIS
+ cmp #(INNER_MAX+1)
+ bcc :+
+ lda ai_zombie_ix+AXIS
+ cmp #(INNER_MAX+1)
+ jcs clear
+:
+ .endrepeat
+ ; Absolute deltas and their signs, bit7=dx negative, bit6=dz negative.
+ ldx #0
+ ldy #0
+ jsr delta
+ sta ai_sign
+ lda ai_a
+ sta ai_dx
+ lda ai_a+1
+ sta ai_dx+1
+ ldx #1
+ ldy #2
+ jsr delta
+ lsr a
+ ora ai_sign
+ sta ai_sign
+ lda ai_a
+ sta ai_dz
+ lda ai_a+1
+ sta ai_dz+1
+ lda #0
+ sta ai_index
+ jsr corner
+ ; Minimum cross product >0 puts the entire rectangle above the line.
+ beq opposite
+ bpl clear
+opposite:
+ lda #$80
+ sta ai_index
+ jsr corner
+ ; Maximum cross product <0 puts the entire rectangle below the line.
+ bmi clear
+ clc
+ rts
+clear:
+ sec
+ rts
+
+; Absolute player-minus-actor displacement. X local-axis index, Y word offset.
+delta:
+ lda player_x,y
+ sec
+ sbc zombie_x,y
+ sta ai_a
+ lda ai_player_ix,x
+ sbc ai_zombie_ix,x
+ sta ai_a+1
+ jmp absolute
+
+; The sign of dx*(cornerZ-actorZ)-dz*(cornerX-actorX). Select the minimum
+; corner for ai_index=0 and the opposite maximum corner for ai_index=$80.
+corner:
+ lda ai_sign
+ eor ai_index
+ bmi z_max
+ lda #AI_INNER_Z_MIN
+ bne z_ready
+z_max:
+ lda #AI_INNER_Z_MAX
+z_ready:
+ sta ai_a+1
+ lda #0
+ sec
+ sbc zombie_z
+ sta ai_a
+ lda ai_a+1
+ sbc ai_zombie_iz
+ sta ai_a+1
+ jsr absolute
+ eor ai_sign
+ and #$80
+ sta ai_first_sign
+ lda ai_dx
+ sta ai_b
+ lda ai_dx+1
+ sta ai_b+1
+ jsr multiply
+ .repeat 4,I
+ lda ai_result+I
+ sta ai_first+I
+ .endrepeat
+ lda ai_sign
+ asl a
+ eor ai_index
+ bmi x_min
+ lda #AI_INNER_X_MAX
+ bne x_ready
+x_min:
+ lda #AI_INNER_X_MIN
+x_ready:
+ sta ai_a+1
+ lda #0
+ sec
+ sbc zombie_x
+ sta ai_a
+ lda ai_a+1
+ sbc ai_zombie_ix
+ sta ai_a+1
+ jsr absolute
+ pha
+ lda ai_dz
+ sta ai_b
+ lda ai_dz+1
+ sta ai_b+1
+ jsr multiply
+ pla
+ sta ai_b
+ lda ai_sign
+ asl a
+ eor ai_b
+ eor #$80
+ and #$80
+ jmp sum_sign
+
+; Carry describes the preceding subtraction. Return its sign in A and the
+; unsigned magnitude in ai_a[0..1]. Neither X nor Y is changed.
+absolute:
+ lda #0
+ bcs abs_done
+ sec
+ sbc ai_a
+ sta ai_a
+ lda #0
+ sbc ai_a+1
+ sta ai_a+1
+ lda #$80
+abs_done:
+ rts
+.endproc
+.endif

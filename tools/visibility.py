@@ -117,9 +117,12 @@ def cell_sources(x,z,polygon,size=16):
 def compile_visibility(scene):
     grid=scene_grid(scene)
     segments=scene['segments']
-    # Use only full-height exterior boundaries. Pillars and low recess faces
-    # are deliberately left to runtime depth selection.
-    blockers=[s for s in segments if s.get('kind')=='outer' and s.get('collision',True)]
+    # Static full-height room boundaries and the inner enclosure can occlude
+    # whole sight lines. Pillars and low recess faces stay in runtime selection.
+    blockers=[s for s in segments if s.get('kind') in ('outer','inner') and s.get('collision',True)]
+    assert all(s['bottom'] == scene['outer_floor_height'] and
+               s['top'] == scene['ceiling_height'] and not s.get('dynamic')
+               for s in blockers), 'Offline blockers must be static full-height walls'
     assert all(s.get('kind')!='door' for s in blockers), 'An openable door must never occlude the offline PVS'
     def covered(cell,target,depth=0):
         proof=next((p for b in blockers if b['id'] != target['id']

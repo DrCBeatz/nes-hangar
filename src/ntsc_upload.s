@@ -41,6 +41,7 @@ render_door: .res 1          ; producer:immutable desired-open snapshot
 buffer_door: .res 2          ; immutable desired-open bit per render bank
 visible_door: .res 1         ; NMI:state represented by the committed world
 .res 72                     ; pad to127, including bank1 list atoffset64
+; encounters.s aliases unused offsets55..63 for three saved Z/HP arrays.
 .assert door_state = nt_dirty_list+48, error, "Door state overlaps dirty data"
 .assert visible_door < nt_dirty_list+64, error, "Door state overlaps bank1 list"
 ; The last 16 entries of either stride are never written/read as dirty data.

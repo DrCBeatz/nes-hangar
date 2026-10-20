@@ -17,10 +17,21 @@ DOOR_X_MAX = 304
 DOOR_Z = 120
 
 
+def configure(scene):
+    """Derive the dynamic face range after authored opaque walls are inserted."""
+    global DOOR_FIRST, DOOR_END
+    ids = [i for i, face in enumerate(scene['segments']) if face.get('kind') == 'door']
+    assert len(ids) == 2 and ids[1] == ids[0] + 1
+    assert scene['door']['render_face_ids'] == ids
+    DOOR_FIRST, DOOR_END = ids[0], ids[-1] + 1
+
+
 def prepare_scene(scene):
+    global DOOR_FIRST, DOOR_END
     scene = copy.deepcopy(scene)
     assert not any(s.get('kind') == 'door' for s in scene['segments'])
-    assert next(i for i,s in enumerate(scene['segments']) if not s.get('collision',True)) == DOOR_FIRST
+    DOOR_FIRST = next(i for i,s in enumerate(scene['segments']) if not s.get('collision',True))
+    DOOR_END = DOOR_FIRST + 2
     faces=[]
     for name,a,b in [('exit_door_north',(288,120),(304,120)),
                      ('exit_door_south',(304,120),(288,120))]:
@@ -65,6 +76,7 @@ def blocked(x_q8,z_q8,*,door_open=True,radius=2):
 
 
 def validate(scene):
+    configure(scene)
     segments=scene['segments'];door=segments[DOOR_FIRST:DOOR_END]
     assert len(door)==2 and all(s.get('kind')=='door' and not s['collision'] for s in door)
     assert [(s['x1'],s['z1'],s['x2'],s['z2'])for s in door]==[(288,120,304,120),(304,120,288,120)]

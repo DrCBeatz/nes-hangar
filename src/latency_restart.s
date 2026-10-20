@@ -275,6 +275,11 @@ actor_type:
  ; Selected collection bit and item type, without borrowing X from the caller.
  lda active_encounter
  beq health_item
+ cmp #2
+ bcc ammo_item
+ lda #$80                  ; third encounter has no pickup
+ bne item_type
+ammo_item:
  lda medkit_state
  asl a
  and #$80

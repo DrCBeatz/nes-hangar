@@ -6,12 +6,14 @@
 .include "corpse-memory.inc"
 .include "zombie-config.inc"
 .include "encounters-config.inc"
+.assert ENCOUNTER_COUNT = 3, error, "Encounter memory layout requires three actors"
 .importzp button_edges, exit_flags, scene_version
 .importzp zombie_x, zombie_z, zombie_epoch, render_zombie_epoch, visible_zombie_epoch
 .import buffer_zombie_epoch
 .import zombie_hp, zombie_hit_flash, zombie_visible, zombie_visible_target, zombie_dirty
 .import pistol_health, zombie_attack_cancel, corpse_fast_reset, zombie_ai_handoff
 .import encounter_select
+.import nt_dirty_list, visible_door
 .export encounters_reset, encounters_tick, encounters_save, encounters_load, encounter_next_epoch
 .export encounter_switch_begin, encounter_switch_commit
 .export active_encounter, encounter_visual_pending, encounter_x_frac, encounter_x_lo, encounter_x_hi
@@ -19,37 +21,53 @@
 
 .segment "BSS"
 active_encounter: .res 1
-; Seven two-element arrays, indexed directly by encounter ID0/1.
-encounter_x_frac: .res 2
-encounter_x_lo: .res 2
-encounter_x_hi: .res 2
-encounter_z_frac: .res 2
-encounter_z_lo: .res 2
-encounter_z_hi: .res 2
-encounter_hp: .res 2
-.assert encounter_hp+2-active_encounter = 15, error, "Encounter records must stay15 bytes"
+; Four three-element arrays stay in the original sixteen-byte allocation.
+; The remaining three arrays reclaim the unused first dirty-list tail. All
+; arrays are indexed directly by encounter ID0/1/2, including HP on return.
+encounter_x_frac: .res 3
+encounter_x_lo: .res 3
+encounter_x_hi: .res 3
+encounter_z_frac: .res 3
+.res 2                     ; preserve later BSS addresses; available for future state
+.assert encounter_z_frac+3-active_encounter = 13, error, "Encounter coordinate arrays moved"
 encounter_visual_pending: .res 1 ; retain old pixels until the new world commits
 .assert encounter_visual_pending+1-active_encounter = 16, error, "Encounter storage must stay16 bytes"
 
+; NMI-owned persistent state. Dirty preparation writes offsets0..47 and
+; 64..111 only; upload reads those lists with counts<=48. Door state occupies
+; 48..54. These nine bytes are never producer scratch or upload destinations.
+encounter_z_lo = nt_dirty_list+55
+encounter_z_hi = nt_dirty_list+58
+encounter_hp = nt_dirty_list+61
+.assert encounter_z_lo = visible_door+1, lderror, "Encounter tail overlaps door state"
+.assert encounter_z_lo >= nt_dirty_list+48, lderror, "Encounter tail overlaps first dirty list"
+.assert encounter_hp+3 = nt_dirty_list+64, lderror, "Encounter tail overlaps second dirty list"
+
 .segment "RODATA"
 encounter_initial:
- .byte 0,0
- .byte <ZOMBIE_X,<ENCOUNTER1_X
- .byte >ZOMBIE_X,>ENCOUNTER1_X
- .byte 0,0
- .byte <ZOMBIE_Z,<ENCOUNTER1_Z
- .byte >ZOMBIE_Z,>ENCOUNTER1_Z
- .byte 3,3
+ .byte 0,0,0
+ .byte <ZOMBIE_X,<ENCOUNTER1_X,<ENCOUNTER2_X
+ .byte >ZOMBIE_X,>ENCOUNTER1_X,>ENCOUNTER2_X
+ .byte 0,0,0
+ .byte <ZOMBIE_Z,<ENCOUNTER1_Z,<ENCOUNTER2_Z
+ .byte >ZOMBIE_Z,>ENCOUNTER1_Z,>ENCOUNTER2_Z
+ .byte 3,3,3
 
 .segment "CODE"
 ; zombie_reset has already restored the existing active slot to encounter0.
 .proc encounters_reset
- ldx #13
+ ldx #11
 copy:
  lda encounter_initial,x
  sta encounter_x_frac,x
  dex
  bpl copy
+ ldx #8
+copy_tail:
+ lda encounter_initial+12,x
+ sta encounter_z_lo,x
+ dex
+ bpl copy_tail
  lda #0
  sta active_encounter
  sta encounter_visual_pending

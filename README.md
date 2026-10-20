@@ -13,6 +13,7 @@ prototype, not a port of the Doom engine or the complete original level.
 [Download the ROM](release/hangar-ntsc.nes) ·
 [Build from source](#build-from-source) ·
 [Technical notes](#how-it-renders) ·
+[Latest changes](docs/RELEASE-NOTES.md) ·
 [Provenance](docs/PROVENANCE.md)
 
 <p align="center">
@@ -64,30 +65,39 @@ does not repeat the cue or count as a fired shot.
 ## The current level
 
 Find the exit switch beyond the slime room and the openable door. The level
-contains two soldier encounters, one medkit and one ammunition clip. You can
+contains three soldier encounters, one medkit and one ammunition clip. You can
 finish without killing every enemy or collecting every item; the completion
 screen reports kills, items and elapsed time.
 
 - Start with 100 health and **6 rounds**. Each soldier takes three hits.
-- The gray clip supplies 10 rounds; it is on dry ground near the slime-room
-  entrance. Missing shots makes it useful.
+- The gray clip supplies 10 rounds, for **16 available rounds** in total; it
+  is on dry ground near the slime-room entrance. Defeating all three soldiers
+  requires nine hits, so a full clear needs the clip and allows seven misses.
 - The medkit restores up to 25 health and remains available at full health.
 - Green slime costs 5 health after roughly one second, repeating while you
   remain on it. The gray zigzag walkway is safe.
 - Soldiers pursue within authored encounter bounds, telegraph their shots,
   react to hits and leave a short-lived corpse.
 
-The room layout retains the opening pillars and recess, connecting passages,
-two encounter areas, zigzag slime room, pre-exit room and exit chamber. It
-omits much of the original map's geometry, branches, lighting and decoration.
+The route passes the opening pillars and recess, a first encounter room with
+a sealed inner enclosure, the zigzag slime room, and a third encounter beyond
+the openable door before the exit chamber. The enclosure provides cover and
+paths around all four sides; its interior is not accessible. The level omits
+much of the original map's geometry, branches, lighting and decoration.
+
+Only one soldier encounter is active at a time. Each soldier's position and
+health persist when you leave and return, but an outgoing soldier can disappear
+at a room handoff even if it is still in view. The last soldier stays within
+its room and leaves space to pass on either side.
 
 | Opening room | First encounter |
 | --- | --- |
 | ![Recessed floor and pillars](docs/images/opening-room.png) | ![Soldier encounter](docs/images/encounter.png) |
 
 These are native 256 × 240 captures from the initial public build in Mesen at
-normal NTSC timing, with the hardware sprite limit enabled. The current build
-retains the same artwork and level geometry.
+normal NTSC timing, with the hardware sprite limit enabled. The opening room
+and artwork remain representative; the first-encounter still predates the
+inner enclosure.
 
 ## Build from source
 
@@ -151,7 +161,7 @@ The included release is 65,552 bytes (a 16-byte header plus 64 KiB PRG), with
 SHA-256:
 
 ```text
-08ba1092db774a1c543345274f0835c8ca2413a725484a870286a746fa9c2462
+277422aa65613d5f1a581fece1e398c161948d473741b0aa2b47b2d11113e4a2
 ```
 
 The checksum and cartridge metadata are also in [release/](release/).
@@ -197,8 +207,8 @@ files. The current map includes derived segments, visibility zones and floor
 regions: editing it is a technical workflow, not yet a general map editor.
 Changes to geometry can require corresponding visibility/collision changes.
 The generators enforce capacity and geometric assumptions during a build.
-In particular, the door, rectangular recess, two encounter slots and room
-handoff bounds are scene-specific. Changes there can require edits to
+In particular, the door, rectangular recess, inner enclosure, three saved
+encounters and room handoff bounds are scene-specific. Changes there can require edits to
 `tools/door_reference.py`, `ai_reference.py` and `encounter_reference.py`.
 Enemy and item pixels are authored in `tools/zombie_assets.py`,
 `medkit_assets.py`, `ammo_assets.py` and `corpse_assets.py`; the font is in
@@ -221,7 +231,9 @@ difference visible by switching to the coarse boundary comparison.
 The main thread builds an immutable world view while NMI handles bounded PPU
 uploads, controls, gameplay ticks and audio. Publication switches to a completed
 view rather than exposing a partly uploaded picture. Visibility tables reduce
-work for hidden rooms. Enemies and pickups use distance-sized hardware sprites
+work for hidden rooms; a small camera-position filter also skips inner-enclosure
+faces when the connecting passage proves them hidden from the slime room.
+Enemies and pickups use distance-sized hardware sprites
 with foreground masks derived from the world geometry.
 
 The cartridge uses **MMC1 banking, 64 KiB PRG, 8 KiB CHR-RAM and 8 KiB work
@@ -234,7 +246,7 @@ this release has already been tested on a physical console.
 - Rendering is scene-dependent and substantially slower than the display's
   refresh rate. The opening recess/pillars and views across the slime room
   are demanding; control-to-picture latency remains noticeable.
-- Two encounters persist in the level, but only one enemy encounter is active
+- Three encounters persist in the level, but only one enemy encounter is active
   at a time. Crossing a handoff can hide the outgoing soldier or corpse.
 - Sprite size steps, very close actors and sprite-per-scanline pressure remain
   visible limitations. This is not an engine for crowds of enemies.

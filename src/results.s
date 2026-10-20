@@ -2,6 +2,7 @@
 ; with frozen results captured when the player activates the exit switch.
 .setcpu "6502"
 .include "results-memory.inc"
+.include "encounters-config.inc"
 .importzp button_edges, exit_flags, medkit_state
 .import pistol_health, encounters_save, encounter_hp
 .export results_reset, results_tick, results_capture
@@ -63,7 +64,7 @@ done:
  lda #0
  sta results_kills
  sta results_items
- ldx #1
+ ldx #(ENCOUNTER_COUNT-1)
 enemy:
  lda encounter_hp,x
  bne next_enemy

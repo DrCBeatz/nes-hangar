@@ -1,5 +1,5 @@
 {
-  "description": "A complete simplified E1M1 main route: preserved opening recess and pillars, two zombie encounters, damaging zigzag slime, then the source-aligned narrow passage, flat pre-exit room, one openable passage door and an open final doorway and dedicated west-wall exit switch. All world positions translate north by 160 units without changing geometry scale or gameplay distances.",
+  "description": "A complete simplified E1M1 main route: preserved opening recess and pillars, three zombie encounters, damaging zigzag slime, then the source-aligned narrow passage, flat pre-exit room, one openable passage door and an open final doorway and dedicated west-wall exit switch. All world positions translate north by 160 units without changing geometry scale or gameplay distances. A sealed full-height rectangular structure uses the original first encounter chamber footprint; both sides remain walkable on the unchanged flat floor.",
   "wall_height": 10,
   "eye_height": 4,
   "floor_height": 2,
@@ -336,6 +336,24 @@
       [
         72,
         236
+      ]
+    ],
+    [
+      [
+        184,
+        300
+      ],
+      [
+        184,
+        340
+      ],
+      [
+        212,
+        340
+      ],
+      [
+        212,
+        300
       ]
     ]
   ],
@@ -2348,6 +2366,102 @@
       "area": "opening"
     },
     {
+      "id": "inner_structure_west",
+      "x1": 184,
+      "z1": 300,
+      "x2": 184,
+      "z2": 340,
+      "nx": -1,
+      "nz": 0,
+      "plane": -184,
+      "material": 2,
+      "loop": "inner_structure",
+      "kind": "inner",
+      "source_linedefs": [
+        401,
+        402,
+        410,
+        411,
+        412
+      ],
+      "synthetic": true,
+      "bottom": 2,
+      "top": 10,
+      "collision": true,
+      "floor": 2,
+      "floor_material": 3,
+      "area": "encounter"
+    },
+    {
+      "id": "inner_structure_north",
+      "x1": 184,
+      "z1": 340,
+      "x2": 212,
+      "z2": 340,
+      "nx": 0,
+      "nz": 1,
+      "plane": 340,
+      "material": 1,
+      "loop": "inner_structure",
+      "kind": "inner",
+      "source_linedefs": [
+        400
+      ],
+      "synthetic": false,
+      "bottom": 2,
+      "top": 10,
+      "collision": true,
+      "floor": 2,
+      "floor_material": 3,
+      "area": "encounter"
+    },
+    {
+      "id": "inner_structure_east",
+      "x1": 212,
+      "z1": 340,
+      "x2": 212,
+      "z2": 300,
+      "nx": 1,
+      "nz": 0,
+      "plane": 212,
+      "material": 2,
+      "loop": "inner_structure",
+      "kind": "inner",
+      "source_linedefs": [
+        399
+      ],
+      "synthetic": false,
+      "bottom": 2,
+      "top": 10,
+      "collision": true,
+      "floor": 2,
+      "floor_material": 3,
+      "area": "encounter"
+    },
+    {
+      "id": "inner_structure_south",
+      "x1": 212,
+      "z1": 300,
+      "x2": 184,
+      "z2": 300,
+      "nx": 0,
+      "nz": -1,
+      "plane": -300,
+      "material": 1,
+      "loop": "inner_structure",
+      "kind": "inner",
+      "source_linedefs": [
+        398
+      ],
+      "synthetic": false,
+      "bottom": 2,
+      "top": 10,
+      "collision": true,
+      "floor": 2,
+      "floor_material": 3,
+      "area": "encounter"
+    },
+    {
       "id": "exit_door_north",
       "x1": 288,
       "z1": 120,
@@ -3084,8 +3198,16 @@
       312
     ],
     [
-      208,
+      172,
       312
+    ],
+    [
+      172,
+      292
+    ],
+    [
+      220,
+      292
     ],
     [
       228,
@@ -3645,9 +3767,9 @@
       "landmark": "extended passage / encounter room"
     },
     {
-      "x": 208,
+      "x": 220,
       "z": 312,
-      "landmark": "next passage / flat zigzag room"
+      "landmark": "east walkaround of inner structure"
     },
     {
       "x": 228,
@@ -3843,6 +3965,51 @@
       "angle": 0,
       "landmark": "backtracking from exit chamber",
       "fractional_probe": true
+    },
+    {
+      "x": 136,
+      "z": 312,
+      "landmark": "inner structure passage approach"
+    },
+    {
+      "x": 172,
+      "z": 320,
+      "landmark": "inner structure west face"
+    },
+    {
+      "x": 172,
+      "z": 292,
+      "landmark": "inner structure southwest approach"
+    },
+    {
+      "x": 198,
+      "z": 292,
+      "landmark": "inner structure south face"
+    },
+    {
+      "x": 220,
+      "z": 292,
+      "landmark": "inner structure southeast approach"
+    },
+    {
+      "x": 220,
+      "z": 320,
+      "landmark": "inner structure east face"
+    },
+    {
+      "x": 220,
+      "z": 348,
+      "landmark": "inner structure northeast approach"
+    },
+    {
+      "x": 198,
+      "z": 348,
+      "landmark": "inner structure north face"
+    },
+    {
+      "x": 172,
+      "z": 348,
+      "landmark": "inner structure northwest approach"
     }
   ],
   "controls": {
@@ -3956,7 +4123,7 @@
       "The first passage uses axis-aligned runs and short bevels to bound collision arithmetic. Exact upper3:7 diagonal retained.",
       "Sector4 door permanently open; no moving door logic.",
       "First encounter room flattened to floor2/ceiling10 and rectangularized to the WAD outer ledge bounds.",
-      "Interior U-shaped room8/51/52 and small platform sectors9..12 omitted; next exit385 was sealed in the baseline and is opened by this extension.",
+      "Interior chamber8/51/52 sealed at its source outer footprint; its interior steps/ceiling and small platform sectors9..12 omitted; next exit385 was sealed in the baseline and is opened by this extension.",
       "Opening room including its prior simplified alcove/window/stair closures is retained at uniformhalfscale.",
       "Source385 mouth at x232 is adapted to x240,z128..144 to preserve the existing rectangularized encounter.",
       "Small documented right-wall rebevels retain the WAD outline while bounding primitive normals to7 and finite line-distance arithmetic below128.",
@@ -4001,7 +4168,45 @@
       76,
       81
     ],
-    "exit_switch_linedef": 330
+    "exit_switch_linedef": 330,
+    "inner_structure": {
+      "source_sectors": [
+        8,
+        51,
+        52
+      ],
+      "source_outer_linedefs": [
+        398,
+        399,
+        400,
+        401,
+        402,
+        410,
+        411
+      ],
+      "source_opening_linedef": 412,
+      "source_inner_bounds": {
+        "x": [
+          188,
+          208
+        ],
+        "z": [
+          304,
+          336
+        ]
+      },
+      "world_outer_bounds": {
+        "x": [
+          184,
+          212
+        ],
+        "z": [
+          300,
+          340
+        ]
+      },
+      "adaptation": "Retains the source chamber outer footprint, sealing its west-facing opening into one opaque rectangular block. No interior room, steps, lowered ceiling, new door or actor is added. The surrounding floor remains level."
+    }
   },
   "outer_floor_height": 2,
   "recess_depth": 2,
@@ -4386,6 +4591,24 @@
           [
             72,
             236
+          ]
+        ],
+        [
+          [
+            184,
+            300
+          ],
+          [
+            184,
+            340
+          ],
+          [
+            212,
+            340
+          ],
+          [
+            212,
+            300
           ]
         ],
         [
@@ -4854,7 +5077,15 @@
       296
     ],
     [
-      208,
+      220,
+      292
+    ],
+    [
+      172,
+      292
+    ],
+    [
+      172,
       312
     ],
     [
@@ -5227,12 +5458,18 @@
           120
         ]
       },
-      "ai_visibility_domain": "none",
-      "enemy_pursuit_allowed": false,
+      "ai_visibility_domain": "pre_exit",
+      "enemy_pursuit_allowed": true,
       "floor": 2,
       "ceiling": 10,
       "flat": true,
-      "damaging_floor": false
+      "damaging_floor": false,
+      "enemy_pursuit_bounds": [
+        282,
+        310,
+        76,
+        92
+      ]
     },
     {
       "id": "exit_vestibule",
@@ -5703,8 +5940,16 @@
         312
       ],
       [
-        208,
+        172,
         312
+      ],
+      [
+        172,
+        292
+      ],
+      [
+        220,
+        292
       ],
       [
         228,
@@ -5800,13 +6045,28 @@
       ],
       "persistent": true,
       "active_at_once": 1
+    },
+    {
+      "id": 2,
+      "x": 296,
+      "z": 84,
+      "health": 3,
+      "kind": "zombie_soldier",
+      "movement_bounds": [
+        282,
+        310,
+        76,
+        92
+      ],
+      "persistent": true,
+      "active_at_once": 1
     }
   ],
   "ammo": {
     "x": 274,
     "z": 252,
     "floor": 2,
-    "pickup_radius": 4,
+    "pickup_radius": 3,
     "amount": 10,
     "maximum": 99,
     "kind": "collectible_ammo",
@@ -5830,8 +6090,16 @@
         312
       ],
       [
-        208,
+        172,
         312
+      ],
+      [
+        172,
+        292
+      ],
+      [
+        220,
+        292
       ],
       [
         228,
@@ -5882,11 +6150,27 @@
     "active_item_slots": 1,
     "encounter_items": [
       "medkit",
-      "ammo"
+      "ammo",
+      null
     ],
-    "item_scope": "One shared item slot selects the medkit in encounter 0 and ammo in encounter 1. The medkit disappears while the far room is active, including when looking back; each pickup keeps its independent collected state.",
-    "scope": "Activate the far encounter in the first bend, before its relocated soldier can enter view. The outgoing soldier or corpse may disappear at handoff, as before. Reverse handoff requires Z>=168; the southern exit extension retains encounter 1. Both encounters persist independently.",
-    "reverse_z_min": 168
+    "item_scope": "One shared item slot selects the medkit in encounter 0, ammo in encounter 1, and no item in encounter 2. Each pickup retains its independent collected state across handoffs.",
+    "scope": "Activate the second encounter in the first bend, before its relocated soldier can enter view. The first reverse handoff requires Z>=168, so the exit extension cannot reactivate encounter 0. A second Z gate selects encounter 2 near the passage door. All three actors persist independently, with only one active; an outgoing living actor or corpse may disappear at handoff.",
+    "reverse_z_min": 168,
+    "third": {
+      "from_encounter": 1,
+      "to_encounter": 2,
+      "axis": "z",
+      "forward_z": 128,
+      "reverse_z": 136,
+      "hysteresis_width": 8,
+      "player_los_bounds": [
+        256,
+        336,
+        56,
+        120
+      ],
+      "scope": "Activate the third soldier immediately before the Z120 passage door. Returning north to Z136 restores the second encounter. Only one actor renders or simulates at a time; after the door has opened, a living outgoing actor may visibly disappear at this boundary. Closed-door wall occlusion and the room-only sight domain prevent seeing or attacking through the closed panel."
+    }
   },
   "slime": {
     "pools": {
@@ -6795,7 +7079,7 @@
       81
     ],
     "doors": "first passage door opens on use; final exit doorway remains open",
-    "extra_actors": 0,
+    "extra_actors": 1,
     "source_reference": "docs/PROVENANCE.md"
   },
   "door": {
@@ -6808,8 +7092,8 @@
       "exit_door_south"
     ],
     "render_face_ids": [
-      84,
-      85
+      88,
+      89
     ],
     "initial_state": "closed",
     "states": [
@@ -6831,6 +7115,102 @@
     "startingAmmo": 6,
     "startingHealth": 100,
     "ammoPickup": 10,
-    "rationale": "Six rounds can defeat both three-hit enemies with perfect aim; the safely reachable clip supplies room for misses."
+    "rationale": "The three soldiers require nine hits in total. Six starting rounds encourage using the ten-round clip for a full clear, leaving seven spare shots when every round is available."
+  },
+  "inner_structure": {
+    "id": "inner_structure",
+    "kind": "sealed_full_height_block",
+    "bounds": {
+      "x": [
+        184,
+        212
+      ],
+      "z": [
+        300,
+        340
+      ]
+    },
+    "polygon": [
+      [
+        184,
+        300
+      ],
+      [
+        184,
+        340
+      ],
+      [
+        212,
+        340
+      ],
+      [
+        212,
+        300
+      ]
+    ],
+    "floor": 2,
+    "ceiling": 10,
+    "render_faces": [
+      "inner_structure_west",
+      "inner_structure_north",
+      "inner_structure_east",
+      "inner_structure_south"
+    ],
+    "render_face_ids": [
+      84,
+      85,
+      86,
+      87
+    ],
+    "collision": true,
+    "visibility_blocker": true,
+    "source_sectors": [
+      8,
+      51,
+      52
+    ],
+    "source_outer_linedefs": [
+      398,
+      399,
+      400,
+      401,
+      402,
+      410,
+      411
+    ],
+    "source_opening_linedef": 412,
+    "simplification": "Retains the source chamber outer footprint, sealing its west-facing opening into one opaque rectangular block. No interior room, steps, lowered ceiling, new door or actor is added. The surrounding floor remains level.",
+    "room_clearances": {
+      "west": 64,
+      "east": 28,
+      "south": 28,
+      "north": 28
+    },
+    "inspection_route": [
+      [
+        172,
+        312
+      ],
+      [
+        172,
+        292
+      ],
+      [
+        220,
+        292
+      ],
+      [
+        220,
+        348
+      ],
+      [
+        172,
+        348
+      ],
+      [
+        172,
+        312
+      ]
+    ]
   }
 }

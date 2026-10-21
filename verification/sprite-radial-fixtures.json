@@ -1,0 +1,129 @@
+{
+  "passed": true,
+  "romSha256": "f342c5b83f75be92fdf476fab0b2c802afe06438e41e5b571d98b501c05de28e",
+  "cases": 4959,
+  "uniqueSquares": 1653,
+  "eyeHeights": [
+    2,
+    4,
+    6
+  ],
+  "byCategory": {
+    "dense-close-axis": 3075,
+    "axis-global": 87,
+    "diagonal-global": 177,
+    "square-root-boundary": 72,
+    "32-bit-boundary": 12,
+    "deterministic-global": 1536
+  },
+  "radiusLimitCases": [
+    {
+      "deltaQ8": [
+        65535,
+        0
+      ],
+      "square": 4294836225,
+      "rejected": false
+    },
+    {
+      "deltaQ8": [
+        65536,
+        0
+      ],
+      "square": 4294967296,
+      "rejected": true
+    },
+    {
+      "deltaQ8": [
+        -65536,
+        0
+      ],
+      "square": 4294967296,
+      "rejected": true
+    },
+    {
+      "deltaQ8": [
+        0,
+        65536
+      ],
+      "square": 4294967296,
+      "rejected": true
+    },
+    {
+      "deltaQ8": [
+        46340,
+        46340
+      ],
+      "square": 4294791200,
+      "rejected": false
+    },
+    {
+      "deltaQ8": [
+        46341,
+        46341
+      ],
+      "square": 4294976562,
+      "rejected": true
+    },
+    {
+      "deltaQ8": [
+        65000,
+        10000
+      ],
+      "square": 4325000000,
+      "rejected": true
+    },
+    {
+      "deltaQ8": [
+        131072,
+        0
+      ],
+      "square": 17179869184,
+      "rejected": true
+    },
+    {
+      "deltaQ8": [
+        -131072,
+        0
+      ],
+      "square": 17179869184,
+      "rejected": true
+    },
+    {
+      "deltaQ8": [
+        65535,
+        1
+      ],
+      "square": 4294836226,
+      "rejected": false
+    },
+    {
+      "deltaQ8": [
+        65535,
+        362
+      ],
+      "square": 4294967269,
+      "rejected": false
+    },
+    {
+      "deltaQ8": [
+        65535,
+        363
+      ],
+      "square": 4294967994,
+      "rejected": true
+    }
+  ],
+  "fullMemorySentinelCases": 135,
+  "zeroPageSentinelsEveryCase": true,
+  "cycles": {
+    "min": 4817,
+    "max": 5444,
+    "mean": 5005.218390804598
+  },
+  "failures": [],
+  "failureCount": 0,
+  "scope": "Linked 6502 radial_floor_anchor with injected RAM, interrupts disabled. Tests sqrt32 and rounded division against an independent JS Math.sqrt oracle. Not PPU timing or controller gameplay.",
+  "inputLimit": "Largest input is 0xffffffff (radius just below 256). Exactly radius 256 squares to 0x100000000 and cannot be represented; 12 linked chooser boundary fixtures verify rejection at/above that radius and acceptance below it.",
+  "clamp": "floor(sqrt(radiusSquaredQ16)), clamped to at least 64 Q8.8; foot = 96 + round(32768 * (render_eye - floor2) / radiusQ8)."
+}

@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "romSha256": "f342c5b83f75be92fdf476fab0b2c802afe06438e41e5b571d98b501c05de28e",
+  "sizeCases": 3537,
+  "epochCases": 1024,
+  "maxChooserCycles": 2299,
+  "maxEpochCycles": 162,
+  "scope": "Linked 6502 helpers with injected RAM/register fixtures; independent real-distance oracle. Not a PPU timing or controller-route test."
+}

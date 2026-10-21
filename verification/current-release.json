@@ -1,23 +1,24 @@
 {
   "schemaVersion": 1,
-  "verifiedOn": "2026-10-19",
+  "verifiedOn": "2026-10-21",
   "passed": true,
   "artifact": {
     "path": "release/hangar-ntsc.nes",
-    "testedBuildPath": "build/hangar-ntsc.nes",
-    "sha256": "277422aa65613d5f1a581fece1e398c161948d473741b0aa2b47b2d11113e4a2",
+    "sha256": "f342c5b83f75be92fdf476fab0b2c802afe06438e41e5b571d98b501c05de28e",
     "bytes": 65552,
-    "headerHex": "4e45531a040010080000070700000000",
     "region": "NTSC",
     "mapper": "MMC1",
     "prgBytes": 65536,
     "chrRamBytes": 8192,
     "workRamBytes": 8192
   },
+  "baseline": {
+    "sha256": "277422aa65613d5f1a581fece1e398c161948d473741b0aa2b47b2d11113e4a2",
+    "gitCommit": "0f31a3947b7d8a2bed63c64acc53ce8812ce3470",
+    "evidence": "verification/third-encounter-release.json"
+  },
   "integrity": {
-    "testedBuildEqualsBothCapturedMesenRoms": true,
-    "sourceFilesMatchTestedBuildManifest": true,
-    "sourceFileCount": 60,
+    "acceptedExperimentalRomMatchesRelease": true,
     "sourceSha256": {
       "assets/font.json": "89c68eed341c5a4394f732ea9af7e8106abf99ba69f6374b904395435bf80102",
       "assets/map.json": "22503f57ef348a87b7ba51ea568a83aecf13d86e95ee370f75e50dd8a8ec0690",
@@ -31,7 +32,7 @@
       "src/door-memory.inc": "27b71ffee6d32b3d09fc84e70324750c12ce77b1f4e22ec39a14f044281cc120",
       "src/door.s": "12d0a6d92e561f14c53f05fa10f854d02a7d492cd7d2f353ce4192bc01af0e86",
       "src/encounter_select.s": "59ce45e27fa639742faa5b7073e5ecf52943ebe3666cc06809d2d906c497cae4",
-      "src/encounters.s": "0409ea58e0dada1b66e846a6abd42effeff2f458dcf771a53c02e135d6b41c09",
+      "src/encounters.s": "285ffe9e618114a5df8cec89e8802074f0f7246d43770c0ddfa90bee51c2772c",
       "src/exit.s": "59469749487ab789826dcdea9746a99d9f4e7f3c1e08d17004cb4c8578082f2f",
       "src/freshness.s": "3f0bfa2a2cfc6476bdcec7f2c7ba342310f8aa5732e22892b3388fc320c93889",
       "src/geometry.s": "712661ac4774ccc17a8710ff3b1d9d146cae83e965b9d759abcf2aae58bc975e",
@@ -59,11 +60,11 @@
       "src/zombie_ai.s": "5c14c6f2881ebf63181eeed407856002d26c915e9635aa0456fccf626162c351",
       "src/zombie_attack.s": "71a0e2149e914b6b419e954b239ef4d74d6cd900d43ae476de03bdbf33ec3db3",
       "src/zombie_gameplay.s": "1b3a4ef5d88b0c5f67d2468bf2e6c42862671dd104dbe76ca61f0c4091a31954",
-      "src/zombie_render.s": "ba02254cd55aafbf618bef93482897d6b25cc539001c73dba955a77e1e5a49fb",
+      "src/zombie_render.s": "b93e63d7d81d7145a8e4872afb09d06cbbd19c7d9c21164f56d5b21f2c0e58f6",
       "tools/ai_reference.py": "186b7c4a7f7d8ac4681d237ef827a8ba5c7ef81bd99dda5e8a9f753a1fe58a09",
       "tools/ammo_assets.py": "24e6bcb564ee32a1146d29243e36685e99dabd165a4215e7ad725966802dcdce",
-      "tools/build.py": "4e3332a1f89d1d425bf4270de95ab86c3c52eb227be184bff79be712f2ec4289",
-      "tools/corpse_assets.py": "a89acb222580650d3929dc6f91917d9e089d0823b34b836daad9920bd12c5e87",
+      "tools/build.py": "25ab27414960de63056f80fc52039c4d81729bb9ebb949b6723c3b50495d94e7",
+      "tools/corpse_assets.py": "5cf49d6345dea634af43ff2264a49d75e584816a6ca26350b36aa7021f344dda",
       "tools/door_reference.py": "0c640056d05c23fa46d47ffc0d9ed0ac408ade12ba76325fdfac9479212edc7f",
       "tools/encounter_reference.py": "7039e8bf8afb245cba4e216f45de4881b976ea56a1bdabb092dfd58eb56172c8",
       "tools/floor_reference.py": "b175741dafd5f908408018e50c16db6312ab6f4a2fb8885aeb10161fc169d804",
@@ -78,379 +79,130 @@
       "tools/slime_damage.py": "7c72e23d5d3c886bbaa1389063de9218f79376c4d6451d8156535dc92142a79e",
       "tools/title_assets.py": "8f14e9ed9fe5d7c7c29e713c3162672f1bb5f52d63fd61faf80c71ef652159c3",
       "tools/visibility.py": "2664af50c32ce94b988b36a55b735c10a05f9ff18ffcecdef4564d1359f5a8fb",
-      "tools/zombie_assets.py": "d46558975ae9256fd4ce7611de5df54f4c490c93e40085288aab9516b3a9c4cb"
+      "tools/zombie_assets.py": "0204779e9a66fa45a75cae7bc657e7dd7103fc28cc208a20e880389a941215f8",
+      "tools/zombie_size.py": "b098d3392aca6ab2e81a2778d7930b37fc18b8404e0625e2ec166fd54b33c9fc"
     },
-    "linkedLabelsSha256": "b573e36041b6ddafe6b057b74d1e3e3ebefa7bc087c97845898847b1a23c37d5",
-    "generatedMapSha256": "22503f57ef348a87b7ba51ea568a83aecf13d86e95ee370f75e50dd8a8ec0690",
-    "researchBuildManifestSha256": "34543f8ec8abd3df42acdf59bee65199bfb97d4f8550be5f2907efdfbaae16a0",
-    "note": "Two unused research-only audit adapters are excluded from this packaged-source list. The release copy and fresh standalone rebuild are separately checked during publication.",
-    "allFinalCandidateEvidenceMatchesArtifact": true
+    "sourceFileCount": 61,
+    "researchBuildManifestSha256": "149b2461bc14d3ce30aff1e7082664ce808de9df2d7da3c2df9d66a22bca145e",
+    "linkedLabelsSha256": "bca7287a0cf3bcf30ecbad96ae7e0f4129be67d79835af92332e35a9027a52a3",
+    "evidenceSha256": {
+      "sprite-size-comparison.json": "2b47d6772df581f33852b93de772bc1a24d849cb425ffa96aa2e49853d70d310",
+      "sprite-render-comparison.json": "c488bd79b5f6f64ef5afdd743a28aef47770fac75ba2131acc0f98ae09d38af8",
+      "sprite-size-fixtures.json": "5b75b9b10b081fd1388481a71d745e95493be1781660e0db474fecc47b25b379",
+      "sprite-radial-fixtures.json": "6be3504944b9cd3190b570f3066c146685c93b1235b6c52b29fea20d4b9da569"
+    }
   },
   "memory": {
     "segmentBytes": {
       "ZEROPAGE": 256,
       "BSS": 1536,
-      "ACTOR_ART": 6285,
+      "ACTOR_ART": 8065,
       "BOOTDATA": 4675,
       "MAPDATA": 8129,
-      "RODATA": 8114,
-      "CODE": 15918,
+      "RODATA": 8154,
+      "CODE": 16257,
       "STARTUP": 9
     },
-    "unchangedZeroPageAndBssAllocation": true,
-    "internalRamBytes": 2048,
-    "zeroPageBytes": 256,
-    "bssBytes": 1536,
-    "stackPageBytes": 256,
-    "persistentEnemyRecords": {
-      "count": 3,
-      "bytes": 21,
-      "addedBssBytes": 0,
-      "reclaimedDirtyListTail": [
-        "$0762",
-        "$076A"
-      ],
-      "dirtyListMaximumEntriesPerBank": 48
+    "zeroPageAndBssAllocationUnchanged": true,
+    "maximumSpriteWidth": 32,
+    "maximumSpriteHeight": 64,
+    "maximumSpritesPerScanline": 8
+  },
+  "sizing": {
+    "widths": [
+      4,
+      6,
+      8,
+      12,
+      16,
+      20,
+      24,
+      26,
+      28,
+      30,
+      32
+    ],
+    "nearSwitchMarginWorldUnits": 0.125,
+    "nearHeightStepPixels": 4,
+    "history": "Living actor only, keyed by immutable encounter epoch",
+    "finalCandidateHelperCounts": {
+      "size": 3537,
+      "epoch": 1024
     },
-    "recordAudit": {
-      "passed": true,
-      "checks": {
-        "reset": 3,
-        "save": 360,
-        "load": 1080,
-        "dirtyPrepare": 24,
-        "dirtyUpload": 119,
-        "dirtyReset": 24
-      },
-      "allThreePrgMappings": true,
-      "allNonStackUnownedRamGuarded": true,
-      "summarySha256": "6009fa2bbca27443583ff9c18adbb773a9c348e9f7b7fb701f493659d5adaafd"
-    }
+    "componentComparison": "verification/sprite-size-comparison.json tests intermediate b5b1ec39, not the final radial-anchor ROM"
   },
-  "geometry": {
-    "passed": true,
-    "renderFaces": 118,
-    "collisionFaces": 88,
-    "thirdSpawn": [
-      296,
-      84
-    ],
-    "thirdMovementBounds": [
-      282,
-      310,
-      76,
-      92
-    ],
-    "thirdSpriteInsideRoomVisibilityKernel": true,
-    "thirdContactBoundsInsideRoom": true,
-    "bothWalkaroundRoutesClear": true,
-    "thirdSweepChecks": 1408,
-    "summarySha256": "35832d5a8e82b497f39a14aa07627a0cc140ec995ec23394e8617ca3c601f7d1"
+  "verticalPlacement": {
+    "policy": "Continuous radial floor anchor for living soldiers and corpses; true forward depth retained for horizontal projection and foreground occlusion; pickups retain their prior projection",
+    "numericalCases": 4959,
+    "radiusLimitCases": 12,
+    "tradeoff": "Off-axis floor contact is approximate; this prevents a radial-sized sprite sinking while turning without enlarging the maximum sprite"
   },
-  "focusedHelpers": {
+  "mesen": {
     "passed": true,
-    "scope": "Independent linked tests for third-context gates, AI, items and results.\n\nInjected helper/state-transition fixtures, not controller gameplay or PPU timing.\nExpected threshold/rectangle rules are specified here independently of generated\nreference models. Finite-wall visibility and route safety are proved separately.",
-    "counts": {
-      "gates": 1512,
-      "los": 1875,
-      "movement": 675,
-      "attacks": 21,
-      "handoffs": 8,
-      "results": 288,
-      "absentItem": 24
+    "checks": {
+      "allFourRunsCompleted": true,
+      "focused60PerRom": true,
+      "stress23PerRom": true,
+      "allViewsCoherentlyPublished": true,
+      "noPpuNmiErrors": true,
+      "actorDimensionsAndHorizontalProjectionUnchanged": true,
+      "allFixedRadiusTurnsKeepVerticalPosition": true,
+      "centerFacingScreensExact": true,
+      "centerFacingPpuActorPixelsExact": true,
+      "allFocusedWorldBackgroundPixelsExact": true,
+      "allStressWorldBackgroundPixelsExact": true,
+      "trueCameraInverseUnchanged": true,
+      "worldOcclusionMasksUnchanged": true,
+      "itemProjectionUnchanged": true,
+      "itemPpuPixelsExact": true,
+      "centerFacingCorpsePixelsExact": true,
+      "corpseVerticalPositionStableWhenTurning": true,
+      "normalEightSpritesPerScanlineLimit": true,
+      "fullyHiddenWallAndPillarActorsStayHidden": true
     },
-    "allThreePrgMappings": true,
-    "allEightAliveDeadCombinations": true,
-    "activeThirdSavedBeforeResultsCount": true,
-    "thirdHasNoPickupTableAccess": true,
-    "summarySha256": "e631e701bd42e0952af284ca89df6f6011acada6946439c739be27ed73ee42a3",
-    "pickupExitAndSoundRegression": {
-      "passed": true,
-      "counts": {
-        "pickupBoundaryCases": 2664,
-        "exitBoundaryCases": 2808
-      },
-      "checks": {
-        "exactFractionalPickupCirclesMatchIndependentOracle": true,
-        "exitRectangleAndAngleEdgesAreExact": true,
-        "exitStillRequiresFreshAAndRejectsBothStrafeDirections": true,
-        "emptyCueHasExactShortNoiseCueWithoutShotOrHudMutation": true,
-        "emptyCueStopsAfterEightActiveTicksAndHeldBDoesNotRepeat": true,
-        "freshBRearmsOnlyAfterCooldown": true,
-        "pausePreservesAndRestoresTheCueWithoutDisablingOtherChannels": true,
-        "resetDeathAndCompletionCancelCueAndPreserveTriangleEnable": true,
-        "deadCompletedAndCoolingDownPlayersCannotStartCue": true,
-        "doorAndGuardNoiseOwnersYieldWithoutRevivingTheirTails": true
-      },
-      "jsnesCommit": "5b27c4243f1cb2528c54941e13c29c4ced7d5a45",
-      "cpuSha256": "17469b310738c4b3092d648289c8537a4584f6b45bc1735adb540968a75308f2",
-      "driver": "verification/gameplay-fixtures.mjs",
-      "driverSha256": "c89b3e67c75a12af32fafd84ea23bdec9f4cefe9b9c51684bc4fc1c5c0c5d4a4",
-      "summarySha256": "41157d32cdb39571f064756e6b02f65cebf1fd3236b695a3d96b5747c8466c07"
-    }
+    "posesPerRom": {
+      "turn": 60,
+      "additionalControls": 23
+    },
+    "totalRefreshes": 10284,
+    "stockNtsc": true,
+    "extraScanlines": 0,
+    "controllerOnly": false,
+    "scope": "Ordered fixed camera/actor poses injected into RAM, AI held still; original linked ROM performs projection, rendering, upload and PPU display",
+    "report": "verification/sprite-render-comparison.json"
   },
-  "producer": {
+  "browser": {
     "passed": true,
-    "scope": "Matched producer audit: preserved slime views and the new final soldier.\n\nInjects immutable poses into the ordinary linked renderer. CPU cycle counts\nexclude interrupts/uploads and are not gameplay FPS. The independent all-face\noracle checks the world; enemy pixels intentionally differ in new encounter.",
-    "baselineRomSha256": "f00e6258530db0261e1d52b0a0d0598b47c109d0f5a85ffd862035a87662581f",
-    "poseCount": 14,
-    "allWorldPixelsMatchUnfilteredOracle": true,
-    "poses": [
-      {
-        "id": "slime-worst-back",
-        "baselineCycles": 685994,
-        "candidateCycles": 685999,
-        "changePercent": 0.001,
-        "candidatePlanes": 13,
-        "candidatePatterns": 30
-      },
-      {
-        "id": "slime-exit",
-        "baselineCycles": 652443,
-        "candidateCycles": 652448,
-        "changePercent": 0.001,
-        "candidatePlanes": 11,
-        "candidatePatterns": 32
-      },
-      {
-        "id": "slime-door-facing",
-        "baselineCycles": 584820,
-        "candidateCycles": 584825,
-        "changePercent": 0.001,
-        "candidatePlanes": 3,
-        "candidatePatterns": 16
-      },
-      {
-        "id": "slime-door-open",
-        "baselineCycles": 691824,
-        "candidateCycles": 691829,
-        "changePercent": 0.001,
-        "candidatePlanes": 11,
-        "candidatePatterns": 24
-      },
-      {
-        "id": "third-door-closed",
-        "baselineCycles": 364557,
-        "candidateCycles": 382592,
-        "changePercent": 4.947,
-        "candidatePlanes": 1,
-        "candidatePatterns": 0
-      },
-      {
-        "id": "third-door-open",
-        "baselineCycles": 628045,
-        "candidateCycles": 654524,
-        "changePercent": 4.216,
-        "candidatePlanes": 15,
-        "candidatePatterns": 42
-      },
-      {
-        "id": "third-enter",
-        "baselineCycles": 633471,
-        "candidateCycles": 676163,
-        "changePercent": 6.739,
-        "candidatePlanes": 13,
-        "candidatePatterns": 40
-      },
-      {
-        "id": "third-close",
-        "baselineCycles": 621384,
-        "candidateCycles": 712681,
-        "changePercent": 14.693,
-        "candidatePlanes": 11,
-        "candidatePatterns": 42
-      },
-      {
-        "id": "third-oblique",
-        "baselineCycles": 636679,
-        "candidateCycles": 664295,
-        "changePercent": 4.338,
-        "candidatePlanes": 9,
-        "candidatePatterns": 56
-      },
-      {
-        "id": "third-side",
-        "baselineCycles": 527379,
-        "candidateCycles": 554001,
-        "changePercent": 5.048,
-        "candidatePlanes": 11,
-        "candidatePatterns": 33
-      },
-      {
-        "id": "third-toward-exit",
-        "baselineCycles": 726487,
-        "candidateCycles": 729666,
-        "changePercent": 0.438,
-        "candidatePlanes": 13,
-        "candidatePatterns": 37
-      },
-      {
-        "id": "third-looking-back",
-        "baselineCycles": 950806,
-        "candidateCycles": 999979,
-        "changePercent": 5.172,
-        "candidatePlanes": 32,
-        "candidatePatterns": 28
-      },
-      {
-        "id": "third-coarse",
-        "baselineCycles": 533472,
-        "candidateCycles": 574694,
-        "changePercent": 7.727,
-        "candidatePlanes": 13,
-        "candidatePatterns": 6
-      },
-      {
-        "id": "third-defeated",
-        "baselineCycles": 633986,
-        "candidateCycles": 633987,
-        "changePercent": 0.0,
-        "candidatePlanes": 13,
-        "candidatePatterns": 34
-      }
-    ],
-    "summarySha256": "58fa9e8e3222c73e5dee016ff25be3c82c73a968ac895e0bbff9ad61571d91d3"
-  },
-  "stockNtscMesen": {
-    "passed": true,
-    "emulatorBinarySha256": "ce4446a92096a024145e6ed2793cce8b489460bb3ac034cd9d1d77d96109fced",
-    "extraScanlinesBeforeNmi": 0,
-    "extraScanlinesAfterNmi": 0,
-    "originalSpriteLimit": true,
-    "runAheadFrames": 0,
+    "tests": 18,
+    "frames": 7529,
     "controllerOnly": true,
-    "gameRamOrRomInjection": false,
-    "personalSettingsUnchanged": true,
-    "totalFrames": 23062,
-    "totalExactWorldCaptures": 55,
-    "routes": [
-      {
-        "id": "complete-level-and-reset",
-        "passed": true,
-        "frames": 14322,
-        "phases": 127,
-        "exactWorldCaptures": 29,
-        "checks": {
-          "controllerOnlyRouteCompleted": true,
-          "noTimeouts": true,
-          "noRuntimeErrors": true,
-          "nmiNeverNested": true,
-          "exactPublishedWorlds": true,
-          "closedDoorThirdContextObserved": true,
-          "closedDoorEnemyCannotAttackOrTarget": true,
-          "thirdShotDamagesPlayer": true,
-          "thirdNeverCollectsItem": true,
-          "thirdDefeatedExactlyOnce": true,
-          "thirdReceivesThreeHits": true,
-          "threeContextStatesObserved": true,
-          "allRenderCapacityFits": true,
-          "recordTailWrittenOnlyByOwners": true,
-          "thirdStaysInsideMovementBox": true,
-          "thirdActuallyMoves": true,
-          "allThreeKilled": true,
-          "nineHits": true,
-          "nominalAmmoBalance": true,
-          "bothPickupsExactlyOnce": true,
-          "thirdDeadOnReturn": true,
-          "resultsThreeKillsTwoItems": true,
-          "resetRestoresAllEnemies": true,
-          "resetRestoresAmmoDoorAndCounts": true
-        },
-        "eventCounts": {
-          "zombie_hit": 9,
-          "zombie_defeat": 3,
-          "player_damage": 9,
-          "ammo_collect": 1,
-          "pistol_shot_accepted": 9
-        },
-        "peakResources": {
-          "maximumPlanes": 33,
-          "maximumPatterns": 113,
-          "maximumSpans": 8
-        },
-        "evidenceSha256": {
-          "summary": "2076033c83a5be839a1392904981766bae55a07003eb28fbf85611237c1c0648",
-          "observer": "5bb5af0f0caa91e3754787d720e3cb70c48fb4a8dbcced27a11eab1c187718de",
-          "config": "eca0a84014482e8ff8e712c831cd9e0647a1d909cdb7d3a7dbc7aea51d5b54d3",
-          "rawObservation": "e9f8c15a3006c185a742235ccc4ba7421de65bc410df3bcfe1a61dc190177dbb"
-        }
-      },
-      {
-        "id": "second-alive-backtracking",
-        "passed": true,
-        "frames": 8740,
-        "phases": 68,
-        "exactWorldCaptures": 26,
-        "checks": {
-          "controllerOnlyRouteCompleted": true,
-          "noTimeouts": true,
-          "noRuntimeErrors": true,
-          "nmiNeverNested": true,
-          "exactPublishedWorlds": true,
-          "closedDoorThirdContextObserved": true,
-          "closedDoorEnemyCannotAttackOrTarget": true,
-          "thirdShotDamagesPlayer": true,
-          "thirdNeverCollectsItem": true,
-          "thirdDefeatedExactlyOnce": true,
-          "thirdReceivesThreeHits": true,
-          "threeContextStatesObserved": true,
-          "allRenderCapacityFits": true,
-          "recordTailWrittenOnlyByOwners": true,
-          "thirdStaysInsideMovementBox": true,
-          "thirdActuallyMoves": true,
-          "secondRemainsAliveOnReturn": true,
-          "thirdDamagePersists": true,
-          "thirdDeadRecordPersists": true,
-          "secondStillAliveAtEnd": true,
-          "deadThirdBodyDoesNotBlock": true,
-          "doorRemainsOpen": true
-        },
-        "eventCounts": {
-          "zombie_hit": 6,
-          "zombie_defeat": 2,
-          "player_damage": 9,
-          "ammo_collect": 1,
-          "pistol_shot_accepted": 6
-        },
-        "peakResources": {
-          "maximumPlanes": 28,
-          "maximumPatterns": 113,
-          "maximumSpans": 8
-        },
-        "evidenceSha256": {
-          "summary": "13a91c854e4d01856b9f1e9c1c0a88c0cebe5c6faa89394522b7f82ff6baeb6a",
-          "observer": "5bb5af0f0caa91e3754787d720e3cb70c48fb4a8dbcced27a11eab1c187718de",
-          "config": "b973d55807e853c2e559342d04d6083cb72b79fbd4e43447eb8aec30dba0fc44",
-          "rawObservation": "d2ba4291ebdc1bcd63ff6a85f1b96a255ea1973312c51e93762b038c77ecfd0e"
-        }
-      }
-    ],
-    "completedLevel": {
-      "kills": 3,
-      "items": 2,
-      "shots": 9,
-      "roundsRemaining": 7,
-      "actualResultsScreen": "KILLS 3 / 3; ITEMS 2 / 2",
-      "resetEnemyHealth": [
-        3,
-        3,
-        3
-      ],
-      "resetAmmo": 6
-    }
+    "stockTiming": true,
+    "report": "verification/current-browser.json",
+    "liveDeploymentChanged": false
+  },
+  "performance": {
+    "scope": "Producer CPU cycles exclude interrupts/uploads and are not gameplay FPS",
+    "radialAnchorIncrementPercent": {
+      "centeredMin": 0.44,
+      "centeredMax": 0.75,
+      "allTurnMax": 1.25
+    },
+    "sizeTierIncrement": "Intermediate b5b1ec39 comparison: 26 versus24 width +3.23..5.28%, 30 versus28 +1.05..1.68%; comparison differs in amount of visible sprite work"
   },
   "reproducibility": {
-    "buildCommand": "python3 tools/build.py --verify",
-    "helperCommand": "node verification/gameplay-fixtures.mjs --core /path/to/pinned-jsnes/src/index.js --output build/gameplay-fixtures.json",
-    "ciScope": "The checked-in GitHub Actions workflow rebuilds and compares the ROM. It does not run the research Mesen or linked-renderer harnesses.",
-    "externalEvidence": "Detailed captures, old ROM baselines and research-only adapters are retained outside the public source package; their immutable report and input checksums are recorded here.",
-    "noNewStandaloneBuildClaim": true
+    "buildCommand": "python3 -I -S -B tools/build.py --verify",
+    "standaloneReport": "verification/current-build.json",
+    "fixtureCommands": [
+      "node verification/sprite-size-fixtures.mjs --core /path/to/pinned-jsnes/src/index.js",
+      "node verification/sprite-radial-fixtures.mjs --core /path/to/pinned-jsnes/src/index.js"
+    ],
+    "externalEvidence": "Detailed Mesen captures and browser harness remain in the research workspace; portable summaries and numerical fixture drivers are included here"
   },
   "limitations": [
-    "No physical NES or flash-cartridge test is claimed.",
-    "Producer fixtures and focused helpers inject state; the two final Mesen routes use controller input only.",
-    "CPU producer-cycle measurements exclude interrupts and uploading and are not gameplay frame rates.",
-    "One soldier context simulates/renders at a time. An outgoing living actor may disappear when crossing a handoff, then return with its saved state.",
-    "The matched source report does not replace the separate fresh standalone rebuild or browser deployment checks."
+    "No physical NES or flash-cartridge test claimed.",
+    "Mesen comparison uses injected diagnostic poses; the separate JSNES route uses controller input only.",
+    "Scaling remains discrete and ground contact is an off-axis visual approximation.",
+    "One encounter simulates/renders at a time.",
+    "Browser-hosted release remains the preceding 277422aa ROM until a separate deployment."
   ]
 }

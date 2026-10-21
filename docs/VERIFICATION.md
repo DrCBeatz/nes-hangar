@@ -3,18 +3,77 @@
 The accepted release is `release/hangar-ntsc.nes`, 65,552 bytes, with SHA-256:
 
 ```text
-277422aa65613d5f1a581fece1e398c161948d473741b0aa2b47b2d11113e4a2
+f342c5b83f75be92fdf476fab0b2c802afe06438e41e5b571d98b501c05de28e
 ```
 
-## Enclosure, visibility and third encounter
+## Soldier sprite stability
+
+The `prototype-2026-10-21-sprite-stability` release combines intermediate
+26 × 52 and 30 × 60 soldier sizes, near-size hysteresis, and radial vertical
+placement for soldiers and corpses. It preserves the map, gameplay and
+cartridge layout. The [sprite notes](SPRITE-STABILITY.md) explain the visual
+tradeoff; stable vertical placement is not exact off-axis floor projection.
+
+[current-release.json](../verification/current-release.json) records the
+accepted artifact and its evidence. The
+[fresh standalone build](../verification/current-build.json) checks that the
+packaged source reproduces the release with
+`python3 -I -S -B tools/build.py --verify`.
+
+The final ROM's linked helper checks include 3,537 size cases and 1,024 epoch
+cases in [sprite-size-fixtures.json](../verification/sprite-size-fixtures.json),
+plus 4,959 radial-anchor cases and twelve far-radius acceptance/rejection
+checks in [sprite-radial-fixtures.json](../verification/sprite-radial-fixtures.json).
+These execute assembled 6502 routines with injected state and interrupts
+suppressed; they are not normal play or PPU timing tests.
+
+After building, rerun the portable sprite helpers with the pinned JSNES core.
+Their default reports go under `build/`, leaving accepted evidence intact:
+
+```sh
+node verification/sprite-size-fixtures.mjs --core /path/to/jsnes/src/index.js
+node verification/sprite-radial-fixtures.mjs --core /path/to/jsnes/src/index.js
+```
+
+[sprite-render-comparison.json](../verification/sprite-render-comparison.json)
+compares the final ROM against the preceding size-only candidate in stock
+NTSC Mesen: 60 fixed-radius turns and 23 wall, pillar, recess, corpse, item
+and culled-actor controls per ROM. The tests explicitly inject diagnostic
+poses and hold the AI still. They verify stable vertical position, unchanged
+world pixels and true-depth masks, unchanged item projection/pixels, and
+coherent publication with no observed illegal PPU writes or nested NMI.
+The observed maximum is eight sprites on a scanline. These are bounded
+checks, not proof of every possible camera pose.
+
+[sprite-size-comparison.json](../verification/sprite-size-comparison.json)
+preserves the earlier sizing experiment: 423 ordered poses per ROM compare
+the old `277422aa…` release to the intermediate `b5b1ec39…` candidate. They
+show smaller steps and no repeated threshold toggling in the tested cases.
+This report deliberately retains that intermediate ROM hash; it is not a
+claim that the final radial-anchor ROM ran the same entire pose sequence.
+
+All 18 isolated emulator tests passed for the final ROM. The controller-only
+JSNES route completed 7,529 normal NTSC refreshes, including all three kills,
+both pickups, pause, the empty-gun cue, the door, completion and restart.
+It finished with twelve shots, nine hits, four rounds and 90 health; three
+rounds were deliberately wasted to test the empty-gun cue. All 46 read-only
+RAM symbols matched the new linker output. See
+[current-browser.json](../verification/current-browser.json). The live site
+still serves the previous release; these tests did not deploy an update.
+
+The normal build does not rerun the research emulator harnesses. Detailed
+traces remain in the research workspace rather than this standalone package.
+No physical NES or flash-cartridge test is claimed.
+
+## Previous enclosure, visibility and third encounter
 
 The `prototype-2026-10-19-third-encounter` release combines the first room's
 sealed inner enclosure, three-unit ammo pickup radius, conservative visibility
 filter for selected slime-room views, and third soldier beyond the openable
-door. The [release notes](RELEASE-NOTES.md) describe the gameplay changes.
+door. The previous-release section of the [release notes](RELEASE-NOTES.md) describes those gameplay changes.
 
-[current-release.json](../verification/current-release.json) is the portable
-evidence record for this exact ROM. It includes source and artifact hashes,
+[third-encounter-release.json](../verification/third-encounter-release.json) is the portable
+evidence record for that ROM (`277422aa…`). It includes source and artifact hashes,
 cartridge and linked-memory sizes, geometry proofs, focused helper checks,
 producer comparisons, and summaries of two controller-only Mesen routes.
 Detailed research traces, old ROM baselines and workspace-specific harnesses
@@ -36,9 +95,9 @@ PRG mappings. Fourteen matched producer poses retain identical background
 pixels and match the all-face reference. Their CPU-cycle measurements exclude
 interrupts and uploading; they are not gameplay frame rates.
 
-Rebuild and compare the current release with `python3 tools/build.py --verify`.
-The [fresh standalone build](../verification/current-build.json) reproduced
-this exact ROM with `python3 -I -S -B tools/build.py --verify`, in a new copy
+At [source commit 0f31a394](https://github.com/DrCBeatz/nes-hangar/tree/0f31a3947b7d8a2bed63c64acc53ce8812ce3470), rebuild and compare that release with `python3 tools/build.py --verify`.
+The [historical standalone build](../verification/third-encounter-build.json) reproduced
+that exact ROM with `python3 -I -S -B tools/build.py --verify`, in a new copy
 outside the research workspace with no prior build output. The portable
 pickup/exit/sound helper suite also passed from that copy.
 The normal build does not rerun the research emulator harnesses. The cartridge
@@ -112,7 +171,7 @@ not normal play. After building, run the candidate fixtures with an existing
 installation of the pinned JSNES core:
 
 ```sh
-node verification/gameplay-fixtures.mjs --core /path/to/jsnes/src/index.js
+node verification/gameplay-fixtures.mjs --core /path/to/jsnes/src/index.js --output build/gameplay-fixtures.json
 ```
 
 The core is `taiyuuki/jsnes` commit `5b27c4243f1cb2528c54941e13c29c4ced7d5a45`,

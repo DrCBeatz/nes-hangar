@@ -1,12 +1,12 @@
 {
-  "romSha256": "277422aa65613d5f1a581fece1e398c161948d473741b0aa2b47b2d11113e4a2",
+  "romSha256": "f342c5b83f75be92fdf476fab0b2c802afe06438e41e5b571d98b501c05de28e",
   "jsnesCommit": "5b27c4243f1cb2528c54941e13c29c4ced7d5a45",
-  "frames": 7555,
+  "frames": 7529,
   "launchToFirstPictureFrames": 50,
   "mapper": "MMC1",
   "chr": "RAM",
-  "generatedPictures": 7555,
-  "audioSamples": 6034225,
+  "generatedPictures": 7529,
+  "audioSamples": 6013459,
   "controllerOnly": true,
   "stockTiming": true,
   "snapshots": {
@@ -147,15 +147,15 @@
       "health": 90,
       "ammo": 7,
       "shots": 9,
-      "enemyX": 74132,
+      "enemyX": 74138,
       "enemyZ": 59904,
       "enemyHp": 0,
       "hits": 6,
       "kills": 2,
-      "simulation": 239,
+      "simulation": 242,
       "enemyAttack": 0,
       "enemyTimer": 0,
-      "clock": 5203,
+      "clock": 5206,
       "mode": 0,
       "publication": 176,
       "uploadBusy": 1,
@@ -178,12 +178,12 @@
       "enemyHp": 0,
       "hits": 9,
       "kills": 3,
-      "simulation": 50,
+      "simulation": 28,
       "enemyAttack": 0,
       "enemyTimer": 0,
-      "clock": 6205,
+      "clock": 6178,
       "mode": 0,
-      "publication": 204,
+      "publication": 205,
       "uploadBusy": 1,
       "fireTimer": 6,
       "cooldown": 15,
@@ -204,12 +204,12 @@
       "enemyHp": 0,
       "hits": 9,
       "kills": 3,
-      "simulation": 220,
+      "simulation": 198,
       "enemyAttack": 0,
       "enemyTimer": 0,
-      "clock": 7023,
+      "clock": 6997,
       "mode": 0,
-      "publication": 234,
+      "publication": 235,
       "uploadBusy": 1,
       "fireTimer": 0,
       "cooldown": 0,
@@ -250,33 +250,9 @@
     "count": 18,
     "failures": 0
   },
-  "productionBuildPassed": true,
-  "distRomSha256": "277422aa65613d5f1a581fece1e398c161948d473741b0aa2b47b2d11113e4a2",
-  "testedAppFiles": [
-    {
-      "path": ".gitignore",
-      "before": "c8bf3b61e204e0cd1ac7479875935fc2eeb820310fe933a6050bfc02091f4518",
-      "after": "9e1def900eba57f9333274e26df5829c60622027ab4651ae75c0731236567752",
-      "changed": true
-    },
-    {
-      "path": "THIRD_PARTY_ROMS.md",
-      "before": "cf411432fdb8a5643fb92376b78cc23ecc74ba0bc4f2ccb660b7d27fe8f97178",
-      "after": "2ef4da831f577760a4360f49771d794cd8045b49c5f83dba8f9648831e68b441",
-      "changed": true
-    },
-    {
-      "path": "public/roms/manifest.json",
-      "before": "fa91bd399dc276a9583c8df6a55a443872599c1aebe53375b054c77d4bccd8d6",
-      "after": "0380b1540e2c7f6df171cc0f66623806ae204e853ffbf27f4ef648bb24bd9cfe",
-      "changed": true
-    },
-    {
-      "path": "test/hangar.test.mjs",
-      "before": "f8cc9f04ae9487827e4361a0ccc26e7a58fdab06292824fa90eafcddbf7b0070",
-      "after": "6737f57ef82689b74031bac1553b1f7755107d7876d8b8efc6003970a1fd1e7d",
-      "changed": true
-    }
-  ],
-  "scope": "Local staged production build and pinned JSNES controller-only integration tests. Live CDN publication and browser device performance are separate checks."
+  "scope": "Isolated JSNES core/controller route and loading tests; no live app changes. Only test ROM SHA, hosted manifest and candidate ROM were changed. All 46 read-only RAM addresses match the reviewed source symbols.",
+  "liveDeploymentChanged": false,
+  "appSourceChanged": false,
+  "validation": "Isolated copy of browser test suite with candidate ROM and manifest only",
+  "evidenceSha256": "2e40e239ff9780972039d3fb480577a955a18d2839f5d8c1196b374de9dd8edc"
 }

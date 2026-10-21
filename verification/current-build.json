@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "romSha256": "277422aa65613d5f1a581fece1e398c161948d473741b0aa2b47b2d11113e4a2",
+  "romSha256": "f342c5b83f75be92fdf476fab0b2c802afe06438e41e5b571d98b501c05de28e",
   "command": "python3 -I -S -B tools/build.py --verify",
   "freshDirectory": true,
   "outsideResearchWorkspace": true,
@@ -23,7 +23,7 @@
     "src/door-memory.inc": "27b71ffee6d32b3d09fc84e70324750c12ce77b1f4e22ec39a14f044281cc120",
     "src/door.s": "12d0a6d92e561f14c53f05fa10f854d02a7d492cd7d2f353ce4192bc01af0e86",
     "src/encounter_select.s": "59ce45e27fa639742faa5b7073e5ecf52943ebe3666cc06809d2d906c497cae4",
-    "src/encounters.s": "0409ea58e0dada1b66e846a6abd42effeff2f458dcf771a53c02e135d6b41c09",
+    "src/encounters.s": "285ffe9e618114a5df8cec89e8802074f0f7246d43770c0ddfa90bee51c2772c",
     "src/exit.s": "59469749487ab789826dcdea9746a99d9f4e7f3c1e08d17004cb4c8578082f2f",
     "src/freshness.s": "3f0bfa2a2cfc6476bdcec7f2c7ba342310f8aa5732e22892b3388fc320c93889",
     "src/geometry.s": "712661ac4774ccc17a8710ff3b1d9d146cae83e965b9d759abcf2aae58bc975e",
@@ -51,11 +51,11 @@
     "src/zombie_ai.s": "5c14c6f2881ebf63181eeed407856002d26c915e9635aa0456fccf626162c351",
     "src/zombie_attack.s": "71a0e2149e914b6b419e954b239ef4d74d6cd900d43ae476de03bdbf33ec3db3",
     "src/zombie_gameplay.s": "1b3a4ef5d88b0c5f67d2468bf2e6c42862671dd104dbe76ca61f0c4091a31954",
-    "src/zombie_render.s": "ba02254cd55aafbf618bef93482897d6b25cc539001c73dba955a77e1e5a49fb",
+    "src/zombie_render.s": "b93e63d7d81d7145a8e4872afb09d06cbbd19c7d9c21164f56d5b21f2c0e58f6",
     "tools/ai_reference.py": "186b7c4a7f7d8ac4681d237ef827a8ba5c7ef81bd99dda5e8a9f753a1fe58a09",
     "tools/ammo_assets.py": "24e6bcb564ee32a1146d29243e36685e99dabd165a4215e7ad725966802dcdce",
-    "tools/build.py": "4e3332a1f89d1d425bf4270de95ab86c3c52eb227be184bff79be712f2ec4289",
-    "tools/corpse_assets.py": "a89acb222580650d3929dc6f91917d9e089d0823b34b836daad9920bd12c5e87",
+    "tools/build.py": "25ab27414960de63056f80fc52039c4d81729bb9ebb949b6723c3b50495d94e7",
+    "tools/corpse_assets.py": "5cf49d6345dea634af43ff2264a49d75e584816a6ca26350b36aa7021f344dda",
     "tools/door_reference.py": "0c640056d05c23fa46d47ffc0d9ed0ac408ade12ba76325fdfac9479212edc7f",
     "tools/encounter_reference.py": "7039e8bf8afb245cba4e216f45de4881b976ea56a1bdabb092dfd58eb56172c8",
     "tools/floor_reference.py": "b175741dafd5f908408018e50c16db6312ab6f4a2fb8885aeb10161fc169d804",
@@ -70,17 +70,18 @@
     "tools/slime_damage.py": "7c72e23d5d3c886bbaa1389063de9218f79376c4d6451d8156535dc92142a79e",
     "tools/title_assets.py": "8f14e9ed9fe5d7c7c29e713c3162672f1bb5f52d63fd61faf80c71ef652159c3",
     "tools/visibility.py": "2664af50c32ce94b988b36a55b735c10a05f9ff18ffcecdef4564d1359f5a8fb",
-    "tools/zombie_assets.py": "d46558975ae9256fd4ce7611de5df54f4c490c93e40085288aab9516b3a9c4cb"
+    "tools/zombie_assets.py": "0204779e9a66fa45a75cae7bc657e7dd7103fc28cc208a20e880389a941215f8",
+    "tools/zombie_size.py": "b098d3392aca6ab2e81a2778d7930b37fc18b8404e0625e2ec166fd54b33c9fc"
   },
   "segmentBytes": {
     "ZEROPAGE": 256,
     "BSS": 1536,
-    "ACTOR_ART": 6285,
+    "ACTOR_ART": 8065,
     "BOOTDATA": 4675,
     "MAPDATA": 8129,
-    "RODATA": 8114,
-    "CODE": 15918,
+    "RODATA": 8154,
+    "CODE": 16257,
     "STARTUP": 9
   },
-  "scope": "Fresh standalone copy containing only public package files, built without site packages or user Python configuration. Output byte-identical to accepted release. No WAD, sibling project or emulator dependency was copied. No file-access interception was performed in this build."
+  "scope": "Fresh standalone copy containing only src, tools, assets, release and Makefile package inputs, built without site packages or user Python configuration. Output byte-identical to accepted release. No WAD, sibling project or emulator dependency was copied. No file-access interception was performed in this build."
 }

@@ -4,6 +4,13 @@
 8-Bit Pocket site. Click **Play Hangar**, then press **Start** on the game title
 screen. The ordinary hosted picker and local **Open ROM** loader remain available.
 
+The hosted ROM remains `prototype-2026-10-19-third-encounter` (`277422aa…`).
+The repository's newer `prototype-2026-10-21-sprite-stability` ROM (`f342c5b8…`)
+has not been deployed. Download it from `release/` and use **Open ROM** to
+test it in the browser. Its isolated core/loading tests passed all 18 cases,
+including a 7,529-refresh controller-only route; this does not claim a live
+site update. See [current-browser.json](../verification/current-browser.json).
+
 ## Deployed integration
 
 The initial emulator integration is [commit b2e8312](https://github.com/DrCBeatz/nes-emulator-mobile-web-app/commit/b2e8312ebb59a315d5603ca80d596843cdfd1f8d).
@@ -13,7 +20,8 @@ invalidation. This used the existing hosting; no AWS infrastructure or domain
 configuration changed.
 
 - A versioned copy of the release is hosted at
-  `/roms/hangar-ntsc-277422aa.nes` with the same SHA-256 as this repository.
+  `/roms/hangar-ntsc-277422aa.nes`, matching the preserved third-encounter
+  release rather than the newer ROM now in `release/`.
 - The hosted manifest has stable ID `hangar`. Query strings resolve only
   known manifest IDs; an unknown ID leaves the picker and file loader usable.
 - The page waits for a Play gesture before fetching/starting the game. Audio
@@ -29,7 +37,7 @@ state. This does not alter the ROM or replace saved custom keyboard bindings.
 
 ## Enclosure and third-encounter update
 
-The current release is `prototype-2026-10-19-third-encounter`, served as
+The deployed release is `prototype-2026-10-19-third-encounter`, served as
 `/roms/hangar-ntsc-277422aa.nes`. It includes the inner enclosure, tighter ammo
 pickup, conservative visibility optimization and third soldier encounter.
 The stable `?game=hangar` link, emulator controls and infrastructure are unchanged.
@@ -40,8 +48,8 @@ encounters, both pickups, the door, completion and restart. It deliberately
 wastes three rounds to test empty-gun feedback, then finishes with 12 shots,
 nine hits, three kills and four rounds. All 46 read-only test symbols were
 checked against this release's linker output. The built site's ROM is
-byte-identical to the source repository's release. The evidence is in
-[current-browser.json](../verification/current-browser.json).
+byte-identical to that release at [source commit 0f31a394](https://github.com/DrCBeatz/nes-hangar/tree/0f31a3947b7d8a2bed63c64acc53ce8812ce3470).
+The evidence is in [third-encounter-browser.json](../verification/third-encounter-browser.json).
 
 Publication uses the existing GitHub Actions workflow: tests, production
 build, S3 synchronization and CloudFront invalidation. The ROM's hash-based

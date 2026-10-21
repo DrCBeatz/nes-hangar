@@ -28,7 +28,9 @@ MASTER = (
     '.....11111..111111111111..111111',
 )
 SIZES = ((4, 2), (6, 3), (8, 3), (12, 5), (16, 6), (20, 8),
-         (24, 9), (28, 11), (32, 12))
+         (24, 9), (26, 10), (28, 11), (30, 11), (32, 12))
+# Keep one matching corpse width for every live-soldier tier, so a death
+# transition retains its selected scale and the last opaque row stays grounded.
 # Native tiny silhouettes preserve the pale head and olive uniform, details
 # that nearest-neighbor reduction otherwise removes in the distant tiers.
 NATIVE = {
@@ -64,7 +66,7 @@ def build_assets():
         assert len(pixels) == height and all(len(row) == width for row in pixels)
         columns, tile_rows = (width + 7) // 8, (height + 7) // 8
         data = bytearray()
-        for y in range(tile_rows * 8):
+        for y in range(height):
             for plane in (0, 1):
                 for column in range(columns):
                     bits = 0
@@ -79,15 +81,17 @@ def build_assets():
                   max(x for x, _ in opaque), max(y for _, y in opaque)]
         assert bounds[3] == height - 1
         assert columns * tile_rows <= 8
-        # Decode the stored rows, including all tile padding, independently.
-        for y in range(tile_rows * 8):
+        # Decode actual source rows, including transparent column padding.
+        # Padded output rows are supplied by the compositor without ROM reads.
+        assert len(data) == height * columns * 2
+        for y in range(height):
             for x in range(columns * 8):
                 offset, shift = y * columns * 2 + x // 8, 7 - x % 8
                 decoded = ((data[offset] >> shift) & 1) | (((data[offset + columns] >> shift) & 1) << 1)
                 assert decoded == (pixels[y][x] if y < height and x < width else 0)
         variants.append(dict(index=index, width=width, height=height,
                              columns=columns, rows=tile_rows,
-                             patternCount=columns * tile_rows, storedRows=tile_rows * 8,
+                             patternCount=columns * tile_rows, storedRows=height,
                              storedPlaneBytes=len(data), opaqueBoundsInclusive=bounds,
                              feetBaselineY=height - 1, pixels=pixels, rowPlanes=bytes(data)))
     return variants
@@ -131,7 +135,7 @@ def write_assets(build, preview_dir=None):
     build.mkdir(parents=True, exist_ok=True)
     variants = build_assets()
     text = ['; Original prone soldier, C plane-0 bytes then C plane-1 bytes per row.',
-            'CORPSE_VARIANT_COUNT = 9', 'CORPSE_MAX_PATTERNS = 8']
+            'CORPSE_VARIANT_COUNT = %d' % len(variants), 'CORPSE_MAX_PATTERNS = 8']
     for field, label in (('width', 'widths'), ('height', 'heights'), ('columns', 'cols'),
                          ('rows', 'rows'), ('patternCount', 'pattern_counts')):
         text.append('corpse_' + label + ': .byte ' + ','.join(str(v[field]) for v in variants))
@@ -151,10 +155,11 @@ def write_assets(build, preview_dir=None):
                   normalPalette=list(PALETTE_NES), normalSpritePalette=2,
                   maxPatternsPerFrame=8, maxSprites=8, maxSpriteColumns=4,
                   sourceWidth=32, sourceHeight=12, variantCount=len(variants),
-                  feetBaseline='Last opaque pixel row', sourceRowsPaddedToTileHeight=True,
+                  feetBaseline='Last opaque pixel row', sourceRowsPaddedToTileHeight=False,
+                  outputRowsPaddedToTileHeight=True, paddingRequiresZeroMaskReadSkip=True,
                   sourcePlaneBytes=sum(v['storedPlaneBytes'] for v in variants),
                   tableBytes=7 * len(variants), storageBytes=7 * len(variants) + sum(v['storedPlaneBytes'] for v in variants),
-                  storage='Each row: C low-plane bytes, then C high-plane bytes; rows zero-padded to eight.',
+                  storage='Each actual source row: C low-plane bytes, then C high-plane bytes. No source row padding. Compositor emits zero rows past source height without ROM reads.',
                   variants=[{key: value for key, value in v.items() if key != 'rowPlanes'} for v in variants],
                   sourceSha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest())
     (build / 'corpse-assets.json').write_text(json.dumps(report, indent=2) + '\n')

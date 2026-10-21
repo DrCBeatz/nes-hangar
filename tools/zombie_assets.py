@@ -136,7 +136,9 @@ POSE_NATIVE_ART = (
 )
 
 SIZES = ((4, 8), (6, 12), (8, 16), (12, 24), (16, 32), (20, 40),
-         (24, 48), (28, 56), (32, 64))
+         (24, 48), (26, 52), (28, 56), (30, 60), (32, 64))
+# The intermediate close-range tiers halve the 24-to-28 and 28-to-32 width steps. Existing
+# sizes still sample the same master independently, preserving their pixels.
 PALETTE_NES = (0x0F, 0x0F, 0x18, 0x37)
 HIT_PALETTE_NES = (0x0F, 0x0F, 0x16, 0x30)
 # Preview colors approximate the default emulator NES palette. Actual displayed
@@ -207,12 +209,12 @@ def build_assets(pose=0):
         assert bounds[3] == height - 1
         # Compact source format expected by the masked sprite compositor:
         # every row stores C bytes of low bits followed by C bytes of high bits.
-        # The final column and any rows past the tight art height are zero-
-        # padded. The compositor reads complete eight-row tiles, including the
-        # last four transparent rows of the new 6x12 source.
+        # The final column is zero-padded, but source rows stop at the actual
+        # height. The compositor skips source reads for zero row masks and
+        # supplies transparent output rows past the actual height.
         row_planes = bytearray()
-        stored_rows = rows * 8
-        for row in pixels + [[0] * width for _ in range(stored_rows - height)]:
+        stored_rows = height
+        for row in pixels:
             for plane in range(2):
                 for column in range(columns):
                     row_planes.append(sum((((row[x] >> plane) & 1) << (7 - (x & 7)))
@@ -280,12 +282,13 @@ def write_assets(output, preview_dir=None):
     output.mkdir(parents=True, exist_ok=True)
     poses = [build_assets(pose) for pose in (0, 1)]
     variants = poses[0]
+    assert all(len(pose) == len(SIZES) for pose in poses)
     for a, b in zip(*poses):
         for field in ('width', 'height', 'columns', 'rows', 'patternCount', 'storedRows', 'feetBaselineY', 'opaqueBoundsInclusive'):
             assert a[field] == b[field], (field, a[field], b[field])
         assert a['pixels'] != b['pixels']
     include = ('; Original zombie art; each row is C plane-0 bytes then C plane-1 bytes.\n'
-               '; Source heights are padded with zero rows to a multiple of eight.\n')
+               '; Source heights are tight; compositor blanks padded output rows without reading source.\n')
     include += 'ZOMBIE_VARIANT_COUNT = %d\nZOMBIE_MAX_PATTERNS = 32\n' % len(variants)
     for field, label in (('width', 'widths'), ('height', 'heights'), ('columns', 'cols'),
                          ('rows', 'rows'), ('patternCount', 'pattern_counts')):
@@ -312,15 +315,21 @@ def write_assets(output, preview_dir=None):
     (output / 'zombie-assets.inc').write_text(include)
     report = {'origin': 'Original hand-authored zombie soldier; no extracted Doom artwork',
               'sourceWidth': 16, 'sourceHeight': 32, 'normalPalette': list(PALETTE_NES),
+              'variantCount': len(variants),
               'hitPalette': list(HIT_PALETTE_NES), 'maxPatternsPerFrame': 32,
               'maxSpriteColumns': 4, 'feetBaseline': 'Last opaque pixel row',
               'normalSpritePalette': 2, 'hitSpritePalette': 2,
               'hitFlashUsesLivePaletteReplacement': True,
               'hitFlashPaletteExplanation': 'NMI replaces palette 2 colors for the published actor; actor attributes remain palette 2',
               'sourcePlaneBytes': sum(len(variant['rowPlanes']) for pose in poses for variant in pose),
+              'tableBytes': 9 * len(variants) + 8,
+              'storageBytes': 9 * len(variants) + 8 + sum(len(variant['rowPlanes']) for pose in poses for variant in pose),
               'exactAspectRatio': '1:2 at every size',
-              'sourceRowsPaddedToTileHeight': True,
-              'storage': 'For each row, C plane-0 bytes then C plane-1 bytes; C=ceil(width/8). Heights zero-padded to eight-row tiles. Copied/masked into dynamic CHR at runtime',
+              'walkingPosesShareOpaqueBoundsAndFeetBaseline': True,
+              'sourceRowsPaddedToTileHeight': False,
+              'outputRowsPaddedToTileHeight': True,
+              'paddingRequiresZeroMaskReadSkip': True,
+              'storage': 'For each actual source row, C plane-0 bytes then C plane-1 bytes; C=ceil(width/8). No source row padding. The compositor emits zero rows past the source height without reading source memory.',
               'variants': [{key: value for key, value in variant.items()
                             if key not in ('pixels', 'patterns', 'raw', 'rowPlanes')} for variant in variants],
               'sourceSha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}

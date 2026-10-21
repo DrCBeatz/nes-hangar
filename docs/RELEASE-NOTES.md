@@ -1,4 +1,53 @@
-# Enclosure and third-encounter release
+# Soldier sprite stability
+
+`prototype-2026-10-21-sprite-stability` improves close-range soldiers in all
+three encounters. The map, combat behavior, collision and pickups are unchanged.
+
+- Two intermediate sizes, **26 × 52** and **30 × 60**, reduce near-range
+  height changes from eight pixels to four. A ±0.125-world-unit switching
+  buffer prevents tiny movements from repeatedly toggling between sizes.
+- Soldiers and corpses use radial distance for both size and vertical
+  placement. Turning at a fixed position no longer moves the whole body down
+  the screen. Feet move continuously with distance rather than jumping with
+  each sprite tier.
+- Existing artwork at the original sizes is preserved. Tight source-row
+  storage makes room for the new art; the compositor writes transparent
+  padding without reading beyond a source image.
+
+Vertical placement is deliberately a stable billboard approximation. Exact
+perspective floor contact away from the screen center is not claimed.
+Horizontal projection and foreground depth masks retain their existing
+camera-depth calculation. Pickups retain their previous positioning.
+The maximum soldier remains 32 × 64 pixels with four sprite columns.
+
+The cartridge configuration and allocated RAM are unchanged: **64 KiB PRG,
+MMC1, 8 KiB CHR-RAM and 8 KiB work RAM**. The final vertical correction adds
+about 0.44–0.75% producer CPU time in the twelve centered comparisons with
+identical pixels. These fixed-pose measurements exclude NMI and uploading;
+they are not gameplay frame rates or a claim that every view costs the same.
+
+The final ROM passed linked size/lifecycle and radial-math checks, stock NTSC
+Mesen projection/occlusion comparisons, and all 18 isolated emulator tests.
+The controller-only JSNES route completed all three encounters, both pickups,
+the door, completion and restart in 7,529 refreshes. See the
+[sprite notes](SPRITE-STABILITY.md) and [verification record](VERIFICATION.md)
+for the separate test scopes. No physical-console test is claimed.
+
+The accepted ROM is [`release/hangar-ntsc.nes`](../release/hangar-ntsc.nes),
+65,552 bytes, with SHA-256:
+
+```text
+f342c5b83f75be92fdf476fab0b2c802afe06438e41e5b571d98b501c05de28e
+```
+
+Rebuild it with `python3 tools/build.py --verify`. The previous release is
+preserved in Git at [commit 0f31a394](https://github.com/DrCBeatz/nes-hangar/tree/0f31a3947b7d8a2bed63c64acc53ce8812ce3470),
+and its evidence is retained in
+[third-encounter-release.json](../verification/third-encounter-release.json).
+The live browser game still runs that previous version; this update is not
+yet deployed. Use the browser's **Open ROM** control to load the new download.
+
+# Previous enclosure and third-encounter release
 
 This release adds cover to the first soldier room and a final fight beyond
 the openable door. It also tightens the ammo pickup and reduces unnecessary
@@ -48,14 +97,15 @@ emulator overclocking. These are emulator and build checks, not a claim of
 testing on a physical NES or flash cartridge. Rendering speed remains
 scene-dependent, with noticeable control-to-picture latency.
 
-The ROM is [`release/hangar-ntsc.nes`](../release/hangar-ntsc.nes), 65,552 bytes.
+That ROM remains available at [source commit 0f31a394](https://github.com/DrCBeatz/nes-hangar/blob/0f31a3947b7d8a2bed63c64acc53ce8812ce3470/release/hangar-ntsc.nes), 65,552 bytes.
 SHA-256:
 
 ```text
 277422aa65613d5f1a581fece1e398c161948d473741b0aa2b47b2d11113e4a2
 ```
 
-Rebuild and compare it with `python3 tools/build.py --verify`. See the
+Check out that commit to rebuild the previous release with
+`python3 tools/build.py --verify`. See the
 [README](../README.md#build-from-source) for requirements. Original-code
 licensing and [content provenance](PROVENANCE.md) are unchanged.
 

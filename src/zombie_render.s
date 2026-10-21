@@ -7,6 +7,8 @@
 .importzp render_buffer, render_eye, render_x, render_z, render_mode
 .import render_zombie_hp
 .importzp render_zombie_x, render_zombie_z, render_zombie_pose
+.importzp render_zombie_epoch
+.import zombie_size_history, zombie_size_epoch
 .importzp tile_ptr, tile_count, tile_number
 .import geometry_zombie_transform, scaled_division
 .importzp g_camera_x, g_camera_z, g_acc, g_mul_a, g_mul_b, g_value, g_den, g_rem
@@ -59,6 +61,9 @@ z_proj_sign = g_left
 z_proj_loop = g_left+1
 z_proj_quotient = g_right
 z_threshold_index = g_right+1
+; Producer-only floor anchor, consumed before geometry columns begin. Keep
+; this outside transform scratch; neither NMI nor geometry uses these bytes.
+z_radial_foot = coordinate_producer_scratch
 
 ; Only used by zombie_render, after all geometry and world raster work ends.
 z_source_ptr = g_num
@@ -99,13 +104,9 @@ buffer_zombie_tile_count: .res 2
 .include "ammo-assets.inc"
 .include "corpse-assets.inc"
 zombie_bits: .byte $80,$40,$20,$10,$08,$04,$02,$01
-; Exact squared Q8.8 radial thresholds for nearest widths4,6,8,12,...32.
-; A two-unit-wide body has projected width256/radius. Thresholds are
-; ceil((256*256 / midpointWidth)^2); no runtime square root is needed.
-zombie_distance_threshold0: .byte $A4,$2A,$29,$0B,$88,$AC,$5E,$5A
-zombie_distance_threshold1: .byte $70,$78,$5C,$5E,$45,$67,$F2,$D1
-zombie_distance_threshold2: .byte $3D,$39,$8F,$4E,$CA,$87,$60,$48
-zombie_distance_threshold3: .byte $0A,$05,$02,$01,$00,$00,$00,$00
+; Exact squared Q8.8 radial thresholds, derived from the artwork sizes.
+.include "zombie-size.inc"
+.assert CORPSE_VARIANT_COUNT = ZOMBIE_VARIANT_COUNT, error, "Corpse size tiers must match living actors"
 
 .segment "CODE"
 .proc zombie_begin
@@ -132,9 +133,14 @@ medkit_start:
  jeq done
  jsr choose_radial_size
  jcs done
+ lda actor_kind
+ bne :+
+ jsr radial_floor_anchor
+:
  jsr geometry_zombie_transform
  ; Positive camera depth, rounded from Q16 to Q8.8. This depth is used only
- ; for center, physical floor anchor and occlusion; body size uses radius.
+ ; for center and occlusion (also pickup floor anchors). Soldiers use radius
+ ; for both body size and vertical placement, avoiding turn-induced sinking.
  lda g_camera_z+3
  jmi done
  lda g_camera_z
@@ -251,8 +257,17 @@ save_inverse:
  sta z_inverse,x
  dex
  bpl save_inverse
- ; Unclipped physical floor anchor. Never pin the foot to the bottom of the
- ; viewport: low pixels instead become transparent before sprite upload.
+ ; Soldiers and corpses share the radial vertical projection. Horizontal
+ ; perspective and foreground coverage keep the true camera-depth reciprocal.
+ lda actor_kind
+ bne pickup_floor
+ lda z_radial_foot
+ sta z_foot
+ lda z_radial_foot+1
+ sta z_foot+1
+ jmp floor_ready
+pickup_floor:
+ ; Pickups retain their existing physical camera-depth floor anchor.
  lda render_eye
  sec
  sbc #ZOMBIE_FLOOR
@@ -293,6 +308,7 @@ foot_product:
  lda g_multiplicand+2
  adc #0
  sta z_foot+1
+floor_ready:
  ldx z_size
  lda actor_kind
  beq zombie_dimensions
@@ -424,6 +440,95 @@ done:
  rts
 .endproc
 
+; The body tiers use radial distance. Use the same continuous distance for
+; vertical placement, not a tier-derived baseline: turning cannot move a
+; fixed-size body down, and crossing a size boundary cannot jump its feet.
+; This is a deliberate radial billboard convention, not planar perspective.
+; The true camera-depth reciprocal remains untouched for wall/floor masking.
+; Input: exact radius squared from choose_radial_size. Scratch is dead before
+; geometry_zombie_transform. Output: two producer-only WRAM bytes.
+.proc radial_floor_anchor
+ lda #0
+ sta g_value
+ sta g_value+1
+ sta g_rem
+ sta g_rem+1
+ sta g_rem+2
+ ldx #16
+root_bit:
+ .repeat 2
+ asl z_distance2
+ rol z_distance2+1
+ rol z_distance2+2
+ rol z_distance2+3
+ rol g_rem
+ rol g_rem+1
+ rol g_rem+2
+ .endrepeat
+ asl g_value
+ rol g_value+1
+ lda g_value
+ asl a
+ ora #1
+ sta g_den
+ lda g_value+1
+ rol a
+ sta g_den+1
+ lda #0
+ rol a
+ sta g_den+2
+ lda g_rem
+ sec
+ sbc g_den
+ sta g_acc
+ lda g_rem+1
+ sbc g_den+1
+ sta g_acc+1
+ lda g_rem+2
+ sbc g_den+2
+ bcc root_next
+ sta g_rem+2
+ lda g_acc
+ sta g_rem
+ lda g_acc+1
+ sta g_rem+1
+ inc g_value               ; bit0 was cleared by the shift; cannot carry
+root_next:
+ dex
+ bne root_bit
+ lda g_value
+ sta g_den
+ lda g_value+1
+ sta g_den+1
+ bne radius_ready
+ lda g_den
+ cmp #64
+ bcs radius_ready
+ lda #64                   ; bounded fallback for an overlapping actor
+ sta g_den
+radius_ready:
+ lda #0
+ sta g_den+2
+ sta g_value+1
+ sta g_value+2
+ lda render_eye
+ sec
+ sbc #ZOMBIE_FLOOR
+ .repeat 4
+ asl a
+ .endrepeat
+ sta g_value
+ jsr scaled_division       ; round(128 * eyeHeight / radius), in pixels
+ lda g_acc
+ clc
+ adc #96
+ sta z_radial_foot
+ lda g_acc+1
+ adc #0
+ sta z_radial_foot+1
+ rts
+.endproc
+
 ; Full global Q16.8 differences, then exact nearby Q8.8 radius squared. This changes
 ; neither orientation nor size while turning in place at one world position.
 .proc choose_radial_size
@@ -518,10 +623,79 @@ medkit_decided:
  bcc medkit_threshold
 selected:
  stx z_size
+ lda actor_kind
+ bne ready                 ; pickups never read or modify soldier history
+ lda render_zombie_hp
+ bmi ready                 ; ordinary corpses retain nearest-size selection
+ jsr stabilize_size
+ready:
  clc
  rts
 far:
  sec
+ rts
+.endproc
+
+; Producer-only hysteresis. The radius is still exact and the projection is
+; unchanged. A large displacement accepts the new nearest tier immediately;
+; only the small band around the previous near tier's boundary is retained.
+.proc stabilize_size
+ lda render_zombie_epoch
+ cmp zombie_size_epoch
+ bne remember
+ cpx #ZOMBIE_NEAR_SIZE
+ bcc remember
+ lda zombie_size_history
+ sec
+ sbc #1
+ cmp #ZOMBIE_NEAR_SIZE
+ bcc remember
+ cmp #ZOMBIE_VARIANT_COUNT
+ bcs remember
+ cmp z_size
+ beq done
+ tax                       ; previous tier
+ bcc growing               ; previous < nearest: moving closer
+ dex                       ; leaving previous toward a smaller tier
+ lda z_distance2+3
+ cmp zombie_shrink_threshold3-ZOMBIE_NEAR_SIZE,x
+ bne shrink_decided
+ lda z_distance2+2
+ cmp zombie_shrink_threshold2-ZOMBIE_NEAR_SIZE,x
+ bne shrink_decided
+ lda z_distance2+1
+ cmp zombie_shrink_threshold1-ZOMBIE_NEAR_SIZE,x
+ bne shrink_decided
+ lda z_distance2
+ cmp zombie_shrink_threshold0-ZOMBIE_NEAR_SIZE,x
+shrink_decided:
+ bcs remember
+ inx
+ bne retain
+growing:
+ lda z_distance2+3
+ cmp zombie_grow_threshold3-ZOMBIE_NEAR_SIZE,x
+ bne grow_decided
+ lda z_distance2+2
+ cmp zombie_grow_threshold2-ZOMBIE_NEAR_SIZE,x
+ bne grow_decided
+ lda z_distance2+1
+ cmp zombie_grow_threshold1-ZOMBIE_NEAR_SIZE,x
+ bne grow_decided
+ lda z_distance2
+ cmp zombie_grow_threshold0-ZOMBIE_NEAR_SIZE,x
+grow_decided:
+ bcc remember
+retain:
+ stx z_size
+remember:
+ lda z_size
+ clc
+ adc #1
+ sta zombie_size_history
+ lda render_zombie_epoch
+ sta zombie_size_epoch
+done:
  rts
 .endproc
 
@@ -877,6 +1051,7 @@ mask_pixel:
  lda z_row_mask
  eor #$FF
  sta z_row_mask
+ beq blank_row             ; fully masked/padded rows need no source ROM read
  ldy #0
  lda (z_source_ptr),y
  and z_row_mask

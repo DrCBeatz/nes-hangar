@@ -18,6 +18,7 @@
 .export encounter_switch_begin, encounter_switch_commit
 .export active_encounter, encounter_visual_pending, encounter_x_frac, encounter_x_lo, encounter_x_hi
 .export encounter_z_frac, encounter_z_lo, encounter_z_hi, encounter_hp
+.export zombie_size_history, zombie_size_epoch
 
 .segment "BSS"
 active_encounter: .res 1
@@ -28,7 +29,11 @@ encounter_x_frac: .res 3
 encounter_x_lo: .res 3
 encounter_x_hi: .res 3
 encounter_z_frac: .res 3
-.res 2                     ; preserve later BSS addresses; available for future state
+; Producer-only visual history, in the original two unused bytes. Zero from
+; boot/restart means invalid; otherwise size is encoded as tier+1. NMI only
+; reads its epoch while allocating a distinct encounter identity.
+zombie_size_history: .res 1
+zombie_size_epoch: .res 1
 .assert encounter_z_frac+3-active_encounter = 13, error, "Encounter coordinate arrays moved"
 encounter_visual_pending: .res 1 ; retain old pixels until the new world commits
 .assert encounter_visual_pending+1-active_encounter = 16, error, "Encounter storage must stay16 bytes"
@@ -157,7 +162,7 @@ encounter_switch_commit = encounters_tick::commit
 
 ; Allocate a tag different from every possibly outstanding actor picture.
 ; Even an indefinitely overlay-starved uploader cannot alias after256 resets.
-; Four occupied tags mean at mostfive increments; no extra state is needed.
+; Five occupied tags mean at mostsix increments; no extra state is needed.
 ; NMI owns mutation; producer snapshot reads remain protected by its seqlock.
 ; Preserve A/X/Y because this replaces a plain INC at both lifecycle callers.
 .proc encounter_next_epoch
@@ -165,6 +170,8 @@ encounter_switch_commit = encounters_tick::commit
 next:
  inc zombie_epoch
  lda zombie_epoch
+ cmp zombie_size_epoch
+ beq next
  cmp render_zombie_epoch
  beq next
  cmp visible_zombie_epoch

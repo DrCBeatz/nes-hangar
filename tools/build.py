@@ -101,9 +101,12 @@ def main():
     art_module._previews(PREVIEWS,art_module._weapon_frames(),[patterns[i:i+16] for i in range(0,len(patterns),16)],boot_names,art)
     (BUILD/'balance-config.inc').write_text(f'PISTOL_STARTING_AMMO = {STARTING_AMMO}\n')
     zombie_art=load('zombie_assets',TOOLS/'zombie_assets.py').write_assets(BUILD,preview_dir=PREVIEWS)
+    zombie_sizing=load('zombie_size',TOOLS/'zombie_size.py').write_assets(
+        BUILD, [(v['width'], v['height']) for v in zombie_art['variants']])
     medkit_art=load('medkit_assets',TOOLS/'medkit_assets.py').write_assets(BUILD,preview_dir=PREVIEWS)
     ammo_art=load('ammo_assets',TOOLS/'ammo_assets.py').write_assets(BUILD,preview_dir=PREVIEWS)
     corpse_art=load('corpse_assets',TOOLS/'corpse_assets.py').write_assets(BUILD,preview_dir=PREVIEWS)
+    assert [v['width'] for v in corpse_art['variants']] == [v['width'] for v in zombie_art['variants']]
     (BUILD/'medkit-assets.json').write_text(json.dumps(medkit_art,indent=2)+'\n')
     (BUILD/'ammo-assets.json').write_text(json.dumps(ammo_art,indent=2)+'\n')
     kit=scene['medkit']
@@ -221,7 +224,7 @@ def main():
         initialHealth=100, initialAmmo=STARTING_AMMO,
         map='assets/map.json', title=title_layout, results=results_layout,
         artwork=dict(pistol=art,zombie=zombie_art,medkit=medkit_art,ammo=ammo_art,corpse=corpse_art),
-        playerFeedback=player_feedback,
+        playerFeedback=player_feedback, zombieSizing=zombie_sizing,
         generated=generated, door=door_assets, slime=hazard,
         sources={str(p.relative_to(ROOT)):sha(p) for p in source_files},
         tools={name:subprocess.run([tool,'--version'],capture_output=True,text=True,check=True).stderr.strip()

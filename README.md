@@ -42,6 +42,10 @@ use **Controls** to reopen it during gameplay. **Open ROM** still supports downl
 files. Browser speed, palette and presentation may differ from Mesen. See
 the [browser deployment notes](docs/DEPLOYMENT.md).
 
+The downloadable ROM includes the latest soldier size and positioning fixes.
+The hosted browser game still uses the previous third-encounter release;
+choose **Open ROM** to try the latest download there.
+
 ## Controls
 
 | Input | Action |
@@ -78,6 +82,11 @@ screen reports kills, items and elapsed time.
   remain on it. The gray zigzag walkway is safe.
 - Soldiers pursue within authored encounter bounds, telegraph their shots,
   react to hits and leave a short-lived corpse.
+
+Close soldiers now use smaller size steps and a small switching buffer to
+avoid repeatedly changing size during tiny movements. Turning in place also
+keeps their vertical placement stable. See the [sprite notes](docs/SPRITE-STABILITY.md)
+for the visual tradeoff and verification.
 
 The route passes the opening pillars and recess, a first encounter room with
 a sealed inner enclosure, the zigzag slime room, and a third encounter beyond
@@ -161,7 +170,7 @@ The included release is 65,552 bytes (a 16-byte header plus 64 KiB PRG), with
 SHA-256:
 
 ```text
-277422aa65613d5f1a581fece1e398c161948d473741b0aa2b47b2d11113e4a2
+f342c5b83f75be92fdf476fab0b2c802afe06438e41e5b571d98b501c05de28e
 ```
 
 The checksum and cartridge metadata are also in [release/](release/).
@@ -235,6 +244,10 @@ work for hidden rooms; a small camera-position filter also skips inner-enclosure
 faces when the connecting passage proves them hidden from the slime room.
 Enemies and pickups use distance-sized hardware sprites
 with foreground masks derived from the world geometry.
+Soldiers and corpses use radial distance for vertical placement as well as
+size, keeping them stable when turning. This approximates ground contact
+away from the screen center; horizontal projection and foreground masking
+still use camera depth. Pickups retain their previous projection.
 
 The cartridge uses **MMC1 banking, 64 KiB PRG, 8 KiB CHR-RAM and 8 KiB work
 RAM**. Rendering is performed by the NES CPU; the mapper provides banking,
@@ -249,7 +262,9 @@ this release has already been tested on a physical console.
 - Three encounters persist in the level, but only one enemy encounter is active
   at a time. Crossing a handoff can hide the outgoing soldier or corpse.
 - Sprite size steps, very close actors and sprite-per-scanline pressure remain
-  visible limitations. This is not an engine for crowds of enemies.
+  visible limitations. Soldier art stops at 32 × 64 pixels, and its stable
+  vertical placement is a billboard approximation. This is not an engine for
+  crowds of enemies.
 - The green slime palette shares a limited set of background colors; visible
   slime replaces one alternate wall shade.
 - Armor is a HUD placeholder. There are no armor pickups, extra weapons,
@@ -267,8 +282,10 @@ The suggested repository name is **`nes-hangar`**; the display title is
 only this folder needs to be published, not the surrounding research workspace.
 See [publishing instructions](docs/PUBLISHING.md).
 
-The maintained 8-Bit Pocket emulator now hosts the exact release ROM and
-supports the [direct Play Hangar link](https://8bitpocket.app/?game=hangar).
+The maintained 8-Bit Pocket emulator hosts the previous third-encounter ROM
+and supports the [direct Play Hangar link](https://8bitpocket.app/?game=hangar).
+This sprite-stability update has passed isolated JSNES tests but has not been
+deployed; its download can be loaded with the emulator's **Open ROM** control.
 A dedicated landing page with download and play buttons can follow. The
 [deployment notes](docs/DEPLOYMENT.md) describe the current integration,
 remaining display work and options for a later custom domain.

@@ -1,0 +1,4464 @@
+{
+  "passed": true,
+  "checks": {
+    "bothRunsCompleted": true,
+    "allOrderedPosesCaptured": true,
+    "noPpuOrNmiErrors": true,
+    "allSnapshotsCoherent": true,
+    "PerspectiveAndFloorAnchorsUnchanged": true,
+    "ExistingTierDimensionsUnchanged": true,
+    "ExistingTierScreensUnchanged": true,
+    "ExistingTierPpuSpritePatternsUnchanged": true,
+    "ExistingItemProjectionUnchanged": true,
+    "SubpixelOscillationNoLongerTogglesCloseSizes": true,
+    "Intermediate26PixelTierUsedInAllRooms": true,
+    "Intermediate30PixelTierUsedInAllRooms": true,
+    "CloseTierHeightStepsHalved": true,
+    "ExistingCorpseTierScreensUnchanged": true,
+    "ExistingCorpseTierPpuSpritePatternsUnchanged": true,
+    "ItemPpuSpritePatternsUnchanged": true
+  },
+  "baselineRomSha256": "277422aa65613d5f1a581fece1e398c161948d473741b0aa2b47b2d11113e4a2",
+  "candidateRomSha256": "b5b1ec39b546a928e10e1d3d33d3693e3238488fd1edebe7499e4fe02d497829",
+  "scope": "423 ordered RAM-injected poses per ROM, stock NTSC Mesen. Baseline captured in two batches (339 original poses plus84 additional30px boundary cases). Enemy AI deliberately held still; sizing history preserved between frames and poses. Projection, rasterization, upload and display execute actual linked ROM opcodes. Not a controller-only route or physical-console test.",
+  "frames": {
+    "baseline": 25543,
+    "candidate": 25463
+  },
+  "unchangedItemComparisons": 6,
+  "boundaries": [
+    {
+      "encounter": 0,
+      "group": "old-boundary-from-far",
+      "baselineFlips": 5,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          24,
+          48
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          28,
+          56
+        ]
+      ],
+      "candidateSizes": [
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ]
+      ],
+      "radii": [
+        9.85546875,
+        9.83984375,
+        9.85546875,
+        9.83984375,
+        9.85546875,
+        9.83984375
+      ]
+    },
+    {
+      "encounter": 0,
+      "group": "old-boundary-from-near",
+      "baselineFlips": 5,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          24,
+          48
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          28,
+          56
+        ]
+      ],
+      "candidateSizes": [
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ]
+      ],
+      "radii": [
+        9.85546875,
+        9.83984375,
+        9.85546875,
+        9.83984375,
+        9.85546875,
+        9.83984375
+      ]
+    },
+    {
+      "encounter": 0,
+      "group": "new-far-boundary-from-far",
+      "baselineFlips": 0,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ]
+      ],
+      "candidateSizes": [
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ]
+      ],
+      "radii": [
+        10.24609375,
+        10.23046875,
+        10.24609375,
+        10.23046875,
+        10.24609375,
+        10.23046875
+      ]
+    },
+    {
+      "encounter": 0,
+      "group": "new-far-boundary-from-near",
+      "baselineFlips": 0,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ]
+      ],
+      "candidateSizes": [
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ]
+      ],
+      "radii": [
+        10.24609375,
+        10.23046875,
+        10.24609375,
+        10.23046875,
+        10.24609375,
+        10.23046875
+      ]
+    },
+    {
+      "encounter": 0,
+      "group": "new-near-boundary-from-far",
+      "baselineFlips": 0,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ]
+      ],
+      "candidateSizes": [
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ]
+      ],
+      "radii": [
+        9.48828125,
+        9.47265625,
+        9.48828125,
+        9.47265625,
+        9.48828125,
+        9.47265625
+      ]
+    },
+    {
+      "encounter": 0,
+      "group": "new-near-boundary-from-near",
+      "baselineFlips": 0,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ]
+      ],
+      "candidateSizes": [
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ]
+      ],
+      "radii": [
+        9.48828125,
+        9.47265625,
+        9.48828125,
+        9.47265625,
+        9.48828125,
+        9.47265625
+      ]
+    },
+    {
+      "encounter": 0,
+      "group": "closest-boundary-from-far",
+      "baselineFlips": 5,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          28,
+          56
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          32,
+          64
+        ]
+      ],
+      "candidateSizes": [
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ]
+      ],
+      "radii": [
+        8.54296875,
+        8.52734375,
+        8.54296875,
+        8.52734375,
+        8.54296875,
+        8.52734375
+      ]
+    },
+    {
+      "encounter": 0,
+      "group": "closest-boundary-from-near",
+      "baselineFlips": 5,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          28,
+          56
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          32,
+          64
+        ]
+      ],
+      "candidateSizes": [
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ]
+      ],
+      "radii": [
+        8.54296875,
+        8.52734375,
+        8.54296875,
+        8.52734375,
+        8.54296875,
+        8.52734375
+      ]
+    },
+    {
+      "encounter": 0,
+      "group": "new-wide-far-boundary-from-far",
+      "baselineFlips": 0,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ]
+      ],
+      "candidateSizes": [
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ]
+      ],
+      "radii": [
+        8.8359375,
+        8.8203125,
+        8.8359375,
+        8.8203125,
+        8.8359375,
+        8.8203125
+      ]
+    },
+    {
+      "encounter": 0,
+      "group": "new-wide-far-boundary-from-near",
+      "baselineFlips": 0,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ]
+      ],
+      "candidateSizes": [
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ]
+      ],
+      "radii": [
+        8.8359375,
+        8.8203125,
+        8.8359375,
+        8.8203125,
+        8.8359375,
+        8.8203125
+      ]
+    },
+    {
+      "encounter": 0,
+      "group": "new-wide-near-boundary-from-far",
+      "baselineFlips": 0,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ]
+      ],
+      "candidateSizes": [
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ]
+      ],
+      "radii": [
+        8.265625,
+        8.25,
+        8.265625,
+        8.25,
+        8.265625,
+        8.25
+      ]
+    },
+    {
+      "encounter": 0,
+      "group": "new-wide-near-boundary-from-near",
+      "baselineFlips": 0,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ]
+      ],
+      "candidateSizes": [
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ]
+      ],
+      "radii": [
+        8.265625,
+        8.25,
+        8.265625,
+        8.25,
+        8.265625,
+        8.25
+      ]
+    },
+    {
+      "encounter": 1,
+      "group": "old-boundary-from-far",
+      "baselineFlips": 5,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          24,
+          48
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          28,
+          56
+        ]
+      ],
+      "candidateSizes": [
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ]
+      ],
+      "radii": [
+        9.85546875,
+        9.83984375,
+        9.85546875,
+        9.83984375,
+        9.85546875,
+        9.83984375
+      ]
+    },
+    {
+      "encounter": 1,
+      "group": "old-boundary-from-near",
+      "baselineFlips": 5,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          24,
+          48
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          28,
+          56
+        ]
+      ],
+      "candidateSizes": [
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ]
+      ],
+      "radii": [
+        9.85546875,
+        9.83984375,
+        9.85546875,
+        9.83984375,
+        9.85546875,
+        9.83984375
+      ]
+    },
+    {
+      "encounter": 1,
+      "group": "new-far-boundary-from-far",
+      "baselineFlips": 0,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ]
+      ],
+      "candidateSizes": [
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ]
+      ],
+      "radii": [
+        10.24609375,
+        10.23046875,
+        10.24609375,
+        10.23046875,
+        10.24609375,
+        10.23046875
+      ]
+    },
+    {
+      "encounter": 1,
+      "group": "new-far-boundary-from-near",
+      "baselineFlips": 0,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ]
+      ],
+      "candidateSizes": [
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ]
+      ],
+      "radii": [
+        10.24609375,
+        10.23046875,
+        10.24609375,
+        10.23046875,
+        10.24609375,
+        10.23046875
+      ]
+    },
+    {
+      "encounter": 1,
+      "group": "new-near-boundary-from-far",
+      "baselineFlips": 0,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ]
+      ],
+      "candidateSizes": [
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ]
+      ],
+      "radii": [
+        9.48828125,
+        9.47265625,
+        9.48828125,
+        9.47265625,
+        9.48828125,
+        9.47265625
+      ]
+    },
+    {
+      "encounter": 1,
+      "group": "new-near-boundary-from-near",
+      "baselineFlips": 0,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ]
+      ],
+      "candidateSizes": [
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ]
+      ],
+      "radii": [
+        9.48828125,
+        9.47265625,
+        9.48828125,
+        9.47265625,
+        9.48828125,
+        9.47265625
+      ]
+    },
+    {
+      "encounter": 1,
+      "group": "closest-boundary-from-far",
+      "baselineFlips": 5,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          28,
+          56
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          32,
+          64
+        ]
+      ],
+      "candidateSizes": [
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ]
+      ],
+      "radii": [
+        8.54296875,
+        8.52734375,
+        8.54296875,
+        8.52734375,
+        8.54296875,
+        8.52734375
+      ]
+    },
+    {
+      "encounter": 1,
+      "group": "closest-boundary-from-near",
+      "baselineFlips": 5,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          28,
+          56
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          32,
+          64
+        ]
+      ],
+      "candidateSizes": [
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ]
+      ],
+      "radii": [
+        8.54296875,
+        8.52734375,
+        8.54296875,
+        8.52734375,
+        8.54296875,
+        8.52734375
+      ]
+    },
+    {
+      "encounter": 1,
+      "group": "new-wide-far-boundary-from-far",
+      "baselineFlips": 0,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ]
+      ],
+      "candidateSizes": [
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ]
+      ],
+      "radii": [
+        8.8359375,
+        8.8203125,
+        8.8359375,
+        8.8203125,
+        8.8359375,
+        8.8203125
+      ]
+    },
+    {
+      "encounter": 1,
+      "group": "new-wide-far-boundary-from-near",
+      "baselineFlips": 0,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ]
+      ],
+      "candidateSizes": [
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ]
+      ],
+      "radii": [
+        8.8359375,
+        8.8203125,
+        8.8359375,
+        8.8203125,
+        8.8359375,
+        8.8203125
+      ]
+    },
+    {
+      "encounter": 1,
+      "group": "new-wide-near-boundary-from-far",
+      "baselineFlips": 0,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ]
+      ],
+      "candidateSizes": [
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ]
+      ],
+      "radii": [
+        8.265625,
+        8.25,
+        8.265625,
+        8.25,
+        8.265625,
+        8.25
+      ]
+    },
+    {
+      "encounter": 1,
+      "group": "new-wide-near-boundary-from-near",
+      "baselineFlips": 0,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ]
+      ],
+      "candidateSizes": [
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ]
+      ],
+      "radii": [
+        8.265625,
+        8.25,
+        8.265625,
+        8.25,
+        8.265625,
+        8.25
+      ]
+    },
+    {
+      "encounter": 2,
+      "group": "old-boundary-from-far",
+      "baselineFlips": 5,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          24,
+          48
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          28,
+          56
+        ]
+      ],
+      "candidateSizes": [
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ]
+      ],
+      "radii": [
+        9.85546875,
+        9.83984375,
+        9.85546875,
+        9.83984375,
+        9.85546875,
+        9.83984375
+      ]
+    },
+    {
+      "encounter": 2,
+      "group": "old-boundary-from-near",
+      "baselineFlips": 5,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          24,
+          48
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          28,
+          56
+        ]
+      ],
+      "candidateSizes": [
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ]
+      ],
+      "radii": [
+        9.85546875,
+        9.83984375,
+        9.85546875,
+        9.83984375,
+        9.85546875,
+        9.83984375
+      ]
+    },
+    {
+      "encounter": 2,
+      "group": "new-far-boundary-from-far",
+      "baselineFlips": 0,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ]
+      ],
+      "candidateSizes": [
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ]
+      ],
+      "radii": [
+        10.24609375,
+        10.23046875,
+        10.24609375,
+        10.23046875,
+        10.24609375,
+        10.23046875
+      ]
+    },
+    {
+      "encounter": 2,
+      "group": "new-far-boundary-from-near",
+      "baselineFlips": 0,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ]
+      ],
+      "candidateSizes": [
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ]
+      ],
+      "radii": [
+        10.24609375,
+        10.23046875,
+        10.24609375,
+        10.23046875,
+        10.24609375,
+        10.23046875
+      ]
+    },
+    {
+      "encounter": 2,
+      "group": "new-near-boundary-from-far",
+      "baselineFlips": 0,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ]
+      ],
+      "candidateSizes": [
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ]
+      ],
+      "radii": [
+        9.48828125,
+        9.47265625,
+        9.48828125,
+        9.47265625,
+        9.48828125,
+        9.47265625
+      ]
+    },
+    {
+      "encounter": 2,
+      "group": "new-near-boundary-from-near",
+      "baselineFlips": 0,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ]
+      ],
+      "candidateSizes": [
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ]
+      ],
+      "radii": [
+        9.48828125,
+        9.47265625,
+        9.48828125,
+        9.47265625,
+        9.48828125,
+        9.47265625
+      ]
+    },
+    {
+      "encounter": 2,
+      "group": "closest-boundary-from-far",
+      "baselineFlips": 5,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          28,
+          56
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          32,
+          64
+        ]
+      ],
+      "candidateSizes": [
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ]
+      ],
+      "radii": [
+        8.54296875,
+        8.52734375,
+        8.54296875,
+        8.52734375,
+        8.54296875,
+        8.52734375
+      ]
+    },
+    {
+      "encounter": 2,
+      "group": "closest-boundary-from-near",
+      "baselineFlips": 5,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          28,
+          56
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          32,
+          64
+        ]
+      ],
+      "candidateSizes": [
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ]
+      ],
+      "radii": [
+        8.54296875,
+        8.52734375,
+        8.54296875,
+        8.52734375,
+        8.54296875,
+        8.52734375
+      ]
+    },
+    {
+      "encounter": 2,
+      "group": "new-wide-far-boundary-from-far",
+      "baselineFlips": 0,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ]
+      ],
+      "candidateSizes": [
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ]
+      ],
+      "radii": [
+        8.8359375,
+        8.8203125,
+        8.8359375,
+        8.8203125,
+        8.8359375,
+        8.8203125
+      ]
+    },
+    {
+      "encounter": 2,
+      "group": "new-wide-far-boundary-from-near",
+      "baselineFlips": 0,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ]
+      ],
+      "candidateSizes": [
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ]
+      ],
+      "radii": [
+        8.8359375,
+        8.8203125,
+        8.8359375,
+        8.8203125,
+        8.8359375,
+        8.8203125
+      ]
+    },
+    {
+      "encounter": 2,
+      "group": "new-wide-near-boundary-from-far",
+      "baselineFlips": 0,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ]
+      ],
+      "candidateSizes": [
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ]
+      ],
+      "radii": [
+        8.265625,
+        8.25,
+        8.265625,
+        8.25,
+        8.265625,
+        8.25
+      ]
+    },
+    {
+      "encounter": 2,
+      "group": "new-wide-near-boundary-from-near",
+      "baselineFlips": 0,
+      "candidateFlips": 0,
+      "baselineSizes": [
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ]
+      ],
+      "candidateSizes": [
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ]
+      ],
+      "radii": [
+        8.265625,
+        8.25,
+        8.265625,
+        8.25,
+        8.265625,
+        8.25
+      ]
+    }
+  ],
+  "monotonicSweeps": [
+    {
+      "encounter": 0,
+      "phase": "approach",
+      "baselineMaxHeightStep": 8,
+      "candidateMaxHeightStep": 8,
+      "baselineNearHeightStep": 8,
+      "candidateNearHeightStep": 4,
+      "radii": [
+        12.0,
+        11.0,
+        10.5,
+        10.25,
+        10.125,
+        10.0,
+        9.875,
+        9.75,
+        9.625,
+        9.5,
+        9.375,
+        9.25,
+        9.0,
+        8.75,
+        8.625,
+        8.5,
+        8.375,
+        8.125
+      ],
+      "baselineSizes": [
+        [
+          20,
+          40
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ]
+      ],
+      "candidateSizes": [
+        [
+          20,
+          40
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          32,
+          64
+        ]
+      ]
+    },
+    {
+      "encounter": 0,
+      "phase": "retreat",
+      "baselineMaxHeightStep": 8,
+      "candidateMaxHeightStep": 8,
+      "baselineNearHeightStep": 8,
+      "candidateNearHeightStep": 4,
+      "radii": [
+        8.375,
+        8.5,
+        8.625,
+        8.75,
+        9.0,
+        9.25,
+        9.375,
+        9.5,
+        9.625,
+        9.75,
+        9.875,
+        10.0,
+        10.125,
+        10.25,
+        10.5,
+        11.0,
+        12.0
+      ],
+      "baselineSizes": [
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          20,
+          40
+        ]
+      ],
+      "candidateSizes": [
+        [
+          32,
+          64
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          20,
+          40
+        ]
+      ]
+    },
+    {
+      "encounter": 1,
+      "phase": "approach",
+      "baselineMaxHeightStep": 8,
+      "candidateMaxHeightStep": 8,
+      "baselineNearHeightStep": 8,
+      "candidateNearHeightStep": 4,
+      "radii": [
+        12.0,
+        11.0,
+        10.5,
+        10.25,
+        10.125,
+        10.0,
+        9.875,
+        9.75,
+        9.625,
+        9.5,
+        9.375,
+        9.25,
+        9.0,
+        8.75,
+        8.625,
+        8.5,
+        8.375,
+        8.125
+      ],
+      "baselineSizes": [
+        [
+          20,
+          40
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ]
+      ],
+      "candidateSizes": [
+        [
+          20,
+          40
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          32,
+          64
+        ]
+      ]
+    },
+    {
+      "encounter": 1,
+      "phase": "retreat",
+      "baselineMaxHeightStep": 8,
+      "candidateMaxHeightStep": 8,
+      "baselineNearHeightStep": 8,
+      "candidateNearHeightStep": 4,
+      "radii": [
+        8.375,
+        8.5,
+        8.625,
+        8.75,
+        9.0,
+        9.25,
+        9.375,
+        9.5,
+        9.625,
+        9.75,
+        9.875,
+        10.0,
+        10.125,
+        10.25,
+        10.5,
+        11.0,
+        12.0
+      ],
+      "baselineSizes": [
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          20,
+          40
+        ]
+      ],
+      "candidateSizes": [
+        [
+          32,
+          64
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          20,
+          40
+        ]
+      ]
+    },
+    {
+      "encounter": 2,
+      "phase": "approach",
+      "baselineMaxHeightStep": 8,
+      "candidateMaxHeightStep": 8,
+      "baselineNearHeightStep": 8,
+      "candidateNearHeightStep": 4,
+      "radii": [
+        12.0,
+        11.0,
+        10.5,
+        10.25,
+        10.125,
+        10.0,
+        9.875,
+        9.75,
+        9.625,
+        9.5,
+        9.375,
+        9.25,
+        9.0,
+        8.75,
+        8.625,
+        8.5,
+        8.375,
+        8.125
+      ],
+      "baselineSizes": [
+        [
+          20,
+          40
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ]
+      ],
+      "candidateSizes": [
+        [
+          20,
+          40
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          32,
+          64
+        ]
+      ]
+    },
+    {
+      "encounter": 2,
+      "phase": "retreat",
+      "baselineMaxHeightStep": 8,
+      "candidateMaxHeightStep": 8,
+      "baselineNearHeightStep": 8,
+      "candidateNearHeightStep": 4,
+      "radii": [
+        8.375,
+        8.5,
+        8.625,
+        8.75,
+        9.0,
+        9.25,
+        9.375,
+        9.5,
+        9.625,
+        9.75,
+        9.875,
+        10.0,
+        10.125,
+        10.25,
+        10.5,
+        11.0,
+        12.0
+      ],
+      "baselineSizes": [
+        [
+          32,
+          64
+        ],
+        [
+          32,
+          64
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          20,
+          40
+        ]
+      ],
+      "candidateSizes": [
+        [
+          32,
+          64
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          28,
+          56
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          26,
+          52
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          20,
+          40
+        ]
+      ]
+    }
+  ],
+  "timingSameTierControls": [
+    {
+      "id": "room1-turn-091",
+      "baseline": {
+        "count": 1,
+        "minimum": 626625,
+        "median": 626625,
+        "maximum": 626625
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 626972,
+        "median": 626972,
+        "maximum": 626972
+      },
+      "medianDelta": 347,
+      "medianPercent": 0.05537602234191308
+    },
+    {
+      "id": "room1-turn-092",
+      "baseline": {
+        "count": 1,
+        "minimum": 800339,
+        "median": 800339,
+        "maximum": 800339
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 800683,
+        "median": 800683,
+        "maximum": 800683
+      },
+      "medianDelta": 344,
+      "medianPercent": 0.04298178646797712
+    },
+    {
+      "id": "room1-turn-093",
+      "baseline": {
+        "count": 1,
+        "minimum": 582334,
+        "median": 582334,
+        "maximum": 582334
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 582677,
+        "median": 582677,
+        "maximum": 582677
+      },
+      "medianDelta": 343,
+      "medianPercent": 0.058900905665826286
+    },
+    {
+      "id": "room1-turn-094",
+      "baseline": {
+        "count": 1,
+        "minimum": 591083,
+        "median": 591083,
+        "maximum": 591083
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 591425,
+        "median": 591425,
+        "maximum": 591425
+      },
+      "medianDelta": 342,
+      "medianPercent": 0.05785989446489559
+    },
+    {
+      "id": "room1-turn-099",
+      "baseline": {
+        "count": 1,
+        "minimum": 679189,
+        "median": 679189,
+        "maximum": 679189
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 679019,
+        "median": 679019,
+        "maximum": 679019
+      },
+      "medianDelta": -170,
+      "medianPercent": -0.025029851779112544
+    },
+    {
+      "id": "room1-turn-100",
+      "baseline": {
+        "count": 1,
+        "minimum": 859478,
+        "median": 859478,
+        "maximum": 859478
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 859261,
+        "median": 859261,
+        "maximum": 859261
+      },
+      "medianDelta": -217,
+      "medianPercent": -0.025247883017365247
+    },
+    {
+      "id": "room1-turn-101",
+      "baseline": {
+        "count": 1,
+        "minimum": 628406,
+        "median": 628406,
+        "maximum": 628406
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 628188,
+        "median": 628188,
+        "maximum": 628188
+      },
+      "medianDelta": -218,
+      "medianPercent": -0.03469094820863772
+    },
+    {
+      "id": "room1-turn-102",
+      "baseline": {
+        "count": 1,
+        "minimum": 645117,
+        "median": 645117,
+        "maximum": 645117
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 644874,
+        "median": 644874,
+        "maximum": 644874
+      },
+      "medianDelta": -243,
+      "medianPercent": -0.03766758587977481
+    },
+    {
+      "id": "room1-turn-103",
+      "baseline": {
+        "count": 1,
+        "minimum": 695597,
+        "median": 695597,
+        "maximum": 695597
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 695693,
+        "median": 695693,
+        "maximum": 695693
+      },
+      "medianDelta": 96,
+      "medianPercent": 0.013801094599319441
+    },
+    {
+      "id": "room1-turn-104",
+      "baseline": {
+        "count": 1,
+        "minimum": 871308,
+        "median": 871308,
+        "maximum": 871308
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 871357,
+        "median": 871357,
+        "maximum": 871357
+      },
+      "medianDelta": 49,
+      "medianPercent": 0.005623728922499183
+    },
+    {
+      "id": "room1-turn-105",
+      "baseline": {
+        "count": 1,
+        "minimum": 651973,
+        "median": 651973,
+        "maximum": 651973
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 652021,
+        "median": 652021,
+        "maximum": 652021
+      },
+      "medianDelta": 48,
+      "medianPercent": 0.007362268069388556
+    },
+    {
+      "id": "room1-turn-106",
+      "baseline": {
+        "count": 1,
+        "minimum": 662560,
+        "median": 662560,
+        "maximum": 662560
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 660911,
+        "median": 660911,
+        "maximum": 660911
+      },
+      "medianDelta": -1649,
+      "medianPercent": -0.24888312001931645
+    },
+    {
+      "id": "room2-turn-202",
+      "baseline": {
+        "count": 1,
+        "minimum": 1052862,
+        "median": 1052862,
+        "maximum": 1052862
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 1053209,
+        "median": 1053209,
+        "maximum": 1053209
+      },
+      "medianDelta": 347,
+      "medianPercent": 0.03295778554075479
+    },
+    {
+      "id": "room2-turn-203",
+      "baseline": {
+        "count": 1,
+        "minimum": 1122412,
+        "median": 1122412,
+        "maximum": 1122412
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 1122756,
+        "median": 1122756,
+        "maximum": 1122756
+      },
+      "medianDelta": 344,
+      "medianPercent": 0.030648282448875186
+    },
+    {
+      "id": "room2-turn-204",
+      "baseline": {
+        "count": 1,
+        "minimum": 1018274,
+        "median": 1018274,
+        "maximum": 1018274
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 1018617,
+        "median": 1018617,
+        "maximum": 1018617
+      },
+      "medianDelta": 343,
+      "medianPercent": 0.033684450354232176
+    },
+    {
+      "id": "room2-turn-205",
+      "baseline": {
+        "count": 1,
+        "minimum": 971109,
+        "median": 971109,
+        "maximum": 971109
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 971451,
+        "median": 971451,
+        "maximum": 971451
+      },
+      "medianDelta": 342,
+      "medianPercent": 0.035217467864057106
+    },
+    {
+      "id": "room2-turn-210",
+      "baseline": {
+        "count": 1,
+        "minimum": 1073942,
+        "median": 1073942,
+        "maximum": 1073942
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 1073772,
+        "median": 1073772,
+        "maximum": 1073772
+      },
+      "medianDelta": -170,
+      "medianPercent": -0.015829532693567572
+    },
+    {
+      "id": "room2-turn-211",
+      "baseline": {
+        "count": 1,
+        "minimum": 1166957,
+        "median": 1166957,
+        "maximum": 1166957
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 1166773,
+        "median": 1166773,
+        "maximum": 1166773
+      },
+      "medianDelta": -184,
+      "medianPercent": -0.01576750471525834
+    },
+    {
+      "id": "room2-turn-212",
+      "baseline": {
+        "count": 1,
+        "minimum": 1054405,
+        "median": 1054405,
+        "maximum": 1054405
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 1054187,
+        "median": 1054187,
+        "maximum": 1054187
+      },
+      "medianDelta": -218,
+      "medianPercent": -0.0206751675115302
+    },
+    {
+      "id": "room2-turn-213",
+      "baseline": {
+        "count": 1,
+        "minimum": 1027132,
+        "median": 1027132,
+        "maximum": 1027132
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 1026889,
+        "median": 1026889,
+        "maximum": 1026889
+      },
+      "medianDelta": -243,
+      "medianPercent": -0.023658108208102213
+    },
+    {
+      "id": "room2-turn-214",
+      "baseline": {
+        "count": 1,
+        "minimum": 1101967,
+        "median": 1101967,
+        "maximum": 1101967
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 1102063,
+        "median": 1102063,
+        "maximum": 1102063
+      },
+      "medianDelta": 96,
+      "medianPercent": 0.00871169463332322
+    },
+    {
+      "id": "room2-turn-215",
+      "baseline": {
+        "count": 1,
+        "minimum": 1172749,
+        "median": 1172749,
+        "maximum": 1172749
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 1172765,
+        "median": 1172765,
+        "maximum": 1172765
+      },
+      "medianDelta": 16,
+      "medianPercent": 0.0013643158084164497
+    },
+    {
+      "id": "room2-turn-216",
+      "baseline": {
+        "count": 1,
+        "minimum": 1061779,
+        "median": 1061779,
+        "maximum": 1061779
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 1061827,
+        "median": 1061827,
+        "maximum": 1061827
+      },
+      "medianDelta": 48,
+      "medianPercent": 0.004520714762668021
+    },
+    {
+      "id": "room2-turn-217",
+      "baseline": {
+        "count": 1,
+        "minimum": 1027674,
+        "median": 1027674,
+        "maximum": 1027674
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 1026025,
+        "median": 1026025,
+        "maximum": 1026025
+      },
+      "medianDelta": -1649,
+      "medianPercent": -0.16045944531047907
+    },
+    {
+      "id": "room3-turn-313",
+      "baseline": {
+        "count": 1,
+        "minimum": 663304,
+        "median": 663304,
+        "maximum": 663304
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 663644,
+        "median": 663644,
+        "maximum": 663644
+      },
+      "medianDelta": 340,
+      "medianPercent": 0.051258548116694946
+    },
+    {
+      "id": "room3-turn-314",
+      "baseline": {
+        "count": 1,
+        "minimum": 742942,
+        "median": 742942,
+        "maximum": 742942
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 743279,
+        "median": 743279,
+        "maximum": 743279
+      },
+      "medianDelta": 337,
+      "medianPercent": 0.04536020308449906
+    },
+    {
+      "id": "room3-turn-315",
+      "baseline": {
+        "count": 1,
+        "minimum": 745915,
+        "median": 745915,
+        "maximum": 745915
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 746251,
+        "median": 746251,
+        "maximum": 746251
+      },
+      "medianDelta": 336,
+      "medianPercent": 0.045045346989947
+    },
+    {
+      "id": "room3-turn-316",
+      "baseline": {
+        "count": 1,
+        "minimum": 743105,
+        "median": 743105,
+        "maximum": 743105
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 743440,
+        "median": 743440,
+        "maximum": 743440
+      },
+      "medianDelta": 335,
+      "medianPercent": 0.04508111235963508
+    },
+    {
+      "id": "room3-turn-321",
+      "baseline": {
+        "count": 1,
+        "minimum": 722339,
+        "median": 722339,
+        "maximum": 722339
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 722162,
+        "median": 722162,
+        "maximum": 722162
+      },
+      "medianDelta": -177,
+      "medianPercent": -0.024503730242997346
+    },
+    {
+      "id": "room3-turn-322",
+      "baseline": {
+        "count": 1,
+        "minimum": 820908,
+        "median": 820908,
+        "maximum": 820908
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 820684,
+        "median": 820684,
+        "maximum": 820684
+      },
+      "medianDelta": -224,
+      "medianPercent": -0.027286857967034894
+    },
+    {
+      "id": "room3-turn-323",
+      "baseline": {
+        "count": 1,
+        "minimum": 817382,
+        "median": 817382,
+        "maximum": 817382
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 817157,
+        "median": 817157,
+        "maximum": 817157
+      },
+      "medianDelta": -225,
+      "medianPercent": -0.027526909082897788
+    },
+    {
+      "id": "room3-turn-324",
+      "baseline": {
+        "count": 1,
+        "minimum": 795629,
+        "median": 795629,
+        "maximum": 795629
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 795379,
+        "median": 795379,
+        "maximum": 795379
+      },
+      "medianDelta": -250,
+      "medianPercent": -0.03142168020522362
+    },
+    {
+      "id": "room3-turn-325",
+      "baseline": {
+        "count": 1,
+        "minimum": 737400,
+        "median": 737400,
+        "maximum": 737400
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 737489,
+        "median": 737489,
+        "maximum": 737489
+      },
+      "medianDelta": 89,
+      "medianPercent": 0.012069433143468977
+    },
+    {
+      "id": "room3-turn-326",
+      "baseline": {
+        "count": 1,
+        "minimum": 832555,
+        "median": 832555,
+        "maximum": 832555
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 832597,
+        "median": 832597,
+        "maximum": 832597
+      },
+      "medianDelta": 42,
+      "medianPercent": 0.005044711760793241
+    },
+    {
+      "id": "room3-turn-327",
+      "baseline": {
+        "count": 1,
+        "minimum": 828945,
+        "median": 828945,
+        "maximum": 828945
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 828986,
+        "median": 828986,
+        "maximum": 828986
+      },
+      "medianDelta": 41,
+      "medianPercent": 0.0049460458775962834
+    },
+    {
+      "id": "room3-turn-328",
+      "baseline": {
+        "count": 1,
+        "minimum": 809490,
+        "median": 809490,
+        "maximum": 809490
+      },
+      "candidate": {
+        "count": 1,
+        "minimum": 807834,
+        "median": 807834,
+        "maximum": 807834
+      },
+      "medianDelta": -1656,
+      "medianPercent": -0.2045732498239583
+    }
+  ],
+  "timingDifferentTierPoses": [
+    {
+      "id": "room1-approach-005",
+      "radius": 10.0,
+      "baselineSize": [
+        24,
+        48
+      ],
+      "candidateSize": [
+        26,
+        52
+      ],
+      "baselineCycles": 636045,
+      "candidateCycles": 669601,
+      "medianPercent": 5.275727346335568
+    },
+    {
+      "id": "room1-approach-006",
+      "radius": 9.875,
+      "baselineSize": [
+        24,
+        48
+      ],
+      "candidateSize": [
+        26,
+        52
+      ],
+      "baselineCycles": 635509,
+      "candidateCycles": 669021,
+      "medianPercent": 5.273253407898237
+    },
+    {
+      "id": "room1-approach-007",
+      "radius": 9.75,
+      "baselineSize": [
+        28,
+        56
+      ],
+      "candidateSize": [
+        26,
+        52
+      ],
+      "baselineCycles": 671146,
+      "candidateCycles": 669579,
+      "medianPercent": -0.2334812395514585
+    },
+    {
+      "id": "room1-approach-008",
+      "radius": 9.625,
+      "baselineSize": [
+        28,
+        56
+      ],
+      "candidateSize": [
+        26,
+        52
+      ],
+      "baselineCycles": 670741,
+      "candidateCycles": 669174,
+      "medianPercent": -0.23362221781582093
+    },
+    {
+      "id": "room1-approach-009",
+      "radius": 9.5,
+      "baselineSize": [
+        28,
+        56
+      ],
+      "candidateSize": [
+        26,
+        52
+      ],
+      "baselineCycles": 671720,
+      "candidateCycles": 670157,
+      "medianPercent": -0.23268623831358415
+    },
+    {
+      "id": "room1-approach-010",
+      "radius": 9.375,
+      "baselineSize": [
+        28,
+        56
+      ],
+      "candidateSize": [
+        26,
+        52
+      ],
+      "baselineCycles": 669887,
+      "candidateCycles": 668407,
+      "medianPercent": -0.22093278418598983
+    },
+    {
+      "id": "room1-approach-014",
+      "radius": 8.625,
+      "baselineSize": [
+        28,
+        56
+      ],
+      "candidateSize": [
+        30,
+        60
+      ],
+      "baselineCycles": 674508,
+      "candidateCycles": 685864,
+      "medianPercent": 1.683597525900371
+    },
+    {
+      "id": "room1-approach-015",
+      "radius": 8.5,
+      "baselineSize": [
+        32,
+        64
+      ],
+      "candidateSize": [
+        30,
+        60
+      ],
+      "baselineCycles": 687420,
+      "candidateCycles": 686263,
+      "medianPercent": -0.1683104943120628
+    },
+    {
+      "id": "room1-approach-016",
+      "radius": 8.375,
+      "baselineSize": [
+        32,
+        64
+      ],
+      "candidateSize": [
+        30,
+        60
+      ],
+      "baselineCycles": 682583,
+      "candidateCycles": 681435,
+      "medianPercent": -0.16818467497725642
+    },
+    {
+      "id": "room2-approach-116",
+      "radius": 10.0,
+      "baselineSize": [
+        24,
+        48
+      ],
+      "candidateSize": [
+        26,
+        52
+      ],
+      "baselineCycles": 1039237,
+      "candidateCycles": 1072793,
+      "medianPercent": 3.2289073618433584
+    },
+    {
+      "id": "room2-approach-117",
+      "radius": 9.875,
+      "baselineSize": [
+        24,
+        48
+      ],
+      "candidateSize": [
+        26,
+        52
+      ],
+      "baselineCycles": 1035922,
+      "candidateCycles": 1069434,
+      "medianPercent": 3.234992595967645
+    },
+    {
+      "id": "room2-approach-118",
+      "radius": 9.75,
+      "baselineSize": [
+        28,
+        56
+      ],
+      "candidateSize": [
+        26,
+        52
+      ],
+      "baselineCycles": 1071012,
+      "candidateCycles": 1069449,
+      "medianPercent": -0.14593674020458858
+    },
+    {
+      "id": "room2-approach-119",
+      "radius": 9.625,
+      "baselineSize": [
+        28,
+        56
+      ],
+      "candidateSize": [
+        26,
+        52
+      ],
+      "baselineCycles": 1066562,
+      "candidateCycles": 1064999,
+      "medianPercent": -0.14654562978991814
+    },
+    {
+      "id": "room2-approach-120",
+      "radius": 9.5,
+      "baselineSize": [
+        28,
+        56
+      ],
+      "candidateSize": [
+        26,
+        52
+      ],
+      "baselineCycles": 1068245,
+      "candidateCycles": 1066682,
+      "medianPercent": -0.1463147498935169
+    },
+    {
+      "id": "room2-approach-121",
+      "radius": 9.375,
+      "baselineSize": [
+        28,
+        56
+      ],
+      "candidateSize": [
+        26,
+        52
+      ],
+      "baselineCycles": 1067309,
+      "candidateCycles": 1065829,
+      "medianPercent": -0.1386664967689799
+    },
+    {
+      "id": "room2-approach-125",
+      "radius": 8.625,
+      "baselineSize": [
+        28,
+        56
+      ],
+      "candidateSize": [
+        30,
+        60
+      ],
+      "baselineCycles": 1083635,
+      "candidateCycles": 1094995,
+      "medianPercent": 1.0483234668499986
+    },
+    {
+      "id": "room2-approach-126",
+      "radius": 8.5,
+      "baselineSize": [
+        32,
+        64
+      ],
+      "candidateSize": [
+        30,
+        60
+      ],
+      "baselineCycles": 1103189,
+      "candidateCycles": 1102032,
+      "medianPercent": -0.10487776799804616
+    },
+    {
+      "id": "room2-approach-127",
+      "radius": 8.375,
+      "baselineSize": [
+        32,
+        64
+      ],
+      "candidateSize": [
+        30,
+        60
+      ],
+      "baselineCycles": 1098194,
+      "candidateCycles": 1097046,
+      "medianPercent": -0.10453526426114079
+    },
+    {
+      "id": "room3-approach-227",
+      "radius": 10.0,
+      "baselineSize": [
+        24,
+        48
+      ],
+      "candidateSize": [
+        26,
+        52
+      ],
+      "baselineCycles": 682635,
+      "candidateCycles": 716184,
+      "medianPercent": 4.914632270539898
+    },
+    {
+      "id": "room3-approach-228",
+      "radius": 9.875,
+      "baselineSize": [
+        24,
+        48
+      ],
+      "candidateSize": [
+        26,
+        52
+      ],
+      "baselineCycles": 683996,
+      "candidateCycles": 717501,
+      "medianPercent": 4.898420458599184
+    },
+    {
+      "id": "room3-approach-229",
+      "radius": 9.75,
+      "baselineSize": [
+        28,
+        56
+      ],
+      "candidateSize": [
+        26,
+        52
+      ],
+      "baselineCycles": 719509,
+      "candidateCycles": 717939,
+      "medianPercent": -0.2182043588057958
+    },
+    {
+      "id": "room3-approach-230",
+      "radius": 9.625,
+      "baselineSize": [
+        28,
+        56
+      ],
+      "candidateSize": [
+        26,
+        52
+      ],
+      "baselineCycles": 715794,
+      "candidateCycles": 714224,
+      "medianPercent": -0.21933684831110245
+    },
+    {
+      "id": "room3-approach-231",
+      "radius": 9.5,
+      "baselineSize": [
+        28,
+        56
+      ],
+      "candidateSize": [
+        26,
+        52
+      ],
+      "baselineCycles": 712478,
+      "candidateCycles": 710908,
+      "medianPercent": -0.2203576812196295
+    },
+    {
+      "id": "room3-approach-232",
+      "radius": 9.375,
+      "baselineSize": [
+        28,
+        56
+      ],
+      "candidateSize": [
+        26,
+        52
+      ],
+      "baselineCycles": 712196,
+      "candidateCycles": 710709,
+      "medianPercent": -0.2087908384770465
+    },
+    {
+      "id": "room3-approach-236",
+      "radius": 8.625,
+      "baselineSize": [
+        28,
+        56
+      ],
+      "candidateSize": [
+        30,
+        60
+      ],
+      "baselineCycles": 712687,
+      "candidateCycles": 724040,
+      "medianPercent": 1.5929854199669746
+    },
+    {
+      "id": "room3-approach-237",
+      "radius": 8.5,
+      "baselineSize": [
+        32,
+        64
+      ],
+      "candidateSize": [
+        30,
+        60
+      ],
+      "baselineCycles": 727218,
+      "candidateCycles": 726054,
+      "medianPercent": -0.16006204466886276
+    },
+    {
+      "id": "room3-approach-238",
+      "radius": 8.375,
+      "baselineSize": [
+        32,
+        64
+      ],
+      "candidateSize": [
+        30,
+        60
+      ],
+      "baselineCycles": 726853,
+      "candidateCycles": 725698,
+      "medianPercent": -0.15890420759080426
+    }
+  ],
+  "limitations": [
+    "Sprite sizes remain discrete. Hysteresis prevents toggling near a threshold; it does not create continuous scaling.",
+    "Timing controls compare the same rendered size and pose. An intermediate larger sprite can intrinsically cost more to render than the old smaller tier.",
+    "The camera-forward floor anchor remains unchanged. This task does not change the previously observed vertical clipping when looking obliquely at extremely close actors."
+  ]
+}

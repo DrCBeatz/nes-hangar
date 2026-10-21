@@ -1,16 +1,18 @@
-"""Static title and control guide built from the existing NES font tiles."""
+"""Experimental cold-start logo followed by the unchanged fixed-font guide."""
 from __future__ import annotations
 
 import hashlib
 import json
 from pathlib import Path
+import newtitle_logo
 
 
 def write_assets(build, font, preview_dir=None):
-    """Write one nametable/palette, metadata and optional decoded PNG previews.
+    """Write unchanged guide data plus boot-only logo tiles, names and palette.
 
-    The caller has already generated fixed-patterns.bin. No CHR patterns,
-    sprite artwork, controller state or gameplay data are changed here.
+    The caller has already generated fixed-patterns.bin. The logo appends its
+    own temporary CHR tiles; fixed glyphs, sprite art and gameplay data remain
+    unchanged. Both screens have exact-byte metadata and decoded previews.
     """
     build = Path(build)
     build.mkdir(parents=True, exist_ok=True)
@@ -63,6 +65,8 @@ def write_assets(build, font, preview_dir=None):
                           for filename in ('title-nametable.bin','title-palette.bin','title-config.inc')})
     if preview_dir is not None:
         report['preview'] = _previews(Path(preview_dir), build/'fixed-patterns.bin', name, palette)
+    report['logoExperiment'] = newtitle_logo.write_assets(build, font, preview_dir)
+    report['coldStartSequence'] = ['DOOM grayscale logo', 'Existing controls guide', 'Gameplay']
     (build/'title-layout.json').write_text(json.dumps(report, indent=2)+'\n')
     return report
 

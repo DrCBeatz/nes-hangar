@@ -1,0 +1,154 @@
+{
+  "passed": true,
+  "romSha256": "8b24fd1875e01e51ea7dacbb68bc6b7ac905fca1c791fd1804d20c9638f1a0ee",
+  "baselineRomSha256": "f342c5b83f75be92fdf476fab0b2c802afe06438e41e5b571d98b501c05de28e",
+  "scope": "Independent controller-only Mesen execution of the frozen title experiment. Startup, full three-encounter route, completion, and held-Start retry; no ROM patches or game-RAM injection. Emulator validation only, not a physical-console result. The local research driver depends on separate support files and is not part of the distributable package.",
+  "checks": {
+    "controllerOnlyStockNtsc": true,
+    "completedWithoutObserverErrors": true,
+    "logoPpuMatchesGeneratedAssets": true,
+    "logoStaysStaticThroughHeldStartAndOtherControls": true,
+    "guideMatchesOriginalPixelsAndAssets": true,
+    "freshStartAdvancesEachPageInOrder": true,
+    "heldStartCannotSkipEitherPage": true,
+    "coldPagesOccurOnceAndRetryBypassesThem": true,
+    "bothPagesFreezeAllGameplay": true,
+    "bothPagesKeepNmiDisabled": true,
+    "loadingBlankAndSimulationFrozen": true,
+    "firstPictureEnablesGameAndStartsClockOnNextRefresh": true,
+    "launchControlsDoNotLeak": true,
+    "bothChrTablesRestoredExactlyBeforeFirstView": true,
+    "entirePpuRestoredExactlyBeforeFirstView": true,
+    "initialGameplayPixelsAndPpuUnchanged": true,
+    "nmiNeverNested": true,
+    "normalRenderCapsPreserved": true,
+    "fullRouteKillsThreeAndCollectsBothItems": true,
+    "completionResultsCorrect": true,
+    "heldRestartReturnsDirectlyToGame": true,
+    "restartRestoresBothChrTables": true
+  },
+  "run": {
+    "frames": 14780,
+    "controllerPhases": 136,
+    "capturedScreens": 46,
+    "producerRenders": 443,
+    "baselineFrames": 360
+  },
+  "configuration": {
+    "region": "NTSC",
+    "mapper": 1,
+    "prgRomBytes": 65536,
+    "chrRamBytes": 8192,
+    "workRamBytes": 8192,
+    "extraScanlinesBeforeNmi": 0,
+    "extraScanlinesAfterNmi": 0,
+    "normalSpriteLimit": true,
+    "adaptiveSpriteLimit": false,
+    "runAheadFrames": 0,
+    "ramPowerOnState": "AllZeros",
+    "randomizedCpuPpuAlignment": false
+  },
+  "timing": {
+    "nmiIntervals": 14405,
+    "maximumNmiDepth": 1,
+    "maximumNmiCpuCycles": 17354,
+    "firstVisible": [
+      {
+        "frame": 411,
+        "clockAtHook": 0,
+        "publishCount": 1,
+        "loading": true,
+        "clockAtFirstVisible": 0,
+        "clockFollowing": 1,
+        "enabledSameNmi": true,
+        "live": true
+      },
+      {
+        "frame": 14590,
+        "clockAtHook": 0,
+        "publishCount": 1,
+        "loading": true,
+        "clockAtFirstVisible": 0,
+        "clockFollowing": 1,
+        "enabledSameNmi": true,
+        "live": true
+      }
+    ],
+    "initialProducerCpuCycles": {
+      "baseline": 884349,
+      "candidate": 884349
+    },
+    "note": "The NMI routine includes simulation work; its total CPU duration is not a VRAM-upload budget. PPU accesses were separately monitored for visible-rendering writes outside VBlank. Initial-producer equality is a single matched opening scene, not a global benchmark."
+  },
+  "capacities": {
+    "maximumPlanes": 33,
+    "maximumPatterns": 113,
+    "maximumSpans": 8,
+    "planeLimit": 36,
+    "patternLimit": 184,
+    "spanLimit": 16
+  },
+  "errors": [],
+  "hookNormalization": {
+    "rationale": "The boot-only title routine uses $8000-$9FFF CPU addresses that also address renderer instructions in a different PRG bank. Title PC hooks count only while title_state==1; title_first_visible remains a normal fixed-bank hook. The raw recording is preserved. The shared medkit_collect entry is also reached for ammunition; active_encounter==0 identifies the actual medkit pickup.",
+    "rawBootCounts": {
+      "cold_reset": 1,
+      "title_logo_present": 66,
+      "title_logo_copy_begin": 66,
+      "title_logo_copy_end": 1912,
+      "title_logo_wait_start": 1,
+      "title_logo_start": 1,
+      "title_copy_begin": 1,
+      "title_copy_end": 1,
+      "title_wait_start": 1,
+      "title_start": 380,
+      "title_first_visible": 2
+    },
+    "normalizedBootCounts": {
+      "cold_reset": 1,
+      "title_logo_present": 1,
+      "title_logo_copy_begin": 1,
+      "title_logo_copy_end": 1,
+      "title_logo_wait_start": 1,
+      "title_logo_start": 1,
+      "title_copy_begin": 1,
+      "title_copy_end": 1,
+      "title_wait_start": 1,
+      "title_start": 1,
+      "title_first_visible": 2
+    },
+    "ignoredBankAliases": 2420,
+    "rawCollectionCounts": {
+      "medkitCollectEntry": 2,
+      "ammoCollectEntry": 1
+    },
+    "actualGameplayCounts": {
+      "zombieDefeats": 3,
+      "medkitCollections": 1,
+      "ammoCollections": 1
+    }
+  },
+  "provenance": {
+    "mesenExecutableSha256": "ce4446a92096a024145e6ed2793cce8b489460bb3ac034cd9d1d77d96109fced",
+    "executedObserverSha256": "663b926c66b01f7b31a48b199b1adf5dd066e334d9b78e85284033621477a8e2",
+    "executedDriverSha256": "62e83d29c54c7c925d52e6b04ee127184542bd3c6afdbe82b116fb47afed282f",
+    "analysisSha256": "1b7074387707f6e2169e951fed731c5a2b5f45cb5aa045bc5174e1e56f057b81",
+    "rawObservedReportSha256": "61102d7f0d06f51a09cd0cea3bd5fcd72adf806e635aeabddce10552cfab4c71",
+    "detailedSummarySha256": "60ac042939142bc0c0e668249f396fa6e63e2c0b1503df36ea794541747664b8",
+    "buildManifestSha256": "1d22fe3cc8ab4d8bea06a8905105f9ea8758363d174c11fb79094246b210e7e9",
+    "buildSourceCount": 63,
+    "buildSourcesSha256": "2e157227ef2b7740e6b4e9e8ae7832f390dbad7c2558edfbd21ec75ed96d435d",
+    "titleSourceHashes": {
+      "src/title.s": "3f66fd4c8ae2f19fe3a482599fc2d26c09d316e6ba285e244f40f88c2906207e",
+      "tools/title_assets.py": "86293525f960401f9e17df0cbd6f1e54428e397f35007488c414c0eb06938a09",
+      "tools/newtitle_logo.py": "9ed75bb0d8e254673da16e749e5357e721c1e9e906f9fbb2ffa27a095d73676b",
+      "assets/newlogo-doom.json": "2f201578736e090dd86ce13b4d9a3a05a9c9be9afb43d7c98cb31d4315df9cb3"
+    },
+    "generatedAssetHashes": {
+      "newtitle-logo-patterns.bin": "652998db4e7e534945402631e93a1f7220cd0ad8684f09b9e70c8e0825420e05",
+      "newtitle-logo-packed.bin": "d2c7a206e4d47528486787cc5498def6b6c17d5b0f0882994451042fab80786f",
+      "newtitle-logo-nametable.bin": "25c51711d21d949503ff8c8e642d6683bb19fea4e7aa32cca6a437102b4362fb",
+      "newtitle-logo-palette.bin": "6d39feaea781d62d0618da61e371fb3a24cf5f153e54e6ac369156ccb78a93c1"
+    }
+  }
+}

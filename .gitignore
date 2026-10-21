@@ -1,5 +1,7 @@
 /build/
 /artifacts/
+# Local research harness and emulator captures for the title experiment.
+/analysis/
 __pycache__/
 *.py[cod]
 .DS_Store

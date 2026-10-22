@@ -1,4 +1,4 @@
-"""Native indexed DOOM-logo import and NES tile conversion for a local experiment.
+"""Native indexed DOOM-logo import and NES tile conversion for the title screen.
 
 The indexed source art is derived from id Software's M_DOOM patch in a supplied
 WAD. It is third-party artwork, not original MIT-licensed project artwork.
@@ -25,6 +25,7 @@ PALETTES = {
     'blue-gold': dict(label='Blue and gold', colors=(0x0f, 0x11, 0x27, 0x37)),
     'steel': dict(label='Blue steel', colors=(0x0f, 0x11, 0x10, 0x30)),
 }
+DEFAULT_PALETTE = 'bronze'
 # Representative RGB values for offline previews, not a universal NES colour
 # standard. Actual colours depend on the emulator palette or console/display.
 PREVIEW_RGB = {
@@ -118,7 +119,7 @@ def write_png(path, pixels, scale=1):
                           chunk(b'IDAT', zlib.compress(payload, 9)) + chunk(b'IEND', b''))
 
 
-def write_assets(build, font, preview_dir=None, palette_name='grayscale'):
+def write_assets(build, font, preview_dir=None, palette_name=DEFAULT_PALETTE):
     build = Path(build)
     selected = PALETTES[palette_name]
     logo_colors = selected['colors']

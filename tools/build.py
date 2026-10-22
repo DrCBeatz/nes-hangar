@@ -55,8 +55,8 @@ def main():
     logo_module = load('newtitle_logo', TOOLS/'newtitle_logo.py')
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--verify', action='store_true', help='Require exact identity with the included accepted release')
-    parser.add_argument('--title-palette', choices=logo_module.PALETTES, default='grayscale',
-                        help='Experimental logo colours only; guide and gameplay stay unchanged (default: grayscale)')
+    parser.add_argument('--title-palette', choices=logo_module.PALETTES, default=logo_module.DEFAULT_PALETTE,
+                        help='Logo colours only; guide and gameplay stay unchanged (default: bronze)')
     args = parser.parse_args()
     if sys.flags.optimize:
         raise SystemExit('Do not use python -O: build-time geometry/resource assertions are required.')

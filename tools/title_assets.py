@@ -1,4 +1,4 @@
-"""Experimental cold-start logo followed by the unchanged fixed-font guide."""
+"""Cold-start logo followed by the unchanged fixed-font guide."""
 from __future__ import annotations
 
 import hashlib
@@ -7,7 +7,7 @@ from pathlib import Path
 import newtitle_logo
 
 
-def write_assets(build, font, preview_dir=None, logo_palette='grayscale'):
+def write_assets(build, font, preview_dir=None, logo_palette=newtitle_logo.DEFAULT_PALETTE):
     """Write unchanged guide data plus boot-only logo tiles, names and palette.
 
     The caller has already generated fixed-patterns.bin. The logo appends its

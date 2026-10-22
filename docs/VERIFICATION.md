@@ -3,10 +3,42 @@
 The accepted release is `release/hangar-ntsc.nes`, 65,552 bytes, with SHA-256:
 
 ```text
-f342c5b83f75be92fdf476fab0b2c802afe06438e41e5b571d98b501c05de28e
+c715b34bd688927579d20d6c593dbddb8436ca4a38dab4b78f553a5d04afe251
 ```
 
-## Soldier sprite stability
+## Bronze title integration
+
+The `prototype-2026-10-21-bronze-title` release promotes the previously tested
+bronze title ROM without changing its binary. The default build uses bronze;
+`--title-palette` retains the alternate colours for intentional modified builds.
+[current-release.json](../verification/current-release.json) records the
+accepted artifact and its evidence, and
+[current-build.json](../verification/current-build.json) records a fresh
+standalone `python3 -I -S -B tools/build.py --verify` run.
+
+The bronze candidate's 21 stock-NTSC Mesen startup checks and six binary/asset
+checks are retained in
+[title-palette-comparison.json](../verification/title-palette-comparison.json).
+They verify both fresh-Start gates, frozen gameplay during title/loading,
+the original controls guide, and complete restoration of the first gameplay
+picture's CHR, PPU memory and RGB pixels. Bronze differs from the grayscale
+title only in three palette bytes. The earlier grayscale title's complete
+three-encounter route, pickups, results and direct restart are recorded in
+[title-screen-experiment.json](../verification/title-screen-experiment.json).
+That full route was not repeated for the palette-only change.
+
+The current focused JSNES startup smoke is recorded separately in
+[current-browser.json](../verification/current-browser.json). It does not
+represent a full browser route, all app tests, or a hosted deployment.
+
+BOOTDATA is 7,376/8,192 bytes; every other linked segment retains its previous
+size. The matched opening producer costs the same 884,349 CPU cycles in the
+grayscale and bronze title builds. This is a matched scene measurement;
+the stronger structural result is that the colour change modifies only
+palette data. No music engine has been added and no physical-console test
+is claimed.
+
+## Previous soldier sprite stability
 
 The `prototype-2026-10-21-sprite-stability` release combines intermediate
 26 × 52 and 30 × 60 soldier sizes, near-size hysteresis, and radial vertical
@@ -14,10 +46,10 @@ placement for soldiers and corpses. It preserves the map, gameplay and
 cartridge layout. The [sprite notes](SPRITE-STABILITY.md) explain the visual
 tradeoff; stable vertical placement is not exact off-axis floor projection.
 
-[current-release.json](../verification/current-release.json) records the
-accepted artifact and its evidence. The
-[fresh standalone build](../verification/current-build.json) checks that the
-packaged source reproduces the release with
+[sprite-stability-release.json](../verification/sprite-stability-release.json)
+records that prior artifact and its evidence. Its
+[fresh standalone build](../verification/sprite-stability-build.json) checked
+that the packaged source reproduced that release with
 `python3 -I -S -B tools/build.py --verify`.
 
 The final ROM's linked helper checks include 3,537 size cases and 1,024 epoch
@@ -58,7 +90,7 @@ both pickups, pause, the empty-gun cue, the door, completion and restart.
 It finished with twelve shots, nine hits, four rounds and 90 health; three
 rounds were deliberately wasted to test the empty-gun cue. All 46 read-only
 RAM symbols matched the new linker output. See
-[current-browser.json](../verification/current-browser.json). The live site
+[sprite-stability-browser.json](../verification/sprite-stability-browser.json). The live site
 still serves the previous release; these tests did not deploy an update.
 
 The normal build does not rerun the research emulator harnesses. Detailed

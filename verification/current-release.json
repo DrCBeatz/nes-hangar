@@ -2,26 +2,30 @@
   "schemaVersion": 1,
   "verifiedOn": "2026-10-21",
   "passed": true,
+  "version": "prototype-2026-10-21-bronze-title",
   "artifact": {
     "path": "release/hangar-ntsc.nes",
-    "sha256": "f342c5b83f75be92fdf476fab0b2c802afe06438e41e5b571d98b501c05de28e",
+    "sha256": "c715b34bd688927579d20d6c593dbddb8436ca4a38dab4b78f553a5d04afe251",
     "bytes": 65552,
     "region": "NTSC",
     "mapper": "MMC1",
-    "prgBytes": 65536,
+    "prgRomBytes": 65536,
     "chrRamBytes": 8192,
     "workRamBytes": 8192
   },
   "baseline": {
-    "sha256": "277422aa65613d5f1a581fece1e398c161948d473741b0aa2b47b2d11113e4a2",
-    "gitCommit": "0f31a3947b7d8a2bed63c64acc53ce8812ce3470",
-    "evidence": "verification/third-encounter-release.json"
+    "gitCommit": "d2f2bbd",
+    "sha256": "f342c5b83f75be92fdf476fab0b2c802afe06438e41e5b571d98b501c05de28e",
+    "evidence": "verification/sprite-stability-release.json"
   },
   "integrity": {
-    "acceptedExperimentalRomMatchesRelease": true,
+    "byteIdenticalToTestedBronzeCandidate": true,
+    "defaultPalette": "bronze",
+    "sourceFileCount": 63,
     "sourceSha256": {
       "assets/font.json": "89c68eed341c5a4394f732ea9af7e8106abf99ba69f6374b904395435bf80102",
       "assets/map.json": "22503f57ef348a87b7ba51ea568a83aecf13d86e95ee370f75e50dd8a8ec0690",
+      "assets/newlogo-doom.json": "2f201578736e090dd86ce13b4d9a3a05a9c9be9afb43d7c98cb31d4315df9cb3",
       "assets/pistol-sheet.png": "9c5af67576fe8d5d8d16d4316e62b99eee8f70fbd451d54749faeb14f2a0893d",
       "src/coordinate-memory.inc": "0a6ae0cb50ca31a656a34e46960618146245829d9ece6ec5bc5453fc2eb40861",
       "src/coordinate_math.s": "6075834c68f1d9b46ac547469c0f2b52165bb76eb595dbf767a07c1939b64ec4",
@@ -55,7 +59,7 @@
       "src/slime-memory.inc": "9b3b31ab0954adf005015dba640fdccae5c721eacb3454f1db2ea6d9863cf7d2",
       "src/slime_damage.s": "3f11068d18e576f94da4fa1ae42d3129bdecfe48db69f8bd1d4b58e93678c9b4",
       "src/title-memory.inc": "5bc1cc41dda43144aabc70477f66baed93289c1d92ae78856d2f428a491c98f0",
-      "src/title.s": "1967421184d4ad9d65a5db9737704707cca1f79c9e6f95cc28ceeb2ff093c250",
+      "src/title.s": "b89d29ba66454acbf48e83adb3261256c4d6cf3a38c2c424741b266cb58dc2da",
       "src/walkable.s": "8b445d919f65a96fe507c53e93d3f9bc09a169a7d6a686bbbec3da4ea8f99b9c",
       "src/zombie_ai.s": "5c14c6f2881ebf63181eeed407856002d26c915e9635aa0456fccf626162c351",
       "src/zombie_attack.s": "71a0e2149e914b6b419e954b239ef4d74d6cd900d43ae476de03bdbf33ec3db3",
@@ -63,7 +67,7 @@
       "src/zombie_render.s": "b93e63d7d81d7145a8e4872afb09d06cbbd19c7d9c21164f56d5b21f2c0e58f6",
       "tools/ai_reference.py": "186b7c4a7f7d8ac4681d237ef827a8ba5c7ef81bd99dda5e8a9f753a1fe58a09",
       "tools/ammo_assets.py": "24e6bcb564ee32a1146d29243e36685e99dabd165a4215e7ad725966802dcdce",
-      "tools/build.py": "25ab27414960de63056f80fc52039c4d81729bb9ebb949b6723c3b50495d94e7",
+      "tools/build.py": "a264c30e71c670e0ceedebc2e353fe79ae12fba2ace08fb83a96635a11d9fbf6",
       "tools/corpse_assets.py": "5cf49d6345dea634af43ff2264a49d75e584816a6ca26350b36aa7021f344dda",
       "tools/door_reference.py": "0c640056d05c23fa46d47ffc0d9ed0ac408ade12ba76325fdfac9479212edc7f",
       "tools/encounter_reference.py": "7039e8bf8afb245cba4e216f45de4881b976ea56a1bdabb092dfd58eb56172c8",
@@ -74,135 +78,86 @@
       "tools/map_math.py": "50298e83915f0d6203a2ec7b6f73c077b1f0c41df2049e46ba1fa26036b3c873",
       "tools/medkit_assets.py": "d24bb0e75bdfe61a6b68181431519f1a998ca0f67ab5a262e6965b4a3c464254",
       "tools/movement_reference.py": "48a3f49c12040d9a43a0842457bfdd81da990eec69c4e01bbcd00b9d015211b2",
+      "tools/newtitle_logo.py": "17cf7d772b9e48cb90c0094a1e8a55fb495e06d939d1306c8f04f31ad9f42ac0",
       "tools/pistol_assets.py": "ad92fbc7de2455c3f1b0d1bf018f3f27331fb55e0acf50652656bd82a9b15240",
       "tools/results_assets.py": "7c7de2f752d2d0494d1ebd4b0acdbd0fd58d01f138a0efaacfeace4433146706",
       "tools/slime_damage.py": "7c72e23d5d3c886bbaa1389063de9218f79376c4d6451d8156535dc92142a79e",
-      "tools/title_assets.py": "8f14e9ed9fe5d7c7c29e713c3162672f1bb5f52d63fd61faf80c71ef652159c3",
+      "tools/title_assets.py": "d427f48f080134d8f9d467ebaf8c84546a6be68b7ee6ac8840fb332741d7f3a4",
       "tools/visibility.py": "2664af50c32ce94b988b36a55b735c10a05f9ff18ffcecdef4564d1359f5a8fb",
       "tools/zombie_assets.py": "0204779e9a66fa45a75cae7bc657e7dd7103fc28cc208a20e880389a941215f8",
       "tools/zombie_size.py": "b098d3392aca6ab2e81a2778d7930b37fc18b8404e0625e2ec166fd54b33c9fc"
     },
-    "sourceFileCount": 61,
-    "researchBuildManifestSha256": "149b2461bc14d3ce30aff1e7082664ce808de9df2d7da3c2df9d66a22bca145e",
-    "linkedLabelsSha256": "bca7287a0cf3bcf30ecbad96ae7e0f4129be67d79835af92332e35a9027a52a3",
+    "buildManifestSha256": "f85787fe1b4506aa0747a7962bc24c91f59c31fd97f2ed33468759dfa334eafb",
     "evidenceSha256": {
-      "sprite-size-comparison.json": "2b47d6772df581f33852b93de772bc1a24d849cb425ffa96aa2e49853d70d310",
-      "sprite-render-comparison.json": "c488bd79b5f6f64ef5afdd743a28aef47770fac75ba2131acc0f98ae09d38af8",
-      "sprite-size-fixtures.json": "5b75b9b10b081fd1388481a71d745e95493be1781660e0db474fecc47b25b379",
-      "sprite-radial-fixtures.json": "6be3504944b9cd3190b570f3066c146685c93b1235b6c52b29fea20d4b9da569"
+      "title-screen-experiment.json": "d7f9fca9ffad1ee6ecfabdc3ef768603d35f11a675eb7d7ca3405040a28b7e7a",
+      "title-palette-comparison.json": "63c634a933e76c2592617dc9020edd616c5f60a99b722dceb596894052e15d5a",
+      "title-palette-builds.json": "05bd259bec527ccdc624f35b8b03f5d886384acce6a9ac090301846a3977e24d",
+      "current-build.json": "cc0b86dd95d822af243aa90aaa1f8db1f72d1a6b5cd778b4cee25b840e27fe45",
+      "current-browser.json": "aa4d9be520a4e56130171c6513ee7568398d3801819d30e2da8df43b51954064",
+      "sprite-stability-release.json": "3f823c87edbef78bf8d7b2cf8ecdaaa4e94f0fb6abdd902471aeea84eccdfc31"
     }
+  },
+  "title": {
+    "sequence": [
+      "Bronze DOOM logo",
+      "Existing controls guide",
+      "Gameplay"
+    ],
+    "freshStartPerPage": true,
+    "retryBypassesStartupPages": true,
+    "patternCount": 186,
+    "paletteNes": [
+      15,
+      23,
+      39,
+      55
+    ]
   },
   "memory": {
     "segmentBytes": {
       "ZEROPAGE": 256,
       "BSS": 1536,
       "ACTOR_ART": 8065,
-      "BOOTDATA": 4675,
+      "BOOTDATA": 7376,
       "MAPDATA": 8129,
       "RODATA": 8154,
       "CODE": 16257,
       "STARTUP": 9
     },
-    "zeroPageAndBssAllocationUnchanged": true,
-    "maximumSpriteWidth": 32,
-    "maximumSpriteHeight": 64,
-    "maximumSpritesPerScanline": 8
+    "allocatedRamUnchanged": true,
+    "bootFreeBytes": 816
   },
-  "sizing": {
-    "widths": [
-      4,
-      6,
-      8,
-      12,
-      16,
-      20,
-      24,
-      26,
-      28,
-      30,
-      32
+  "binaryComparison": {
+    "mapAndActorBanksIdentical": true,
+    "mirroredCommonWindowsIdentical": true,
+    "fixedBankChangedFileOffsets": [
+      49254,
+      49255
     ],
-    "nearSwitchMarginWorldUnits": 0.125,
-    "nearHeightStepPixels": 4,
-    "history": "Living actor only, keyed by immutable encounter epoch",
-    "finalCandidateHelperCounts": {
-      "size": 3537,
-      "epoch": 1024
+    "fixedChange": "Two-byte operand of reset JSR title_present relocates boot entry; remaining fixed code is byte-identical",
+    "bootBankContainsNewLogoAssetsAndLoader": true
+  },
+  "verification": {
+    "cleanBuild": "verification/current-build.json",
+    "mesenBronze": {
+      "report": "verification/title-palette-comparison.json",
+      "runtimeChecks": 21,
+      "binaryChecks": 6,
+      "refreshes": 480,
+      "controllerOnly": true,
+      "stockNtsc": true
     },
-    "componentComparison": "verification/sprite-size-comparison.json tests intermediate b5b1ec39, not the final radial-anchor ROM"
-  },
-  "verticalPlacement": {
-    "policy": "Continuous radial floor anchor for living soldiers and corpses; true forward depth retained for horizontal projection and foreground occlusion; pickups retain their prior projection",
-    "numericalCases": 4959,
-    "radiusLimitCases": 12,
-    "tradeoff": "Off-axis floor contact is approximate; this prevents a radial-sized sprite sinking while turning without enlarging the maximum sprite"
-  },
-  "mesen": {
-    "passed": true,
-    "checks": {
-      "allFourRunsCompleted": true,
-      "focused60PerRom": true,
-      "stress23PerRom": true,
-      "allViewsCoherentlyPublished": true,
-      "noPpuNmiErrors": true,
-      "actorDimensionsAndHorizontalProjectionUnchanged": true,
-      "allFixedRadiusTurnsKeepVerticalPosition": true,
-      "centerFacingScreensExact": true,
-      "centerFacingPpuActorPixelsExact": true,
-      "allFocusedWorldBackgroundPixelsExact": true,
-      "allStressWorldBackgroundPixelsExact": true,
-      "trueCameraInverseUnchanged": true,
-      "worldOcclusionMasksUnchanged": true,
-      "itemProjectionUnchanged": true,
-      "itemPpuPixelsExact": true,
-      "centerFacingCorpsePixelsExact": true,
-      "corpseVerticalPositionStableWhenTurning": true,
-      "normalEightSpritesPerScanlineLimit": true,
-      "fullyHiddenWallAndPillarActorsStayHidden": true
+    "historicalGrayFullRoute": {
+      "report": "verification/title-screen-experiment.json",
+      "refreshes": 14780,
+      "scope": "Full route and restart on grayscale title; bronze differs by only three palette bytes. Not repeated for this integration."
     },
-    "posesPerRom": {
-      "turn": 60,
-      "additionalControls": 23
-    },
-    "totalRefreshes": 10284,
-    "stockNtsc": true,
-    "extraScanlines": 0,
-    "controllerOnly": false,
-    "scope": "Ordered fixed camera/actor poses injected into RAM, AI held still; original linked ROM performs projection, rendering, upload and PPU display",
-    "report": "verification/sprite-render-comparison.json"
+    "jsnes": "verification/current-browser.json",
+    "physicalConsoleTest": false
   },
-  "browser": {
-    "passed": true,
-    "tests": 18,
-    "frames": 7529,
-    "controllerOnly": true,
-    "stockTiming": true,
-    "report": "verification/current-browser.json",
-    "liveDeploymentChanged": false
-  },
-  "performance": {
-    "scope": "Producer CPU cycles exclude interrupts/uploads and are not gameplay FPS",
-    "radialAnchorIncrementPercent": {
-      "centeredMin": 0.44,
-      "centeredMax": 0.75,
-      "allTurnMax": 1.25
-    },
-    "sizeTierIncrement": "Intermediate b5b1ec39 comparison: 26 versus24 width +3.23..5.28%, 30 versus28 +1.05..1.68%; comparison differs in amount of visible sprite work"
-  },
-  "reproducibility": {
-    "buildCommand": "python3 -I -S -B tools/build.py --verify",
-    "standaloneReport": "verification/current-build.json",
-    "fixtureCommands": [
-      "node verification/sprite-size-fixtures.mjs --core /path/to/pinned-jsnes/src/index.js",
-      "node verification/sprite-radial-fixtures.mjs --core /path/to/pinned-jsnes/src/index.js"
-    ],
-    "externalEvidence": "Detailed Mesen captures and browser harness remain in the research workspace; portable summaries and numerical fixture drivers are included here"
-  },
-  "limitations": [
-    "No physical NES or flash-cartridge test claimed.",
-    "Mesen comparison uses injected diagnostic poses; the separate JSNES route uses controller input only.",
-    "Scaling remains discrete and ground contact is an off-axis visual approximation.",
-    "One encounter simulates/renders at a time.",
-    "Browser-hosted release remains the preceding 277422aa ROM until a separate deployment."
-  ]
+  "deployment": {
+    "pushedThisIntegration": false,
+    "hostedGameUpdated": false,
+    "lastRecordedHostedRomSha256": "277422aa65613d5f1a581fece1e398c161948d473741b0aa2b47b2d11113e4a2"
+  }
 }

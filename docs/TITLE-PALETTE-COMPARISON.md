@@ -1,11 +1,14 @@
-# Title palette comparison
+# Title palettes: bronze default and comparisons
+
+**Bronze is the selected default** in `prototype-2026-10-21-bronze-title`.
+Grayscale, blue/gold and steel remain build-time alternatives.
 
 The title can use different colours from the game. Its palette is loaded while
 rendering is blank; the controls guide and gameplay subsequently load their
 own palettes. A colour title therefore does not reduce the wall, floor, HUD,
 weapon or enemy colour choices during play.
 
-This experiment keeps the accepted 192×94 logo, its pixel indices, all 186
+The palette choices keep the same 192×94 logo, its pixel indices, all 186
 patterns, the font, and the title code unchanged. It substitutes only the
 three visible logo colours in the existing 32-byte palette. Black remains the
 background and the subtitle and Start prompt remain white.
@@ -13,7 +16,7 @@ background and the subtitle and Start prompt remain white.
 | Build option | Logo palette (black, shadow/face, midtone, highlight) | Appearance |
 | --- | --- | --- |
 | `grayscale` | `$0F $00 $10 $30` | Original neutral gray reference |
-| `bronze` | `$0F $17 $27 $37` | Brown, amber and cream |
+| `bronze` (default) | `$0F $17 $27 $37` | Brown, amber and cream |
 | `blue-gold` | `$0F $11 $27 $37` | Blue faces with gold and cream bevels |
 | `steel` | `$0F $11 $10 $30` | Blue faces with gray and white bevels |
 
@@ -23,29 +26,34 @@ aesthetic option, not a requirement for fitting the title into this ROM.
 
 ## Build and compare
 
-From this experimental checkout:
+To build an alternative from the repository root:
 
 ```sh
 python3 tools/build.py --title-palette blue-gold
 ```
 
 Choose any option in the table. The output is `build/hangar-ntsc.nes` and its
-decoded previews are in `build/previews/`. Omitting the option retains
-grayscale and reproduces the previously tested title ROM exactly. The normal
-build requires no WAD or image library. Do not pass `--verify`: the separate
-`release/hangar-ntsc.nes` reference intentionally remains the gameplay release
-without the new logo page.
+decoded previews are in `build/previews/`. Omitting the option selects bronze
+and reproduces the accepted release. The normal build requires no WAD or image
+library.
 
-The locally packaged comparison ROMs, checksums, previews and gallery are in
-`artifacts/title-palettes/`. Each full build is preserved in the corresponding
-palette subdirectory. The main checkout and hosted game have not been changed.
+Use `python3 tools/build.py --verify` for the accepted bronze ROM. Omit
+`--verify` for a different palette, because grayscale, blue/gold and steel
+intentionally differ from `release/hangar-ntsc.nes`. The explicit
+`--title-palette grayscale` option reproduces the historical grayscale title
+ROM `8b24fd18…`.
+
+The original research checkout retains comparison ROMs, checksums, previews
+and a gallery under its ignored `artifacts/title-palettes/` directory. Those
+local artifacts are not required by the standalone build. Main now includes
+the selected bronze title; the hosted browser game has not yet been updated.
 
 ## Cost and limits
 
 Every option retains the 64 KiB PRG / 8 KiB CHR RAM / 8 KiB work RAM layout.
 BOOTDATA remains 7,376 of 8,192 bytes, leaving 816 bytes. There is no increase
 in ROM use, RAM use, tile count, upload size or gameplay CPU work compared with
-the grayscale title. One selected palette would ship in a normal build; the
+the grayscale title. One selected palette ships in each build; the
 ROM does not contain a runtime palette menu or all four versions of the art.
 
 The current indexed conversion deliberately merged the original blue letter
@@ -68,10 +76,11 @@ the relative appearance consistently.
 ## Validation
 
 `verification/title-palette-builds.json` records all four full builds. Bronze
-and blue/gold each differ from the accepted grayscale title by three ROM
+and blue/gold each differ from the historical grayscale title by three ROM
 bytes; steel differs by one. All changes are inside its existing title palette.
-The grayscale rebuild remains byte-identical to `8b24fd18…`. Source hashes
-match every build manifest and every segment budget is identical.
+The grayscale rebuild remained byte-identical to `8b24fd18…`. Source hashes
+matched every comparison build manifest and every segment budget was identical.
+These records describe the palette comparison before bronze became the default.
 
 `verification/title-palette-comparison.json` records 21 controller/PPU checks
 and six binary/asset checks for each new colour variant. All passed over
@@ -84,4 +93,9 @@ The prior grayscale full-level/restart test remains recorded separately; the
 palette-only variants were tested through startup rather than repeating that
 full route. This is emulator verification, not a physical-console measurement.
 
-Artwork provenance is unchanged; see [the title experiment notes](TITLE-SCREEN-EXPERIMENT.md).
+The selected bronze ROM has SHA-256
+`c715b34bd688927579d20d6c593dbddb8436ca4a38dab4b78f553a5d04afe251`.
+Changing the default build option does not alter that tested ROM's bytes.
+See [VERIFICATION.md](VERIFICATION.md) for current release checks.
+
+Artwork provenance is unchanged; see [the title notes](TITLE-SCREEN-EXPERIMENT.md).

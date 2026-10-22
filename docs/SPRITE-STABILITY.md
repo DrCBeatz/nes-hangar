@@ -71,18 +71,19 @@ bank placement; this change does not create spare rendering capacity.
 
 ## Verification
 
-The [verification notes](VERIFICATION.md#soldier-sprite-stability) distinguish
+The [verification notes](VERIFICATION.md#previous-soldier-sprite-stability) distinguish
 the final linked fixtures and Mesen comparisons from the preceding sizing
 experiment. The final ROM also passed all 18 isolated emulator tests, including
 the controller-only route through all three encounters, both pickups, the
 door, completion and restart. No physical-console test is claimed.
 
-The accepted ROM's SHA-256 is:
+The sprite-stability ROM preserved at commit `d2f2bbd` has SHA-256:
 
 ```text
 f342c5b83f75be92fdf476fab0b2c802afe06438e41e5b571d98b501c05de28e
 ```
 
-The browser-hosted version remains the previous third-encounter release until
-a separate deployment. Download the accepted ROM and use **Open ROM** to try
+The current bronze-title release includes the same sprite fixes. The
+browser-hosted version remains the previous third-encounter release until
+a separate deployment. Download the current ROM and use **Open ROM** to try
 these changes there.

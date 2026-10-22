@@ -5,11 +5,18 @@
 screen. The ordinary hosted picker and local **Open ROM** loader remain available.
 
 The hosted ROM remains `prototype-2026-10-19-third-encounter` (`277422aa…`).
-The repository's newer `prototype-2026-10-21-sprite-stability` ROM (`f342c5b8…`)
+The repository's newer `prototype-2026-10-21-bronze-title` ROM (`c715b34b…`)
 has not been deployed. Download it from `release/` and use **Open ROM** to
-test it in the browser. Its isolated core/loading tests passed all 18 cases,
-including a 7,529-refresh controller-only route; this does not claim a live
-site update. See [current-browser.json](../verification/current-browser.json).
+test it in the browser. It opens the bronze logo, then the original controls
+guide, with a separate fresh Start press for each page. Its current isolated
+JSNES startup check is recorded in
+[current-browser.json](../verification/current-browser.json); this does not
+claim a live-site update or a repeated full browser playthrough.
+
+The previous sprite-stability ROM (`f342c5b8…`) passed all 18 isolated
+core/loading tests, including a 7,529-refresh controller-only route. That
+historical evidence is preserved in
+[sprite-stability-browser.json](../verification/sprite-stability-browser.json).
 
 ## Deployed integration
 

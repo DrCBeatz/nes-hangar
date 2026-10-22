@@ -1,4 +1,45 @@
-# Soldier sprite stability
+# Bronze DOOM-logo title
+
+`prototype-2026-10-21-bronze-title` adds the selected full-screen bronze title
+to the accepted soldier-stability build. Press Start to open the unchanged
+controls guide, then release and press Start again to begin. Holding Start
+cannot skip either screen. Death/completion retries still return directly to
+gameplay; hardware/emulator Reset returns to the logo.
+
+The 192 × 94 logo uses brown, amber and cream against black, with white text.
+It is derived from id Software's M_DOOM menu artwork in the supplied shareware
+WAD, rather than original MIT-licensed project artwork. Normal builds use the
+included indexed source and need no WAD. See the [provenance](PROVENANCE.md).
+
+All new title code and assets run before gameplay in the boot bank. The guide
+retains its font, and startup restores both CHR tables, nametables, palette
+and gameplay state before the first world view. Gameplay rendering, map,
+combat, NMI schedule and allocated RAM are unchanged from the sprite-stability
+release. BOOTDATA uses 7,376 of 8,192 bytes; the ROM remains 64 KiB PRG with
+MMC1, 8 KiB CHR RAM and 8 KiB work RAM.
+
+The earlier grayscale title passed a full controller-only Mesen route and
+restart; the bronze comparison differs from it only in three title-palette
+bytes. Separate stock-NTSC startup comparisons verified fresh Start presses,
+white text, controls and exact restoration of gameplay graphics for every
+palette. Their scopes and historical ROM identities are retained in the
+[title notes](TITLE-SCREEN-EXPERIMENT.md), [palette comparison](TITLE-PALETTE-COMPARISON.md)
+and [verification record](VERIFICATION.md).
+
+The current ROM is [`release/hangar-ntsc.nes`](../release/hangar-ntsc.nes),
+65,552 bytes, with SHA-256:
+
+```text
+c715b34bd688927579d20d6c593dbddb8436ca4a38dab4b78f553a5d04afe251
+```
+
+`python3 tools/build.py --verify` rebuilds this bronze release. The other title
+palettes remain build options; they intentionally produce different checksums.
+The hosted browser game still uses the previous third-encounter release and
+has not been updated by this integration. Use its **Open ROM** control to load
+the current download.
+
+# Previous soldier sprite-stability release
 
 `prototype-2026-10-21-sprite-stability` improves close-range soldiers in all
 three encounters. The map, combat behavior, collision and pickups are unchanged.
@@ -33,19 +74,18 @@ the door, completion and restart in 7,529 refreshes. See the
 [sprite notes](SPRITE-STABILITY.md) and [verification record](VERIFICATION.md)
 for the separate test scopes. No physical-console test is claimed.
 
-The accepted ROM is [`release/hangar-ntsc.nes`](../release/hangar-ntsc.nes),
-65,552 bytes, with SHA-256:
+The sprite-stability release is preserved in Git at commit `d2f2bbd`. Its
+65,552-byte ROM has SHA-256:
 
 ```text
 f342c5b83f75be92fdf476fab0b2c802afe06438e41e5b571d98b501c05de28e
 ```
 
-Rebuild it with `python3 tools/build.py --verify`. The previous release is
-preserved in Git at [commit 0f31a394](https://github.com/DrCBeatz/nes-hangar/tree/0f31a3947b7d8a2bed63c64acc53ce8812ce3470),
-and its evidence is retained in
+Check out `d2f2bbd` to rebuild that release with `python3 tools/build.py --verify`.
+The older third-encounter release is preserved at
+[commit 0f31a394](https://github.com/DrCBeatz/nes-hangar/tree/0f31a3947b7d8a2bed63c64acc53ce8812ce3470),
+with its evidence in
 [third-encounter-release.json](../verification/third-encounter-release.json).
-The live browser game still runs that previous version; this update is not
-yet deployed. Use the browser's **Open ROM** control to load the new download.
 
 # Previous enclosure and third-encounter release
 

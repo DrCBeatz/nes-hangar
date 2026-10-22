@@ -20,7 +20,7 @@ prototype, not a port of the Doom engine or the complete original level.
   <img src="docs/images/opening-gameplay.gif" width="512" alt="Six seconds of Hangar gameplay: walking and turning among the opening room’s pillars and recessed floor." />
 </p>
 <p align="center">
-  Actual ROM gameplay at normal NTSC timing in JSNES · <a href="docs/images/opening-gameplay.png">View the opening still</a> · <a href="docs/images/title.png">Title and controls screen</a>
+  Actual ROM gameplay at normal NTSC timing in JSNES · <a href="docs/images/opening-gameplay.png">View the opening still</a> · <a href="docs/images/doom-title.png">Bronze title screen</a> · <a href="docs/images/title.png">Controls guide</a>
 </p>
 
 ## Play
@@ -32,8 +32,10 @@ and CHR-RAM support. The development reference is
 Optional emulator overclocking can make rendering faster, but it is not
 required to finish the level.
 
-Press Start on the title screen. The first room takes about 0.8 seconds to
-prepare at normal NTSC speed; the level timer starts when that view appears.
+Press Start on the bronze DOOM-logo title to open the controls guide, then
+release and press Start again to play. Holding Start cannot skip a page. The
+first room takes about 0.8 seconds to prepare at normal NTSC speed; the level
+timer starts when that view appears.
 
 For a browser trial, open [Play Hangar](https://8bitpocket.app/?game=hangar),
 click **Play Hangar**, then press **Start** on the game title screen. Hangar is
@@ -42,7 +44,8 @@ use **Controls** to reopen it during gameplay. **Open ROM** still supports downl
 files. Browser speed, palette and presentation may differ from Mesen. See
 the [browser deployment notes](docs/DEPLOYMENT.md).
 
-The downloadable ROM includes the latest soldier size and positioning fixes.
+The downloadable ROM includes the bronze title screen and the latest soldier
+size and positioning fixes.
 The hosted browser game still uses the previous third-encounter release;
 choose **Open ROM** to try the latest download there.
 
@@ -55,13 +58,13 @@ choose **Open ROM** to try the latest download there.
 | Hold A + Left / Right | Strafe |
 | B | Fire the pistol |
 | A, while facing a nearby door or switch | Use when prompted; release and press again, without Left/Right |
-| Start | Begin from the title; pause/resume during play; retry after death or completion |
+| Start | Advance title → controls → play with separate presses; pause/resume during play; retry after death or completion |
 | Select | Compare precise dynamic boundaries with coarse tile boundaries |
 
 Pausing displays a message at the top and plays a short descending cue.
 Resuming restores the level heading and plays an ascending cue. Gameplay and
 the completion timer stop during pause. Hardware/emulator Reset returns to
-the title; retries go directly back into the level.
+the logo and controls sequence; retries go directly back into the level.
 
 With no ammunition, a fresh B press plays a brief, deep empty-gun buzz. Holding B
 does not repeat the cue or count as a fired shot.
@@ -166,11 +169,11 @@ make clean
 Normal builds permit intentional source edits; verification is expected to
 fail if those edits change the ROM relative to the committed release.
 
-The included release is 65,552 bytes (a 16-byte header plus 64 KiB PRG), with
-SHA-256:
+The included release, `prototype-2026-10-21-bronze-title`, is 65,552 bytes
+(a 16-byte header plus 64 KiB PRG), with SHA-256:
 
 ```text
-f342c5b83f75be92fdf476fab0b2c802afe06438e41e5b571d98b501c05de28e
+c715b34bd688927579d20d6c593dbddb8436ca4a38dab4b78f553a5d04afe251
 ```
 
 The checksum and cartridge metadata are also in [release/](release/).
@@ -178,6 +181,12 @@ The checksum and cartridge metadata are also in [release/](release/).
 emulator observations and hardware testing. The GitHub Actions workflow
 rebuilds and compares the ROM on push or pull request; it does not deploy a
 website or publish a release automatically.
+
+The default title palette is **bronze**. Grayscale, blue/gold and steel
+comparisons remain available through `--title-palette`; see the
+[title palette notes](docs/TITLE-PALETTE-COMPARISON.md). These alternatives
+intentionally differ from the accepted release, so build them without
+`--verify`.
 
 ### Troubleshooting
 
@@ -200,6 +209,7 @@ website or publish a release automatically.
 | `tools/` | Python build driver, geometry/visibility generators and art generators |
 | `assets/map.json` | Editable, simplified level geometry and gameplay placement data |
 | `assets/pistol-sheet.png` | Editable two-frame pistol/hand source image |
+| `assets/newlogo-doom.json` | Indexed title artwork derived from Doom's M_DOOM logo; see provenance |
 | `assets/` | Other source data used by the generators, including the font |
 | `release/` | Playable reference ROM, checksum and release metadata |
 | `docs/` | Provenance, verification and proposed browser deployment |
@@ -284,8 +294,8 @@ See [publishing instructions](docs/PUBLISHING.md).
 
 The maintained 8-Bit Pocket emulator hosts the previous third-encounter ROM
 and supports the [direct Play Hangar link](https://8bitpocket.app/?game=hangar).
-This sprite-stability update has passed isolated JSNES tests but has not been
-deployed; its download can be loaded with the emulator's **Open ROM** control.
+The newer soldier fixes and bronze title have not been deployed there; load
+the current download with the emulator's **Open ROM** control to try them.
 A dedicated landing page with download and play buttons can follow. The
 [deployment notes](docs/DEPLOYMENT.md) describe the current integration,
 remaining display work and options for a later custom domain.
@@ -298,6 +308,8 @@ approach was inspired in part by studying NES Elite's graphics technique;
 this package uses a newly written renderer, not that game's engine code.
 
 The included map is a simplified adaptation of Doom's E1M1 by id Software.
+The title logo is derived from id Software's M_DOOM artwork in the supplied
+shareware WAD and uses a bronze NES palette.
 The source and visual-reference history are recorded in
 [PROVENANCE.md](docs/PROVENANCE.md). Code licensing and content provenance are
 separate; no blanket license over the original game's level design or reference

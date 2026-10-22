@@ -1,4 +1,4 @@
-; Experimental cold-start logo, then guide using existing fixed glyphs. This code and its assets are
+; Cold-start logo, then guide using existing fixed glyphs. This code and its assets are
 ; only accessed in bank2 while NMI is disabled. Internal retries skip it.
 .setcpu "6502"
 .include "title-memory.inc"

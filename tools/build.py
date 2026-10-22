@@ -52,8 +52,11 @@ def portable(value):
 
 
 def main():
+    logo_module = load('newtitle_logo', TOOLS/'newtitle_logo.py')
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--verify', action='store_true', help='Require exact identity with the included accepted release')
+    parser.add_argument('--title-palette', choices=logo_module.PALETTES, default='grayscale',
+                        help='Experimental logo colours only; guide and gameplay stay unchanged (default: grayscale)')
     args = parser.parse_args()
     if sys.flags.optimize:
         raise SystemExit('Do not use python -O: build-time geometry/resource assertions are required.')
@@ -115,7 +118,7 @@ def main():
     (BUILD/'ammo-config.inc').write_text(''.join('AMMO_'+k.upper()+' = '+str(ammo[k])+'\n' for k in ('x','z','floor','amount','maximum','pickup_radius')))
     font=art['fontMap']
     results_layout=load('results_assets',TOOLS/'results_assets.py').write_assets(BUILD,font,enemy_total=len(scene['encounters']))
-    title_layout=load('title_assets',TOOLS/'title_assets.py').write_assets(BUILD,font,PREVIEWS)
+    title_layout=load('title_assets',TOOLS/'title_assets.py').write_assets(BUILD,font,PREVIEWS,logo_palette=args.title_palette)
     death_text='YOU DIED - START TO RESTART'
     death_line=[0]*32
     start=(32-len(death_text))//2

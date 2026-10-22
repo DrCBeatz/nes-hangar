@@ -1,0 +1,329 @@
+{
+  "passed": true,
+  "scope": "Palette-only experiment. ROM byte differences are confined to the existing 32-byte title palette; code, geometry, artwork patterns, and nametables are byte-identical. Each variant uses controller-only Mesen stock-NTSC startup and exact world-restoration comparisons. The earlier grayscale full-level/restart validation remains relevant through binary identity; this run does not repeat the full route. This is emulator verification, not physical-console certification.",
+  "reference": {
+    "grayscaleRomSha256": "8b24fd1875e01e51ea7dacbb68bc6b7ac905fca1c791fd1804d20c9638f1a0ee",
+    "gameplayReferenceRomSha256": "f342c5b83f75be92fdf476fab0b2c802afe06438e41e5b571d98b501c05de28e",
+    "earlierGrayFullRoute": {
+      "frames": 14780,
+      "phases": 136,
+      "passed": true,
+      "validationSha256": "d7f9fca9ffad1ee6ecfabdc3ef768603d35f11a675eb7d7ca3405040a28b7e7a"
+    }
+  },
+  "configuration": {
+    "region": "NTSC",
+    "extraScanlinesBeforeNmi": 0,
+    "extraScanlinesAfterNmi": 0,
+    "normalSpriteLimit": true,
+    "runAheadFrames": 0,
+    "ramInjected": false,
+    "romUnmodified": true,
+    "mesenSettingsSha256": "d359e66b4f204fc0c3990a679f55fc1cd7a48bab85e3cffbeb4564498cbd21dd"
+  },
+  "romBytes": 65552,
+  "logoPaletteFileOffset": 39865,
+  "logoPaletteBytes": 32,
+  "totalNewRuntimeFrames": 1440,
+  "checksPassedForEveryVariant": {
+    "binary": {
+      "sameRomLength": true,
+      "onlyLogoPaletteBytesDiffer": true,
+      "romPaletteMatchesGeneratedAsset": true,
+      "unchangedExpandedPatterns": true,
+      "unchangedPackedPatterns": true,
+      "unchangedNametable": true
+    },
+    "runtime": {
+      "controllerOnlyStockNtsc": true,
+      "completedWithoutObserverErrors": true,
+      "logoPpuMatchesGeneratedAssets": true,
+      "logoStaysStaticThroughHeldStartAndOtherControls": true,
+      "guideMatchesOriginalPixelsAndAssets": true,
+      "freshStartAdvancesEachPageInOrder": true,
+      "heldStartCannotSkipEitherPage": true,
+      "bothPagesFreezeAllGameplay": true,
+      "bothPagesKeepNmiDisabled": true,
+      "loadingBlankAndSimulationFrozen": true,
+      "firstPictureEnablesGameAndStartsClockOnNextRefresh": true,
+      "launchControlsDoNotLeak": true,
+      "bothChrTablesRestoredExactlyBeforeFirstView": true,
+      "entirePpuRestoredExactlyBeforeFirstView": true,
+      "initialGameplayPixelsAndPpuUnchanged": true,
+      "nmiNeverNested": true,
+      "normalRenderCapsPreserved": true,
+      "coldPagesOccurOnce": true,
+      "titlePpuOutsidePaletteMatchesGray": true,
+      "titleCaptionAndOutsideLogoPixelsUnchanged": true,
+      "initialProducerCyclesMatchGray": true
+    }
+  },
+  "variants": {
+    "bronze": {
+      "passed": true,
+      "romSha256": "c715b34bd688927579d20d6c593dbddb8436ca4a38dab4b78f553a5d04afe251",
+      "paletteNesColors": [
+        15,
+        23,
+        39,
+        55
+      ],
+      "changedRomOffsets": [
+        39866,
+        39867,
+        39868
+      ],
+      "frames": 480,
+      "phases": 12,
+      "errors": [],
+      "nmi": {
+        "maxDepth": 1,
+        "maxCycles": 2273,
+        "intervals": 112
+      },
+      "firstVisible": [
+        {
+          "frame": 411,
+          "clockAtHook": 0,
+          "publishCount": 1,
+          "loading": true,
+          "clockAtFirstVisible": 0,
+          "clockFollowing": 1,
+          "enabledSameNmi": true,
+          "live": true
+        }
+      ],
+      "initialProducerCpuCycles": 884349,
+      "logoRgbColors": [
+        {
+          "rgb": [
+            0,
+            0,
+            0
+          ],
+          "pixels": 5868
+        },
+        {
+          "rgb": [
+            153,
+            78,
+            0
+          ],
+          "pixels": 7672
+        },
+        {
+          "rgb": [
+            234,
+            158,
+            34
+          ],
+          "pixels": 3148
+        },
+        {
+          "rgb": [
+            247,
+            216,
+            165
+          ],
+          "pixels": 1360
+        }
+      ],
+      "outsideLogoChangedPixels": 0,
+      "provenance": {
+        "observerSha256": "59a0301aa1437f2dcee4341702c2f65e17d547c01849b5400a49cee0b2dfcb13",
+        "driverSha256": "b9c01001f167d81a21c0825a1e281a355d4a0195442f39baf627c036a3d79f25",
+        "mesenSha256": "ce4446a92096a024145e6ed2793cce8b489460bb3ac034cd9d1d77d96109fced",
+        "rawObservedSha256": "b74f6ab410b3a24ff7859da4326c8da462031f3d180029cf70c64e3c3cc63667",
+        "startupSummarySha256": "fedf6b0cd2500592f7f9ec928af051cb01d086e76c48db1bf952ffb35c99bdf6",
+        "manifestSha256": "76e3b9f34971ea74cd7c46ae9b93982ebe8cb02e5accd2265b51b3b1244f1e0a",
+        "previewPngSha256": "8fdb476ef6ebf26eccdfb34b9bf9491f4cfea96f448828a919ac815b8e8ad2cf",
+        "actualLogoPpuSha256": "15e499fd7fd89b792e405201c61c63e84f906dac3cfcd977ec9dfc9d604fc0ae",
+        "actualOpeningPpuSha256": "a9911ac25d10d26472df3f4260ba3002a22b4e3f2959d12d753c5e7a83a9867b",
+        "actualOpeningRgbSha256": "bc9959fab4830c9991fae57cb317e3ab068885b1730d057624180f9a91807df2",
+        "sourceHashes": {
+          "src/title.s": "3f66fd4c8ae2f19fe3a482599fc2d26c09d316e6ba285e244f40f88c2906207e",
+          "tools/title_assets.py": "72710af24504680cbcce2a48db3f0ab8a1fae2ade19e9c60ecae4c817977ccfd",
+          "tools/newtitle_logo.py": "581ef69c25cdc30b99417bcd661d9a4abda85cef35d8cf630b06f287b3763fb9",
+          "assets/newlogo-doom.json": "2f201578736e090dd86ce13b4d9a3a05a9c9be9afb43d7c98cb31d4315df9cb3"
+        }
+      }
+    },
+    "blue-gold": {
+      "passed": true,
+      "romSha256": "37adbd853e197771bda8f1ef8dae3f442e873c638290a0466a3e498809c41395",
+      "paletteNesColors": [
+        15,
+        17,
+        39,
+        55
+      ],
+      "changedRomOffsets": [
+        39866,
+        39867,
+        39868
+      ],
+      "frames": 480,
+      "phases": 12,
+      "errors": [],
+      "nmi": {
+        "maxDepth": 1,
+        "maxCycles": 2273,
+        "intervals": 112
+      },
+      "firstVisible": [
+        {
+          "frame": 411,
+          "clockAtHook": 0,
+          "publishCount": 1,
+          "loading": true,
+          "clockAtFirstVisible": 0,
+          "clockFollowing": 1,
+          "enabledSameNmi": true,
+          "live": true
+        }
+      ],
+      "initialProducerCpuCycles": 884349,
+      "logoRgbColors": [
+        {
+          "rgb": [
+            0,
+            0,
+            0
+          ],
+          "pixels": 5868
+        },
+        {
+          "rgb": [
+            21,
+            95,
+            217
+          ],
+          "pixels": 7672
+        },
+        {
+          "rgb": [
+            234,
+            158,
+            34
+          ],
+          "pixels": 3148
+        },
+        {
+          "rgb": [
+            247,
+            216,
+            165
+          ],
+          "pixels": 1360
+        }
+      ],
+      "outsideLogoChangedPixels": 0,
+      "provenance": {
+        "observerSha256": "59a0301aa1437f2dcee4341702c2f65e17d547c01849b5400a49cee0b2dfcb13",
+        "driverSha256": "b9c01001f167d81a21c0825a1e281a355d4a0195442f39baf627c036a3d79f25",
+        "mesenSha256": "ce4446a92096a024145e6ed2793cce8b489460bb3ac034cd9d1d77d96109fced",
+        "rawObservedSha256": "2adf76eaf2249945355b2a7c1ffb413e75680d7cb616a348ee7455553c2fde2c",
+        "startupSummarySha256": "9b911629bb854f1baf4c69bd3e20da0b921933c5ce293d4cd0806c4a0464e231",
+        "manifestSha256": "0c33f9ec22146da055b2da3a545691ab2df91c1ac3dde7630ef1d3fad3e93ff6",
+        "previewPngSha256": "b7bb06f6863fd25b34ffd6d3e2b8a5f2a626c23166a6b803c77b1e72ddede1d2",
+        "actualLogoPpuSha256": "51b51fd22b1176bd0af7899765c4669452394bedb50c026a041ae059b072e224",
+        "actualOpeningPpuSha256": "a9911ac25d10d26472df3f4260ba3002a22b4e3f2959d12d753c5e7a83a9867b",
+        "actualOpeningRgbSha256": "bc9959fab4830c9991fae57cb317e3ab068885b1730d057624180f9a91807df2",
+        "sourceHashes": {
+          "src/title.s": "3f66fd4c8ae2f19fe3a482599fc2d26c09d316e6ba285e244f40f88c2906207e",
+          "tools/title_assets.py": "72710af24504680cbcce2a48db3f0ab8a1fae2ade19e9c60ecae4c817977ccfd",
+          "tools/newtitle_logo.py": "581ef69c25cdc30b99417bcd661d9a4abda85cef35d8cf630b06f287b3763fb9",
+          "assets/newlogo-doom.json": "2f201578736e090dd86ce13b4d9a3a05a9c9be9afb43d7c98cb31d4315df9cb3"
+        }
+      }
+    },
+    "steel": {
+      "passed": true,
+      "romSha256": "b7679c87e57feb178694b2d6fbae0c3176c31d760eaf535709cd2dabd3bae876",
+      "paletteNesColors": [
+        15,
+        17,
+        16,
+        48
+      ],
+      "changedRomOffsets": [
+        39866
+      ],
+      "frames": 480,
+      "phases": 12,
+      "errors": [],
+      "nmi": {
+        "maxDepth": 1,
+        "maxCycles": 2273,
+        "intervals": 112
+      },
+      "firstVisible": [
+        {
+          "frame": 411,
+          "clockAtHook": 0,
+          "publishCount": 1,
+          "loading": true,
+          "clockAtFirstVisible": 0,
+          "clockFollowing": 1,
+          "enabledSameNmi": true,
+          "live": true
+        }
+      ],
+      "initialProducerCpuCycles": 884349,
+      "logoRgbColors": [
+        {
+          "rgb": [
+            0,
+            0,
+            0
+          ],
+          "pixels": 5868
+        },
+        {
+          "rgb": [
+            21,
+            95,
+            217
+          ],
+          "pixels": 7672
+        },
+        {
+          "rgb": [
+            173,
+            173,
+            173
+          ],
+          "pixels": 3148
+        },
+        {
+          "rgb": [
+            255,
+            254,
+            255
+          ],
+          "pixels": 1360
+        }
+      ],
+      "outsideLogoChangedPixels": 0,
+      "provenance": {
+        "observerSha256": "59a0301aa1437f2dcee4341702c2f65e17d547c01849b5400a49cee0b2dfcb13",
+        "driverSha256": "b9c01001f167d81a21c0825a1e281a355d4a0195442f39baf627c036a3d79f25",
+        "mesenSha256": "ce4446a92096a024145e6ed2793cce8b489460bb3ac034cd9d1d77d96109fced",
+        "rawObservedSha256": "b9fe97faea7f71d0046f2171ec0c9533a8ee9ba47e4a72f5a6f33d96cfa4ccce",
+        "startupSummarySha256": "63fc207967e8e5134c17c99b1af85983a3e02cb0fe1e9f6b332e0468ee323267",
+        "manifestSha256": "af23dd21758e9aeb9ba5cc0c00396151ff0c275d75e496f99119a36f606f47a2",
+        "previewPngSha256": "ead98acb7aad0a56b44df2e2ce0cc118a7f7779cfb5b4b6d88c04c726f0013e5",
+        "actualLogoPpuSha256": "3e7318a85cb26efbcaf7a61b7ffd1fa2bd2e65223ab9fdbb2b09d12e34ae33eb",
+        "actualOpeningPpuSha256": "a9911ac25d10d26472df3f4260ba3002a22b4e3f2959d12d753c5e7a83a9867b",
+        "actualOpeningRgbSha256": "bc9959fab4830c9991fae57cb317e3ab068885b1730d057624180f9a91807df2",
+        "sourceHashes": {
+          "src/title.s": "3f66fd4c8ae2f19fe3a482599fc2d26c09d316e6ba285e244f40f88c2906207e",
+          "tools/title_assets.py": "72710af24504680cbcce2a48db3f0ab8a1fae2ade19e9c60ecae4c817977ccfd",
+          "tools/newtitle_logo.py": "581ef69c25cdc30b99417bcd661d9a4abda85cef35d8cf630b06f287b3763fb9",
+          "assets/newlogo-doom.json": "2f201578736e090dd86ce13b4d9a3a05a9c9be9afb43d7c98cb31d4315df9cb3"
+        }
+      }
+    }
+  },
+  "analyzerSha256": "5892227a387ce41b400d1d8ab19d590db22f6910d20bdb6539f451438e0c49f1"
+}

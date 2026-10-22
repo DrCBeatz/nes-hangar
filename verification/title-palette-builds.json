@@ -1,0 +1,115 @@
+{
+  "baselineSha256": "8b24fd1875e01e51ea7dacbb68bc6b7ac905fca1c791fd1804d20c9638f1a0ee",
+  "paletteFileOffset": 39865,
+  "paletteOnly": true,
+  "variants": [
+    {
+      "name": "bronze",
+      "rom": "hangar-title-bronze-ntsc.nes",
+      "sha256": "c715b34bd688927579d20d6c593dbddb8436ca4a38dab4b78f553a5d04afe251",
+      "changedBytes": 3,
+      "changedOffsets": [
+        39866,
+        39867,
+        39868
+      ],
+      "build": "artifacts/title-palettes/bronze/build",
+      "palette": [
+        15,
+        23,
+        39,
+        55
+      ],
+      "segmentBytes": {
+        "ZEROPAGE": 256,
+        "BSS": 1536,
+        "ACTOR_ART": 8065,
+        "BOOTDATA": 7376,
+        "MAPDATA": 8129,
+        "RODATA": 8154,
+        "CODE": 16257,
+        "STARTUP": 9
+      }
+    },
+    {
+      "name": "blue-gold",
+      "rom": "hangar-title-blue-gold-ntsc.nes",
+      "sha256": "37adbd853e197771bda8f1ef8dae3f442e873c638290a0466a3e498809c41395",
+      "changedBytes": 3,
+      "changedOffsets": [
+        39866,
+        39867,
+        39868
+      ],
+      "build": "artifacts/title-palettes/blue-gold/build",
+      "palette": [
+        15,
+        17,
+        39,
+        55
+      ],
+      "segmentBytes": {
+        "ZEROPAGE": 256,
+        "BSS": 1536,
+        "ACTOR_ART": 8065,
+        "BOOTDATA": 7376,
+        "MAPDATA": 8129,
+        "RODATA": 8154,
+        "CODE": 16257,
+        "STARTUP": 9
+      }
+    },
+    {
+      "name": "steel",
+      "rom": "hangar-title-steel-ntsc.nes",
+      "sha256": "b7679c87e57feb178694b2d6fbae0c3176c31d760eaf535709cd2dabd3bae876",
+      "changedBytes": 1,
+      "changedOffsets": [
+        39866
+      ],
+      "build": "artifacts/title-palettes/steel/build",
+      "palette": [
+        15,
+        17,
+        16,
+        48
+      ],
+      "segmentBytes": {
+        "ZEROPAGE": 256,
+        "BSS": 1536,
+        "ACTOR_ART": 8065,
+        "BOOTDATA": 7376,
+        "MAPDATA": 8129,
+        "RODATA": 8154,
+        "CODE": 16257,
+        "STARTUP": 9
+      }
+    },
+    {
+      "name": "grayscale",
+      "rom": "hangar-title-grayscale-ntsc.nes",
+      "sha256": "8b24fd1875e01e51ea7dacbb68bc6b7ac905fca1c791fd1804d20c9638f1a0ee",
+      "changedBytes": 0,
+      "changedOffsets": [],
+      "build": "artifacts/title-palettes/grayscale/build",
+      "palette": [
+        15,
+        0,
+        16,
+        48
+      ],
+      "segmentBytes": {
+        "ZEROPAGE": 256,
+        "BSS": 1536,
+        "ACTOR_ART": 8065,
+        "BOOTDATA": 7376,
+        "MAPDATA": 8129,
+        "RODATA": 8154,
+        "CODE": 16257,
+        "STARTUP": 9
+      }
+    }
+  ],
+  "buildDriverSha256": "d7e8da8a6180b0c9dc27cd60f65682f006f1f1dff08366eb9c30a49ac65b72da",
+  "defaultGrayscaleReproducesAcceptedTitle": true
+}

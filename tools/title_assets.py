@@ -7,7 +7,7 @@ from pathlib import Path
 import newtitle_logo
 
 
-def write_assets(build, font, preview_dir=None):
+def write_assets(build, font, preview_dir=None, logo_palette='grayscale'):
     """Write unchanged guide data plus boot-only logo tiles, names and palette.
 
     The caller has already generated fixed-patterns.bin. The logo appends its
@@ -65,8 +65,8 @@ def write_assets(build, font, preview_dir=None):
                           for filename in ('title-nametable.bin','title-palette.bin','title-config.inc')})
     if preview_dir is not None:
         report['preview'] = _previews(Path(preview_dir), build/'fixed-patterns.bin', name, palette)
-    report['logoExperiment'] = newtitle_logo.write_assets(build, font, preview_dir)
-    report['coldStartSequence'] = ['DOOM grayscale logo', 'Existing controls guide', 'Gameplay']
+    report['logoExperiment'] = newtitle_logo.write_assets(build, font, preview_dir, palette_name=logo_palette)
+    report['coldStartSequence'] = ['DOOM ' + logo_palette + ' logo', 'Existing controls guide', 'Gameplay']
     (build/'title-layout.json').write_text(json.dumps(report, indent=2)+'\n')
     return report
 

@@ -6,6 +6,10 @@ screen requires its own fresh Start press; holding Start cannot skip either
 page. Internal level retries and completion restarts still skip the startup
 screens.
 
+Selectable colour variants of the same artwork are documented in
+[the palette comparison](TITLE-PALETTE-COMPARISON.md). Grayscale remains the
+default; colour variants stay separate from the main gameplay release.
+
 The accepted gameplay release remains `release/hangar-ntsc.nes`. Build the
 experiment with `python3 tools/build.py`; do not use `--verify`, which correctly
 requires identity with that unchanged accepted release. The experimental

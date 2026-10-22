@@ -16,6 +16,22 @@ SOURCE = Path(__file__).resolve().parent.parent / 'assets/newlogo-doom.json'
 LOGO_WIDTH, LOGO_HEIGHT = 192, 94
 LOGO_X, LOGO_Y = 32, 40
 FIRST_TILE = 64
+# Only palette data changes between these builds. Index 1 contains both the
+# original blue faces and some dark bronze shading, so mixed hues are an
+# approximation of the source, not a restoration of its original colours.
+PALETTES = {
+    'grayscale': dict(label='Grayscale', colors=(0x0f, 0x00, 0x10, 0x30)),
+    'bronze': dict(label='Bronze', colors=(0x0f, 0x17, 0x27, 0x37)),
+    'blue-gold': dict(label='Blue and gold', colors=(0x0f, 0x11, 0x27, 0x37)),
+    'steel': dict(label='Blue steel', colors=(0x0f, 0x11, 0x10, 0x30)),
+}
+# Representative RGB values for offline previews, not a universal NES colour
+# standard. Actual colours depend on the emulator palette or console/display.
+PREVIEW_RGB = {
+    0x0f: (0, 0, 0), 0x00: (98, 98, 98), 0x10: (152, 150, 152),
+    0x30: (255, 255, 255), 0x11: (8, 76, 196),
+    0x17: (102, 52, 0), 0x27: (250, 158, 58), 0x37: (255, 217, 165),
+}
 
 
 def import_wad(wad, output=SOURCE):
@@ -76,7 +92,6 @@ def tile_bytes(pixels, x, y):
 def decode_screen(patterns, nametable, palette):
     """Independently decode exactly the NES bytes used in the experiment."""
     assert len(patterns) % 16 == 0 and len(nametable) == 1024
-    rgb = {0x0f: (0, 0, 0), 0x30: (255, 255, 255), 0x10: (152, 150, 152), 0x00: (98, 98, 98)}
     pixels = []
     for y in range(240):
         row = []
@@ -88,7 +103,7 @@ def decode_screen(patterns, nametable, palette):
             attr = nametable[960 + ty // 4 * 8 + tx // 4]
             pal = (attr >> (((ty & 2) << 1) | (tx & 2))) & 3
             color = palette[0 if not value else pal * 4 + value]
-            row.append(rgb[color])
+            row.append(PREVIEW_RGB[color])
         pixels.append(row)
     return pixels
 
@@ -103,8 +118,11 @@ def write_png(path, pixels, scale=1):
                           chunk(b'IDAT', zlib.compress(payload, 9)) + chunk(b'IEND', b''))
 
 
-def write_assets(build, font, preview_dir=None):
+def write_assets(build, font, preview_dir=None, palette_name='grayscale'):
     build = Path(build)
+    selected = PALETTES[palette_name]
+    logo_colors = selected['colors']
+    assert len(logo_colors) == 4 and logo_colors[0] == 0x0f
     source = json.loads(SOURCE.read_text())
     assert source['format'] == 'indexed-logo-v1'
     width, height = source['width'], source['height']
@@ -147,7 +165,8 @@ def write_assets(build, font, preview_dir=None):
         assert all(pattern[i] == pattern[i + 1] for i in range(0, 16, 2))
         packed.extend(pattern[::2])
     assert bytes(v for byte in packed for v in (byte, byte)) == raw
-    palette = bytes([0x0f, 0x00, 0x10, 0x30] + [0x0f, 0x30, 0x10, 0x00] * 7)
+    palette = bytes(logo_colors) + bytes([0x0f, 0x30, 0x10, 0x00] * 7)
+    assert len(palette) == 32 and all(palette[i] == 0x0f for i in range(0, 32, 4))
     (build / 'newtitle-logo-patterns.bin').write_bytes(raw)  # decoded verification data
     output = {'newtitle-logo-packed.bin': bytes(packed), 'newtitle-logo-nametable.bin': bytes(name),
               'newtitle-logo-palette.bin': palette}
@@ -158,12 +177,15 @@ def write_assets(build, font, preview_dir=None):
     decoded = decode_screen(fixed + raw, name, palette)
     for y in range(LOGO_Y, LOGO_Y + LOGO_HEIGHT):
         for x in range(LOGO_X, LOGO_X + LOGO_WIDTH):
-            assert decoded[y][x] == [(0, 0, 0), (98, 98, 98), (152, 150, 152), (255, 255, 255)][screen[y][x]]
+            assert decoded[y][x] == PREVIEW_RGB[logo_colors[screen[y][x]]]
     # All fixed font tiles are retained, so the following guide needs no CHR reload.
     assert (fixed + raw)[:1024] == fixed
     report = dict(source='assets/newlogo-doom.json', origin=source['origin'], sourceSha256=hashlib.sha256(SOURCE.read_bytes()).hexdigest(),
                   sourceLump=source['source'], nativeScreen=[256, 240], logoBounds=[LOGO_X, LOGO_Y, LOGO_WIDTH, LOGO_HEIGHT],
-                  style='Three opaque grays on black; palette-aware source conversion', newPatternCount=len(extra),
+                  style=selected['label'] + '; unchanged indexed logo on black',
+                  paletteName=palette_name, paletteNes=list(logo_colors),
+                  previewColorApproximation='Representative NES RGB; actual emulator and display colours vary',
+                  newPatternCount=len(extra),
                   firstPattern=FIRST_TILE, highestPattern=FIRST_TILE + len(extra) - 1,
                   patternBytes=len(raw), storedPatternBytes=len(packed), uploadedPatternBytes=len(raw), nametableBytes=len(name), paletteBytes=len(palette),
                   additionalAssetBytes=sum(len(v) for v in output.values()), patternTable=0, fontPreserved=True,

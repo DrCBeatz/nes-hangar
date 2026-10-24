@@ -1,10 +1,11 @@
 # Optional E1M1 music
 
-The current local candidate uses **Dr C Beatz's new NES arrangement** of
+The published prototype uses **Dr C Beatz's new NES arrangement** of
 Bobby Prince's "At Doom's Gate." It retains the controls-screen music choice
 and sound-effect priority. The accepted music audition and subsequent ammo
-placement test are now integrated with the credits and HUD polish. These
-changes have not been pushed or deployed to the browser app.
+placement test are integrated with the credits and HUD polish. The source,
+ROM and browser version were published on October 24, 2026; the hosted ROM
+matches the download. See the [deployment record](DEPLOYMENT.md).
 
 ## Player controls
 

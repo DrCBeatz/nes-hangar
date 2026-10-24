@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-24T23:57:51.777351+00:00",
+  "passed": true,
+  "version": "prototype-2026-10-24-door-reach",
+  "romSha256": "db258e4c9c57ff3ef9f4bc8eb732f31b65eec85a1a639e7a9787a90dde1722a9",
+  "sourceCommit": "eba6c0604989c7313ae3575e1968a81562df9329",
+  "emulatorCommit": "b0dedb04137656cc004e755a8e4ba189c04ca7fc",
+  "deploymentWorkflow": "https://github.com/DrCBeatz/nes-emulator-mobile-web-app/actions/runs/40144651509",
+  "appBuildWorkflow": "https://github.com/DrCBeatz/nes-emulator-mobile-web-app/actions/runs/40144651508",
+  "deploymentWorkflowConclusion": "success",
+  "emulatorTests": {
+    "passed": 19,
+    "failed": 0,
+    "controllerOnly": true,
+    "stockNtsc": true,
+    "routes": [
+      {
+        "music": "ON",
+        "frames": 7953
+      },
+      {
+        "music": "OFF",
+        "frames": 7837
+      }
+    ],
+    "coverage": [
+      "logo and credits",
+      "music selection",
+      "WEAPON HUD",
+      "three encounters",
+      "both pickups",
+      "empty-gun cue",
+      "pause",
+      "door and exit",
+      "completion and restart"
+    ]
+  },
+  "httpChecks": [
+    {
+      "url": "https://8bitpocket.app/?game=hangar",
+      "status": 200,
+      "bytes": 515,
+      "contentType": "text/html",
+      "sha256": "642f37a9f48c292462e7c4faadcc2f99b6ce148ae79a68d6d9d238e395ac9852",
+      "matchesProductionBuild": true
+    },
+    {
+      "url": "https://8bitpocket.app/roms/manifest.json",
+      "status": 200,
+      "bytes": 964,
+      "contentType": "application/json",
+      "sha256": "abf0fb35e65119ae5ec7f4c5ff1f3a449c8687b35d16ecdd09d98ae73bc99e05",
+      "matchesProductionBuild": true
+    },
+    {
+      "url": "https://8bitpocket.app/roms/hangar-ntsc-db258e4c.nes",
+      "status": 200,
+      "bytes": 131088,
+      "contentType": "binary/octet-stream",
+      "sha256": "db258e4c9c57ff3ef9f4bc8eb732f31b65eec85a1a639e7a9787a90dde1722a9",
+      "matchesProductionBuild": true
+    },
+    {
+      "url": "https://8bitpocket.app/assets/index-BzxKDWI2.js",
+      "status": 200,
+      "bytes": 152675,
+      "contentType": "text/javascript",
+      "sha256": "480c99c2f84e7eae3a4319870be9fbbbe80f5ca2e9353410f20869c9bdffe6fe",
+      "matchesProductionBuild": true
+    },
+    {
+      "url": "https://8bitpocket.app/assets/index-CPI0Gf35.css",
+      "status": 200,
+      "bytes": 9045,
+      "contentType": "text/css",
+      "sha256": "f73a79e1f1b58d55d4fcd0933288a1a4b38636fdf3c15b85f7bde516c0ae4eb5",
+      "matchesProductionBuild": true
+    }
+  ],
+  "interactiveBrowserCheckThisPublication": false,
+  "interactiveBrowserLimit": "Computer-use browser/native surfaces were unavailable. HTTP checks and emulator-core routes do not certify live browser UI, audible playback or mobile performance.",
+  "physicalConsoleTested": false,
+  "infrastructureChanged": false,
+  "controllerEvidence": "verification/release-browser-controller.json",
+  "sourceBuildWorkflow": "https://github.com/DrCBeatz/nes-hangar/actions/runs/40144651000",
+  "sourceBuildWorkflowConclusion": "success"
+}

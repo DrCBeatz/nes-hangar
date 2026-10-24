@@ -1,8 +1,8 @@
 # Verification
 
-## Current door-reach and alias-credit candidate
+## Current door-reach and alias-credit release
 
-The local candidate is `prototype-2026-10-24-door-reach`,
+The published release is `prototype-2026-10-24-door-reach`,
 [`release/hangar-ntsc.nes`](../release/hangar-ntsc.nes), 131,088 bytes:
 
 ```text
@@ -14,7 +14,7 @@ as the public author credit. Only 25 ROM bytes change from the preceding
 credits/HUD build: two door-distance immediates and 23 credits nametable
 bytes. Linked addresses, segment sizes and RAM allocations are unchanged.
 The [release record](../verification/current-release.json) identifies the
-candidate and its evidence.
+release and its evidence.
 
 The [door report](../verification/door-center.json) reproduces a settled,
 centered view at 8.25 units where the door nearly fills the screen but the
@@ -59,8 +59,10 @@ A [fresh standalone build](../verification/current-build.json) outside the
 research workspace reproduces the ROM byte for byte with
 `python3 -I -S -B tools/build.py --verify`. All 75 source hashes match, with
 no prior generated files, sibling project, WAD or third-party Python package
-required. No physical-console test, live deployment or Git publication is part
-of this update. Historical evidence below retains its original ROM identity.
+required. Source publication and browser deployment completed on October 24,
+2026; their separate checks are recorded in [deployment](DEPLOYMENT.md).
+No physical-console test is claimed. Historical evidence below retains its
+original ROM identity.
 
 ## Previous credits, HUD and soundtrack candidate
 

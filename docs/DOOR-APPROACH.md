@@ -66,4 +66,6 @@ recorded separately in [verification](VERIFICATION.md).
 
 The previous accepted ROM is preserved as
 `hangar-latency-ntsc.nes` (local research archive; not bundled).
-This update is a local candidate, not a deployment or physical-console test.
+This report describes the earlier local candidate, not a physical-console
+test. Its facing-angle change remains in the current published release;
+see [deployment](DEPLOYMENT.md) for the separate publication checks.

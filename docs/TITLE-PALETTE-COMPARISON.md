@@ -40,17 +40,21 @@ library.
 Use `python3 tools/build.py --verify` for the accepted bronze ROM. Omit
 `--verify` for a different palette, because grayscale, blue/gold and steel
 intentionally differ from `release/hangar-ntsc.nes`. The explicit
-`--title-palette grayscale` option reproduces the historical grayscale title
-ROM `8b24fd18…`.
+`--title-palette grayscale` option reproduced the historical grayscale title
+ROM `8b24fd18…` at the original experiment revision; current source includes
+later gameplay, audio and UI changes.
 
 The original research checkout retains comparison ROMs, checksums, previews
 and a gallery under its ignored `artifacts/title-palettes/` directory. Those
-local artifacts are not required by the standalone build. Main now includes
-the selected bronze title; the hosted browser game has not yet been updated.
+local artifacts are not required by the standalone build. Main and the hosted
+browser game include the selected bronze title, with later UI and music
+updates, as of October 24, 2026; see [deployment](DEPLOYMENT.md).
 
 ## Cost and limits
 
-Every option retains the 64 KiB PRG / 8 KiB CHR RAM / 8 KiB work RAM layout.
+At the original comparison revision, every option retained the 64 KiB PRG /
+8 KiB CHR RAM / 8 KiB work RAM layout. The current release uses 128 KiB PRG;
+the measurements below describe that earlier palette-only comparison.
 BOOTDATA remains 7,376 of 8,192 bytes, leaving 816 bytes. There is no increase
 in ROM use, RAM use, tile count, upload size or gameplay CPU work compared with
 the grayscale title. One selected palette ships in each build; the

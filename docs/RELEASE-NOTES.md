@@ -19,8 +19,10 @@ approaches and credits the project as **Dr C Beatz**.
 Only 25 ROM bytes change: two door-range constants and 23 credits nametable
 bytes. Linked segment sizes and RAM allocations are unchanged. The current
 [ROM](../release/hangar-ntsc.nes), [metadata](../release/release.json) and
-[checksum](../release/SHA256SUMS) identify the local candidate. It has not been
-pushed or deployed. Current test results are in [verification](VERIFICATION.md).
+[checksum](../release/SHA256SUMS) identify the release published on
+**October 24, 2026**. The hosted browser ROM matches this download. See
+[deployment](DEPLOYMENT.md) for publication and live-site checks, and
+[verification](VERIFICATION.md) for the build and gameplay test scope.
 
 # Previous credits, HUD and accepted soundtrack
 
@@ -48,10 +50,11 @@ The clip now sits at **(282, 250)**, farther out from the wall corner on dry
 ground. Its strict **3.5-unit pickup radius**, ten-round refill, collection
 sound and once-only behavior are unchanged. See [ammo notes](AMMO-PICKUP.md).
 
-This is a local release candidate; it has not been pushed or deployed. The
-current [ROM](../release/hangar-ntsc.nes), [release record](../release/release.json)
-and [checksum](../release/SHA256SUMS) identify the same build. Build and compare
-with `python3 tools/build.py --verify`. Current results and the earlier
+This was an intermediate local candidate. Its features are included in the
+published door-reach release above; the current [ROM](../release/hangar-ntsc.nes),
+[release record](../release/release.json) and [checksum](../release/SHA256SUMS)
+identify that later build. Build and compare the current release with
+`python3 tools/build.py --verify`. Current results and the earlier
 music/placement evidence are distinguished in [verification](VERIFICATION.md).
 
 # Previous close-angle door prompt
@@ -80,8 +83,9 @@ identified in the current release record above.
 `prototype-2026-10-22-latency` helps new movement and turns become visible
 sooner when the renderer was already busy. A small raster optimization also
 reduces CPU work without changing the generated picture. The optional E1M1
-remix, interaction fixes, level and artwork remain intact. This local candidate
-has not been pushed or deployed to the browser game.
+remix, interaction fixes, level and artwork remained intact in that local
+candidate. These optimizations are included in the current published release;
+its updated soundtrack and deployment are described above.
 
 - New movement directions now invalidate an outdated, unfinished render,
   alongside the existing stop/reversal checks. The producer still permits
@@ -120,8 +124,9 @@ The preceding interaction ROM and its evidence are preserved below.
 
 `prototype-2026-10-22-interactions` makes the nearby door and exit switch easier
 to use and modestly enlarges the ammunition clip's collection radius. It retains
-the approved optional E1M1 remix. This accepted local baseline has not been
-pushed or deployed to the browser game.
+the then-approved optional E1M1 remix. This was a local comparison baseline;
+the interaction fixes are retained in the current published release, with
+subsequent adjustments and the newer soundtrack described above.
 
 - Door and exit facing allowance increases to **±45°** from the wall normal.
   The door's usable width now covers the full panel. Distance, legal-side and
@@ -156,9 +161,10 @@ evidence are preserved below.
 
 `prototype-2026-10-22-optional-music` integrated the approved music experiment
 into the main local development build. Its ROM is byte-identical to the tested
-`hangar-e1m1-drums-ntsc.nes` candidate. This integration has not been pushed or
-deployed to the browser game. The later interaction and input-to-picture
-latency updates are described above.
+`hangar-e1m1-drums-ntsc.nes` candidate. That historical soundtrack build was
+not deployed. The current published release includes the music option with
+Dr C Beatz's newer arrangement and the later interaction and latency changes
+described above.
 
 The controls guide defaults to music ON. Left selects OFF, Right selects ON,
 and Start begins the level. Retries retain the choice; a console reset returns
@@ -172,8 +178,8 @@ That build used the supplied `e1m1-drums.s` export verbatim. The export and
 its comparison ROM are now retained only in local research history, outside
 the published package.
 No DPCM samples or expansion audio are used. Attribution and unresolved music
-license scope are documented in [provenance](PROVENANCE.md); this integration
-does not relicense the project or publish the music.
+license scope are documented in [provenance](PROVENANCE.md); that local
+experiment did not relicense the project or publish its music exports.
 
 The cartridge now uses **128 KiB PRG, MMC1, 8 KiB CHR-RAM and 8 KiB work RAM**.
 The FamiStudio engine, mixer and preference use 206 of 216 reserved audio RAM
@@ -233,9 +239,9 @@ c715b34bd688927579d20d6c593dbddb8436ca4a38dab4b78f553a5d04afe251
 Check out commit `b0cde0b` to rebuild this bronze-only release with
 `python3 tools/build.py --verify`. The other title
 palettes remain build options; they intentionally produce different checksums.
-The hosted browser game still uses the previous third-encounter release and
-has not been updated by this integration. Use its **Open ROM** control to load
-the current download.
+The current hosted browser game includes the bronze title and subsequent
+changes; see [deployment](DEPLOYMENT.md). This section's checksum and test
+results refer only to the earlier bronze-only release.
 
 # Previous soldier sprite-stability release
 

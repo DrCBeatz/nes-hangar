@@ -83,7 +83,8 @@ The sprite-stability ROM preserved at commit `d2f2bbd` has SHA-256:
 f342c5b83f75be92fdf476fab0b2c802afe06438e41e5b571d98b501c05de28e
 ```
 
-The current bronze-title release includes the same sprite fixes. The
-browser-hosted version remains the previous third-encounter release until
-a separate deployment. Download the current ROM and use **Open ROM** to try
-these changes there.
+The current `prototype-2026-10-24-door-reach` release includes these sprite
+fixes alongside the bronze title, optional music and subsequent gameplay/UI
+changes. It is available both as a ROM download and in the hosted browser game
+as of October 24, 2026; see [deployment](DEPLOYMENT.md). The measurements above
+retain their historical sprite-stability ROM scope.

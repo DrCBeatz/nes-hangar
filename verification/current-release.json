@@ -84,10 +84,11 @@
   "finding": "Reproduced missing prompt at settled centered views 8.25\u201312 units from the door; extending reach repairs these cases. No intermittent failure at actual collision contact was reproduced.",
   "performance": "18 producer fixtures retain identical CPU cycles and generated work; controlled stock-NTSC camera timing matches baseline. No rendering optimization introduced.",
   "physicalConsoleTested": false,
-  "liveDeploymentChanged": false,
+  "liveDeploymentChanged": true,
   "licensingResolved": false,
   "publicationPackaging": {
     "historicalMusicAndRomsBundled": false,
     "runtimeBinaryUnchanged": true
-  }
+  },
+  "deploymentEvidence": "verification/release-browser-deployment.json"
 }

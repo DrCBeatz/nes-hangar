@@ -4,20 +4,47 @@
 8-Bit Pocket site. Click **Play Hangar**, then press **Start** on the game title
 screen. The ordinary hosted picker and local **Open ROM** loader remain available.
 
-The hosted ROM remains `prototype-2026-10-19-third-encounter` (`277422aa…`).
-The newer local candidate in `release/` includes the bronze logo, optional
-Dr. C Beatz soundtrack, revised interactions and ammo placement, credits and
-HUD polish. It has not been deployed. Download it and use **Open ROM** to test
-it in the browser; the game's controls guide explains the music choice.
-Current local checks are listed in [verification](VERIFICATION.md). They do
-not claim a live-site update or physical-console testing.
+The current hosted ROM is `prototype-2026-10-24-door-reach`, matching
+`release/hangar-ntsc.nes` byte for byte. It includes the bronze logo, optional
+Dr C Beatz soundtrack, revised interactions and ammo placement, credits and
+HUD polish. The public author credit is **Dr C Beatz**.
+
+## Current release: 2026-10-24
+
+The game source and ROM were published in
+[eba6c06](https://github.com/DrCBeatz/nes-hangar/commit/eba6c0604989c7313ae3575e1968a81562df9329).
+Its [clean GitHub build](https://github.com/DrCBeatz/nes-hangar/actions/runs/40144651000)
+reproduced the checked-in ROM. The browser integration is
+[b0dedb0](https://github.com/DrCBeatz/nes-emulator-mobile-web-app/commit/b0dedb04137656cc004e755a8e4ba189c04ca7fc).
+Its [deployment workflow](https://github.com/DrCBeatz/nes-emulator-mobile-web-app/actions/runs/40144651509)
+passed, including tests, the production build, S3 synchronization and
+CloudFront invalidation. Existing hosting and the stable Play link are unchanged.
+
+- The versioned ROM is `/roms/hangar-ntsc-db258e4c.nes`, 131,088 bytes.
+- SHA-256: `db258e4c9c57ff3ef9f4bc8eb732f31b65eec85a1a639e7a9787a90dde1722a9`.
+- All 19 emulator tests passed. Controller-only JSNES routes completed the
+  level with music ON (7,953 refreshes) and OFF (7,837 refreshes), including
+  credits, pickups, all three encounters, door/exit, pause and restart.
+- Live HTTP checks returned 200 for the page, manifest, ROM and application
+  bundles. The served HTML, manifest, ROM, JavaScript and CSS match the local
+  production build exactly.
+- This publication did not add a new interactive browser/device check:
+  computer-use browser access was unavailable. The controller routes test the
+  emulator core; they do not certify audible playback or mobile performance.
+  Physical-console testing also remains outstanding.
+
+See the [deployment record](../verification/release-browser-deployment.json),
+[ROM verification](VERIFICATION.md), and [itch.io page draft](itch-page-copy.txt).
+The five [itch.io screenshots](itch-assets/) are actual captures of this release.
+
+## Historical integrations
 
 The previous sprite-stability ROM (`f342c5b8…`) passed all 18 isolated
 core/loading tests, including a 7,529-refresh controller-only route. That
 historical evidence is preserved in
 [sprite-stability-browser.json](../verification/sprite-stability-browser.json).
 
-## Deployed integration
+### Initial deployed integration
 
 The initial emulator integration is [commit b2e8312](https://github.com/DrCBeatz/nes-emulator-mobile-web-app/commit/b2e8312ebb59a315d5603ca80d596843cdfd1f8d).
 Its [deployment workflow](https://github.com/DrCBeatz/nes-emulator-mobile-web-app/actions/runs/39170142984)
@@ -25,9 +52,7 @@ passed on 2026-10-18, including tests, the Vite build, S3 upload and CloudFront
 invalidation. This used the existing hosting; no AWS infrastructure or domain
 configuration changed.
 
-- A versioned copy of the release is hosted at
-  `/roms/hangar-ntsc-277422aa.nes`, matching the preserved third-encounter
-  release rather than the newer ROM now in `release/`.
+- Releases use hash-based ROM filenames; the current filename is listed above.
 - The hosted manifest has stable ID `hangar`. Query strings resolve only
   known manifest IDs; an unknown ID leaves the picker and file loader usable.
 - The page waits for a Play gesture before fetching/starting the game. Audio
@@ -41,9 +66,9 @@ link and hosted picker. Controls reopens the guide during gameplay and pauses
 the emulator while it covers the view; closing it preserves the prior pause
 state. This does not alter the ROM or replace saved custom keyboard bindings.
 
-## Enclosure and third-encounter update
+### Enclosure and third-encounter update
 
-The deployed release is `prototype-2026-10-19-third-encounter`, served as
+The earlier release was `prototype-2026-10-19-third-encounter`, served as
 `/roms/hangar-ntsc-277422aa.nes`. It includes the inner enclosure, tighter ammo
 pickup, conservative visibility optimization and third soldier encounter.
 The stable `?game=hangar` link, emulator controls and infrastructure are unchanged.
@@ -61,9 +86,9 @@ Publication uses the existing GitHub Actions workflow: tests, production
 build, S3 synchronization and CloudFront invalidation. The ROM's hash-based
 filename prevents an older cached ROM from being substituted for this release.
 
-## Previous gameplay update
+### Previous gameplay update
 
-The `prototype-2026-10-18-empty-buzz` ROM is hosted as
+The `prototype-2026-10-18-empty-buzz` ROM was hosted as
 `/roms/hangar-ntsc-08ba1092.nes`. It tightens the ammo pickup, adds an empty-gun
 cue and widens exit-switch activation. The latest revision uses a deep buzz
 lasting about 133 ms, with slightly more volume. The stable Play link and
@@ -75,7 +100,7 @@ the door, completion from the expanded switch area and restart. All 18 tests
 and the production build passed locally. Boundary and timing results for this
 exact ROM are linked in [VERIFICATION.md](VERIFICATION.md).
 
-## Initial verification and limits
+### Initial verification and limits
 
 The initial `npm test` run in the emulator repository passed 18 tests: 17 loading/audio/guide
 cases and one real-core gameplay test. The latter runs 2,427 normal NTSC

@@ -19,7 +19,7 @@
     "source": "music/e1m1/e1m1-drcbeatz.s",
     "sourceSha256": "d5886648b0045e97de9172af06934dff190a873286a7aff62599c4667235427a"
   },
-  "status": "prototype release; browser deployment pending",
+  "status": "published prototype; browser deployment verified",
   "credits": {
     "open": "Select from bronze logo",
     "back": "B to logo",
@@ -30,5 +30,6 @@
     "unusedArmorRemoved": true
   },
   "authorCredit": "Dr C Beatz",
-  "doorUseReachUnits": 12
+  "doorUseReachUnits": 12,
+  "playUrl": "https://8bitpocket.app/?game=hangar"
 }

@@ -151,10 +151,12 @@ The focused results above describe the accepted latency build. The subsequent
 [door approach change](DOOR-APPROACH.md) retains these optimizations. Short-input and
 controller-route evidence is recorded separately in [verification](VERIFICATION.md),
 including its test scope and timing limits. A clean build from an isolated
-source copy reproduces the ROM byte for byte. The prior interaction ROM remains
-available for direct playtesting comparisons.
+source copy reproduced that revision's ROM byte for byte. The prior interaction
+ROM remains in the local research archive for direct playtesting comparisons.
 
 This build still has slow complex views, delayed presentation and
 discrete sprite size steps. The ammo clip can pass below the viewport shortly
 before collection. This pass does not change those rendering choices or
-license/attribution status, and does not publish or deploy the ROM.
+license/attribution status. These are historical optimization measurements;
+the current cumulative release and its separate publication checks are linked
+in [deployment](DEPLOYMENT.md).

@@ -25,8 +25,9 @@ python3 tools/build.py --verify
 
 Grayscale, blue/gold and steel remain optional build-time comparisons, described
 in [the palette notes](TITLE-PALETTE-COMPARISON.md). Their ROMs intentionally
-differ from the accepted release. The hosted browser game has not been changed
-by this integration; it still uses the earlier third-encounter release.
+differ from the accepted release. The hosted browser game now uses the current
+bronze-title release, including the later credits/HUD and music changes,
+published October 24, 2026. See [deployment](DEPLOYMENT.md).
 
 This document retains the original isolated experiment's design and validation
 history. The historical grayscale build and the preceding sprite-stability

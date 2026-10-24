@@ -46,16 +46,16 @@ use **Controls** to reopen it during gameplay. **Open ROM** still supports downl
 files. Browser speed, palette and presentation may differ from Mesen. See
 the [browser deployment notes](docs/DEPLOYMENT.md).
 
-The current local candidate includes the bronze title screen, the latest soldier
+The published prototype includes the bronze title screen, the latest soldier
 size and positioning fixes, more forgiving door/exit and ammo interactions,
 a targeted input-to-picture latency improvement, and Dr C Beatz's new optional
 NES arrangement of E1M1. It also includes the accepted ammo repositioning,
 a title-screen credits page, clearer music instructions and a pistol label
-in place of the unused armor counter. These local changes have not been
-pushed or deployed. The [door reach update](docs/DOOR-REACH.md) shows the prompt earlier on
-centered approaches, retaining the earlier close-angle allowance.
-The hosted browser game still uses the previous third-encounter release;
-choose **Open ROM** to try the latest download there.
+in place of the unused armor counter. The [door reach update](docs/DOOR-REACH.md)
+shows the prompt earlier on centered approaches, retaining the earlier
+close-angle allowance. The source and ROM were published on **October 24, 2026**;
+8-Bit Pocket serves this same release. See the
+[deployment record](docs/DEPLOYMENT.md) for the live checksum and verification.
 
 ## Controls
 
@@ -199,7 +199,7 @@ make clean
 Normal builds permit intentional source edits; verification is expected to
 fail if those edits change the ROM relative to the committed release.
 
-The included local candidate, `prototype-2026-10-24-door-reach`, is 131,088
+The published release, `prototype-2026-10-24-door-reach`, is 131,088
 bytes (a 16-byte header plus 128 KiB PRG). Its exact version, checksum and cartridge metadata are recorded in
 [release/release.json](release/release.json); [SHA256SUMS](release/SHA256SUMS)
 identifies the downloadable ROM.
@@ -341,11 +341,12 @@ The suggested repository name is **`nes-hangar`**; the display title is
 only this folder needs to be published, not the surrounding research workspace.
 See [publishing instructions](docs/PUBLISHING.md).
 
-The maintained 8-Bit Pocket emulator hosts the previous third-encounter ROM
-and supports the [direct Play Hangar link](https://8bitpocket.app/?game=hangar).
-The newer soldier fixes, bronze title, optional music, interaction changes
-and credits/HUD polish have not been deployed there; load
-the current download with the emulator's **Open ROM** control to try them.
+The maintained 8-Bit Pocket emulator hosts the current
+`prototype-2026-10-24-door-reach` ROM at the
+[direct Play Hangar link](https://8bitpocket.app/?game=hangar). It includes the
+soldier fixes, bronze title, optional music, interaction changes and credits/HUD
+polish. The hosted ROM matches the download in `release/`. **Open ROM** also
+supports local files.
 A dedicated landing page with download and play buttons can follow. The
 [deployment notes](docs/DEPLOYMENT.md) describe the current integration,
 remaining display work and options for a later custom domain.

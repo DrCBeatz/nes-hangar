@@ -1,4 +1,4 @@
-; Bounded producer-only restart policy for stale stop/reversal snapshots.
+; Bounded producer-only restart policy for stale directional-input snapshots.
 ; No physics, uploader, queued-buffer or visible-PPU state is changed here.
 .setcpu "6502"
 .include "coordinate-memory.inc"
@@ -88,15 +88,16 @@ latency_height_decision: .res 1  ; coherent decision: 0 preserve, 1 reject
  ora latency_new_intent
  sta latency_new_intent
 :
- ; Any previous component disappearing is a stop/reversal (including
- ; diagonal->straight). Adding a component alone does not reject a view.
+ ; A start, stop, reversal or added direction can all obsolete a camera.
+ ; Include starts while an actor update already has the producer occupied;
+ ; otherwise that old stationary view may delay the first movement feedback.
+ ; The same one-retry budget and current-pose/height protection still apply.
  lda latency_new_intent
- eor #$FF
- and latency_intent
+ eor latency_intent
  and #$0F
  bne changed
  ; Switching an existing left/right action between turning and strafing
- ; rejects it. A new strafe from rest does not by itself request a retry.
+ ; rejects it. A alone without a left/right direction does not request a retry.
  lda latency_intent
  and #$03
  beq controls
@@ -105,7 +106,7 @@ latency_height_decision: .res 1  ; coherent decision: 0 preserve, 1 reject
  and #$80
  bne changed
 controls:
- ; Select switches visual mode; Start resets position. B firing must not
+ ; Select switches visual mode; Start is a hard UI edge. B firing must not
  ; restart the world renderer. Both hard controls are actual edges.
  lda button_edges
  and #$30

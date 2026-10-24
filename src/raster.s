@@ -2,15 +2,16 @@
 ; Preserve every verticalpixel; only horizontal geometry/classification is reduced.
 ; Classify each8-pixel vertical cell before composing its pixels. Whole-cell
 ; spans store only material0..3; partial boundary cells hold two bitplane bytes
-; and marker4. Eight matching solid markers select a shared tile immediately.
+; and marker4. Four matching paired markers select a shared tile immediately.
 ; Only boundary/mixed tiles gather pixels, transpose and enter the pattern cache.
 ; Each paired column is gathered once; four transposed bits expand to eight
 ; with a16-byte table. Output patterns/cache order stay byte-identical.
 ; No full-height pixel-strip initialization or painting of solid interiors.
 .setcpu "6502"
 .macpack longbranch
+.import prg_map, prg_render
 .import geometry_begin, geometry_column, span_count, span_top, span_bottom, span_material
-.import pattern_base_hi, name_base_hi, nt_dirty_name
+.import pattern_base_hi, name_base_hi, nt_dirty_flags
 .importzp render_buffer, render_mode, overflow_flag
 .importzp cell_col, cell_x, cell_y, cell_row, column_index, name_ptr
 .importzp tile_ptr, tile_number, tile_count, copy_ptr, temp, temp2
@@ -22,17 +23,27 @@
 .endif
 .export opening_plane0, opening_plane1, opening_cell_color, opening_candidate, opening_cache
 .export opening_cache_hits, opening_cache_misses
+.export raster_dirty_begin, raster_dirty_end
+.export audio_workspace, audio_workspace_end
+.include "audio-memory.inc"
 
 .segment "BSS"
-; For each tile row, eight column markers: material0..3 or mixed4.
+; For each tile row, four paired-column markers: material0..3 or mixed4.
 ; Pixel bytes below are valid only for mixed markers. Solid cells never need
 ; initialization or full-span pixel writes.
-opening_cell_color: .res 144
-opening_plane0: .res 144
-opening_plane1: .res 144
+opening_cell_color: .res 72
+opening_plane0: .res 72
+opening_plane1: .res 72
+; Retain every later BSS address while reclaiming the duplicate odd samples.
+; Audio owns this persistent block; no geometry/raster scratch may touch it.
+audio_workspace: .res AUDIO_WORKSPACE_BYTES
+audio_workspace_end:
+.assert audio_workspace = AUDIO_WORKSPACE_BASE, lderror, "Audio workspace moved"
+.assert audio_workspace_end = AUDIO_WORKSPACE_LIMIT, lderror, "Audio workspace size changed"
 opening_candidate: .res 16
 ; Two ways per hash bucket: newest allocation at0..63, previous at64..127.
 opening_cache: .res 128
+.assert opening_cache = opening_candidate+16, error, "Pre-raster scratch must be contiguous"
 opening_cache_hits: .res 2
 opening_cache_misses: .res 2
 span_index: .res 1
@@ -60,8 +71,22 @@ material_plane0: .byte $00,$FF,$00,$FF
 material_plane1: .byte $00,$00,$FF,$FF
 
 .segment "CODE"
+; Setup needs bank0's visibility tables. Once it completes, bank3 supplies
+; identical per-column map data plus producer code over those dead tables.
+; Preserve the renderer's carry result across the bank restore on both the
+; successful and latency-abort return paths. NMI never changes this mapping.
 .proc opening_render
  jsr geometry_begin
+ jsr prg_render
+ jsr opening_render_banked
+ php
+ jsr prg_map
+ plp
+ rts
+.endproc
+
+.segment "RENDER_CODE"
+.proc opening_render_banked
  lda #0
  sta opening_cache_hits
  sta opening_cache_hits+1
@@ -106,17 +131,14 @@ compare_column:
 reuse_column:
  ldx column_index
  .repeat 18,I
- lda opening_cell_color+I*8-1,x
- sta opening_cell_color+I*8,x
- sta opening_cell_color+I*8+1,x
+ lda opening_cell_color+I*4-1,x
+ sta opening_cell_color+I*4,x
  cmp #4
  bne :+
- lda opening_plane0+I*8-1,x
- sta opening_plane0+I*8,x
- sta opening_plane0+I*8+1,x
- lda opening_plane1+I*8-1,x
- sta opening_plane1+I*8,x
- sta opening_plane1+I*8+1,x
+ lda opening_plane0+I*4-1,x
+ sta opening_plane0+I*4,x
+ lda opening_plane1+I*4-1,x
+ sta opening_plane1+I*4,x
 :
  .endrepeat
  jmp column_done
@@ -140,13 +162,11 @@ begin_spans:
  ldx column_index
  lda #0
  .repeat 9,I
- sta opening_cell_color+I*8,x
- sta opening_cell_color+I*8+1,x
+ sta opening_cell_color+I*4,x
  .endrepeat
  lda #3
  .repeat 9,I
- sta opening_cell_color+72+I*8,x
- sta opening_cell_color+72+I*8+1,x
+ sta opening_cell_color+36+I*4,x
  .endrepeat
  ; Keep producer spans unchanged. Walking backward proves a covered suffix;
  ; clipping farther bottoms to it cannot change their eventual visible pixels.
@@ -195,6 +215,7 @@ span:
  sec
  sbc #1
  and #$F8
+ lsr a
  ora column_index
  sta span_last
  lda span_material,y
@@ -212,6 +233,7 @@ span:
  sta span_color1
  lda span_top,y
  and #$F8
+ lsr a
  ora column_index
  tax
  cpx span_last
@@ -226,13 +248,12 @@ span:
 full_rows:
  txa
  clc
- adc #8
+ adc #4
  tax
  cpx span_last
  beq last_row
  lda temp2
  sta opening_cell_color,x
- sta opening_cell_color+1,x
  jmp full_rows
 last_row:
  lda span_last_mask
@@ -242,13 +263,12 @@ next_span:
  inc span_index
  jmp span
 column_done:
- ; All marker and mixed-plane writes already fill the two-pixel pair.
+ ; A single stored sample represents both pixels of the displayed pair.
  inc cell_x
  inc cell_x
- inc column_index
  inc column_index
  lda column_index
- cmp #8
+ cmp #4
  jne column
 strip_ready:
  ; Column-major traversal suits streamed geometry. Name writes still use
@@ -268,7 +288,20 @@ tile:
  ldy #0
  cmp (name_ptr),y
  beq :+
- jsr nt_dirty_name
+dirty_begin:
+ ; This loop visits viewport tile rows3..20, so the dirty16-byte block is
+ ; 6 + 2*cell_row + (cell_col >=16). X is dead after strip_tile; Y stays0.
+ ; Preserve only the tile ID in A instead of the generic helper's X too.
+ pha
+ lda cell_col
+ cmp #16
+ lda cell_row
+ rol a
+ tax
+ lda #1
+ sta nt_dirty_flags+6,x
+ pla
+dirty_end:
 :
  sta (name_ptr),y
  clc
@@ -308,10 +341,12 @@ aborted:
 .endif
 .endproc
 .ifdef LATENCY_RESTART
-latency_strip_checkpoint = opening_render::strip_checkpoint
+latency_strip_checkpoint = opening_render_banked::strip_checkpoint
 .endif
-opening_spans_ready = opening_render::spans_ready
-opening_strip_ready = opening_render::strip_ready
+opening_spans_ready = opening_render_banked::spans_ready
+opening_strip_ready = opening_render_banked::strip_ready
+raster_dirty_begin = opening_render_banked::dirty_begin
+raster_dirty_end = opening_render_banked::dirty_end
 
 .proc masked_span_byte
  lda mask_wall
@@ -320,7 +355,6 @@ opening_strip_ready = opening_render::strip_ready
  ; An aligned whole cell requires only its material marker.
  lda temp2
  sta opening_cell_color,x
- sta opening_cell_color+1,x
  rts
 partial:
  lda opening_cell_color,x
@@ -330,13 +364,10 @@ partial:
  tay
  lda material_plane0,y
  sta opening_plane0,x
- sta opening_plane0+1,x
  lda material_plane1,y
  sta opening_plane1,x
- sta opening_plane1+1,x
  lda #4
  sta opening_cell_color,x
- sta opening_cell_color+1,x
 compose:
  lda mask_wall
  eor #$FF
@@ -348,7 +379,6 @@ compose:
  and mask_ceiling
  ora mask_floor
  sta opening_plane0,x
- sta opening_plane0+1,x
  lda span_color1
  and mask_wall
  sta mask_floor
@@ -356,7 +386,6 @@ compose:
  and mask_ceiling
  ora mask_floor
  sta opening_plane1,x
- sta opening_plane1+1,x
  rts
 .endproc
 
@@ -364,7 +393,8 @@ compose:
  lda render_mode
  beq @precise
  lda cell_y
- ora #4
+ lsr a
+ ora #2
  tax
  lda opening_cell_color,x
  cmp #4
@@ -384,22 +414,24 @@ compose:
 @return_solid:
  rts
 @precise:
- ldx cell_y
+ lda cell_y
+ lsr a
+ tax
  lda opening_cell_color,x
  cmp #4
  bcs @gather
  ; A whole tile's four distinct paired markers agree: select its pre-existing
  ; shared solid pattern without ever creating a pixel representation.
  .repeat 3,I
- cmp opening_cell_color+I*2+2,x
+ cmp opening_cell_color+I+1,x
  bne @gather
  .endrepeat
  rts
 @gather:
- ; Gather only the even source column from each proven identical pair.
+ ; Gather the sole stored source column for each displayed pixel pair.
  ; Compact scratch stores four vertical bytes per plane; no RAM layout change.
  .repeat 4,I
- lda opening_cell_color+I*2,x
+ lda opening_cell_color+I,x
  cmp #4
  beq :+
  tay
@@ -409,9 +441,9 @@ compose:
  sta vertical1+I
  jmp :++
 :
- lda opening_plane0+I*2,x
+ lda opening_plane0+I,x
  sta vertical0+I
- lda opening_plane1+I*2,x
+ lda opening_plane1+I,x
  sta vertical1+I
 :
  .endrepeat

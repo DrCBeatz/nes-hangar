@@ -1,0 +1,3150 @@
+{
+  "schemaVersion": 1,
+  "verifiedOn": "2026-10-22",
+  "passed": true,
+  "version": "prototype-2026-10-22-latency",
+  "romSha256": "0dbee1ad5765bc00ac10e1736902ee381a88c3c539b8c68de12f24f887260d89",
+  "baseline": {
+    "rom": "release/archive/hangar-interactions-ntsc.nes",
+    "sha256": "0ecf59bf29efb03e5619a30d8bf890500a96e505a18f661920ab02fdbc9bd086",
+    "evidence": "verification/interaction-release.json"
+  },
+  "changes": {
+    "sources": [
+      "src/latency_restart.s",
+      "src/raster.s"
+    ],
+    "directionalIntent": "Start/add-direction changes now share the existing bounded retry policy with stops/reversals; one abandoned attempt per acquired bank, current-view and height protections retained.",
+    "rasterDirtyMark": "Exact viewport tile-block address; 26 cycles instead of 84 per changed tile.",
+    "ramAllocationUnchanged": true,
+    "segmentBytesBefore": {
+      "ZEROPAGE": 256,
+      "AUDIO_ZP": 8,
+      "BSS": 1536,
+      "AUDIO_ENGINE": 136,
+      "AUDIO_DRIVER": 69,
+      "AUDIO_SETTINGS": 1,
+      "ACTOR_ART": 8065,
+      "BOOTDATA": 7536,
+      "MAPDATA": 8134,
+      "RENDER_CODE": 3664,
+      "RODATA": 8154,
+      "CODE": 12460,
+      "AUDIO_CODE": 3887,
+      "STARTUP": 9
+    },
+    "segmentBytesAfter": {
+      "ZEROPAGE": 256,
+      "AUDIO_ZP": 8,
+      "BSS": 1536,
+      "AUDIO_ENGINE": 136,
+      "AUDIO_DRIVER": 69,
+      "AUDIO_SETTINGS": 1,
+      "ACTOR_ART": 8065,
+      "BOOTDATA": 7536,
+      "MAPDATA": 8134,
+      "RENDER_CODE": 3680,
+      "RODATA": 8154,
+      "CODE": 12458,
+      "AUDIO_CODE": 3887,
+      "STARTUP": 9
+    }
+  },
+  "measurements": {
+    "baselineRomSha256": "0ecf59bf29efb03e5619a30d8bf890500a96e505a18f661920ab02fdbc9bd086",
+    "candidateRomSha256": "0dbee1ad5765bc00ac10e1736902ee381a88c3c539b8c68de12f24f887260d89",
+    "region": "NTSC",
+    "extraScanlinesBeforeNmi": 0,
+    "extraScanlinesAfterNmi": 0,
+    "runAheadFrames": 0,
+    "spriteLimit": true,
+    "timingUnit": "NTSC refreshes; 1000/60.0988138974405 ms each",
+    "suites": {
+      "transitions": {
+        "on": {
+          "baselineFinalStopFrames": {
+            "count": 16,
+            "minimum": 23,
+            "median": 41.5,
+            "mean": 42.625,
+            "maximum": 69
+          },
+          "candidateFinalStopFrames": {
+            "count": 16,
+            "minimum": 24,
+            "median": 43.0,
+            "mean": 43.3125,
+            "maximum": 68
+          },
+          "stopChanges": [
+            {
+              "id": "simple-wall-walk-0-release",
+              "before": 23,
+              "after": 24,
+              "difference": 1
+            },
+            {
+              "id": "simple-wall-walk-7-release",
+              "before": 26,
+              "after": 26,
+              "difference": 0
+            },
+            {
+              "id": "simple-wall-turn-0-release",
+              "before": 25,
+              "after": 25,
+              "difference": 0
+            },
+            {
+              "id": "simple-wall-turn-7-release",
+              "before": 24,
+              "after": 25,
+              "difference": 1
+            },
+            {
+              "id": "opening-walk-0-release",
+              "before": 69,
+              "after": 68,
+              "difference": -1
+            },
+            {
+              "id": "opening-walk-7-release",
+              "before": 58,
+              "after": 57,
+              "difference": -1
+            },
+            {
+              "id": "opening-turn-0-release",
+              "before": 68,
+              "after": 68,
+              "difference": 0
+            },
+            {
+              "id": "opening-turn-7-release",
+              "before": 60,
+              "after": 60,
+              "difference": 0
+            },
+            {
+              "id": "square-walk-0-release",
+              "before": 35,
+              "after": 34,
+              "difference": -1
+            },
+            {
+              "id": "square-walk-7-release",
+              "before": 30,
+              "after": 33,
+              "difference": 3
+            },
+            {
+              "id": "square-turn-0-release",
+              "before": 40,
+              "after": 39,
+              "difference": -1
+            },
+            {
+              "id": "square-turn-7-release",
+              "before": 35,
+              "after": 34,
+              "difference": -1
+            },
+            {
+              "id": "slime-walk-0-release",
+              "before": 49,
+              "after": 48,
+              "difference": -1
+            },
+            {
+              "id": "slime-walk-7-release",
+              "before": 47,
+              "after": 47,
+              "difference": 0
+            },
+            {
+              "id": "slime-turn-0-release",
+              "before": 50,
+              "after": 50,
+              "difference": 0
+            },
+            {
+              "id": "slime-turn-7-release",
+              "before": 43,
+              "after": 55,
+              "difference": 12
+            }
+          ],
+          "baselineLiveContinuedAfterRelease": 0,
+          "candidateLiveContinuedAfterRelease": 0
+        },
+        "off": {
+          "baselineFinalStopFrames": {
+            "count": 16,
+            "minimum": 24,
+            "median": 41.5,
+            "mean": 41.9375,
+            "maximum": 66
+          },
+          "candidateFinalStopFrames": {
+            "count": 16,
+            "minimum": 24,
+            "median": 40.5,
+            "mean": 41.5,
+            "maximum": 65
+          },
+          "stopChanges": [
+            {
+              "id": "simple-wall-walk-0-release",
+              "before": 24,
+              "after": 24,
+              "difference": 0
+            },
+            {
+              "id": "simple-wall-walk-7-release",
+              "before": 26,
+              "after": 26,
+              "difference": 0
+            },
+            {
+              "id": "simple-wall-turn-0-release",
+              "before": 24,
+              "after": 24,
+              "difference": 0
+            },
+            {
+              "id": "simple-wall-turn-7-release",
+              "before": 24,
+              "after": 24,
+              "difference": 0
+            },
+            {
+              "id": "opening-walk-0-release",
+              "before": 66,
+              "after": 65,
+              "difference": -1
+            },
+            {
+              "id": "opening-walk-7-release",
+              "before": 55,
+              "after": 55,
+              "difference": 0
+            },
+            {
+              "id": "opening-turn-0-release",
+              "before": 65,
+              "after": 64,
+              "difference": -1
+            },
+            {
+              "id": "opening-turn-7-release",
+              "before": 58,
+              "after": 57,
+              "difference": -1
+            },
+            {
+              "id": "square-walk-0-release",
+              "before": 33,
+              "after": 31,
+              "difference": -2
+            },
+            {
+              "id": "square-walk-7-release",
+              "before": 32,
+              "after": 32,
+              "difference": 0
+            },
+            {
+              "id": "square-turn-0-release",
+              "before": 37,
+              "after": 36,
+              "difference": -1
+            },
+            {
+              "id": "square-turn-7-release",
+              "before": 31,
+              "after": 31,
+              "difference": 0
+            },
+            {
+              "id": "slime-walk-0-release",
+              "before": 46,
+              "after": 45,
+              "difference": -1
+            },
+            {
+              "id": "slime-walk-7-release",
+              "before": 52,
+              "after": 51,
+              "difference": -1
+            },
+            {
+              "id": "slime-turn-0-release",
+              "before": 47,
+              "after": 48,
+              "difference": 1
+            },
+            {
+              "id": "slime-turn-7-release",
+              "before": 51,
+              "after": 51,
+              "difference": 0
+            }
+          ],
+          "baselineLiveContinuedAfterRelease": 0,
+          "candidateLiveContinuedAfterRelease": 0
+        }
+      },
+      "onsets": {
+        "on": {
+          "baselineFinalStopFrames": {
+            "count": 8,
+            "minimum": 37,
+            "median": 49.0,
+            "mean": 49,
+            "maximum": 64
+          },
+          "candidateFinalStopFrames": {
+            "count": 8,
+            "minimum": 37,
+            "median": 48.0,
+            "mean": 48.875,
+            "maximum": 62
+          },
+          "stopChanges": [
+            {
+              "id": "opening-walk-idle-release",
+              "before": 64,
+              "after": 62,
+              "difference": -2
+            },
+            {
+              "id": "opening-walk-busy-release",
+              "before": 57,
+              "after": 62,
+              "difference": 5
+            },
+            {
+              "id": "opening-turn-idle-release",
+              "before": 52,
+              "after": 51,
+              "difference": -1
+            },
+            {
+              "id": "opening-turn-busy-release",
+              "before": 52,
+              "after": 52,
+              "difference": 0
+            },
+            {
+              "id": "slime-walk-idle-release",
+              "before": 39,
+              "after": 37,
+              "difference": -2
+            },
+            {
+              "id": "slime-walk-busy-release",
+              "before": 37,
+              "after": 38,
+              "difference": 1
+            },
+            {
+              "id": "slime-turn-idle-release",
+              "before": 45,
+              "after": 44,
+              "difference": -1
+            },
+            {
+              "id": "slime-turn-busy-release",
+              "before": 46,
+              "after": 45,
+              "difference": -1
+            }
+          ],
+          "baselineLiveContinuedAfterRelease": 0,
+          "candidateLiveContinuedAfterRelease": 0,
+          "busyStarts": [
+            {
+              "id": "opening-walk-busy-press",
+              "before": 83.07536811000487,
+              "after": 57.07536811000487,
+              "saved": 26.000000000000007
+            },
+            {
+              "id": "opening-turn-busy-press",
+              "before": 91.07530095196522,
+              "after": 57.07536811000487,
+              "saved": 33.99993284196035
+            },
+            {
+              "id": "slime-walk-busy-press",
+              "before": 68.07572068971307,
+              "after": 47.07556958412384,
+              "saved": 21.000151105589225
+            },
+            {
+              "id": "slime-turn-busy-press",
+              "before": 74.07561995265358,
+              "after": 48.07568711069324,
+              "saved": 25.999932841960344
+            }
+          ],
+          "idleStarts": [
+            {
+              "id": "opening-walk-idle-press",
+              "before": 56.07535132049495,
+              "after": 56.075317741475125
+            },
+            {
+              "id": "opening-turn-idle-press",
+              "before": 57.07533453098504,
+              "after": 57.07536811000487
+            },
+            {
+              "id": "slime-walk-idle-press",
+              "before": 47.07560316314367,
+              "after": 47.07556958412384
+            },
+            {
+              "id": "slime-turn-idle-press",
+              "before": 49.075636742163496,
+              "after": 48.07568711069324
+            }
+          ]
+        },
+        "off": {
+          "baselineFinalStopFrames": {
+            "count": 8,
+            "minimum": 36,
+            "median": 48.5,
+            "mean": 46.75,
+            "maximum": 60
+          },
+          "candidateFinalStopFrames": {
+            "count": 8,
+            "minimum": 35,
+            "median": 49.0,
+            "mean": 47.75,
+            "maximum": 58
+          },
+          "stopChanges": [
+            {
+              "id": "opening-walk-idle-release",
+              "before": 60,
+              "after": 58,
+              "difference": -2
+            },
+            {
+              "id": "opening-walk-busy-release",
+              "before": 48,
+              "after": 57,
+              "difference": 9
+            },
+            {
+              "id": "opening-turn-idle-release",
+              "before": 51,
+              "after": 50,
+              "difference": -1
+            },
+            {
+              "id": "opening-turn-busy-release",
+              "before": 50,
+              "after": 51,
+              "difference": 1
+            },
+            {
+              "id": "slime-walk-idle-release",
+              "before": 36,
+              "after": 35,
+              "difference": -1
+            },
+            {
+              "id": "slime-walk-busy-release",
+              "before": 36,
+              "after": 36,
+              "difference": 0
+            },
+            {
+              "id": "slime-turn-idle-release",
+              "before": 49,
+              "after": 48,
+              "difference": -1
+            },
+            {
+              "id": "slime-turn-busy-release",
+              "before": 44,
+              "after": 47,
+              "difference": 3
+            }
+          ],
+          "baselineLiveContinuedAfterRelease": 0,
+          "candidateLiveContinuedAfterRelease": 0,
+          "busyStarts": [
+            {
+              "id": "opening-walk-busy-press",
+              "before": 81.07533453098505,
+              "after": 56.07538489951478,
+              "saved": 24.999949631470265
+            },
+            {
+              "id": "opening-turn-busy-press",
+              "before": 86.0755192155941,
+              "after": 56.07538489951478,
+              "saved": 30.00013431607932
+            },
+            {
+              "id": "slime-walk-busy-press",
+              "before": 67.07560316314367,
+              "after": 46.07565353167341,
+              "saved": 20.99994963147026
+            },
+            {
+              "id": "slime-turn-busy-press",
+              "before": 71.07573747922298,
+              "after": 46.075586373633755,
+              "saved": 25.000151105589225
+            }
+          ],
+          "idleStarts": [
+            {
+              "id": "opening-walk-idle-press",
+              "before": 55.07536811000487,
+              "after": 55.07533453098504
+            },
+            {
+              "id": "opening-turn-idle-press",
+              "before": 56.07548563657427,
+              "after": 55.07533453098504
+            },
+            {
+              "id": "slime-walk-idle-press",
+              "before": 46.07561995265358,
+              "after": 45.07560316314367
+            },
+            {
+              "id": "slime-turn-idle-press",
+              "before": 48.07565353167341,
+              "after": 47.075636742163496
+            }
+          ]
+        }
+      },
+      "busy-transitions": {
+        "on": {
+          "baselineFinalStopFrames": {
+            "count": 8,
+            "minimum": 41,
+            "median": 62.0,
+            "mean": 58.75,
+            "maximum": 70
+          },
+          "candidateFinalStopFrames": {
+            "count": 8,
+            "minimum": 42,
+            "median": 48.0,
+            "mean": 48.5,
+            "maximum": 56
+          },
+          "stopChanges": [
+            {
+              "id": "opening-walk-busy-0-release",
+              "before": 68,
+              "after": 54,
+              "difference": -14
+            },
+            {
+              "id": "opening-walk-busy-7-release",
+              "before": 69,
+              "after": 56,
+              "difference": -13
+            },
+            {
+              "id": "opening-turn-busy-0-release",
+              "before": 67,
+              "after": 53,
+              "difference": -14
+            },
+            {
+              "id": "opening-turn-busy-7-release",
+              "before": 70,
+              "after": 55,
+              "difference": -15
+            },
+            {
+              "id": "slime-walk-busy-0-release",
+              "before": 55,
+              "after": 42,
+              "difference": -13
+            },
+            {
+              "id": "slime-walk-busy-7-release",
+              "before": 41,
+              "after": 43,
+              "difference": 2
+            },
+            {
+              "id": "slime-turn-busy-0-release",
+              "before": 57,
+              "after": 42,
+              "difference": -15
+            },
+            {
+              "id": "slime-turn-busy-7-release",
+              "before": 43,
+              "after": 43,
+              "difference": 0
+            }
+          ],
+          "baselineLiveContinuedAfterRelease": 0,
+          "candidateLiveContinuedAfterRelease": 0
+        },
+        "off": {
+          "baselineFinalStopFrames": {
+            "count": 8,
+            "minimum": 39,
+            "median": 57.0,
+            "mean": 55,
+            "maximum": 66
+          },
+          "candidateFinalStopFrames": {
+            "count": 8,
+            "minimum": 40,
+            "median": 51.5,
+            "mean": 48.75,
+            "maximum": 54
+          },
+          "stopChanges": [
+            {
+              "id": "opening-walk-busy-0-release",
+              "before": 66,
+              "after": 52,
+              "difference": -14
+            },
+            {
+              "id": "opening-walk-busy-7-release",
+              "before": 62,
+              "after": 54,
+              "difference": -8
+            },
+            {
+              "id": "opening-turn-busy-0-release",
+              "before": 65,
+              "after": 51,
+              "difference": -14
+            },
+            {
+              "id": "opening-turn-busy-7-release",
+              "before": 65,
+              "after": 53,
+              "difference": -12
+            },
+            {
+              "id": "slime-walk-busy-0-release",
+              "before": 50,
+              "after": 40,
+              "difference": -10
+            },
+            {
+              "id": "slime-walk-busy-7-release",
+              "before": 39,
+              "after": 47,
+              "difference": 8
+            },
+            {
+              "id": "slime-turn-busy-0-release",
+              "before": 52,
+              "after": 41,
+              "difference": -11
+            },
+            {
+              "id": "slime-turn-busy-7-release",
+              "before": 41,
+              "after": 52,
+              "difference": 11
+            }
+          ],
+          "baselineLiveContinuedAfterRelease": 0,
+          "candidateLiveContinuedAfterRelease": 0
+        }
+      }
+    },
+    "aggregate": {
+      "allValidationPassed": true,
+      "matchedObserverSha256": "ec2a5fae2eea8cb4e65e5657bbebe7a46e9d1f2eccc31e722d7002e68b33423b",
+      "measuredFramesChecked": 44268,
+      "settledOnsetsChecked": 128,
+      "livePressResponseFrames": {
+        "minimum": 1,
+        "maximum": 3
+      },
+      "continuedLiveMovementAfterRelease": 0,
+      "busyFirstPictureSavedRefreshes": {
+        "minimum": 20.99994963147026,
+        "maximum": 33.99993284196035,
+        "median": 25.500041973774785
+      },
+      "busyFirstPictureSavedMilliseconds": {
+        "minimum": 349.4236952380954,
+        "maximum": 565.7338412698415
+      },
+      "worstStopRegression": {
+        "suite": "transitions",
+        "music": "on",
+        "id": "slime-turn-7-release",
+        "before": 43,
+        "after": 55,
+        "difference": 12
+      },
+      "bestStopImprovement": {
+        "suite": "busy-transitions",
+        "music": "on",
+        "id": "opening-turn-busy-7-release",
+        "before": 70,
+        "after": 55,
+        "difference": -15
+      },
+      "stopsImproved": 34,
+      "stopsEqual": 17,
+      "stopsRegressed": 13,
+      "totalMatchedStopTrials": 64
+    },
+    "scope": {
+      "scenes": [
+        "simple wall",
+        "opening room with recess and pillars",
+        "square room",
+        "slime room"
+      ],
+      "actors": "Dead for isolated input/presentation measurement; not a full active-combat throughput benchmark.",
+      "busyOnset": "A scene-version increment schedules one same-pose background refresh eight frames before input. This synthetic controlled workload isolates producer-busy onset; it is not an alive-enemy measurement.",
+      "input": "Diagnostic setup writes legal pose once per trial; subsequent motion comes solely from controller events.",
+      "picture": "Coherent visible camera metadata at PPUCTRL commit; excludes physical display delay.",
+      "framePhase": "Candidate boots its first picture one refresh earlier. The same phases and button durations are used; 50 Hz movement cadence therefore starts at slightly different tick phases. Single-refresh differences are not meaningful speed claims.",
+      "cpu": "Cycle-based render costs exclude measured NMI intervals; averages across moving frames are not exact same-pose CPU comparisons.",
+      "safety": "No queued or partially uploaded bank was discarded by these tests; root runs separate output/timing/full-route validation."
+    },
+    "limitations": [
+      "Final stopped-picture latency remains substantial. The candidate improves busy onset, not every possible input sequence.",
+      "Earlier completion can cross a button edge and change which snapshots finish. Some matched stop/reversal cases regress despite earlier initial response.",
+      "One corrected baseline transition run detected an ambient personal-settings-file hash change. Origin unknown; test used its frozen portable stock-NTSC settings. Personal settings were not restored or modified.",
+      "The initial exploratory baseline/ capture is superseded by baseline-transitions and excluded from these numbers."
+    ]
+  },
+  "linkedInput": {
+    "evidence": "verification/latency-input.json",
+    "calls": 67286,
+    "counts": {
+      "controllerTransitions": 65536,
+      "invalidatingTransitions": 61216,
+      "epochWrapCases": 35,
+      "snapshotCases": 142,
+      "budgetCases": 12,
+      "heightAndCurrentCases": 1026,
+      "instructionBoundaryInjections": 230,
+      "producerSnapshotInjections": 289,
+      "oldCoherentSnapshots": 63,
+      "newCoherentSnapshots": 226
+    },
+    "scope": "Linked 6502 execution with synthetic NMI-owned mutations and seeded camera poses. Pixel preservation compares a retried frame with a clean linked render of the same snapshot, not an independent geometric oracle. No input-device latency, PPU deadline, controller-only route or physical-console claim."
+  },
+  "raster": {
+    "evidence": "verification/latency-raster.json",
+    "counts": {
+      "tileRegisterCases": 294912,
+      "wholeRenderCases": 32,
+      "viewportPixelsCompared": 1179648
+    },
+    "cycles": {
+      "baselineCallIncludingJsr": [
+        84
+      ],
+      "inline": [
+        26
+      ]
+    },
+    "scope": "Interrupt-free linked6502 fixtures with injected legal camera state. Every viewport tile and tile ID are checked; complete world/actor/OAM/palette staging and dirty upload lists match baseline at diagnostic poses. Not a controller/PPU timing or gameplay FPS test."
+  },
+  "jsnes": {
+    "evidence": "verification/latency-browser.json",
+    "checks": {
+      "count": 30,
+      "failures": 0
+    },
+    "runs": [
+      {
+        "choice": "ON",
+        "frames": 1485,
+        "phases": 0
+      },
+      {
+        "choice": "OFF",
+        "frames": 19787,
+        "phases": 151
+      }
+    ],
+    "scope": "Pinned stock JSNES core. Controller-only guide selection, launch, shoot, pause/resume, natural death retry, full accepted completion route and level restart; final public CPU reset interrupt API verifies cold default ON. Read-only CPU write observer; no game or emulator state injection. CPU timing/PPU deadline conclusions require the separate Mesen checks."
+  },
+  "mesen": {
+    "passed": true,
+    "checks": {
+      "controllerOnlyRouteCompleted": true,
+      "noTimeouts": true,
+      "noRuntimeErrors": true,
+      "nmiNeverNested": true,
+      "exactPublishedWorlds": true,
+      "closedDoorThirdContextObserved": true,
+      "closedDoorEnemyCannotAttackOrTarget": true,
+      "thirdShotDamagesPlayer": true,
+      "thirdNeverCollectsItem": true,
+      "thirdDefeatedExactlyOnce": true,
+      "thirdReceivesThreeHits": true,
+      "threeContextStatesObserved": true,
+      "allRenderCapacityFits": true,
+      "thirdStaysInsideMovementBox": true,
+      "thirdActuallyMoves": true,
+      "allThreeKilled": true,
+      "nineHits": true,
+      "nominalAmmoBalance": true,
+      "bothPickupsExactlyOnce": true,
+      "thirdDeadOnReturn": true,
+      "resultsThreeKillsTwoItems": true,
+      "resetRestoresAllEnemies": true,
+      "resetRestoresAmmoDoorAndCounts": true,
+      "pauseFreezeAndResume": true,
+      "pauseEnteredDuringEnemyWarning": true,
+      "freshStartPagesAndNoCarry": true
+    },
+    "frames": 15110,
+    "phaseCount": 161,
+    "errors": [],
+    "pixelChecks": [
+      {
+        "id": "game-held-start",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "first-gameplay",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "pause-initial-music-enter",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "pause-initial-music-held",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "pause-initial-music-ignored-inputs",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "pause-initial-music-resume",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "spawn-idle",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "pause-enemy-warning-enter",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "pause-enemy-warning-held",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "pause-enemy-warning-ignored-inputs",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "pause-enemy-warning-resume",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "first-zombie-killed",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "medkit-collected",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "dry-placements-view",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "ammo-collected",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "second-zombie-killed",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "pause-slime-music-enter",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "pause-slime-music-held",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "pause-slime-music-ignored-inputs",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "pause-slime-music-resume",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "slime-one-dose",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "door-closed-view",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "door-closed-push",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "door-a-left-slide",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "door-a-right-slide",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "door-use-ready",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "door-fresh-use",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "door-wait-published-open",
+        "visibleDoor": 1,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "door-open-settled",
+        "visibleDoor": 1,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "first-open-doorway",
+        "visibleDoor": 1,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "third-live-view",
+        "visibleDoor": 1,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "third-wait-shot",
+        "visibleDoor": 1,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "third-zombie-killed",
+        "visibleDoor": 1,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "third-corpse-view",
+        "visibleDoor": 1,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "pre-exit-west-side",
+        "visibleDoor": 1,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "exit-chamber",
+        "visibleDoor": 1,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "critical-chamber-original-worst",
+        "visibleDoor": 1,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "critical-chamber-center-view",
+        "visibleDoor": 1,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "first-encounter-dead-reloaded",
+        "visibleDoor": 1,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "third-encounter-dead-reloaded",
+        "visibleDoor": 1,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "coarse-settled",
+        "visibleDoor": 1,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "precise-settled",
+        "visibleDoor": 1,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "reset-start",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      },
+      {
+        "id": "final-spawn",
+        "visibleDoor": 0,
+        "pixelMismatches": 0,
+        "paletteMatches": true,
+        "passed": true
+      }
+    ],
+    "eventCounts": {
+      "zombie_hit": 9,
+      "zombie_defeat": 3,
+      "player_damage": 9,
+      "ammo_collect": 1,
+      "pistol_shot_accepted": 9
+    },
+    "maximumPlanes": 33,
+    "maximumPatterns": 113,
+    "maximumSpans": 8,
+    "scope": "Controller-only actual ROM in stock NTSC Mesen, zero extra scanlines, independent unfiltered geometry oracle; not a physical-console test.",
+    "pauseChecks": [
+      {
+        "name": "initial-music",
+        "heldFrames": 124,
+        "checks": {
+          "allSamplesPaused": true,
+          "fieldsFrozen": true,
+          "noWorldPublication": true,
+          "picturesFrozen": true,
+          "ppuFrozen": true,
+          "freshStartResumes": true
+        },
+        "mismatches": []
+      },
+      {
+        "name": "enemy-warning",
+        "heldFrames": 94,
+        "checks": {
+          "allSamplesPaused": true,
+          "fieldsFrozen": true,
+          "noWorldPublication": true,
+          "picturesFrozen": true,
+          "ppuFrozen": true,
+          "freshStartResumes": true
+        },
+        "mismatches": []
+      },
+      {
+        "name": "slime-music",
+        "heldFrames": 94,
+        "checks": {
+          "allSamplesPaused": true,
+          "fieldsFrozen": true,
+          "noWorldPublication": true,
+          "picturesFrozen": true,
+          "ppuFrozen": true,
+          "freshStartResumes": true
+        },
+        "mismatches": []
+      }
+    ],
+    "timing": {
+      "nmiCycles": {
+        "count": 14734,
+        "minimum": 495,
+        "median": 4017.0,
+        "mean": 3993.503868603231,
+        "p95": 6154,
+        "maximum": 18667
+      },
+      "ppuWritesObserved": 14031,
+      "lastPpuMinimumMargin": {
+        "scanline": 260,
+        "dot": 174,
+        "marginCpuCycles": 55.666666666666664
+      },
+      "warningUploadNmis": [
+        {
+          "frame": 2690,
+          "cycles": 3128,
+          "scanline": 246,
+          "dot": 203,
+          "marginCpuCycles": 1637.3333333333333
+        },
+        {
+          "frame": 2946,
+          "cycles": 3402,
+          "scanline": 246,
+          "dot": 200,
+          "marginCpuCycles": 1638.3333333333333
+        },
+        {
+          "frame": 5718,
+          "cycles": 3172,
+          "scanline": 246,
+          "dot": 200,
+          "marginCpuCycles": 1638.3333333333333
+        },
+        {
+          "frame": 6040,
+          "cycles": 3537,
+          "scanline": 246,
+          "dot": 200,
+          "marginCpuCycles": 1638.3333333333333
+        },
+        {
+          "frame": 7627,
+          "cycles": 3192,
+          "scanline": 246,
+          "dot": 205,
+          "marginCpuCycles": 1636.6666666666667
+        }
+      ]
+    },
+    "phasePerformance": [
+      {
+        "id": "power-on-held-start",
+        "frames": 120,
+        "publications": 0,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": null
+      },
+      {
+        "id": "first-page-ignore-controls",
+        "frames": 60,
+        "publications": 0,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": null
+      },
+      {
+        "id": "first-page-idle",
+        "frames": 30,
+        "publications": 0,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": null
+      },
+      {
+        "id": "advance-to-guide-held-start",
+        "frames": 90,
+        "publications": 0,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": null
+      },
+      {
+        "id": "guide-ignore-controls",
+        "frames": 30,
+        "publications": 0,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": null
+      },
+      {
+        "id": "guide-idle",
+        "frames": 30,
+        "publications": 0,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": null
+      },
+      {
+        "id": "start-loading",
+        "frames": 50,
+        "publications": 0,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": {
+          "count": 1,
+          "minimum": 846671,
+          "median": 846671,
+          "mean": 846671,
+          "p95": 846671,
+          "maximum": 846671
+        }
+      },
+      {
+        "id": "game-held-start",
+        "frames": 60,
+        "publications": 1,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": null
+      },
+      {
+        "id": "pause-initial-music-held",
+        "frames": 90,
+        "publications": 0,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": null
+      },
+      {
+        "id": "pause-initial-music-ignored-inputs",
+        "frames": 30,
+        "publications": 0,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": null
+      },
+      {
+        "id": "spawn-idle",
+        "frames": 120,
+        "publications": 0,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": null
+      },
+      {
+        "id": "opening-1",
+        "frames": 363,
+        "publications": 10,
+        "publishIntervalsFrames": {
+          "count": 9,
+          "minimum": 20,
+          "median": 33,
+          "mean": 33.111111111111114,
+          "p95": 44,
+          "maximum": 44
+        },
+        "renderCpuCycles": {
+          "count": 12,
+          "minimum": 466691,
+          "median": 866568.5,
+          "mean": 810435.4166666666,
+          "p95": 1072219,
+          "maximum": 1072219
+        }
+      },
+      {
+        "id": "opening-2",
+        "frames": 282,
+        "publications": 11,
+        "publishIntervalsFrames": {
+          "count": 10,
+          "minimum": 23,
+          "median": 26.0,
+          "mean": 26.6,
+          "p95": 34,
+          "maximum": 34
+        },
+        "renderCpuCycles": {
+          "count": 10,
+          "minimum": 563354,
+          "median": 644786.5,
+          "mean": 680321.7,
+          "p95": 929894,
+          "maximum": 929894
+        }
+      },
+      {
+        "id": "opening-3",
+        "frames": 339,
+        "publications": 12,
+        "publishIntervalsFrames": {
+          "count": 11,
+          "minimum": 20,
+          "median": 26,
+          "mean": 27.818181818181817,
+          "p95": 36,
+          "maximum": 36
+        },
+        "renderCpuCycles": {
+          "count": 13,
+          "minimum": 498450,
+          "median": 681895,
+          "mean": 694367.0769230769,
+          "p95": 897835,
+          "maximum": 897835
+        }
+      },
+      {
+        "id": "opening-4",
+        "frames": 96,
+        "publications": 4,
+        "publishIntervalsFrames": {
+          "count": 3,
+          "minimum": 24,
+          "median": 24,
+          "mean": 25.333333333333332,
+          "p95": 28,
+          "maximum": 28
+        },
+        "renderCpuCycles": {
+          "count": 3,
+          "minimum": 611978,
+          "median": 631235,
+          "mean": 687994.3333333334,
+          "p95": 820770,
+          "maximum": 820770
+        }
+      },
+      {
+        "id": "opening-5",
+        "frames": 101,
+        "publications": 3,
+        "publishIntervalsFrames": {
+          "count": 2,
+          "minimum": 20,
+          "median": 21.5,
+          "mean": 21.5,
+          "p95": 23,
+          "maximum": 23
+        },
+        "renderCpuCycles": {
+          "count": 4,
+          "minimum": 575685,
+          "median": 617270.0,
+          "mean": 675028.25,
+          "p95": 889888,
+          "maximum": 889888
+        }
+      },
+      {
+        "id": "opening-6",
+        "frames": 151,
+        "publications": 6,
+        "publishIntervalsFrames": {
+          "count": 5,
+          "minimum": 19,
+          "median": 27,
+          "mean": 27.6,
+          "p95": 42,
+          "maximum": 42
+        },
+        "renderCpuCycles": {
+          "count": 5,
+          "minimum": 559222,
+          "median": 620535,
+          "mean": 756798.6,
+          "p95": 1060551,
+          "maximum": 1060551
+        }
+      },
+      {
+        "id": "opening-7",
+        "frames": 288,
+        "publications": 8,
+        "publishIntervalsFrames": {
+          "count": 7,
+          "minimum": 23,
+          "median": 32,
+          "mean": 33.285714285714285,
+          "p95": 45,
+          "maximum": 45
+        },
+        "renderCpuCycles": {
+          "count": 9,
+          "minimum": 599872,
+          "median": 804523,
+          "mean": 815581.8888888889,
+          "p95": 1020482,
+          "maximum": 1020482
+        }
+      },
+      {
+        "id": "opening-8",
+        "frames": 183,
+        "publications": 8,
+        "publishIntervalsFrames": {
+          "count": 7,
+          "minimum": 19,
+          "median": 23,
+          "mean": 23.857142857142858,
+          "p95": 34,
+          "maximum": 34
+        },
+        "renderCpuCycles": {
+          "count": 7,
+          "minimum": 529851,
+          "median": 555171,
+          "mean": 582926.5714285715,
+          "p95": 657242,
+          "maximum": 657242
+        }
+      },
+      {
+        "id": "first-zombie-face",
+        "frames": 148,
+        "publications": 6,
+        "publishIntervalsFrames": {
+          "count": 5,
+          "minimum": 20,
+          "median": 22,
+          "mean": 22,
+          "p95": 24,
+          "maximum": 24
+        },
+        "renderCpuCycles": {
+          "count": 7,
+          "minimum": 534961,
+          "median": 549799,
+          "mean": 607863.7142857143,
+          "p95": 873030,
+          "maximum": 873030
+        }
+      },
+      {
+        "id": "pause-enemy-warning-held",
+        "frames": 60,
+        "publications": 0,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": null
+      },
+      {
+        "id": "pause-enemy-warning-ignored-inputs",
+        "frames": 30,
+        "publications": 0,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": null
+      },
+      {
+        "id": "first-zombie-hits",
+        "frames": 210,
+        "publications": 3,
+        "publishIntervalsFrames": {
+          "count": 2,
+          "minimum": 22,
+          "median": 97.5,
+          "mean": 97.5,
+          "p95": 173,
+          "maximum": 173
+        },
+        "renderCpuCycles": {
+          "count": 2,
+          "minimum": 613316,
+          "median": 614284.0,
+          "mean": 614284,
+          "p95": 615252,
+          "maximum": 615252
+        }
+      },
+      {
+        "id": "first-zombie-killed",
+        "frames": 100,
+        "publications": 2,
+        "publishIntervalsFrames": {
+          "count": 1,
+          "minimum": 36,
+          "median": 36,
+          "mean": 36,
+          "p95": 36,
+          "maximum": 36
+        },
+        "renderCpuCycles": {
+          "count": 3,
+          "minimum": 612584,
+          "median": 885131,
+          "mean": 801905,
+          "p95": 908000,
+          "maximum": 908000
+        }
+      },
+      {
+        "id": "medkit-1",
+        "frames": 284,
+        "publications": 11,
+        "publishIntervalsFrames": {
+          "count": 10,
+          "minimum": 19,
+          "median": 23.5,
+          "mean": 23.8,
+          "p95": 31,
+          "maximum": 31
+        },
+        "renderCpuCycles": {
+          "count": 11,
+          "minimum": 531580,
+          "median": 596616,
+          "mean": 612812.4545454546,
+          "p95": 784133,
+          "maximum": 784133
+        }
+      },
+      {
+        "id": "next-passage-1",
+        "frames": 529,
+        "publications": 26,
+        "publishIntervalsFrames": {
+          "count": 25,
+          "minimum": 14,
+          "median": 20,
+          "mean": 20.72,
+          "p95": 27,
+          "maximum": 27
+        },
+        "renderCpuCycles": {
+          "count": 26,
+          "minimum": 425717,
+          "median": 511478.5,
+          "mean": 533408.2692307692,
+          "p95": 633763,
+          "maximum": 789091
+        }
+      },
+      {
+        "id": "next-passage-2",
+        "frames": 551,
+        "publications": 21,
+        "publishIntervalsFrames": {
+          "count": 20,
+          "minimum": 16,
+          "median": 22.5,
+          "mean": 25.55,
+          "p95": 39,
+          "maximum": 39
+        },
+        "renderCpuCycles": {
+          "count": 22,
+          "minimum": 413700,
+          "median": 567554.0,
+          "mean": 683682.2272727273,
+          "p95": 996923,
+          "maximum": 1168658
+        }
+      },
+      {
+        "id": "next-passage-3",
+        "frames": 77,
+        "publications": 2,
+        "publishIntervalsFrames": {
+          "count": 1,
+          "minimum": 46,
+          "median": 46,
+          "mean": 46,
+          "p95": 46,
+          "maximum": 46
+        },
+        "renderCpuCycles": {
+          "count": 2,
+          "minimum": 729016,
+          "median": 923064.0,
+          "mean": 923064,
+          "p95": 1117112,
+          "maximum": 1117112
+        }
+      },
+      {
+        "id": "next-passage-4",
+        "frames": 126,
+        "publications": 1,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": {
+          "count": 2,
+          "minimum": 1314847,
+          "median": 1544465.5,
+          "mean": 1544465.5,
+          "p95": 1774084,
+          "maximum": 1774084
+        }
+      },
+      {
+        "id": "next-passage-5",
+        "frames": 176,
+        "publications": 3,
+        "publishIntervalsFrames": {
+          "count": 2,
+          "minimum": 36,
+          "median": 48.5,
+          "mean": 48.5,
+          "p95": 61,
+          "maximum": 61
+        },
+        "renderCpuCycles": {
+          "count": 3,
+          "minimum": 969224,
+          "median": 1433991,
+          "mean": 1301866.6666666667,
+          "p95": 1502385,
+          "maximum": 1502385
+        }
+      },
+      {
+        "id": "dry-placements-face",
+        "frames": 114,
+        "publications": 3,
+        "publishIntervalsFrames": {
+          "count": 2,
+          "minimum": 40,
+          "median": 40.5,
+          "mean": 40.5,
+          "p95": 41,
+          "maximum": 41
+        },
+        "renderCpuCycles": {
+          "count": 3,
+          "minimum": 1022719,
+          "median": 1078865,
+          "mean": 1206107.3333333333,
+          "p95": 1516738,
+          "maximum": 1516738
+        }
+      },
+      {
+        "id": "dry-placements-view",
+        "frames": 58,
+        "publications": 0,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": null
+      },
+      {
+        "id": "clip-approach-1",
+        "frames": 110,
+        "publications": 2,
+        "publishIntervalsFrames": {
+          "count": 1,
+          "minimum": 97,
+          "median": 97,
+          "mean": 97,
+          "p95": 97,
+          "maximum": 97
+        },
+        "renderCpuCycles": {
+          "count": 2,
+          "minimum": 1763657,
+          "median": 1853648.5,
+          "mean": 1853648.5,
+          "p95": 1943640,
+          "maximum": 1943640
+        }
+      },
+      {
+        "id": "clip-approach-2",
+        "frames": 217,
+        "publications": 4,
+        "publishIntervalsFrames": {
+          "count": 3,
+          "minimum": 41,
+          "median": 42,
+          "mean": 44.333333333333336,
+          "p95": 50,
+          "maximum": 50
+        },
+        "renderCpuCycles": {
+          "count": 4,
+          "minimum": 1029250,
+          "median": 1155464.0,
+          "mean": 1150737.5,
+          "p95": 1262772,
+          "maximum": 1262772
+        }
+      },
+      {
+        "id": "ammo-collected-face",
+        "frames": 126,
+        "publications": 4,
+        "publishIntervalsFrames": {
+          "count": 3,
+          "minimum": 25,
+          "median": 27,
+          "mean": 28,
+          "p95": 32,
+          "maximum": 32
+        },
+        "renderCpuCycles": {
+          "count": 5,
+          "minimum": 670239,
+          "median": 765481,
+          "mean": 869354.6,
+          "p95": 1342577,
+          "maximum": 1342577
+        }
+      },
+      {
+        "id": "ammo-collected",
+        "frames": 76,
+        "publications": 1,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": {
+          "count": 1,
+          "minimum": 1641947,
+          "median": 1641947,
+          "mean": 1641947,
+          "p95": 1641947,
+          "maximum": 1641947
+        }
+      },
+      {
+        "id": "second-fight-approach-1",
+        "frames": 223,
+        "publications": 5,
+        "publishIntervalsFrames": {
+          "count": 4,
+          "minimum": 43,
+          "median": 46.5,
+          "mean": 49.5,
+          "p95": 62,
+          "maximum": 62
+        },
+        "renderCpuCycles": {
+          "count": 5,
+          "minimum": 972776,
+          "median": 1111860,
+          "mean": 1127675,
+          "p95": 1339098,
+          "maximum": 1339098
+        }
+      },
+      {
+        "id": "second-fight-approach-2",
+        "frames": 53,
+        "publications": 1,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": {
+          "count": 1,
+          "minimum": 1160453,
+          "median": 1160453,
+          "mean": 1160453,
+          "p95": 1160453,
+          "maximum": 1160453
+        }
+      },
+      {
+        "id": "second-zombie-killed",
+        "frames": 257,
+        "publications": 6,
+        "publishIntervalsFrames": {
+          "count": 5,
+          "minimum": 37,
+          "median": 45,
+          "mean": 44.8,
+          "p95": 52,
+          "maximum": 52
+        },
+        "renderCpuCycles": {
+          "count": 6,
+          "minimum": 946837,
+          "median": 1083048.0,
+          "mean": 1144604,
+          "p95": 1388625,
+          "maximum": 1388625
+        }
+      },
+      {
+        "id": "slime-1",
+        "frames": 169,
+        "publications": 1,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": {
+          "count": 3,
+          "minimum": 1058383,
+          "median": 1189465,
+          "mean": 1227993,
+          "p95": 1436131,
+          "maximum": 1436131
+        }
+      },
+      {
+        "id": "slime-2",
+        "frames": 191,
+        "publications": 6,
+        "publishIntervalsFrames": {
+          "count": 5,
+          "minimum": 22,
+          "median": 34,
+          "mean": 31,
+          "p95": 38,
+          "maximum": 38
+        },
+        "renderCpuCycles": {
+          "count": 6,
+          "minimum": 585774,
+          "median": 741348.0,
+          "mean": 762744.6666666666,
+          "p95": 984777,
+          "maximum": 984777
+        }
+      },
+      {
+        "id": "pause-slime-music-held",
+        "frames": 60,
+        "publications": 0,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": null
+      },
+      {
+        "id": "pause-slime-music-ignored-inputs",
+        "frames": 30,
+        "publications": 0,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": null
+      },
+      {
+        "id": "slime-one-dose",
+        "frames": 34,
+        "publications": 2,
+        "publishIntervalsFrames": {
+          "count": 1,
+          "minimum": 22,
+          "median": 22,
+          "mean": 22,
+          "p95": 22,
+          "maximum": 22
+        },
+        "renderCpuCycles": null
+      },
+      {
+        "id": "extension-1",
+        "frames": 245,
+        "publications": 8,
+        "publishIntervalsFrames": {
+          "count": 7,
+          "minimum": 23,
+          "median": 25,
+          "mean": 27.714285714285715,
+          "p95": 38,
+          "maximum": 38
+        },
+        "renderCpuCycles": {
+          "count": 10,
+          "minimum": 577480,
+          "median": 651388.5,
+          "mean": 685256.1,
+          "p95": 966835,
+          "maximum": 966835
+        }
+      },
+      {
+        "id": "extension-2",
+        "frames": 125,
+        "publications": 5,
+        "publishIntervalsFrames": {
+          "count": 4,
+          "minimum": 22,
+          "median": 27.5,
+          "mean": 27.25,
+          "p95": 32,
+          "maximum": 32
+        },
+        "renderCpuCycles": {
+          "count": 4,
+          "minimum": 536956,
+          "median": 670813.0,
+          "mean": 691988,
+          "p95": 889370,
+          "maximum": 889370
+        }
+      },
+      {
+        "id": "extension-3",
+        "frames": 144,
+        "publications": 7,
+        "publishIntervalsFrames": {
+          "count": 6,
+          "minimum": 18,
+          "median": 19.0,
+          "mean": 19.833333333333332,
+          "p95": 23,
+          "maximum": 23
+        },
+        "renderCpuCycles": {
+          "count": 7,
+          "minimum": 476005,
+          "median": 509020,
+          "mean": 571063.7142857143,
+          "p95": 970473,
+          "maximum": 970473
+        }
+      },
+      {
+        "id": "door-held-a-approach",
+        "frames": 57,
+        "publications": 1,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": {
+          "count": 3,
+          "minimum": 418486,
+          "median": 448930,
+          "mean": 557752.3333333334,
+          "p95": 805841,
+          "maximum": 805841
+        }
+      },
+      {
+        "id": "door-closed-push",
+        "frames": 90,
+        "publications": 2,
+        "publishIntervalsFrames": {
+          "count": 1,
+          "minimum": 13,
+          "median": 13,
+          "mean": 13,
+          "p95": 13,
+          "maximum": 13
+        },
+        "renderCpuCycles": {
+          "count": 2,
+          "minimum": 327598,
+          "median": 332273.0,
+          "mean": 332273,
+          "p95": 336948,
+          "maximum": 336948
+        }
+      },
+      {
+        "id": "door-wait-published-open",
+        "frames": 38,
+        "publications": 0,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": {
+          "count": 1,
+          "minimum": 636688,
+          "median": 636688,
+          "mean": 636688,
+          "p95": 636688,
+          "maximum": 636688
+        }
+      },
+      {
+        "id": "door-open-settled",
+        "frames": 37,
+        "publications": 1,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": null
+      },
+      {
+        "id": "first-open-doorway",
+        "frames": 39,
+        "publications": 1,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": {
+          "count": 1,
+          "minimum": 890780,
+          "median": 890780,
+          "mean": 890780,
+          "p95": 890780,
+          "maximum": 890780
+        }
+      },
+      {
+        "id": "third-live-view",
+        "frames": 37,
+        "publications": 1,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": {
+          "count": 2,
+          "minimum": 608330,
+          "median": 608462.0,
+          "mean": 608462,
+          "p95": 608594,
+          "maximum": 608594
+        }
+      },
+      {
+        "id": "third-wait-shot",
+        "frames": 133,
+        "publications": 6,
+        "publishIntervalsFrames": {
+          "count": 5,
+          "minimum": 23,
+          "median": 24,
+          "mean": 23.8,
+          "p95": 25,
+          "maximum": 25
+        },
+        "renderCpuCycles": {
+          "count": 4,
+          "minimum": 622457,
+          "median": 622745.0,
+          "mean": 622781.25,
+          "p95": 623178,
+          "maximum": 623178
+        }
+      },
+      {
+        "id": "third-zombie-killed",
+        "frames": 31,
+        "publications": 0,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": {
+          "count": 1,
+          "minimum": 602945,
+          "median": 602945,
+          "mean": 602945,
+          "p95": 602945,
+          "maximum": 602945
+        }
+      },
+      {
+        "id": "third-corpse-view",
+        "frames": 30,
+        "publications": 1,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": null
+      },
+      {
+        "id": "pre-exit-west-1",
+        "frames": 96,
+        "publications": 3,
+        "publishIntervalsFrames": {
+          "count": 2,
+          "minimum": 24,
+          "median": 24.5,
+          "mean": 24.5,
+          "p95": 25,
+          "maximum": 25
+        },
+        "renderCpuCycles": {
+          "count": 4,
+          "minimum": 603809,
+          "median": 622702.5,
+          "mean": 761357.75,
+          "p95": 1196217,
+          "maximum": 1196217
+        }
+      },
+      {
+        "id": "pre-exit-west-2",
+        "frames": 299,
+        "publications": 10,
+        "publishIntervalsFrames": {
+          "count": 9,
+          "minimum": 22,
+          "median": 28,
+          "mean": 27.88888888888889,
+          "p95": 42,
+          "maximum": 42
+        },
+        "renderCpuCycles": {
+          "count": 11,
+          "minimum": 518400,
+          "median": 639510,
+          "mean": 683698.4545454546,
+          "p95": 1136125,
+          "maximum": 1136125
+        }
+      },
+      {
+        "id": "pre-exit-west-side-face",
+        "frames": 274,
+        "publications": 14,
+        "publishIntervalsFrames": {
+          "count": 13,
+          "minimum": 14,
+          "median": 19,
+          "mean": 18.846153846153847,
+          "p95": 26,
+          "maximum": 26
+        },
+        "renderCpuCycles": {
+          "count": 14,
+          "minimum": 393860,
+          "median": 506852.5,
+          "mean": 512589.9285714286,
+          "p95": 733014,
+          "maximum": 733014
+        }
+      },
+      {
+        "id": "pre-exit-west-side",
+        "frames": 30,
+        "publications": 1,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": null
+      },
+      {
+        "id": "final-room-1",
+        "frames": 169,
+        "publications": 8,
+        "publishIntervalsFrames": {
+          "count": 7,
+          "minimum": 16,
+          "median": 19,
+          "mean": 21.285714285714285,
+          "p95": 30,
+          "maximum": 30
+        },
+        "renderCpuCycles": {
+          "count": 9,
+          "minimum": 439331,
+          "median": 493767,
+          "mean": 544169.8888888889,
+          "p95": 684397,
+          "maximum": 684397
+        }
+      },
+      {
+        "id": "final-room-2",
+        "frames": 243,
+        "publications": 9,
+        "publishIntervalsFrames": {
+          "count": 8,
+          "minimum": 23,
+          "median": 25.5,
+          "mean": 28.25,
+          "p95": 48,
+          "maximum": 48
+        },
+        "renderCpuCycles": {
+          "count": 8,
+          "minimum": 554316,
+          "median": 669022.5,
+          "mean": 756042,
+          "p95": 1191357,
+          "maximum": 1191357
+        }
+      },
+      {
+        "id": "final-room-3",
+        "frames": 39,
+        "publications": 1,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": {
+          "count": 1,
+          "minimum": 670493,
+          "median": 670493,
+          "mean": 670493,
+          "p95": 670493,
+          "maximum": 670493
+        }
+      },
+      {
+        "id": "final-room-4",
+        "frames": 38,
+        "publications": 2,
+        "publishIntervalsFrames": {
+          "count": 1,
+          "minimum": 19,
+          "median": 19,
+          "mean": 19,
+          "p95": 19,
+          "maximum": 19
+        },
+        "renderCpuCycles": {
+          "count": 2,
+          "minimum": 483468,
+          "median": 500141.0,
+          "mean": 500141,
+          "p95": 516814,
+          "maximum": 516814
+        }
+      },
+      {
+        "id": "final-room-5",
+        "frames": 39,
+        "publications": 2,
+        "publishIntervalsFrames": {
+          "count": 1,
+          "minimum": 21,
+          "median": 21,
+          "mean": 21,
+          "p95": 21,
+          "maximum": 21
+        },
+        "renderCpuCycles": {
+          "count": 2,
+          "minimum": 504905,
+          "median": 509376.0,
+          "mean": 509376,
+          "p95": 513847,
+          "maximum": 513847
+        }
+      },
+      {
+        "id": "final-room-6",
+        "frames": 38,
+        "publications": 2,
+        "publishIntervalsFrames": {
+          "count": 1,
+          "minimum": 17,
+          "median": 17,
+          "mean": 17,
+          "p95": 17,
+          "maximum": 17
+        },
+        "renderCpuCycles": {
+          "count": 2,
+          "minimum": 501506,
+          "median": 597927.0,
+          "mean": 597927,
+          "p95": 694348,
+          "maximum": 694348
+        }
+      },
+      {
+        "id": "exit-chamber-face",
+        "frames": 152,
+        "publications": 6,
+        "publishIntervalsFrames": {
+          "count": 5,
+          "minimum": 19,
+          "median": 23,
+          "mean": 23.4,
+          "p95": 27,
+          "maximum": 27
+        },
+        "renderCpuCycles": {
+          "count": 7,
+          "minimum": 537662,
+          "median": 574477,
+          "mean": 595450.5714285715,
+          "p95": 758498,
+          "maximum": 758498
+        }
+      },
+      {
+        "id": "exit-chamber",
+        "frames": 36,
+        "publications": 1,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": null
+      },
+      {
+        "id": "critical-chamber-west-1",
+        "frames": 98,
+        "publications": 4,
+        "publishIntervalsFrames": {
+          "count": 3,
+          "minimum": 22,
+          "median": 29,
+          "mean": 28,
+          "p95": 33,
+          "maximum": 33
+        },
+        "renderCpuCycles": {
+          "count": 4,
+          "minimum": 575488,
+          "median": 588719.0,
+          "mean": 675744,
+          "p95": 950050,
+          "maximum": 950050
+        }
+      },
+      {
+        "id": "critical-chamber-original-worst-face",
+        "frames": 212,
+        "publications": 8,
+        "publishIntervalsFrames": {
+          "count": 7,
+          "minimum": 22,
+          "median": 24,
+          "mean": 25,
+          "p95": 29,
+          "maximum": 29
+        },
+        "renderCpuCycles": {
+          "count": 8,
+          "minimum": 563497,
+          "median": 641312.0,
+          "mean": 805089.75,
+          "p95": 1976648,
+          "maximum": 1976648
+        }
+      },
+      {
+        "id": "critical-chamber-original-worst",
+        "frames": 60,
+        "publications": 0,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": null
+      },
+      {
+        "id": "critical-chamber-center-1",
+        "frames": 283,
+        "publications": 11,
+        "publishIntervalsFrames": {
+          "count": 10,
+          "minimum": 13,
+          "median": 25.0,
+          "mean": 27.7,
+          "p95": 56,
+          "maximum": 56
+        },
+        "renderCpuCycles": {
+          "count": 11,
+          "minimum": 502018,
+          "median": 611546,
+          "mean": 694017.5454545454,
+          "p95": 1026210,
+          "maximum": 1026210
+        }
+      },
+      {
+        "id": "critical-chamber-center-view-face",
+        "frames": 279,
+        "publications": 11,
+        "publishIntervalsFrames": {
+          "count": 10,
+          "minimum": 11,
+          "median": 23.5,
+          "mean": 25.1,
+          "p95": 46,
+          "maximum": 46
+        },
+        "renderCpuCycles": {
+          "count": 11,
+          "minimum": 477992,
+          "median": 555148,
+          "mean": 741840.1818181818,
+          "p95": 1713892,
+          "maximum": 1713892
+        }
+      },
+      {
+        "id": "critical-chamber-center-view",
+        "frames": 63,
+        "publications": 0,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": null
+      },
+      {
+        "id": "backtrack-1",
+        "frames": 123,
+        "publications": 2,
+        "publishIntervalsFrames": {
+          "count": 1,
+          "minimum": 78,
+          "median": 78,
+          "mean": 78,
+          "p95": 78,
+          "maximum": 78
+        },
+        "renderCpuCycles": {
+          "count": 3,
+          "minimum": 1306727,
+          "median": 1351699,
+          "mean": 1461647,
+          "p95": 1726515,
+          "maximum": 1726515
+        }
+      },
+      {
+        "id": "backtrack-2",
+        "frames": 76,
+        "publications": 2,
+        "publishIntervalsFrames": {
+          "count": 1,
+          "minimum": 55,
+          "median": 55,
+          "mean": 55,
+          "p95": 55,
+          "maximum": 55
+        },
+        "renderCpuCycles": {
+          "count": 1,
+          "minimum": 1514763,
+          "median": 1514763,
+          "mean": 1514763,
+          "p95": 1514763,
+          "maximum": 1514763
+        }
+      },
+      {
+        "id": "backtrack-3",
+        "frames": 154,
+        "publications": 4,
+        "publishIntervalsFrames": {
+          "count": 3,
+          "minimum": 31,
+          "median": 35,
+          "mean": 34,
+          "p95": 36,
+          "maximum": 36
+        },
+        "renderCpuCycles": {
+          "count": 4,
+          "minimum": 886730,
+          "median": 902808.0,
+          "mean": 1013511.75,
+          "p95": 1361701,
+          "maximum": 1361701
+        }
+      },
+      {
+        "id": "backtrack-4",
+        "frames": 115,
+        "publications": 2,
+        "publishIntervalsFrames": {
+          "count": 1,
+          "minimum": 39,
+          "median": 39,
+          "mean": 39,
+          "p95": 39,
+          "maximum": 39
+        },
+        "renderCpuCycles": {
+          "count": 3,
+          "minimum": 914493,
+          "median": 922446,
+          "mean": 1051747,
+          "p95": 1318302,
+          "maximum": 1318302
+        }
+      },
+      {
+        "id": "backtrack-5",
+        "frames": 96,
+        "publications": 3,
+        "publishIntervalsFrames": {
+          "count": 2,
+          "minimum": 36,
+          "median": 43.5,
+          "mean": 43.5,
+          "p95": 51,
+          "maximum": 51
+        },
+        "renderCpuCycles": {
+          "count": 2,
+          "minimum": 923508,
+          "median": 1118039.5,
+          "mean": 1118039.5,
+          "p95": 1312571,
+          "maximum": 1312571
+        }
+      },
+      {
+        "id": "backtrack-6",
+        "frames": 144,
+        "publications": 3,
+        "publishIntervalsFrames": {
+          "count": 2,
+          "minimum": 38,
+          "median": 39.5,
+          "mean": 39.5,
+          "p95": 41,
+          "maximum": 41
+        },
+        "renderCpuCycles": {
+          "count": 3,
+          "minimum": 942634,
+          "median": 973864,
+          "mean": 1202261,
+          "p95": 1690285,
+          "maximum": 1690285
+        }
+      },
+      {
+        "id": "backtrack-7",
+        "frames": 67,
+        "publications": 1,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": {
+          "count": 1,
+          "minimum": 1690562,
+          "median": 1690562,
+          "mean": 1690562,
+          "p95": 1690562,
+          "maximum": 1690562
+        }
+      },
+      {
+        "id": "backtrack-8",
+        "frames": 177,
+        "publications": 3,
+        "publishIntervalsFrames": {
+          "count": 2,
+          "minimum": 48,
+          "median": 51.0,
+          "mean": 51,
+          "p95": 54,
+          "maximum": 54
+        },
+        "renderCpuCycles": {
+          "count": 3,
+          "minimum": 1180592,
+          "median": 1363071,
+          "mean": 1312063,
+          "p95": 1392526,
+          "maximum": 1392526
+        }
+      },
+      {
+        "id": "backtrack-9",
+        "frames": 199,
+        "publications": 5,
+        "publishIntervalsFrames": {
+          "count": 4,
+          "minimum": 33,
+          "median": 41.5,
+          "mean": 42.75,
+          "p95": 55,
+          "maximum": 55
+        },
+        "renderCpuCycles": {
+          "count": 5,
+          "minimum": 872796,
+          "median": 1162274,
+          "mean": 1083739.8,
+          "p95": 1304493,
+          "maximum": 1304493
+        }
+      },
+      {
+        "id": "backtrack-10",
+        "frames": 163,
+        "publications": 3,
+        "publishIntervalsFrames": {
+          "count": 2,
+          "minimum": 40,
+          "median": 43.0,
+          "mean": 43,
+          "p95": 46,
+          "maximum": 46
+        },
+        "renderCpuCycles": {
+          "count": 4,
+          "minimum": 969388,
+          "median": 1103682.0,
+          "mean": 1095972,
+          "p95": 1207136,
+          "maximum": 1207136
+        }
+      },
+      {
+        "id": "backtrack-11",
+        "frames": 63,
+        "publications": 2,
+        "publishIntervalsFrames": {
+          "count": 1,
+          "minimum": 39,
+          "median": 39,
+          "mean": 39,
+          "p95": 39,
+          "maximum": 39
+        },
+        "renderCpuCycles": {
+          "count": 1,
+          "minimum": 767960,
+          "median": 767960,
+          "mean": 767960,
+          "p95": 767960,
+          "maximum": 767960
+        }
+      },
+      {
+        "id": "backtrack-12",
+        "frames": 128,
+        "publications": 4,
+        "publishIntervalsFrames": {
+          "count": 3,
+          "minimum": 21,
+          "median": 37,
+          "mean": 34.333333333333336,
+          "p95": 45,
+          "maximum": 45
+        },
+        "renderCpuCycles": {
+          "count": 4,
+          "minimum": 571539,
+          "median": 929190.5,
+          "mean": 875019.5,
+          "p95": 1070158,
+          "maximum": 1070158
+        }
+      },
+      {
+        "id": "backtrack-13",
+        "frames": 161,
+        "publications": 5,
+        "publishIntervalsFrames": {
+          "count": 4,
+          "minimum": 24,
+          "median": 27.5,
+          "mean": 30.5,
+          "p95": 43,
+          "maximum": 43
+        },
+        "renderCpuCycles": {
+          "count": 5,
+          "minimum": 641648,
+          "median": 713855,
+          "mean": 878753.8,
+          "p95": 1317724,
+          "maximum": 1317724
+        }
+      },
+      {
+        "id": "backtrack-14",
+        "frames": 128,
+        "publications": 3,
+        "publishIntervalsFrames": {
+          "count": 2,
+          "minimum": 37,
+          "median": 37.5,
+          "mean": 37.5,
+          "p95": 38,
+          "maximum": 38
+        },
+        "renderCpuCycles": {
+          "count": 3,
+          "minimum": 876469,
+          "median": 935272,
+          "mean": 916167.3333333334,
+          "p95": 936761,
+          "maximum": 936761
+        }
+      },
+      {
+        "id": "backtrack-15",
+        "frames": 107,
+        "publications": 2,
+        "publishIntervalsFrames": {
+          "count": 1,
+          "minimum": 77,
+          "median": 77,
+          "mean": 77,
+          "p95": 77,
+          "maximum": 77
+        },
+        "renderCpuCycles": {
+          "count": 4,
+          "minimum": 604203,
+          "median": 755768.0,
+          "mean": 722262,
+          "p95": 773309,
+          "maximum": 773309
+        }
+      },
+      {
+        "id": "first-encounter-dead-reloaded-face",
+        "frames": 304,
+        "publications": 13,
+        "publishIntervalsFrames": {
+          "count": 12,
+          "minimum": 20,
+          "median": 22.0,
+          "mean": 22.25,
+          "p95": 26,
+          "maximum": 26
+        },
+        "renderCpuCycles": {
+          "count": 13,
+          "minimum": 521263,
+          "median": 575591,
+          "mean": 657702.4615384615,
+          "p95": 1541963,
+          "maximum": 1541963
+        }
+      },
+      {
+        "id": "first-encounter-dead-reloaded",
+        "frames": 41,
+        "publications": 0,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": null
+      },
+      {
+        "id": "return-1",
+        "frames": 73,
+        "publications": 2,
+        "publishIntervalsFrames": {
+          "count": 1,
+          "minimum": 43,
+          "median": 43,
+          "mean": 43,
+          "p95": 43,
+          "maximum": 43
+        },
+        "renderCpuCycles": {
+          "count": 3,
+          "minimum": 748589,
+          "median": 831242,
+          "mean": 895217.6666666666,
+          "p95": 1105822,
+          "maximum": 1105822
+        }
+      },
+      {
+        "id": "return-2",
+        "frames": 126,
+        "publications": 3,
+        "publishIntervalsFrames": {
+          "count": 2,
+          "minimum": 44,
+          "median": 58.5,
+          "mean": 58.5,
+          "p95": 73,
+          "maximum": 73
+        },
+        "renderCpuCycles": {
+          "count": 2,
+          "minimum": 1489662,
+          "median": 1640561.5,
+          "mean": 1640561.5,
+          "p95": 1791461,
+          "maximum": 1791461
+        }
+      },
+      {
+        "id": "return-3",
+        "frames": 146,
+        "publications": 2,
+        "publishIntervalsFrames": {
+          "count": 1,
+          "minimum": 69,
+          "median": 69,
+          "mean": 69,
+          "p95": 69,
+          "maximum": 69
+        },
+        "renderCpuCycles": {
+          "count": 2,
+          "minimum": 1426927,
+          "median": 1589837.5,
+          "mean": 1589837.5,
+          "p95": 1752748,
+          "maximum": 1752748
+        }
+      },
+      {
+        "id": "return-4",
+        "frames": 131,
+        "publications": 2,
+        "publishIntervalsFrames": {
+          "count": 1,
+          "minimum": 84,
+          "median": 84,
+          "mean": 84,
+          "p95": 84,
+          "maximum": 84
+        },
+        "renderCpuCycles": {
+          "count": 2,
+          "minimum": 1562395,
+          "median": 1840370.5,
+          "mean": 1840370.5,
+          "p95": 2118346,
+          "maximum": 2118346
+        }
+      },
+      {
+        "id": "return-5",
+        "frames": 84,
+        "publications": 1,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": {
+          "count": 1,
+          "minimum": 1676185,
+          "median": 1676185,
+          "mean": 1676185,
+          "p95": 1676185,
+          "maximum": 1676185
+        }
+      },
+      {
+        "id": "return-6",
+        "frames": 131,
+        "publications": 2,
+        "publishIntervalsFrames": {
+          "count": 1,
+          "minimum": 61,
+          "median": 61,
+          "mean": 61,
+          "p95": 61,
+          "maximum": 61
+        },
+        "renderCpuCycles": {
+          "count": 2,
+          "minimum": 1571492,
+          "median": 1634016.0,
+          "mean": 1634016,
+          "p95": 1696540,
+          "maximum": 1696540
+        }
+      },
+      {
+        "id": "return-7",
+        "frames": 159,
+        "publications": 3,
+        "publishIntervalsFrames": {
+          "count": 2,
+          "minimum": 37,
+          "median": 46.0,
+          "mean": 46,
+          "p95": 55,
+          "maximum": 55
+        },
+        "renderCpuCycles": {
+          "count": 4,
+          "minimum": 970281,
+          "median": 1188753.5,
+          "mean": 1203727.25,
+          "p95": 1467121,
+          "maximum": 1467121
+        }
+      },
+      {
+        "id": "return-8",
+        "frames": 232,
+        "publications": 7,
+        "publishIntervalsFrames": {
+          "count": 6,
+          "minimum": 27,
+          "median": 32.5,
+          "mean": 35.166666666666664,
+          "p95": 45,
+          "maximum": 45
+        },
+        "renderCpuCycles": {
+          "count": 7,
+          "minimum": 646530,
+          "median": 827039,
+          "mean": 841871.1428571428,
+          "p95": 1110586,
+          "maximum": 1110586
+        }
+      },
+      {
+        "id": "return-9",
+        "frames": 103,
+        "publications": 3,
+        "publishIntervalsFrames": {
+          "count": 2,
+          "minimum": 35,
+          "median": 35.5,
+          "mean": 35.5,
+          "p95": 36,
+          "maximum": 36
+        },
+        "renderCpuCycles": {
+          "count": 3,
+          "minimum": 813566,
+          "median": 853599,
+          "mean": 846830.3333333334,
+          "p95": 873326,
+          "maximum": 873326
+        }
+      },
+      {
+        "id": "return-10",
+        "frames": 144,
+        "publications": 6,
+        "publishIntervalsFrames": {
+          "count": 5,
+          "minimum": 24,
+          "median": 24,
+          "mean": 25.6,
+          "p95": 30,
+          "maximum": 30
+        },
+        "renderCpuCycles": {
+          "count": 5,
+          "minimum": 609732,
+          "median": 639373,
+          "mean": 635726.2,
+          "p95": 666390,
+          "maximum": 666390
+        }
+      },
+      {
+        "id": "return-11",
+        "frames": 96,
+        "publications": 1,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": {
+          "count": 3,
+          "minimum": 535744,
+          "median": 670132,
+          "mean": 821764.6666666666,
+          "p95": 1259418,
+          "maximum": 1259418
+        }
+      },
+      {
+        "id": "return-12",
+        "frames": 115,
+        "publications": 5,
+        "publishIntervalsFrames": {
+          "count": 4,
+          "minimum": 18,
+          "median": 23.0,
+          "mean": 22,
+          "p95": 24,
+          "maximum": 24
+        },
+        "renderCpuCycles": {
+          "count": 5,
+          "minimum": 576244,
+          "median": 580144,
+          "mean": 582998.2,
+          "p95": 595904,
+          "maximum": 595904
+        }
+      },
+      {
+        "id": "return-13",
+        "frames": 154,
+        "publications": 6,
+        "publishIntervalsFrames": {
+          "count": 5,
+          "minimum": 20,
+          "median": 23,
+          "mean": 23.4,
+          "p95": 27,
+          "maximum": 27
+        },
+        "renderCpuCycles": {
+          "count": 7,
+          "minimum": 569718,
+          "median": 590808,
+          "mean": 606112.4285714285,
+          "p95": 677651,
+          "maximum": 677651
+        }
+      },
+      {
+        "id": "return-14",
+        "frames": 77,
+        "publications": 3,
+        "publishIntervalsFrames": {
+          "count": 2,
+          "minimum": 23,
+          "median": 24.0,
+          "mean": 24,
+          "p95": 25,
+          "maximum": 25
+        },
+        "renderCpuCycles": {
+          "count": 3,
+          "minimum": 504079,
+          "median": 535206,
+          "mean": 550948.3333333334,
+          "p95": 613560,
+          "maximum": 613560
+        }
+      },
+      {
+        "id": "return-15",
+        "frames": 76,
+        "publications": 4,
+        "publishIntervalsFrames": {
+          "count": 3,
+          "minimum": 18,
+          "median": 22,
+          "mean": 21,
+          "p95": 23,
+          "maximum": 23
+        },
+        "renderCpuCycles": {
+          "count": 4,
+          "minimum": 461214,
+          "median": 510195.5,
+          "mean": 526961.25,
+          "p95": 626240,
+          "maximum": 626240
+        }
+      },
+      {
+        "id": "second-encounter-dead-reloaded-face",
+        "frames": 154,
+        "publications": 7,
+        "publishIntervalsFrames": {
+          "count": 6,
+          "minimum": 21,
+          "median": 23.5,
+          "mean": 23.666666666666668,
+          "p95": 27,
+          "maximum": 27
+        },
+        "renderCpuCycles": {
+          "count": 7,
+          "minimum": 540383,
+          "median": 578168,
+          "mean": 593188.7142857143,
+          "p95": 746745,
+          "maximum": 746745
+        }
+      },
+      {
+        "id": "third-encounter-dead-reloaded",
+        "frames": 36,
+        "publications": 1,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": null
+      },
+      {
+        "id": "switch-approach-1",
+        "frames": 38,
+        "publications": 1,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": {
+          "count": 1,
+          "minimum": 813026,
+          "median": 813026,
+          "mean": 813026,
+          "p95": 813026,
+          "maximum": 813026
+        }
+      },
+      {
+        "id": "complete-held-inputs",
+        "frames": 120,
+        "publications": 0,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": null
+      },
+      {
+        "id": "completed-settled",
+        "frames": 180,
+        "publications": 0,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": null
+      },
+      {
+        "id": "reset-start",
+        "frames": 180,
+        "publications": 2,
+        "publishIntervalsFrames": {
+          "count": 1,
+          "minimum": 48,
+          "median": 48,
+          "mean": 48,
+          "p95": 48,
+          "maximum": 48
+        },
+        "renderCpuCycles": {
+          "count": 1,
+          "minimum": 846671,
+          "median": 846671,
+          "mean": 846671,
+          "p95": 846671,
+          "maximum": 846671
+        }
+      },
+      {
+        "id": "final-spawn",
+        "frames": 60,
+        "publications": 0,
+        "publishIntervalsFrames": null,
+        "renderCpuCycles": null
+      }
+    ]
+  },
+  "mesenProvenance": {
+    "romSha256": "0dbee1ad5765bc00ac10e1736902ee381a88c3c539b8c68de12f24f887260d89",
+    "controllerOnly": true,
+    "stockNtsc": true,
+    "ramInjected": false,
+    "romUnmodified": true,
+    "twoPages": true,
+    "completeRoute": true,
+    "observerSha256": "9d448d240e50e03b50d3a82cb01a1a26da83a45e627373be7ed93d52d3a7e340",
+    "driverSha256": "0e96a3bcb5895e7f4929be976c26b23a5d8e11ee755a545a04eaf6b037d5f5d2",
+    "mesenSha256": "ce4446a92096a024145e6ed2793cce8b489460bb3ac034cd9d1d77d96109fced"
+  },
+  "confirmationNote": "First full-route capture completed and passed the same gameplay/image checks, but its final ambient personal-settings hash guard failed. This separate confirmation run completed through the guard. Earlier evidence remains under analysis/latency-tuning/full-route; no personal settings were restored or overwritten.",
+  "freshBuildEvidence": "verification/latency-build.json",
+  "physicalConsoleTested": false,
+  "liveDeploymentChanged": false
+}

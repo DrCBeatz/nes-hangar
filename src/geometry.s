@@ -7,7 +7,14 @@
 .macpack longbranch
 .importzp render_x, render_z, render_angle, render_eye, overflow_flag
 .importzp render_zombie_x, render_zombie_z, render_buffer, render_mode
-.import opening_cell_color, opening_plane0, opening_plane1
+.import opening_candidate, opening_cache, opening_plane0
+.import prg_render, prg_map
+; Candidate/cache storage is dead until opening_render clears its cache,
+; after geometry_begin returns. Coverage and exact-visibility probes run
+; sequentially and share its contiguous 16+128 bytes. The compact strip
+; arrays must not spill into the persistent audio workspace beside them.
+visibility_scratch = opening_candidate
+.assert opening_cache = visibility_scratch+16, lderror, "Visibility scratch layout changed"
 .include "slime-memory.inc"
 .include "door-memory.inc"
 .include "door-config.inc"
@@ -521,6 +528,9 @@ unfiltered:
 ; any heights. All outer walls share a floor and ceiling, so the nearest one
 ; closes the complete view below its ceiling edge. The enclosed rectangle
 ; has at most one far(exit) and one near(entry) crossing in each column.
+; Both the raster and the exact slime-visibility probe select bank3 once
+; around their entire column loop. NMI never calls this producer-only block.
+.segment "RENDER_CODE"
 .proc geometry_column
     stx g_column
 .ifdef STRIP_ACTIVE
@@ -984,6 +994,8 @@ horizon:
 
 ; Transform the snapshotted moving actor with the identical full Q16
 ; camera basis used for wall endpoints. Only begin-frame scratch is touched.
+; Called only from the bank3 actor projection phase.
+.segment "RENDER_CODE"
 .proc geometry_zombie_transform
     jsr zombie_delta_x
     lda g_c
@@ -1068,6 +1080,7 @@ save_z:
     jmp absolute_world_delta
 .endproc
 
+.segment "CODE"
 .proc transform_vertex
     jsr vertex_delta_x
     lda g_c
@@ -1844,7 +1857,8 @@ done:
 .endproc
 
 .segment "MAPDATA"
-; These producer-only helpers execute with geometry bank0 selected. No NMI
+; These producer-only helpers normally execute with geometry bank0 selected;
+; the exact probe temporarily selects bank3, using this mirrored prefix. No NMI
 ; may call them. All scratch is dead endpoint/trig storage; actor state aliases
 ; remain intact. Cosmetic flat spans deliberately bypass actor floor masks.
 .proc slime_palette_begin
@@ -1883,12 +1897,12 @@ bank1:
 ; face whose inward halfspace excludes both entire pools. The positive-depth
 ; test uses the same signed32 increments as geometry_column. Any uncertain
 ; sample falls through to exact span visibility; this never admits green.
-; The raster has not started, so its 128-byte strip storage is scratch.
+; The raster has not started, so its candidate/cache storage is scratch.
 .proc slime_visibility_coverage
     lda #0
     ldx #127
 clear:
-    sta opening_plane1,x
+    sta visibility_scratch,x
     dex
     bpl clear
     ldx #0
@@ -1909,7 +1923,7 @@ mark:
     beq next_mark
     lda #1
 mark_sample:
-    sta opening_plane1,y
+    sta visibility_scratch,y
     iny
     cpy g_right
     bne mark_sample
@@ -1966,7 +1980,7 @@ cover_sample:
     ora g_acc
     beq next_sample
     lda #0
-    sta opening_plane1,y
+    sta visibility_scratch,y
 next_sample:
     iny
     cpy g_right
@@ -1977,7 +1991,7 @@ next_cover:
 inspect:
     ldx #127
 inspect_sample:
-    lda opening_plane1,x
+    lda visibility_scratch,x
     bne done
     dex
     bpl inspect_sample
@@ -2007,16 +2021,20 @@ right_ready:
 ; No vertex transforms or raster/tile work is repeated. A surviving green pixel
 ; ends the probe immediately. Bit7 suppresses the actor occlusion callbacks.
 .proc slime_visibility_exact
+    ; This MAPDATA prefix is byte-identical in bank0 and bank3. Its endpoints
+    ; and per-column map tables stay outside the setup-only overlay, allowing
+    ; the shared column/projector routines to live in bank3 with the raster.
+    jsr prg_render
     ldx #35
 save_values:
     lda g_cached_value0,x
-    sta opening_cell_color,x
+    sta visibility_scratch,x
     lda g_cached_value1,x
-    sta opening_cell_color+36,x
+    sta visibility_scratch+36,x
     lda g_cached_value2,x
-    sta opening_cell_color+72,x
+    sta visibility_scratch+72,x
     lda g_cached_value3,x
-    sta opening_cell_color+108,x
+    sta visibility_scratch+108,x
     dex
     bpl save_values
     ldx #31
@@ -2058,13 +2076,13 @@ restore:
     sta render_slime_palette
     ldx #35
 restore_values:
-    lda opening_cell_color,x
+    lda visibility_scratch,x
     sta g_cached_value0,x
-    lda opening_cell_color+36,x
+    lda visibility_scratch+36,x
     sta g_cached_value1,x
-    lda opening_cell_color+72,x
+    lda visibility_scratch+72,x
     sta g_cached_value2,x
-    lda opening_cell_color+108,x
+    lda visibility_scratch+108,x
     sta g_cached_value3,x
     dex
     bpl restore_values
@@ -2080,7 +2098,7 @@ restore_trig:
     sta g_s,x
     dex
     bpl restore_trig
-    rts
+    jmp prg_map              ; restore setup bank; result is render_slime_palette
 .endproc
 
 ; Each suffix of this world's painter-ordered floor/rim spans has a contiguous
@@ -2288,10 +2306,20 @@ done:
     rts
 .endproc
 
-; Producer-only tables. Keep bank0 selected throughout world geometry.
+; Per-column map data is mirrored into the render bank. Visibility tables
+; below are used only during geometry_begin with bank0 selected; their bank3
+; addresses can safely hold raster/projection code after setup completes.
 .include "geometry-data.inc"
+.export map_render_overlay_start, map_render_overlay_end
+map_render_overlay_start:
 .include "visibility-data.inc"
 .include "inner-visibility-data.inc"
+map_render_overlay_end:
+.import __RENDER_CODE_LOAD__, __RENDER_CODE_SIZE__
+.assert slime_visibility_exact >= $8000 .and slime_visibility_exact < __RENDER_CODE_LOAD__, lderror, "Exact slime probe must stay in mirrored map prefix"
+.assert slime_column_visible <= __RENDER_CODE_LOAD__, lderror, "Exact slime probe crosses render overlay"
+.assert __RENDER_CODE_LOAD__ >= map_render_overlay_start, lderror, "Render overlay overwrites live map data before visibility tables"
+.assert __RENDER_CODE_LOAD__+__RENDER_CODE_SIZE__ <= map_render_overlay_end, lderror, "Render overlay overwrites live map data after visibility tables"
 .assert VERTEX_COUNT <255, error, "Vertex255 is reserved for the invalid cache tag"
 .assert WALL_COUNT <256, error, "Global wall IDs must fit one byte"
 

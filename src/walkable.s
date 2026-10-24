@@ -10,6 +10,7 @@
 .export BUFFER_SLIME0, BUFFER_SLIME1
 .export player_x_hi, player_z_hi, render_x_hi, render_z_hi, visible_x_hi, visible_z_hi, buffer_x_hi, buffer_z_hi, freshness_last_x_hi, freshness_last_z_hi, move_x_hi, move_z_hi, g_mul_a_hi, coordinate_producer_scratch, zombie_x_hi, zombie_z_hi, render_zombie_x_hi, render_zombie_z_hi, visible_zombie_x_hi, visible_zombie_z_hi, buffer_zombie_x_hi, buffer_zombie_z_hi, freshness_last_zombie_x_hi, freshness_last_zombie_z_hi, coordinate_nmi_scratch
 .macpack longbranch
+.import music_init, music_tick
 .import opening_render
 .import prg_map, prg_art, prg_boot, mmc1_bootstrap
 .import zombie_init, zombie_tick, zombie_upload_effects, zombie_publish, zombie_render
@@ -46,6 +47,7 @@
 .import results_reset, results_tick, results_screen_state, results_present
 .import pause_init, pause_poll, pause_active, pause_cue_tick
 .import title_present, title_state, title_loading_tick
+.import music_disabled
 .export cold_reset, read_controller
 .export results_nmi_enter, results_nmi_blank, results_nmi_show, results_nmi_restart
 .export results_main_enter, results_main_restart, results_nmi_return
@@ -77,7 +79,7 @@
 .export buffer_floor, buffer_eye
 
 .segment "HEADER"
-.byte "NES",$1A, 4,0,$10,$08,0,0,$07,$07
+.byte "NES",$1A, 8,0,$10,$08,0,0,$07,$07
 .byte 0,0,0,0
 
 .segment "ZEROPAGE"
@@ -222,6 +224,14 @@ common:
  stx $2001
  stx $4010
  stx $4015
+ ; boot_scene_init clears gameplay RAM but leaves the stack page intact.
+ ; Cold boot defaults to music on; an internal level restart retains choice.
+ lda #(1-::MUSIC_ENABLED)
+ cpy #0
+ bne save_music_choice
+ lda music_disabled
+save_music_choice:
+ pha
  ; MMC1 reset then horizontal mirroring, fixed last PRG bank, 8 KiB CHR mode.
  lda #$80
  sta $8000
@@ -248,11 +258,17 @@ common:
  jsr prg_boot
  jsr boot_scene_init
  pla
+ sta music_disabled
+ pla
  beq ready
  jsr title_present       ; NMI off, bank2 selected; returns with rendering off
+ lda music_disabled
+ pha
  jsr boot_scene_init     ; restore both CPU and PPU names, palettes and state
+ pla
+ sta music_disabled
 ready:
- jsr prg_map
+ jsr prg_boot             ; boot-only initializers; music_init restores map bank
  jsr movement_init
 .ifdef HUD_PISTOL
  jsr pause_init
@@ -261,6 +277,7 @@ ready:
  jsr medkit_init
  jsr medkit_reset
  jsr results_reset
+ jsr music_init          ; NMI off; initialise both audio shadows last
 .endif
  lda #2
  sta title_state         ; no gameplay/clock until the first completed picture
@@ -932,6 +949,7 @@ publish_control:
 .endif
 restore:
  jsr pause_cue_tick        ; UI sound only, after every mode's final PPU write
+ jsr music_tick            ; borrowed movement ZP, after all simulation work
  pla
  tay
  pla

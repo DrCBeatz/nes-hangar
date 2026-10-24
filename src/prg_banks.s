@@ -5,15 +5,16 @@
 ; No mapper state byte or new RAM is needed: the producer's phases choose
 ; their bank explicitly, and restore map bank0 before any retry/publication.
 .setcpu "6502"
-.export prg_map, prg_art, prg_boot, prg_select
+.export prg_map, prg_art, prg_boot, prg_render, prg_select
 .export prg_select_first_write, prg_select_commit, prg_select_end
-.export PRG_MAP_BANK, PRG_ART_BANK, PRG_BOOT_BANK
+.export PRG_MAP_BANK, PRG_ART_BANK, PRG_BOOT_BANK, PRG_RENDER_BANK
 .export mmc1_bootstrap
 .import cold_reset
 
 PRG_MAP_BANK = 0
 PRG_ART_BANK = 1
 PRG_BOOT_BANK = 2
+PRG_RENDER_BANK = 3
 
 .segment "CODE"
 .proc prg_map
@@ -28,6 +29,11 @@ PRG_BOOT_BANK = 2
 
 .proc prg_boot
  lda #PRG_BOOT_BANK
+ jmp prg_select
+.endproc
+
+.proc prg_render
+ lda #PRG_RENDER_BANK
  ; Fall through to the same fixed-bank serial writer.
 .endproc
 

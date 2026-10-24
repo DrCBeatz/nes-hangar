@@ -1,4 +1,4 @@
-"""Cold-start logo followed by the unchanged fixed-font guide."""
+"""Cold-start logo followed by the fixed-font controls and music guide."""
 from __future__ import annotations
 
 import hashlib
@@ -8,7 +8,7 @@ import newtitle_logo
 
 
 def write_assets(build, font, preview_dir=None, logo_palette=newtitle_logo.DEFAULT_PALETTE):
-    """Write unchanged guide data plus boot-only logo tiles, names and palette.
+    """Write guide data plus boot-only logo tiles, names and palette.
 
     The caller has already generated fixed-patterns.bin. The logo appends its
     own temporary CHR tiles; fixed glyphs, sprite art and gameplay data remain
@@ -32,16 +32,24 @@ def write_assets(build, font, preview_dir=None, logo_palette=newtitle_logo.DEFAU
             name[addr] = (name[addr] & ~(3 << shift)) | (palette << shift)
 
     line(3, 'HANGAR', 2)
-    line(5, 'NES FPS PROTOTYPE', 3)
-    line(8, 'CONTROLS', 3)
-    line(10, 'UP/DOWN WALK')
-    line(12, 'LEFT/RIGHT TURN')
-    line(14, 'A+LEFT/RIGHT STRAFE')
-    line(16, 'B FIRE')
-    line(18, 'A USE DOOR / SWITCH')
-    line(20, 'START PAUSE / RESUME')
-    line(22, 'SELECT EDGE COMPARISON')
-    line(26, 'PRESS START TO PLAY')
+    line(5, 'CONTROLS AND MUSIC', 3)
+    line(8, 'UP/DOWN WALK')
+    line(10, 'LEFT/RIGHT TURN')
+    line(12, 'A+LEFT/RIGHT STRAFE')
+    line(14, 'B FIRE')
+    line(16, 'A USE DOOR / SWITCH')
+    line(18, 'START PAUSE / RESUME')
+    line(20, 'SELECT EDGE COMPARISON')
+    # Reserve three glyphs for ON-space/OFF so either setting keeps its label
+    # fixed. Assembly redraws only this field before revealing the guide and
+    # after a fresh left/right press; the no-music control always shows OFF.
+    music_row = 22
+    music_text = 'MUSIC: ON '
+    line(music_row, music_text)
+    music_col = (32-len(music_text))//2 + len('MUSIC: ')
+    line(23, 'LEFT OFF / RIGHT ON')
+    line(24, 'MUSIC OFF: FASTER PLAY', 3)
+    line(27, 'PRESS START TO PLAY')
 
     assert 4 not in name[:960], 'Reclaimed blank tile belongs to the pistol'
     used_tiles = sorted(set(name[:960]))
@@ -54,19 +62,29 @@ def write_assets(build, font, preview_dir=None, logo_palette=newtitle_logo.DEFAU
     (build/'title-nametable.bin').write_bytes(name)
     (build/'title-palette.bin').write_bytes(palette)
     config = dict(TITLE_NAMETABLE_ADDR=0x2000, TITLE_PATTERN_TABLE=0,
-                  TITLE_START_ROW=26)
+                  TITLE_START_ROW=27,
+                  TITLE_MUSIC_STATE_ADDR=0x2000+music_row*32+music_col,
+                  TITLE_GLYPH_O=font['O'], TITLE_GLYPH_N=font['N'],
+                  TITLE_GLYPH_F=font['F'], TITLE_GLYPH_SPACE=font[' '])
     (build/'title-config.inc').write_text(
         ''.join(f'{key} = ${value:04X}\n' for key,value in config.items()))
     report = dict(lines=lines, addresses=config, palette=list(palette),
                   fontMap=font, usedFontTiles=used_tiles, nametable=0,
                   patternTable=0, spriteRendering=False, additionalPatternBytes=0,
-                  guideScope='Existing controls; Select retains the edge-rendering comparison',
+                  guideScope='Controls and pre-game music option; Select retains the edge-rendering comparison',
+                  musicOption=dict(row=music_row, col=music_col, width=3,
+                                   enabledText='ON ', disabledText='OFF',
+                                   left='OFF', right='ON', default='ON',
+                                   trigger='Fresh direction presses only',
+                                   controlBuild='OFF, fixed before rendering',
+                                   runtimeUpdate='Three nametable bytes during vblank; scroll restored'),
                   sha256={filename:hashlib.sha256((build/filename).read_bytes()).hexdigest()
                           for filename in ('title-nametable.bin','title-palette.bin','title-config.inc')})
     if preview_dir is not None:
         report['preview'] = _previews(Path(preview_dir), build/'fixed-patterns.bin', name, palette)
     report['logoExperiment'] = newtitle_logo.write_assets(build, font, preview_dir, palette_name=logo_palette)
-    report['coldStartSequence'] = ['DOOM ' + logo_palette + ' logo', 'Existing controls guide', 'Gameplay']
+    report['optionalCredits'] = dict(fromScreen='logo', button='SELECT', back='B', continueToGuide='START', gameplaySelectUnchanged=True)
+    report['coldStartSequence'] = ['DOOM ' + logo_palette + ' logo', 'Controls and music guide', 'Gameplay']
     (build/'title-layout.json').write_text(json.dumps(report, indent=2)+'\n')
     return report
 

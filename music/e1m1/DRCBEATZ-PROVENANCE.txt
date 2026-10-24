@@ -1,0 +1,22 @@
+Dr C Beatz E1M1 arrangement, integrated release candidate 2026-10-24
+
+Compiled input: e1m1-drcbeatz.s (preserved verbatim).
+SHA256: d5886648b0045e97de9172af06934dff190a873286a7aff62599c4667235427a
+Original composition: At Doom's Gate, Bobby Prince, Doom (1993).
+New NES arrangement supplied by Dr C Beatz.
+
+The contributor reports entering every note from scratch, listening to the
+original recording and consulting sheet music and rasteri's version, with
+most harmonies transcribed by ear. This records the supplied provenance;
+it does not make a determination about legal independence or distribution.
+No project license has been changed as part of this local integration.
+
+Native FamiStudio tempo, volume track and vibrato; four standard APU channels.
+DPCM is disabled, the sample table is empty, and no sample binary is linked.
+The export contains 2,309 assembled bytes. Its native tempo envelope is
+$03,$05,$80. The music_data_untitled symbol is the author's export symbol.
+
+Earlier reference arrangements and their notices are retained together in
+local research history, outside this published package. They are not bundled
+or compiled into the current ROM. See docs/PROVENANCE.md for the research
+history and consulted references.

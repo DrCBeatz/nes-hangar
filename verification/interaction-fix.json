@@ -1,0 +1,4393 @@
+{
+  "schemaVersion": 1,
+  "verifiedOn": "2026-10-22",
+  "passed": true,
+  "version": "prototype-2026-10-22-interactions",
+  "romSha256": "0ecf59bf29efb03e5619a30d8bf890500a96e505a18f661920ab02fdbc9bd086",
+  "baseline": {
+    "rom": "release/archive/hangar-optional-music-ntsc.nes",
+    "sha256": "c2a913ddd057235e11936e4c212eb0d3a93e1c6f422315d03bd05baaea80ab1b",
+    "repro": "verification/interaction-repro.json"
+  },
+  "changes": {
+    "doorPanelX": [
+      288,
+      304
+    ],
+    "doorPanelUpperExclusive": true,
+    "facingAllowanceDegrees": 45,
+    "ammoRadiusBefore": 3,
+    "ammoRadiusAfter": 3.5,
+    "medkitRadius": 6,
+    "ammoSquaredThreshold": 784,
+    "comparison": "strict; each axis rounded up to an eighth"
+  },
+  "binary": {
+    "baselineSha256": "c2a913ddd057235e11936e4c212eb0d3a93e1c6f422315d03bd05baaea80ab1b",
+    "candidateSha256": "0ecf59bf29efb03e5619a30d8bf890500a96e505a18f661920ab02fdbc9bd086",
+    "romBytes": 131088,
+    "changedBytes": 29,
+    "byteChanges": [
+      {
+        "offset": 15233,
+        "before": 3,
+        "after": 4
+      },
+      {
+        "offset": 15235,
+        "before": 64,
+        "after": 16
+      },
+      {
+        "offset": 15237,
+        "before": 2,
+        "after": 3
+      },
+      {
+        "offset": 31617,
+        "before": 3,
+        "after": 4
+      },
+      {
+        "offset": 31619,
+        "before": 64,
+        "after": 16
+      },
+      {
+        "offset": 31621,
+        "before": 2,
+        "after": 3
+      },
+      {
+        "offset": 48001,
+        "before": 3,
+        "after": 4
+      },
+      {
+        "offset": 48003,
+        "before": 64,
+        "after": 16
+      },
+      {
+        "offset": 48005,
+        "before": 2,
+        "after": 3
+      },
+      {
+        "offset": 64385,
+        "before": 3,
+        "after": 4
+      },
+      {
+        "offset": 64387,
+        "before": 64,
+        "after": 16
+      },
+      {
+        "offset": 64389,
+        "before": 2,
+        "after": 3
+      },
+      {
+        "offset": 80769,
+        "before": 3,
+        "after": 4
+      },
+      {
+        "offset": 80771,
+        "before": 64,
+        "after": 16
+      },
+      {
+        "offset": 80773,
+        "before": 2,
+        "after": 3
+      },
+      {
+        "offset": 97153,
+        "before": 3,
+        "after": 4
+      },
+      {
+        "offset": 97155,
+        "before": 64,
+        "after": 16
+      },
+      {
+        "offset": 97157,
+        "before": 2,
+        "after": 3
+      },
+      {
+        "offset": 113537,
+        "before": 3,
+        "after": 4
+      },
+      {
+        "offset": 113539,
+        "before": 64,
+        "after": 16
+      },
+      {
+        "offset": 113541,
+        "before": 2,
+        "after": 3
+      },
+      {
+        "offset": 123925,
+        "before": 34,
+        "after": 32
+      },
+      {
+        "offset": 123929,
+        "before": 46,
+        "after": 48
+      },
+      {
+        "offset": 123972,
+        "before": 112,
+        "after": 96
+      },
+      {
+        "offset": 123976,
+        "before": 145,
+        "after": 161
+      },
+      {
+        "offset": 123984,
+        "before": 240,
+        "after": 224
+      },
+      {
+        "offset": 123988,
+        "before": 17,
+        "after": 33
+      },
+      {
+        "offset": 124420,
+        "before": 172,
+        "after": 160
+      },
+      {
+        "offset": 124424,
+        "before": 213,
+        "after": 225
+      }
+    ],
+    "segmentSizesUnchanged": true,
+    "labelAddressesUnchanged": true,
+    "segmentBytes": {
+      "ZEROPAGE": 256,
+      "AUDIO_ZP": 8,
+      "BSS": 1536,
+      "AUDIO_ENGINE": 136,
+      "AUDIO_DRIVER": 69,
+      "AUDIO_SETTINGS": 1,
+      "ACTOR_ART": 8065,
+      "BOOTDATA": 7536,
+      "MAPDATA": 8134,
+      "RENDER_CODE": 3664,
+      "RODATA": 8154,
+      "CODE": 12460,
+      "AUDIO_CODE": 3887,
+      "STARTUP": 9
+    }
+  },
+  "doorExit": {
+    "finalLinked": {
+      "passed": true,
+      "romSha256": "0ecf59bf29efb03e5619a30d8bf890500a96e505a18f661920ab02fdbc9bd086",
+      "checks": [
+        "All 256 facings across exact door panel and side boundaries",
+        "All 256 facings across exact exit range, lateral and higher-page boundaries",
+        "Formerly rejected centered diagonal and lateral door approaches are eligible",
+        "Fresh A required; strafe blocked; A+B and music OFF retain interaction",
+        "Dead, completed, outside, behind and side-of-wall states cannot activate",
+        "Door request is once-only; collision remains until matching view publishes",
+        "Closed/requested finite-panel collision remains unchanged; open clears it"
+      ],
+      "counts": {
+        "doorBoundary": 30976,
+        "exitBoundary": 20480,
+        "inputGuards": 80,
+        "lifecycle": 10,
+        "collision": 108
+      },
+      "calls": 51662,
+      "examples": [
+        {
+          "kind": "door",
+          "x": 300,
+          "z": 124,
+          "angle": 160,
+          "note": "North: aimed exactly at door center from a diagonal",
+          "eligible": true
+        },
+        {
+          "kind": "door",
+          "x": 292,
+          "z": 124,
+          "angle": 96,
+          "note": "North: opposite centered diagonal",
+          "eligible": true
+        },
+        {
+          "kind": "door",
+          "x": 300,
+          "z": 116,
+          "angle": 224,
+          "note": "South: aimed exactly at door center from a diagonal",
+          "eligible": true
+        },
+        {
+          "kind": "door",
+          "x": 292,
+          "z": 116,
+          "angle": 32,
+          "note": "South: opposite centered diagonal",
+          "eligible": true
+        },
+        {
+          "kind": "door",
+          "x": 302.5,
+          "z": 116,
+          "angle": 0,
+          "note": "South: legal near-right panel edge",
+          "eligible": true
+        },
+        {
+          "kind": "door",
+          "x": 289.5,
+          "z": 116,
+          "angle": 0,
+          "note": "South: legal near-left panel edge",
+          "eligible": true
+        },
+        {
+          "kind": "exit",
+          "x": 288,
+          "z": 32,
+          "angle": 160,
+          "note": "Aimed exactly at switch center from a diagonal",
+          "eligible": true
+        },
+        {
+          "kind": "exit",
+          "x": 288,
+          "z": 24,
+          "angle": 224,
+          "note": "Opposite centered switch diagonal",
+          "eligible": true
+        }
+      ],
+      "limitations": "Injected CPU poses execute actual linked 6502 routines; no PPU timing, controller-only route, or physical-console claim."
+    },
+    "focusedMesen": {
+      "passed": true,
+      "method": "Injected diagnostic poses, then real controller movement/turning in stock-NTSC Mesen. Live interaction code is unmodified. Music setting is injected per run; enemies are defeated to isolate interactions. This is not a controller-only whole-level run or physical-console test.",
+      "linked": {
+        "passed": true,
+        "romSha256": "5deb56747b451c9909db6c947b7870db179a7c6cb7fc5a5074f0802d49e78d41",
+        "checks": [
+          "All 256 facings across exact door panel and side boundaries",
+          "All 256 facings across exact exit range, lateral and higher-page boundaries",
+          "Formerly rejected centered diagonal and lateral door approaches are eligible",
+          "Fresh A required; strafe blocked; A+B and music OFF retain interaction",
+          "Dead, completed, outside, behind and side-of-wall states cannot activate",
+          "Door request is once-only; collision remains until matching view publishes",
+          "Closed/requested finite-panel collision remains unchanged; open clears it"
+        ],
+        "counts": {
+          "doorBoundary": 30976,
+          "exitBoundary": 20480,
+          "inputGuards": 80,
+          "lifecycle": 10,
+          "collision": 108
+        },
+        "calls": 51662,
+        "examples": [
+          {
+            "kind": "door",
+            "x": 300,
+            "z": 124,
+            "angle": 160,
+            "note": "North: aimed exactly at door center from a diagonal",
+            "eligible": true
+          },
+          {
+            "kind": "door",
+            "x": 292,
+            "z": 124,
+            "angle": 96,
+            "note": "North: opposite centered diagonal",
+            "eligible": true
+          },
+          {
+            "kind": "door",
+            "x": 300,
+            "z": 116,
+            "angle": 224,
+            "note": "South: aimed exactly at door center from a diagonal",
+            "eligible": true
+          },
+          {
+            "kind": "door",
+            "x": 292,
+            "z": 116,
+            "angle": 32,
+            "note": "South: opposite centered diagonal",
+            "eligible": true
+          },
+          {
+            "kind": "door",
+            "x": 302.5,
+            "z": 116,
+            "angle": 0,
+            "note": "South: legal near-right panel edge",
+            "eligible": true
+          },
+          {
+            "kind": "door",
+            "x": 289.5,
+            "z": 116,
+            "angle": 0,
+            "note": "South: legal near-left panel edge",
+            "eligible": true
+          },
+          {
+            "kind": "exit",
+            "x": 288,
+            "z": 32,
+            "angle": 160,
+            "note": "Aimed exactly at switch center from a diagonal",
+            "eligible": true
+          },
+          {
+            "kind": "exit",
+            "x": 288,
+            "z": 24,
+            "angle": 224,
+            "note": "Opposite centered switch diagonal",
+            "eligible": true
+          }
+        ],
+        "limitations": "Injected CPU poses execute actual linked 6502 routines; no PPU timing, controller-only route, or physical-console claim."
+      },
+      "runs": {
+        "on": {
+          "frames": 2632,
+          "promptDelays": [
+            {
+              "phase": "door-held-a-approach",
+              "frames": 1,
+              "milliseconds": 16.64
+            },
+            {
+              "phase": "exit-held-a-approach",
+              "frames": 1,
+              "milliseconds": 16.64
+            },
+            {
+              "phase": "door-firing-approach",
+              "frames": 1,
+              "milliseconds": 16.64
+            }
+          ],
+          "examples": [
+            {
+              "id": "door-close-straight",
+              "pose": [
+                296.0,
+                124.0,
+                128
+              ],
+              "eligible": true,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-on/door-close-straight.png"
+            },
+            {
+              "id": "door-close-diagonal",
+              "pose": [
+                296.0,
+                124.0,
+                152
+              ],
+              "eligible": true,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-on/door-close-diagonal.png"
+            },
+            {
+              "id": "door-centered-diagonal",
+              "pose": [
+                300.0,
+                124.0,
+                160
+              ],
+              "eligible": true,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-on/door-centered-diagonal.png"
+            },
+            {
+              "id": "door-south-lateral",
+              "pose": [
+                302.5,
+                116.0,
+                0
+              ],
+              "eligible": true,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-on/door-south-lateral.png"
+            },
+            {
+              "id": "door-north-opposite-diagonal",
+              "pose": [
+                292.0,
+                124.0,
+                96
+              ],
+              "eligible": true,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-on/door-north-opposite-diagonal.png"
+            },
+            {
+              "id": "door-south-centered-diagonal",
+              "pose": [
+                300.0,
+                116.0,
+                224
+              ],
+              "eligible": true,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-on/door-south-centered-diagonal.png"
+            },
+            {
+              "id": "door-south-opposite-diagonal",
+              "pose": [
+                292.0,
+                116.0,
+                32
+              ],
+              "eligible": true,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-on/door-south-opposite-diagonal.png"
+            },
+            {
+              "id": "exit-close-straight",
+              "pose": [
+                288.0,
+                28.0,
+                192
+              ],
+              "eligible": true,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-on/exit-close-straight.png"
+            },
+            {
+              "id": "exit-close-diagonal",
+              "pose": [
+                288.0,
+                28.0,
+                216
+              ],
+              "eligible": true,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-on/exit-close-diagonal.png"
+            },
+            {
+              "id": "exit-centered-diagonal",
+              "pose": [
+                288.0,
+                32.0,
+                160
+              ],
+              "eligible": true,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-on/exit-centered-diagonal.png"
+            },
+            {
+              "id": "exit-opposite-centered-diagonal",
+              "pose": [
+                288.0,
+                24.0,
+                224
+              ],
+              "eligible": true,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-on/exit-opposite-centered-diagonal.png"
+            },
+            {
+              "id": "door-south-rejected-angle",
+              "pose": [
+                296.0,
+                116.0,
+                33
+              ],
+              "eligible": false,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-on/door-south-rejected-angle.png"
+            },
+            {
+              "id": "door-south-rejected-lateral",
+              "pose": [
+                304.0,
+                116.0,
+                0
+              ],
+              "eligible": false,
+              "worldCollisionLegal": false,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-on/door-south-rejected-lateral.png"
+            },
+            {
+              "id": "door-north-rejected-distance",
+              "pose": [
+                296.0,
+                128.00390625,
+                128
+              ],
+              "eligible": false,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-on/door-north-rejected-distance.png"
+            },
+            {
+              "id": "exit-near-lower-end",
+              "pose": [
+                288.0,
+                20.0,
+                192
+              ],
+              "eligible": false,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-on/exit-near-lower-end.png"
+            },
+            {
+              "id": "exit-rejected-angle",
+              "pose": [
+                288.0,
+                28.0,
+                225
+              ],
+              "eligible": false,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-on/exit-rejected-angle.png"
+            },
+            {
+              "id": "exit-rejected-distance",
+              "pose": [
+                294.0,
+                28.0,
+                192
+              ],
+              "eligible": false,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-on/exit-rejected-distance.png"
+            }
+          ],
+          "romSha256": "5deb56747b451c9909db6c947b7870db179a7c6cb7fc5a5074f0802d49e78d41",
+          "freshAAndHeldAGuardsPass": true,
+          "diagonalFreshAActivates": true,
+          "doorRequestToPublishedOpenFrames": 41
+        },
+        "off": {
+          "frames": 2632,
+          "promptDelays": [
+            {
+              "phase": "door-held-a-approach",
+              "frames": 1,
+              "milliseconds": 16.64
+            },
+            {
+              "phase": "exit-held-a-approach",
+              "frames": 1,
+              "milliseconds": 16.64
+            },
+            {
+              "phase": "door-firing-approach",
+              "frames": 1,
+              "milliseconds": 16.64
+            }
+          ],
+          "examples": [
+            {
+              "id": "door-close-straight",
+              "pose": [
+                296.0,
+                124.0,
+                128
+              ],
+              "eligible": true,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-off/door-close-straight.png"
+            },
+            {
+              "id": "door-close-diagonal",
+              "pose": [
+                296.0,
+                124.0,
+                152
+              ],
+              "eligible": true,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-off/door-close-diagonal.png"
+            },
+            {
+              "id": "door-centered-diagonal",
+              "pose": [
+                300.0,
+                124.0,
+                160
+              ],
+              "eligible": true,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-off/door-centered-diagonal.png"
+            },
+            {
+              "id": "door-south-lateral",
+              "pose": [
+                302.5,
+                116.0,
+                0
+              ],
+              "eligible": true,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-off/door-south-lateral.png"
+            },
+            {
+              "id": "door-north-opposite-diagonal",
+              "pose": [
+                292.0,
+                124.0,
+                96
+              ],
+              "eligible": true,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-off/door-north-opposite-diagonal.png"
+            },
+            {
+              "id": "door-south-centered-diagonal",
+              "pose": [
+                300.0,
+                116.0,
+                224
+              ],
+              "eligible": true,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-off/door-south-centered-diagonal.png"
+            },
+            {
+              "id": "door-south-opposite-diagonal",
+              "pose": [
+                292.0,
+                116.0,
+                32
+              ],
+              "eligible": true,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-off/door-south-opposite-diagonal.png"
+            },
+            {
+              "id": "exit-close-straight",
+              "pose": [
+                288.0,
+                28.0,
+                192
+              ],
+              "eligible": true,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-off/exit-close-straight.png"
+            },
+            {
+              "id": "exit-close-diagonal",
+              "pose": [
+                288.0,
+                28.0,
+                216
+              ],
+              "eligible": true,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-off/exit-close-diagonal.png"
+            },
+            {
+              "id": "exit-centered-diagonal",
+              "pose": [
+                288.0,
+                32.0,
+                160
+              ],
+              "eligible": true,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-off/exit-centered-diagonal.png"
+            },
+            {
+              "id": "exit-opposite-centered-diagonal",
+              "pose": [
+                288.0,
+                24.0,
+                224
+              ],
+              "eligible": true,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-off/exit-opposite-centered-diagonal.png"
+            },
+            {
+              "id": "door-south-rejected-angle",
+              "pose": [
+                296.0,
+                116.0,
+                33
+              ],
+              "eligible": false,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-off/door-south-rejected-angle.png"
+            },
+            {
+              "id": "door-south-rejected-lateral",
+              "pose": [
+                304.0,
+                116.0,
+                0
+              ],
+              "eligible": false,
+              "worldCollisionLegal": false,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-off/door-south-rejected-lateral.png"
+            },
+            {
+              "id": "door-north-rejected-distance",
+              "pose": [
+                296.0,
+                128.00390625,
+                128
+              ],
+              "eligible": false,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-off/door-north-rejected-distance.png"
+            },
+            {
+              "id": "exit-near-lower-end",
+              "pose": [
+                288.0,
+                20.0,
+                192
+              ],
+              "eligible": false,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-off/exit-near-lower-end.png"
+            },
+            {
+              "id": "exit-rejected-angle",
+              "pose": [
+                288.0,
+                28.0,
+                225
+              ],
+              "eligible": false,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-off/exit-rejected-angle.png"
+            },
+            {
+              "id": "exit-rejected-distance",
+              "pose": [
+                294.0,
+                28.0,
+                192
+              ],
+              "eligible": false,
+              "worldCollisionLegal": true,
+              "settledImageMatchesLivePose": true,
+              "screenshot": "analysis/interaction-fix/door-exit/mesen-music-off/exit-rejected-distance.png"
+            }
+          ],
+          "romSha256": "5deb56747b451c9909db6c947b7870db179a7c6cb7fc5a5074f0802d49e78d41",
+          "freshAAndHeldAGuardsPass": true,
+          "diagonalFreshAActivates": true,
+          "doorRequestToPublishedOpenFrames": 40
+        }
+      },
+      "limitations": "Turning/display latency is deliberately unchanged. Rejected diagnostic poses may intersect wall collision and are marked accordingly; no accepted pose does. No physical-console result is implied.",
+      "unchangedWorldPixelChecks": [
+        {
+          "mode": "on",
+          "id": "door-centered-diagonal",
+          "region": "entire image rows0..175, including3Dviewport, title, weapon",
+          "identical": true
+        },
+        {
+          "mode": "on",
+          "id": "door-south-lateral",
+          "region": "entire image rows0..175, including3Dviewport, title, weapon",
+          "identical": true
+        },
+        {
+          "mode": "on",
+          "id": "exit-centered-diagonal",
+          "region": "entire image rows0..175, including3Dviewport, title, weapon",
+          "identical": true
+        },
+        {
+          "mode": "on",
+          "id": "door-close-straight",
+          "region": "entire image rows0..175, including3Dviewport, title, weapon",
+          "identical": true
+        },
+        {
+          "mode": "on",
+          "id": "exit-close-straight",
+          "region": "entire image rows0..175, including3Dviewport, title, weapon",
+          "identical": true
+        },
+        {
+          "mode": "off",
+          "id": "door-centered-diagonal",
+          "region": "entire image rows0..175, including3Dviewport, title, weapon",
+          "identical": true
+        },
+        {
+          "mode": "off",
+          "id": "door-south-lateral",
+          "region": "entire image rows0..175, including3Dviewport, title, weapon",
+          "identical": true
+        },
+        {
+          "mode": "off",
+          "id": "exit-centered-diagonal",
+          "region": "entire image rows0..175, including3Dviewport, title, weapon",
+          "identical": true
+        },
+        {
+          "mode": "off",
+          "id": "door-close-straight",
+          "region": "entire image rows0..175, including3Dviewport, title, weapon",
+          "identical": true
+        },
+        {
+          "mode": "off",
+          "id": "exit-close-straight",
+          "region": "entire image rows0..175, including3Dviewport, title, weapon",
+          "identical": true
+        }
+      ]
+    },
+    "focusedMesenBuild": "Door/exit-only intermediate 5deb56747b451c9909db6c947b7870db179a7c6cb7fc5a5074f0802d49e78d41. Final combined ROM has identical door/exit code; final linked tests and full Mesen route rerun after ammo changes."
+  },
+  "ammo": {
+    "linked": {
+      "passed": true,
+      "radiusBefore": 3,
+      "radiusAfter": 3.5,
+      "medkitRadius": 6,
+      "allSevenLegalLowerPrgBanks": true,
+      "fixedPrgBank": 7,
+      "counts": {
+        "nativeRangeCalls": 441000,
+        "translatedRangeCalls": 8214,
+        "medkitUnchanged": 110250,
+        "newlyAccepted": 10724,
+        "scratchCases": 21,
+        "lifecycleCases": 18
+      },
+      "critical": [
+        {
+          "dxQ8": 742,
+          "dzQ8": 0,
+          "accepted": true,
+          "squaredEighths": 576
+        },
+        {
+          "dxQ8": 863,
+          "dzQ8": 0,
+          "accepted": true,
+          "squaredEighths": 729
+        },
+        {
+          "dxQ8": 864,
+          "dzQ8": 0,
+          "accepted": true,
+          "squaredEighths": 729
+        },
+        {
+          "dxQ8": 865,
+          "dzQ8": 0,
+          "accepted": false,
+          "squaredEighths": 784
+        },
+        {
+          "dxQ8": 895,
+          "dzQ8": 0,
+          "accepted": false,
+          "squaredEighths": 784
+        },
+        {
+          "dxQ8": 896,
+          "dzQ8": 0,
+          "accepted": false,
+          "squaredEighths": 784
+        },
+        {
+          "dxQ8": 960,
+          "dzQ8": 0,
+          "accepted": false,
+          "squaredEighths": 900
+        },
+        {
+          "dxQ8": 608,
+          "dzQ8": 640,
+          "accepted": true,
+          "squaredEighths": 761
+        },
+        {
+          "dxQ8": 640,
+          "dzQ8": 640,
+          "accepted": false,
+          "squaredEighths": 800
+        },
+        {
+          "dxQ8": 864,
+          "dzQ8": 224,
+          "accepted": true,
+          "squaredEighths": 778
+        },
+        {
+          "dxQ8": 864,
+          "dzQ8": 256,
+          "accepted": false,
+          "squaredEighths": 793
+        },
+        {
+          "dxQ8": 1,
+          "dzQ8": -1,
+          "accepted": true,
+          "squaredEighths": 2
+        }
+      ],
+      "translations": [
+        [
+          1,
+          1
+        ],
+        [
+          255,
+          255
+        ],
+        [
+          256,
+          256
+        ],
+        [
+          257,
+          511
+        ],
+        [
+          511,
+          512
+        ],
+        [
+          512,
+          513
+        ],
+        [
+          767,
+          768
+        ],
+        [
+          1022,
+          1022
+        ]
+      ],
+      "lifecycle": [
+        {
+          "musicOff": 0,
+          "active": 0,
+          "prior": 0,
+          "itemCount": 1
+        },
+        {
+          "musicOff": 0,
+          "active": 0,
+          "prior": 64,
+          "itemCount": 2
+        },
+        {
+          "musicOff": 0,
+          "active": 1,
+          "prior": 0,
+          "itemCount": 1
+        },
+        {
+          "musicOff": 0,
+          "active": 1,
+          "prior": 128,
+          "itemCount": 2
+        },
+        {
+          "musicOff": 1,
+          "active": 0,
+          "prior": 0,
+          "itemCount": 1
+        },
+        {
+          "musicOff": 1,
+          "active": 0,
+          "prior": 64,
+          "itemCount": 2
+        },
+        {
+          "musicOff": 1,
+          "active": 1,
+          "prior": 0,
+          "itemCount": 1
+        },
+        {
+          "musicOff": 1,
+          "active": 1,
+          "prior": 128,
+          "itemCount": 2
+        }
+      ],
+      "maximumRoutineCycles": {
+        "baseline": {
+          "music_init": 3745,
+          "pistol_reset": 251,
+          "medkit_reset": 27,
+          "results_reset": 69,
+          "medkit_in_range": 413
+        },
+        "candidate": {
+          "music_init": 3745,
+          "pistol_reset": 251,
+          "medkit_reset": 27,
+          "results_reset": 69,
+          "medkit_in_range": 413,
+          "medkit_tick": 801,
+          "music_tick": 3664,
+          "results_capture": 170
+        }
+      },
+      "sha256": {
+        "baseline": "c2a913ddd057235e11936e4c212eb0d3a93e1c6f422315d03bd05baaea80ab1b",
+        "candidate": "0ecf59bf29efb03e5619a30d8bf890500a96e505a18f661920ab02fdbc9bd086",
+        "test": "9cddc82724c094f652a34548eef0ba2f96a4997cee1acba65cfe7372251d739b",
+        "core": "0531f69c4e9e2973bdcdc89bf3ad6e6dfa3257572f8e7eccd405fa158cc3a1a7"
+      },
+      "scope": "Linked6502 fixtures with injected state; translated item tables only in emulated memory. No ROM changes. Controller movement/PPU deadlines are tested separately in Mesen."
+    },
+    "focusedMesen": {
+      "passed": true,
+      "scope": "Controlled safe idle RAM start fixtures followed by controller-only movement.\nNo ROM edits, no changes to personal emulator settings, no state injection during a motion.\n",
+      "errors": [],
+      "frames": 3183,
+      "maxNmiDepth": 1,
+      "cases": [
+        {
+          "id": "east-visible-stop-short",
+          "passed": true,
+          "checks": {
+            "allSampledPositionsLegal": true,
+            "pickupMatchesExpected": true,
+            "onceOnly": true,
+            "pickupOnlyDuringControllerMotion": true,
+            "initialViewMatchesFixture": true,
+            "ammoCountCorrect": true,
+            "encounterCorrect": true
+          },
+          "fixture": {
+            "x": 290,
+            "expected": false,
+            "z": 252,
+            "duration": 60,
+            "angle": 192,
+            "id": "east-visible-stop-short"
+          },
+          "collections": [],
+          "closest": {
+            "frame": 240,
+            "distance": 3.5,
+            "position": [
+              277.5,
+              252.0
+            ],
+            "quantizedSquared": 784,
+            "acceptedSquaredExclusive": 784.0
+          },
+          "maxLiveVisibleDistance": 12.25,
+          "endingAmmo": 6
+        },
+        {
+          "id": "east-hidden-final-step",
+          "passed": true,
+          "checks": {
+            "allSampledPositionsLegal": true,
+            "pickupMatchesExpected": true,
+            "onceOnly": true,
+            "pickupOnlyDuringControllerMotion": true,
+            "initialViewMatchesFixture": true,
+            "ammoCountCorrect": true,
+            "encounterCorrect": true
+          },
+          "fixture": {
+            "x": 278,
+            "expected": true,
+            "z": 252,
+            "duration": 16,
+            "angle": 192,
+            "id": "east-hidden-final-step"
+          },
+          "collections": [
+            {
+              "frame": 306,
+              "stage": "motion",
+              "distance": 3.25,
+              "position": [
+                277.25,
+                252.0
+              ],
+              "visiblePosition": [
+                278.0,
+                252.0
+              ],
+              "liveVisibleDelta": 0.75
+            }
+          ],
+          "closest": {
+            "frame": 320,
+            "distance": 0.5,
+            "position": [
+              274.5,
+              252.0
+            ],
+            "quantizedSquared": 16,
+            "acceptedSquaredExclusive": 784.0
+          },
+          "maxLiveVisibleDistance": 3.5,
+          "endingAmmo": 16
+        },
+        {
+          "id": "east-visible-center",
+          "passed": true,
+          "checks": {
+            "allSampledPositionsLegal": true,
+            "pickupMatchesExpected": true,
+            "onceOnly": true,
+            "pickupOnlyDuringControllerMotion": true,
+            "initialViewMatchesFixture": true,
+            "ammoCountCorrect": true,
+            "encounterCorrect": true
+          },
+          "fixture": {
+            "x": 290,
+            "expected": true,
+            "z": 252,
+            "duration": 100,
+            "angle": 192,
+            "id": "east-visible-center"
+          },
+          "collections": [
+            {
+              "frame": 449,
+              "stage": "motion",
+              "distance": 3.25,
+              "position": [
+                277.25,
+                252.0
+              ],
+              "visiblePosition": [
+                289.75,
+                252.0
+              ],
+              "liveVisibleDelta": 12.5
+            }
+          ],
+          "closest": {
+            "frame": 466,
+            "distance": 0.0,
+            "position": [
+              274.0,
+              252.0
+            ],
+            "quantizedSquared": 0,
+            "acceptedSquaredExclusive": 784.0
+          },
+          "maxLiveVisibleDistance": 14.25,
+          "endingAmmo": 16
+        },
+        {
+          "id": "east-visible-near-edge-now-collected",
+          "passed": true,
+          "checks": {
+            "allSampledPositionsLegal": true,
+            "pickupMatchesExpected": true,
+            "onceOnly": true,
+            "pickupOnlyDuringControllerMotion": true,
+            "initialViewMatchesFixture": true,
+            "ammoCountCorrect": true,
+            "encounterCorrect": true
+          },
+          "fixture": {
+            "x": 290,
+            "expected": true,
+            "z": 254.9,
+            "duration": 100,
+            "angle": 192,
+            "id": "east-visible-near-edge-now-collected"
+          },
+          "collections": [
+            {
+              "frame": 624,
+              "stage": "motion",
+              "distance": 3.3857702139108983,
+              "position": [
+                275.75,
+                254.8984375
+              ],
+              "visiblePosition": [
+                289.75,
+                254.8984375
+              ],
+              "liveVisibleDelta": 14.0
+            }
+          ],
+          "closest": {
+            "frame": 633,
+            "distance": 2.8984375,
+            "position": [
+              274.0,
+              254.8984375
+            ],
+            "quantizedSquared": 576,
+            "acceptedSquaredExclusive": 784.0
+          },
+          "maxLiveVisibleDistance": 15.0,
+          "endingAmmo": 16
+        },
+        {
+          "id": "north-visible-center",
+          "passed": true,
+          "checks": {
+            "allSampledPositionsLegal": true,
+            "pickupMatchesExpected": true,
+            "onceOnly": true,
+            "pickupOnlyDuringControllerMotion": true,
+            "initialViewMatchesFixture": true,
+            "ammoCountCorrect": true,
+            "encounterCorrect": true
+          },
+          "fixture": {
+            "x": 274,
+            "expected": true,
+            "z": 234,
+            "duration": 100,
+            "angle": 0,
+            "id": "north-visible-center"
+          },
+          "collections": [
+            {
+              "frame": 794,
+              "stage": "motion",
+              "distance": 3.25,
+              "position": [
+                274.0,
+                248.75
+              ],
+              "visiblePosition": [
+                274.0,
+                234.25
+              ],
+              "liveVisibleDelta": 14.5
+            }
+          ],
+          "closest": {
+            "frame": 811,
+            "distance": 0.0,
+            "position": [
+              274.0,
+              252.0
+            ],
+            "quantizedSquared": 0,
+            "acceptedSquaredExclusive": 784.0
+          },
+          "maxLiveVisibleDistance": 16.0,
+          "endingAmmo": 16
+        },
+        {
+          "id": "forward-center",
+          "passed": true,
+          "checks": {
+            "allSampledPositionsLegal": true,
+            "pickupMatchesExpected": true,
+            "onceOnly": true,
+            "pickupOnlyDuringControllerMotion": true,
+            "initialViewMatchesFixture": true,
+            "ammoCountCorrect": true,
+            "encounterCorrect": true
+          },
+          "fixture": {
+            "x": 274,
+            "expected": true,
+            "z": 257.5,
+            "duration": 48,
+            "angle": 128,
+            "id": "forward-center"
+          },
+          "collections": [
+            {
+              "frame": 919,
+              "stage": "motion",
+              "distance": 3.25,
+              "position": [
+                274.0,
+                255.25
+              ],
+              "visiblePosition": [
+                274.0,
+                257.5
+              ],
+              "liveVisibleDelta": 2.25
+            }
+          ],
+          "closest": {
+            "frame": 936,
+            "distance": 0.0,
+            "position": [
+              274.0,
+              252.0
+            ],
+            "quantizedSquared": 0,
+            "acceptedSquaredExclusive": 784.0
+          },
+          "maxLiveVisibleDistance": 10.0,
+          "endingAmmo": 16
+        },
+        {
+          "id": "backward-center",
+          "passed": true,
+          "checks": {
+            "allSampledPositionsLegal": true,
+            "pickupMatchesExpected": true,
+            "onceOnly": true,
+            "pickupOnlyDuringControllerMotion": true,
+            "initialViewMatchesFixture": true,
+            "ammoCountCorrect": true,
+            "encounterCorrect": true
+          },
+          "fixture": {
+            "expected": true,
+            "x": 274,
+            "duration": 48,
+            "z": 246,
+            "buttons": "down",
+            "angle": 128,
+            "id": "backward-center"
+          },
+          "collections": [
+            {
+              "frame": 1076,
+              "stage": "motion",
+              "distance": 3.25,
+              "position": [
+                274.0,
+                248.75
+              ],
+              "visiblePosition": [
+                274.0,
+                246.0
+              ],
+              "liveVisibleDelta": 2.75
+            }
+          ],
+          "closest": {
+            "frame": 1093,
+            "distance": 0.0,
+            "position": [
+              274.0,
+              252.0
+            ],
+            "quantizedSquared": 0,
+            "acceptedSquaredExclusive": 784.0
+          },
+          "maxLiveVisibleDistance": 10.0,
+          "endingAmmo": 16
+        },
+        {
+          "id": "strafe-left-center",
+          "passed": true,
+          "checks": {
+            "allSampledPositionsLegal": true,
+            "pickupMatchesExpected": true,
+            "onceOnly": true,
+            "pickupOnlyDuringControllerMotion": true,
+            "initialViewMatchesFixture": true,
+            "ammoCountCorrect": true,
+            "encounterCorrect": true
+          },
+          "fixture": {
+            "expected": true,
+            "x": 267,
+            "duration": 60,
+            "z": 252,
+            "buttons": "a left",
+            "angle": 128,
+            "id": "strafe-left-center"
+          },
+          "collections": [
+            {
+              "frame": 1235,
+              "stage": "motion",
+              "distance": 3.25,
+              "position": [
+                270.75,
+                252.0
+              ],
+              "visiblePosition": [
+                267.0,
+                252.0
+              ],
+              "liveVisibleDelta": 3.75
+            }
+          ],
+          "closest": {
+            "frame": 1252,
+            "distance": 0.0,
+            "position": [
+              274.0,
+              252.0
+            ],
+            "quantizedSquared": 0,
+            "acceptedSquaredExclusive": 784.0
+          },
+          "maxLiveVisibleDistance": 12.25,
+          "endingAmmo": 16
+        },
+        {
+          "id": "strafe-right-center",
+          "passed": true,
+          "checks": {
+            "allSampledPositionsLegal": true,
+            "pickupMatchesExpected": true,
+            "onceOnly": true,
+            "pickupOnlyDuringControllerMotion": true,
+            "initialViewMatchesFixture": true,
+            "ammoCountCorrect": true,
+            "encounterCorrect": true
+          },
+          "fixture": {
+            "expected": true,
+            "x": 282,
+            "duration": 60,
+            "z": 252,
+            "buttons": "a right",
+            "angle": 128,
+            "id": "strafe-right-center"
+          },
+          "collections": [
+            {
+              "frame": 1426,
+              "stage": "motion",
+              "distance": 3.25,
+              "position": [
+                277.25,
+                252.0
+              ],
+              "visiblePosition": [
+                282.0,
+                252.0
+              ],
+              "liveVisibleDelta": 4.75
+            }
+          ],
+          "closest": {
+            "frame": 1442,
+            "distance": 0.0,
+            "position": [
+              274.0,
+              252.0
+            ],
+            "quantizedSquared": 0,
+            "acceptedSquaredExclusive": 784.0
+          },
+          "maxLiveVisibleDistance": 12.5,
+          "endingAmmo": 16
+        },
+        {
+          "id": "diagonal-center",
+          "passed": true,
+          "checks": {
+            "allSampledPositionsLegal": true,
+            "pickupMatchesExpected": true,
+            "onceOnly": true,
+            "pickupOnlyDuringControllerMotion": true,
+            "initialViewMatchesFixture": true,
+            "ammoCountCorrect": true,
+            "encounterCorrect": true
+          },
+          "fixture": {
+            "x": 280,
+            "expected": true,
+            "z": 257.5,
+            "duration": 60,
+            "angle": 160,
+            "id": "diagonal-center"
+          },
+          "collections": [
+            {
+              "frame": 1593,
+              "stage": "motion",
+              "distance": 3.1796011198340586,
+              "position": [
+                276.484375,
+                253.984375
+              ],
+              "visiblePosition": [
+                280.0,
+                257.5
+              ],
+              "liveVisibleDelta": 4.9718445552179125
+            }
+          ],
+          "closest": {
+            "frame": 1609,
+            "distance": 0.36077343403183804,
+            "position": [
+              274.19921875,
+              251.69921875
+            ],
+            "quantizedSquared": 13,
+            "acceptedSquaredExclusive": 784.0
+          },
+          "maxLiveVisibleDistance": 12.181019160283885,
+          "endingAmmo": 16
+        },
+        {
+          "id": "near-edge-accepted",
+          "passed": true,
+          "checks": {
+            "allSampledPositionsLegal": true,
+            "pickupMatchesExpected": true,
+            "onceOnly": true,
+            "pickupOnlyDuringControllerMotion": true,
+            "initialViewMatchesFixture": true,
+            "ammoCountCorrect": true,
+            "encounterCorrect": true
+          },
+          "fixture": {
+            "x": 276.875,
+            "expected": true,
+            "z": 257.5,
+            "duration": 56,
+            "angle": 128,
+            "id": "near-edge-accepted"
+          },
+          "collections": [
+            {
+              "frame": 1745,
+              "stage": "motion",
+              "distance": 3.365728004459065,
+              "position": [
+                276.875,
+                253.75
+              ],
+              "visiblePosition": [
+                276.875,
+                257.5
+              ],
+              "liveVisibleDelta": 3.75
+            }
+          ],
+          "closest": {
+            "frame": 1755,
+            "distance": 2.875,
+            "position": [
+              276.875,
+              252.0
+            ],
+            "quantizedSquared": 529,
+            "acceptedSquaredExclusive": 784.0
+          },
+          "maxLiveVisibleDistance": 11.5,
+          "endingAmmo": 16
+        },
+        {
+          "id": "near-edge-quantized-now-collected",
+          "passed": true,
+          "checks": {
+            "allSampledPositionsLegal": true,
+            "pickupMatchesExpected": true,
+            "onceOnly": true,
+            "pickupOnlyDuringControllerMotion": true,
+            "initialViewMatchesFixture": true,
+            "ammoCountCorrect": true,
+            "encounterCorrect": true
+          },
+          "fixture": {
+            "x": 276.9,
+            "expected": true,
+            "z": 257.5,
+            "duration": 56,
+            "angle": 128,
+            "id": "near-edge-quantized-now-collected"
+          },
+          "collections": [
+            {
+              "frame": 1914,
+              "stage": "motion",
+              "distance": 3.3857702139108983,
+              "position": [
+                276.8984375,
+                253.75
+              ],
+              "visiblePosition": [
+                276.8984375,
+                257.5
+              ],
+              "liveVisibleDelta": 3.75
+            }
+          ],
+          "closest": {
+            "frame": 1923,
+            "distance": 2.8984375,
+            "position": [
+              276.8984375,
+              252.0
+            ],
+            "quantizedSquared": 576,
+            "acceptedSquaredExclusive": 784.0
+          },
+          "maxLiveVisibleDistance": 11.75,
+          "endingAmmo": 16
+        },
+        {
+          "id": "old-radius-edge-now-collected",
+          "passed": true,
+          "checks": {
+            "allSampledPositionsLegal": true,
+            "pickupMatchesExpected": true,
+            "onceOnly": true,
+            "pickupOnlyDuringControllerMotion": true,
+            "initialViewMatchesFixture": true,
+            "ammoCountCorrect": true,
+            "encounterCorrect": true
+          },
+          "fixture": {
+            "x": 277,
+            "expected": true,
+            "z": 257.5,
+            "duration": 56,
+            "angle": 128,
+            "id": "old-radius-edge-now-collected"
+          },
+          "collections": [
+            {
+              "frame": 2084,
+              "stage": "motion",
+              "distance": 3.473110997362451,
+              "position": [
+                277.0,
+                253.75
+              ],
+              "visiblePosition": [
+                277.0,
+                257.5
+              ],
+              "liveVisibleDelta": 3.75
+            }
+          ],
+          "closest": {
+            "frame": 2093,
+            "distance": 3.0,
+            "position": [
+              277.0,
+              252.0
+            ],
+            "quantizedSquared": 576,
+            "acceptedSquaredExclusive": 784.0
+          },
+          "maxLiveVisibleDistance": 11.75,
+          "endingAmmo": 16
+        },
+        {
+          "id": "new-radius-edge-miss",
+          "passed": true,
+          "checks": {
+            "allSampledPositionsLegal": true,
+            "pickupMatchesExpected": true,
+            "onceOnly": true,
+            "pickupOnlyDuringControllerMotion": true,
+            "initialViewMatchesFixture": true,
+            "ammoCountCorrect": true,
+            "encounterCorrect": true
+          },
+          "fixture": {
+            "x": 277.5,
+            "expected": false,
+            "z": 257.5,
+            "duration": 56,
+            "angle": 128,
+            "id": "new-radius-edge-miss"
+          },
+          "collections": [],
+          "closest": {
+            "frame": 2264,
+            "distance": 3.5,
+            "position": [
+              277.5,
+              252.0
+            ],
+            "quantizedSquared": 784,
+            "acceptedSquaredExclusive": 784.0
+          },
+          "maxLiveVisibleDistance": 11.75,
+          "endingAmmo": 6
+        },
+        {
+          "id": "old-wall-side-bypass",
+          "passed": true,
+          "checks": {
+            "allSampledPositionsLegal": true,
+            "pickupMatchesExpected": true,
+            "onceOnly": true,
+            "pickupOnlyDuringControllerMotion": true,
+            "initialViewMatchesFixture": true,
+            "ammoCountCorrect": true,
+            "encounterCorrect": true
+          },
+          "fixture": {
+            "x": 277.75,
+            "expected": false,
+            "z": 257.5,
+            "duration": 56,
+            "angle": 128,
+            "id": "old-wall-side-bypass"
+          },
+          "collections": [],
+          "closest": {
+            "frame": 2438,
+            "distance": 3.75,
+            "position": [
+              277.75,
+              252.0
+            ],
+            "quantizedSquared": 900,
+            "acceptedSquaredExclusive": 784.0
+          },
+          "maxLiveVisibleDistance": 11.5,
+          "endingAmmo": 6
+        },
+        {
+          "id": "new-near-edge-collected",
+          "passed": true,
+          "checks": {
+            "allSampledPositionsLegal": true,
+            "pickupMatchesExpected": true,
+            "onceOnly": true,
+            "pickupOnlyDuringControllerMotion": true,
+            "initialViewMatchesFixture": true,
+            "ammoCountCorrect": true,
+            "encounterCorrect": true
+          },
+          "fixture": {
+            "x": 277.375,
+            "expected": true,
+            "z": 257.5,
+            "duration": 56,
+            "angle": 128,
+            "id": "new-near-edge-collected"
+          },
+          "collections": [
+            {
+              "frame": 2606,
+              "stage": "motion",
+              "distance": 3.4573291714848327,
+              "position": [
+                277.375,
+                252.75
+              ],
+              "visiblePosition": [
+                277.375,
+                257.5
+              ],
+              "liveVisibleDelta": 4.75
+            }
+          ],
+          "closest": {
+            "frame": 2611,
+            "distance": 3.375,
+            "position": [
+              277.375,
+              252.0
+            ],
+            "quantizedSquared": 729,
+            "acceptedSquaredExclusive": 784.0
+          },
+          "maxLiveVisibleDistance": 11.5,
+          "endingAmmo": 16
+        },
+        {
+          "id": "full-ammo-retains",
+          "passed": true,
+          "checks": {
+            "allSampledPositionsLegal": true,
+            "pickupMatchesExpected": true,
+            "onceOnly": true,
+            "pickupOnlyDuringControllerMotion": true,
+            "initialViewMatchesFixture": true,
+            "ammoCountCorrect": true,
+            "encounterCorrect": true
+          },
+          "fixture": {
+            "expected": false,
+            "x": 274,
+            "duration": 48,
+            "z": 257.5,
+            "ammo": 99,
+            "angle": 128,
+            "id": "full-ammo-retains"
+          },
+          "collections": [],
+          "closest": {
+            "frame": 2780,
+            "distance": 0.0,
+            "position": [
+              274.0,
+              252.0
+            ],
+            "quantizedSquared": 0,
+            "acceptedSquaredExclusive": 784.0
+          },
+          "maxLiveVisibleDistance": 10.0,
+          "endingAmmo": 99
+        },
+        {
+          "id": "forward-center-music-off",
+          "passed": true,
+          "checks": {
+            "allSampledPositionsLegal": true,
+            "pickupMatchesExpected": true,
+            "onceOnly": true,
+            "pickupOnlyDuringControllerMotion": true,
+            "initialViewMatchesFixture": true,
+            "ammoCountCorrect": true,
+            "encounterCorrect": true
+          },
+          "fixture": {
+            "expected": true,
+            "x": 274,
+            "musicDisabled": 1,
+            "z": 257.5,
+            "duration": 48,
+            "angle": 128,
+            "id": "forward-center-music-off"
+          },
+          "collections": [
+            {
+              "frame": 2924,
+              "stage": "motion",
+              "distance": 3.25,
+              "position": [
+                274.0,
+                255.25
+              ],
+              "visiblePosition": [
+                274.0,
+                257.5
+              ],
+              "liveVisibleDelta": 2.25
+            }
+          ],
+          "closest": {
+            "frame": 2941,
+            "distance": 0.0,
+            "position": [
+              274.0,
+              252.0
+            ],
+            "quantizedSquared": 0,
+            "acceptedSquaredExclusive": 784.0
+          },
+          "maxLiveVisibleDistance": 10.0,
+          "endingAmmo": 16
+        },
+        {
+          "id": "near-edge-now-collected-music-off",
+          "passed": true,
+          "checks": {
+            "allSampledPositionsLegal": true,
+            "pickupMatchesExpected": true,
+            "onceOnly": true,
+            "pickupOnlyDuringControllerMotion": true,
+            "initialViewMatchesFixture": true,
+            "ammoCountCorrect": true,
+            "encounterCorrect": true
+          },
+          "fixture": {
+            "expected": true,
+            "x": 276.9,
+            "musicDisabled": 1,
+            "z": 257.5,
+            "duration": 56,
+            "angle": 128,
+            "id": "near-edge-now-collected-music-off"
+          },
+          "collections": [
+            {
+              "frame": 3090,
+              "stage": "motion",
+              "distance": 3.3857702139108983,
+              "position": [
+                276.8984375,
+                253.75
+              ],
+              "visiblePosition": [
+                276.8984375,
+                257.5
+              ],
+              "liveVisibleDelta": 3.75
+            }
+          ],
+          "closest": {
+            "frame": 3099,
+            "distance": 2.8984375,
+            "position": [
+              276.8984375,
+              252.0
+            ],
+            "quantizedSquared": 576,
+            "acceptedSquaredExclusive": 784.0
+          },
+          "maxLiveVisibleDistance": 11.75,
+          "endingAmmo": 16
+        }
+      ],
+      "normalLevelAmmoMaximumBeforePickup": 6,
+      "normalLevelAmmoMaximumAfterPickup": 16,
+      "ammoCap": 99,
+      "romSha256": "0ecf59bf29efb03e5619a30d8bf890500a96e505a18f661920ab02fdbc9bd086"
+    },
+    "provenance": {
+      "romSha256": "0ecf59bf29efb03e5619a30d8bf890500a96e505a18f661920ab02fdbc9bd086",
+      "protectedBefore": {
+        "<USER_HOME>/Library/Application Support/MesenCE/settings.json": "ba6ba4fd825694f5e7d833f0b1c51e0d9584385a8b8847e4d10c53f8d4a38995",
+        "<USER_HOME>/Documents/nes-3d-raycast-reverse-engineer/nes-hangar/artifacts/interaction-fix/hangar-ntsc.nes": "0ecf59bf29efb03e5619a30d8bf890500a96e505a18f661920ab02fdbc9bd086",
+        "<USER_HOME>/Documents/nes-3d-raycast-reverse-engineer/nes-hangar/artifacts/interaction-fix/hangar.lbl": "ee8748b6af3baf790043cb239711a46436710d463a21a39d4d1fa4b679b99aa0"
+      },
+      "protectedAfter": {
+        "<USER_HOME>/Library/Application Support/MesenCE/settings.json": "ba6ba4fd825694f5e7d833f0b1c51e0d9584385a8b8847e4d10c53f8d4a38995",
+        "<USER_HOME>/Documents/nes-3d-raycast-reverse-engineer/nes-hangar/artifacts/interaction-fix/hangar-ntsc.nes": "0ecf59bf29efb03e5619a30d8bf890500a96e505a18f661920ab02fdbc9bd086",
+        "<USER_HOME>/Documents/nes-3d-raycast-reverse-engineer/nes-hangar/artifacts/interaction-fix/hangar.lbl": "ee8748b6af3baf790043cb239711a46436710d463a21a39d4d1fa4b679b99aa0"
+      },
+      "mesenSha256": "ce4446a92096a024145e6ed2793cce8b489460bb3ac034cd9d1d77d96109fced",
+      "driverSha256": "003cacc04dae02e1f694bf069bddc97a47879230770472ae85347057cf35d76a",
+      "observerSha256": "59bf11dd2059f57f22ced39f1f6f8a860381e1cd110a1682d0cd7510fc3dad01",
+      "stockNtsc": true,
+      "extraScanlines": 0,
+      "romUnmodified": true,
+      "scope": "Controlled safe idle RAM start fixtures followed by controller-only movement.\nNo ROM edits, no changes to personal emulator settings, no state injection during a motion.\n"
+    }
+  },
+  "endToEnd": {
+    "jsnes": {
+      "passed": true,
+      "checks": {
+        "count": 30,
+        "failures": 0
+      },
+      "runs": [
+        {
+          "choice": "ON",
+          "frames": 1486,
+          "phases": 0
+        },
+        {
+          "choice": "OFF",
+          "frames": 19748,
+          "phases": 151
+        }
+      ],
+      "evidence": "verification/interaction-browser.json",
+      "scope": "Pinned stock JSNES core. Controller-only guide selection, launch, shoot, pause/resume, natural death retry, full accepted completion route and level restart; final public CPU reset interrupt API verifies cold default ON. Read-only CPU write observer; no game or emulator state injection. CPU timing/PPU deadline conclusions require the separate Mesen checks."
+    },
+    "mesen": {
+      "passed": true,
+      "checks": {
+        "controllerOnlyRouteCompleted": true,
+        "noTimeouts": true,
+        "noRuntimeErrors": true,
+        "nmiNeverNested": true,
+        "exactPublishedWorlds": true,
+        "closedDoorThirdContextObserved": true,
+        "closedDoorEnemyCannotAttackOrTarget": true,
+        "thirdShotDamagesPlayer": true,
+        "thirdNeverCollectsItem": true,
+        "thirdDefeatedExactlyOnce": true,
+        "thirdReceivesThreeHits": true,
+        "threeContextStatesObserved": true,
+        "allRenderCapacityFits": true,
+        "thirdStaysInsideMovementBox": true,
+        "thirdActuallyMoves": true,
+        "allThreeKilled": true,
+        "nineHits": true,
+        "nominalAmmoBalance": true,
+        "bothPickupsExactlyOnce": true,
+        "thirdDeadOnReturn": true,
+        "resultsThreeKillsTwoItems": true,
+        "resetRestoresAllEnemies": true,
+        "resetRestoresAmmoDoorAndCounts": true,
+        "pauseFreezeAndResume": true,
+        "pauseEnteredDuringEnemyWarning": true,
+        "freshStartPagesAndNoCarry": true
+      },
+      "frames": 15121,
+      "phaseCount": 161,
+      "errors": [],
+      "pixelChecks": [
+        {
+          "id": "game-held-start",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "first-gameplay",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "pause-initial-music-enter",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "pause-initial-music-held",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "pause-initial-music-ignored-inputs",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "pause-initial-music-resume",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "spawn-idle",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "pause-enemy-warning-enter",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "pause-enemy-warning-held",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "pause-enemy-warning-ignored-inputs",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "pause-enemy-warning-resume",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "first-zombie-killed",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "medkit-collected",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "dry-placements-view",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "ammo-collected",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "second-zombie-killed",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "pause-slime-music-enter",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "pause-slime-music-held",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "pause-slime-music-ignored-inputs",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "pause-slime-music-resume",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "slime-one-dose",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "door-closed-view",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "door-closed-push",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "door-a-left-slide",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "door-a-right-slide",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "door-use-ready",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "door-fresh-use",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "door-wait-published-open",
+          "visibleDoor": 1,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "door-open-settled",
+          "visibleDoor": 1,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "first-open-doorway",
+          "visibleDoor": 1,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "third-live-view",
+          "visibleDoor": 1,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "third-wait-shot",
+          "visibleDoor": 1,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "third-zombie-killed",
+          "visibleDoor": 1,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "third-corpse-view",
+          "visibleDoor": 1,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "pre-exit-west-side",
+          "visibleDoor": 1,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "exit-chamber",
+          "visibleDoor": 1,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "critical-chamber-original-worst",
+          "visibleDoor": 1,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "critical-chamber-center-view",
+          "visibleDoor": 1,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "first-encounter-dead-reloaded",
+          "visibleDoor": 1,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "third-encounter-dead-reloaded",
+          "visibleDoor": 1,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "coarse-settled",
+          "visibleDoor": 1,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "precise-settled",
+          "visibleDoor": 1,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "reset-start",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        },
+        {
+          "id": "final-spawn",
+          "visibleDoor": 0,
+          "pixelMismatches": 0,
+          "paletteMatches": true,
+          "passed": true
+        }
+      ],
+      "eventCounts": {
+        "zombie_hit": 9,
+        "zombie_defeat": 3,
+        "player_damage": 9,
+        "ammo_collect": 1,
+        "pistol_shot_accepted": 9
+      },
+      "maximumPlanes": 33,
+      "maximumPatterns": 113,
+      "maximumSpans": 8,
+      "scope": "Controller-only actual ROM in stock NTSC Mesen, zero extra scanlines, independent unfiltered geometry oracle; not a physical-console test.",
+      "pauseChecks": [
+        {
+          "name": "initial-music",
+          "heldFrames": 124,
+          "checks": {
+            "allSamplesPaused": true,
+            "fieldsFrozen": true,
+            "noWorldPublication": true,
+            "picturesFrozen": true,
+            "ppuFrozen": true,
+            "freshStartResumes": true
+          },
+          "mismatches": []
+        },
+        {
+          "name": "enemy-warning",
+          "heldFrames": 94,
+          "checks": {
+            "allSamplesPaused": true,
+            "fieldsFrozen": true,
+            "noWorldPublication": true,
+            "picturesFrozen": true,
+            "ppuFrozen": true,
+            "freshStartResumes": true
+          },
+          "mismatches": []
+        },
+        {
+          "name": "slime-music",
+          "heldFrames": 94,
+          "checks": {
+            "allSamplesPaused": true,
+            "fieldsFrozen": true,
+            "noWorldPublication": true,
+            "picturesFrozen": true,
+            "ppuFrozen": true,
+            "freshStartResumes": true
+          },
+          "mismatches": []
+        }
+      ],
+      "timing": {
+        "nmiCycles": {
+          "count": 14745,
+          "minimum": 495,
+          "median": 3996,
+          "mean": 3987.895422177009,
+          "p95": 6168,
+          "maximum": 18662
+        },
+        "ppuWritesObserved": 14040,
+        "lastPpuMinimumMargin": {
+          "scanline": 260,
+          "dot": 171,
+          "marginCpuCycles": 56.666666666666664
+        },
+        "warningUploadNmis": [
+          {
+            "frame": 2701,
+            "cycles": 3547,
+            "scanline": 246,
+            "dot": 208,
+            "marginCpuCycles": 1635.6666666666667
+          },
+          {
+            "frame": 2956,
+            "cycles": 3866,
+            "scanline": 246,
+            "dot": 200,
+            "marginCpuCycles": 1638.3333333333333
+          },
+          {
+            "frame": 5731,
+            "cycles": 3330,
+            "scanline": 246,
+            "dot": 205,
+            "marginCpuCycles": 1636.6666666666667
+          },
+          {
+            "frame": 6092,
+            "cycles": 3661,
+            "scanline": 246,
+            "dot": 206,
+            "marginCpuCycles": 1636.3333333333333
+          },
+          {
+            "frame": 7633,
+            "cycles": 3276,
+            "scanline": 246,
+            "dot": 202,
+            "marginCpuCycles": 1637.6666666666667
+          }
+        ]
+      },
+      "phasePerformance": [
+        {
+          "id": "power-on-held-start",
+          "frames": 120,
+          "publications": 0,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": null
+        },
+        {
+          "id": "first-page-ignore-controls",
+          "frames": 60,
+          "publications": 0,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": null
+        },
+        {
+          "id": "first-page-idle",
+          "frames": 30,
+          "publications": 0,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": null
+        },
+        {
+          "id": "advance-to-guide-held-start",
+          "frames": 90,
+          "publications": 0,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": null
+        },
+        {
+          "id": "guide-ignore-controls",
+          "frames": 30,
+          "publications": 0,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": null
+        },
+        {
+          "id": "guide-idle",
+          "frames": 30,
+          "publications": 0,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": null
+        },
+        {
+          "id": "start-loading",
+          "frames": 51,
+          "publications": 0,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": {
+            "count": 1,
+            "minimum": 866770,
+            "median": 866770,
+            "mean": 866770,
+            "p95": 866770,
+            "maximum": 866770
+          }
+        },
+        {
+          "id": "game-held-start",
+          "frames": 60,
+          "publications": 1,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": null
+        },
+        {
+          "id": "pause-initial-music-held",
+          "frames": 90,
+          "publications": 0,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": null
+        },
+        {
+          "id": "pause-initial-music-ignored-inputs",
+          "frames": 30,
+          "publications": 0,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": null
+        },
+        {
+          "id": "spawn-idle",
+          "frames": 120,
+          "publications": 0,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": null
+        },
+        {
+          "id": "opening-1",
+          "frames": 363,
+          "publications": 10,
+          "publishIntervalsFrames": {
+            "count": 9,
+            "minimum": 20,
+            "median": 35,
+            "mean": 33.55555555555556,
+            "p95": 44,
+            "maximum": 44
+          },
+          "renderCpuCycles": {
+            "count": 12,
+            "minimum": 465832,
+            "median": 877195.0,
+            "mean": 816536.4166666666,
+            "p95": 1078506,
+            "maximum": 1078506
+          }
+        },
+        {
+          "id": "opening-2",
+          "frames": 282,
+          "publications": 11,
+          "publishIntervalsFrames": {
+            "count": 10,
+            "minimum": 22,
+            "median": 27.0,
+            "mean": 26.6,
+            "p95": 33,
+            "maximum": 33
+          },
+          "renderCpuCycles": {
+            "count": 10,
+            "minimum": 594574,
+            "median": 653178.0,
+            "mean": 678629.9,
+            "p95": 904548,
+            "maximum": 904548
+          }
+        },
+        {
+          "id": "opening-3",
+          "frames": 339,
+          "publications": 12,
+          "publishIntervalsFrames": {
+            "count": 11,
+            "minimum": 18,
+            "median": 27,
+            "mean": 28.454545454545453,
+            "p95": 36,
+            "maximum": 36
+          },
+          "renderCpuCycles": {
+            "count": 12,
+            "minimum": 517943,
+            "median": 706393.0,
+            "mean": 707250.5833333334,
+            "p95": 863893,
+            "maximum": 863893
+          }
+        },
+        {
+          "id": "opening-4",
+          "frames": 96,
+          "publications": 4,
+          "publishIntervalsFrames": {
+            "count": 3,
+            "minimum": 18,
+            "median": 24,
+            "mean": 23.333333333333332,
+            "p95": 28,
+            "maximum": 28
+          },
+          "renderCpuCycles": {
+            "count": 4,
+            "minimum": 533624,
+            "median": 626039.0,
+            "mean": 667015.75,
+            "p95": 882361,
+            "maximum": 882361
+          }
+        },
+        {
+          "id": "opening-5",
+          "frames": 101,
+          "publications": 3,
+          "publishIntervalsFrames": {
+            "count": 2,
+            "minimum": 22,
+            "median": 22.5,
+            "mean": 22.5,
+            "p95": 23,
+            "maximum": 23
+          },
+          "renderCpuCycles": {
+            "count": 4,
+            "minimum": 587536,
+            "median": 640531.0,
+            "mean": 661554.75,
+            "p95": 777621,
+            "maximum": 777621
+          }
+        },
+        {
+          "id": "opening-6",
+          "frames": 151,
+          "publications": 6,
+          "publishIntervalsFrames": {
+            "count": 5,
+            "minimum": 18,
+            "median": 27,
+            "mean": 27.4,
+            "p95": 40,
+            "maximum": 40
+          },
+          "renderCpuCycles": {
+            "count": 5,
+            "minimum": 568622,
+            "median": 614272,
+            "mean": 761312.8,
+            "p95": 1090403,
+            "maximum": 1090403
+          }
+        },
+        {
+          "id": "opening-7",
+          "frames": 288,
+          "publications": 8,
+          "publishIntervalsFrames": {
+            "count": 7,
+            "minimum": 28,
+            "median": 31,
+            "mean": 33.285714285714285,
+            "p95": 46,
+            "maximum": 46
+          },
+          "renderCpuCycles": {
+            "count": 8,
+            "minimum": 638742,
+            "median": 811974.5,
+            "mean": 806704.5,
+            "p95": 1034548,
+            "maximum": 1034548
+          }
+        },
+        {
+          "id": "opening-8",
+          "frames": 183,
+          "publications": 8,
+          "publishIntervalsFrames": {
+            "count": 7,
+            "minimum": 19,
+            "median": 23,
+            "mean": 23.285714285714285,
+            "p95": 28,
+            "maximum": 28
+          },
+          "renderCpuCycles": {
+            "count": 8,
+            "minimum": 534902,
+            "median": 588479.5,
+            "mean": 610609.25,
+            "p95": 734833,
+            "maximum": 734833
+          }
+        },
+        {
+          "id": "first-zombie-face",
+          "frames": 148,
+          "publications": 6,
+          "publishIntervalsFrames": {
+            "count": 5,
+            "minimum": 20,
+            "median": 23,
+            "mean": 22.2,
+            "p95": 23,
+            "maximum": 23
+          },
+          "renderCpuCycles": {
+            "count": 7,
+            "minimum": 536958,
+            "median": 555698,
+            "mean": 607141.4285714285,
+            "p95": 838405,
+            "maximum": 838405
+          }
+        },
+        {
+          "id": "pause-enemy-warning-held",
+          "frames": 60,
+          "publications": 0,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": null
+        },
+        {
+          "id": "pause-enemy-warning-ignored-inputs",
+          "frames": 30,
+          "publications": 0,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": null
+        },
+        {
+          "id": "first-zombie-hits",
+          "frames": 209,
+          "publications": 4,
+          "publishIntervalsFrames": {
+            "count": 3,
+            "minimum": 23,
+            "median": 24,
+            "mean": 65,
+            "p95": 148,
+            "maximum": 148
+          },
+          "renderCpuCycles": {
+            "count": 2,
+            "minimum": 613027,
+            "median": 613363.0,
+            "mean": 613363,
+            "p95": 613699,
+            "maximum": 613699
+          }
+        },
+        {
+          "id": "first-zombie-killed",
+          "frames": 101,
+          "publications": 2,
+          "publishIntervalsFrames": {
+            "count": 1,
+            "minimum": 36,
+            "median": 36,
+            "mean": 36,
+            "p95": 36,
+            "maximum": 36
+          },
+          "renderCpuCycles": {
+            "count": 3,
+            "minimum": 617092,
+            "median": 636397,
+            "mean": 722314.3333333334,
+            "p95": 913454,
+            "maximum": 913454
+          }
+        },
+        {
+          "id": "medkit-1",
+          "frames": 283,
+          "publications": 11,
+          "publishIntervalsFrames": {
+            "count": 10,
+            "minimum": 19,
+            "median": 23.5,
+            "mean": 24.7,
+            "p95": 35,
+            "maximum": 35
+          },
+          "renderCpuCycles": {
+            "count": 11,
+            "minimum": 534711,
+            "median": 582436,
+            "mean": 638032.8181818182,
+            "p95": 878362,
+            "maximum": 878362
+          }
+        },
+        {
+          "id": "next-passage-1",
+          "frames": 530,
+          "publications": 25,
+          "publishIntervalsFrames": {
+            "count": 24,
+            "minimum": 15,
+            "median": 21.0,
+            "mean": 21.666666666666668,
+            "p95": 29,
+            "maximum": 34
+          },
+          "renderCpuCycles": {
+            "count": 25,
+            "minimum": 429341,
+            "median": 525738,
+            "mean": 555771.72,
+            "p95": 816113,
+            "maximum": 879221
+          }
+        },
+        {
+          "id": "next-passage-2",
+          "frames": 551,
+          "publications": 21,
+          "publishIntervalsFrames": {
+            "count": 20,
+            "minimum": 17,
+            "median": 23.0,
+            "mean": 25.6,
+            "p95": 38,
+            "maximum": 38
+          },
+          "renderCpuCycles": {
+            "count": 22,
+            "minimum": 437878,
+            "median": 587693.0,
+            "mean": 687245.8636363636,
+            "p95": 971963,
+            "maximum": 1173758
+          }
+        },
+        {
+          "id": "next-passage-3",
+          "frames": 77,
+          "publications": 2,
+          "publishIntervalsFrames": {
+            "count": 1,
+            "minimum": 47,
+            "median": 47,
+            "mean": 47,
+            "p95": 47,
+            "maximum": 47
+          },
+          "renderCpuCycles": {
+            "count": 2,
+            "minimum": 733735,
+            "median": 942803.0,
+            "mean": 942803,
+            "p95": 1151871,
+            "maximum": 1151871
+          }
+        },
+        {
+          "id": "next-passage-4",
+          "frames": 126,
+          "publications": 1,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": {
+            "count": 2,
+            "minimum": 1336214,
+            "median": 1560732.0,
+            "mean": 1560732,
+            "p95": 1785250,
+            "maximum": 1785250
+          }
+        },
+        {
+          "id": "next-passage-5",
+          "frames": 176,
+          "publications": 3,
+          "publishIntervalsFrames": {
+            "count": 2,
+            "minimum": 39,
+            "median": 40.0,
+            "mean": 40,
+            "p95": 41,
+            "maximum": 41
+          },
+          "renderCpuCycles": {
+            "count": 3,
+            "minimum": 978136,
+            "median": 979352,
+            "mean": 1264457.6666666667,
+            "p95": 1835885,
+            "maximum": 1835885
+          }
+        },
+        {
+          "id": "dry-placements-face",
+          "frames": 114,
+          "publications": 2,
+          "publishIntervalsFrames": {
+            "count": 1,
+            "minimum": 40,
+            "median": 40,
+            "mean": 40,
+            "p95": 40,
+            "maximum": 40
+          },
+          "renderCpuCycles": {
+            "count": 3,
+            "minimum": 1046353,
+            "median": 1091389,
+            "mean": 1192398.3333333333,
+            "p95": 1439453,
+            "maximum": 1439453
+          }
+        },
+        {
+          "id": "dry-placements-view",
+          "frames": 59,
+          "publications": 1,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": null
+        },
+        {
+          "id": "clip-approach-1",
+          "frames": 109,
+          "publications": 2,
+          "publishIntervalsFrames": {
+            "count": 1,
+            "minimum": 101,
+            "median": 101,
+            "mean": 101,
+            "p95": 101,
+            "maximum": 101
+          },
+          "renderCpuCycles": {
+            "count": 2,
+            "minimum": 1752277,
+            "median": 1902701.0,
+            "mean": 1902701,
+            "p95": 2053125,
+            "maximum": 2053125
+          }
+        },
+        {
+          "id": "clip-approach-2",
+          "frames": 217,
+          "publications": 4,
+          "publishIntervalsFrames": {
+            "count": 3,
+            "minimum": 39,
+            "median": 42,
+            "mean": 43,
+            "p95": 48,
+            "maximum": 48
+          },
+          "renderCpuCycles": {
+            "count": 4,
+            "minimum": 991082,
+            "median": 1149662.0,
+            "mean": 1139062.5,
+            "p95": 1265844,
+            "maximum": 1265844
+          }
+        },
+        {
+          "id": "ammo-collected-face",
+          "frames": 126,
+          "publications": 4,
+          "publishIntervalsFrames": {
+            "count": 3,
+            "minimum": 26,
+            "median": 28,
+            "mean": 28.666666666666668,
+            "p95": 32,
+            "maximum": 32
+          },
+          "renderCpuCycles": {
+            "count": 4,
+            "minimum": 695452,
+            "median": 745486.0,
+            "mean": 1011405,
+            "p95": 1859196,
+            "maximum": 1859196
+          }
+        },
+        {
+          "id": "ammo-collected",
+          "frames": 65,
+          "publications": 0,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": {
+            "count": 1,
+            "minimum": 1071483,
+            "median": 1071483,
+            "mean": 1071483,
+            "p95": 1071483,
+            "maximum": 1071483
+          }
+        },
+        {
+          "id": "second-fight-approach-1",
+          "frames": 224,
+          "publications": 6,
+          "publishIntervalsFrames": {
+            "count": 5,
+            "minimum": 41,
+            "median": 42,
+            "mean": 42.6,
+            "p95": 44,
+            "maximum": 44
+          },
+          "renderCpuCycles": {
+            "count": 5,
+            "minimum": 979658,
+            "median": 1098728,
+            "mean": 1098265,
+            "p95": 1162069,
+            "maximum": 1162069
+          }
+        },
+        {
+          "id": "second-fight-approach-2",
+          "frames": 53,
+          "publications": 1,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": {
+            "count": 1,
+            "minimum": 1181605,
+            "median": 1181605,
+            "mean": 1181605,
+            "p95": 1181605,
+            "maximum": 1181605
+          }
+        },
+        {
+          "id": "second-zombie-killed",
+          "frames": 290,
+          "publications": 6,
+          "publishIntervalsFrames": {
+            "count": 5,
+            "minimum": 34,
+            "median": 40,
+            "mean": 48,
+            "p95": 84,
+            "maximum": 84
+          },
+          "renderCpuCycles": {
+            "count": 7,
+            "minimum": 838960,
+            "median": 1053422,
+            "mean": 1287390,
+            "p95": 2079775,
+            "maximum": 2079775
+          }
+        },
+        {
+          "id": "slime-1",
+          "frames": 167,
+          "publications": 1,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": {
+            "count": 2,
+            "minimum": 1163855,
+            "median": 1214455.0,
+            "mean": 1214455,
+            "p95": 1265055,
+            "maximum": 1265055
+          }
+        },
+        {
+          "id": "slime-2",
+          "frames": 191,
+          "publications": 6,
+          "publishIntervalsFrames": {
+            "count": 5,
+            "minimum": 23,
+            "median": 30,
+            "mean": 33,
+            "p95": 58,
+            "maximum": 58
+          },
+          "renderCpuCycles": {
+            "count": 6,
+            "minimum": 605885,
+            "median": 757062.5,
+            "mean": 856856,
+            "p95": 1490068,
+            "maximum": 1490068
+          }
+        },
+        {
+          "id": "pause-slime-music-held",
+          "frames": 60,
+          "publications": 0,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": null
+        },
+        {
+          "id": "pause-slime-music-ignored-inputs",
+          "frames": 30,
+          "publications": 0,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": null
+        },
+        {
+          "id": "slime-one-dose",
+          "frames": 35,
+          "publications": 2,
+          "publishIntervalsFrames": {
+            "count": 1,
+            "minimum": 22,
+            "median": 22,
+            "mean": 22,
+            "p95": 22,
+            "maximum": 22
+          },
+          "renderCpuCycles": null
+        },
+        {
+          "id": "extension-1",
+          "frames": 244,
+          "publications": 8,
+          "publishIntervalsFrames": {
+            "count": 7,
+            "minimum": 24,
+            "median": 26,
+            "mean": 28.142857142857142,
+            "p95": 39,
+            "maximum": 39
+          },
+          "renderCpuCycles": {
+            "count": 10,
+            "minimum": 581705,
+            "median": 662711.0,
+            "mean": 695979.6,
+            "p95": 993839,
+            "maximum": 993839
+          }
+        },
+        {
+          "id": "extension-2",
+          "frames": 125,
+          "publications": 5,
+          "publishIntervalsFrames": {
+            "count": 4,
+            "minimum": 22,
+            "median": 26.5,
+            "mean": 26.5,
+            "p95": 31,
+            "maximum": 31
+          },
+          "renderCpuCycles": {
+            "count": 4,
+            "minimum": 553533,
+            "median": 668373.0,
+            "mean": 682347.25,
+            "p95": 839110,
+            "maximum": 839110
+          }
+        },
+        {
+          "id": "extension-3",
+          "frames": 144,
+          "publications": 7,
+          "publishIntervalsFrames": {
+            "count": 6,
+            "minimum": 17,
+            "median": 19.0,
+            "mean": 19.5,
+            "p95": 22,
+            "maximum": 22
+          },
+          "renderCpuCycles": {
+            "count": 7,
+            "minimum": 477923,
+            "median": 511880,
+            "mean": 556428.7142857143,
+            "p95": 856716,
+            "maximum": 856716
+          }
+        },
+        {
+          "id": "door-held-a-approach",
+          "frames": 58,
+          "publications": 1,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": {
+            "count": 3,
+            "minimum": 425429,
+            "median": 455538,
+            "mean": 572797.3333333334,
+            "p95": 837425,
+            "maximum": 837425
+          }
+        },
+        {
+          "id": "door-closed-push",
+          "frames": 90,
+          "publications": 1,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": {
+            "count": 1,
+            "minimum": 358367,
+            "median": 358367,
+            "mean": 358367,
+            "p95": 358367,
+            "maximum": 358367
+          }
+        },
+        {
+          "id": "door-wait-published-open",
+          "frames": 39,
+          "publications": 0,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": null
+        },
+        {
+          "id": "first-open-doorway",
+          "frames": 39,
+          "publications": 1,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": {
+            "count": 1,
+            "minimum": 554219,
+            "median": 554219,
+            "mean": 554219,
+            "p95": 554219,
+            "maximum": 554219
+          }
+        },
+        {
+          "id": "third-live-view",
+          "frames": 33,
+          "publications": 1,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": {
+            "count": 1,
+            "minimum": 612397,
+            "median": 612397,
+            "mean": 612397,
+            "p95": 612397,
+            "maximum": 612397
+          }
+        },
+        {
+          "id": "third-wait-shot",
+          "frames": 142,
+          "publications": 6,
+          "publishIntervalsFrames": {
+            "count": 5,
+            "minimum": 24,
+            "median": 24,
+            "mean": 24,
+            "p95": 24,
+            "maximum": 24
+          },
+          "renderCpuCycles": {
+            "count": 4,
+            "minimum": 622498,
+            "median": 622860.5,
+            "mean": 622823.5,
+            "p95": 623075,
+            "maximum": 623075
+          }
+        },
+        {
+          "id": "third-zombie-killed",
+          "frames": 31,
+          "publications": 0,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": {
+            "count": 1,
+            "minimum": 603570,
+            "median": 603570,
+            "mean": 603570,
+            "p95": 603570,
+            "maximum": 603570
+          }
+        },
+        {
+          "id": "third-corpse-view",
+          "frames": 30,
+          "publications": 1,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": null
+        },
+        {
+          "id": "pre-exit-west-1",
+          "frames": 96,
+          "publications": 3,
+          "publishIntervalsFrames": {
+            "count": 2,
+            "minimum": 24,
+            "median": 24.5,
+            "mean": 24.5,
+            "p95": 25,
+            "maximum": 25
+          },
+          "renderCpuCycles": {
+            "count": 4,
+            "minimum": 603404,
+            "median": 626815.0,
+            "mean": 759241,
+            "p95": 1179930,
+            "maximum": 1179930
+          }
+        },
+        {
+          "id": "pre-exit-west-2",
+          "frames": 299,
+          "publications": 10,
+          "publishIntervalsFrames": {
+            "count": 9,
+            "minimum": 20,
+            "median": 28,
+            "mean": 28.666666666666668,
+            "p95": 43,
+            "maximum": 43
+          },
+          "renderCpuCycles": {
+            "count": 11,
+            "minimum": 534423,
+            "median": 664535,
+            "mean": 693273.5454545454,
+            "p95": 1066020,
+            "maximum": 1066020
+          }
+        },
+        {
+          "id": "pre-exit-west-side-face",
+          "frames": 273,
+          "publications": 14,
+          "publishIntervalsFrames": {
+            "count": 13,
+            "minimum": 12,
+            "median": 19,
+            "mean": 19.384615384615383,
+            "p95": 27,
+            "maximum": 27
+          },
+          "renderCpuCycles": {
+            "count": 13,
+            "minimum": 391634,
+            "median": 483976,
+            "mean": 543866.1538461539,
+            "p95": 1087069,
+            "maximum": 1087069
+          }
+        },
+        {
+          "id": "pre-exit-west-side",
+          "frames": 30,
+          "publications": 0,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": null
+        },
+        {
+          "id": "final-room-1",
+          "frames": 170,
+          "publications": 8,
+          "publishIntervalsFrames": {
+            "count": 7,
+            "minimum": 17,
+            "median": 18,
+            "mean": 21.571428571428573,
+            "p95": 32,
+            "maximum": 32
+          },
+          "renderCpuCycles": {
+            "count": 9,
+            "minimum": 444160,
+            "median": 499170,
+            "mean": 550404.4444444445,
+            "p95": 712613,
+            "maximum": 712613
+          }
+        },
+        {
+          "id": "final-room-2",
+          "frames": 243,
+          "publications": 9,
+          "publishIntervalsFrames": {
+            "count": 8,
+            "minimum": 23,
+            "median": 25.5,
+            "mean": 28.375,
+            "p95": 45,
+            "maximum": 45
+          },
+          "renderCpuCycles": {
+            "count": 8,
+            "minimum": 563649,
+            "median": 671886.5,
+            "mean": 762044.5,
+            "p95": 1137656,
+            "maximum": 1137656
+          }
+        },
+        {
+          "id": "final-room-3",
+          "frames": 39,
+          "publications": 1,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": {
+            "count": 1,
+            "minimum": 664741,
+            "median": 664741,
+            "mean": 664741,
+            "p95": 664741,
+            "maximum": 664741
+          }
+        },
+        {
+          "id": "final-room-4",
+          "frames": 38,
+          "publications": 1,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": {
+            "count": 2,
+            "minimum": 521520,
+            "median": 529947.5,
+            "mean": 529947.5,
+            "p95": 538375,
+            "maximum": 538375
+          }
+        },
+        {
+          "id": "final-room-5",
+          "frames": 38,
+          "publications": 2,
+          "publishIntervalsFrames": {
+            "count": 1,
+            "minimum": 23,
+            "median": 23,
+            "mean": 23,
+            "p95": 23,
+            "maximum": 23
+          },
+          "renderCpuCycles": {
+            "count": 2,
+            "minimum": 472547,
+            "median": 510320.0,
+            "mean": 510320,
+            "p95": 548093,
+            "maximum": 548093
+          }
+        },
+        {
+          "id": "final-room-6",
+          "frames": 39,
+          "publications": 2,
+          "publishIntervalsFrames": {
+            "count": 1,
+            "minimum": 18,
+            "median": 18,
+            "mean": 18,
+            "p95": 18,
+            "maximum": 18
+          },
+          "renderCpuCycles": {
+            "count": 2,
+            "minimum": 498698,
+            "median": 548672.5,
+            "mean": 548672.5,
+            "p95": 598647,
+            "maximum": 598647
+          }
+        },
+        {
+          "id": "exit-chamber-face",
+          "frames": 152,
+          "publications": 7,
+          "publishIntervalsFrames": {
+            "count": 6,
+            "minimum": 21,
+            "median": 23.5,
+            "mean": 23.833333333333332,
+            "p95": 27,
+            "maximum": 27
+          },
+          "renderCpuCycles": {
+            "count": 6,
+            "minimum": 541914,
+            "median": 586745.0,
+            "mean": 665088.5,
+            "p95": 1119218,
+            "maximum": 1119218
+          }
+        },
+        {
+          "id": "exit-chamber",
+          "frames": 31,
+          "publications": 0,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": null
+        },
+        {
+          "id": "critical-chamber-west-1",
+          "frames": 98,
+          "publications": 4,
+          "publishIntervalsFrames": {
+            "count": 3,
+            "minimum": 25,
+            "median": 29,
+            "mean": 29.333333333333332,
+            "p95": 34,
+            "maximum": 34
+          },
+          "renderCpuCycles": {
+            "count": 4,
+            "minimum": 599334,
+            "median": 615755.0,
+            "mean": 695461.75,
+            "p95": 951003,
+            "maximum": 951003
+          }
+        },
+        {
+          "id": "critical-chamber-original-worst-face",
+          "frames": 212,
+          "publications": 8,
+          "publishIntervalsFrames": {
+            "count": 7,
+            "minimum": 18,
+            "median": 25,
+            "mean": 26,
+            "p95": 37,
+            "maximum": 37
+          },
+          "renderCpuCycles": {
+            "count": 8,
+            "minimum": 583867,
+            "median": 654802.0,
+            "mean": 807662.875,
+            "p95": 1726167,
+            "maximum": 1726167
+          }
+        },
+        {
+          "id": "critical-chamber-original-worst",
+          "frames": 64,
+          "publications": 0,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": null
+        },
+        {
+          "id": "critical-chamber-center-1",
+          "frames": 282,
+          "publications": 10,
+          "publishIntervalsFrames": {
+            "count": 9,
+            "minimum": 14,
+            "median": 25,
+            "mean": 28.88888888888889,
+            "p95": 55,
+            "maximum": 55
+          },
+          "renderCpuCycles": {
+            "count": 11,
+            "minimum": 502706,
+            "median": 630553,
+            "mean": 703943.2727272727,
+            "p95": 1041005,
+            "maximum": 1041005
+          }
+        },
+        {
+          "id": "critical-chamber-center-view-face",
+          "frames": 278,
+          "publications": 11,
+          "publishIntervalsFrames": {
+            "count": 10,
+            "minimum": 17,
+            "median": 23.5,
+            "mean": 24.5,
+            "p95": 34,
+            "maximum": 34
+          },
+          "renderCpuCycles": {
+            "count": 11,
+            "minimum": 547833,
+            "median": 568135,
+            "mean": 757469.8181818182,
+            "p95": 1798839,
+            "maximum": 1798839
+          }
+        },
+        {
+          "id": "critical-chamber-center-view",
+          "frames": 74,
+          "publications": 1,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": null
+        },
+        {
+          "id": "backtrack-1",
+          "frames": 124,
+          "publications": 2,
+          "publishIntervalsFrames": {
+            "count": 1,
+            "minimum": 82,
+            "median": 82,
+            "mean": 82,
+            "p95": 82,
+            "maximum": 82
+          },
+          "renderCpuCycles": {
+            "count": 2,
+            "minimum": 1517003,
+            "median": 1658099.0,
+            "mean": 1658099,
+            "p95": 1799195,
+            "maximum": 1799195
+          }
+        },
+        {
+          "id": "backtrack-2",
+          "frames": 77,
+          "publications": 2,
+          "publishIntervalsFrames": {
+            "count": 1,
+            "minimum": 35,
+            "median": 35,
+            "mean": 35,
+            "p95": 35,
+            "maximum": 35
+          },
+          "renderCpuCycles": {
+            "count": 2,
+            "minimum": 865351,
+            "median": 1300544.0,
+            "mean": 1300544,
+            "p95": 1735737,
+            "maximum": 1735737
+          }
+        },
+        {
+          "id": "backtrack-3",
+          "frames": 153,
+          "publications": 4,
+          "publishIntervalsFrames": {
+            "count": 3,
+            "minimum": 31,
+            "median": 35,
+            "mean": 34.333333333333336,
+            "p95": 37,
+            "maximum": 37
+          },
+          "renderCpuCycles": {
+            "count": 4,
+            "minimum": 890534,
+            "median": 911825.0,
+            "mean": 1028015.75,
+            "p95": 1397879,
+            "maximum": 1397879
+          }
+        },
+        {
+          "id": "backtrack-4",
+          "frames": 116,
+          "publications": 2,
+          "publishIntervalsFrames": {
+            "count": 1,
+            "minimum": 37,
+            "median": 37,
+            "mean": 37,
+            "p95": 37,
+            "maximum": 37
+          },
+          "renderCpuCycles": {
+            "count": 3,
+            "minimum": 922420,
+            "median": 930126,
+            "mean": 1061290,
+            "p95": 1331324,
+            "maximum": 1331324
+          }
+        },
+        {
+          "id": "backtrack-5",
+          "frames": 96,
+          "publications": 2,
+          "publishIntervalsFrames": {
+            "count": 1,
+            "minimum": 52,
+            "median": 52,
+            "mean": 52,
+            "p95": 52,
+            "maximum": 52
+          },
+          "renderCpuCycles": {
+            "count": 2,
+            "minimum": 936095,
+            "median": 1128884.5,
+            "mean": 1128884.5,
+            "p95": 1321674,
+            "maximum": 1321674
+          }
+        },
+        {
+          "id": "backtrack-6",
+          "frames": 144,
+          "publications": 4,
+          "publishIntervalsFrames": {
+            "count": 3,
+            "minimum": 40,
+            "median": 41,
+            "mean": 44,
+            "p95": 51,
+            "maximum": 51
+          },
+          "renderCpuCycles": {
+            "count": 3,
+            "minimum": 967881,
+            "median": 974215,
+            "mean": 1169555.6666666667,
+            "p95": 1566571,
+            "maximum": 1566571
+          }
+        },
+        {
+          "id": "backtrack-7",
+          "frames": 67,
+          "publications": 1,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": {
+            "count": 1,
+            "minimum": 1671744,
+            "median": 1671744,
+            "mean": 1671744,
+            "p95": 1671744,
+            "maximum": 1671744
+          }
+        },
+        {
+          "id": "backtrack-8",
+          "frames": 176,
+          "publications": 3,
+          "publishIntervalsFrames": {
+            "count": 2,
+            "minimum": 51,
+            "median": 54.5,
+            "mean": 54.5,
+            "p95": 58,
+            "maximum": 58
+          },
+          "renderCpuCycles": {
+            "count": 3,
+            "minimum": 1178177,
+            "median": 1372134,
+            "mean": 1337975.3333333333,
+            "p95": 1463615,
+            "maximum": 1463615
+          }
+        },
+        {
+          "id": "backtrack-9",
+          "frames": 199,
+          "publications": 4,
+          "publishIntervalsFrames": {
+            "count": 3,
+            "minimum": 38,
+            "median": 39,
+            "mean": 41.333333333333336,
+            "p95": 47,
+            "maximum": 47
+          },
+          "renderCpuCycles": {
+            "count": 5,
+            "minimum": 898569,
+            "median": 1156273,
+            "mean": 1091402.6,
+            "p95": 1225246,
+            "maximum": 1225246
+          }
+        },
+        {
+          "id": "backtrack-10",
+          "frames": 164,
+          "publications": 4,
+          "publishIntervalsFrames": {
+            "count": 3,
+            "minimum": 41,
+            "median": 44,
+            "mean": 43,
+            "p95": 44,
+            "maximum": 44
+          },
+          "renderCpuCycles": {
+            "count": 4,
+            "minimum": 1008069,
+            "median": 1097617.5,
+            "mean": 1090410,
+            "p95": 1158336,
+            "maximum": 1158336
+          }
+        },
+        {
+          "id": "backtrack-11",
+          "frames": 62,
+          "publications": 2,
+          "publishIntervalsFrames": {
+            "count": 1,
+            "minimum": 41,
+            "median": 41,
+            "mean": 41,
+            "p95": 41,
+            "maximum": 41
+          },
+          "renderCpuCycles": {
+            "count": 1,
+            "minimum": 748151,
+            "median": 748151,
+            "mean": 748151,
+            "p95": 748151,
+            "maximum": 748151
+          }
+        },
+        {
+          "id": "backtrack-12",
+          "frames": 128,
+          "publications": 4,
+          "publishIntervalsFrames": {
+            "count": 3,
+            "minimum": 24,
+            "median": 37,
+            "mean": 34.333333333333336,
+            "p95": 42,
+            "maximum": 42
+          },
+          "renderCpuCycles": {
+            "count": 4,
+            "minimum": 627628,
+            "median": 931709.0,
+            "mean": 871177.75,
+            "p95": 993665,
+            "maximum": 993665
+          }
+        },
+        {
+          "id": "backtrack-13",
+          "frames": 161,
+          "publications": 5,
+          "publishIntervalsFrames": {
+            "count": 4,
+            "minimum": 24,
+            "median": 29.5,
+            "mean": 31,
+            "p95": 41,
+            "maximum": 41
+          },
+          "renderCpuCycles": {
+            "count": 5,
+            "minimum": 656339,
+            "median": 708793,
+            "mean": 865507.2,
+            "p95": 1216665,
+            "maximum": 1216665
+          }
+        },
+        {
+          "id": "backtrack-14",
+          "frames": 129,
+          "publications": 3,
+          "publishIntervalsFrames": {
+            "count": 2,
+            "minimum": 37,
+            "median": 38.0,
+            "mean": 38,
+            "p95": 39,
+            "maximum": 39
+          },
+          "renderCpuCycles": {
+            "count": 3,
+            "minimum": 903805,
+            "median": 932127,
+            "mean": 928260,
+            "p95": 948848,
+            "maximum": 948848
+          }
+        },
+        {
+          "id": "backtrack-15",
+          "frames": 106,
+          "publications": 3,
+          "publishIntervalsFrames": {
+            "count": 2,
+            "minimum": 32,
+            "median": 35.5,
+            "mean": 35.5,
+            "p95": 39,
+            "maximum": 39
+          },
+          "renderCpuCycles": {
+            "count": 3,
+            "minimum": 775930,
+            "median": 781629,
+            "mean": 897470.6666666666,
+            "p95": 1134853,
+            "maximum": 1134853
+          }
+        },
+        {
+          "id": "first-encounter-dead-reloaded-face",
+          "frames": 304,
+          "publications": 13,
+          "publishIntervalsFrames": {
+            "count": 12,
+            "minimum": 20,
+            "median": 23.0,
+            "mean": 23,
+            "p95": 27,
+            "maximum": 27
+          },
+          "renderCpuCycles": {
+            "count": 13,
+            "minimum": 547561,
+            "median": 587274,
+            "mean": 667860.9230769231,
+            "p95": 1530914,
+            "maximum": 1530914
+          }
+        },
+        {
+          "id": "first-encounter-dead-reloaded",
+          "frames": 41,
+          "publications": 0,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": null
+        },
+        {
+          "id": "return-1",
+          "frames": 73,
+          "publications": 2,
+          "publishIntervalsFrames": {
+            "count": 1,
+            "minimum": 44,
+            "median": 44,
+            "mean": 44,
+            "p95": 44,
+            "maximum": 44
+          },
+          "renderCpuCycles": {
+            "count": 3,
+            "minimum": 755139,
+            "median": 844066,
+            "mean": 905050.6666666666,
+            "p95": 1115947,
+            "maximum": 1115947
+          }
+        },
+        {
+          "id": "return-2",
+          "frames": 126,
+          "publications": 3,
+          "publishIntervalsFrames": {
+            "count": 2,
+            "minimum": 44,
+            "median": 58.0,
+            "mean": 58,
+            "p95": 72,
+            "maximum": 72
+          },
+          "renderCpuCycles": {
+            "count": 2,
+            "minimum": 1456516,
+            "median": 1625915.5,
+            "mean": 1625915.5,
+            "p95": 1795315,
+            "maximum": 1795315
+          }
+        },
+        {
+          "id": "return-3",
+          "frames": 146,
+          "publications": 2,
+          "publishIntervalsFrames": {
+            "count": 1,
+            "minimum": 70,
+            "median": 70,
+            "mean": 70,
+            "p95": 70,
+            "maximum": 70
+          },
+          "renderCpuCycles": {
+            "count": 2,
+            "minimum": 1430271,
+            "median": 1627223.5,
+            "mean": 1627223.5,
+            "p95": 1824176,
+            "maximum": 1824176
+          }
+        },
+        {
+          "id": "return-4",
+          "frames": 131,
+          "publications": 2,
+          "publishIntervalsFrames": {
+            "count": 1,
+            "minimum": 84,
+            "median": 84,
+            "mean": 84,
+            "p95": 84,
+            "maximum": 84
+          },
+          "renderCpuCycles": {
+            "count": 2,
+            "minimum": 1584099,
+            "median": 1840678.5,
+            "mean": 1840678.5,
+            "p95": 2097258,
+            "maximum": 2097258
+          }
+        },
+        {
+          "id": "return-5",
+          "frames": 84,
+          "publications": 1,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": {
+            "count": 1,
+            "minimum": 1684384,
+            "median": 1684384,
+            "mean": 1684384,
+            "p95": 1684384,
+            "maximum": 1684384
+          }
+        },
+        {
+          "id": "return-6",
+          "frames": 131,
+          "publications": 2,
+          "publishIntervalsFrames": {
+            "count": 1,
+            "minimum": 58,
+            "median": 58,
+            "mean": 58,
+            "p95": 58,
+            "maximum": 58
+          },
+          "renderCpuCycles": {
+            "count": 2,
+            "minimum": 1551695,
+            "median": 1616991.5,
+            "mean": 1616991.5,
+            "p95": 1682288,
+            "maximum": 1682288
+          }
+        },
+        {
+          "id": "return-7",
+          "frames": 160,
+          "publications": 3,
+          "publishIntervalsFrames": {
+            "count": 2,
+            "minimum": 37,
+            "median": 45.0,
+            "mean": 45,
+            "p95": 53,
+            "maximum": 53
+          },
+          "renderCpuCycles": {
+            "count": 4,
+            "minimum": 1001070,
+            "median": 1216873.5,
+            "mean": 1206896.75,
+            "p95": 1392770,
+            "maximum": 1392770
+          }
+        },
+        {
+          "id": "return-8",
+          "frames": 231,
+          "publications": 7,
+          "publishIntervalsFrames": {
+            "count": 6,
+            "minimum": 28,
+            "median": 35.0,
+            "mean": 36,
+            "p95": 43,
+            "maximum": 43
+          },
+          "renderCpuCycles": {
+            "count": 7,
+            "minimum": 640110,
+            "median": 851960,
+            "mean": 855298.5714285715,
+            "p95": 1112691,
+            "maximum": 1112691
+          }
+        },
+        {
+          "id": "return-9",
+          "frames": 103,
+          "publications": 3,
+          "publishIntervalsFrames": {
+            "count": 2,
+            "minimum": 32,
+            "median": 34.5,
+            "mean": 34.5,
+            "p95": 37,
+            "maximum": 37
+          },
+          "renderCpuCycles": {
+            "count": 2,
+            "minimum": 881807,
+            "median": 888714.5,
+            "mean": 888714.5,
+            "p95": 895622,
+            "maximum": 895622
+          }
+        },
+        {
+          "id": "return-10",
+          "frames": 144,
+          "publications": 6,
+          "publishIntervalsFrames": {
+            "count": 5,
+            "minimum": 22,
+            "median": 24,
+            "mean": 23.8,
+            "p95": 25,
+            "maximum": 25
+          },
+          "renderCpuCycles": {
+            "count": 6,
+            "minimum": 595612,
+            "median": 631403.0,
+            "mean": 632606.8333333334,
+            "p95": 670807,
+            "maximum": 670807
+          }
+        },
+        {
+          "id": "return-11",
+          "frames": 96,
+          "publications": 1,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": {
+            "count": 3,
+            "minimum": 550618,
+            "median": 675945,
+            "mean": 831828,
+            "p95": 1268921,
+            "maximum": 1268921
+          }
+        },
+        {
+          "id": "return-12",
+          "frames": 116,
+          "publications": 5,
+          "publishIntervalsFrames": {
+            "count": 4,
+            "minimum": 19,
+            "median": 23.0,
+            "mean": 22,
+            "p95": 23,
+            "maximum": 23
+          },
+          "renderCpuCycles": {
+            "count": 5,
+            "minimum": 577773,
+            "median": 585004,
+            "mean": 587565.4,
+            "p95": 599979,
+            "maximum": 599979
+          }
+        },
+        {
+          "id": "return-13",
+          "frames": 153,
+          "publications": 6,
+          "publishIntervalsFrames": {
+            "count": 5,
+            "minimum": 20,
+            "median": 26,
+            "mean": 24.8,
+            "p95": 28,
+            "maximum": 28
+          },
+          "renderCpuCycles": {
+            "count": 6,
+            "minimum": 580085,
+            "median": 620775.0,
+            "mean": 627043.3333333334,
+            "p95": 711612,
+            "maximum": 711612
+          }
+        },
+        {
+          "id": "return-14",
+          "frames": 77,
+          "publications": 3,
+          "publishIntervalsFrames": {
+            "count": 2,
+            "minimum": 24,
+            "median": 25.5,
+            "mean": 25.5,
+            "p95": 27,
+            "maximum": 27
+          },
+          "renderCpuCycles": {
+            "count": 4,
+            "minimum": 496695,
+            "median": 587052.5,
+            "mean": 581464,
+            "p95": 655056,
+            "maximum": 655056
+          }
+        },
+        {
+          "id": "return-15",
+          "frames": 77,
+          "publications": 4,
+          "publishIntervalsFrames": {
+            "count": 3,
+            "minimum": 20,
+            "median": 21,
+            "mean": 22,
+            "p95": 25,
+            "maximum": 25
+          },
+          "renderCpuCycles": {
+            "count": 3,
+            "minimum": 505570,
+            "median": 528431,
+            "mean": 609096,
+            "p95": 793287,
+            "maximum": 793287
+          }
+        },
+        {
+          "id": "second-encounter-dead-reloaded-face",
+          "frames": 153,
+          "publications": 6,
+          "publishIntervalsFrames": {
+            "count": 5,
+            "minimum": 23,
+            "median": 24,
+            "mean": 24.6,
+            "p95": 28,
+            "maximum": 28
+          },
+          "renderCpuCycles": {
+            "count": 6,
+            "minimum": 551970,
+            "median": 586567.0,
+            "mean": 672317.1666666666,
+            "p95": 1137392,
+            "maximum": 1137392
+          }
+        },
+        {
+          "id": "third-encounter-dead-reloaded",
+          "frames": 30,
+          "publications": 0,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": null
+        },
+        {
+          "id": "switch-approach-1",
+          "frames": 37,
+          "publications": 1,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": {
+            "count": 1,
+            "minimum": 818311,
+            "median": 818311,
+            "mean": 818311,
+            "p95": 818311,
+            "maximum": 818311
+          }
+        },
+        {
+          "id": "exit-prompt",
+          "frames": 32,
+          "publications": 1,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": {
+            "count": 1,
+            "minimum": 424930,
+            "median": 424930,
+            "mean": 424930,
+            "p95": 424930,
+            "maximum": 424930
+          }
+        },
+        {
+          "id": "complete-held-inputs",
+          "frames": 120,
+          "publications": 0,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": null
+        },
+        {
+          "id": "completed-settled",
+          "frames": 180,
+          "publications": 0,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": null
+        },
+        {
+          "id": "reset-start",
+          "frames": 180,
+          "publications": 2,
+          "publishIntervalsFrames": {
+            "count": 1,
+            "minimum": 49,
+            "median": 49,
+            "mean": 49,
+            "p95": 49,
+            "maximum": 49
+          },
+          "renderCpuCycles": {
+            "count": 1,
+            "minimum": 866770,
+            "median": 866770,
+            "mean": 866770,
+            "p95": 866770,
+            "maximum": 866770
+          }
+        },
+        {
+          "id": "final-spawn",
+          "frames": 60,
+          "publications": 0,
+          "publishIntervalsFrames": null,
+          "renderCpuCycles": null
+        }
+      ]
+    },
+    "mesenProvenance": {
+      "romSha256": "0ecf59bf29efb03e5619a30d8bf890500a96e505a18f661920ab02fdbc9bd086",
+      "controllerOnly": true,
+      "stockNtsc": true,
+      "ramInjected": false,
+      "romUnmodified": true,
+      "twoPages": true,
+      "completeRoute": true,
+      "observerSha256": "9d448d240e50e03b50d3a82cb01a1a26da83a45e627373be7ed93d52d3a7e340",
+      "driverSha256": "0e96a3bcb5895e7f4929be976c26b23a5d8e11ee755a545a04eaf6b037d5f5d2",
+      "mesenSha256": "ce4446a92096a024145e6ed2793cce8b489460bb3ac034cd9d1d77d96109fced"
+    }
+  },
+  "freshBuildEvidence": "verification/interaction-build.json",
+  "limitations": [
+    "Ammo can still be below the viewport before pickup at the settled 3.5-unit frontal fixture; this change improves near-edge contact, not sprite projection.",
+    "Live interaction position/facing can lead the currently displayed world. Rendering/input latency was not changed.",
+    "Emulator verification only; no physical-console or hosted-app test in this pass."
+  ],
+  "liveDeploymentChanged": false,
+  "physicalConsoleTested": false
+}

@@ -2,6 +2,7 @@
 ; The world producer never reads or modifies this state. PPU work happens only
 ; in pistol_init (rendering disabled) or a dedicated pistol_upload VBlank.
 .setcpu "6502"
+.include "audio-write.inc"
 .import pause_sound_pulse1, pause_sound_pulse2, pause_sound_noise
 .macpack longbranch
 .importzp input_buttons, button_edges, zombie_oam_ptr
@@ -63,7 +64,8 @@ pistol_hidden_oam:
 ; Index is remaining fire frames after decrement; constant-volume white noise.
 pistol_noise_volume: .byte 0,3,5,7,9,12,15
 
-.segment "CODE"
+; Reset-only setup: bank2 selected, rendering and NMI disabled.
+.segment "BOOTDATA"
 .proc pistol_init
  lda #0
  sta $2003
@@ -92,6 +94,7 @@ pistol_noise_volume: .byte 0,3,5,7,9,12,15
  jmp pistol_upload
 .endproc
 
+.segment "CODE"
 .proc pistol_reset
  jsr slime_reset
  lda #100
@@ -107,7 +110,7 @@ pistol_noise_volume: .byte 0,3,5,7,9,12,15
  sta player_hurt_timer
  lda #1                    ; reset drops either gun's noise; enemy reset owns pulse
  ora #$04                  ; retain the independent pause-cue triangle
- sta $4015
+ AUDIO_SFX_WRITE $4015
  lda #15
  sta pistol_dirty
  ldx #0
@@ -145,9 +148,9 @@ pistol_noise_volume: .byte 0,3,5,7,9,12,15
  sta pistol_flash_timer
  lda #$30
  sta pause_sound_noise
- sta $400C
+ AUDIO_SFX_WRITE $400C
  lda #$07                   ; stop noise; retain both pulse cues and triangle
- sta $4015
+ AUDIO_SFX_WRITE $4015
  jmp @input
 @flash:
  dec pistol_flash_timer
@@ -156,14 +159,14 @@ pistol_noise_volume: .byte 0,3,5,7,9,12,15
  lda pistol_noise_volume,x
  ora #$10
  sta pause_sound_noise
- sta $400C
+ AUDIO_SFX_WRITE $400C
  jmp @input
 @idle:
  lda #0
  sta pistol_pose
  lda #3                    ; enemy cannot own noise; preserve the pickup pulse2
  ora #$04                  ; retain the independent pause-cue triangle
- sta $4015
+ AUDIO_SFX_WRITE $4015
  lda pistol_dirty
  ora #1
  sta pistol_dirty
@@ -201,14 +204,14 @@ accepted:
  ; The pulse warning can coexist. Bit 7 clear selects white noise.
  lda #$0B                  ; both pulse cues remain enabled alongside gun noise
  ora #$04                  ; retain the independent pause-cue triangle
- sta $4015
+ AUDIO_SFX_WRITE $4015
  lda #$1F
  sta pause_sound_noise
- sta $400C
+ AUDIO_SFX_WRITE $400C
  lda #$06
- sta $400E
+ AUDIO_SFX_WRITE $400E
  lda #$F8
- sta $400F
+ AUDIO_SFX_WRITE $400F
 done:
  rts
 dry_fire:
@@ -224,14 +227,14 @@ dry_accepted:
  ; long-mode white-noise blast. Existing player priority also cancels a door
  ; or enemy noise tail; warning/pickup pulse channels remain independent.
  lda #$0F
- sta $4015
+ AUDIO_SFX_WRITE $4015
  lda #$1A                   ; constant volume10, no length-counter halt
  sta pause_sound_noise
- sta $400C
+ AUDIO_SFX_WRITE $400C
  lda #$8C                   ; short LFSR, period12: deep empty-trigger buzz
- sta $400E
+ AUDIO_SFX_WRITE $400E
  lda #$F8
- sta $400F
+ AUDIO_SFX_WRITE $400F
  rts
 .endproc
 pistol_shot_accepted = pistol_tick::accepted
@@ -266,7 +269,7 @@ defeat:
  sta pistol_cooldown
  lda #1
  ora #$04                  ; retain the independent pause-cue triangle
- sta $4015
+ AUDIO_SFX_WRITE $4015
  lda #15                   ; status text uses its own following overlay VBlank
  sta pistol_dirty
 digits:

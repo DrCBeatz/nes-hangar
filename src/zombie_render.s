@@ -108,12 +108,23 @@ zombie_bits: .byte $80,$40,$20,$10,$08,$04,$02,$01
 .include "zombie-size.inc"
 .assert CORPSE_VARIANT_COUNT = ZOMBIE_VARIANT_COUNT, error, "Corpse size tiers must match living actors"
 
+.import prg_map, prg_render
+
 .segment "CODE"
 .proc zombie_begin
  lda #0
  sta actor_kind
 .endproc
 .proc zombie_begin_shared
+ ; Both callers enter from map0; all projection inputs are RAM/COMMON.
+ ; The bank3 copy retains medkit_save_metadata at its original address.
+ jsr prg_render
+ jsr zombie_begin_banked
+ jmp prg_map
+.endproc
+
+.segment "RENDER_CODE"
+.proc zombie_begin_banked
  lda #0
  sta z_active
  lda actor_kind
@@ -772,6 +783,9 @@ shift:
  rts
 .endproc
 
+.segment "RENDER_CODE"
+
+; Called only during bank3 column generation.
 ; Hooked immediately before a geometry span is appended. Read-only access to
 ; all live geometry scratch. A/X/Y are caller-clobbered here. The
 ; current scene's wall+floor spans form bottom suffixes; the closest crossing

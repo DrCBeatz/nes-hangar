@@ -15,11 +15,11 @@ SPAWNS = ((176,152),(294,58),(296,-76))
 GATE = dict(forward_x=248, reverse_x=244, reverse_z_min=8)
 THIRD_GATE = dict(forward_z=-32, reverse_z=-24)
 THIRD_LOS = (256,336,-104,-40)
-AMMO = dict(x=274,z=92,floor=2,pickup_radius=3,amount=10,maximum=99,
+AMMO = dict(x=282,z=90,floor=2,pickup_radius=3.5,amount=10,maximum=99,
     kind='collectible_ammo',at_full_ammo='remain',encounter_id=1,
-    location='Dry left entrance apron of the zigzag room, before the second soldier',
+    location='Dry entrance apron of the zigzag room, forward of the return-wall corner and before the second soldier',
     width=2,height=1.5,blocking=False)
-AMMO_APPROACH = [[288,112],[290,96],[274,92]]
+AMMO_APPROACH = [[288,112],[290,96],[282,90]]
 ROUTE = [[152,152],[172,152],[172,132],[220,132],[228,136],[244,136],[260,130],[276,124],
          [288,112],[290,96],[296,80],[304,56],[304,32],[296,16],[296,12]]
 

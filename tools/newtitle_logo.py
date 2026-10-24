@@ -147,7 +147,8 @@ def write_assets(build, font, preview_dir=None, palette_name=DEFAULT_PALETTE):
                 extra.append(pattern)
             name[ty * 32 + tx] = lookup[pattern]
     lines = []
-    for row, text in ((22, 'NES FPS PROTOTYPE'), (26, 'PRESS START')):
+    for row, text in ((19, 'HANGAR'), (21, 'UNOFFICIAL NES PROTOTYPE'),
+                      (23, 'BUILD 2026-10-24'), (26, 'START PLAY / SELECT CREDITS')):
         col = (32 - len(text)) // 2
         assert set(text) <= set(font) and all(font[c] < FIRST_TILE for c in text)
         name[row * 32 + col:row * 32 + col + len(text)] = bytes(font[c] for c in text)

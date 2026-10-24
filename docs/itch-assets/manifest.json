@@ -1,0 +1,56 @@
+{
+  "purpose": "Authentic current-release screenshot selection for an itch.io project page. No artwork, palette, pose, game state or pixels altered.",
+  "romSha256": "db258e4c9c57ff3ef9f4bc8eb732f31b65eec85a1a639e7a9787a90dde1722a9",
+  "romVersion": "prototype-2026-10-24-door-reach",
+  "emulator": "Mesen 2.2.1",
+  "region": "NTSC",
+  "additionalScanlines": 0,
+  "removeSpriteLimit": false,
+  "captureMethod": "Controller-only complete route; no RAM injection or ROM modification",
+  "pixelDimensions": [
+    256,
+    240
+  ],
+  "screenshots": [
+    {
+      "file": "01-opening-room.png",
+      "caption": "Opening pillars and recessed floor",
+      "source": "analysis/door-center/full-route/first-gameplay.png",
+      "sourcePhase": "first-gameplay",
+      "frame": 477,
+      "sha256": "ea8548e8a41b5403f2a7d87b9bc4bd606734f172028189e9d908688c7de0bb4b"
+    },
+    {
+      "file": "02-first-encounter.png",
+      "caption": "First soldier encounter beside the inner enclosure, after resuming play",
+      "source": "analysis/door-center/full-route/pause-enemy-warning-resume.png",
+      "sourcePhase": "pause-enemy-warning-resume",
+      "frame": 2787,
+      "sha256": "defece79f0faf1f502aa71eacd98988d763c86e2ba201cdf941970dcc11eaa05"
+    },
+    {
+      "file": "03-zigzag-slime-room.png",
+      "caption": "Zigzag walkway, green slime, second soldier and ammunition clip",
+      "source": "analysis/door-center/full-route/dry-placements-view.png",
+      "sourcePhase": "dry-placements-view",
+      "frame": 5059,
+      "sha256": "bea23c1310360cf618ec24eea222a86c6fcb82d82c4f8fc00483f53ffb7c3121"
+    },
+    {
+      "file": "04-final-encounter.png",
+      "caption": "Final soldier encounter during an enemy shot; red HUD is the actual damage feedback",
+      "source": "analysis/door-center/full-route/third-wait-shot.png",
+      "sourcePhase": "third-wait-shot",
+      "frame": 7541,
+      "sha256": "940d6c260ec731c52812af759089d62ca4d9f7e42ed46b73d17f1be39126851e"
+    },
+    {
+      "file": "05-bronze-title.png",
+      "caption": "Bronze title screen with prototype identification",
+      "source": "analysis/door-center/full-route/first-page-idle.png",
+      "sourcePhase": "first-page-idle",
+      "frame": 211,
+      "sha256": "efc6a87092142274ef8961f7f64e844c588c43466cff2f3265731d00e6edadc8"
+    }
+  ]
+}

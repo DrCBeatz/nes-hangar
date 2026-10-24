@@ -20,7 +20,7 @@ prototype, not a port of the Doom engine or the complete original level.
   <img src="docs/images/opening-gameplay.gif" width="512" alt="Six seconds of Hangar gameplay: walking and turning among the opening room’s pillars and recessed floor." />
 </p>
 <p align="center">
-  Actual ROM gameplay at normal NTSC timing in JSNES · <a href="docs/images/opening-gameplay.png">View the opening still</a> · <a href="docs/images/doom-title.png">Bronze title screen</a> · <a href="docs/images/title.png">Controls guide</a>
+  ROM gameplay at normal NTSC timing in JSNES, music ON (GIF is silent) · <a href="docs/images/opening-gameplay.png">View the opening still</a> · <a href="docs/images/doom-title.png">Bronze title screen</a> · <a href="docs/images/title.png">Controls guide</a> · <a href="docs/images/credits.png">Credits</a>
 </p>
 
 ## Play
@@ -32,9 +32,11 @@ and CHR-RAM support. The development reference is
 Optional emulator overclocking can make rendering faster, but it is not
 required to finish the level.
 
-Press Start on the bronze DOOM-logo title to open the controls guide, then
-release and press Start again to play. Holding Start cannot skip a page. The
-first room takes about 0.8 seconds to prepare at normal NTSC speed; the level
+Press **Start** on the bronze DOOM-logo title to open the controls guide, or
+**Select** to view the credits. On the credits page, **B** returns to the logo
+and **Start** opens the guide. Music defaults to **ON**; press **Left for OFF**
+or **Right for ON**, then release and press Start again to play. Holding Start
+cannot skip a page. The first room takes about 0.8 seconds to prepare at normal NTSC speed; the level
 timer starts when that view appears.
 
 For a browser trial, open [Play Hangar](https://8bitpocket.app/?game=hangar),
@@ -44,8 +46,14 @@ use **Controls** to reopen it during gameplay. **Open ROM** still supports downl
 files. Browser speed, palette and presentation may differ from Mesen. See
 the [browser deployment notes](docs/DEPLOYMENT.md).
 
-The downloadable ROM includes the bronze title screen and the latest soldier
-size and positioning fixes.
+The current local candidate includes the bronze title screen, the latest soldier
+size and positioning fixes, more forgiving door/exit and ammo interactions,
+a targeted input-to-picture latency improvement, and Dr C Beatz's new optional
+NES arrangement of E1M1. It also includes the accepted ammo repositioning,
+a title-screen credits page, clearer music instructions and a pistol label
+in place of the unused armor counter. These local changes have not been
+pushed or deployed. The [door reach update](docs/DOOR-REACH.md) shows the prompt earlier on
+centered approaches, retaining the earlier close-angle allowance.
 The hosted browser game still uses the previous third-encounter release;
 choose **Open ROM** to try the latest download there.
 
@@ -59,12 +67,31 @@ choose **Open ROM** to try the latest download there.
 | B | Fire the pistol |
 | A, while facing a nearby door or switch | Use when prompted; release and press again, without Left/Right |
 | Start | Advance title → controls → play with separate presses; pause/resume during play; retry after death or completion |
-| Select | Compare precise dynamic boundaries with coarse tile boundaries |
+| Select | View credits from the logo; during gameplay, compare precise dynamic boundaries with coarse tile boundaries |
+
+On the controls guide, **Left selects music OFF** and **Right selects ON**.
+The selection survives death and completed-level retries. Reset returns to
+the title sequence with music ON. OFF preserves sound effects and skips music
+sequencing to reduce CPU cost; it does not change the level or graphics.
+See [music notes](docs/MUSIC.md).
+
+The latency update lets a new movement or turn replace an outdated picture
+that is still being drawn. This helps when rendering was already busy; it
+does not remove the substantial delay needed to draw and upload complex
+views. The geometry and movement rules are unchanged. See the measured
+[latency improvements and limits](docs/LATENCY-TUNING.md) and the
+[final performance assessment](docs/FINAL-PERFORMANCE.md).
 
 Pausing displays a message at the top and plays a short descending cue.
 Resuming restores the level heading and plays an ascending cue. Gameplay and
 the completion timer stop during pause. Hardware/emulator Reset returns to
 the logo and controls sequence; retries go directly back into the level.
+
+The door prompt accepts facing within about ±75° of its normal, including
+close diagonal approaches. The exit switch retains its ±45° allowance.
+The door now accepts use within twelve world units of its panel on either
+side. Release A before pressing it again. See the
+[door reach notes](docs/DOOR-REACH.md).
 
 With no ammunition, a fresh B press plays a brief, deep empty-gun buzz. Holding B
 does not repeat the cue or count as a fired shot.
@@ -106,10 +133,13 @@ its room and leaves space to pass on either side.
 | --- | --- |
 | ![Recessed floor and pillars](docs/images/opening-room.png) | ![Soldier encounter](docs/images/encounter.png) |
 
-These are native 256 × 240 captures from the initial public build in Mesen at
-normal NTSC timing, with the hardware sprite limit enabled. The opening room
-and artwork remain representative; the first-encounter still predates the
-inner enclosure.
+The opening still and six-second GIF were captured from the preceding
+credits/HUD build, whose opening gameplay is unchanged. They use stock-NTSC
+JSNES with music ON and native 256 × 240 output. The GIF preserves
+the ROM's rendering cadence without interpolated motion, using exact 2× pixel
+duplication. See the [capture record](verification/opening-gameplay.json).
+The first-encounter still is a historical Mesen capture from the initial public
+build and predates the inner enclosure.
 
 ## Build from source
 
@@ -169,14 +199,10 @@ make clean
 Normal builds permit intentional source edits; verification is expected to
 fail if those edits change the ROM relative to the committed release.
 
-The included release, `prototype-2026-10-21-bronze-title`, is 65,552 bytes
-(a 16-byte header plus 64 KiB PRG), with SHA-256:
-
-```text
-c715b34bd688927579d20d6c593dbddb8436ca4a38dab4b78f553a5d04afe251
-```
-
-The checksum and cartridge metadata are also in [release/](release/).
+The included local candidate, `prototype-2026-10-24-door-reach`, is 131,088
+bytes (a 16-byte header plus 128 KiB PRG). Its exact version, checksum and cartridge metadata are recorded in
+[release/release.json](release/release.json); [SHA256SUMS](release/SHA256SUMS)
+identifies the downloadable ROM.
 [Verification notes](docs/VERIFICATION.md) distinguish isolated build checks,
 emulator observations and hardware testing. The GitHub Actions workflow
 rebuilds and compares the ROM on push or pull request; it does not deploy a
@@ -187,6 +213,19 @@ comparisons remain available through `--title-palette`; see the
 [title palette notes](docs/TITLE-PALETTE-COMPARISON.md). These alternatives
 intentionally differ from the accepted release, so build them without
 `--verify`.
+
+The normal build includes the music choice and Dr C Beatz's supplied E1M1 arrangement. It
+requires no FamiStudio installation: the exported song data and sound engine
+are bundled. To build with music sequencing disabled at compile time:
+
+```sh
+python3 tools/build.py --no-music
+```
+
+That alternative always displays music OFF and intentionally differs from the
+reference ROM; do not combine it with `--verify`. The earlier bronze-title ROM
+without the music integration is preserved as
+`hangar-bronze-no-music-ntsc.nes` (local research archive; not bundled).
 
 ### Troubleshooting
 
@@ -211,6 +250,9 @@ intentionally differ from the accepted release, so build them without
 | `assets/pistol-sheet.png` | Editable two-frame pistol/hand source image |
 | `assets/newlogo-doom.json` | Indexed title artwork derived from Doom's M_DOOM logo; see provenance |
 | `assets/` | Other source data used by the generators, including the font |
+| `music/e1m1/e1m1-drcbeatz.s` | Supplied Dr C Beatz arrangement export used by the build |
+| `music/e1m1/` | Song history, source provenance and retained upstream notices |
+| `vendor/famistudio/` | FamiStudio sound engine, NTSC note tables and its separate notice |
 | `release/` | Playable reference ROM, checksum and release metadata |
 | `docs/` | Provenance, verification and proposed browser deployment |
 | `build/` | Regenerated local output; excluded from Git |
@@ -259,7 +301,7 @@ size, keeping them stable when turning. This approximates ground contact
 away from the screen center; horizontal projection and foreground masking
 still use camera depth. Pickups retain their previous projection.
 
-The cartridge uses **MMC1 banking, 64 KiB PRG, 8 KiB CHR-RAM and 8 KiB work
+The cartridge uses **MMC1 banking, 128 KiB PRG, 8 KiB CHR-RAM and 8 KiB work
 RAM**. Rendering is performed by the NES CPU; the mapper provides banking,
 not a 3D processor. This is a cartridge configuration target, not a claim that
 this release has already been tested on a physical console.
@@ -269,16 +311,23 @@ this release has already been tested on a physical console.
 - Rendering is scene-dependent and substantially slower than the display's
   refresh rate. The opening recess/pillars and views across the slime room
   are demanding; control-to-picture latency remains noticeable.
+- Music shares CPU time with rendering. Select OFF on the controls guide for
+  lower audio overhead. The four standard tonal/noise channels are used;
+  there is no DPCM sample playback or expansion audio.
 - Three encounters persist in the level, but only one enemy encounter is active
   at a time. Crossing a handoff can hide the outgoing soldier or corpse.
 - Sprite size steps, very close actors and sprite-per-scanline pressure remain
   visible limitations. Soldier art stops at 32 × 64 pixels, and its stable
   vertical placement is a billboard approximation. This is not an engine for
   crowds of enemies.
+- The ammo clip can disappear below the viewport before collection. Its
+  placement farther out from the wall corner improves the entrance approach;
+  its 3.5-unit pickup radius is unchanged. This does not change close-range
+  sprite projection or delayed world views.
 - The green slime palette shares a limited set of background colors; visible
   slime replaces one alternate wall shade.
-- Armor is a HUD placeholder. There are no armor pickups, extra weapons,
-  additional levels, saves or general-purpose WAD loader.
+- The HUD identifies the pistol as the current weapon. There are no armor
+  pickups, extra weapons, additional levels, saves or general-purpose WAD loader.
 - PAL is not the target for this packaged release. Physical-console and
   flash-cartridge testing remain separate from emulator verification.
 
@@ -294,7 +343,8 @@ See [publishing instructions](docs/PUBLISHING.md).
 
 The maintained 8-Bit Pocket emulator hosts the previous third-encounter ROM
 and supports the [direct Play Hangar link](https://8bitpocket.app/?game=hangar).
-The newer soldier fixes and bronze title have not been deployed there; load
+The newer soldier fixes, bronze title, optional music, interaction changes
+and credits/HUD polish have not been deployed there; load
 the current download with the emulator's **Open ROM** control to try them.
 A dedicated landing page with download and play buttons can follow. The
 [deployment notes](docs/DEPLOYMENT.md) describe the current integration,
@@ -302,14 +352,24 @@ remaining display work and options for a later custom domain.
 
 ## Credits and licensing
 
-The project was developed through iterative implementation, emulator testing
-and player feedback, with AI-assisted coding and analysis. Its dynamic tile
+Hangar is a project by **Dr C Beatz**, developed through
+iterative implementation, emulator testing and player feedback, with
+AI-assisted coding, analysis and asset iteration. Its dynamic tile
 approach was inspired in part by studying NES Elite's graphics technique;
 this package uses a newly written renderer, not that game's engine code.
 
 The included map is a simplified adaptation of Doom's E1M1 by id Software.
 The title logo is derived from id Software's M_DOOM artwork in the supplied
 shareware WAD and uses a bronze NES palette.
+The current music is **"At Doom's Gate" by Bobby Prince**, with a new
+**NES arrangement by Dr C Beatz**. Dr C Beatz reports entering
+every note from scratch using the original recording, sheet music and
+rasteri's version as references. **rasteri / Andrew Tait** is acknowledged for
+that reference and the earlier PiPU-based soundtrack experiments; those
+exports are not compiled into the current ROM. Playback uses
+**Mathieu Gauthier's FamiStudio** sound engine, based on **FamiTone2 by Shiru**,
+under its retained notice. See [music notes](docs/MUSIC.md) for the source
+record and distinction between composition, arrangement and code.
 The source and visual-reference history are recorded in
 [PROVENANCE.md](docs/PROVENANCE.md). Code licensing and content provenance are
 separate; no blanket license over the original game's level design or reference
@@ -317,5 +377,7 @@ artwork is implied.
 
 Original engine code and build tools are licensed under [MIT](LICENSE).
 See [LICENSE-SCOPE.md](LICENSE-SCOPE.md) for the distinction between that code
-grant and the bundled level/visual content, which has no separate content
-license assigned here.
+grant, the vendored engine's notice, and the bundled level, visual and musical
+content. Crediting the new arrangement does not assign rights to the original
+composition or establish a blanket license for the ROM. The project's
+original-code license remains unchanged.

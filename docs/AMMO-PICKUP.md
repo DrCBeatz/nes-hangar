@@ -1,8 +1,44 @@
-# Tighter ammo pickup
+# Ammo pickup behavior
 
-This change is included in the current release and followed the inner-structure
-experiment. It changes the ammo clip's
-pickup radius from four to three world units. The medkit remains at six.
+The current candidate keeps the interaction update's strict
+**3.5-world-unit radius** for ammo; the medkit remains at six. This is a modest
+increase from the earlier three-unit setting described below, without
+returning to the original four-unit radius.
+
+Each absolute axis distance is rounded upward to an eighth of a world unit
+before the squared-distance comparison. The radius is strict: equality is
+rejected. This accepts a centerline pass at 3.375 units but rejects 3.5 units;
+the earlier 3.75-unit wall-side pickup remains outside the circle. Rounding
+still produces a narrow inward bias near the boundary.
+
+The accepted placement update moves the clip from **(274, 252)** to
+**(282, 250)**, farther out from the wall corner on dry ground and more visible
+from the entrance. That experiment changes placement only: the pickup radius,
+artwork, ten-round refill, ammo cap, collection sound and once-only collection
+remain unchanged. A full inventory leaves the item available. The
+clip's close-range appearance is a separate limitation: it can still disappear
+below the viewport before collection, and the displayed camera can lag behind
+the player position used by the pickup test. This change does not alter sprite
+projection or rendering latency.
+
+In the preceding straight-approach reproduction, the clip could disappear
+below the viewport before the player reached its pickup circle. Continuing
+forward collected it; the tested direct center crossings did not reveal a
+missed pickup. Repositioning improves the approach without changing that
+projection limitation. The placement experiment passed 17 stock-NTSC Mesen
+fixtures and the 30-check JSNES controller suite before integration; see its
+[preserved summary](../verification/ammo-placement-summary.json).
+
+See [the interaction notes](INTERACTION-FIX.md) and
+[verification](VERIFICATION.md). The following sections preserve the earlier
+three-unit experiment and its original test results; they do not describe the
+current radius.
+
+# Earlier ammo-radius tightening
+
+This historical change followed the inner-structure experiment. It reduced
+the ammo clip's pickup radius from four to three world units. The medkit
+remained at six.
 Placement, artwork, the ten-round refill and collection sound are unchanged.
 
 The pickup is a conservative circle around the player's center, with each
@@ -44,8 +80,9 @@ does not eliminate the existing rendering latency.
 
 Detailed research reports, reproduction scripts and historical ROM baselines
 are retained separately and are not included in the standalone repository.
-The packaged [current-release report](../verification/current-release.json)
-records the final ROM's pickup regression checks and controller-route evidence.
+The packaged [third-encounter release report](../verification/third-encounter-release.json)
+records the cumulative release's pickup regression checks and controller-route
+evidence at that stage.
 
 Historical pickup-only candidate (`hangar-ammo-tight-ntsc.nes`):
 

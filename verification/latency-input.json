@@ -1,0 +1,153 @@
+{
+  "passed": true,
+  "policy": "all",
+  "romSha256": "0dbee1ad5765bc00ac10e1736902ee381a88c3c539b8c68de12f24f887260d89",
+  "testSha256": "aa0153321270825d45b4aa391d969254acde0dc6b37e4fbf023deb818dd538ee",
+  "coreSha256": "0531f69c4e9e2973bdcdc89bf3ad6e6dfa3257572f8e7eccd405fa158cc3a1a7",
+  "checks": [
+    "Every raw controller transition follows normalized direction and hard-control policy",
+    "Current-snapshot guard checks all Q16.8 coordinates, actors, selected items and door geometry",
+    "One retry per acquired bank, including epoch wrap and repeated new events",
+    "Floor-transition priority, current-view reuse and hard-control override truth table",
+    "NMI guard interleavings never accept torn epochs or mixed height/current decisions",
+    "Producer snapshots remain coherent across every NMI boundary, including high coordinates and actor handoff",
+    "Actual renderer restarts at most once, preserves dirty union and completes unchanged pixels"
+  ],
+  "counts": {
+    "controllerTransitions": 65536,
+    "invalidatingTransitions": 61216,
+    "epochWrapCases": 35,
+    "snapshotCases": 142,
+    "budgetCases": 12,
+    "heightAndCurrentCases": 1026,
+    "instructionBoundaryInjections": 230,
+    "producerSnapshotInjections": 289,
+    "oldCoherentSnapshots": 63,
+    "newCoherentSnapshots": 226
+  },
+  "calls": 67286,
+  "timings": {
+    "latency_observe_input": {
+      "calls": 65571,
+      "min": 80,
+      "max": 145,
+      "total": 6741391
+    },
+    "latency_snapshot_current": {
+      "calls": 143,
+      "min": 16,
+      "max": 248,
+      "total": 29958
+    },
+    "latency_job_begin": {
+      "calls": 2,
+      "min": 12,
+      "max": 12,
+      "total": 24
+    },
+    "latency_checkpoint": {
+      "calls": 1058,
+      "min": 15,
+      "max": 358,
+      "total": 66055
+    },
+    "latency_record_abort": {
+      "calls": 1,
+      "min": 26,
+      "max": 26,
+      "total": 26
+    },
+    "latency_height_check": {
+      "calls": 214,
+      "min": 50,
+      "max": 416,
+      "total": 55855
+    },
+    "render_begin": {
+      "calls": 297,
+      "min": 1000,
+      "max": 1182506,
+      "total": 6396246
+    }
+  },
+  "races": [
+    {
+      "name": "epoch wraps during ordinary check",
+      "instructionBoundaryInjections": 20,
+      "finalVersionReadInstruction": 8,
+      "documentedLateCoherentDecisions": 11
+    },
+    {
+      "name": "published height catches up",
+      "instructionBoundaryInjections": 38,
+      "finalVersionReadInstruction": 30,
+      "documentedLateCoherentDecisions": 7
+    },
+    {
+      "name": "player steps back to old height",
+      "instructionBoundaryInjections": 38,
+      "finalVersionReadInstruction": 30,
+      "documentedLateCoherentDecisions": 7
+    },
+    {
+      "name": "hard event overrides step priority",
+      "instructionBoundaryInjections": 38,
+      "finalVersionReadInstruction": 30,
+      "documentedLateCoherentDecisions": 7
+    },
+    {
+      "name": "current snapshot becomes stale without another intent edge",
+      "instructionBoundaryInjections": 96,
+      "finalVersionReadInstruction": 88,
+      "documentedLateCoherentDecisions": 7
+    }
+  ],
+  "renderCases": [
+    {
+      "name": "release and reverse during second attempt",
+      "attempts": 2,
+      "aborts": 1,
+      "finalPose": {
+        "x": 52,
+        "z": 173,
+        "angle": 0
+      },
+      "patternCount": 72,
+      "dirtyBlocks": 24,
+      "dirtyAtAbort": 12,
+      "cycles": 1182506,
+      "sha256": "3a861562216f671e740a67ec5d29e6b3d9bdef8d7fda008ccec9f29b33b48109"
+    },
+    {
+      "name": "start during active production",
+      "attempts": 2,
+      "aborts": 1,
+      "finalPose": {
+        "x": 52,
+        "z": 173,
+        "angle": 0
+      },
+      "patternCount": 72,
+      "dirtyBlocks": 24,
+      "dirtyAtAbort": 12,
+      "cycles": 1182506,
+      "sha256": "3a861562216f671e740a67ec5d29e6b3d9bdef8d7fda008ccec9f29b33b48109"
+    },
+    {
+      "name": "add turn while walking",
+      "attempts": 2,
+      "aborts": 1,
+      "finalPose": {
+        "x": 52,
+        "z": 173,
+        "angle": 0
+      },
+      "patternCount": 72,
+      "dirtyBlocks": 24,
+      "dirtyAtAbort": 12,
+      "cycles": 1182506,
+      "sha256": "3a861562216f671e740a67ec5d29e6b3d9bdef8d7fda008ccec9f29b33b48109"
+    }
+  ],
+  "limitations": "Linked 6502 execution with synthetic NMI-owned mutations and seeded camera poses. Pixel preservation compares a retried frame with a clean linked render of the same snapshot, not an independent geometric oracle. No input-device latency, PPU deadline, controller-only route or physical-console claim."
+}

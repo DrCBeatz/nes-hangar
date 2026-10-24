@@ -54,6 +54,7 @@ def portable(value):
 def main():
     logo_module = load('newtitle_logo', TOOLS/'newtitle_logo.py')
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--no-music', action='store_true', help='Build the same experimental bank layout with music updates disabled')
     parser.add_argument('--verify', action='store_true', help='Require exact identity with the included accepted release')
     parser.add_argument('--title-palette', choices=logo_module.PALETTES, default=logo_module.DEFAULT_PALETTE,
                         help='Logo colours only; guide and gameplay stay unchanged (default: bronze)')
@@ -115,10 +116,16 @@ def main():
     kit=scene['medkit']
     (BUILD/'medkit-config.inc').write_text(''.join('MEDKIT_'+k.upper()+' = '+str(kit[k])+'\n' for k in ('x','z','floor','heal','maximum_health','pickup_radius')))
     ammo=scene['ammo']
-    (BUILD/'ammo-config.inc').write_text(''.join('AMMO_'+k.upper()+' = '+str(ammo[k])+'\n' for k in ('x','z','floor','amount','maximum','pickup_radius')))
+    # The shared pickup square tables measure conservative eighth-unit deltas.
+    # Emit an integer threshold so fractional radii need no new runtime math.
+    ammo_radius_eighths=ammo['pickup_radius']*8
+    assert ammo_radius_eighths==int(ammo_radius_eighths) and 0<ammo_radius_eighths<=31*8
+    (BUILD/'ammo-config.inc').write_text(''.join('AMMO_'+k.upper()+' = '+str(ammo[k])+'\n' for k in ('x','z','floor','amount','maximum'))
+        +f'AMMO_PICKUP_RADIUS_EIGHTHS = {int(ammo_radius_eighths)}\n')
     font=art['fontMap']
     results_layout=load('results_assets',TOOLS/'results_assets.py').write_assets(BUILD,font,enemy_total=len(scene['encounters']))
     title_layout=load('title_assets',TOOLS/'title_assets.py').write_assets(BUILD,font,PREVIEWS,logo_palette=args.title_palette)
+    credits_layout=load('credits_assets',TOOLS/'credits_assets.py').write_assets(BUILD,font,preview_dir=PREVIEWS)
     death_text='YOU DIED - START TO RESTART'
     death_line=[0]*32
     start=(32-len(death_text))//2
@@ -178,54 +185,110 @@ def main():
     generated['encounters']=encounter_reference.write_assets(BUILD)
     flags=['STEP','NTSC','NTSC_OPT','NTSC_LATENCY','COMPACT_SPANS','STRIP_ACTIVE',
            'LATENCY_RESTART','LATENCY_HEIGHT_PRIORITY','HUD_PISTOL','COMBAT','COMBAT_GROUNDED','ZOMBIE']
-    defines=[arg for flag in flags for arg in ('-D',flag+'=1')]+['-D','FRESHNESS_MARGIN=0']
+    defines=[arg for flag in flags for arg in ('-D',flag+'=1')]+['-D','FRESHNESS_MARGIN=0','-D',f'MUSIC_ENABLED={0 if args.no_music else 1}']
     modules=[SOURCE/'walkable.s',SOURCE/'geometry.s',SOURCE/'movement.s',SOURCE/'raster.s',
              SOURCE/'ntsc_movement.s',SOURCE/'ntsc_upload.s',SOURCE/'freshness.s',
              SOURCE/'latency_restart.s',SOURCE/'pistol.s',
-             SOURCE/'zombie_render.s',SOURCE/'zombie_gameplay.s',SOURCE/'zombie_ai.s',SOURCE/'zombie_attack.s',SOURCE/'door.s',SOURCE/'exit.s',SOURCE/'medkit.s',SOURCE/'medkit_render.s',SOURCE/'corpse_prepare.s',SOURCE/'corpse_fast.s',SOURCE/'prg_banks.s',SOURCE/'coordinate_math.s',SOURCE/'encounters.s',SOURCE/'encounter_select.s',SOURCE/'slime_damage.s',SOURCE/'results.s',SOURCE/'results_screen.s',SOURCE/'pause.s',SOURCE/'title.s']
+             SOURCE/'zombie_render.s',SOURCE/'zombie_gameplay.s',SOURCE/'zombie_ai.s',SOURCE/'zombie_attack.s',SOURCE/'door.s',SOURCE/'exit.s',SOURCE/'medkit.s',SOURCE/'medkit_render.s',SOURCE/'corpse_prepare.s',SOURCE/'corpse_fast.s',SOURCE/'prg_banks.s',SOURCE/'coordinate_math.s',SOURCE/'encounters.s',SOURCE/'encounter_select.s',SOURCE/'slime_damage.s',SOURCE/'results.s',SOURCE/'results_screen.s',SOURCE/'pause.s',SOURCE/'title.s',SOURCE/'credits.s',SOURCE/'music.s',SOURCE/'audio.s']
     for source in modules:
-        subprocess.run([ca65,'-g',*defines,'-I',str(BUILD),'-l',source.stem+'.lst',
+        subprocess.run([ca65,'-g',*defines,'-I',str(BUILD),'-I',str(ROOT/'vendor/famistudio'),'-l',source.stem+'.lst',
                         '-o',source.stem+'.o',os.path.relpath(source,BUILD)],cwd=BUILD,check=True)
     subprocess.run([ld65,'-C',str(SOURCE/'hangar.cfg'),'-o',str(ROM),
                     '-m','hangar.map','--dbgfile','hangar.dbg','-Ln','hangar.lbl',
                     *[p.stem+'.o' for p in modules]],cwd=BUILD,check=True)
     data=ROM.read_bytes()
-    assert len(data)==65552
-    assert data[:16]==b'NES\x1a\x04\x00\x10\x08\x00\x00\x07\x07\x00\x00\x00\x00'
+    assert len(data)==131088
+    assert data[:16]==b'NES\x1a\x08\x00\x10\x08\x00\x00\x07\x07\x00\x00\x00\x00'
     sizes={}
     for line in (BUILD/'hangar.map').read_text().splitlines():
-        m=re.fullmatch(r'(ZEROPAGE|BSS|CODE|RODATA|MAPDATA|ACTOR_ART|BOOTDATA|STARTUP)\s+[0-9A-F]{6}\s+[0-9A-F]{6}\s+([0-9A-F]{6})\s+[0-9A-F]+',line)
+        m=re.fullmatch(r'(ZEROPAGE|BSS|CODE|AUDIO_CODE|AUDIO_ENGINE|AUDIO_DRIVER|AUDIO_SETTINGS|AUDIO_ZP|RENDER_CODE|RODATA|MAPDATA|ACTOR_ART|BOOTDATA|CREDITSDATA|STARTUP)\s+[0-9A-F]{6}\s+[0-9A-F]{6}\s+([0-9A-F]{6})\s+[0-9A-F]+',line)
         if m:sizes[m[1]]=int(m[2],16)
-    assert set(sizes)=={'ZEROPAGE','BSS','CODE','RODATA','MAPDATA','ACTOR_ART','BOOTDATA','STARTUP'}
+    assert set(sizes)-{'AUDIO_CODE','AUDIO_ENGINE','AUDIO_DRIVER','AUDIO_SETTINGS','AUDIO_ZP'}=={'ZEROPAGE','BSS','CODE','RENDER_CODE','RODATA','MAPDATA','ACTOR_ART','BOOTDATA','CREDITSDATA','STARTUP'}
     assert sizes['ZEROPAGE']<=256 and sizes['BSS']<=1536
+    audio_ram_bytes=sum(sizes[n] for n in ('AUDIO_ENGINE','AUDIO_DRIVER','AUDIO_SETTINGS'))
+    assert audio_ram_bytes<=216 and sizes['AUDIO_ZP']<=8 and sizes['AUDIO_SETTINGS']==1
     # Common routines/data have identical CPU addresses in every switchable
     # bank. Copy the linked common window and the fixed-bank reset trampoline.
     # The latter establishes a known mapping even with non-default power-on mode.
     assert sizes['RODATA'] <= 0x1FF0
-    assert sizes['CODE'] <= 0x3FF0 and sizes['STARTUP'] <= 10
-    assert all(sizes[n] <= 0x2000 for n in ('MAPDATA','ACTOR_ART','BOOTDATA'))
+    assert sizes['CODE']+sizes.get('AUDIO_CODE',0) <= 0x3FF0 and sizes['STARTUP'] <= 10
+    assert all(sizes[n] <= 0x2000 for n in ('MAPDATA','ACTOR_ART','BOOTDATA','CREDITSDATA'))
     packed=bytearray(data)
     common=data[16+0x2000:16+0x4000]
-    startup=data[16+0xFFF0:16+0x10000]
-    for bank in range(3):
+    startup=data[16+7*0x4000+0x3FF0:16+8*0x4000]
+    # Bank3 is a phase overlay: setup-only visibility tables are dead once
+    # geometry_begin returns. Preserve every other byte of the linked map,
+    # including per-column slime/occlusion code and segment material tables.
+    labels={m[2]:int(m[1],16) for line in (BUILD/'hangar.lbl').read_text().splitlines()
+            if (m:=re.fullmatch(r'al ([0-9A-Fa-f]+) \.(\S+)',line))}
+    assert labels['__AUDIO_ENGINE_RUN__']==labels['audio_workspace']==0x543
+    assert labels['__AUDIO_DRIVER_RUN__']+sizes['AUDIO_DRIVER']<=labels['audio_workspace_end']
+    assert labels['__AUDIO_SETTINGS_RUN__']==labels['music_disabled']==labels['audio_driver_end']
+    assert labels['music_disabled']+sizes['AUDIO_SETTINGS']<=labels['audio_workspace_end']
+    assert labels['__AUDIO_ZP_RUN__']==labels['movement_scratch_begin']==0xB9
+    assert 0xA000 <= labels['title_credits_gateway'] < 0xBFF0
+    assert 0x8000 <= labels['credits_present'] < 0xA000
+    assert labels['__CREDITSDATA_SIZE__'] == sizes['CREDITSDATA']
+    render_start=labels['__RENDER_CODE_LOAD__']
+    render_size=labels['__RENDER_CODE_SIZE__']
+    render_end=render_start+render_size
+    assert render_size==sizes['RENDER_CODE'] and render_size<=0x1000
+    assert labels['map_render_overlay_start']<=render_start<render_end<=labels['map_render_overlay_end']
+    assert render_start<=labels['geometry_column']<render_end
+    # Reset-only code may use bank2; NMI audio and all song data must remain fixed.
+    for name in ('famistudio_init','famistudio_music_stop','famistudio_music_play',
+                 'famistudio_music_pause','music_init_banked','pistol_init','zombie_init','pause_init'):
+        assert 0x8000 <= labels[name] < 0xA000, name
+    for name in ('music_init','music_tick','famistudio_update','famistudio_get_note_pitch',
+                 'famistudio_sample_stop','music_data_untitled','movement_init'):
+        assert 0xC000 <= labels[name] < 0xFFF0, name
+    for name in ('geometry_zombie_transform','zombie_occlude','zombie_compare_inverse'):
+        assert render_start <= labels[name] < render_end, name
+    assert 0x8000<=labels['slime_visibility_exact']<labels['slime_column_visible']<=render_start
+    render_offset=16+3*0x4000
+    overlay_lo,overlay_hi=render_start-0x8000,render_end-0x8000
+    render_code=data[render_offset+overlay_lo:render_offset+overlay_hi]
+    packed[render_offset:render_offset+0x2000]=data[16:16+0x2000]
+    packed[render_offset+overlay_lo:render_offset+overlay_hi]=render_code
+    assert packed[render_offset:render_offset+overlay_lo]==data[16:16+overlay_lo]
+    assert packed[render_offset+overlay_hi:render_offset+0x2000]==data[16+overlay_hi:16+0x2000]
+    for bank in range(7):
         offset=16+bank*0x4000
         packed[offset+0x2000:offset+0x4000]=common
         packed[offset+0x3FF0:offset+0x4000]=startup
     ROM.write_bytes(packed)
     data=bytes(packed)
     # Verify common data and reset-vector trampolines in each physical bank.
-    for bank in range(3):
+    for bank in range(7):
         offset=16+bank*0x4000
         assert data[offset+0x2000:offset+0x3FF0] == common[:0x1FF0]
         assert data[offset+0x3FF0:offset+0x4000] == startup
-    source_files = sorted(p for directory in (SOURCE,TOOLS,ROOT/'assets')
+    source_files = sorted(p for directory in (SOURCE,TOOLS,ROOT/'assets',ROOT/'music',ROOT/'vendor')
                           for p in directory.rglob('*')
-                          if p.is_file() and '__pycache__' not in p.parts)
+                          if p.is_file() and '__pycache__' not in p.parts
+                          and not any(part.startswith('.') for part in p.relative_to(ROOT).parts))
     report = dict(rom='build/hangar-ntsc.nes', sha256=sha(ROM), bytes=len(data),
-        region='NTSC', mapper='MMC1', prgBytes=65536, chrRamBytes=8192, workRamBytes=8192,
+        region='NTSC', mapper='MMC1', prgBytes=131072, chrRamBytes=8192, workRamBytes=8192,
         viewport=[256,144], worldGeometryColumns=128, segmentBytes=sizes,
+        music=dict(enabled=not args.no_music, engine='FamiStudio', channels=4, dpcm=False,
+                   song='E1M1 (Dr. C Beatz arrangement)', source='music/e1m1/e1m1-drcbeatz.s',
+                   sourceSha256=sha(ROOT/'music/e1m1/e1m1-drcbeatz.s'),
+                   features=dict(famiTrackerTempo=False, volumeTrack=True, vibrato=True, dutyCycleEffect=False),
+                   ramBytes=audio_ram_bytes, zpAliasBytes=sizes['AUDIO_ZP'],
+                   playerOption=dict(screen='controls guide', default='on' if not args.no_music else 'off',
+                                     left='off', right='on' if not args.no_music else 'off',
+                                     skipsSequencerWhenOff=True, preservesSoundEffects=True,
+                                     survivesLevelRestart=True, coldResetRestoresDefault=True)),
+        banking=dict(fixedBank=7, mapBank=0, artBank=1, bootBank=2, renderBank=3, creditsBank=4,
+                     commonCopies=7, nmiSwitchesBanks=False, musicInitBank=2, musicPlaybackBank=7,
+                     renderOverlay=dict(start=render_start,end=render_end,bytes=render_size,
+                                        availableStart=labels['map_render_overlay_start'],
+                                        availableEnd=labels['map_render_overlay_end'],
+                                        outsideOverlayMatchesMap=True,
+                                        columnProjectorInRenderBank=True,
+                                        exactSlimeProbeInMirroredPrefix=True)),
         initialHealth=100, initialAmmo=STARTING_AMMO,
-        map='assets/map.json', title=title_layout, results=results_layout,
+        map='assets/map.json', title=title_layout, credits=credits_layout, results=results_layout,
         artwork=dict(pistol=art,zombie=zombie_art,medkit=medkit_art,ammo=ammo_art,corpse=corpse_art),
         playerFeedback=player_feedback, zombieSizing=zombie_sizing,
         generated=generated, door=door_assets, slime=hazard,

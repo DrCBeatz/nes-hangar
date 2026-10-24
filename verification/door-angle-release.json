@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "verifiedOn": "2026-10-22",
+  "passed": true,
+  "version": "prototype-2026-10-22-door-angle",
+  "artifact": {
+    "path": "release/hangar-ntsc.nes",
+    "sha256": "2e89760fcaa8175eacd400285d9887dce7e74fce8f5df126a13445cad55ab6a6",
+    "bytes": 131088,
+    "region": "NTSC",
+    "mapper": "MMC1",
+    "prgRomBytes": 131072,
+    "chrRamBytes": 8192,
+    "workRamBytes": 8192
+  },
+  "baseline": {
+    "rom": "release/archive/hangar-latency-ntsc.nes",
+    "sha256": "0dbee1ad5765bc00ac10e1736902ee381a88c3c539b8c68de12f24f887260d89",
+    "evidence": "verification/latency-release.json"
+  },
+  "music": {
+    "enabled": true,
+    "engine": "FamiStudio",
+    "channels": 4,
+    "dpcm": false,
+    "song": "E1M1 (Dr. C Beatz noise-drum remix)",
+    "source": "music/e1m1/e1m1-drums.s",
+    "sourceSha256": "1361d483c5d461023ed6308735334c3e32e76ad5d40cee4168e70fcf29ecec02",
+    "features": {
+      "famiTrackerTempo": true,
+      "volumeTrack": true,
+      "vibrato": true,
+      "dutyCycleEffect": true
+    },
+    "ramBytes": 206,
+    "zpAliasBytes": 8,
+    "playerOption": {
+      "screen": "controls guide",
+      "default": "on",
+      "left": "off",
+      "right": "on",
+      "skipsSequencerWhenOff": true,
+      "preservesSoundEffects": true,
+      "survivesLevelRestart": true,
+      "coldResetRestoresDefault": true
+    }
+  },
+  "integrity": {
+    "sourceFileCount": 78,
+    "changedSourcesFromBaseline": [
+      "src/door.s"
+    ],
+    "sourceExportUnmodified": true,
+    "ramAllocationUnchanged": true,
+    "rebuildEvidence": "verification/current-build.json",
+    "changedRomBytes": 4,
+    "linkedLabelAddressesUnchanged": true
+  },
+  "runtimeEvidence": {
+    "report": "verification/door-approach.json",
+    "testedRomSha256": "2e89760fcaa8175eacd400285d9887dce7e74fce8f5df126a13445cad55ab6a6",
+    "doorExitLinkedCalls": 51838,
+    "controllerChecks": 30,
+    "mesenCandidateFrames": 9184,
+    "mesenCandidateScreenshots": 94,
+    "matchedWorldPixelFixtures": 30,
+    "matchedWorldPixels": 1351680
+  },
+  "interactionRulesChanged": true,
+  "latencyOptimization": false,
+  "measuredOutcome": "Close-angle prompt/use now succeeds from both door sides. Four facing constants changed; reach, collision, input guards and rendering unchanged. No new latency gain claimed.",
+  "physicalConsoleTested": false,
+  "liveDeploymentChanged": false,
+  "licensingResolved": false,
+  "priorLatencyOptimizationsRetained": true
+}

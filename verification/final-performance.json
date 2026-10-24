@@ -1,0 +1,1691 @@
+{
+  "passed": true,
+  "checks": {
+    "identicalRecordedRuntimeStatesAndTiming": true,
+    "exactSameProducerCpuCycles": true,
+    "exactSameWorldRaster": true,
+    "exactSameCompleteStaging": true,
+    "exactSameUploadWork": true,
+    "allRuntimeTrialsValid": true,
+    "liveMotionStopsOnRelease": true,
+    "stockNtscSettings": true,
+    "personalSettingsUnchanged": true
+  },
+  "baselineRomSha256": "867f9ae9999f895bea3b68f5ca13f8a2ff73047fee0b9f2a696fdb542dc4e249",
+  "candidateRomSha256": "db258e4c9c57ff3ef9f4bc8eb732f31b65eec85a1a639e7a9787a90dde1722a9",
+  "cpuHarnessSha256": "4fc2dc00594f857afee0c3c65afef603b49f2c0a29063217222548fb9a22b4fd",
+  "jsnesEntrySha256": "0531f69c4e9e2973bdcdc89bf3ad6e6dfa3257572f8e7eccd405fa158cc3a1a7",
+  "cpuFixtures": [
+    {
+      "pose": {
+        "id": "opening",
+        "x": 52,
+        "z": 192,
+        "angle": 0,
+        "live": false
+      },
+      "beforeCpuCycles": 1034063,
+      "afterCpuCycles": 1034063,
+      "changeCpuCycles": 0,
+      "sameWorldRaster": true,
+      "sameCompleteStaging": true,
+      "samePatternCount": true,
+      "sameDirtyBlockCount": true,
+      "afterPhaseCycles": {
+        "geometry_setup": 209998,
+        "slime_palette_probe": 461,
+        "world_geometry": 285981,
+        "raster_and_tiles": 510152,
+        "actor_projection_occlusion_art": 25020,
+        "publication_prepare": 1035,
+        "producer_overhead": 1416
+      }
+    },
+    {
+      "pose": {
+        "id": "simple-wall",
+        "x": 52,
+        "z": 192,
+        "angle": 128,
+        "live": false
+      },
+      "beforeCpuCycles": 448355,
+      "afterCpuCycles": 448355,
+      "changeCpuCycles": 0,
+      "sameWorldRaster": true,
+      "sameCompleteStaging": true,
+      "samePatternCount": true,
+      "sameDirtyBlockCount": true,
+      "afterPhaseCycles": {
+        "geometry_setup": 105856,
+        "slime_palette_probe": 108,
+        "world_geometry": 94783,
+        "raster_and_tiles": 232243,
+        "actor_projection_occlusion_art": 12862,
+        "publication_prepare": 1087,
+        "producer_overhead": 1416
+      }
+    },
+    {
+      "pose": {
+        "id": "square",
+        "x": 176,
+        "z": 312,
+        "angle": 64,
+        "actor": 0,
+        "live": false
+      },
+      "beforeCpuCycles": 615539,
+      "afterCpuCycles": 615539,
+      "changeCpuCycles": 0,
+      "sameWorldRaster": true,
+      "sameCompleteStaging": true,
+      "samePatternCount": true,
+      "sameDirtyBlockCount": true,
+      "afterPhaseCycles": {
+        "geometry_setup": 245045,
+        "slime_palette_probe": 23189,
+        "world_geometry": 181231,
+        "raster_and_tiles": 151119,
+        "actor_projection_occlusion_art": 12348,
+        "publication_prepare": 1191,
+        "producer_overhead": 1416
+      }
+    },
+    {
+      "pose": {
+        "id": "square",
+        "x": 176,
+        "z": 312,
+        "angle": 64,
+        "actor": 0,
+        "live": true
+      },
+      "beforeCpuCycles": 628406,
+      "afterCpuCycles": 628406,
+      "changeCpuCycles": 0,
+      "sameWorldRaster": true,
+      "sameCompleteStaging": true,
+      "samePatternCount": true,
+      "sameDirtyBlockCount": true,
+      "afterPhaseCycles": {
+        "geometry_setup": 245045,
+        "slime_palette_probe": 23190,
+        "world_geometry": 181231,
+        "raster_and_tiles": 151119,
+        "actor_projection_occlusion_art": 25220,
+        "publication_prepare": 1191,
+        "producer_overhead": 1410
+      }
+    },
+    {
+      "pose": {
+        "id": "slime-entry",
+        "x": 292,
+        "z": 256,
+        "angle": 128,
+        "actor": 1,
+        "live": false
+      },
+      "beforeCpuCycles": 1060300,
+      "afterCpuCycles": 1060300,
+      "changeCpuCycles": 0,
+      "sameWorldRaster": true,
+      "sameCompleteStaging": true,
+      "samePatternCount": true,
+      "sameDirtyBlockCount": true,
+      "afterPhaseCycles": {
+        "geometry_setup": 301636,
+        "slime_palette_probe": 15411,
+        "world_geometry": 313588,
+        "raster_and_tiles": 414846,
+        "actor_projection_occlusion_art": 12348,
+        "publication_prepare": 1048,
+        "producer_overhead": 1423
+      }
+    },
+    {
+      "pose": {
+        "id": "slime-entry",
+        "x": 292,
+        "z": 256,
+        "angle": 128,
+        "actor": 1,
+        "live": true
+      },
+      "beforeCpuCycles": 1100034,
+      "afterCpuCycles": 1100034,
+      "changeCpuCycles": 0,
+      "sameWorldRaster": true,
+      "sameCompleteStaging": true,
+      "samePatternCount": true,
+      "sameDirtyBlockCount": true,
+      "afterPhaseCycles": {
+        "geometry_setup": 301636,
+        "slime_palette_probe": 15412,
+        "world_geometry": 313588,
+        "raster_and_tiles": 414846,
+        "actor_projection_occlusion_art": 52087,
+        "publication_prepare": 1048,
+        "producer_overhead": 1417
+      }
+    },
+    {
+      "pose": {
+        "id": "slime-middle",
+        "x": 304,
+        "z": 216,
+        "angle": 128,
+        "actor": 1,
+        "live": false
+      },
+      "beforeCpuCycles": 882729,
+      "afterCpuCycles": 882729,
+      "changeCpuCycles": 0,
+      "sameWorldRaster": true,
+      "sameCompleteStaging": true,
+      "samePatternCount": true,
+      "sameDirtyBlockCount": true,
+      "afterPhaseCycles": {
+        "geometry_setup": 221485,
+        "slime_palette_probe": 12692,
+        "world_geometry": 249621,
+        "raster_and_tiles": 384125,
+        "actor_projection_occlusion_art": 12348,
+        "publication_prepare": 1035,
+        "producer_overhead": 1423
+      }
+    },
+    {
+      "pose": {
+        "id": "slime-middle",
+        "x": 304,
+        "z": 216,
+        "angle": 128,
+        "actor": 1,
+        "live": true
+      },
+      "beforeCpuCycles": 895788,
+      "afterCpuCycles": 895788,
+      "changeCpuCycles": 0,
+      "sameWorldRaster": true,
+      "sameCompleteStaging": true,
+      "samePatternCount": true,
+      "sameDirtyBlockCount": true,
+      "afterPhaseCycles": {
+        "geometry_setup": 221485,
+        "slime_palette_probe": 12693,
+        "world_geometry": 249621,
+        "raster_and_tiles": 384125,
+        "actor_projection_occlusion_art": 25412,
+        "publication_prepare": 1035,
+        "producer_overhead": 1417
+      }
+    },
+    {
+      "pose": {
+        "id": "slime-oblique",
+        "x": 310,
+        "z": 240,
+        "angle": 160,
+        "actor": 1,
+        "live": false
+      },
+      "beforeCpuCycles": 1010885,
+      "afterCpuCycles": 1010885,
+      "changeCpuCycles": 0,
+      "sameWorldRaster": true,
+      "sameCompleteStaging": true,
+      "samePatternCount": true,
+      "sameDirtyBlockCount": true,
+      "afterPhaseCycles": {
+        "geometry_setup": 315972,
+        "slime_palette_probe": 15925,
+        "world_geometry": 267052,
+        "raster_and_tiles": 397130,
+        "actor_projection_occlusion_art": 12348,
+        "publication_prepare": 1035,
+        "producer_overhead": 1423
+      }
+    },
+    {
+      "pose": {
+        "id": "slime-oblique",
+        "x": 310,
+        "z": 240,
+        "angle": 160,
+        "actor": 1,
+        "live": true
+      },
+      "beforeCpuCycles": 1049222,
+      "afterCpuCycles": 1049222,
+      "changeCpuCycles": 0,
+      "sameWorldRaster": true,
+      "sameCompleteStaging": true,
+      "samePatternCount": true,
+      "sameDirtyBlockCount": true,
+      "afterPhaseCycles": {
+        "geometry_setup": 315972,
+        "slime_palette_probe": 15926,
+        "world_geometry": 267052,
+        "raster_and_tiles": 397130,
+        "actor_projection_occlusion_art": 50690,
+        "publication_prepare": 1035,
+        "producer_overhead": 1417
+      }
+    },
+    {
+      "pose": {
+        "id": "slime-exit-open",
+        "x": 296,
+        "z": 180,
+        "angle": 128,
+        "actor": 1,
+        "live": false,
+        "door": 2
+      },
+      "beforeCpuCycles": 602410,
+      "afterCpuCycles": 602410,
+      "changeCpuCycles": 0,
+      "sameWorldRaster": true,
+      "sameCompleteStaging": true,
+      "samePatternCount": true,
+      "sameDirtyBlockCount": true,
+      "afterPhaseCycles": {
+        "geometry_setup": 188407,
+        "slime_palette_probe": 309,
+        "world_geometry": 116689,
+        "raster_and_tiles": 282095,
+        "actor_projection_occlusion_art": 12348,
+        "publication_prepare": 1139,
+        "producer_overhead": 1423
+      }
+    },
+    {
+      "pose": {
+        "id": "slime-exit-open",
+        "x": 296,
+        "z": 180,
+        "angle": 128,
+        "actor": 1,
+        "live": true,
+        "door": 2
+      },
+      "beforeCpuCycles": 615361,
+      "afterCpuCycles": 615361,
+      "changeCpuCycles": 0,
+      "sameWorldRaster": true,
+      "sameCompleteStaging": true,
+      "samePatternCount": true,
+      "sameDirtyBlockCount": true,
+      "afterPhaseCycles": {
+        "geometry_setup": 188407,
+        "slime_palette_probe": 310,
+        "world_geometry": 116689,
+        "raster_and_tiles": 282095,
+        "actor_projection_occlusion_art": 25304,
+        "publication_prepare": 1139,
+        "producer_overhead": 1417
+      }
+    },
+    {
+      "pose": {
+        "id": "slime-exit-closed",
+        "x": 296,
+        "z": 180,
+        "angle": 128,
+        "actor": 1,
+        "live": false,
+        "door": 0
+      },
+      "beforeCpuCycles": 513610,
+      "afterCpuCycles": 513610,
+      "changeCpuCycles": 0,
+      "sameWorldRaster": true,
+      "sameCompleteStaging": true,
+      "samePatternCount": true,
+      "sameDirtyBlockCount": true,
+      "afterPhaseCycles": {
+        "geometry_setup": 119501,
+        "slime_palette_probe": 160,
+        "world_geometry": 97461,
+        "raster_and_tiles": 281580,
+        "actor_projection_occlusion_art": 12348,
+        "publication_prepare": 1139,
+        "producer_overhead": 1421
+      }
+    },
+    {
+      "pose": {
+        "id": "slime-exit-closed",
+        "x": 296,
+        "z": 180,
+        "angle": 128,
+        "actor": 1,
+        "live": true,
+        "door": 0
+      },
+      "beforeCpuCycles": 526561,
+      "afterCpuCycles": 526561,
+      "changeCpuCycles": 0,
+      "sameWorldRaster": true,
+      "sameCompleteStaging": true,
+      "samePatternCount": true,
+      "sameDirtyBlockCount": true,
+      "afterPhaseCycles": {
+        "geometry_setup": 119501,
+        "slime_palette_probe": 161,
+        "world_geometry": 97461,
+        "raster_and_tiles": 281580,
+        "actor_projection_occlusion_art": 25304,
+        "publication_prepare": 1139,
+        "producer_overhead": 1415
+      }
+    },
+    {
+      "pose": {
+        "id": "door-closed",
+        "x": 296,
+        "z": 124,
+        "angle": 128,
+        "actor": 2,
+        "live": false,
+        "door": 0
+      },
+      "beforeCpuCycles": 319899,
+      "afterCpuCycles": 319899,
+      "changeCpuCycles": 0,
+      "sameWorldRaster": true,
+      "sameCompleteStaging": true,
+      "samePatternCount": true,
+      "sameDirtyBlockCount": true,
+      "afterPhaseCycles": {
+        "geometry_setup": 90448,
+        "slime_palette_probe": 58,
+        "world_geometry": 76699,
+        "raster_and_tiles": 141935,
+        "actor_projection_occlusion_art": 8124,
+        "publication_prepare": 1217,
+        "producer_overhead": 1418
+      }
+    },
+    {
+      "pose": {
+        "id": "door-closed",
+        "x": 296,
+        "z": 124,
+        "angle": 128,
+        "actor": 2,
+        "live": true,
+        "door": 0
+      },
+      "beforeCpuCycles": 342331,
+      "afterCpuCycles": 342331,
+      "changeCpuCycles": 0,
+      "sameWorldRaster": true,
+      "sameCompleteStaging": true,
+      "samePatternCount": true,
+      "sameDirtyBlockCount": true,
+      "afterPhaseCycles": {
+        "geometry_setup": 90448,
+        "slime_palette_probe": 59,
+        "world_geometry": 76699,
+        "raster_and_tiles": 141935,
+        "actor_projection_occlusion_art": 30561,
+        "publication_prepare": 1217,
+        "producer_overhead": 1412
+      }
+    },
+    {
+      "pose": {
+        "id": "door-open",
+        "x": 296,
+        "z": 124,
+        "angle": 128,
+        "actor": 2,
+        "live": false,
+        "door": 2
+      },
+      "beforeCpuCycles": 592860,
+      "afterCpuCycles": 592860,
+      "changeCpuCycles": 0,
+      "sameWorldRaster": true,
+      "sameCompleteStaging": true,
+      "samePatternCount": true,
+      "sameDirtyBlockCount": true,
+      "afterPhaseCycles": {
+        "geometry_setup": 226165,
+        "slime_palette_probe": 407,
+        "world_geometry": 120688,
+        "raster_and_tiles": 230667,
+        "actor_projection_occlusion_art": 12348,
+        "publication_prepare": 1165,
+        "producer_overhead": 1420
+      }
+    },
+    {
+      "pose": {
+        "id": "door-open",
+        "x": 296,
+        "z": 124,
+        "angle": 128,
+        "actor": 2,
+        "live": true,
+        "door": 2
+      },
+      "beforeCpuCycles": 624287,
+      "afterCpuCycles": 624287,
+      "changeCpuCycles": 0,
+      "sameWorldRaster": true,
+      "sameCompleteStaging": true,
+      "samePatternCount": true,
+      "sameDirtyBlockCount": true,
+      "afterPhaseCycles": {
+        "geometry_setup": 226165,
+        "slime_palette_probe": 408,
+        "world_geometry": 120688,
+        "raster_and_tiles": 230667,
+        "actor_projection_occlusion_art": 43780,
+        "publication_prepare": 1165,
+        "producer_overhead": 1414
+      }
+    }
+  ],
+  "runtime": {
+    "on": {
+      "before": {
+        "scenes": {
+          "door": {
+            "renderCpuCycles": {
+              "count": 18,
+              "minimum": 302562,
+              "median": 352560.0,
+              "mean": 358326.1666666667,
+              "maximum": 422806
+            },
+            "renderFrames": {
+              "count": 18,
+              "minimum": 11.664411275834858,
+              "median": 13.425160759557428,
+              "mean": 13.639560935660732,
+              "maximum": 15.818941925085207
+            },
+            "completedToPublishedFrames": {
+              "count": 18,
+              "minimum": 1.1331576031295647,
+              "median": 4.334866775238831,
+              "mean": 3.813918130618656,
+              "maximum": 6.92993737512802
+            },
+            "sampledToPublishedFrames": {
+              "count": 18,
+              "minimum": 12.81707828948473,
+              "median": 17.16564530481355,
+              "mean": 17.45347906627939,
+              "maximum": 22.748879300213225
+            },
+            "tileCount": {
+              "count": 18,
+              "minimum": 0,
+              "median": 0.0,
+              "mean": 4.388888888888889,
+              "maximum": 18
+            }
+          },
+          "opening": {
+            "renderCpuCycles": {
+              "count": 14,
+              "minimum": 817516,
+              "median": 903245.0,
+              "mean": 927293.2857142857,
+              "maximum": 1027469
+            },
+            "renderFrames": {
+              "count": 14,
+              "minimum": 30.483369990429978,
+              "median": 35.610617686069745,
+              "mean": 35.50040414748865,
+              "maximum": 38.77117576937929
+            },
+            "completedToPublishedFrames": {
+              "count": 14,
+              "minimum": 14.144255469182854,
+              "median": 16.987206393445376,
+              "mean": 17.385153755933292,
+              "maximum": 21.748190930306745
+            },
+            "sampledToPublishedFrames": {
+              "count": 14,
+              "minimum": 47.47119759574218,
+              "median": 51.31223451587448,
+              "mean": 52.88555790342194,
+              "maximum": 59.47183559711892
+            },
+            "tileCount": {
+              "count": 14,
+              "minimum": 72,
+              "median": 89.0,
+              "mean": 87.78571428571429,
+              "maximum": 117
+            }
+          },
+          "slime": {
+            "renderCpuCycles": {
+              "count": 16,
+              "minimum": 603127,
+              "median": 794762.0,
+              "mean": 763203.4375,
+              "maximum": 852193
+            },
+            "renderFrames": {
+              "count": 16,
+              "minimum": 22.96160239082621,
+              "median": 31.03732308053928,
+              "mean": 29.686126408220144,
+              "maximum": 33.07990127768171
+            },
+            "completedToPublishedFrames": {
+              "count": 16,
+              "minimum": 12.081429123083897,
+              "median": 15.612313426571077,
+              "mean": 15.208192021624889,
+              "maximum": 18.156176021221942
+            },
+            "sampledToPublishedFrames": {
+              "count": 16,
+              "minimum": 35.083091284565405,
+              "median": 45.6025251422911,
+              "mean": 44.89431842984503,
+              "maximum": 50.78830106949178
+            },
+            "tileCount": {
+              "count": 16,
+              "minimum": 51,
+              "median": 73.0,
+              "mean": 72.375,
+              "maximum": 94
+            }
+          }
+        },
+        "livePressResponseFrames": {
+          "count": 12,
+          "minimum": 1,
+          "median": 1.5,
+          "mean": 1.5,
+          "maximum": 2
+        },
+        "releaseSettleFrames": {
+          "count": 12,
+          "minimum": 0,
+          "median": 42.5,
+          "mean": 36.916666666666664,
+          "maximum": 63
+        },
+        "continuedLiveAfterRelease": 0,
+        "aborts": 12
+      },
+      "after": {
+        "scenes": {
+          "door": {
+            "renderCpuCycles": {
+              "count": 18,
+              "minimum": 302562,
+              "median": 352560.0,
+              "mean": 358326.1666666667,
+              "maximum": 422806
+            },
+            "renderFrames": {
+              "count": 18,
+              "minimum": 11.664411275834858,
+              "median": 13.425160759557428,
+              "mean": 13.639560935660732,
+              "maximum": 15.818941925085207
+            },
+            "completedToPublishedFrames": {
+              "count": 18,
+              "minimum": 1.1331576031295647,
+              "median": 4.334866775238831,
+              "mean": 3.813918130618656,
+              "maximum": 6.92993737512802
+            },
+            "sampledToPublishedFrames": {
+              "count": 18,
+              "minimum": 12.81707828948473,
+              "median": 17.16564530481355,
+              "mean": 17.45347906627939,
+              "maximum": 22.748879300213225
+            },
+            "tileCount": {
+              "count": 18,
+              "minimum": 0,
+              "median": 0.0,
+              "mean": 4.388888888888889,
+              "maximum": 18
+            }
+          },
+          "opening": {
+            "renderCpuCycles": {
+              "count": 14,
+              "minimum": 817516,
+              "median": 903245.0,
+              "mean": 927293.2857142857,
+              "maximum": 1027469
+            },
+            "renderFrames": {
+              "count": 14,
+              "minimum": 30.483369990429978,
+              "median": 35.610617686069745,
+              "mean": 35.50040414748865,
+              "maximum": 38.77117576937929
+            },
+            "completedToPublishedFrames": {
+              "count": 14,
+              "minimum": 14.144255469182854,
+              "median": 16.987206393445376,
+              "mean": 17.385153755933292,
+              "maximum": 21.748190930306745
+            },
+            "sampledToPublishedFrames": {
+              "count": 14,
+              "minimum": 47.47119759574218,
+              "median": 51.31223451587448,
+              "mean": 52.88555790342194,
+              "maximum": 59.47183559711892
+            },
+            "tileCount": {
+              "count": 14,
+              "minimum": 72,
+              "median": 89.0,
+              "mean": 87.78571428571429,
+              "maximum": 117
+            }
+          },
+          "slime": {
+            "renderCpuCycles": {
+              "count": 16,
+              "minimum": 603127,
+              "median": 794762.0,
+              "mean": 763203.4375,
+              "maximum": 852193
+            },
+            "renderFrames": {
+              "count": 16,
+              "minimum": 22.96160239082621,
+              "median": 31.03732308053928,
+              "mean": 29.686126408220144,
+              "maximum": 33.07990127768171
+            },
+            "completedToPublishedFrames": {
+              "count": 16,
+              "minimum": 12.081429123083897,
+              "median": 15.612313426571077,
+              "mean": 15.208192021624889,
+              "maximum": 18.156176021221942
+            },
+            "sampledToPublishedFrames": {
+              "count": 16,
+              "minimum": 35.083091284565405,
+              "median": 45.6025251422911,
+              "mean": 44.89431842984503,
+              "maximum": 50.78830106949178
+            },
+            "tileCount": {
+              "count": 16,
+              "minimum": 51,
+              "median": 73.0,
+              "mean": 72.375,
+              "maximum": 94
+            }
+          }
+        },
+        "livePressResponseFrames": {
+          "count": 12,
+          "minimum": 1,
+          "median": 1.5,
+          "mean": 1.5,
+          "maximum": 2
+        },
+        "releaseSettleFrames": {
+          "count": 12,
+          "minimum": 0,
+          "median": 42.5,
+          "mean": 36.916666666666664,
+          "maximum": 63
+        },
+        "continuedLiveAfterRelease": 0,
+        "aborts": 12
+      },
+      "trials": [
+        {
+          "id": "opening-walk-idle-press",
+          "liveFirstChangeFrames": {
+            "before": 2,
+            "after": 2,
+            "difference": 0
+          },
+          "firstResponsePictureFrames": {
+            "before": 56.07538489951478,
+            "after": 56.07538489951478,
+            "difference": 0.0
+          }
+        },
+        {
+          "id": "opening-walk-idle-release",
+          "firstResponsePictureFrames": {
+            "before": 61.07530095196521,
+            "after": 61.07530095196521,
+            "difference": 0.0
+          },
+          "finalPoseSettledFrames": {
+            "before": 62,
+            "after": 62,
+            "difference": 0
+          }
+        },
+        {
+          "id": "opening-walk-busy-press",
+          "liveFirstChangeFrames": {
+            "before": 1,
+            "after": 1,
+            "difference": 0
+          },
+          "firstResponsePictureFrames": {
+            "before": 58.07535132049495,
+            "after": 58.07535132049495,
+            "difference": 0.0
+          }
+        },
+        {
+          "id": "opening-walk-busy-release",
+          "firstResponsePictureFrames": {
+            "before": 62.07535132049495,
+            "after": 62.07535132049495,
+            "difference": 0.0
+          },
+          "finalPoseSettledFrames": {
+            "before": 63,
+            "after": 63,
+            "difference": 0
+          }
+        },
+        {
+          "id": "opening-turn-idle-press",
+          "liveFirstChangeFrames": {
+            "before": 1,
+            "after": 1,
+            "difference": 0
+          },
+          "firstResponsePictureFrames": {
+            "before": 57.07536811000487,
+            "after": 57.07536811000487,
+            "difference": 0.0
+          }
+        },
+        {
+          "id": "opening-turn-idle-release",
+          "firstResponsePictureFrames": {
+            "before": 51.07526737294538,
+            "after": 51.07526737294538,
+            "difference": 0.0
+          },
+          "finalPoseSettledFrames": {
+            "before": 52,
+            "after": 52,
+            "difference": 0
+          }
+        },
+        {
+          "id": "opening-turn-busy-press",
+          "liveFirstChangeFrames": {
+            "before": 2,
+            "after": 2,
+            "difference": 0
+          },
+          "firstResponsePictureFrames": {
+            "before": 57.07530095196521,
+            "after": 57.07530095196521,
+            "difference": 0.0
+          }
+        },
+        {
+          "id": "opening-turn-busy-release",
+          "firstResponsePictureFrames": {
+            "before": 50.0752841624553,
+            "after": 50.0752841624553,
+            "difference": 0.0
+          },
+          "finalPoseSettledFrames": {
+            "before": 51,
+            "after": 51,
+            "difference": 0
+          }
+        },
+        {
+          "id": "slime-walk-idle-press",
+          "liveFirstChangeFrames": {
+            "before": 1,
+            "after": 1,
+            "difference": 0
+          },
+          "firstResponsePictureFrames": {
+            "before": 47.075636742163496,
+            "after": 47.075636742163496,
+            "difference": 0.0
+          }
+        },
+        {
+          "id": "slime-walk-idle-release",
+          "firstResponsePictureFrames": {
+            "before": 36.07561995265358,
+            "after": 36.07561995265358,
+            "difference": 0.0
+          },
+          "finalPoseSettledFrames": {
+            "before": 37,
+            "after": 37,
+            "difference": 0
+          }
+        },
+        {
+          "id": "slime-walk-busy-press",
+          "liveFirstChangeFrames": {
+            "before": 2,
+            "after": 2,
+            "difference": 0
+          },
+          "firstResponsePictureFrames": {
+            "before": 47.07556958412384,
+            "after": 47.07556958412384,
+            "difference": 0.0
+          }
+        },
+        {
+          "id": "slime-walk-busy-release",
+          "firstResponsePictureFrames": {
+            "before": 38.07565353167341,
+            "after": 38.07565353167341,
+            "difference": 0.0
+          },
+          "finalPoseSettledFrames": {
+            "before": 39,
+            "after": 39,
+            "difference": 0
+          }
+        },
+        {
+          "id": "slime-turn-idle-press",
+          "liveFirstChangeFrames": {
+            "before": 2,
+            "after": 2,
+            "difference": 0
+          },
+          "firstResponsePictureFrames": {
+            "before": 49.07560316314367,
+            "after": 49.07560316314367,
+            "difference": 0.0
+          }
+        },
+        {
+          "id": "slime-turn-idle-release",
+          "finalPoseSettledFrames": {
+            "before": 46,
+            "after": 46,
+            "difference": 0
+          }
+        },
+        {
+          "id": "slime-turn-busy-press",
+          "liveFirstChangeFrames": {
+            "before": 1,
+            "after": 1,
+            "difference": 0
+          },
+          "firstResponsePictureFrames": {
+            "before": 48.07555279461393,
+            "after": 48.07555279461393,
+            "difference": 0.0
+          }
+        },
+        {
+          "id": "slime-turn-busy-release",
+          "finalPoseSettledFrames": {
+            "before": 46,
+            "after": 46,
+            "difference": 0
+          }
+        },
+        {
+          "id": "door-walk-idle-press",
+          "liveFirstChangeFrames": {
+            "before": 1,
+            "after": 1,
+            "difference": 0
+          },
+          "firstResponsePictureFrames": {
+            "before": 19.075468847064354,
+            "after": 19.075468847064354,
+            "difference": 0.0
+          }
+        },
+        {
+          "id": "door-walk-idle-release",
+          "finalPoseSettledFrames": {
+            "before": 0,
+            "after": 0,
+            "difference": 0
+          }
+        },
+        {
+          "id": "door-walk-busy-press",
+          "liveFirstChangeFrames": {
+            "before": 1,
+            "after": 1,
+            "difference": 0
+          },
+          "firstResponsePictureFrames": {
+            "before": 13.075502426084183,
+            "after": 13.075502426084183,
+            "difference": 0.0
+          }
+        },
+        {
+          "id": "door-walk-busy-release",
+          "finalPoseSettledFrames": {
+            "before": 0,
+            "after": 0,
+            "difference": 0
+          }
+        },
+        {
+          "id": "door-turn-idle-press",
+          "liveFirstChangeFrames": {
+            "before": 2,
+            "after": 2,
+            "difference": 0
+          },
+          "firstResponsePictureFrames": {
+            "before": 14.075418478534612,
+            "after": 14.075418478534612,
+            "difference": 0.0
+          }
+        },
+        {
+          "id": "door-turn-idle-release",
+          "firstResponsePictureFrames": {
+            "before": 23.075468847064354,
+            "after": 23.075468847064354,
+            "difference": 0.0
+          },
+          "finalPoseSettledFrames": {
+            "before": 24,
+            "after": 24,
+            "difference": 0
+          }
+        },
+        {
+          "id": "door-turn-busy-press",
+          "liveFirstChangeFrames": {
+            "before": 2,
+            "after": 2,
+            "difference": 0
+          },
+          "firstResponsePictureFrames": {
+            "before": 18.075552794613927,
+            "after": 18.075552794613927,
+            "difference": 0.0
+          }
+        },
+        {
+          "id": "door-turn-busy-release",
+          "firstResponsePictureFrames": {
+            "before": 22.075418478534612,
+            "after": 22.075418478534612,
+            "difference": 0.0
+          },
+          "finalPoseSettledFrames": {
+            "before": 23,
+            "after": 23,
+            "difference": 0
+          }
+        }
+      ]
+    },
+    "off": {
+      "before": {
+        "scenes": {
+          "door": {
+            "renderCpuCycles": {
+              "count": 20,
+              "minimum": 302562,
+              "median": 357386.0,
+              "mean": 364136.2,
+              "maximum": 433605
+            },
+            "renderFrames": {
+              "count": 20,
+              "minimum": 11.209717768338342,
+              "median": 12.972280519131647,
+              "mean": 13.313767398129649,
+              "maximum": 15.951914843605715
+            },
+            "completedToPublishedFrames": {
+              "count": 20,
+              "minimum": 1.2088782928426318,
+              "median": 4.634072631419889,
+              "mean": 4.074102180957338,
+              "maximum": 6.767549235237824
+            },
+            "sampledToPublishedFrames": {
+              "count": 20,
+              "minimum": 12.468796695824448,
+              "median": 17.613169691576704,
+              "mean": 17.38786957908699,
+              "maximum": 22.70207014657242
+            },
+            "tileCount": {
+              "count": 20,
+              "minimum": 0,
+              "median": 0.0,
+              "mean": 5.25,
+              "maximum": 18
+            }
+          },
+          "opening": {
+            "renderCpuCycles": {
+              "count": 14,
+              "minimum": 817266,
+              "median": 899996.5,
+              "mean": 926827.2142857143,
+              "maximum": 1027469
+            },
+            "renderFrames": {
+              "count": 14,
+              "minimum": 29.161229663706116,
+              "median": 34.177515488322896,
+              "mean": 34.081052558361534,
+              "maximum": 37.19689058276389
+            },
+            "completedToPublishedFrames": {
+              "count": 14,
+              "minimum": 14.530749987407868,
+              "median": 17.263091620355603,
+              "mean": 17.446382700088986,
+              "maximum": 19.930726482093988
+            },
+            "sampledToPublishedFrames": {
+              "count": 14,
+              "minimum": 46.79850909151962,
+              "median": 50.458521515756956,
+              "mean": 51.527435258450524,
+              "maximum": 55.89241282046977
+            },
+            "tileCount": {
+              "count": 14,
+              "minimum": 72,
+              "median": 89.0,
+              "mean": 86.71428571428571,
+              "maximum": 105
+            }
+          },
+          "slime": {
+            "renderCpuCycles": {
+              "count": 16,
+              "minimum": 602877,
+              "median": 802067.0,
+              "mean": 765395.8125,
+              "maximum": 855082
+            },
+            "renderFrames": {
+              "count": 16,
+              "minimum": 21.832239216937257,
+              "median": 29.695303974077,
+              "mean": 28.361977636372796,
+              "maximum": 31.72569298702171
+            },
+            "completedToPublishedFrames": {
+              "count": 16,
+              "minimum": 12.91385302463021,
+              "median": 15.225886066385723,
+              "mean": 15.257987609341683,
+              "maximum": 17.824079515118953
+            },
+            "sampledToPublishedFrames": {
+              "count": 16,
+              "minimum": 34.75307667769178,
+              "median": 44.28982052013902,
+              "mean": 43.619965245714475,
+              "maximum": 49.25686271217743
+            },
+            "tileCount": {
+              "count": 16,
+              "minimum": 51,
+              "median": 73.0,
+              "mean": 73.3125,
+              "maximum": 95
+            }
+          }
+        },
+        "livePressResponseFrames": {
+          "count": 12,
+          "minimum": 1,
+          "median": 1.5,
+          "mean": 1.5,
+          "maximum": 2
+        },
+        "releaseSettleFrames": {
+          "count": 12,
+          "minimum": 0,
+          "median": 41.5,
+          "mean": 35.666666666666664,
+          "maximum": 58
+        },
+        "continuedLiveAfterRelease": 0,
+        "aborts": 12
+      },
+      "after": {
+        "scenes": {
+          "door": {
+            "renderCpuCycles": {
+              "count": 20,
+              "minimum": 302562,
+              "median": 357386.0,
+              "mean": 364136.2,
+              "maximum": 433605
+            },
+            "renderFrames": {
+              "count": 20,
+              "minimum": 11.209717768338342,
+              "median": 12.972280519131647,
+              "mean": 13.313767398129649,
+              "maximum": 15.951914843605715
+            },
+            "completedToPublishedFrames": {
+              "count": 20,
+              "minimum": 1.2088782928426318,
+              "median": 4.634072631419889,
+              "mean": 4.074102180957338,
+              "maximum": 6.767549235237824
+            },
+            "sampledToPublishedFrames": {
+              "count": 20,
+              "minimum": 12.468796695824448,
+              "median": 17.613169691576704,
+              "mean": 17.38786957908699,
+              "maximum": 22.70207014657242
+            },
+            "tileCount": {
+              "count": 20,
+              "minimum": 0,
+              "median": 0.0,
+              "mean": 5.25,
+              "maximum": 18
+            }
+          },
+          "opening": {
+            "renderCpuCycles": {
+              "count": 14,
+              "minimum": 817266,
+              "median": 899996.5,
+              "mean": 926827.2142857143,
+              "maximum": 1027469
+            },
+            "renderFrames": {
+              "count": 14,
+              "minimum": 29.161229663706116,
+              "median": 34.177515488322896,
+              "mean": 34.081052558361534,
+              "maximum": 37.19689058276389
+            },
+            "completedToPublishedFrames": {
+              "count": 14,
+              "minimum": 14.530749987407868,
+              "median": 17.263091620355603,
+              "mean": 17.446382700088986,
+              "maximum": 19.930726482093988
+            },
+            "sampledToPublishedFrames": {
+              "count": 14,
+              "minimum": 46.79850909151962,
+              "median": 50.458521515756956,
+              "mean": 51.527435258450524,
+              "maximum": 55.89241282046977
+            },
+            "tileCount": {
+              "count": 14,
+              "minimum": 72,
+              "median": 89.0,
+              "mean": 86.71428571428571,
+              "maximum": 105
+            }
+          },
+          "slime": {
+            "renderCpuCycles": {
+              "count": 16,
+              "minimum": 602877,
+              "median": 802067.0,
+              "mean": 765395.8125,
+              "maximum": 855082
+            },
+            "renderFrames": {
+              "count": 16,
+              "minimum": 21.832239216937257,
+              "median": 29.695303974077,
+              "mean": 28.361977636372796,
+              "maximum": 31.72569298702171
+            },
+            "completedToPublishedFrames": {
+              "count": 16,
+              "minimum": 12.91385302463021,
+              "median": 15.225886066385723,
+              "mean": 15.257987609341683,
+              "maximum": 17.824079515118953
+            },
+            "sampledToPublishedFrames": {
+              "count": 16,
+              "minimum": 34.75307667769178,
+              "median": 44.28982052013902,
+              "mean": 43.619965245714475,
+              "maximum": 49.25686271217743
+            },
+            "tileCount": {
+              "count": 16,
+              "minimum": 51,
+              "median": 73.0,
+              "mean": 73.3125,
+              "maximum": 95
+            }
+          }
+        },
+        "livePressResponseFrames": {
+          "count": 12,
+          "minimum": 1,
+          "median": 1.5,
+          "mean": 1.5,
+          "maximum": 2
+        },
+        "releaseSettleFrames": {
+          "count": 12,
+          "minimum": 0,
+          "median": 41.5,
+          "mean": 35.666666666666664,
+          "maximum": 58
+        },
+        "continuedLiveAfterRelease": 0,
+        "aborts": 12
+      },
+      "trials": [
+        {
+          "id": "opening-walk-idle-press",
+          "liveFirstChangeFrames": {
+            "before": 2,
+            "after": 2,
+            "difference": 0
+          },
+          "firstResponsePictureFrames": {
+            "before": 55.07526737294538,
+            "after": 55.07526737294538,
+            "difference": 0.0
+          }
+        },
+        {
+          "id": "opening-walk-idle-release",
+          "firstResponsePictureFrames": {
+            "before": 57.07536811000487,
+            "after": 57.07536811000487,
+            "difference": 0.0
+          },
+          "finalPoseSettledFrames": {
+            "before": 58,
+            "after": 58,
+            "difference": 0
+          }
+        },
+        {
+          "id": "opening-walk-busy-press",
+          "liveFirstChangeFrames": {
+            "before": 1,
+            "after": 1,
+            "difference": 0
+          },
+          "firstResponsePictureFrames": {
+            "before": 56.075317741475125,
+            "after": 56.075317741475125,
+            "difference": 0.0
+          }
+        },
+        {
+          "id": "opening-walk-busy-release",
+          "firstResponsePictureFrames": {
+            "before": 56.07538489951478,
+            "after": 56.07538489951478,
+            "difference": 0.0
+          },
+          "finalPoseSettledFrames": {
+            "before": 57,
+            "after": 57,
+            "difference": 0
+          }
+        },
+        {
+          "id": "opening-turn-idle-press",
+          "liveFirstChangeFrames": {
+            "before": 1,
+            "after": 1,
+            "difference": 0
+          },
+          "firstResponsePictureFrames": {
+            "before": 55.07526737294538,
+            "after": 55.07526737294538,
+            "difference": 0.0
+          }
+        },
+        {
+          "id": "opening-turn-idle-release",
+          "firstResponsePictureFrames": {
+            "before": 49.07536811000487,
+            "after": 49.07536811000487,
+            "difference": 0.0
+          },
+          "finalPoseSettledFrames": {
+            "before": 50,
+            "after": 50,
+            "difference": 0
+          }
+        },
+        {
+          "id": "opening-turn-busy-press",
+          "liveFirstChangeFrames": {
+            "before": 2,
+            "after": 2,
+            "difference": 0
+          },
+          "firstResponsePictureFrames": {
+            "before": 56.075317741475125,
+            "after": 56.075317741475125,
+            "difference": 0.0
+          }
+        },
+        {
+          "id": "opening-turn-busy-release",
+          "firstResponsePictureFrames": {
+            "before": 49.07543526804452,
+            "after": 49.07543526804452,
+            "difference": 0.0
+          },
+          "finalPoseSettledFrames": {
+            "before": 50,
+            "after": 50,
+            "difference": 0
+          }
+        },
+        {
+          "id": "slime-walk-idle-press",
+          "liveFirstChangeFrames": {
+            "before": 1,
+            "after": 1,
+            "difference": 0
+          },
+          "firstResponsePictureFrames": {
+            "before": 45.07560316314367,
+            "after": 45.07560316314367,
+            "difference": 0.0
+          }
+        },
+        {
+          "id": "slime-walk-idle-release",
+          "firstResponsePictureFrames": {
+            "before": 35.07556958412384,
+            "after": 35.07556958412384,
+            "difference": 0.0
+          },
+          "finalPoseSettledFrames": {
+            "before": 36,
+            "after": 36,
+            "difference": 0
+          }
+        },
+        {
+          "id": "slime-walk-busy-press",
+          "liveFirstChangeFrames": {
+            "before": 2,
+            "after": 2,
+            "difference": 0
+          },
+          "firstResponsePictureFrames": {
+            "before": 46.075586373633755,
+            "after": 46.075586373633755,
+            "difference": 0.0
+          }
+        },
+        {
+          "id": "slime-walk-busy-release",
+          "firstResponsePictureFrames": {
+            "before": 35.07556958412384,
+            "after": 35.07556958412384,
+            "difference": 0.0
+          },
+          "finalPoseSettledFrames": {
+            "before": 36,
+            "after": 36,
+            "difference": 0
+          }
+        },
+        {
+          "id": "slime-turn-idle-press",
+          "liveFirstChangeFrames": {
+            "before": 2,
+            "after": 2,
+            "difference": 0
+          },
+          "firstResponsePictureFrames": {
+            "before": 47.075636742163496,
+            "after": 47.075636742163496,
+            "difference": 0.0
+          }
+        },
+        {
+          "id": "slime-turn-idle-release",
+          "firstResponsePictureFrames": {
+            "before": 47.07556958412384,
+            "after": 47.07556958412384,
+            "difference": 0.0
+          },
+          "finalPoseSettledFrames": {
+            "before": 48,
+            "after": 48,
+            "difference": 0
+          }
+        },
+        {
+          "id": "slime-turn-busy-press",
+          "liveFirstChangeFrames": {
+            "before": 1,
+            "after": 1,
+            "difference": 0
+          },
+          "firstResponsePictureFrames": {
+            "before": 47.07556958412384,
+            "after": 47.07556958412384,
+            "difference": 0.0
+          }
+        },
+        {
+          "id": "slime-turn-busy-release",
+          "firstResponsePictureFrames": {
+            "before": 46.07565353167341,
+            "after": 46.07565353167341,
+            "difference": 0.0
+          },
+          "finalPoseSettledFrames": {
+            "before": 47,
+            "after": 47,
+            "difference": 0
+          }
+        },
+        {
+          "id": "door-walk-idle-press",
+          "liveFirstChangeFrames": {
+            "before": 1,
+            "after": 1,
+            "difference": 0
+          },
+          "firstResponsePictureFrames": {
+            "before": 18.075418478534612,
+            "after": 18.075418478534612,
+            "difference": 0.0
+          }
+        },
+        {
+          "id": "door-walk-idle-release",
+          "finalPoseSettledFrames": {
+            "before": 0,
+            "after": 0,
+            "difference": 0
+          }
+        },
+        {
+          "id": "door-walk-busy-press",
+          "liveFirstChangeFrames": {
+            "before": 1,
+            "after": 1,
+            "difference": 0
+          },
+          "firstResponsePictureFrames": {
+            "before": 13.075435268044526,
+            "after": 13.075435268044526,
+            "difference": 0.0
+          }
+        },
+        {
+          "id": "door-walk-busy-release",
+          "finalPoseSettledFrames": {
+            "before": 0,
+            "after": 0,
+            "difference": 0
+          }
+        },
+        {
+          "id": "door-turn-idle-press",
+          "liveFirstChangeFrames": {
+            "before": 2,
+            "after": 2,
+            "difference": 0
+          },
+          "firstResponsePictureFrames": {
+            "before": 14.075485636574268,
+            "after": 14.075485636574268,
+            "difference": 0.0
+          }
+        },
+        {
+          "id": "door-turn-idle-release",
+          "finalPoseSettledFrames": {
+            "before": 23,
+            "after": 23,
+            "difference": 0
+          }
+        },
+        {
+          "id": "door-turn-busy-press",
+          "liveFirstChangeFrames": {
+            "before": 2,
+            "after": 2,
+            "difference": 0
+          },
+          "firstResponsePictureFrames": {
+            "before": 17.075435268044526,
+            "after": 17.075435268044526,
+            "difference": 0.0
+          }
+        },
+        {
+          "id": "door-turn-busy-release",
+          "finalPoseSettledFrames": {
+            "before": 23,
+            "after": 23,
+            "difference": 0
+          }
+        }
+      ]
+    }
+  },
+  "runtimeValidation": {
+    "baseline": {
+      "on": {
+        "passed": true,
+        "framesChecked": 4801,
+        "settledOnsetsChecked": 12,
+        "errors": [],
+        "observerSha256": "ec2a5fae2eea8cb4e65e5657bbebe7a46e9d1f2eccc31e722d7002e68b33423b",
+        "romSha256": "867f9ae9999f895bea3b68f5ca13f8a2ff73047fee0b9f2a696fdb542dc4e249"
+      },
+      "off": {
+        "passed": true,
+        "framesChecked": 4801,
+        "settledOnsetsChecked": 12,
+        "errors": [],
+        "observerSha256": "ec2a5fae2eea8cb4e65e5657bbebe7a46e9d1f2eccc31e722d7002e68b33423b",
+        "romSha256": "867f9ae9999f895bea3b68f5ca13f8a2ff73047fee0b9f2a696fdb542dc4e249"
+      }
+    },
+    "candidate": {
+      "on": {
+        "passed": true,
+        "framesChecked": 4801,
+        "settledOnsetsChecked": 12,
+        "errors": [],
+        "observerSha256": "ec2a5fae2eea8cb4e65e5657bbebe7a46e9d1f2eccc31e722d7002e68b33423b",
+        "romSha256": "db258e4c9c57ff3ef9f4bc8eb732f31b65eec85a1a639e7a9787a90dde1722a9"
+      },
+      "off": {
+        "passed": true,
+        "framesChecked": 4801,
+        "settledOnsetsChecked": 12,
+        "errors": [],
+        "observerSha256": "ec2a5fae2eea8cb4e65e5657bbebe7a46e9d1f2eccc31e722d7002e68b33423b",
+        "romSha256": "db258e4c9c57ff3ef9f4bc8eb732f31b65eec85a1a639e7a9787a90dde1722a9"
+      }
+    }
+  },
+  "provenance": {
+    "baseline": {
+      "romSha256": "867f9ae9999f895bea3b68f5ca13f8a2ff73047fee0b9f2a696fdb542dc4e249",
+      "mesenSha256": "ce4446a92096a024145e6ed2793cce8b489460bb3ac034cd9d1d77d96109fced",
+      "personalSettingsUnchanged": true,
+      "initialization": "Legal fixed poses; all enemies killed, corpse absent and both pickups collected before each settled trial. Controller inputs drive all measured movement; no per-frame gameplay writes.",
+      "frameRate": 60.0988138974405,
+      "ntsc": true,
+      "extraScanlines": 0,
+      "runAheadFrames": 0,
+      "spriteLimit": true
+    },
+    "candidate": {
+      "romSha256": "db258e4c9c57ff3ef9f4bc8eb732f31b65eec85a1a639e7a9787a90dde1722a9",
+      "mesenSha256": "ce4446a92096a024145e6ed2793cce8b489460bb3ac034cd9d1d77d96109fced",
+      "personalSettingsUnchanged": true,
+      "initialization": "Legal fixed poses; all enemies killed, corpse absent and both pickups collected before each settled trial. Controller inputs drive all measured movement; no per-frame gameplay writes.",
+      "frameRate": 60.0988138974405,
+      "ntsc": true,
+      "extraScanlines": 0,
+      "runAheadFrames": 0,
+      "spriteLimit": true
+    }
+  },
+  "recommendation": {
+    "runtimeRendererChange": "None for this release. Preserve current renderer and transfer schedule after the door usability correction.",
+    "reason": "The CPU work is distributed between vertex/plane setup, per-column surface generation, and span/tile composition; no newly introduced expensive UI or door operation was found. The remaining simple loop changes are small compared with the world-render and transfer costs.",
+    "futureExperiments": [
+      "Reduce span composition/tile-generation work while preserving exact pictures.",
+      "Use more conservative map/portal visibility proofs to avoid transforming hidden geometry.",
+      "Evaluate bounded pattern-transfer savings only with same-bank pattern identity tracking and VRAM deadline tests."
+    ],
+    "music": "Keep the existing ON/OFF option. These fixtures do not warrant shortening the track."
+  },
+  "scope": [
+    "Linked CPU profiles inject fixed legal poses, suppress interrupts, and run the complete producer; these CPU costs are not gameplay FPS. Live-actor rows initialize the selected encounter, and some actors are outside the view.",
+    "Mesen trials use legal fixed-pose setup with enemies removed and items collected, followed only by controller inputs. They measure camera presentation latency with music ON/OFF, without overclocking, run-ahead, or extra sprites.",
+    "Scene-mean timing spans moving camera views and is not a same-pose CPU equivalence measurement. Small timing changes can come from frame/tick phase and the changed door prompt.",
+    "Input-state response is distinct from visible response. Buffered world rendering and upload continue after the live player stops; physical screen or controller-device latency is not measured.",
+    "The complete release gameplay and PPU deadline validation is performed separately by the parent task."
+  ]
+}

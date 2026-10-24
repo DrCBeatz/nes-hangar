@@ -1,6 +1,7 @@
 ; NMI-owned pause. The producer may finish an acquired job, then parks.
 ; Pausing never changes buffer ownership, live state, mapper or sound timers.
 .setcpu "6502"
+.include "audio-write.inc"
 .include "pause-memory.inc"
 .importzp button_edges, input_buttons, visible_control
 .import pistol_health, player_message_upload, results_screen_state
@@ -14,13 +15,15 @@
 pause_cue_first: .byte 84,126
 pause_cue_second: .byte 126,84
 
+; Reset-only setup: bank2 selected, NMI disabled.
+.segment "BOOTDATA"
 .proc pause_init
  lda #0
  sta pause_active
  sta pause_cue_timer
  sta pause_cue_direction
  lda #$80                 ; triangle linear reload0, control/length halt set
- sta $4008
+ AUDIO_SFX_WRITE $4008
  lda #$30
  sta pause_sound_pulse1
  sta pause_sound_pulse2
@@ -33,6 +36,7 @@ pause_cue_second: .byte 126,84
  rts
 .endproc
 
+.segment "CODE"
 ; Called immediately after controller sampling, before any publication or tick.
 ; C=1 skips the entire ordinary NMI, including on the resume refresh. Start's
 ; edge is therefore never delivered to the legacy reset helpers while alive.
@@ -51,19 +55,19 @@ enter:
  ; Constant volume zero + halt hardware length counters. Software envelopes
  ; and timers are untouched; do not disable channels through $4015.
  lda #$30
- sta $4000
- sta $4004
- sta $400C
+ AUDIO_SFX_WRITE $4000
+ AUDIO_SFX_WRITE $4004
+ AUDIO_SFX_WRITE $400C
  jmp message
 resume:
  lda #0
  sta pause_active
  lda pause_sound_pulse1
- sta $4000
+ AUDIO_SFX_WRITE $4000
  lda pause_sound_pulse2
- sta $4004
+ AUDIO_SFX_WRITE $4004
  lda pause_sound_noise
- sta $400C
+ AUDIO_SFX_WRITE $400C
 message:
  lda pause_active
  eor #1
@@ -157,11 +161,11 @@ first:
  ldx pause_cue_direction
  lda pause_cue_first,x
 note:
- sta $400A               ; high timer bits are zero for both notes
+ AUDIO_SFX_WRITE $400A               ; high timer bits are zero for both notes
  lda #$FF                ; halt length, continuously reload linear127
- sta $4008
+ AUDIO_SFX_WRITE $4008
  lda #$08                ; length254 and linear reload flag; triangle enabled
- sta $400B
+ AUDIO_SFX_WRITE $400B
 count:
  dec pause_cue_timer
  rts
@@ -169,7 +173,7 @@ stop:
  lda #0
  sta pause_cue_timer
  lda #$80                ; linear reload0 silences on next APU quarter-frame
- sta $4008               ; never clock/reset all channels through $4017
+ AUDIO_SFX_WRITE $4008               ; never clock/reset all channels through $4017
 done:
  rts
 .endproc

@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "romSha256": "a38b5d35f015cbcfa5410d2d1a668c3632159ac59b90b842e431a6a6ebdb0241",
+  "changedBytes": 14,
+  "onlyAmmoPositionChanged": true,
+  "musicUnchanged": true,
+  "pickupRadius": 3.5,
+  "newPosition": [
+    282,
+    250
+  ],
+  "baselineSourcesAndRomUnchanged": true,
+  "mesenCases": 17,
+  "controllerChecks": 30,
+  "reports": [
+    "verification/position-only.json",
+    "verification/controller.json",
+    "analysis/ammo-placement/summary.json"
+  ],
+  "scope": "Stock NTSC Mesen fixtures and JSNES controller route; no physical console test."
+}

@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "verifiedOn": "2026-10-22",
+  "passed": true,
+  "version": "prototype-2026-10-22-latency",
+  "artifact": {
+    "path": "release/archive/hangar-latency-ntsc.nes",
+    "sha256": "0dbee1ad5765bc00ac10e1736902ee381a88c3c539b8c68de12f24f887260d89",
+    "bytes": 131088,
+    "region": "NTSC",
+    "mapper": "MMC1",
+    "prgRomBytes": 131072,
+    "chrRamBytes": 8192,
+    "workRamBytes": 8192
+  },
+  "baseline": {
+    "rom": "release/archive/hangar-interactions-ntsc.nes",
+    "sha256": "0ecf59bf29efb03e5619a30d8bf890500a96e505a18f661920ab02fdbc9bd086",
+    "evidence": "verification/interaction-release.json"
+  },
+  "music": {
+    "enabled": true,
+    "engine": "FamiStudio",
+    "channels": 4,
+    "dpcm": false,
+    "song": "E1M1 (Dr. C Beatz noise-drum remix)",
+    "source": "music/e1m1/e1m1-drums.s",
+    "sourceSha256": "1361d483c5d461023ed6308735334c3e32e76ad5d40cee4168e70fcf29ecec02",
+    "features": {
+      "famiTrackerTempo": true,
+      "volumeTrack": true,
+      "vibrato": true,
+      "dutyCycleEffect": true
+    },
+    "ramBytes": 206,
+    "zpAliasBytes": 8,
+    "playerOption": {
+      "screen": "controls guide",
+      "default": "on",
+      "left": "off",
+      "right": "on",
+      "skipsSequencerWhenOff": true,
+      "preservesSoundEffects": true,
+      "survivesLevelRestart": true,
+      "coldResetRestoresDefault": true
+    }
+  },
+  "integrity": {
+    "sourceFileCount": 78,
+    "changedSourcesFromBaseline": [
+      "src/latency_restart.s",
+      "src/raster.s"
+    ],
+    "sourceExportUnmodified": true,
+    "ramAllocationUnchanged": true,
+    "rebuildEvidence": "verification/latency-build.json"
+  },
+  "runtimeEvidence": {
+    "report": "verification/latency-tuning.json",
+    "testedRomSha256": "0dbee1ad5765bc00ac10e1736902ee381a88c3c539b8c68de12f24f887260d89",
+    "inputLinkedCalls": 67286,
+    "dirtyTileCases": 294912,
+    "matchedFullRendererCases": 32,
+    "latencyMeasuredFrames": 44268,
+    "controllerChecks": 30,
+    "mesenRouteFrames": 15110,
+    "mesenRouteChecks": 26,
+    "mesenPixelComparisons": 44
+  },
+  "interactionRulesChanged": false,
+  "latencyOptimization": true,
+  "measuredOutcome": "Earlier first response when producer already busy; exact-output raster CPU saving. Stop/reversal results vary with pipeline phase; no universal latency/FPS improvement claimed.",
+  "physicalConsoleTested": false,
+  "liveDeploymentChanged": false,
+  "licensingResolved": false
+}

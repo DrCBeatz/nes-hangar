@@ -3,3 +3,6 @@
 *.nes binary
 *.bin binary
 *.gif binary
+
+# Preserve the upstream assembly formatting in vendored code.
+vendor/famistudio/famistudio_ca65.s -whitespace

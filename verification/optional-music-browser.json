@@ -1,0 +1,480 @@
+{
+  "passed": true,
+  "romSha256": "c2a913ddd057235e11936e4c212eb0d3a93e1c6f422315d03bd05baaea80ab1b",
+  "validation": "Retained controller-driven pinned JSNES core tests from approved remix artifact",
+  "evidence": "verification/music-validation.json",
+  "controllerOnly": true,
+  "consoleResetApiUsed": true,
+  "ramInjected": false,
+  "extraScanlines": 0,
+  "tests": {
+    "count": 30,
+    "failures": 0
+  },
+  "checks": [
+    "held power-on Start stays on logo 0",
+    "held Start and inherited Left cannot skip guide or change default 0",
+    "fresh and held Left select OFF with only three status tiles changed 0",
+    "fresh and held Right select ON 0",
+    "simultaneous Left and Right preserve selection 0",
+    "Start launches selected option through frozen first picture 0",
+    "held launch Start does not pause 0",
+    "pistol works with option 0",
+    "engine eligibility matches selected option 0",
+    "pause freezes engine and game without changing option 0",
+    "resume preserves selected music behavior 0",
+    "DPCM remains disabled throughout 0",
+    "held power-on Start stays on logo 1",
+    "held Start and inherited Left cannot skip guide or change default 1",
+    "fresh and held Left select OFF with only three status tiles changed 1",
+    "fresh and held Right select ON 1",
+    "simultaneous Left and Right preserve selection 1",
+    "Start launches selected option through frozen first picture 1",
+    "held launch Start does not pause 1",
+    "pistol works with option 1",
+    "engine eligibility matches selected option 1",
+    "pause freezes engine and game without changing option 1",
+    "resume preserves selected music behavior 1",
+    "natural death retry retains OFF and held Start does not pause",
+    "completion restart retains OFF and resets the level",
+    "OFF controller route exercised all four SFX channels",
+    "console reset returns to default ON and cold title",
+    "DPCM remains disabled throughout 1",
+    "ON and OFF have identical stationary game images: first-publication",
+    "ON and OFF have identical stationary game images: after-pause"
+  ],
+  "runs": [
+    {
+      "choice": "ON",
+      "frames": 1486,
+      "pictures": 1486,
+      "audioSamples": 1186877,
+      "observedSfxChannels": [
+        2,
+        3
+      ],
+      "snapshots": {
+        "guide-choice": {
+          "frame": 490,
+          "state": {
+            "title": 1,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 0,
+            "musicActive": 0,
+            "clock": 0,
+            "x": 0,
+            "z": 0,
+            "angle": 0,
+            "health": 0,
+            "ammo": 0,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "b707241545a346265aab1ffb32ff64b55bf8f8dc1b56a46ef33ce3d15db11d33",
+          "pixelSha256": "5f8db43305c377e70298a3381e67dd3ded1ea80d07aa211dbb127a4af978eece",
+          "ppuSha256": "1c886dc1893a707e080c7c39b93c8ce14d2325ebcfdde5761e5ef5f37db7c5e9",
+          "chrSha256": "aece2fbd0a161ca079f072b9264043a1907b9b4a3aec4ffb6dbfc0b00c9dd68a"
+        },
+        "first-publication": {
+          "frame": 540,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 0,
+            "musicActive": 1,
+            "clock": 0,
+            "x": 13312,
+            "z": 44032,
+            "angle": 0,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "6e73cc7ebec32f12ac6eb0e75f578a9f6ee4955ce139e359390c4f41b2186aa4",
+          "pixelSha256": "618bf4211764ee76b592191147d724e6b0f92bbd436dbb7f548e76113548f7c4",
+          "ppuSha256": "82aec60d74483f4d8e569ac80311ce405092c8fbeb98539ac7bce78c1e91a7ce",
+          "chrSha256": "abfad1a29d14b78863c78aa78e2fd7cda488470d6a76e44099198e981820437d"
+        },
+        "after-pause": {
+          "frame": 1486,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 0,
+            "musicActive": 1,
+            "clock": 851,
+            "x": 13312,
+            "z": 44032,
+            "angle": 0,
+            "health": 100,
+            "ammo": 5,
+            "shots": 1,
+            "kills": 0
+          },
+          "engineSha256": "5dcef7a0f6c01f861514e13441925b7eec643167f346fa7d29b8ebc376b851eb",
+          "pixelSha256": "c0507f3730f61a7d937312edc508da0b5bf0492d10e431009fa4ef229c9683d7",
+          "ppuSha256": "2eb5d4a0184857be5558517ed9a2737039378c5447482af20d03587a5f052d4c",
+          "chrSha256": "abfad1a29d14b78863c78aa78e2fd7cda488470d6a76e44099198e981820437d"
+        }
+      },
+      "apu": {
+        "writes": 7490,
+        "dpcmControlWrites": [
+          {
+            "frame": 0,
+            "address": 16400,
+            "value": 0
+          }
+        ],
+        "dpcmDataWrites": [],
+        "dpcmEnabled": []
+      },
+      "routePhaseCount": 0
+    },
+    {
+      "choice": "OFF",
+      "frames": 19748,
+      "pictures": 19748,
+      "audioSamples": 15772850,
+      "observedSfxChannels": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "snapshots": {
+        "guide-choice": {
+          "frame": 492,
+          "state": {
+            "title": 1,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 0,
+            "x": 0,
+            "z": 0,
+            "angle": 0,
+            "health": 0,
+            "ammo": 0,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "b707241545a346265aab1ffb32ff64b55bf8f8dc1b56a46ef33ce3d15db11d33",
+          "pixelSha256": "6ac38ffffbadff518f1c532f9ab498e6745368e9b2ff219a82664eed52e5b1a7",
+          "ppuSha256": "6e18bf1d01a06f229604a9a7df30020fc6ce7129b99433f801482d59b41514df",
+          "chrSha256": "aece2fbd0a161ca079f072b9264043a1907b9b4a3aec4ffb6dbfc0b00c9dd68a"
+        },
+        "first-publication": {
+          "frame": 542,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 0,
+            "x": 13312,
+            "z": 44032,
+            "angle": 0,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "afe10667ecd0f309115bd5016ca6d98b59ff43887d0fb8e4c833d6a996a7ab14",
+          "pixelSha256": "618bf4211764ee76b592191147d724e6b0f92bbd436dbb7f548e76113548f7c4",
+          "ppuSha256": "82aec60d74483f4d8e569ac80311ce405092c8fbeb98539ac7bce78c1e91a7ce",
+          "chrSha256": "abfad1a29d14b78863c78aa78e2fd7cda488470d6a76e44099198e981820437d"
+        },
+        "after-pause": {
+          "frame": 1488,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 851,
+            "x": 13312,
+            "z": 44032,
+            "angle": 0,
+            "health": 100,
+            "ammo": 5,
+            "shots": 1,
+            "kills": 0
+          },
+          "engineSha256": "afe10667ecd0f309115bd5016ca6d98b59ff43887d0fb8e4c833d6a996a7ab14",
+          "pixelSha256": "c0507f3730f61a7d937312edc508da0b5bf0492d10e431009fa4ef229c9683d7",
+          "ppuSha256": "2eb5d4a0184857be5558517ed9a2737039378c5447482af20d03587a5f052d4c",
+          "chrSha256": "abfad1a29d14b78863c78aa78e2fd7cda488470d6a76e44099198e981820437d"
+        },
+        "dead": {
+          "frame": 4969,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 4302,
+            "x": 35835,
+            "z": 81825,
+            "angle": 64,
+            "health": 0,
+            "ammo": 5,
+            "shots": 1,
+            "kills": 0
+          },
+          "engineSha256": "afe10667ecd0f309115bd5016ca6d98b59ff43887d0fb8e4c833d6a996a7ab14",
+          "pixelSha256": "89aa72604bbe822f93b4031ccb19a4742e55af7eed4c8b9cde116499585479ff",
+          "ppuSha256": "9a16ae89e0e938f44e7565a72e0d8ce03b338d875eb82c76183ff5f28e19aac6",
+          "chrSha256": "e2128e6be201fa986126138a887a3f4a781f25e8d3b85606d80ea1723822c77d"
+        },
+        "death-retry": {
+          "frame": 5153,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 123,
+            "x": 13312,
+            "z": 44032,
+            "angle": 0,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "afe10667ecd0f309115bd5016ca6d98b59ff43887d0fb8e4c833d6a996a7ab14",
+          "pixelSha256": "618bf4211764ee76b592191147d724e6b0f92bbd436dbb7f548e76113548f7c4",
+          "ppuSha256": "cde43126717b3519403eb1251967a90a4691186dad6bf56447179d6dd54d49f9",
+          "chrSha256": "8d67f99e3ebc8b653a9a1c73306f467bf136bfcd4a9150b502b0e74cf7dd78a2"
+        },
+        "first-zombie-killed": {
+          "frame": 7637,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 2511,
+            "x": 35835,
+            "z": 81825,
+            "angle": 78,
+            "health": 80,
+            "ammo": 3,
+            "shots": 3,
+            "kills": 1
+          },
+          "engineSha256": "afe10667ecd0f309115bd5016ca6d98b59ff43887d0fb8e4c833d6a996a7ab14",
+          "pixelSha256": "d24351d3c49e773ba176fc591a43d6bb940ea995424d0ff0c689e069c426ac3e",
+          "ppuSha256": "dec90e7a8307c40be757db89a284166ca174785e1a6b4e827c94351594864eda",
+          "chrSha256": "2b9aa58612973d8ff78bff72fb88d6972e36469e58282840b6c8ed56d2c73488"
+        },
+        "ammo-collected": {
+          "frame": 10109,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 4983,
+            "x": 70254,
+            "z": 64545,
+            "angle": 128,
+            "health": 100,
+            "ammo": 13,
+            "shots": 3,
+            "kills": 1
+          },
+          "engineSha256": "afe10667ecd0f309115bd5016ca6d98b59ff43887d0fb8e4c833d6a996a7ab14",
+          "pixelSha256": "df83cac7b89291d1a47121c7a32895e14e82aa226cddf99bce69eda09de61951",
+          "ppuSha256": "f03c297f6ae38fa610aaa18599ecad63b8c713d996501f34bae181aebaa2c92b",
+          "chrSha256": "300c9aa0bec42e96c6d29f0e4e02da5c95e9b5f5fbdf5c5434009a490f2125ec"
+        },
+        "door-open-settled": {
+          "frame": 11954,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6732,
+            "x": 75774,
+            "z": 31227,
+            "angle": 128,
+            "health": 65,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          },
+          "engineSha256": "afe10667ecd0f309115bd5016ca6d98b59ff43887d0fb8e4c833d6a996a7ab14",
+          "pixelSha256": "624ac54964aef3ee815ba1efd068a9ca8993b93baca1d346e5f663df22b3585b",
+          "ppuSha256": "b1d30a96eacdd2804ea9fa9d7ce49237ed73b5c4bb1c3f4a3c10600ab1b69c92",
+          "chrSha256": "bf31da7ac6e2ac9a6f93b68e6b489b8c079512f3cd5f818566b5e0136e593bf7"
+        },
+        "results-presented": {
+          "frame": 19086,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 5,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 13862,
+            "x": 74076,
+            "z": 7176,
+            "angle": 192,
+            "health": 55,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          },
+          "engineSha256": "afe10667ecd0f309115bd5016ca6d98b59ff43887d0fb8e4c833d6a996a7ab14",
+          "pixelSha256": "cf3bf191d5e2d6a630eeefab8a0bf0f17f3f87be81a7c567987e22ddb2d98167",
+          "ppuSha256": "eb1d6661d2367629eaed5bb60f09a1c5474207cccbe05ba9853ed37494801596",
+          "chrSha256": "c50e136324067a67310a13d26d31b6346a45c298f593f983a29425e563950496"
+        },
+        "final-spawn": {
+          "frame": 19628,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 188,
+            "x": 13312,
+            "z": 44032,
+            "angle": 0,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "afe10667ecd0f309115bd5016ca6d98b59ff43887d0fb8e4c833d6a996a7ab14",
+          "pixelSha256": "618bf4211764ee76b592191147d724e6b0f92bbd436dbb7f548e76113548f7c4",
+          "ppuSha256": "82aec60d74483f4d8e569ac80311ce405092c8fbeb98539ac7bce78c1e91a7ce",
+          "chrSha256": "abfad1a29d14b78863c78aa78e2fd7cda488470d6a76e44099198e981820437d"
+        },
+        "console-reset": {
+          "frame": 19748,
+          "state": {
+            "title": 1,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 0,
+            "musicActive": 0,
+            "clock": 0,
+            "x": 0,
+            "z": 0,
+            "angle": 0,
+            "health": 0,
+            "ammo": 0,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "b707241545a346265aab1ffb32ff64b55bf8f8dc1b56a46ef33ce3d15db11d33",
+          "pixelSha256": "d70160861f2fea5ab1bd5200997ee22bcace249e226a8ce901223ce16f99af46",
+          "ppuSha256": "8293950f817f15741cb03e2b6c226543027190a0ac5d0a9959fb357791e2dc3f",
+          "chrSha256": "aece2fbd0a161ca079f072b9264043a1907b9b4a3aec4ffb6dbfc0b00c9dd68a"
+        }
+      },
+      "apu": {
+        "writes": 76964,
+        "dpcmControlWrites": [
+          {
+            "frame": 0,
+            "address": 16400,
+            "value": 0
+          },
+          {
+            "frame": 19388,
+            "address": 16400,
+            "value": 0
+          },
+          {
+            "frame": 19628,
+            "address": 16400,
+            "value": 0
+          }
+        ],
+        "dpcmDataWrites": [],
+        "dpcmEnabled": []
+      },
+      "routePhaseCount": 151
+    }
+  ],
+  "provenance": {
+    "jsnesCommit": "5b27c4243f1cb2528c54941e13c29c4ced7d5a45",
+    "coreEntrySha256": "0531f69c4e9e2973bdcdc89bf3ad6e6dfa3257572f8e7eccd405fa158cc3a1a7",
+    "coreCpuSha256": "17469b310738c4b3092d648289c8537a4584f6b45bc1735adb540968a75308f2",
+    "coreNesSha256": "5a96a9eb8fe18b2e7f2c4a5a25eddd79977f18ab83e79c8d44ab2370f3cb6153",
+    "corePpuSha256": "0fc688dec33901dd7fbcecb7d3f4a7734ae6481e3194f60213b6dc6a19198de8",
+    "corePapuSha256": "ab11be7edc168c0f19c0cd7980a337badbd32ca407117a26cf455cf7bb3b880d",
+    "driverSha256": "99bf9bd2952067fee977ecb3bddae39a5d19c973ef4340df575434b395af9e83",
+    "routeSha256": "e95d93e7a11fe7b4c965a7fedb978869f37d633ccfbf4e83e52180b4ba079753",
+    "labelsSha256": "ee8748b6af3baf790043cb239711a46436710d463a21a39d4d1fa4b679b99aa0",
+    "manifestSha256": "11a327bd87d625e020be911a5800e1fa27af8c07982b77913cb40cff966e0948",
+    "readOnlySymbols": {
+      "music_disabled": 1552,
+      "title_state": 1959,
+      "pause_active": 1953,
+      "results_screen_state": 1952,
+      "publish_count": 40,
+      "results_frames": 1947,
+      "results_seconds": 1948,
+      "results_minutes": 1949,
+      "simulation_count": 205,
+      "player_x": 16,
+      "player_z": 18,
+      "player_x_hi": 31821,
+      "player_z_hi": 31822,
+      "visible_x": 26,
+      "visible_z": 28,
+      "visible_x_hi": 31825,
+      "visible_z_hi": 31826,
+      "pending_angle": 0,
+      "visible_angle": 25,
+      "pistol_health": 1984,
+      "pistol_ammo": 1985,
+      "pistol_shot_count": 1990,
+      "requested_mode": 2,
+      "zombie_hp": 2017,
+      "zombie_x": 240,
+      "zombie_z": 242,
+      "zombie_x_hi": 32480,
+      "zombie_z_hi": 32481,
+      "zombie_visible_target": 2022,
+      "zombie_epoch": 244,
+      "visible_zombie_epoch": 36,
+      "zombie_attack_state": 251,
+      "zombie_kills": 2020,
+      "medkit_state": 58,
+      "encounter_visual_pending": 2047,
+      "zombie_dirty": 2021,
+      "medkit_dirty": 28385,
+      "upload_busy": 49,
+      "door_state": 1883,
+      "visible_door": 1889,
+      "audio_music_active": 1547,
+      "audio_music_regs": 1483,
+      "audio_owner": 1539,
+      "__AUDIO_ENGINE_RUN__": 1347,
+      "__AUDIO_ENGINE_SIZE__": 136
+    }
+  },
+  "liveDeploymentChanged": false,
+  "appSourceChanged": false,
+  "scope": "Music ON startup/fire/pause and music OFF full-level/death/retry route; final public CPU reset API checks default ON. Exact same binary now rebuilt in main. Not a fresh browser UI, mobile, CDN, acoustics or physical-console test."
+}

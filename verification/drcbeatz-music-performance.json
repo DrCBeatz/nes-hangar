@@ -1,0 +1,70 @@
+{
+  "scope": "Same linked-routine harness and JSNES core on current main ROM versus DrCBeatz experimental ROM. These are CPU cycle measurements of audio only, not whole-game FPS or controller latency. No SFX run covers three complete loops; simultaneous SFX run covers one full loop.",
+  "sameHarness": true,
+  "sameCore": true,
+  "baselineRomSha256": "2e89760fcaa8175eacd400285d9887dce7e74fce8f5df126a13445cad55ab6a6",
+  "candidateRomSha256": "7fd629be449a223e77ce9434fe8057859330684920eeff74bf61100efe4d8455",
+  "comparisons": [
+    {
+      "mode": "music, no effects",
+      "frames": 16928,
+      "oldMeanCycles": 1596.9910207939508,
+      "newMeanCycles": 1691.6060373345936,
+      "meanExtraCyclesPerVideoFrame": 94.61501654064273,
+      "meanDifferencePercentOfAudioRoutine": 5.924580370752771,
+      "meanExtraPercentOfTotalNtscCpuBudget": 0.3177079516483697,
+      "meanExtraMicrosecondsPerVideoFrame": 52.86426500012258,
+      "oldMaxCycles": 3671,
+      "newMaxCycles": 4233
+    },
+    {
+      "mode": "all four SFX owners, retrigger every frame (one full song loop)",
+      "frames": 5632,
+      "oldMeanCycles": 1663.4204545454545,
+      "newMeanCycles": 1758.0031960227273,
+      "meanExtraCyclesPerVideoFrame": 94.58274147727275,
+      "meanDifferencePercentOfAudioRoutine": 5.686039342537626,
+      "meanExtraPercentOfTotalNtscCpuBudget": 0.31759957514908327,
+      "meanExtraMicrosecondsPerVideoFrame": 52.8462319482322,
+      "oldMaxCycles": 3709,
+      "newMaxCycles": 4256
+    }
+  ],
+  "runtimeOff": {
+    "baseline": [
+      {
+        "mode": "runtime OFF, no effects",
+        "frames": 600,
+        "maxCycles": 550,
+        "meanCycles": 510.06666666666666,
+        "engineAndMusicShadowsFrozen": true
+      }
+    ],
+    "candidate": [
+      {
+        "mode": "runtime OFF, no effects",
+        "frames": 600,
+        "maxCycles": 548,
+        "meanCycles": 508.06666666666666,
+        "engineAndMusicShadowsFrozen": true
+      }
+    ]
+  },
+  "loopDuration": {
+    "baselineFrames": 5632,
+    "candidateFrames": 5632,
+    "secondsAtNtsc": 93.71233516062934
+  },
+  "songDataBytes": {
+    "baseline": 1557,
+    "candidate": 2309,
+    "additional": 752,
+    "method": "music_data_untitled start through end of first AUDIO_CODE module in linked map; song is last include of src/music.s"
+  },
+  "romBytesUnchanged": 131088,
+  "audioWorkspaceBytes": {
+    "baseline": 206,
+    "candidate": 205
+  },
+  "interpretation": "Current songs have equal measured loop duration. Data length uses ROM storage; per-update workload depends on active channel envelopes and event decoding plus engine configuration. New arrangement costs about 95 extra CPU cycles per video frame on average (0.32% of total NTSC CPU budget), so shortening the song is not warranted for performance. Track/native-tempo versus old FamiTracker-tempo and duty configuration changed, so do not attribute every extra cycle to musical complexity alone."
+}

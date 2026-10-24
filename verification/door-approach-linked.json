@@ -1,0 +1,258 @@
+{
+  "passed": true,
+  "romSha256": "2e89760fcaa8175eacd400285d9887dce7e74fce8f5df126a13445cad55ab6a6",
+  "checks": [
+    "All 256 facings across exact door panel and side boundaries",
+    "Legal close-contact poses show the prompt and accept fresh A with music ON/OFF",
+    "All 256 facings across exact exit range, lateral and higher-page boundaries",
+    "Formerly rejected centered diagonal and lateral door approaches are eligible",
+    "Fresh A required; strafe blocked; A+B and music OFF retain interaction",
+    "Dead, completed, outside, behind and side-of-wall states cannot activate",
+    "Door request is once-only; collision remains until matching view publishes",
+    "Closed/requested finite-panel collision remains unchanged; open clears it",
+    "Previous 45-degree cone rejects the same legal close-contact prompt poses"
+  ],
+  "counts": {
+    "doorBoundary": 30976,
+    "exitBoundary": 20480,
+    "inputGuards": 80,
+    "lifecycle": 10,
+    "collision": 108,
+    "closeContact": 16,
+    "baselineCloseContact": 16
+  },
+  "calls": 51838,
+  "examples": [
+    {
+      "x": 301,
+      "z": 122.25,
+      "angle": 175,
+      "note": "North, near right: centered aim previously outside the 45-degree cone",
+      "musicDisabled": 0,
+      "collisionLegal": true,
+      "eligible": true,
+      "requested": true
+    },
+    {
+      "x": 291,
+      "z": 122.25,
+      "angle": 81,
+      "note": "North, near left: centered aim previously outside the 45-degree cone",
+      "musicDisabled": 0,
+      "collisionLegal": true,
+      "eligible": true,
+      "requested": true
+    },
+    {
+      "x": 301,
+      "z": 117.75,
+      "angle": 209,
+      "note": "South, near right: centered aim previously outside the 45-degree cone",
+      "musicDisabled": 0,
+      "collisionLegal": true,
+      "eligible": true,
+      "requested": true
+    },
+    {
+      "x": 291,
+      "z": 117.75,
+      "angle": 47,
+      "note": "South, near left: centered aim previously outside the 45-degree cone",
+      "musicDisabled": 0,
+      "collisionLegal": true,
+      "eligible": true,
+      "requested": true
+    },
+    {
+      "x": 290.00390625,
+      "z": 122.00390625,
+      "angle": 77,
+      "note": "Legal fractional contact limit, aimed at panel center",
+      "musicDisabled": 0,
+      "collisionLegal": true,
+      "eligible": true,
+      "requested": true
+    },
+    {
+      "x": 301.99609375,
+      "z": 122.00390625,
+      "angle": 179,
+      "note": "Legal fractional contact limit, aimed at panel center",
+      "musicDisabled": 0,
+      "collisionLegal": true,
+      "eligible": true,
+      "requested": true
+    },
+    {
+      "x": 290.00390625,
+      "z": 117.99609375,
+      "angle": 51,
+      "note": "Legal fractional contact limit, aimed at panel center",
+      "musicDisabled": 0,
+      "collisionLegal": true,
+      "eligible": true,
+      "requested": true
+    },
+    {
+      "x": 301.99609375,
+      "z": 117.99609375,
+      "angle": 205,
+      "note": "Legal fractional contact limit, aimed at panel center",
+      "musicDisabled": 0,
+      "collisionLegal": true,
+      "eligible": true,
+      "requested": true
+    },
+    {
+      "x": 301,
+      "z": 122.25,
+      "angle": 175,
+      "note": "North, near right: centered aim previously outside the 45-degree cone",
+      "musicDisabled": 1,
+      "collisionLegal": true,
+      "eligible": true,
+      "requested": true
+    },
+    {
+      "x": 291,
+      "z": 122.25,
+      "angle": 81,
+      "note": "North, near left: centered aim previously outside the 45-degree cone",
+      "musicDisabled": 1,
+      "collisionLegal": true,
+      "eligible": true,
+      "requested": true
+    },
+    {
+      "x": 301,
+      "z": 117.75,
+      "angle": 209,
+      "note": "South, near right: centered aim previously outside the 45-degree cone",
+      "musicDisabled": 1,
+      "collisionLegal": true,
+      "eligible": true,
+      "requested": true
+    },
+    {
+      "x": 291,
+      "z": 117.75,
+      "angle": 47,
+      "note": "South, near left: centered aim previously outside the 45-degree cone",
+      "musicDisabled": 1,
+      "collisionLegal": true,
+      "eligible": true,
+      "requested": true
+    },
+    {
+      "x": 290.00390625,
+      "z": 122.00390625,
+      "angle": 77,
+      "note": "Legal fractional contact limit, aimed at panel center",
+      "musicDisabled": 1,
+      "collisionLegal": true,
+      "eligible": true,
+      "requested": true
+    },
+    {
+      "x": 301.99609375,
+      "z": 122.00390625,
+      "angle": 179,
+      "note": "Legal fractional contact limit, aimed at panel center",
+      "musicDisabled": 1,
+      "collisionLegal": true,
+      "eligible": true,
+      "requested": true
+    },
+    {
+      "x": 290.00390625,
+      "z": 117.99609375,
+      "angle": 51,
+      "note": "Legal fractional contact limit, aimed at panel center",
+      "musicDisabled": 1,
+      "collisionLegal": true,
+      "eligible": true,
+      "requested": true
+    },
+    {
+      "x": 301.99609375,
+      "z": 117.99609375,
+      "angle": 205,
+      "note": "Legal fractional contact limit, aimed at panel center",
+      "musicDisabled": 1,
+      "collisionLegal": true,
+      "eligible": true,
+      "requested": true
+    },
+    {
+      "kind": "door",
+      "x": 300,
+      "z": 124,
+      "angle": 160,
+      "note": "North: aimed exactly at door center from a diagonal",
+      "eligible": true
+    },
+    {
+      "kind": "door",
+      "x": 292,
+      "z": 124,
+      "angle": 96,
+      "note": "North: opposite centered diagonal",
+      "eligible": true
+    },
+    {
+      "kind": "door",
+      "x": 300,
+      "z": 116,
+      "angle": 224,
+      "note": "South: aimed exactly at door center from a diagonal",
+      "eligible": true
+    },
+    {
+      "kind": "door",
+      "x": 292,
+      "z": 116,
+      "angle": 32,
+      "note": "South: opposite centered diagonal",
+      "eligible": true
+    },
+    {
+      "kind": "door",
+      "x": 302.5,
+      "z": 116,
+      "angle": 0,
+      "note": "South: eligibility-only sample near right panel edge; not a collision-legality claim",
+      "eligible": true
+    },
+    {
+      "kind": "door",
+      "x": 289.5,
+      "z": 116,
+      "angle": 0,
+      "note": "South: eligibility-only sample near left panel edge; not a collision-legality claim",
+      "eligible": true
+    },
+    {
+      "kind": "exit",
+      "x": 288,
+      "z": 32,
+      "angle": 160,
+      "note": "Aimed exactly at switch center from a diagonal",
+      "eligible": true
+    },
+    {
+      "kind": "exit",
+      "x": 288,
+      "z": 24,
+      "angle": 224,
+      "note": "Opposite centered switch diagonal",
+      "eligible": true
+    }
+  ],
+  "baselineComparison": {
+    "romSha256": "0dbee1ad5765bc00ac10e1736902ee381a88c3c539b8c68de12f24f887260d89",
+    "closeContactPoses": 8,
+    "musicModes": 2,
+    "result": "All legal close-contact cases reject prompt/use in the previous cone and accept in the candidate."
+  },
+  "limitations": "Injected CPU poses execute actual linked 6502 routines; no PPU timing, controller-only route, or physical-console claim."
+}

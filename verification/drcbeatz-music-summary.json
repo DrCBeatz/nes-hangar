@@ -1,0 +1,74 @@
+{
+  "passed": true,
+  "romSha256": "7fd629be449a223e77ce9434fe8057859330684920eeff74bf61100efe4d8455",
+  "songSha256": "d5886648b0045e97de9172af06934dff190a873286a7aff62599c4667235427a",
+  "sourcePreservedVerbatim": true,
+  "mainSourceFilesUnchanged": 78,
+  "mainReleaseUnchanged": true,
+  "rebuildByteIdentical": true,
+  "audioChecks": 19,
+  "referenceWritesMatched": 113861,
+  "referenceLoops": 3,
+  "controllerChecks": 30,
+  "stockMesenChecks": 26,
+  "stockMesenTiming": {
+    "nmiCycles": {
+      "count": 14726,
+      "minimum": 495,
+      "median": 4091.0,
+      "mean": 4076.437729186473,
+      "p95": 6243,
+      "maximum": 18907
+    },
+    "ppuWritesObserved": 14023,
+    "lastPpuMinimumMargin": {
+      "scanline": 260,
+      "dot": 153,
+      "marginCpuCycles": 62.666666666666664
+    },
+    "warningUploadNmis": [
+      {
+        "frame": 2689,
+        "cycles": 3156,
+        "scanline": 246,
+        "dot": 205,
+        "marginCpuCycles": 1636.6666666666667
+      },
+      {
+        "frame": 2945,
+        "cycles": 3430,
+        "scanline": 246,
+        "dot": 199,
+        "marginCpuCycles": 1638.6666666666667
+      },
+      {
+        "frame": 5717,
+        "cycles": 3178,
+        "scanline": 246,
+        "dot": 208,
+        "marginCpuCycles": 1635.6666666666667
+      },
+      {
+        "frame": 6030,
+        "cycles": 4073,
+        "scanline": 246,
+        "dot": 209,
+        "marginCpuCycles": 1635.3333333333333
+      },
+      {
+        "frame": 7616,
+        "cycles": 3348,
+        "scanline": 246,
+        "dot": 200,
+        "marginCpuCycles": 1638.3333333333333
+      }
+    ]
+  },
+  "reports": [
+    "verification/controller.json",
+    "analysis/audio/music-audio-verification.json",
+    "analysis/audio/reference-comparison.json",
+    "analysis/mesen-route/verification.json"
+  ],
+  "scope": "Local audition; emulator checks, not physical console or acoustic review."
+}

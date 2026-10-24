@@ -1,0 +1,969 @@
+{
+  "passed": true,
+  "romSha256": "c2a913ddd057235e11936e4c212eb0d3a93e1c6f422315d03bd05baaea80ab1b",
+  "sourceSha256": "1361d483c5d461023ed6308735334c3e32e76ad5d40cee4168e70fcf29ecec02",
+  "song": "E1M1 (Dr. C Beatz noise-drum remix)",
+  "memory": {
+    "engineBytes": 136,
+    "driverBytes": 69,
+    "settingsBytes": 1,
+    "totalBytes": 206,
+    "spareBytes": 10,
+    "zpAliasBytes": 8
+  },
+  "linkedAudio": {
+    "passed": true,
+    "checks": [
+      "Linked engine and mixer fit reserved216 bytes; no larger ZP alias",
+      "Init enables exactly four channels once; no DPCM/frame-counter writes",
+      "Music initialization preserves runtime OFF outside the cleared engine and mixer",
+      "FamiStudio writes shadows only for 12000 updates; state confined to audio +8 scratch bytes",
+      "Music exposes all four channels; repeated unchanged high registers are suppressed",
+      "Runtime OFF freezes engine and music shadows, mutes all four voices, and ON resumes",
+      "Runtime OFF preserves all four SFX owners and returns each channel to silence",
+      "Medkit heals and takes only pulse2, note retriggers once, returns to music",
+      "Ammo uses original descending pulse2 cue without disabling music channels",
+      "Soldier warning owns pulse1 independently, then returns to song",
+      "Door -> enemy gun -> player gun priority retains three music channels",
+      "Dry trigger uses original deep buzz, returns to music without a shot",
+      "Repeated same-high effect triggers, including counter wrap, reload exactly once",
+      "Paused song is frozen; triangle cue has two notes; resume restores music",
+      "Title, results, and dead player freeze engine and mute all music channels",
+      "Completion chime takes pulse1 while all other channels are silent",
+      "Fatal damage suppresses active gun and stale warning/pickup sounds",
+      "Three E1M1 loops plus simultaneous SFX stress: periodic state, bounded time, no mapper/enable writes",
+      "All 8 mapped PRG banks preserve always-visible audio code/data"
+    ],
+    "calls": 31810,
+    "workspace": {
+      "engineBytes": 136,
+      "driverBytes": 69,
+      "settingsBytes": 1,
+      "totalBytes": 206,
+      "spareBytes": 10,
+      "zpAliasBytes": 8
+    },
+    "timings": {
+      "music_init": {
+        "calls": 27,
+        "min": 3745,
+        "max": 3745,
+        "total": 101115,
+        "mean": 3745
+      },
+      "music_tick": {
+        "calls": 18888,
+        "min": 200,
+        "max": 3672,
+        "total": 29153133,
+        "mean": 1543.473792884371
+      },
+      "famistudio_update": {
+        "calls": 12000,
+        "min": 465,
+        "max": 2993,
+        "total": 11190953,
+        "mean": 932.5794166666667
+      },
+      "audio_mix": {
+        "calls": 523,
+        "min": 576,
+        "max": 608,
+        "total": 306265,
+        "mean": 585.5927342256214
+      },
+      "medkit_collect": {
+        "calls": 2,
+        "min": 359,
+        "max": 359,
+        "total": 718,
+        "mean": 359
+      },
+      "zombie_attack_warning_uploaded": {
+        "calls": 2,
+        "min": 101,
+        "max": 101,
+        "total": 202,
+        "mean": 101
+      },
+      "pistol_shot_accepted": {
+        "calls": 2,
+        "min": 203,
+        "max": 217,
+        "total": 420,
+        "mean": 210
+      },
+      "pause_cue_tick": {
+        "calls": 21,
+        "min": 13,
+        "max": 86,
+        "total": 852,
+        "mean": 40.57142857142857
+      },
+      "pistol_dry_fire_accepted": {
+        "calls": 262,
+        "min": 59,
+        "max": 59,
+        "total": 15458,
+        "mean": 59
+      },
+      "exit_complete": {
+        "calls": 2,
+        "min": 296,
+        "max": 328,
+        "total": 624,
+        "mean": 312
+      },
+      "medkit_sound_tick": {
+        "calls": 20,
+        "min": 30,
+        "max": 64,
+        "total": 683,
+        "mean": 34.15
+      },
+      "ammo_collect": {
+        "calls": 1,
+        "min": 264,
+        "max": 264,
+        "total": 264,
+        "mean": 264
+      },
+      "zombie_attack_tick": {
+        "calls": 10,
+        "min": 74,
+        "max": 91,
+        "total": 769,
+        "mean": 76.9
+      },
+      "door_request": {
+        "calls": 1,
+        "min": 123,
+        "max": 123,
+        "total": 123,
+        "mean": 123
+      },
+      "zombie_attack_fire": {
+        "calls": 1,
+        "min": 198,
+        "max": 198,
+        "total": 198,
+        "mean": 198
+      },
+      "door_sound_tick": {
+        "calls": 1,
+        "min": 60,
+        "max": 60,
+        "total": 60,
+        "mean": 60
+      },
+      "pistol_tick": {
+        "calls": 14,
+        "min": 88,
+        "max": 112,
+        "total": 1350,
+        "mean": 96.42857142857143
+      },
+      "exit_sound_tick": {
+        "calls": 32,
+        "min": 26,
+        "max": 50,
+        "total": 859,
+        "mean": 26.84375
+      },
+      "player_damage": {
+        "calls": 1,
+        "min": 157,
+        "max": 157,
+        "total": 157,
+        "mean": 157
+      }
+    },
+    "samples": [
+      {
+        "mode": "music, no effects",
+        "frames": 16928,
+        "max": {
+          "cycles": 3672,
+          "frame": 2815
+        },
+        "mean": 1597.038870510397,
+        "channelActivity": [
+          {
+            "offset": 0,
+            "frames": 14640,
+            "firstFrame": 0
+          },
+          {
+            "offset": 4,
+            "frames": 12636,
+            "firstFrame": 511
+          },
+          {
+            "offset": 8,
+            "frames": 8659,
+            "firstFrame": 0
+          },
+          {
+            "offset": 12,
+            "frames": 4287,
+            "firstFrame": 0
+          }
+        ],
+        "looping": {
+          "periodFrames": 5632,
+          "comparedFrames": 5632,
+          "completeLoops": 3,
+          "engineAndShadowStateIdentical": true
+        }
+      },
+      {
+        "mode": "all four SFX owners, retrigger every frame (synthetic upper stress)",
+        "frames": 600,
+        "max": {
+          "cycles": 3656,
+          "frame": 479
+        },
+        "mean": 1421.52
+      }
+    ],
+    "optionSamples": [
+      {
+        "mode": "runtime OFF, no effects",
+        "frames": 600,
+        "maxCycles": 550,
+        "meanCycles": 510.06666666666666,
+        "engineAndMusicShadowsFrozen": true
+      }
+    ],
+    "scope": "Actual linked 6502 routines with injected game state. CPU cycle counts, APU register-write/ownership tests; no full NMI, PPU deadlines, acoustics or controller route claim. Mesen tests are separate.",
+    "sha256": {
+      "rom": "c2a913ddd057235e11936e4c212eb0d3a93e1c6f422315d03bd05baaea80ab1b",
+      "driver": "7585dee71bf59e0d9eeb2e5adca58f5a96fd537194dc3e47066b5b73a2ac9834",
+      "labels": "ee8748b6af3baf790043cb239711a46436710d463a21a39d4d1fa4b679b99aa0",
+      "core": "0531f69c4e9e2973bdcdc89bf3ad6e6dfa3257572f8e7eccd405fa158cc3a1a7"
+    }
+  },
+  "audioCostComparison": {
+    "scope": "Linked audio routine timing only, not full game FPS or NMI deadline measurement. Same test driver and pinned JSNES core, 16,928 no-effect updates covering three full 5,632-frame loops.",
+    "newRomSha256": "c2a913ddd057235e11936e4c212eb0d3a93e1c6f422315d03bd05baaea80ab1b",
+    "baselineRomSha256": "865adb2c99fd27ff89f29bf7333ef33842a7e62597a4d0b8c26b399bd07fa461",
+    "sameDriver": true,
+    "sameCore": true,
+    "workspaceUnchanged": true,
+    "comparisons": [
+      {
+        "mode": "music, no effects",
+        "frames": 16928,
+        "oldMeanCycles": 1660.0977079395086,
+        "newMeanCycles": 1597.038870510397,
+        "meanDifferencePercent": -3.7985015657529875,
+        "oldMaxCycles": 3892,
+        "newMaxCycles": 3672
+      },
+      {
+        "mode": "all four SFX owners, retrigger every frame (synthetic upper stress)",
+        "frames": 600,
+        "oldMeanCycles": 1529.9266666666667,
+        "newMeanCycles": 1421.52,
+        "meanDifferencePercent": -7.085742671762052,
+        "oldMaxCycles": 3187,
+        "newMaxCycles": 3656
+      }
+    ],
+    "runtimeOff": {
+      "old": [
+        {
+          "mode": "runtime OFF, no effects",
+          "frames": 600,
+          "maxCycles": 552,
+          "meanCycles": 512.0666666666667,
+          "engineAndMusicShadowsFrozen": true
+        }
+      ],
+      "new": [
+        {
+          "mode": "runtime OFF, no effects",
+          "frames": 600,
+          "maxCycles": 550,
+          "meanCycles": 510.06666666666666,
+          "engineAndMusicShadowsFrozen": true
+        }
+      ]
+    }
+  },
+  "controller": {
+    "passed": true,
+    "romSha256": "c2a913ddd057235e11936e4c212eb0d3a93e1c6f422315d03bd05baaea80ab1b",
+    "checks": [
+      "held power-on Start stays on logo 0",
+      "held Start and inherited Left cannot skip guide or change default 0",
+      "fresh and held Left select OFF with only three status tiles changed 0",
+      "fresh and held Right select ON 0",
+      "simultaneous Left and Right preserve selection 0",
+      "Start launches selected option through frozen first picture 0",
+      "held launch Start does not pause 0",
+      "pistol works with option 0",
+      "engine eligibility matches selected option 0",
+      "pause freezes engine and game without changing option 0",
+      "resume preserves selected music behavior 0",
+      "DPCM remains disabled throughout 0",
+      "held power-on Start stays on logo 1",
+      "held Start and inherited Left cannot skip guide or change default 1",
+      "fresh and held Left select OFF with only three status tiles changed 1",
+      "fresh and held Right select ON 1",
+      "simultaneous Left and Right preserve selection 1",
+      "Start launches selected option through frozen first picture 1",
+      "held launch Start does not pause 1",
+      "pistol works with option 1",
+      "engine eligibility matches selected option 1",
+      "pause freezes engine and game without changing option 1",
+      "resume preserves selected music behavior 1",
+      "natural death retry retains OFF and held Start does not pause",
+      "completion restart retains OFF and resets the level",
+      "OFF controller route exercised all four SFX channels",
+      "console reset returns to default ON and cold title",
+      "DPCM remains disabled throughout 1",
+      "ON and OFF have identical stationary game images: first-publication",
+      "ON and OFF have identical stationary game images: after-pause"
+    ],
+    "tests": {
+      "count": 30,
+      "failures": 0
+    },
+    "imageComparisons": [
+      {
+        "snapshot": "first-publication",
+        "pixelsIdentical": true,
+        "ppuIdentical": true,
+        "chrIdentical": true,
+        "gameplayIdentical": true
+      },
+      {
+        "snapshot": "after-pause",
+        "pixelsIdentical": true,
+        "ppuIdentical": true,
+        "chrIdentical": true,
+        "gameplayIdentical": true
+      }
+    ],
+    "controllerOnly": true,
+    "consoleResetApiUsed": true,
+    "ramInjected": false,
+    "romUnmodified": true,
+    "extraScanlines": 0,
+    "scope": "Pinned stock JSNES core. Controller-only guide selection, launch, shoot, pause/resume, natural death retry, full accepted completion route and level restart; final public CPU reset interrupt API verifies cold default ON. Read-only CPU write observer; no game or emulator state injection. CPU timing/PPU deadline conclusions require the separate Mesen checks.",
+    "provenance": {
+      "jsnesCommit": "5b27c4243f1cb2528c54941e13c29c4ced7d5a45",
+      "coreEntrySha256": "0531f69c4e9e2973bdcdc89bf3ad6e6dfa3257572f8e7eccd405fa158cc3a1a7",
+      "coreCpuSha256": "17469b310738c4b3092d648289c8537a4584f6b45bc1735adb540968a75308f2",
+      "coreNesSha256": "5a96a9eb8fe18b2e7f2c4a5a25eddd79977f18ab83e79c8d44ab2370f3cb6153",
+      "corePpuSha256": "0fc688dec33901dd7fbcecb7d3f4a7734ae6481e3194f60213b6dc6a19198de8",
+      "corePapuSha256": "ab11be7edc168c0f19c0cd7980a337badbd32ca407117a26cf455cf7bb3b880d",
+      "driverSha256": "99bf9bd2952067fee977ecb3bddae39a5d19c973ef4340df575434b395af9e83",
+      "routeSha256": "e95d93e7a11fe7b4c965a7fedb978869f37d633ccfbf4e83e52180b4ba079753",
+      "labelsSha256": "ee8748b6af3baf790043cb239711a46436710d463a21a39d4d1fa4b679b99aa0",
+      "manifestSha256": "11a327bd87d625e020be911a5800e1fa27af8c07982b77913cb40cff966e0948",
+      "readOnlySymbols": {
+        "music_disabled": 1552,
+        "title_state": 1959,
+        "pause_active": 1953,
+        "results_screen_state": 1952,
+        "publish_count": 40,
+        "results_frames": 1947,
+        "results_seconds": 1948,
+        "results_minutes": 1949,
+        "simulation_count": 205,
+        "player_x": 16,
+        "player_z": 18,
+        "player_x_hi": 31821,
+        "player_z_hi": 31822,
+        "visible_x": 26,
+        "visible_z": 28,
+        "visible_x_hi": 31825,
+        "visible_z_hi": 31826,
+        "pending_angle": 0,
+        "visible_angle": 25,
+        "pistol_health": 1984,
+        "pistol_ammo": 1985,
+        "pistol_shot_count": 1990,
+        "requested_mode": 2,
+        "zombie_hp": 2017,
+        "zombie_x": 240,
+        "zombie_z": 242,
+        "zombie_x_hi": 32480,
+        "zombie_z_hi": 32481,
+        "zombie_visible_target": 2022,
+        "zombie_epoch": 244,
+        "visible_zombie_epoch": 36,
+        "zombie_attack_state": 251,
+        "zombie_kills": 2020,
+        "medkit_state": 58,
+        "encounter_visual_pending": 2047,
+        "zombie_dirty": 2021,
+        "medkit_dirty": 28385,
+        "upload_busy": 49,
+        "door_state": 1883,
+        "visible_door": 1889,
+        "audio_music_active": 1547,
+        "audio_music_regs": 1483,
+        "audio_owner": 1539,
+        "__AUDIO_ENGINE_RUN__": 1347,
+        "__AUDIO_ENGINE_SIZE__": 136
+      }
+    }
+  },
+  "controllerRuns": [
+    {
+      "choice": "ON",
+      "frames": 1486,
+      "pictures": 1486,
+      "audioSamples": 1186877,
+      "observedSfxChannels": [
+        2,
+        3
+      ],
+      "snapshots": {
+        "guide-choice": {
+          "frame": 490,
+          "state": {
+            "title": 1,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 0,
+            "musicActive": 0,
+            "clock": 0,
+            "x": 0,
+            "z": 0,
+            "angle": 0,
+            "health": 0,
+            "ammo": 0,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "b707241545a346265aab1ffb32ff64b55bf8f8dc1b56a46ef33ce3d15db11d33",
+          "pixelSha256": "5f8db43305c377e70298a3381e67dd3ded1ea80d07aa211dbb127a4af978eece",
+          "ppuSha256": "1c886dc1893a707e080c7c39b93c8ce14d2325ebcfdde5761e5ef5f37db7c5e9",
+          "chrSha256": "aece2fbd0a161ca079f072b9264043a1907b9b4a3aec4ffb6dbfc0b00c9dd68a"
+        },
+        "first-publication": {
+          "frame": 540,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 0,
+            "musicActive": 1,
+            "clock": 0,
+            "x": 13312,
+            "z": 44032,
+            "angle": 0,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "6e73cc7ebec32f12ac6eb0e75f578a9f6ee4955ce139e359390c4f41b2186aa4",
+          "pixelSha256": "618bf4211764ee76b592191147d724e6b0f92bbd436dbb7f548e76113548f7c4",
+          "ppuSha256": "82aec60d74483f4d8e569ac80311ce405092c8fbeb98539ac7bce78c1e91a7ce",
+          "chrSha256": "abfad1a29d14b78863c78aa78e2fd7cda488470d6a76e44099198e981820437d"
+        },
+        "after-pause": {
+          "frame": 1486,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 0,
+            "musicActive": 1,
+            "clock": 851,
+            "x": 13312,
+            "z": 44032,
+            "angle": 0,
+            "health": 100,
+            "ammo": 5,
+            "shots": 1,
+            "kills": 0
+          },
+          "engineSha256": "5dcef7a0f6c01f861514e13441925b7eec643167f346fa7d29b8ebc376b851eb",
+          "pixelSha256": "c0507f3730f61a7d937312edc508da0b5bf0492d10e431009fa4ef229c9683d7",
+          "ppuSha256": "2eb5d4a0184857be5558517ed9a2737039378c5447482af20d03587a5f052d4c",
+          "chrSha256": "abfad1a29d14b78863c78aa78e2fd7cda488470d6a76e44099198e981820437d"
+        }
+      },
+      "apu": {
+        "writes": 7490,
+        "dpcmControlWrites": [
+          {
+            "frame": 0,
+            "address": 16400,
+            "value": 0
+          }
+        ],
+        "dpcmDataWrites": [],
+        "dpcmEnabled": []
+      },
+      "routePhaseCount": 0
+    },
+    {
+      "choice": "OFF",
+      "frames": 19748,
+      "pictures": 19748,
+      "audioSamples": 15772850,
+      "observedSfxChannels": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "snapshots": {
+        "guide-choice": {
+          "frame": 492,
+          "state": {
+            "title": 1,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 0,
+            "x": 0,
+            "z": 0,
+            "angle": 0,
+            "health": 0,
+            "ammo": 0,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "b707241545a346265aab1ffb32ff64b55bf8f8dc1b56a46ef33ce3d15db11d33",
+          "pixelSha256": "6ac38ffffbadff518f1c532f9ab498e6745368e9b2ff219a82664eed52e5b1a7",
+          "ppuSha256": "6e18bf1d01a06f229604a9a7df30020fc6ce7129b99433f801482d59b41514df",
+          "chrSha256": "aece2fbd0a161ca079f072b9264043a1907b9b4a3aec4ffb6dbfc0b00c9dd68a"
+        },
+        "first-publication": {
+          "frame": 542,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 0,
+            "x": 13312,
+            "z": 44032,
+            "angle": 0,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "afe10667ecd0f309115bd5016ca6d98b59ff43887d0fb8e4c833d6a996a7ab14",
+          "pixelSha256": "618bf4211764ee76b592191147d724e6b0f92bbd436dbb7f548e76113548f7c4",
+          "ppuSha256": "82aec60d74483f4d8e569ac80311ce405092c8fbeb98539ac7bce78c1e91a7ce",
+          "chrSha256": "abfad1a29d14b78863c78aa78e2fd7cda488470d6a76e44099198e981820437d"
+        },
+        "after-pause": {
+          "frame": 1488,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 851,
+            "x": 13312,
+            "z": 44032,
+            "angle": 0,
+            "health": 100,
+            "ammo": 5,
+            "shots": 1,
+            "kills": 0
+          },
+          "engineSha256": "afe10667ecd0f309115bd5016ca6d98b59ff43887d0fb8e4c833d6a996a7ab14",
+          "pixelSha256": "c0507f3730f61a7d937312edc508da0b5bf0492d10e431009fa4ef229c9683d7",
+          "ppuSha256": "2eb5d4a0184857be5558517ed9a2737039378c5447482af20d03587a5f052d4c",
+          "chrSha256": "abfad1a29d14b78863c78aa78e2fd7cda488470d6a76e44099198e981820437d"
+        },
+        "dead": {
+          "frame": 4969,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 4302,
+            "x": 35835,
+            "z": 81825,
+            "angle": 64,
+            "health": 0,
+            "ammo": 5,
+            "shots": 1,
+            "kills": 0
+          },
+          "engineSha256": "afe10667ecd0f309115bd5016ca6d98b59ff43887d0fb8e4c833d6a996a7ab14",
+          "pixelSha256": "89aa72604bbe822f93b4031ccb19a4742e55af7eed4c8b9cde116499585479ff",
+          "ppuSha256": "9a16ae89e0e938f44e7565a72e0d8ce03b338d875eb82c76183ff5f28e19aac6",
+          "chrSha256": "e2128e6be201fa986126138a887a3f4a781f25e8d3b85606d80ea1723822c77d"
+        },
+        "death-retry": {
+          "frame": 5153,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 123,
+            "x": 13312,
+            "z": 44032,
+            "angle": 0,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "afe10667ecd0f309115bd5016ca6d98b59ff43887d0fb8e4c833d6a996a7ab14",
+          "pixelSha256": "618bf4211764ee76b592191147d724e6b0f92bbd436dbb7f548e76113548f7c4",
+          "ppuSha256": "cde43126717b3519403eb1251967a90a4691186dad6bf56447179d6dd54d49f9",
+          "chrSha256": "8d67f99e3ebc8b653a9a1c73306f467bf136bfcd4a9150b502b0e74cf7dd78a2"
+        },
+        "first-zombie-killed": {
+          "frame": 7637,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 2511,
+            "x": 35835,
+            "z": 81825,
+            "angle": 78,
+            "health": 80,
+            "ammo": 3,
+            "shots": 3,
+            "kills": 1
+          },
+          "engineSha256": "afe10667ecd0f309115bd5016ca6d98b59ff43887d0fb8e4c833d6a996a7ab14",
+          "pixelSha256": "d24351d3c49e773ba176fc591a43d6bb940ea995424d0ff0c689e069c426ac3e",
+          "ppuSha256": "dec90e7a8307c40be757db89a284166ca174785e1a6b4e827c94351594864eda",
+          "chrSha256": "2b9aa58612973d8ff78bff72fb88d6972e36469e58282840b6c8ed56d2c73488"
+        },
+        "ammo-collected": {
+          "frame": 10109,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 4983,
+            "x": 70254,
+            "z": 64545,
+            "angle": 128,
+            "health": 100,
+            "ammo": 13,
+            "shots": 3,
+            "kills": 1
+          },
+          "engineSha256": "afe10667ecd0f309115bd5016ca6d98b59ff43887d0fb8e4c833d6a996a7ab14",
+          "pixelSha256": "df83cac7b89291d1a47121c7a32895e14e82aa226cddf99bce69eda09de61951",
+          "ppuSha256": "f03c297f6ae38fa610aaa18599ecad63b8c713d996501f34bae181aebaa2c92b",
+          "chrSha256": "300c9aa0bec42e96c6d29f0e4e02da5c95e9b5f5fbdf5c5434009a490f2125ec"
+        },
+        "door-open-settled": {
+          "frame": 11954,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6732,
+            "x": 75774,
+            "z": 31227,
+            "angle": 128,
+            "health": 65,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          },
+          "engineSha256": "afe10667ecd0f309115bd5016ca6d98b59ff43887d0fb8e4c833d6a996a7ab14",
+          "pixelSha256": "624ac54964aef3ee815ba1efd068a9ca8993b93baca1d346e5f663df22b3585b",
+          "ppuSha256": "b1d30a96eacdd2804ea9fa9d7ce49237ed73b5c4bb1c3f4a3c10600ab1b69c92",
+          "chrSha256": "bf31da7ac6e2ac9a6f93b68e6b489b8c079512f3cd5f818566b5e0136e593bf7"
+        },
+        "results-presented": {
+          "frame": 19086,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 5,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 13862,
+            "x": 74076,
+            "z": 7176,
+            "angle": 192,
+            "health": 55,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          },
+          "engineSha256": "afe10667ecd0f309115bd5016ca6d98b59ff43887d0fb8e4c833d6a996a7ab14",
+          "pixelSha256": "cf3bf191d5e2d6a630eeefab8a0bf0f17f3f87be81a7c567987e22ddb2d98167",
+          "ppuSha256": "eb1d6661d2367629eaed5bb60f09a1c5474207cccbe05ba9853ed37494801596",
+          "chrSha256": "c50e136324067a67310a13d26d31b6346a45c298f593f983a29425e563950496"
+        },
+        "final-spawn": {
+          "frame": 19628,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 188,
+            "x": 13312,
+            "z": 44032,
+            "angle": 0,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "afe10667ecd0f309115bd5016ca6d98b59ff43887d0fb8e4c833d6a996a7ab14",
+          "pixelSha256": "618bf4211764ee76b592191147d724e6b0f92bbd436dbb7f548e76113548f7c4",
+          "ppuSha256": "82aec60d74483f4d8e569ac80311ce405092c8fbeb98539ac7bce78c1e91a7ce",
+          "chrSha256": "abfad1a29d14b78863c78aa78e2fd7cda488470d6a76e44099198e981820437d"
+        },
+        "console-reset": {
+          "frame": 19748,
+          "state": {
+            "title": 1,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 0,
+            "musicActive": 0,
+            "clock": 0,
+            "x": 0,
+            "z": 0,
+            "angle": 0,
+            "health": 0,
+            "ammo": 0,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "b707241545a346265aab1ffb32ff64b55bf8f8dc1b56a46ef33ce3d15db11d33",
+          "pixelSha256": "d70160861f2fea5ab1bd5200997ee22bcace249e226a8ce901223ce16f99af46",
+          "ppuSha256": "8293950f817f15741cb03e2b6c226543027190a0ac5d0a9959fb357791e2dc3f",
+          "chrSha256": "aece2fbd0a161ca079f072b9264043a1907b9b4a3aec4ffb6dbfc0b00c9dd68a"
+        }
+      },
+      "apu": {
+        "writes": 76964,
+        "dpcmControlWrites": [
+          {
+            "frame": 0,
+            "address": 16400,
+            "value": 0
+          },
+          {
+            "frame": 19388,
+            "address": 16400,
+            "value": 0
+          },
+          {
+            "frame": 19628,
+            "address": 16400,
+            "value": 0
+          }
+        ],
+        "dpcmDataWrites": [],
+        "dpcmEnabled": []
+      },
+      "routePhaseCount": 151
+    }
+  ],
+  "mesenRoute": {
+    "passed": true,
+    "frames": 15121,
+    "phaseCount": 161,
+    "checks": {
+      "controllerOnlyRouteCompleted": true,
+      "noTimeouts": true,
+      "noRuntimeErrors": true,
+      "nmiNeverNested": true,
+      "exactPublishedWorlds": true,
+      "closedDoorThirdContextObserved": true,
+      "closedDoorEnemyCannotAttackOrTarget": true,
+      "thirdShotDamagesPlayer": true,
+      "thirdNeverCollectsItem": true,
+      "thirdDefeatedExactlyOnce": true,
+      "thirdReceivesThreeHits": true,
+      "threeContextStatesObserved": true,
+      "allRenderCapacityFits": true,
+      "thirdStaysInsideMovementBox": true,
+      "thirdActuallyMoves": true,
+      "allThreeKilled": true,
+      "nineHits": true,
+      "nominalAmmoBalance": true,
+      "bothPickupsExactlyOnce": true,
+      "thirdDeadOnReturn": true,
+      "resultsThreeKillsTwoItems": true,
+      "resetRestoresAllEnemies": true,
+      "resetRestoresAmmoDoorAndCounts": true,
+      "pauseFreezeAndResume": true,
+      "pauseEnteredDuringEnemyWarning": true,
+      "freshStartPagesAndNoCarry": true
+    },
+    "errors": [],
+    "eventCounts": {
+      "zombie_hit": 9,
+      "zombie_defeat": 3,
+      "player_damage": 9,
+      "ammo_collect": 1,
+      "pistol_shot_accepted": 9
+    },
+    "maximumPlanes": 33,
+    "maximumPatterns": 113,
+    "maximumSpans": 8,
+    "pauseChecks": [
+      {
+        "name": "initial-music",
+        "heldFrames": 124,
+        "checks": {
+          "allSamplesPaused": true,
+          "fieldsFrozen": true,
+          "noWorldPublication": true,
+          "picturesFrozen": true,
+          "ppuFrozen": true,
+          "freshStartResumes": true
+        },
+        "mismatches": []
+      },
+      {
+        "name": "enemy-warning",
+        "heldFrames": 94,
+        "checks": {
+          "allSamplesPaused": true,
+          "fieldsFrozen": true,
+          "noWorldPublication": true,
+          "picturesFrozen": true,
+          "ppuFrozen": true,
+          "freshStartResumes": true
+        },
+        "mismatches": []
+      },
+      {
+        "name": "slime-music",
+        "heldFrames": 94,
+        "checks": {
+          "allSamplesPaused": true,
+          "fieldsFrozen": true,
+          "noWorldPublication": true,
+          "picturesFrozen": true,
+          "ppuFrozen": true,
+          "freshStartResumes": true
+        },
+        "mismatches": []
+      }
+    ],
+    "timing": {
+      "nmiCycles": {
+        "count": 14745,
+        "minimum": 495,
+        "median": 3996,
+        "mean": 3987.4278060359443,
+        "p95": 6166,
+        "maximum": 18662
+      },
+      "ppuWritesObserved": 14040,
+      "lastPpuMinimumMargin": {
+        "scanline": 260,
+        "dot": 171,
+        "marginCpuCycles": 56.666666666666664
+      },
+      "warningUploadNmis": [
+        {
+          "frame": 2701,
+          "cycles": 3547,
+          "scanline": 246,
+          "dot": 208,
+          "marginCpuCycles": 1635.6666666666667
+        },
+        {
+          "frame": 2956,
+          "cycles": 3866,
+          "scanline": 246,
+          "dot": 200,
+          "marginCpuCycles": 1638.3333333333333
+        },
+        {
+          "frame": 5731,
+          "cycles": 3330,
+          "scanline": 246,
+          "dot": 202,
+          "marginCpuCycles": 1637.6666666666667
+        },
+        {
+          "frame": 6092,
+          "cycles": 3661,
+          "scanline": 246,
+          "dot": 206,
+          "marginCpuCycles": 1636.3333333333333
+        },
+        {
+          "frame": 7633,
+          "cycles": 3276,
+          "scanline": 246,
+          "dot": 202,
+          "marginCpuCycles": 1637.6666666666667
+        }
+      ]
+    },
+    "scope": "Controller-only actual ROM in stock NTSC Mesen, zero extra scanlines, independent unfiltered geometry oracle; not a physical-console test.",
+    "pixelChecks": {
+      "count": 44,
+      "passed": true,
+      "totalPixelMismatches": 0
+    }
+  },
+  "artifactComparison": {
+    "passed": true,
+    "previousSha256": "865adb2c99fd27ff89f29bf7333ef33842a7e62597a4d0b8c26b399bd07fa461",
+    "romSha256": "c2a913ddd057235e11936e4c212eb0d3a93e1c6f422315d03bd05baaea80ab1b",
+    "sourceSha256": "1361d483c5d461023ed6308735334c3e32e76ad5d40cee4168e70fcf29ecec02",
+    "sourcePreservedVerbatim": true,
+    "rangesUnchanged": {
+      "header_and_banks_0_to_6": true,
+      "fixed_gameplay_code": true,
+      "startup_and_vectors": true
+    },
+    "fixedCodeFreeBytes": 21,
+    "audioRamBytes": 206,
+    "scope": "Exact byte comparison against prior music-option build; all non-audio ROM regions are identical. Source export checksum is unchanged."
+  },
+  "scope": "Actual linked 6502 audio tests, controller-driven JSNES integration and stock-NTSC Mesen full-level route with zero extra scanlines. Musical data preserved from the supplied export. No physical-console or listening-quality claim. Audio-only cycle costs are not whole-game frame rates.",
+  "provenance": {
+    "mesen": {
+      "romSha256": "c2a913ddd057235e11936e4c212eb0d3a93e1c6f422315d03bd05baaea80ab1b",
+      "controllerOnly": true,
+      "stockNtsc": true,
+      "ramInjected": false,
+      "romUnmodified": true,
+      "twoPages": true,
+      "completeRoute": true,
+      "observerSha256": "9d448d240e50e03b50d3a82cb01a1a26da83a45e627373be7ed93d52d3a7e340",
+      "driverSha256": "0e96a3bcb5895e7f4929be976c26b23a5d8e11ee755a545a04eaf6b037d5f5d2",
+      "mesenSha256": "ce4446a92096a024145e6ed2793cce8b489460bb3ac034cd9d1d77d96109fced"
+    },
+    "manifestSha256": "11a327bd87d625e020be911a5800e1fa27af8c07982b77913cb40cff966e0948",
+    "reportSha256": {
+      "music-audio.json": "faa2cc01d99d94c17d5c38a614badd5a27e410b3f2e76e1cbb6635c2ee5bdf80",
+      "controller.json": "2970ec71d6ef3e4756f60f02bbbb53d45d452439cc8e3b2cc1a2ee2ebf225f4d",
+      "audio-cost-comparison.json": "24f80f4c96deda2702dc51a8f26b8f8c8efa2a7a4b6ad44ad6ac27e25a8bb0bb",
+      "artifact-comparison.json": "e11e0380f399327c50e5c577f76c50cbc643bd0d6105973f0d86a7000d0722be",
+      "mesen-route-on/verification.json": "f526a171ba573c4450d67717b3f7c00c7d3dcda65c1526380dec460a23b04df5"
+    }
+  }
+}

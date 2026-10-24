@@ -14,3 +14,6 @@ __pycache__/
 *.lst
 *.dbg
 *.lbl
+
+# Historical comparison builds are retained locally, not published.
+/release/archive/

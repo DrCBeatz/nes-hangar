@@ -1,0 +1,120 @@
+{
+  "description": "Six seconds of actual opening-room gameplay: walk forward, turn right, face forward again, then enter the recessed floor.",
+  "rom": {
+    "path": "release/hangar-ntsc.nes",
+    "sha256": "644d047c07fe9ade8c14b87c42faa5720b026e0a13c017c4326be604adebbc87"
+  },
+  "emulator": {
+    "name": "JSNES",
+    "repository": "https://github.com/taiyuuki/jsnes",
+    "commit": "5b27c4243f1cb2528c54941e13c29c4ced7d5a45",
+    "timing": "Unmodified NTSC core; no overclock or frame-rate changes. Frames are computed offline and encoded with their normal real-time durations.",
+    "palette": "Unmodified JSNES NTSC RGB palette; no Mesen palette substitution.",
+    "audio": "Core APU runs normally; GIF has no audio."
+  },
+  "capture": {
+    "sourceResolution": [
+      256,
+      240
+    ],
+    "sourceRefreshRateHz": 60.098,
+    "sourceRefreshes": 360,
+    "firstGameplayEmulatedFrame": 80,
+    "firstFrameClock": 0,
+    "sampleEveryRefreshes": 4,
+    "sampledFrames": 90,
+    "sampleRateHz": 15.0245,
+    "distinctSampledPictures": 8,
+    "targetDurationSeconds": 5.990215980565077,
+    "controllerOnly": true,
+    "ramOrCpuInjection": false,
+    "interpolatedMotionFrames": false,
+    "firstPose": {
+      "x": 52,
+      "z": 172,
+      "angle256": 0
+    },
+    "finalPose": {
+      "x": 52,
+      "z": 219.5,
+      "angle256": 0,
+      "visibleX": 52,
+      "visibleZ": 211.5,
+      "visibleAngle256": 0,
+      "titleState": 0,
+      "publications": 9,
+      "health": 100,
+      "ammo": 6,
+      "clockFrames": 360
+    },
+    "controllerSegments": [
+      {
+        "refreshes": 120,
+        "buttons": [
+          "up"
+        ]
+      },
+      {
+        "refreshes": 24,
+        "buttons": [
+          "right"
+        ]
+      },
+      {
+        "refreshes": 48,
+        "buttons": []
+      },
+      {
+        "refreshes": 24,
+        "buttons": [
+          "left"
+        ]
+      },
+      {
+        "refreshes": 108,
+        "buttons": [
+          "up"
+        ]
+      },
+      {
+        "refreshes": 36,
+        "buttons": []
+      }
+    ]
+  },
+  "encoding": {
+    "gifResolution": [
+      512,
+      480
+    ],
+    "scale": "Exact 2x nearest-neighbor pixel duplication",
+    "durationSeconds": 5.99,
+    "loop": "Infinite; restart jumps back to the initial pose",
+    "stillResolution": [
+      256,
+      240
+    ],
+    "still": "Exact first sampled gameplay frame",
+    "encoder": "FFmpeg 8.1.2, palettegen + paletteuse with dither=none"
+  },
+  "verification": {
+    "decodedGifFrames": 90,
+    "allDecodedGifFramesEqualNearestNeighborScaledSource": true,
+    "decodedStillEqualsFirstSourceFrame": true,
+    "durationErrorSeconds": -0.0002159805650769897,
+    "gifBelowOneMegabyte": true
+  },
+  "artifacts": [
+    {
+      "path": "docs/images/opening-gameplay.gif",
+      "bytes": 22867,
+      "sha256": "115cc474cd8fd0fdf3bd01b8e76f27a58af5bfc65b3c331827a2a7456d4ba0af"
+    },
+    {
+      "path": "docs/images/opening-gameplay.png",
+      "bytes": 2687,
+      "sha256": "65a952ba0abbc6cdd6f4e557b37eba06c18dda611b8c32f7449b4597461c6d92"
+    }
+  ],
+  "scope": "The stock ROM updates its world less frequently than NES refreshes; repeated source pictures and that cadence are preserved. This records JSNES output, not a physical console, browser performance benchmark or a new complete-level regression."
+}

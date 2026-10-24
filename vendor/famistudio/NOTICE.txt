@@ -1,0 +1,25 @@
+FamiStudio sound engine 4.5.0
+Copyright (c) 2019-2026 Mathieu Gauthier
+
+Copying and distribution of this file, with or without
+modification, are permitted in any medium without royalty provided
+the copyright notice and this notice are preserved in all source
+code copies. This file is offered as-is, without any warranty.
+
+Imported from the locally installed FamiStudio450-SoundEngine package.
+Upstream: https://github.com/BleuBleu/FamiStudio
+Documentation: https://famistudio.org/doc/soundengine/
+The engine derives from FamiTone2 by Shiru; see its retained source header.
+
+Hangar modification: configurable FAMISTUDIO_APU_BASE redirects the standard
+APU registers to a 24-byte RAM shadow. No music code writes hardware directly.
+Only standard NTSC note tables are included; PAL, DPCM and expansion audio
+are disabled in this experiment. Source line endings normalized to LF.
+This notice applies to the vendored engine and note tables, separately from
+Hangar original code.
+
+Experimental bank placement: optional FAMISTUDIO_CFG_BANKED_INIT places
+init/music_stop/music_play/music_pause in the configured initialization
+segment. Hangar calls these only at reset with NMI disabled. Playback,
+sample_stop, pitch helpers and song data remain in the fixed bank.
+No sequencer instructions or exported notes are changed by this relocation.

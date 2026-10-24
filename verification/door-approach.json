@@ -1,0 +1,1072 @@
+{
+  "passed": true,
+  "candidateSha256": "2e89760fcaa8175eacd400285d9887dce7e74fce8f5df126a13445cad55ab6a6",
+  "acceptedBaselineSha256": "0dbee1ad5765bc00ac10e1736902ee381a88c3c539b8c68de12f24f887260d89",
+  "priorInteractionSha256": "0ecf59bf29efb03e5619a30d8bf890500a96e505a18f661920ab02fdbc9bd086",
+  "method": "Legal injected initial poses, then real controller input and unmodified stock-NTSC Mesen rendering. Enemies disabled to isolate interaction; music mode injected. No physical-console claim.",
+  "timingConvention": "Execution callbacks use the preceding endFrame count; records are taken after increment at endFrame. A request frame one lower than the first A-phase record means the first sampled input refresh, not negative latency. Request-to-open compares execution frame with the first endFrame where door_state==OPEN; resolution is one refresh.",
+  "candidateRuns": {
+    "on": {
+      "frames": 4592,
+      "screenshots": 47,
+      "settledCollisionLegalPoses": 21,
+      "sixRepairedAngledPoses": [
+        "north-close-x300-angle171",
+        "north-close-x300-angle180",
+        "south-close-x300-angle213",
+        "south-close-x300-angle204",
+        "north-x292-angle85",
+        "south-x292-angle43"
+      ],
+      "immediatelyOutsideConeAndFacingAwayRejected": 6,
+      "heldAApproachesRemainClosed": 2,
+      "freshAAfterReleaseOpensBothSides": true,
+      "turnThenUseWorks": true,
+      "allHudPageRowsMatch": true,
+      "allSettledPromptsMatchHudTiles": true,
+      "allAcceptedRequestsOnFirstSampledRefresh": true,
+      "requests": [
+        {
+          "id": "north-close-x300-angle128-a",
+          "firstFreshAEndFrameRecord": 240,
+          "requestFrame": 239,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 269,
+          "requestToOpenFrames": 30,
+          "firstLivePose": [
+            300.0,
+            122.25,
+            128
+          ],
+          "firstVisiblePose": [
+            300.0,
+            122.25,
+            128
+          ]
+        },
+        {
+          "id": "north-close-x300-angle160-a",
+          "firstFreshAEndFrameRecord": 443,
+          "requestFrame": 442,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 478,
+          "requestToOpenFrames": 36,
+          "firstLivePose": [
+            300.0,
+            122.25,
+            160
+          ],
+          "firstVisiblePose": [
+            300.0,
+            122.25,
+            160
+          ]
+        },
+        {
+          "id": "north-close-x300-angle171-a",
+          "firstFreshAEndFrameRecord": 646,
+          "requestFrame": 645,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 681,
+          "requestToOpenFrames": 36,
+          "firstLivePose": [
+            300.0,
+            122.25,
+            171
+          ],
+          "firstVisiblePose": [
+            300.0,
+            122.25,
+            171
+          ]
+        },
+        {
+          "id": "north-close-x300-angle180-a",
+          "firstFreshAEndFrameRecord": 849,
+          "requestFrame": 848,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 886,
+          "requestToOpenFrames": 38,
+          "firstLivePose": [
+            300.0,
+            122.25,
+            180
+          ],
+          "firstVisiblePose": [
+            300.0,
+            122.25,
+            180
+          ]
+        },
+        {
+          "id": "south-close-x300-angle0-a",
+          "firstFreshAEndFrameRecord": 1052,
+          "requestFrame": 1051,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 1093,
+          "requestToOpenFrames": 42,
+          "firstLivePose": [
+            300.0,
+            117.75,
+            0
+          ],
+          "firstVisiblePose": [
+            300.0,
+            117.75,
+            0
+          ]
+        },
+        {
+          "id": "south-close-x300-angle224-a",
+          "firstFreshAEndFrameRecord": 1255,
+          "requestFrame": 1254,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 1304,
+          "requestToOpenFrames": 50,
+          "firstLivePose": [
+            300.0,
+            117.75,
+            224
+          ],
+          "firstVisiblePose": [
+            300.0,
+            117.75,
+            224
+          ]
+        },
+        {
+          "id": "south-close-x300-angle213-a",
+          "firstFreshAEndFrameRecord": 1458,
+          "requestFrame": 1457,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 1500,
+          "requestToOpenFrames": 43,
+          "firstLivePose": [
+            300.0,
+            117.75,
+            213
+          ],
+          "firstVisiblePose": [
+            300.0,
+            117.75,
+            213
+          ]
+        },
+        {
+          "id": "south-close-x300-angle204-a",
+          "firstFreshAEndFrameRecord": 1661,
+          "requestFrame": 1660,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 1700,
+          "requestToOpenFrames": 40,
+          "firstLivePose": [
+            300.0,
+            117.75,
+            204
+          ],
+          "firstVisiblePose": [
+            300.0,
+            117.75,
+            204
+          ]
+        },
+        {
+          "id": "north-x292-angle85-a",
+          "firstFreshAEndFrameRecord": 1864,
+          "requestFrame": 1863,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 1901,
+          "requestToOpenFrames": 38,
+          "firstLivePose": [
+            292.0,
+            122.25,
+            85
+          ],
+          "firstVisiblePose": [
+            292.0,
+            122.25,
+            85
+          ]
+        },
+        {
+          "id": "south-x292-angle43-a",
+          "firstFreshAEndFrameRecord": 2067,
+          "requestFrame": 2066,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 2111,
+          "requestToOpenFrames": 45,
+          "firstLivePose": [
+            292.0,
+            117.75,
+            43
+          ],
+          "firstVisiblePose": [
+            292.0,
+            117.75,
+            43
+          ]
+        },
+        {
+          "id": "north-x296-angle128-a",
+          "firstFreshAEndFrameRecord": 2270,
+          "requestFrame": 2269,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 2304,
+          "requestToOpenFrames": 35,
+          "firstLivePose": [
+            296.0,
+            122.25,
+            128
+          ],
+          "firstVisiblePose": [
+            296.0,
+            122.25,
+            128
+          ]
+        },
+        {
+          "id": "south-x296-angle0-a",
+          "firstFreshAEndFrameRecord": 2473,
+          "requestFrame": 2472,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 2517,
+          "requestToOpenFrames": 45,
+          "firstLivePose": [
+            296.0,
+            117.75,
+            0
+          ],
+          "firstVisiblePose": [
+            296.0,
+            117.75,
+            0
+          ]
+        },
+        {
+          "id": "north-held-fresh-a",
+          "firstFreshAEndFrameRecord": 2757,
+          "requestFrame": 2756,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 2793,
+          "requestToOpenFrames": 37,
+          "firstLivePose": [
+            296.0,
+            122.25,
+            128
+          ],
+          "firstVisiblePose": [
+            296.0,
+            122.25,
+            128
+          ]
+        },
+        {
+          "id": "south-held-fresh-a",
+          "firstFreshAEndFrameRecord": 3041,
+          "requestFrame": 3040,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 3086,
+          "requestToOpenFrames": 46,
+          "firstLivePose": [
+            296.0,
+            117.75,
+            0
+          ],
+          "firstVisiblePose": [
+            296.0,
+            117.75,
+            0
+          ]
+        },
+        {
+          "id": "turn-live-a",
+          "firstFreshAEndFrameRecord": 3272,
+          "requestFrame": 3271,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 3309,
+          "requestToOpenFrames": 38,
+          "firstLivePose": [
+            300.0,
+            122.25,
+            172
+          ],
+          "firstVisiblePose": [
+            300.0,
+            122.25,
+            161
+          ]
+        },
+        {
+          "id": "guard-north-angle74-a",
+          "firstFreshAEndFrameRecord": 3475,
+          "requestFrame": null,
+          "requestFrameMinusFirstEndFrameRecord": null,
+          "requestOnFirstSampledRefresh": false,
+          "openFrame": null,
+          "requestToOpenFrames": null,
+          "firstLivePose": [
+            296.0,
+            122.25,
+            74
+          ],
+          "firstVisiblePose": [
+            296.0,
+            122.25,
+            74
+          ]
+        },
+        {
+          "id": "guard-north-angle182-a",
+          "firstFreshAEndFrameRecord": 3678,
+          "requestFrame": null,
+          "requestFrameMinusFirstEndFrameRecord": null,
+          "requestOnFirstSampledRefresh": false,
+          "openFrame": null,
+          "requestToOpenFrames": null,
+          "firstLivePose": [
+            296.0,
+            122.25,
+            182
+          ],
+          "firstVisiblePose": [
+            296.0,
+            122.25,
+            182
+          ]
+        },
+        {
+          "id": "guard-north-angle0-a",
+          "firstFreshAEndFrameRecord": 3881,
+          "requestFrame": null,
+          "requestFrameMinusFirstEndFrameRecord": null,
+          "requestOnFirstSampledRefresh": false,
+          "openFrame": null,
+          "requestToOpenFrames": null,
+          "firstLivePose": [
+            296.0,
+            122.25,
+            0
+          ],
+          "firstVisiblePose": [
+            296.0,
+            122.25,
+            0
+          ]
+        },
+        {
+          "id": "guard-south-angle202-a",
+          "firstFreshAEndFrameRecord": 4084,
+          "requestFrame": null,
+          "requestFrameMinusFirstEndFrameRecord": null,
+          "requestOnFirstSampledRefresh": false,
+          "openFrame": null,
+          "requestToOpenFrames": null,
+          "firstLivePose": [
+            296.0,
+            117.75,
+            202
+          ],
+          "firstVisiblePose": [
+            296.0,
+            117.75,
+            202
+          ]
+        },
+        {
+          "id": "guard-south-angle54-a",
+          "firstFreshAEndFrameRecord": 4287,
+          "requestFrame": null,
+          "requestFrameMinusFirstEndFrameRecord": null,
+          "requestOnFirstSampledRefresh": false,
+          "openFrame": null,
+          "requestToOpenFrames": null,
+          "firstLivePose": [
+            296.0,
+            117.75,
+            54
+          ],
+          "firstVisiblePose": [
+            296.0,
+            117.75,
+            54
+          ]
+        },
+        {
+          "id": "guard-south-angle128-a",
+          "firstFreshAEndFrameRecord": 4490,
+          "requestFrame": null,
+          "requestFrameMinusFirstEndFrameRecord": null,
+          "requestOnFirstSampledRefresh": false,
+          "openFrame": null,
+          "requestToOpenFrames": null,
+          "firstLivePose": [
+            296.0,
+            117.75,
+            128
+          ],
+          "firstVisiblePose": [
+            296.0,
+            117.75,
+            128
+          ]
+        }
+      ]
+    },
+    "off": {
+      "frames": 4592,
+      "screenshots": 47,
+      "settledCollisionLegalPoses": 21,
+      "sixRepairedAngledPoses": [
+        "north-close-x300-angle171",
+        "north-close-x300-angle180",
+        "south-close-x300-angle213",
+        "south-close-x300-angle204",
+        "north-x292-angle85",
+        "south-x292-angle43"
+      ],
+      "immediatelyOutsideConeAndFacingAwayRejected": 6,
+      "heldAApproachesRemainClosed": 2,
+      "freshAAfterReleaseOpensBothSides": true,
+      "turnThenUseWorks": true,
+      "allHudPageRowsMatch": true,
+      "allSettledPromptsMatchHudTiles": true,
+      "allAcceptedRequestsOnFirstSampledRefresh": true,
+      "requests": [
+        {
+          "id": "north-close-x300-angle128-a",
+          "firstFreshAEndFrameRecord": 240,
+          "requestFrame": 239,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 269,
+          "requestToOpenFrames": 30,
+          "firstLivePose": [
+            300.0,
+            122.25,
+            128
+          ],
+          "firstVisiblePose": [
+            300.0,
+            122.25,
+            128
+          ]
+        },
+        {
+          "id": "north-close-x300-angle160-a",
+          "firstFreshAEndFrameRecord": 443,
+          "requestFrame": 442,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 478,
+          "requestToOpenFrames": 36,
+          "firstLivePose": [
+            300.0,
+            122.25,
+            160
+          ],
+          "firstVisiblePose": [
+            300.0,
+            122.25,
+            160
+          ]
+        },
+        {
+          "id": "north-close-x300-angle171-a",
+          "firstFreshAEndFrameRecord": 646,
+          "requestFrame": 645,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 681,
+          "requestToOpenFrames": 36,
+          "firstLivePose": [
+            300.0,
+            122.25,
+            171
+          ],
+          "firstVisiblePose": [
+            300.0,
+            122.25,
+            171
+          ]
+        },
+        {
+          "id": "north-close-x300-angle180-a",
+          "firstFreshAEndFrameRecord": 849,
+          "requestFrame": 848,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 885,
+          "requestToOpenFrames": 37,
+          "firstLivePose": [
+            300.0,
+            122.25,
+            180
+          ],
+          "firstVisiblePose": [
+            300.0,
+            122.25,
+            180
+          ]
+        },
+        {
+          "id": "south-close-x300-angle0-a",
+          "firstFreshAEndFrameRecord": 1052,
+          "requestFrame": 1051,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 1092,
+          "requestToOpenFrames": 41,
+          "firstLivePose": [
+            300.0,
+            117.75,
+            0
+          ],
+          "firstVisiblePose": [
+            300.0,
+            117.75,
+            0
+          ]
+        },
+        {
+          "id": "south-close-x300-angle224-a",
+          "firstFreshAEndFrameRecord": 1255,
+          "requestFrame": 1254,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 1303,
+          "requestToOpenFrames": 49,
+          "firstLivePose": [
+            300.0,
+            117.75,
+            224
+          ],
+          "firstVisiblePose": [
+            300.0,
+            117.75,
+            224
+          ]
+        },
+        {
+          "id": "south-close-x300-angle213-a",
+          "firstFreshAEndFrameRecord": 1458,
+          "requestFrame": 1457,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 1499,
+          "requestToOpenFrames": 42,
+          "firstLivePose": [
+            300.0,
+            117.75,
+            213
+          ],
+          "firstVisiblePose": [
+            300.0,
+            117.75,
+            213
+          ]
+        },
+        {
+          "id": "south-close-x300-angle204-a",
+          "firstFreshAEndFrameRecord": 1661,
+          "requestFrame": 1660,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 1699,
+          "requestToOpenFrames": 39,
+          "firstLivePose": [
+            300.0,
+            117.75,
+            204
+          ],
+          "firstVisiblePose": [
+            300.0,
+            117.75,
+            204
+          ]
+        },
+        {
+          "id": "north-x292-angle85-a",
+          "firstFreshAEndFrameRecord": 1864,
+          "requestFrame": 1863,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 1900,
+          "requestToOpenFrames": 37,
+          "firstLivePose": [
+            292.0,
+            122.25,
+            85
+          ],
+          "firstVisiblePose": [
+            292.0,
+            122.25,
+            85
+          ]
+        },
+        {
+          "id": "south-x292-angle43-a",
+          "firstFreshAEndFrameRecord": 2067,
+          "requestFrame": 2066,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 2110,
+          "requestToOpenFrames": 44,
+          "firstLivePose": [
+            292.0,
+            117.75,
+            43
+          ],
+          "firstVisiblePose": [
+            292.0,
+            117.75,
+            43
+          ]
+        },
+        {
+          "id": "north-x296-angle128-a",
+          "firstFreshAEndFrameRecord": 2270,
+          "requestFrame": 2269,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 2303,
+          "requestToOpenFrames": 34,
+          "firstLivePose": [
+            296.0,
+            122.25,
+            128
+          ],
+          "firstVisiblePose": [
+            296.0,
+            122.25,
+            128
+          ]
+        },
+        {
+          "id": "south-x296-angle0-a",
+          "firstFreshAEndFrameRecord": 2473,
+          "requestFrame": 2472,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 2516,
+          "requestToOpenFrames": 44,
+          "firstLivePose": [
+            296.0,
+            117.75,
+            0
+          ],
+          "firstVisiblePose": [
+            296.0,
+            117.75,
+            0
+          ]
+        },
+        {
+          "id": "north-held-fresh-a",
+          "firstFreshAEndFrameRecord": 2757,
+          "requestFrame": 2756,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 2792,
+          "requestToOpenFrames": 36,
+          "firstLivePose": [
+            296.0,
+            122.25,
+            128
+          ],
+          "firstVisiblePose": [
+            296.0,
+            122.25,
+            128
+          ]
+        },
+        {
+          "id": "south-held-fresh-a",
+          "firstFreshAEndFrameRecord": 3041,
+          "requestFrame": 3040,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 3085,
+          "requestToOpenFrames": 45,
+          "firstLivePose": [
+            296.0,
+            117.75,
+            0
+          ],
+          "firstVisiblePose": [
+            296.0,
+            117.75,
+            0
+          ]
+        },
+        {
+          "id": "turn-live-a",
+          "firstFreshAEndFrameRecord": 3272,
+          "requestFrame": 3271,
+          "requestFrameMinusFirstEndFrameRecord": -1,
+          "requestOnFirstSampledRefresh": true,
+          "openFrame": 3310,
+          "requestToOpenFrames": 39,
+          "firstLivePose": [
+            300.0,
+            122.25,
+            172
+          ],
+          "firstVisiblePose": [
+            300.0,
+            122.25,
+            161
+          ]
+        },
+        {
+          "id": "guard-north-angle74-a",
+          "firstFreshAEndFrameRecord": 3475,
+          "requestFrame": null,
+          "requestFrameMinusFirstEndFrameRecord": null,
+          "requestOnFirstSampledRefresh": false,
+          "openFrame": null,
+          "requestToOpenFrames": null,
+          "firstLivePose": [
+            296.0,
+            122.25,
+            74
+          ],
+          "firstVisiblePose": [
+            296.0,
+            122.25,
+            74
+          ]
+        },
+        {
+          "id": "guard-north-angle182-a",
+          "firstFreshAEndFrameRecord": 3678,
+          "requestFrame": null,
+          "requestFrameMinusFirstEndFrameRecord": null,
+          "requestOnFirstSampledRefresh": false,
+          "openFrame": null,
+          "requestToOpenFrames": null,
+          "firstLivePose": [
+            296.0,
+            122.25,
+            182
+          ],
+          "firstVisiblePose": [
+            296.0,
+            122.25,
+            182
+          ]
+        },
+        {
+          "id": "guard-north-angle0-a",
+          "firstFreshAEndFrameRecord": 3881,
+          "requestFrame": null,
+          "requestFrameMinusFirstEndFrameRecord": null,
+          "requestOnFirstSampledRefresh": false,
+          "openFrame": null,
+          "requestToOpenFrames": null,
+          "firstLivePose": [
+            296.0,
+            122.25,
+            0
+          ],
+          "firstVisiblePose": [
+            296.0,
+            122.25,
+            0
+          ]
+        },
+        {
+          "id": "guard-south-angle202-a",
+          "firstFreshAEndFrameRecord": 4084,
+          "requestFrame": null,
+          "requestFrameMinusFirstEndFrameRecord": null,
+          "requestOnFirstSampledRefresh": false,
+          "openFrame": null,
+          "requestToOpenFrames": null,
+          "firstLivePose": [
+            296.0,
+            117.75,
+            202
+          ],
+          "firstVisiblePose": [
+            296.0,
+            117.75,
+            202
+          ]
+        },
+        {
+          "id": "guard-south-angle54-a",
+          "firstFreshAEndFrameRecord": 4287,
+          "requestFrame": null,
+          "requestFrameMinusFirstEndFrameRecord": null,
+          "requestOnFirstSampledRefresh": false,
+          "openFrame": null,
+          "requestToOpenFrames": null,
+          "firstLivePose": [
+            296.0,
+            117.75,
+            54
+          ],
+          "firstVisiblePose": [
+            296.0,
+            117.75,
+            54
+          ]
+        },
+        {
+          "id": "guard-south-angle128-a",
+          "firstFreshAEndFrameRecord": 4490,
+          "requestFrame": null,
+          "requestFrameMinusFirstEndFrameRecord": null,
+          "requestOnFirstSampledRefresh": false,
+          "openFrame": null,
+          "requestToOpenFrames": null,
+          "firstLivePose": [
+            296.0,
+            117.75,
+            128
+          ],
+          "firstVisiblePose": [
+            296.0,
+            117.75,
+            128
+          ]
+        }
+      ]
+    }
+  },
+  "comparison": {
+    "on": {
+      "priorAndAcceptedBaselineEligibilityIdentical": true,
+      "unchangedWorldPixelFixtures": [
+        "north-close-x300-angle128",
+        "north-close-x300-angle160",
+        "north-close-x300-angle171",
+        "north-close-x300-angle180",
+        "south-close-x300-angle0",
+        "south-close-x300-angle224",
+        "south-close-x300-angle213",
+        "south-close-x300-angle204",
+        "north-x292-angle85",
+        "south-x292-angle43",
+        "north-x296-angle128",
+        "south-x296-angle0",
+        "north-held-setup",
+        "south-held-setup",
+        "turn-live-setup"
+      ],
+      "worldPixelsCompared": 675840,
+      "repairedClosePoseScreenshots": [
+        {
+          "before": "analysis/door-followup/current/mesen-music-on/north-close-x300-angle171.png",
+          "after": "analysis/door-followup/candidate/mesen-music-on/north-close-x300-angle171.png"
+        },
+        {
+          "before": "analysis/door-followup/current/mesen-music-on/north-close-x300-angle180.png",
+          "after": "analysis/door-followup/candidate/mesen-music-on/north-close-x300-angle180.png"
+        },
+        {
+          "before": "analysis/door-followup/current/mesen-music-on/south-close-x300-angle213.png",
+          "after": "analysis/door-followup/candidate/mesen-music-on/south-close-x300-angle213.png"
+        },
+        {
+          "before": "analysis/door-followup/current/mesen-music-on/south-close-x300-angle204.png",
+          "after": "analysis/door-followup/candidate/mesen-music-on/south-close-x300-angle204.png"
+        },
+        {
+          "before": "analysis/door-followup/current/mesen-music-on/north-x292-angle85.png",
+          "after": "analysis/door-followup/candidate/mesen-music-on/north-x292-angle85.png"
+        },
+        {
+          "before": "analysis/door-followup/current/mesen-music-on/south-x292-angle43.png",
+          "after": "analysis/door-followup/candidate/mesen-music-on/south-x292-angle43.png"
+        }
+      ]
+    },
+    "off": {
+      "priorAndAcceptedBaselineEligibilityIdentical": true,
+      "unchangedWorldPixelFixtures": [
+        "north-close-x300-angle128",
+        "north-close-x300-angle160",
+        "north-close-x300-angle171",
+        "north-close-x300-angle180",
+        "south-close-x300-angle0",
+        "south-close-x300-angle224",
+        "south-close-x300-angle213",
+        "south-close-x300-angle204",
+        "north-x292-angle85",
+        "south-x292-angle43",
+        "north-x296-angle128",
+        "south-x296-angle0",
+        "north-held-setup",
+        "south-held-setup",
+        "turn-live-setup"
+      ],
+      "worldPixelsCompared": 675840,
+      "repairedClosePoseScreenshots": [
+        {
+          "before": "analysis/door-followup/current/mesen-music-off/north-close-x300-angle171.png",
+          "after": "analysis/door-followup/candidate/mesen-music-off/north-close-x300-angle171.png"
+        },
+        {
+          "before": "analysis/door-followup/current/mesen-music-off/north-close-x300-angle180.png",
+          "after": "analysis/door-followup/candidate/mesen-music-off/north-close-x300-angle180.png"
+        },
+        {
+          "before": "analysis/door-followup/current/mesen-music-off/south-close-x300-angle213.png",
+          "after": "analysis/door-followup/candidate/mesen-music-off/south-close-x300-angle213.png"
+        },
+        {
+          "before": "analysis/door-followup/current/mesen-music-off/south-close-x300-angle204.png",
+          "after": "analysis/door-followup/candidate/mesen-music-off/south-close-x300-angle204.png"
+        },
+        {
+          "before": "analysis/door-followup/current/mesen-music-off/north-x292-angle85.png",
+          "after": "analysis/door-followup/candidate/mesen-music-off/north-x292-angle85.png"
+        },
+        {
+          "before": "analysis/door-followup/current/mesen-music-off/south-x292-angle43.png",
+          "after": "analysis/door-followup/candidate/mesen-music-off/south-x292-angle43.png"
+        }
+      ]
+    }
+  },
+  "settingsProtection": "Every Mesen harness run used a temporary executable/settings directory and asserted the personal settings SHA-256 was unchanged. All completed successfully.",
+  "baselineBusyTiming": {
+    "scope": "Before-fix diagnostic only; not rerun for the four-constant angle change. Offsets2/5/10 inject a scene change then press A during unfinished closed-view work; offset20 already has queued/uploading work. Renderer latency remains outside this fix.",
+    "runs": {
+      "on": {
+        "frames": 2443,
+        "requestToOpenRefreshes": {
+          "north-busy0-a": 38,
+          "north-busy2-a": 53,
+          "north-busy5-a": 50,
+          "north-busy10-a": 45,
+          "north-busy20-a": 63,
+          "south-busy0-a": 45,
+          "south-busy2-a": 59,
+          "south-busy5-a": 56,
+          "south-busy10-a": 51,
+          "south-busy20-a": 80
+        }
+      },
+      "off": {
+        "frames": 2443,
+        "requestToOpenRefreshes": {
+          "north-busy0-a": 37,
+          "north-busy2-a": 52,
+          "north-busy5-a": 49,
+          "north-busy10-a": 44,
+          "north-busy20-a": 61,
+          "south-busy0-a": 43,
+          "south-busy2-a": 57,
+          "south-busy5-a": 54,
+          "south-busy10-a": 49,
+          "south-busy20-a": 78
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Door still requires a fresh A press; A+Left/Right remains strafing.",
+    "Position, wall-side and distance ranges are unchanged.",
+    "The generous facing cone is an interaction affordance, not exact ray-to-panel intersection.",
+    "Rendering/open-picture delay remains; no claim of general latency reduction or physical-console verification."
+  ],
+  "totalMeasuredRefreshes": 27568,
+  "schemaVersion": 1,
+  "verifiedOn": "2026-10-22",
+  "version": "prototype-2026-10-22-door-angle",
+  "binaryComparison": {
+    "changedRomBytes": [
+      {
+        "offset": 123970,
+        "before": 96,
+        "after": 75
+      },
+      {
+        "offset": 123974,
+        "before": 161,
+        "after": 182
+      },
+      {
+        "offset": 123982,
+        "before": 224,
+        "after": 203
+      },
+      {
+        "offset": 123986,
+        "before": 33,
+        "after": 54
+      }
+    ],
+    "changedSources": [
+      "src/door.s"
+    ],
+    "segmentBytesIdentical": true,
+    "segmentBytes": {
+      "ZEROPAGE": 256,
+      "AUDIO_ZP": 8,
+      "BSS": 1536,
+      "AUDIO_ENGINE": 136,
+      "AUDIO_DRIVER": 69,
+      "AUDIO_SETTINGS": 1,
+      "ACTOR_ART": 8065,
+      "BOOTDATA": 7536,
+      "MAPDATA": 8134,
+      "RENDER_CODE": 3680,
+      "RODATA": 8154,
+      "CODE": 12458,
+      "AUDIO_CODE": 3887,
+      "STARTUP": 9
+    },
+    "linkedLabelsIdentical": true,
+    "linkedLabelCount": 2043
+  },
+  "linkedTests": {
+    "evidence": "verification/door-approach-linked.json",
+    "calls": 51838,
+    "checks": 9,
+    "counts": {
+      "doorBoundary": 30976,
+      "exitBoundary": 20480,
+      "inputGuards": 80,
+      "lifecycle": 10,
+      "collision": 108,
+      "closeContact": 16,
+      "baselineCloseContact": 16
+    }
+  },
+  "controllerTests": {
+    "evidence": "verification/current-browser.json",
+    "checks": 30,
+    "framesOn": 1485,
+    "framesOff": 19787,
+    "scope": "Pinned stock JSNES core. Controller-only guide selection, launch, shoot, pause/resume, natural death retry, full accepted completion route and level restart; final public CPU reset interrupt API verifies cold default ON. Read-only CPU write observer; no game or emulator state injection. CPU timing/PPU deadline conclusions require the separate Mesen checks."
+  },
+  "freshBuildEvidence": "verification/current-build.json",
+  "physicalConsoleTested": false,
+  "liveDeploymentChanged": false,
+  "provenance": {
+    "analysis/door-followup/run.py": "ec55b80aab15b1ae3cd7236df3cde92f037d160bcd62dc2cdfe0d76d3b239827",
+    "analysis/door-followup/observe.lua": "c42f6809bdec9789368f05b7750d7b08f88abc75bbba8e53c2b0e67cafefc903",
+    "analysis/door-followup/summarize.py": "8eae9b097bdcd2fe9e0540d084287abac8e2c94ec4c0e34b9479d40417782304",
+    "analysis/door-followup/validate.py": "2d79e6b7c5194eb6d78e4bb5d9531667429a36d9eb8f54192f281cb8e39cdb59",
+    "tests/door-exit-interactions.mjs": "eb1ec352c377be3bc7c8c96e669d7d638251eea9e13c1b4bdae1cf54cc0482b3",
+    "tests/music-option-controller.mjs": "99bf9bd2952067fee977ecb3bddae39a5d19c973ef4340df575434b395af9e83"
+  }
+}

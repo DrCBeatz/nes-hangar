@@ -1,0 +1,91 @@
+ITCH.IO PAGE DRAFT
+
+Title: Hangar — NES FPS Prototype
+URL slug: nes-hangar
+Tagline: A playable 3D NES experiment inspired by Doom's E1M1, with angled walls, moving enemies and a custom engine.
+Classification: Games
+Kind: Downloadable (the initial release uses an external browser-play link)
+Release status: Prototype, if offered
+Pricing: No payments
+Upload: hangar-ntsc.nes — display name "Hangar — NTSC NES ROM"
+Genre: Shooter
+Tags: NES, Homebrew, First-Person, 3D, Retro, Singleplayer, Short, Experimental
+AI generation disclosure: Yes
+Community: Comments
+Visibility: Draft while preparing; Public after previewing the finished page
+App store links and custom noun: Leave blank
+
+Do not label the .nes download as a Windows/macOS/Linux executable. It requires
+an NES emulator. The maintained browser version is linked below.
+
+DESCRIPTION — COPY AND FORMAT IN THE ITCH.IO EDITOR
+
+A small playable experiment: how much of a Doom-like FPS can fit on the NES?
+
+Hangar reimagines a simplified route through Doom's E1M1 using a custom NES
+rendering engine. Explore angled walls, pillars, a recessed floor and the
+zigzag slime room. Fight three soldiers, manage limited ammunition, collect
+supplies and reach the exit.
+
+PLAY IN YOUR BROWSER: https://8bitpocket.app/?game=hangar
+Or download the NTSC .nes ROM below and open it in an NES emulator.
+
+This single-level prototype includes a pistol, moving enemies, health and
+ammunition pickups, an openable door, pause controls and an end-of-level
+results screen. Optional music features Dr C Beatz's NES arrangement of
+Bobby Prince's "At Doom's Gate." Select music OFF in the controls guide for
+better performance.
+
+For the reference experience, use Mesen in NTSC mode with normal sprite
+limits and zero additional scanlines. Complex views render slowly: this is
+an experimental NES engine, and feedback on controls, visibility and pacing
+is welcome. Browser presentation and speed can differ. The release has been
+tested in emulators; physical-console testing is still pending.
+
+NES CONTROLS
+Up/Down: walk
+Left/Right: turn
+A + Left/Right: strafe
+B: fire
+A: use a nearby door or switch when prompted
+Start: advance the title/guide; pause in game; retry after completion/death
+Select: credits at the logo; dynamic/coarse wall-boundary comparison in game
+
+The browser displays its keyboard guide before play and provides touch
+controls. Default keys: arrows to move/turn, X for A, Z or Y for B, Enter for
+Start, Ctrl for Select. Saved custom bindings may differ.
+
+Created by Dr C Beatz with AI-assisted programming, debugging and some visual
+asset development, followed by manual editing and repeated playtesting.
+The current NES music arrangement was transcribed and authored by Dr C Beatz.
+
+This is an unofficial fan prototype, not a port of the original Doom engine
+or the complete original game. Original Doom and E1M1: id Software. Music
+composition: Bobby Prince. Music playback: FamiStudio by Mathieu Gauthier,
+based on FamiTone2 by Shiru. Content origins and license scope are documented
+with the source; the original-code MIT license does not cover all ROM content.
+
+SOURCE, TECHNICAL NOTES AND CREDITS
+https://github.com/DrCBeatz/nes-hangar
+
+SCREENSHOTS
+Use docs/itch-assets/01-opening-room.png first, then 02-first-encounter.png,
+03-zigzag-slime-room.png, 04-final-encounter.png and 05-bronze-title.png.
+These are unretouched captures of the release ROM; manifest.json records their
+identity and settings. Keep pixel proportions intact when scaling.
+Suggested cover: 630 x 500, gameplay-led with HANGAR / NES FPS PROTOTYPE text.
+The native screenshots are 256 x 240 and need enlargement/padding for a cover.
+
+OPTIONAL FUTURE HTML BUILD
+A playable itch.io embed needs a tested ZIP containing index.html, emulator,
+ROM and relative asset paths. No itch.io HTML package is included in this
+release. The external Play link requires no itch viewport dimensions.
+For a future compact wrapper, start with a 640 x 600 iframe and a centered
+512 x 480 game canvas (exact 2x native pixels), leaving room for controls.
+Fullscreen ON; autoplay OFF; scrollbars OFF; SharedArrayBuffer OFF. Enable
+Mobile Friendly only after testing that packaged version's touch controls.
+
+REFERENCES (checked 2026-10-24)
+https://itch.io/docs/creators/html5
+https://itch.io/docs/creators/getting-started
+https://itch.io/docs/creators/quality-guidelines

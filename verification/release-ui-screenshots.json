@@ -1,0 +1,51 @@
+{
+  "romSha256": "867f9ae9999f895bea3b68f5ca13f8a2ff73047fee0b9f2a696fdb542dc4e249",
+  "coreSha256": "0531f69c4e9e2973bdcdc89bf3ad6e6dfa3257572f8e7eccd405fa158cc3a1a7",
+  "driverSha256": "ce79f8e3aee26629ac8949e6884d263aa4d60a541b5baa603dcf3fdb36299716",
+  "controllerOnly": true,
+  "ramInjected": false,
+  "extraScanlines": 0,
+  "shots": [
+    {
+      "name": "bronze-logo",
+      "frame": 120,
+      "pngSha256": "8d49c2e243e888736eaa17ca1b82aec7fc87649711036e3fe3ca1c8d963720bc",
+      "titleState": 1,
+      "musicDisabled": 0,
+      "clock": 0
+    },
+    {
+      "name": "credits",
+      "frame": 182,
+      "pngSha256": "0db1a7a361b309d6f27d7004cb69a0d1e42cc7a85067e377095fb9c8a7884177",
+      "titleState": 1,
+      "musicDisabled": 0,
+      "clock": 0
+    },
+    {
+      "name": "guide-music-on",
+      "frame": 244,
+      "pngSha256": "d7ba945f57ad283849a563f381a69789aa255add7fec8bc52d6efe88b0851987",
+      "titleState": 1,
+      "musicDisabled": 0,
+      "clock": 0
+    },
+    {
+      "name": "guide-music-off",
+      "frame": 306,
+      "pngSha256": "118f1c2f84dae8ace5326651959537437479488f98ba7efd335aef57bfe3283f",
+      "titleState": 1,
+      "musicDisabled": 1,
+      "clock": 0
+    },
+    {
+      "name": "gameplay-hud",
+      "frame": 612,
+      "pngSha256": "e3e2f3a0c7aece39077e44088866ebb0f7e70d614ad6e1391b0552bc74594021",
+      "titleState": 0,
+      "musicDisabled": 0,
+      "clock": 253
+    }
+  ],
+  "scope": "Unmodified emulator framebuffer captures with controller input; no game state injection. JSNES core screenshots, not a hosted browser test."
+}

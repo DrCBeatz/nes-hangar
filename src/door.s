@@ -2,6 +2,7 @@
 ; Requesting an opening does not release collision: the matching open world
 ; must actually publish first. Producer/private snapshot records are not reset.
 .setcpu "6502"
+.include "audio-write.inc"
 .import pause_sound_pulse1, pause_sound_pulse2, pause_sound_noise
 .macpack longbranch
 .include "coordinate-memory.inc"
@@ -69,9 +70,13 @@ done:
  rts
 .endproc
 
-; Exact Q16.8 rectangle on each legal side, with a32-angle facing cone.
-; North: X[290,302), Z(122,128], angle112..144.
-; South: X[290,302), Z[112,118), angle240..255 or0..16.
+; Exact Q16.8 rectangle on each legal side, across the full panel width.
+; Allow +/-53 angle units (~75 degrees) from the panel normal. At close
+; contact, aiming at the center from either jamb exceeds the old 45-degree
+; cone. A centered panel already fills the view just beyond eight units,
+; so allow twelve units of use reach. Collision and side guards are unchanged.
+; North: X[288,304), Z(122,132], angle75..181.
+; South: X[288,304), Z[108,118), angle203..255 or0..53.
 .proc door_eligible
  lda door_state
  bne outside
@@ -83,14 +88,14 @@ done:
  cmp #1
  bne outside
  lda player_x+1
- cmp #34
+ cmp #32
  bcc outside
- cmp #46
+ cmp #48
  bcs outside
  lda player_z_hi
  bne outside
  lda player_z+1
- cmp #112
+ cmp #108
  bcc outside
  cmp #118
  bcc south
@@ -101,24 +106,24 @@ done:
  beq outside
 north_max:
  lda player_z+1
- cmp #128
+ cmp #132
  bcc north_angle
  bne outside
  lda player_z
  bne outside
 north_angle:
  lda pending_angle
- cmp #112
+ cmp #75
  bcc outside
- cmp #145
+ cmp #182
  bcs outside
  sec
  rts
 south:
  lda pending_angle
- cmp #240
+ cmp #203
  bcs inside
- cmp #17
+ cmp #54
  bcs outside
 inside:
  sec
@@ -146,14 +151,14 @@ outside:
  sta door_sound_timer
  lda #$0B
  ora #$04                  ; retain the independent pause-cue triangle
- sta $4015
+ AUDIO_SFX_WRITE $4015
  lda #$16
  sta pause_sound_noise
- sta $400C
+ AUDIO_SFX_WRITE $400C
  lda #$0B
- sta $400E
+ AUDIO_SFX_WRITE $400E
  lda #$F8
- sta $400F
+ AUDIO_SFX_WRITE $400F
 done:
  rts
 .endproc
@@ -239,12 +244,12 @@ busy:
  lsr a
  ora #$10
  sta pause_sound_noise
- sta $400C
+ AUDIO_SFX_WRITE $400C
  lda door_sound_timer
  lsr a
  lsr a
  ora #8
- sta $400E
+ AUDIO_SFX_WRITE $400E
 done:
  rts
 drop:
@@ -254,10 +259,10 @@ drop:
 silence:
  lda #$10
  sta pause_sound_noise
- sta $400C
+ AUDIO_SFX_WRITE $400C
  lda #3
  ora #$04                  ; retain the independent pause-cue triangle
- sta $4015
+ AUDIO_SFX_WRITE $4015
  rts
 .endproc
 
@@ -270,10 +275,10 @@ silence:
  bcs done
  lda #$10
  sta pause_sound_noise
- sta $400C
+ AUDIO_SFX_WRITE $400C
  lda #3
  ora #$04                  ; retain the independent pause-cue triangle
- sta $4015
+ AUDIO_SFX_WRITE $4015
 done:
  rts
 .endproc

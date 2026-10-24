@@ -1,0 +1,3707 @@
+{
+  "passed": true,
+  "romSha256": "db258e4c9c57ff3ef9f4bc8eb732f31b65eec85a1a639e7a9787a90dde1722a9",
+  "checks": [
+    "guide advertises explicit music choices, performance tradeoff and inset Start prompt",
+    "credits use the public project alias and distinguish composition, arrangement and engine authors",
+    "held power-on Start and Select stay on logo 0",
+    "logo uploads the exact generated artwork and preserves the fixed font 0",
+    "fresh Select opens exact credits page and held B cannot immediately return 0",
+    "held credits buttons keep the page stable with frozen simulation and music 0",
+    "fresh B returns to exact logo and held Select cannot reopen credits 0",
+    "Start from credits continues to guide and restores boot bank 0",
+    "held Start and inherited Left cannot skip guide or change default 0",
+    "fresh and held Left select OFF with only three status tiles changed 0",
+    "fresh and held Right select ON 0",
+    "simultaneous Left and Right preserve selection 0",
+    "Start launches selected option through frozen first picture 0",
+    "both gameplay pages show WEAPON and PISTOL instead of unused armor 0",
+    "held launch Start does not pause 0",
+    "pistol works with option 0",
+    "engine eligibility matches selected option 0",
+    "pause freezes engine and game without changing option 0",
+    "resume preserves selected music behavior 0",
+    "DPCM remains disabled throughout 0",
+    "held power-on Start and Select stay on logo 1",
+    "logo uploads the exact generated artwork and preserves the fixed font 1",
+    "fresh Select opens exact credits page and held B cannot immediately return 1",
+    "held credits buttons keep the page stable with frozen simulation and music 1",
+    "fresh B returns to exact logo and held Select cannot reopen credits 1",
+    "simultaneous Start and Select prioritize guide on logo 1",
+    "held Start and inherited Left cannot skip guide or change default 1",
+    "fresh and held Left select OFF with only three status tiles changed 1",
+    "fresh and held Right select ON 1",
+    "simultaneous Left and Right preserve selection 1",
+    "Start launches selected option through frozen first picture 1",
+    "both gameplay pages show WEAPON and PISTOL instead of unused armor 1",
+    "held launch Start does not pause 1",
+    "pistol works with option 1",
+    "engine eligibility matches selected option 1",
+    "pause freezes engine and game without changing option 1",
+    "resume preserves selected music behavior 1",
+    "natural death retry retains OFF and held Start does not pause",
+    "completion restart retains OFF and resets the level",
+    "OFF controller route exercised all four SFX channels",
+    "console reset returns to default ON and cold title",
+    "DPCM remains disabled throughout 1",
+    "ON and OFF have identical stationary game images: first-publication",
+    "ON and OFF have identical stationary game images: after-pause"
+  ],
+  "tests": {
+    "count": 44,
+    "failures": 0
+  },
+  "runs": [
+    {
+      "choice": "ON",
+      "frames": 1823,
+      "pictures": 1823,
+      "audioSamples": 1456041,
+      "observedSfxChannels": [
+        2,
+        3
+      ],
+      "snapshots": {
+        "bronze-logo": {
+          "frame": 120,
+          "state": {
+            "title": 1,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 0,
+            "musicActive": 0,
+            "clock": 0,
+            "x": 0,
+            "z": 0,
+            "angle": 0,
+            "health": 0,
+            "ammo": 0,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "41a9a42d8072d429502781344a47e9c041ccfcd5455d014064c9227ae54e0187",
+          "pixelSha256": "3e88e9475af1de09c2c7f7e5bdde49226aa059cc58e798457919abc341c8fdfd",
+          "ppuSha256": "cdb3257a1290a4d2cadf67ddbf294a502672ffec41612305c6bf573099c4d53c",
+          "chrSha256": "aece2fbd0a161ca079f072b9264043a1907b9b4a3aec4ffb6dbfc0b00c9dd68a"
+        },
+        "credits": {
+          "frame": 242,
+          "state": {
+            "title": 1,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 0,
+            "musicActive": 0,
+            "clock": 0,
+            "x": 0,
+            "z": 0,
+            "angle": 0,
+            "health": 0,
+            "ammo": 0,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "41a9a42d8072d429502781344a47e9c041ccfcd5455d014064c9227ae54e0187",
+          "pixelSha256": "8c2f25235d20d97666e390577fdc2752413c5171617b7b00e764f729a6c5e0fc",
+          "ppuSha256": "358148eb9d56b53c88e576e633067b246b02b18797d1bbd8918af5c0ef1df7f3",
+          "chrSha256": "aece2fbd0a161ca079f072b9264043a1907b9b4a3aec4ffb6dbfc0b00c9dd68a"
+        },
+        "credits-back-to-logo": {
+          "frame": 424,
+          "state": {
+            "title": 1,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 0,
+            "musicActive": 0,
+            "clock": 0,
+            "x": 0,
+            "z": 0,
+            "angle": 0,
+            "health": 0,
+            "ammo": 0,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "41a9a42d8072d429502781344a47e9c041ccfcd5455d014064c9227ae54e0187",
+          "pixelSha256": "3e88e9475af1de09c2c7f7e5bdde49226aa059cc58e798457919abc341c8fdfd",
+          "ppuSha256": "cdb3257a1290a4d2cadf67ddbf294a502672ffec41612305c6bf573099c4d53c",
+          "chrSha256": "aece2fbd0a161ca079f072b9264043a1907b9b4a3aec4ffb6dbfc0b00c9dd68a"
+        },
+        "controls-guide": {
+          "frame": 578,
+          "state": {
+            "title": 1,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 0,
+            "musicActive": 0,
+            "clock": 0,
+            "x": 0,
+            "z": 0,
+            "angle": 0,
+            "health": 0,
+            "ammo": 0,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "41a9a42d8072d429502781344a47e9c041ccfcd5455d014064c9227ae54e0187",
+          "pixelSha256": "bccd7a1da27ca70a68c3fb5f9d13308fb3bc2bb76b719e643a33f05b9b93d457",
+          "ppuSha256": "d90a12ad113b322845680fc07027957721a6a8c7c712642a65bacb0b511b3b82",
+          "chrSha256": "aece2fbd0a161ca079f072b9264043a1907b9b4a3aec4ffb6dbfc0b00c9dd68a"
+        },
+        "guide-choice": {
+          "frame": 828,
+          "state": {
+            "title": 1,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 0,
+            "musicActive": 0,
+            "clock": 0,
+            "x": 0,
+            "z": 0,
+            "angle": 0,
+            "health": 0,
+            "ammo": 0,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "41a9a42d8072d429502781344a47e9c041ccfcd5455d014064c9227ae54e0187",
+          "pixelSha256": "bccd7a1da27ca70a68c3fb5f9d13308fb3bc2bb76b719e643a33f05b9b93d457",
+          "ppuSha256": "d90a12ad113b322845680fc07027957721a6a8c7c712642a65bacb0b511b3b82",
+          "chrSha256": "aece2fbd0a161ca079f072b9264043a1907b9b4a3aec4ffb6dbfc0b00c9dd68a"
+        },
+        "first-publication": {
+          "frame": 877,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 0,
+            "musicActive": 1,
+            "clock": 0,
+            "x": 13312,
+            "z": 44032,
+            "angle": 0,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "b2c6ce5ce42cbe0ab237bc41da4817ec6780e7188f00aefc5c9f6f723df4cdaf",
+          "pixelSha256": "335bea1ae9385c9e3e7a28667205b5942a195ebe57288faa60b954c20af89c8d",
+          "ppuSha256": "ff2e151b414c02f05d7e608a2a12492430ac5b3a670313ca565fbdaeb449e9d5",
+          "chrSha256": "abfad1a29d14b78863c78aa78e2fd7cda488470d6a76e44099198e981820437d"
+        },
+        "after-pause": {
+          "frame": 1823,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 0,
+            "musicActive": 1,
+            "clock": 851,
+            "x": 13312,
+            "z": 44032,
+            "angle": 0,
+            "health": 100,
+            "ammo": 5,
+            "shots": 1,
+            "kills": 0
+          },
+          "engineSha256": "79ef0c066aff21a5ad743ecbeb9ecfeeaa0e15edd105d2fe15cef0be7e35b6a8",
+          "pixelSha256": "2cb713f5c106c89f45a2de01ea52ab6b5af7035ce26769ae0611e2c748f2cfd4",
+          "ppuSha256": "00affd78440948b578f659fc1f91aab13fc04927b6245b6daddff94a11ecb8f7",
+          "chrSha256": "abfad1a29d14b78863c78aa78e2fd7cda488470d6a76e44099198e981820437d"
+        }
+      },
+      "phases": [],
+      "apu": {
+        "writes": 7486,
+        "dpcmControlWrites": [
+          {
+            "frame": 0,
+            "address": 16400,
+            "value": 0
+          }
+        ],
+        "dpcmDataWrites": [],
+        "dpcmEnabled": []
+      }
+    },
+    {
+      "choice": "OFF",
+      "frames": 20007,
+      "pictures": 20007,
+      "audioSamples": 15979715,
+      "observedSfxChannels": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "snapshots": {
+        "bronze-logo": {
+          "frame": 120,
+          "state": {
+            "title": 1,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 0,
+            "musicActive": 0,
+            "clock": 0,
+            "x": 0,
+            "z": 0,
+            "angle": 0,
+            "health": 0,
+            "ammo": 0,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "41a9a42d8072d429502781344a47e9c041ccfcd5455d014064c9227ae54e0187",
+          "pixelSha256": "3e88e9475af1de09c2c7f7e5bdde49226aa059cc58e798457919abc341c8fdfd",
+          "ppuSha256": "cdb3257a1290a4d2cadf67ddbf294a502672ffec41612305c6bf573099c4d53c",
+          "chrSha256": "aece2fbd0a161ca079f072b9264043a1907b9b4a3aec4ffb6dbfc0b00c9dd68a"
+        },
+        "credits": {
+          "frame": 242,
+          "state": {
+            "title": 1,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 0,
+            "musicActive": 0,
+            "clock": 0,
+            "x": 0,
+            "z": 0,
+            "angle": 0,
+            "health": 0,
+            "ammo": 0,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "41a9a42d8072d429502781344a47e9c041ccfcd5455d014064c9227ae54e0187",
+          "pixelSha256": "8c2f25235d20d97666e390577fdc2752413c5171617b7b00e764f729a6c5e0fc",
+          "ppuSha256": "358148eb9d56b53c88e576e633067b246b02b18797d1bbd8918af5c0ef1df7f3",
+          "chrSha256": "aece2fbd0a161ca079f072b9264043a1907b9b4a3aec4ffb6dbfc0b00c9dd68a"
+        },
+        "credits-back-to-logo": {
+          "frame": 424,
+          "state": {
+            "title": 1,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 0,
+            "musicActive": 0,
+            "clock": 0,
+            "x": 0,
+            "z": 0,
+            "angle": 0,
+            "health": 0,
+            "ammo": 0,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "41a9a42d8072d429502781344a47e9c041ccfcd5455d014064c9227ae54e0187",
+          "pixelSha256": "3e88e9475af1de09c2c7f7e5bdde49226aa059cc58e798457919abc341c8fdfd",
+          "ppuSha256": "cdb3257a1290a4d2cadf67ddbf294a502672ffec41612305c6bf573099c4d53c",
+          "chrSha256": "aece2fbd0a161ca079f072b9264043a1907b9b4a3aec4ffb6dbfc0b00c9dd68a"
+        },
+        "controls-guide": {
+          "frame": 640,
+          "state": {
+            "title": 1,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 0,
+            "musicActive": 0,
+            "clock": 0,
+            "x": 0,
+            "z": 0,
+            "angle": 0,
+            "health": 0,
+            "ammo": 0,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "41a9a42d8072d429502781344a47e9c041ccfcd5455d014064c9227ae54e0187",
+          "pixelSha256": "bccd7a1da27ca70a68c3fb5f9d13308fb3bc2bb76b719e643a33f05b9b93d457",
+          "ppuSha256": "d90a12ad113b322845680fc07027957721a6a8c7c712642a65bacb0b511b3b82",
+          "chrSha256": "aece2fbd0a161ca079f072b9264043a1907b9b4a3aec4ffb6dbfc0b00c9dd68a"
+        },
+        "guide-choice": {
+          "frame": 892,
+          "state": {
+            "title": 1,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 0,
+            "x": 0,
+            "z": 0,
+            "angle": 0,
+            "health": 0,
+            "ammo": 0,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "41a9a42d8072d429502781344a47e9c041ccfcd5455d014064c9227ae54e0187",
+          "pixelSha256": "f0c87a4367646be1aaec2a7d84b1bfa160bc264b068588c7db14d0e7a0d25ab7",
+          "ppuSha256": "b43f731094fad5e63e6cfc6b086417cfc98b8e3bb19b588697aaca97369ce087",
+          "chrSha256": "aece2fbd0a161ca079f072b9264043a1907b9b4a3aec4ffb6dbfc0b00c9dd68a"
+        },
+        "first-publication": {
+          "frame": 941,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 0,
+            "x": 13312,
+            "z": 44032,
+            "angle": 0,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "6182821fc726e11d4d8845457beabeaa06961bd4f814fd330dafea19d0f2d977",
+          "pixelSha256": "335bea1ae9385c9e3e7a28667205b5942a195ebe57288faa60b954c20af89c8d",
+          "ppuSha256": "ff2e151b414c02f05d7e608a2a12492430ac5b3a670313ca565fbdaeb449e9d5",
+          "chrSha256": "abfad1a29d14b78863c78aa78e2fd7cda488470d6a76e44099198e981820437d"
+        },
+        "after-pause": {
+          "frame": 1887,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 851,
+            "x": 13312,
+            "z": 44032,
+            "angle": 0,
+            "health": 100,
+            "ammo": 5,
+            "shots": 1,
+            "kills": 0
+          },
+          "engineSha256": "6182821fc726e11d4d8845457beabeaa06961bd4f814fd330dafea19d0f2d977",
+          "pixelSha256": "2cb713f5c106c89f45a2de01ea52ab6b5af7035ce26769ae0611e2c748f2cfd4",
+          "ppuSha256": "00affd78440948b578f659fc1f91aab13fc04927b6245b6daddff94a11ecb8f7",
+          "chrSha256": "abfad1a29d14b78863c78aa78e2fd7cda488470d6a76e44099198e981820437d"
+        },
+        "dead": {
+          "frame": 5368,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 4302,
+            "x": 35835,
+            "z": 81825,
+            "angle": 64,
+            "health": 0,
+            "ammo": 5,
+            "shots": 1,
+            "kills": 0
+          },
+          "engineSha256": "6182821fc726e11d4d8845457beabeaa06961bd4f814fd330dafea19d0f2d977",
+          "pixelSha256": "c7a8af98732d5f5c053e11c79beab8216805912d91c091580a8b2143fa673589",
+          "ppuSha256": "3643c32dfd1cbece9c9a6df2f16f7a71767b7794b6157155d87adf9b5cfec042",
+          "chrSha256": "dec8214df4be0052685927b4e102ecd3d47353acce964778a06d06d46abef590"
+        },
+        "death-retry": {
+          "frame": 5552,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 123,
+            "x": 13312,
+            "z": 44032,
+            "angle": 0,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "6182821fc726e11d4d8845457beabeaa06961bd4f814fd330dafea19d0f2d977",
+          "pixelSha256": "335bea1ae9385c9e3e7a28667205b5942a195ebe57288faa60b954c20af89c8d",
+          "ppuSha256": "a35c73f9d64acba54554754e0a9839c0376167f6438073ae258abe9ac9c10d82",
+          "chrSha256": "ae33be7802a12bcc8bdd0ea88c608dae893c9f08fe4fc3819ec11961232d86a8"
+        },
+        "first-zombie-killed": {
+          "frame": 8035,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 2510,
+            "x": 35835,
+            "z": 81825,
+            "angle": 78,
+            "health": 80,
+            "ammo": 3,
+            "shots": 3,
+            "kills": 1
+          },
+          "engineSha256": "6182821fc726e11d4d8845457beabeaa06961bd4f814fd330dafea19d0f2d977",
+          "pixelSha256": "19fcb77d911bd48be9da0151ec5a4e95664f2fc364b86ab4fc2d57dcc366df35",
+          "ppuSha256": "3875f7be8bbd337ad907237ec0a804d5f8457f64136fdf72ea2ebdd474ed17a5",
+          "chrSha256": "a84331ec8d04599b3416081c1e60c26096e0b6a96534fe38ab877c489459efeb"
+        },
+        "ammo-collected": {
+          "frame": 10389,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 4864,
+            "x": 72262,
+            "z": 64060,
+            "angle": 128,
+            "health": 100,
+            "ammo": 13,
+            "shots": 3,
+            "kills": 1
+          },
+          "engineSha256": "6182821fc726e11d4d8845457beabeaa06961bd4f814fd330dafea19d0f2d977",
+          "pixelSha256": "2a25e5ba602858149619114e4c9003e43c466098c6f0d9c2ad6f4d629fc421ac",
+          "ppuSha256": "b4af5267f36745f6d3b8d3def48b729fa1f3a6739ceea5599e27d5b913ca9087",
+          "chrSha256": "23023c8de523f7b62b4484d124d820bc73f485b89e6dacbef2fcf6c8b4db28b3"
+        },
+        "door-open-settled": {
+          "frame": 12207,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6586,
+            "x": 75774,
+            "z": 31227,
+            "angle": 128,
+            "health": 55,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          },
+          "engineSha256": "6182821fc726e11d4d8845457beabeaa06961bd4f814fd330dafea19d0f2d977",
+          "pixelSha256": "92bb8f5214a9b35b52b79dc00080313a557107b7ca8d18171b0a0adb429ddcfd",
+          "ppuSha256": "644a416dc3340dcd86c21a0ce8cea1690325fdea6d021e80575e33aa50a34c84",
+          "chrSha256": "f44e75ea60e9c5f6f16a1d19ec393ef47e3025dc854755de7c28a65559a06ce3"
+        },
+        "results-presented": {
+          "frame": 19345,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 5,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 13722,
+            "x": 74076,
+            "z": 7176,
+            "angle": 192,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          },
+          "engineSha256": "6182821fc726e11d4d8845457beabeaa06961bd4f814fd330dafea19d0f2d977",
+          "pixelSha256": "68af1c9ad88700a1169a6dcb83547654d3ec169355ca97ffc1b231294b1f040c",
+          "ppuSha256": "0c55fbb965db1db7e35ed32c9035e1d914764591bd763c2fbc8603b738b6aaea",
+          "chrSha256": "c9aed9166739f321024c10d6f4834e5852f2a3d7d2af4e75db440ae41a1565ce"
+        },
+        "final-spawn": {
+          "frame": 19887,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 189,
+            "x": 13312,
+            "z": 44032,
+            "angle": 0,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "6182821fc726e11d4d8845457beabeaa06961bd4f814fd330dafea19d0f2d977",
+          "pixelSha256": "335bea1ae9385c9e3e7a28667205b5942a195ebe57288faa60b954c20af89c8d",
+          "ppuSha256": "ff2e151b414c02f05d7e608a2a12492430ac5b3a670313ca565fbdaeb449e9d5",
+          "chrSha256": "abfad1a29d14b78863c78aa78e2fd7cda488470d6a76e44099198e981820437d"
+        },
+        "console-reset": {
+          "frame": 20007,
+          "state": {
+            "title": 1,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 0,
+            "musicActive": 0,
+            "clock": 0,
+            "x": 0,
+            "z": 0,
+            "angle": 0,
+            "health": 0,
+            "ammo": 0,
+            "shots": 0,
+            "kills": 0
+          },
+          "engineSha256": "41a9a42d8072d429502781344a47e9c041ccfcd5455d014064c9227ae54e0187",
+          "pixelSha256": "3e88e9475af1de09c2c7f7e5bdde49226aa059cc58e798457919abc341c8fdfd",
+          "ppuSha256": "cdb3257a1290a4d2cadf67ddbf294a502672ffec41612305c6bf573099c4d53c",
+          "chrSha256": "aece2fbd0a161ca079f072b9264043a1907b9b4a3aec4ffb6dbfc0b00c9dd68a"
+        }
+      },
+      "phases": [
+        {
+          "id": "opening-1",
+          "startFrame": 1887,
+          "endFrame": 2250,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 1214,
+            "x": 13312,
+            "z": 63360,
+            "angle": 0,
+            "health": 100,
+            "ammo": 5,
+            "shots": 1,
+            "kills": 0
+          }
+        },
+        {
+          "id": "opening-2",
+          "startFrame": 2250,
+          "endFrame": 2530,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 1494,
+            "x": 20353,
+            "z": 63487,
+            "angle": 64,
+            "health": 100,
+            "ammo": 5,
+            "shots": 1,
+            "kills": 0
+          }
+        },
+        {
+          "id": "opening-3",
+          "startFrame": 2530,
+          "endFrame": 2870,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 1834,
+            "x": 20478,
+            "z": 73601,
+            "angle": 0,
+            "health": 100,
+            "ammo": 5,
+            "shots": 1,
+            "kills": 0
+          }
+        },
+        {
+          "id": "opening-4",
+          "startFrame": 2870,
+          "endFrame": 2966,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 1930,
+            "x": 21408,
+            "z": 74643,
+            "angle": 29,
+            "health": 100,
+            "ammo": 5,
+            "shots": 1,
+            "kills": 0
+          }
+        },
+        {
+          "id": "opening-5",
+          "startFrame": 2966,
+          "endFrame": 3067,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 2031,
+            "x": 21499,
+            "z": 76659,
+            "angle": 1,
+            "health": 100,
+            "ammo": 5,
+            "shots": 1,
+            "kills": 0
+          }
+        },
+        {
+          "id": "opening-6",
+          "startFrame": 3067,
+          "endFrame": 3218,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 2182,
+            "x": 24492,
+            "z": 79786,
+            "angle": 31,
+            "health": 100,
+            "ammo": 5,
+            "shots": 1,
+            "kills": 0
+          }
+        },
+        {
+          "id": "opening-7",
+          "startFrame": 3218,
+          "endFrame": 3506,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 2470,
+            "x": 35713,
+            "z": 79872,
+            "angle": 64,
+            "health": 100,
+            "ammo": 5,
+            "shots": 1,
+            "kills": 0
+          }
+        },
+        {
+          "id": "opening-8",
+          "startFrame": 3506,
+          "endFrame": 3688,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 2652,
+            "x": 35835,
+            "z": 81825,
+            "angle": 2,
+            "health": 100,
+            "ammo": 5,
+            "shots": 1,
+            "kills": 0
+          }
+        },
+        {
+          "id": "first-zombie-face",
+          "startFrame": 3688,
+          "endFrame": 3837,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 2801,
+            "x": 35835,
+            "z": 81825,
+            "angle": 64,
+            "health": 100,
+            "ammo": 5,
+            "shots": 1,
+            "kills": 0
+          }
+        },
+        {
+          "id": "natural-death",
+          "startFrame": 3837,
+          "endFrame": 5338,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 4302,
+            "x": 35835,
+            "z": 81825,
+            "angle": 64,
+            "health": 0,
+            "ammo": 5,
+            "shots": 1,
+            "kills": 0
+          }
+        },
+        {
+          "id": "spawn-idle",
+          "startFrame": 5552,
+          "endFrame": 5672,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 243,
+            "x": 13312,
+            "z": 44032,
+            "angle": 0,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          }
+        },
+        {
+          "id": "opening-1",
+          "startFrame": 5672,
+          "endFrame": 6034,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 605,
+            "x": 13312,
+            "z": 63360,
+            "angle": 0,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          }
+        },
+        {
+          "id": "opening-2",
+          "startFrame": 6034,
+          "endFrame": 6315,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 886,
+            "x": 20353,
+            "z": 63487,
+            "angle": 64,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          }
+        },
+        {
+          "id": "opening-3",
+          "startFrame": 6315,
+          "endFrame": 6655,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 1226,
+            "x": 20478,
+            "z": 73601,
+            "angle": 0,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          }
+        },
+        {
+          "id": "opening-4",
+          "startFrame": 6655,
+          "endFrame": 6751,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 1322,
+            "x": 21408,
+            "z": 74643,
+            "angle": 29,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          }
+        },
+        {
+          "id": "opening-5",
+          "startFrame": 6751,
+          "endFrame": 6851,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 1422,
+            "x": 21499,
+            "z": 76659,
+            "angle": 1,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          }
+        },
+        {
+          "id": "opening-6",
+          "startFrame": 6851,
+          "endFrame": 7003,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 1574,
+            "x": 24492,
+            "z": 79786,
+            "angle": 31,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          }
+        },
+        {
+          "id": "opening-7",
+          "startFrame": 7003,
+          "endFrame": 7291,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 1862,
+            "x": 35713,
+            "z": 79872,
+            "angle": 64,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          }
+        },
+        {
+          "id": "opening-8",
+          "startFrame": 7291,
+          "endFrame": 7473,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 2044,
+            "x": 35835,
+            "z": 81825,
+            "angle": 2,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          }
+        },
+        {
+          "id": "first-zombie-face",
+          "startFrame": 7473,
+          "endFrame": 7622,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 2193,
+            "x": 35835,
+            "z": 81825,
+            "angle": 64,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          }
+        },
+        {
+          "id": "warning-armed",
+          "startFrame": 7622,
+          "endFrame": 7622,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 2193,
+            "x": 35835,
+            "z": 81825,
+            "angle": 64,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          }
+        },
+        {
+          "id": "pause-enemy-warning-enter",
+          "startFrame": 7622,
+          "endFrame": 7623,
+          "state": {
+            "title": 0,
+            "paused": 1,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 2193,
+            "x": 35835,
+            "z": 81825,
+            "angle": 64,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          }
+        },
+        {
+          "id": "pause-enemy-warning-held",
+          "startFrame": 7623,
+          "endFrame": 7683,
+          "state": {
+            "title": 0,
+            "paused": 1,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 2193,
+            "x": 35835,
+            "z": 81825,
+            "angle": 64,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          }
+        },
+        {
+          "id": "pause-enemy-warning-release",
+          "startFrame": 7683,
+          "endFrame": 7685,
+          "state": {
+            "title": 0,
+            "paused": 1,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 2193,
+            "x": 35835,
+            "z": 81825,
+            "angle": 64,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          }
+        },
+        {
+          "id": "pause-enemy-warning-ignored-inputs",
+          "startFrame": 7685,
+          "endFrame": 7715,
+          "state": {
+            "title": 0,
+            "paused": 1,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 2193,
+            "x": 35835,
+            "z": 81825,
+            "angle": 64,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          }
+        },
+        {
+          "id": "pause-enemy-warning-quiet",
+          "startFrame": 7715,
+          "endFrame": 7717,
+          "state": {
+            "title": 0,
+            "paused": 1,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 2193,
+            "x": 35835,
+            "z": 81825,
+            "angle": 64,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          }
+        },
+        {
+          "id": "pause-enemy-warning-resume",
+          "startFrame": 7717,
+          "endFrame": 7718,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 2193,
+            "x": 35835,
+            "z": 81825,
+            "angle": 64,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          }
+        },
+        {
+          "id": "pause-enemy-warning-resume-held",
+          "startFrame": 7718,
+          "endFrame": 7726,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 2201,
+            "x": 35835,
+            "z": 81825,
+            "angle": 64,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          }
+        },
+        {
+          "id": "pause-enemy-warning-resume-release",
+          "startFrame": 7726,
+          "endFrame": 7728,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 2203,
+            "x": 35835,
+            "z": 81825,
+            "angle": 64,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          }
+        },
+        {
+          "id": "first-zombie-hits",
+          "startFrame": 7728,
+          "endFrame": 7936,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 2411,
+            "x": 35835,
+            "z": 81825,
+            "angle": 64,
+            "health": 80,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          }
+        },
+        {
+          "id": "first-zombie-killed",
+          "startFrame": 7936,
+          "endFrame": 8035,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 2510,
+            "x": 35835,
+            "z": 81825,
+            "angle": 78,
+            "health": 80,
+            "ammo": 3,
+            "shots": 3,
+            "kills": 1
+          }
+        },
+        {
+          "id": "medkit-1",
+          "startFrame": 8035,
+          "endFrame": 8319,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 2794,
+            "x": 36843,
+            "z": 87935,
+            "angle": 7,
+            "health": 100,
+            "ammo": 3,
+            "shots": 3,
+            "kills": 1
+          }
+        },
+        {
+          "id": "medkit-collected-face",
+          "startFrame": 8319,
+          "endFrame": 8335,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 2810,
+            "x": 36843,
+            "z": 87935,
+            "angle": 0,
+            "health": 100,
+            "ammo": 3,
+            "shots": 3,
+            "kills": 1
+          }
+        },
+        {
+          "id": "medkit-collected",
+          "startFrame": 8335,
+          "endFrame": 8355,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 2830,
+            "x": 36843,
+            "z": 87935,
+            "angle": 0,
+            "health": 100,
+            "ammo": 3,
+            "shots": 3,
+            "kills": 1
+          }
+        },
+        {
+          "id": "next-passage-1",
+          "startFrame": 8355,
+          "endFrame": 8884,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 3359,
+            "x": 36863,
+            "z": 75915,
+            "angle": 127,
+            "health": 100,
+            "ammo": 3,
+            "shots": 3,
+            "kills": 1
+          }
+        },
+        {
+          "id": "next-passage-2",
+          "startFrame": 8884,
+          "endFrame": 9435,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 3910,
+            "x": 58234,
+            "z": 75777,
+            "angle": 64,
+            "health": 100,
+            "ammo": 3,
+            "shots": 3,
+            "kills": 1
+          }
+        },
+        {
+          "id": "next-passage-3",
+          "startFrame": 9435,
+          "endFrame": 9512,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 3987,
+            "x": 62330,
+            "z": 75777,
+            "angle": 64,
+            "health": 100,
+            "ammo": 3,
+            "shots": 3,
+            "kills": 1
+          }
+        },
+        {
+          "id": "next-passage-4",
+          "startFrame": 9512,
+          "endFrame": 9638,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 4113,
+            "x": 67454,
+            "z": 74278,
+            "angle": 76,
+            "health": 100,
+            "ammo": 3,
+            "shots": 3,
+            "kills": 1
+          }
+        },
+        {
+          "id": "next-passage-5",
+          "startFrame": 9638,
+          "endFrame": 9814,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 4289,
+            "x": 73640,
+            "z": 69695,
+            "angle": 89,
+            "health": 100,
+            "ammo": 3,
+            "shots": 3,
+            "kills": 1
+          }
+        },
+        {
+          "id": "dry-placements-face",
+          "startFrame": 9814,
+          "endFrame": 9928,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 4403,
+            "x": 73640,
+            "z": 69695,
+            "angle": 137,
+            "health": 100,
+            "ammo": 3,
+            "shots": 3,
+            "kills": 1
+          }
+        },
+        {
+          "id": "dry-placements-view",
+          "startFrame": 9928,
+          "endFrame": 9986,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 4461,
+            "x": 73640,
+            "z": 69695,
+            "angle": 137,
+            "health": 100,
+            "ammo": 3,
+            "shots": 3,
+            "kills": 1
+          }
+        },
+        {
+          "id": "clip-approach-1",
+          "startFrame": 9986,
+          "endFrame": 10096,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 4571,
+            "x": 74219,
+            "z": 65663,
+            "angle": 122,
+            "health": 100,
+            "ammo": 3,
+            "shots": 3,
+            "kills": 1
+          }
+        },
+        {
+          "id": "clip-approach-2",
+          "startFrame": 10096,
+          "endFrame": 10243,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 4718,
+            "x": 72262,
+            "z": 64060,
+            "angle": 164,
+            "health": 100,
+            "ammo": 13,
+            "shots": 3,
+            "kills": 1
+          }
+        },
+        {
+          "id": "ammo-collected-face",
+          "startFrame": 10243,
+          "endFrame": 10329,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 4804,
+            "x": 72262,
+            "z": 64060,
+            "angle": 128,
+            "health": 100,
+            "ammo": 13,
+            "shots": 3,
+            "kills": 1
+          }
+        },
+        {
+          "id": "ammo-collected",
+          "startFrame": 10329,
+          "endFrame": 10389,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 4864,
+            "x": 72262,
+            "z": 64060,
+            "angle": 128,
+            "health": 100,
+            "ammo": 13,
+            "shots": 3,
+            "kills": 1
+          }
+        },
+        {
+          "id": "second-fight-approach-1",
+          "startFrame": 10389,
+          "endFrame": 10598,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 5073,
+            "x": 74122,
+            "z": 64483,
+            "angle": 54,
+            "health": 90,
+            "ammo": 13,
+            "shots": 3,
+            "kills": 1
+          }
+        },
+        {
+          "id": "second-fight-approach-2",
+          "startFrame": 10598,
+          "endFrame": 10678,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 5153,
+            "x": 75647,
+            "z": 64038,
+            "angle": 76,
+            "health": 90,
+            "ammo": 13,
+            "shots": 3,
+            "kills": 1
+          }
+        },
+        {
+          "id": "second-zombie-killed",
+          "startFrame": 10678,
+          "endFrame": 10914,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 5389,
+            "x": 75647,
+            "z": 64038,
+            "angle": 136,
+            "health": 80,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "slime-1",
+          "startFrame": 10914,
+          "endFrame": 11066,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 5541,
+            "x": 75775,
+            "z": 56934,
+            "angle": 128,
+            "health": 80,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "slime-2",
+          "startFrame": 11066,
+          "endFrame": 11254,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 5729,
+            "x": 71734,
+            "z": 51275,
+            "angle": 153,
+            "health": 75,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "pause-slime-music-enter",
+          "startFrame": 11254,
+          "endFrame": 11255,
+          "state": {
+            "title": 0,
+            "paused": 1,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 5729,
+            "x": 71734,
+            "z": 51275,
+            "angle": 153,
+            "health": 75,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "pause-slime-music-held",
+          "startFrame": 11255,
+          "endFrame": 11315,
+          "state": {
+            "title": 0,
+            "paused": 1,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 5729,
+            "x": 71734,
+            "z": 51275,
+            "angle": 153,
+            "health": 75,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "pause-slime-music-release",
+          "startFrame": 11315,
+          "endFrame": 11317,
+          "state": {
+            "title": 0,
+            "paused": 1,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 5729,
+            "x": 71734,
+            "z": 51275,
+            "angle": 153,
+            "health": 75,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "pause-slime-music-ignored-inputs",
+          "startFrame": 11317,
+          "endFrame": 11347,
+          "state": {
+            "title": 0,
+            "paused": 1,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 5729,
+            "x": 71734,
+            "z": 51275,
+            "angle": 153,
+            "health": 75,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "pause-slime-music-quiet",
+          "startFrame": 11347,
+          "endFrame": 11349,
+          "state": {
+            "title": 0,
+            "paused": 1,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 5729,
+            "x": 71734,
+            "z": 51275,
+            "angle": 153,
+            "health": 75,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "pause-slime-music-resume",
+          "startFrame": 11349,
+          "endFrame": 11350,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 5729,
+            "x": 71734,
+            "z": 51275,
+            "angle": 153,
+            "health": 75,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "pause-slime-music-resume-held",
+          "startFrame": 11350,
+          "endFrame": 11358,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 5737,
+            "x": 71734,
+            "z": 51275,
+            "angle": 153,
+            "health": 75,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "pause-slime-music-resume-release",
+          "startFrame": 11358,
+          "endFrame": 11360,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 5739,
+            "x": 71734,
+            "z": 51275,
+            "angle": 153,
+            "health": 75,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "slime-one-dose",
+          "startFrame": 11360,
+          "endFrame": 11395,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 5774,
+            "x": 71734,
+            "z": 51275,
+            "angle": 153,
+            "health": 70,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "extension-1",
+          "startFrame": 11395,
+          "endFrame": 11639,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6018,
+            "x": 75707,
+            "z": 46170,
+            "angle": 101,
+            "health": 55,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "extension-2",
+          "startFrame": 11639,
+          "endFrame": 11767,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6146,
+            "x": 75774,
+            "z": 42619,
+            "angle": 128,
+            "health": 55,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "extension-3",
+          "startFrame": 11767,
+          "endFrame": 11911,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6290,
+            "x": 75774,
+            "z": 34939,
+            "angle": 128,
+            "health": 55,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "door-north-face",
+          "startFrame": 11911,
+          "endFrame": 11911,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6290,
+            "x": 75774,
+            "z": 34939,
+            "angle": 128,
+            "health": 55,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "door-closed-view",
+          "startFrame": 11911,
+          "endFrame": 11938,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6317,
+            "x": 75774,
+            "z": 34939,
+            "angle": 128,
+            "health": 55,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "door-hold-a-outside",
+          "startFrame": 11938,
+          "endFrame": 11940,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6319,
+            "x": 75774,
+            "z": 34939,
+            "angle": 128,
+            "health": 55,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "door-held-a-approach",
+          "startFrame": 11940,
+          "endFrame": 11997,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6376,
+            "x": 75774,
+            "z": 31867,
+            "angle": 128,
+            "health": 55,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "door-closed-push",
+          "startFrame": 11997,
+          "endFrame": 12087,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6466,
+            "x": 75774,
+            "z": 31291,
+            "angle": 128,
+            "health": 55,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "door-release-a",
+          "startFrame": 12087,
+          "endFrame": 12089,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6468,
+            "x": 75774,
+            "z": 31291,
+            "angle": 128,
+            "health": 55,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "door-a-left-slide",
+          "startFrame": 12089,
+          "endFrame": 12101,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6480,
+            "x": 76414,
+            "z": 31291,
+            "angle": 128,
+            "health": 55,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "door-left-release",
+          "startFrame": 12101,
+          "endFrame": 12103,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6482,
+            "x": 76414,
+            "z": 31291,
+            "angle": 128,
+            "health": 55,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "door-a-right-slide",
+          "startFrame": 12103,
+          "endFrame": 12115,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6494,
+            "x": 75774,
+            "z": 31291,
+            "angle": 128,
+            "health": 55,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "door-right-release",
+          "startFrame": 12115,
+          "endFrame": 12117,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6496,
+            "x": 75774,
+            "z": 31291,
+            "angle": 128,
+            "health": 55,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "door-use-ready",
+          "startFrame": 12117,
+          "endFrame": 12132,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6511,
+            "x": 75774,
+            "z": 31291,
+            "angle": 128,
+            "health": 55,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "door-fresh-use",
+          "startFrame": 12132,
+          "endFrame": 12133,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6512,
+            "x": 75774,
+            "z": 31291,
+            "angle": 128,
+            "health": 55,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "door-wait-published-open",
+          "startFrame": 12133,
+          "endFrame": 12170,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6549,
+            "x": 75774,
+            "z": 31227,
+            "angle": 128,
+            "health": 55,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "door-open-settled",
+          "startFrame": 12170,
+          "endFrame": 12207,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6586,
+            "x": 75774,
+            "z": 31227,
+            "angle": 128,
+            "health": 55,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "extension-4",
+          "startFrame": 12207,
+          "endFrame": 12233,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6612,
+            "x": 75774,
+            "z": 29819,
+            "angle": 128,
+            "health": 55,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "first-open-doorway-face",
+          "startFrame": 12233,
+          "endFrame": 12233,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6612,
+            "x": 75774,
+            "z": 29819,
+            "angle": 128,
+            "health": 55,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "first-open-doorway",
+          "startFrame": 12233,
+          "endFrame": 12271,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6650,
+            "x": 75774,
+            "z": 29819,
+            "angle": 128,
+            "health": 55,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "third-fight-approach",
+          "startFrame": 12271,
+          "endFrame": 12290,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6669,
+            "x": 75774,
+            "z": 28795,
+            "angle": 128,
+            "health": 55,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "third-live-view",
+          "startFrame": 12290,
+          "endFrame": 12326,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6705,
+            "x": 75774,
+            "z": 28795,
+            "angle": 128,
+            "health": 55,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "third-wait-shot",
+          "startFrame": 12326,
+          "endFrame": 12465,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6844,
+            "x": 75774,
+            "z": 28795,
+            "angle": 128,
+            "health": 45,
+            "ammo": 10,
+            "shots": 6,
+            "kills": 2
+          }
+        },
+        {
+          "id": "third-zombie-killed",
+          "startFrame": 12465,
+          "endFrame": 12496,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6875,
+            "x": 75774,
+            "z": 28795,
+            "angle": 128,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "third-corpse-view",
+          "startFrame": 12496,
+          "endFrame": 12526,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 6905,
+            "x": 75774,
+            "z": 28795,
+            "angle": 128,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "pre-exit-west-1",
+          "startFrame": 12526,
+          "endFrame": 12622,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 7001,
+            "x": 75774,
+            "z": 23675,
+            "angle": 128,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "pre-exit-west-2",
+          "startFrame": 12622,
+          "endFrame": 12921,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 7300,
+            "x": 66655,
+            "z": 20513,
+            "angle": 178,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "pre-exit-west-side-face",
+          "startFrame": 12921,
+          "endFrame": 13195,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 7574,
+            "x": 66655,
+            "z": 20513,
+            "angle": 64,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "pre-exit-west-side",
+          "startFrame": 13195,
+          "endFrame": 13224,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 7603,
+            "x": 66655,
+            "z": 20513,
+            "angle": 64,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "final-room-1",
+          "startFrame": 13224,
+          "endFrame": 13393,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 7772,
+            "x": 75663,
+            "z": 20481,
+            "angle": 64,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "final-room-2",
+          "startFrame": 13393,
+          "endFrame": 13635,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 8014,
+            "x": 75774,
+            "z": 15480,
+            "angle": 128,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "final-room-3",
+          "startFrame": 13635,
+          "endFrame": 13673,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 8052,
+            "x": 75774,
+            "z": 13432,
+            "angle": 128,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "final-room-4",
+          "startFrame": 13673,
+          "endFrame": 13712,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 8091,
+            "x": 75774,
+            "z": 11384,
+            "angle": 128,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "final-room-5",
+          "startFrame": 13712,
+          "endFrame": 13750,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 8129,
+            "x": 75774,
+            "z": 9336,
+            "angle": 128,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "final-room-6",
+          "startFrame": 13750,
+          "endFrame": 13789,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 8168,
+            "x": 75774,
+            "z": 7288,
+            "angle": 128,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "exit-chamber-face",
+          "startFrame": 13789,
+          "endFrame": 13941,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 8320,
+            "x": 75774,
+            "z": 7288,
+            "angle": 192,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "exit-chamber",
+          "startFrame": 13941,
+          "endFrame": 13970,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 8349,
+            "x": 75774,
+            "z": 7288,
+            "angle": 192,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "critical-chamber-west-1",
+          "startFrame": 13970,
+          "endFrame": 14067,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 8446,
+            "x": 75337,
+            "z": 6746,
+            "angle": 155,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "critical-chamber-original-worst-face",
+          "startFrame": 14067,
+          "endFrame": 14279,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 8658,
+            "x": 75337,
+            "z": 6746,
+            "angle": 244,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "critical-chamber-original-worst",
+          "startFrame": 14279,
+          "endFrame": 14358,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 8737,
+            "x": 75337,
+            "z": 6746,
+            "angle": 244,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "critical-chamber-center-1",
+          "startFrame": 14358,
+          "endFrame": 14639,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 9018,
+            "x": 75713,
+            "z": 6232,
+            "angle": 103,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "critical-chamber-center-view-face",
+          "startFrame": 14639,
+          "endFrame": 14918,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 9297,
+            "x": 75713,
+            "z": 6232,
+            "angle": 243,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "critical-chamber-center-view",
+          "startFrame": 14918,
+          "endFrame": 14984,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 9363,
+            "x": 75713,
+            "z": 6232,
+            "angle": 243,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "backtrack-1",
+          "startFrame": 14984,
+          "endFrame": 15106,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 9485,
+            "x": 75773,
+            "z": 11130,
+            "angle": 0,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "backtrack-2",
+          "startFrame": 15106,
+          "endFrame": 15183,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 9562,
+            "x": 75773,
+            "z": 15226,
+            "angle": 0,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "backtrack-3",
+          "startFrame": 15183,
+          "endFrame": 15337,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 9716,
+            "x": 75773,
+            "z": 23418,
+            "angle": 0,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "backtrack-4",
+          "startFrame": 15337,
+          "endFrame": 15452,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 9831,
+            "x": 75773,
+            "z": 29562,
+            "angle": 0,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "backtrack-5",
+          "startFrame": 15452,
+          "endFrame": 15548,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 9927,
+            "x": 75773,
+            "z": 34682,
+            "angle": 0,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "backtrack-6",
+          "startFrame": 15548,
+          "endFrame": 15692,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 10071,
+            "x": 75773,
+            "z": 42362,
+            "angle": 0,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "backtrack-7",
+          "startFrame": 15692,
+          "endFrame": 15759,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 10138,
+            "x": 75773,
+            "z": 45946,
+            "angle": 0,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "backtrack-8",
+          "startFrame": 15759,
+          "endFrame": 15935,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 10314,
+            "x": 78810,
+            "z": 52652,
+            "angle": 18,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "backtrack-9",
+          "startFrame": 15935,
+          "endFrame": 16135,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 10514,
+            "x": 75839,
+            "z": 57248,
+            "angle": 233,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "backtrack-10",
+          "startFrame": 16135,
+          "endFrame": 16298,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 10677,
+            "x": 74775,
+            "z": 63862,
+            "angle": 249,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "backtrack-11",
+          "startFrame": 16298,
+          "endFrame": 16360,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 10739,
+            "x": 74753,
+            "z": 66411,
+            "angle": 0,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "backtrack-12",
+          "startFrame": 16360,
+          "endFrame": 16489,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 10868,
+            "x": 72743,
+            "z": 70573,
+            "angle": 237,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "backtrack-13",
+          "startFrame": 16489,
+          "endFrame": 16649,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 11028,
+            "x": 67700,
+            "z": 74163,
+            "angle": 217,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "backtrack-14",
+          "startFrame": 16649,
+          "endFrame": 16778,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 11157,
+            "x": 62604,
+            "z": 75731,
+            "angle": 205,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "backtrack-15",
+          "startFrame": 16778,
+          "endFrame": 16885,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 11264,
+            "x": 58467,
+            "z": 75777,
+            "angle": 193,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "first-encounter-dead-reloaded-face",
+          "startFrame": 16885,
+          "endFrame": 17188,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 11567,
+            "x": 58467,
+            "z": 75777,
+            "angle": 64,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "first-encounter-dead-reloaded",
+          "startFrame": 17188,
+          "endFrame": 17228,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 11607,
+            "x": 58467,
+            "z": 75777,
+            "angle": 64,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "return-1",
+          "startFrame": 17228,
+          "endFrame": 17301,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 11680,
+            "x": 62371,
+            "z": 75777,
+            "angle": 64,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "return-2",
+          "startFrame": 17301,
+          "endFrame": 17428,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 11807,
+            "x": 67495,
+            "z": 74266,
+            "angle": 76,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "return-3",
+          "startFrame": 17428,
+          "endFrame": 17575,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 11954,
+            "x": 72626,
+            "z": 70710,
+            "angle": 89,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "return-4",
+          "startFrame": 17575,
+          "endFrame": 17705,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 12084,
+            "x": 74694,
+            "z": 66672,
+            "angle": 109,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "return-5",
+          "startFrame": 17705,
+          "endFrame": 17789,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 12168,
+            "x": 75748,
+            "z": 63074,
+            "angle": 116,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "return-6",
+          "startFrame": 17789,
+          "endFrame": 17920,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 12299,
+            "x": 75774,
+            "z": 57455,
+            "angle": 128,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "return-7",
+          "startFrame": 17920,
+          "endFrame": 18080,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 12459,
+            "x": 78794,
+            "z": 52819,
+            "angle": 104,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "return-8",
+          "startFrame": 18080,
+          "endFrame": 18311,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 12690,
+            "x": 75832,
+            "z": 46206,
+            "angle": 145,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "return-9",
+          "startFrame": 18311,
+          "endFrame": 18415,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 12794,
+            "x": 75777,
+            "z": 42649,
+            "angle": 128,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "return-10",
+          "startFrame": 18415,
+          "endFrame": 18559,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 12938,
+            "x": 75777,
+            "z": 34969,
+            "angle": 128,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "return-11",
+          "startFrame": 18559,
+          "endFrame": 18655,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 13034,
+            "x": 75777,
+            "z": 29849,
+            "angle": 128,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "return-12",
+          "startFrame": 18655,
+          "endFrame": 18770,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 13149,
+            "x": 75777,
+            "z": 23705,
+            "angle": 128,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "return-13",
+          "startFrame": 18770,
+          "endFrame": 18923,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 13302,
+            "x": 75777,
+            "z": 15513,
+            "angle": 128,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "return-14",
+          "startFrame": 18923,
+          "endFrame": 19000,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 13379,
+            "x": 75777,
+            "z": 11417,
+            "angle": 128,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "return-15",
+          "startFrame": 19000,
+          "endFrame": 19077,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 13456,
+            "x": 75777,
+            "z": 7321,
+            "angle": 128,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "second-encounter-dead-reloaded-face",
+          "startFrame": 19077,
+          "endFrame": 19231,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 13610,
+            "x": 75777,
+            "z": 7321,
+            "angle": 192,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "third-encounter-dead-reloaded",
+          "startFrame": 19231,
+          "endFrame": 19260,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 13639,
+            "x": 75777,
+            "z": 7321,
+            "angle": 192,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "select-coarse",
+          "startFrame": 19260,
+          "endFrame": 19261,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 13640,
+            "x": 75777,
+            "z": 7321,
+            "angle": 192,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "coarse-settled",
+          "startFrame": 19261,
+          "endFrame": 19264,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 13643,
+            "x": 75777,
+            "z": 7321,
+            "angle": 192,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "release-select",
+          "startFrame": 19264,
+          "endFrame": 19266,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 13645,
+            "x": 75777,
+            "z": 7321,
+            "angle": 192,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "select-precise",
+          "startFrame": 19266,
+          "endFrame": 19267,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 13646,
+            "x": 75777,
+            "z": 7321,
+            "angle": 192,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "precise-settled",
+          "startFrame": 19267,
+          "endFrame": 19270,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 13649,
+            "x": 75777,
+            "z": 7321,
+            "angle": 192,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "switch-approach-1",
+          "startFrame": 19270,
+          "endFrame": 19307,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 13686,
+            "x": 74076,
+            "z": 7176,
+            "angle": 189,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "exit-prompt-face",
+          "startFrame": 19307,
+          "endFrame": 19315,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 13694,
+            "x": 74076,
+            "z": 7176,
+            "angle": 192,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "exit-prompt",
+          "startFrame": 19315,
+          "endFrame": 19342,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 13721,
+            "x": 74076,
+            "z": 7176,
+            "angle": 192,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "activate-exit",
+          "startFrame": 19342,
+          "endFrame": 19343,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 2,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 13722,
+            "x": 74076,
+            "z": 7176,
+            "angle": 192,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "results-presented",
+          "startFrame": 19343,
+          "endFrame": 19345,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 5,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 13722,
+            "x": 74076,
+            "z": 7176,
+            "angle": 192,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "complete-held-inputs",
+          "startFrame": 19345,
+          "endFrame": 19465,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 5,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 13722,
+            "x": 74076,
+            "z": 7176,
+            "angle": 192,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "completed-settled",
+          "startFrame": 19465,
+          "endFrame": 19645,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 5,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 13722,
+            "x": 74076,
+            "z": 7176,
+            "angle": 192,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "results-capture-gap",
+          "startFrame": 19645,
+          "endFrame": 19647,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 5,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 13722,
+            "x": 74076,
+            "z": 7176,
+            "angle": 192,
+            "health": 45,
+            "ammo": 7,
+            "shots": 9,
+            "kills": 3
+          }
+        },
+        {
+          "id": "reset-start",
+          "startFrame": 19647,
+          "endFrame": 19827,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 129,
+            "x": 13312,
+            "z": 44032,
+            "angle": 0,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          }
+        },
+        {
+          "id": "final-spawn",
+          "startFrame": 19827,
+          "endFrame": 19887,
+          "state": {
+            "title": 0,
+            "paused": 0,
+            "results": 0,
+            "musicDisabled": 1,
+            "musicActive": 0,
+            "clock": 189,
+            "x": 13312,
+            "z": 44032,
+            "angle": 0,
+            "health": 100,
+            "ammo": 6,
+            "shots": 0,
+            "kills": 0
+          }
+        }
+      ],
+      "apu": {
+        "writes": 76400,
+        "dpcmControlWrites": [
+          {
+            "frame": 0,
+            "address": 16400,
+            "value": 0
+          },
+          {
+            "frame": 19647,
+            "address": 16400,
+            "value": 0
+          },
+          {
+            "frame": 19887,
+            "address": 16400,
+            "value": 0
+          }
+        ],
+        "dpcmDataWrites": [],
+        "dpcmEnabled": []
+      }
+    }
+  ],
+  "imageComparisons": [
+    {
+      "snapshot": "first-publication",
+      "pixelsIdentical": true,
+      "ppuIdentical": true,
+      "chrIdentical": true,
+      "gameplayIdentical": true
+    },
+    {
+      "snapshot": "after-pause",
+      "pixelsIdentical": true,
+      "ppuIdentical": true,
+      "chrIdentical": true,
+      "gameplayIdentical": true
+    }
+  ],
+  "controllerOnly": true,
+  "consoleResetApiUsed": true,
+  "ramInjected": false,
+  "romUnmodified": true,
+  "extraScanlines": 0,
+  "scope": "Pinned stock JSNES core. Controller-only logo/credits navigation, held-key suppression and Start priority, exact PPU artwork/palette/font checks, frozen title simulation/audio, WEAPON/PISTOL HUD, guide selection, launch, shoot, pause/resume, natural death retry, full accepted completion route and level restart; final public CPU reset interrupt API verifies cold default ON. Read-only CPU write observer; no game or emulator state injection. CPU timing/PPU deadline conclusions require the separate Mesen checks.",
+  "provenance": {
+    "jsnesCommit": "5b27c4243f1cb2528c54941e13c29c4ced7d5a45",
+    "coreEntrySha256": "0531f69c4e9e2973bdcdc89bf3ad6e6dfa3257572f8e7eccd405fa158cc3a1a7",
+    "coreCpuSha256": "17469b310738c4b3092d648289c8537a4584f6b45bc1735adb540968a75308f2",
+    "coreNesSha256": "5a96a9eb8fe18b2e7f2c4a5a25eddd79977f18ab83e79c8d44ab2370f3cb6153",
+    "corePpuSha256": "0fc688dec33901dd7fbcecb7d3f4a7734ae6481e3194f60213b6dc6a19198de8",
+    "corePapuSha256": "ab11be7edc168c0f19c0cd7980a337badbd32ca407117a26cf455cf7bb3b880d",
+    "driverSha256": "7d0f79e3ed06864b218ed3a5c84e370c9ec796dd3db0e6e08f0aaa4a9626b475",
+    "routeSha256": "d69f9e3e156cde7aa65707bfe3210610dd36f3fa252b5a3411614a0a9b1931ae",
+    "labelsSha256": "0bb68724a3c87d460611dabc5ac704845ba989dd6990baa0dd989c3524795f85",
+    "manifestSha256": "9b262c22285ec3e01fbedb140d632bbcbbf1f3490c69ed0de9d330841d65546e",
+    "titleLayoutSha256": "49caae44f6621a26f250de982ff6fedc549ed2628e6a5ce17150344883f3264d",
+    "creditsLayoutSha256": "8bb00d1106dd3ea835c8bfbef202250069d6db42df615df5b0c69b6ed4b94ce9",
+    "hudLayoutSha256": "58742ef385dc2c35a624b2d50d51d54853676b7e7eca01d59a5dd3b16e51cee7",
+    "readOnlySymbols": {
+      "music_disabled": 1551,
+      "title_state": 1959,
+      "pause_active": 1953,
+      "results_screen_state": 1952,
+      "publish_count": 40,
+      "results_frames": 1947,
+      "results_seconds": 1948,
+      "results_minutes": 1949,
+      "simulation_count": 205,
+      "player_x": 16,
+      "player_z": 18,
+      "player_x_hi": 31821,
+      "player_z_hi": 31822,
+      "visible_x": 26,
+      "visible_z": 28,
+      "visible_x_hi": 31825,
+      "visible_z_hi": 31826,
+      "pending_angle": 0,
+      "visible_angle": 25,
+      "pistol_health": 1984,
+      "pistol_ammo": 1985,
+      "pistol_shot_count": 1990,
+      "requested_mode": 2,
+      "zombie_hp": 2017,
+      "zombie_x": 240,
+      "zombie_z": 242,
+      "zombie_x_hi": 32480,
+      "zombie_z_hi": 32481,
+      "zombie_visible_target": 2022,
+      "zombie_epoch": 244,
+      "visible_zombie_epoch": 36,
+      "zombie_attack_state": 251,
+      "zombie_kills": 2020,
+      "medkit_state": 58,
+      "encounter_visual_pending": 2047,
+      "zombie_dirty": 2021,
+      "medkit_dirty": 28385,
+      "upload_busy": 49,
+      "door_state": 1883,
+      "visible_door": 1889,
+      "audio_music_active": 1546,
+      "audio_music_regs": 1482,
+      "audio_owner": 1538,
+      "__AUDIO_ENGINE_RUN__": 1347,
+      "__AUDIO_ENGINE_SIZE__": 135
+    }
+  }
+}

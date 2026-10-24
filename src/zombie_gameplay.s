@@ -62,7 +62,8 @@ zombie_square_hi:
  .byte >(I*I)
 .endrepeat
 
-.segment "CODE"
+; Reset-only setup: bank2 selected, rendering and NMI disabled.
+.segment "BOOTDATA"
 .proc zombie_init
  lda #$3F
  sta $2006
@@ -79,6 +80,7 @@ zombie_square_hi:
  jmp zombie_upload_effects
 .endproc
 
+.segment "CODE"
 .proc zombie_reset
  jsr corpse_fast_reset
  jsr zombie_attack_reset

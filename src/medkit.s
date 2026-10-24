@@ -2,6 +2,7 @@
 ; Live state and range scratch are NMI-owned; the renderer snapshots the
 ; selected collected flag/type under its existing NMI seqlock.
 .setcpu "6502"
+.include "audio-write.inc"
 .import pause_sound_pulse1, pause_sound_pulse2, pause_sound_noise
 .include "coordinate-memory.inc"
 .macpack longbranch
@@ -22,7 +23,7 @@
 ; Keep quantized axes inside the existing 256-entry square tables. The
 ; full 16-bit comparison also permits radii with a nonzero squared low byte.
 .assert MEDKIT_PICKUP_RADIUS > 0 .and MEDKIT_PICKUP_RADIUS < 32, error, "Medkit radius exceeds square table"
-.assert AMMO_PICKUP_RADIUS > 0 .and AMMO_PICKUP_RADIUS < 32, error, "Ammo radius exceeds square table"
+.assert AMMO_PICKUP_RADIUS_EIGHTHS > 0 .and AMMO_PICKUP_RADIUS_EIGHTHS <= 31*8, error, "Ammo radius exceeds square table"
 
 ; bit7 health collected, bit6 ammo collected, bit5 ammo sound type;
 ; low five bits count the independent pulse2 sound, regardless of active area.
@@ -36,13 +37,14 @@ pickup_x_lo: .byte <MEDKIT_X, <AMMO_X
 pickup_x_hi: .byte >MEDKIT_X, >AMMO_X
 pickup_z_lo: .byte <MEDKIT_Z, <AMMO_Z
 pickup_z_hi: .byte >MEDKIT_Z, >AMMO_Z
-pickup_radius: .byte MEDKIT_PICKUP_RADIUS, AMMO_PICKUP_RADIUS
+; Coarse whole-unit rejection rounds up; the squared threshold stays exact.
+pickup_radius: .byte MEDKIT_PICKUP_RADIUS, ((AMMO_PICKUP_RADIUS_EIGHTHS+7)/8)
 pickup_radius_squared_lo:
  .byte <((MEDKIT_PICKUP_RADIUS*8)*(MEDKIT_PICKUP_RADIUS*8))
- .byte <((AMMO_PICKUP_RADIUS*8)*(AMMO_PICKUP_RADIUS*8))
+ .byte <(AMMO_PICKUP_RADIUS_EIGHTHS*AMMO_PICKUP_RADIUS_EIGHTHS)
 pickup_radius_squared_hi:
  .byte >((MEDKIT_PICKUP_RADIUS*8)*(MEDKIT_PICKUP_RADIUS*8))
- .byte >((AMMO_PICKUP_RADIUS*8)*(AMMO_PICKUP_RADIUS*8))
+ .byte >(AMMO_PICKUP_RADIUS_EIGHTHS*AMMO_PICKUP_RADIUS_EIGHTHS)
 
 .segment "CODE"
 .proc medkit_reset
@@ -52,7 +54,7 @@ pickup_radius_squared_hi:
  sta medkit_dirty
  lda #$30
  sta pause_sound_pulse2
- sta $4004
+ AUDIO_SFX_WRITE $4004
  rts
 .endproc
 
@@ -145,7 +147,7 @@ done:
 .endproc
 
 .proc pickup_sound_start
- sta $4006
+ AUDIO_SFX_WRITE $4006
  lda medkit_state
  and #$C0
  sta medkit_state
@@ -160,14 +162,14 @@ commit:
  ; Enabling all three channels does not restart a noise length counter.
  lda #$0B
  ora #$04                  ; retain the independent pause-cue triangle
- sta $4015
+ AUDIO_SFX_WRITE $4015
  lda #$B8
  sta pause_sound_pulse2
- sta $4004
+ AUDIO_SFX_WRITE $4004
  lda #$08
- sta $4005
+ AUDIO_SFX_WRITE $4005
  lda #$F8
- sta $4007
+ AUDIO_SFX_WRITE $4007
  rts
 .endproc
 medkit_collect_commit = pickup_sound_start::commit
@@ -191,9 +193,9 @@ ammo_collect_commit = pickup_sound_start::commit
 health:
  lda #$70
 note:
- sta $4006
+ AUDIO_SFX_WRITE $4006
  lda #$F8
- sta $4007
+ AUDIO_SFX_WRITE $4007
 done:
  rts
 stop:
@@ -206,13 +208,13 @@ stop:
  sta medkit_state
  lda #$30
  sta pause_sound_pulse2
- sta $4004
+ AUDIO_SFX_WRITE $4004
  rts
 .endproc
 
 ; C=1 iff ceil(|dxQ8|/32)^2 + ceil(|dzQ8|/32)^2 < (radius*8)^2.
 ; The conservative eighth-unit circle never expands beyond the selected
-; radius: six for the medkit, three for the narrower ammo clip.
+; radius: six for the medkit, three and a half for the narrower ammo clip.
 ; Full unsignedQ16.8 subtraction precedes absolute magnitude and far rejection;
 ; only proven nearby deltas enter the original low-word square tables.
 .proc medkit_in_range

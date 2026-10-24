@@ -1,6 +1,6 @@
 # Publishing this repository
 
-Suggested GitHub repository: **DrCBeatz/nes-hangar**.
+Repository: [DrCBeatz/nes-hangar](https://github.com/DrCBeatz/nes-hangar).
 
 Suggested description:
 
@@ -26,31 +26,27 @@ python3 tools/build.py --verify
 Review README, LICENSE-SCOPE.md and docs/PROVENANCE.md alongside the source.
 The MIT license covers original code; the content provenance is separate.
 
-## Create the remote
+## Update the existing repository
 
-Create an empty repository on GitHub named `nes-hangar`. Do not initialize
-another README or license there: those files already exist locally. Choose
-the desired visibility yourself. The local preparation does not create a
-remote repository, upload files or change your account.
-
-If the local files have not yet been committed:
+The repository already has its own history and remote. Before publishing a
+new prototype, inspect the local changes and confirm the intended destination:
 
 ```sh
-git add .
-git commit -m "Prepare standalone Hangar NES prototype"
+git status --short
+git diff --stat
+git remote -v
 ```
 
-Then add the new empty repository and push:
+Commit the reviewed source, documentation, reference ROM, checksum and matching
+verification records together. Keep unrelated research files and emulator
+settings outside the commit. Then push the intended branch to the existing
+remote using your configured authentication. Repository preparation and local
+verification do not themselves publish or deploy the changes.
 
-```sh
-git remote add origin https://github.com/DrCBeatz/nes-hangar.git
-git push -u origin main
-```
-
-Use your preferred SSH URL instead if that is how GitHub authentication is
-configured. If `origin` already exists, inspect `git remote -v` rather than
-adding it again. GitHub's [existing-project guide](https://docs.github.com/en/get-started/start-your-journey/creating-a-repository-for-your-project-on-github)
-describes the web setup and authentication flow.
+If starting from a fresh checkout, clone this repository rather than creating
+another empty remote. GitHub's
+[existing-project guide](https://docs.github.com/en/get-started/start-your-journey/creating-a-repository-for-your-project-on-github)
+describes setup and authentication.
 
 ## Release download
 
@@ -70,4 +66,4 @@ before replacing the file in `release/`. Refresh SHA256SUMS and release.json
 with the new ROM's checksum and version, then run verification again. The
 checked-in ROM and reproducible source should describe the same release.
 
-Browser hosting is the next independent step; see [DEPLOYMENT.md](DEPLOYMENT.md).
+Updating the hosted browser ROM is an independent step; see [DEPLOYMENT.md](DEPLOYMENT.md).

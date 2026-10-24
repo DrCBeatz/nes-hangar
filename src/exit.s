@@ -2,6 +2,7 @@
 ; unused walkable ZP slots. Eligibility is based on the current live pose; the
 ; prompt and completion text use the existing independently refreshed HUD.
 .setcpu "6502"
+.include "audio-write.inc"
 .import pause_sound_pulse1, pause_sound_pulse2, pause_sound_noise
 .include "coordinate-memory.inc"
 .macpack longbranch
@@ -22,7 +23,7 @@
  sta exit_sound_timer
  lda #$30
  sta pause_sound_pulse1
- sta $4000
+ AUDIO_SFX_WRITE $4000
  rts
 .endproc
 
@@ -131,21 +132,21 @@ outside:
  lda #1
  sta zombie_dirty
  ora #$04                  ; retain the independent pause-cue triangle
- sta $4015                 ; stop either gun's noise, enable pulse1 only
+ AUDIO_SFX_WRITE $4015                 ; stop either gun's noise, enable pulse1 only
  lda #$10
  sta pause_sound_noise
- sta $400C
+ AUDIO_SFX_WRITE $400C
  lda #32
  sta exit_sound_timer
  lda #$B8                  ; half duty, length halt, constant volume8
  sta pause_sound_pulse1
- sta $4000
+ AUDIO_SFX_WRITE $4000
  lda #$08
- sta $4001
+ AUDIO_SFX_WRITE $4001
  lda #$FD                  ; approximately A4 at stock NTSC CPU clock
- sta $4002
+ AUDIO_SFX_WRITE $4002
  lda #$F8
- sta $4003
+ AUDIO_SFX_WRITE $4003
  rts
 .endproc
 
@@ -158,14 +159,14 @@ outside:
  cmp #16
  bne done
  lda #$A9                  ; second note approximately E5
- sta $4002
+ AUDIO_SFX_WRITE $4002
  lda #$F8
- sta $4003
+ AUDIO_SFX_WRITE $4003
 done:
  rts
 stop:
  lda #$30
  sta pause_sound_pulse1
- sta $4000
+ AUDIO_SFX_WRITE $4000
  rts
 .endproc

@@ -1,14 +1,34 @@
 {
   "title": "Hangar \u2014 an NES FPS prototype",
   "rom": "hangar-ntsc.nes",
-  "sha256": "c715b34bd688927579d20d6c593dbddb8436ca4a38dab4b78f553a5d04afe251",
-  "bytes": 65552,
+  "sha256": "db258e4c9c57ff3ef9f4bc8eb732f31b65eec85a1a639e7a9787a90dde1722a9",
+  "bytes": 131088,
   "region": "NTSC",
   "mapper": "MMC1",
-  "prgBytes": 65536,
+  "prgBytes": 131072,
   "chrRamBytes": 8192,
   "workRamBytes": 8192,
-  "version": "prototype-2026-10-21-bronze-title",
+  "version": "prototype-2026-10-24-door-reach",
   "sourceBuild": "python3 tools/build.py --verify",
-  "titlePalette": "bronze"
+  "titlePalette": "bronze",
+  "music": {
+    "default": "on",
+    "selection": "controls guide: Left off, Right on",
+    "song": "E1M1 (Dr. C Beatz arrangement)",
+    "dpcm": false,
+    "source": "music/e1m1/e1m1-drcbeatz.s",
+    "sourceSha256": "d5886648b0045e97de9172af06934dff190a873286a7aff62599c4667235427a"
+  },
+  "status": "prototype release; browser deployment pending",
+  "credits": {
+    "open": "Select from bronze logo",
+    "back": "B to logo",
+    "continue": "Start to controls guide"
+  },
+  "hud": {
+    "rightLabel": "WEAPON / PISTOL",
+    "unusedArmorRemoved": true
+  },
+  "authorCredit": "Dr C Beatz",
+  "doorUseReachUnits": 12
 }

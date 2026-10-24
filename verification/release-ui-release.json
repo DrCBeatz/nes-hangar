@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "verifiedOn": "2026-10-24",
+  "passed": true,
+  "version": "prototype-2026-10-24-credits-hud",
+  "artifact": {
+    "path": "release/hangar-ntsc.nes",
+    "sha256": "867f9ae9999f895bea3b68f5ca13f8a2ff73047fee0b9f2a696fdb542dc4e249",
+    "bytes": 131088,
+    "region": "NTSC",
+    "mapper": "MMC1",
+    "prgRomBytes": 131072,
+    "chrRamBytes": 8192,
+    "workRamBytes": 8192
+  },
+  "previousPackagedRelease": {
+    "path": "release/archive/hangar-door-angle-ntsc.nes",
+    "sha256": "2e89760fcaa8175eacd400285d9887dce7e74fce8f5df126a13445cad55ab6a6",
+    "evidence": "verification/door-angle-release.json"
+  },
+  "acceptedGameplayBaseline": {
+    "sha256": "a38b5d35f015cbcfa5410d2d1a668c3632159ac59b90b842e431a6a6ebdb0241",
+    "description": "Accepted separate new-arrangement / ammo-placement experiment",
+    "evidence": "verification/ammo-placement-summary.json"
+  },
+  "music": {
+    "enabled": true,
+    "engine": "FamiStudio",
+    "channels": 4,
+    "dpcm": false,
+    "song": "E1M1 (Dr. C Beatz arrangement)",
+    "source": "music/e1m1/e1m1-drcbeatz.s",
+    "sourceSha256": "d5886648b0045e97de9172af06934dff190a873286a7aff62599c4667235427a",
+    "features": {
+      "famiTrackerTempo": false,
+      "volumeTrack": true,
+      "vibrato": true,
+      "dutyCycleEffect": false
+    },
+    "ramBytes": 205,
+    "zpAliasBytes": 8,
+    "playerOption": {
+      "screen": "controls guide",
+      "default": "on",
+      "left": "off",
+      "right": "on",
+      "skipsSequencerWhenOff": true,
+      "preservesSoundEffects": true,
+      "survivesLevelRestart": true,
+      "coldResetRestoresDefault": true
+    }
+  },
+  "ui": {
+    "creditsSelectFromLogo": true,
+    "creditsBBack": true,
+    "creditsStartToGuide": true,
+    "unusedArmorReplacedByWeaponPistol": true,
+    "newGameplayWork": false,
+    "newRamBytes": 0,
+    "creditsPageBytes": 1177,
+    "commonGatewayBytes": 11
+  },
+  "integrity": {
+    "sourceHashCount": 82,
+    "freshStandaloneRebuild": true,
+    "rebuildEvidence": "verification/current-build.json"
+  },
+  "runtimeEvidence": {
+    "controllerReport": "verification/release-ui-controller.json",
+    "controllerChecks": 44,
+    "controllerRuns": [
+      {
+        "choice": "ON",
+        "frames": 1823
+      },
+      {
+        "choice": "OFF",
+        "frames": 20007
+      }
+    ],
+    "mesenReport": "verification/release-ui-mesen.json",
+    "mesenChecks": 26,
+    "mesenFrames": 14963,
+    "mesenPhases": 161,
+    "worldPixelComparisons": 44,
+    "screenshots": "verification/release-ui-screenshots.json",
+    "readmePreview": "verification/opening-gameplay.json"
+  },
+  "scope": "UI/credits polish on the accepted music and ammo-placement build. Music ON full route in stock NTSC Mesen; music OFF full route and ON startup/pause in pinned JSNES core. No new performance improvement claimed.",
+  "physicalConsoleTested": false,
+  "liveDeploymentChanged": false,
+  "licensingResolved": false
+}

@@ -1,4 +1,201 @@
-# Bronze DOOM-logo title
+# Door reach and alias credit
+
+`prototype-2026-10-24-door-reach` makes the door easier to use on centered
+approaches and credits the project as **Dr C Beatz**.
+
+- Door use reach increases from eight to twelve world units on both sides.
+  At 8.25 units, the centered door can fill nearly the whole viewport while
+  the previous build still rejects use. The new threshold covers that case.
+- Physical collision, panel-width and facing guards, fresh A presses and
+  A+Left/Right strafing are unchanged. Repeated true-contact approaches already
+  worked in the baseline; a separate intermittent failure at contact was not
+  reproduced. See [door reproduction and checks](DOOR-REACH.md).
+- The credits page and public-facing author documentation use **Dr C Beatz**.
+  Original-game, composition and third-party sound-engine credits remain.
+- The final [performance assessment](FINAL-PERFORMANCE.md) retains the renderer:
+  the measured remaining costs warrant a separate optimization iteration,
+  rather than a last-minute structural change.
+
+Only 25 ROM bytes change: two door-range constants and 23 credits nametable
+bytes. Linked segment sizes and RAM allocations are unchanged. The current
+[ROM](../release/hangar-ntsc.nes), [metadata](../release/release.json) and
+[checksum](../release/SHA256SUMS) identify the local candidate. It has not been
+pushed or deployed. Current test results are in [verification](VERIFICATION.md).
+
+# Previous credits, HUD and accepted soundtrack
+
+`prototype-2026-10-24-credits-hud` integrates the accepted **Dr C Beatz E1M1
+arrangement** and **ammo placement**, then adds a small presentation pass:
+
+- The bronze DOOM logo is identified as an unofficial Hangar NES prototype,
+  with **BUILD 2026-10-24** beneath it.
+- **Select** from the logo opens credits. **B** returns to the logo, and
+  **Start** opens the controls guide. The credits distinguish the project,
+  original Doom game, composition, new arrangement and playback engine.
+- The guide makes **Left OFF / Right ON** explicit, notes **Music OFF: faster
+  play**, and moves the Start prompt up for more bottom margin.
+- The HUD replaces the unused **ARMOR 000** placeholder with **WEAPON / PISTOL**.
+  Select still toggles the dynamic-boundary comparison during gameplay.
+
+The soundtrack is the supplied `music/e1m1/e1m1-drcbeatz.s`, preserved verbatim.
+The current credit is **NES arrangement by Dr C Beatz**, with **Bobby Prince**
+credited for "At Doom's Gate." Rasteri is acknowledged in documentation for
+the consulted reference and earlier music experiments; the older exports are
+not compiled. The code license is unchanged and is separate from composition,
+level and artwork rights. See [music](MUSIC.md) and [provenance](PROVENANCE.md).
+
+The clip now sits at **(282, 250)**, farther out from the wall corner on dry
+ground. Its strict **3.5-unit pickup radius**, ten-round refill, collection
+sound and once-only behavior are unchanged. See [ammo notes](AMMO-PICKUP.md).
+
+This is a local release candidate; it has not been pushed or deployed. The
+current [ROM](../release/hangar-ntsc.nes), [release record](../release/release.json)
+and [checksum](../release/SHA256SUMS) identify the same build. Build and compare
+with `python3 tools/build.py --verify`. Current results and the earlier
+music/placement evidence are distinguished in [verification](VERIFICATION.md).
+
+# Previous close-angle door prompt
+
+`prototype-2026-10-22-door-angle` fixes a remaining door interaction problem:
+standing near a jamb and aiming into the door could still hide the use prompt.
+The facing allowance increases from 45 to about 75 degrees on both sides.
+Distance, collision and the fresh-A/strafe controls stay the same.
+
+Only four ROM bytes change, with no additional code or RAM. The previous
+latency improvements, optional soundtrack, ammo pickup and exit switch are
+retained. See the [reproduction and fix](DOOR-APPROACH.md) and
+[verification](VERIFICATION.md).
+
+That historical door-angle candidate was 131,088 bytes, SHA-256:
+
+```text
+2e89760fcaa8175eacd400285d9887dce7e74fce8f5df126a13445cad55ab6a6
+```
+
+The current cumulative source retains this fix. Its ROM and checksum are
+identified in the current release record above.
+
+# Previous input-to-picture latency tuning
+
+`prototype-2026-10-22-latency` helps new movement and turns become visible
+sooner when the renderer was already busy. A small raster optimization also
+reduces CPU work without changing the generated picture. The optional E1M1
+remix, interaction fixes, level and artwork remain intact. This local candidate
+has not been pushed or deployed to the browser game.
+
+- New movement directions now invalidate an outdated, unfinished render,
+  alongside the existing stop/reversal checks. The producer still permits
+  only one abandoned attempt per acquired buffer, then completes the retry.
+- The current-pose check and floor-height presentation protection remain.
+  Queued/uploading pictures are not cancelled, and movement/collision rules
+  and the seven-block NTSC upload budget are unchanged.
+- Raster-only dirty-name marking takes **26 rather than 84 CPU cycles** per
+  changed tile. It produces identical dirty flags and upload lists, using
+  16 more banked code bytes after alignment and no additional RAM.
+
+In controlled busy-render starts, the first responsive picture arrives
+**21–34 NTSC refreshes earlier** with music ON, or **21–30 earlier** with it
+OFF. These are targeted diagnostic results, not a whole-game frame-rate gain.
+Idle starts barely change, and some long-hold release cases settle later
+because the work reaches different points in the upload schedule. Substantial
+presentation lag remains in complex views. See the [measurements and
+limits](LATENCY-TUNING.md).
+
+The preserved latency build is
+`hangar-latency-ntsc.nes` (local research archive; not bundled),
+131,088 bytes, with SHA-256:
+
+```text
+0dbee1ad5765bc00ac10e1736902ee381a88c3c539b8c68de12f24f887260d89
+```
+
+At that revision, a clean isolated build reproduced this ROM byte for byte.
+The current `python3 tools/build.py --verify` command checks the current
+release instead. Historical results and their test scopes are recorded in
+[verification](VERIFICATION.md) and
+[latency-tuning.json](../verification/latency-tuning.json).
+The preceding interaction ROM and its evidence are preserved below.
+
+# Previous door, exit and ammo interactions
+
+`prototype-2026-10-22-interactions` makes the nearby door and exit switch easier
+to use and modestly enlarges the ammunition clip's collection radius. It retains
+the approved optional E1M1 remix. This accepted local baseline has not been
+pushed or deployed to the browser game.
+
+- Door and exit facing allowance increases to **±45°** from the wall normal.
+  The door's usable width now covers the full panel. Distance, legal-side and
+  collision checks remain in place.
+- A **fresh A press** still activates a displayed prompt. Holding A while
+  approaching does not activate it, and A+Left/Right remains strafe.
+- Ammo uses a **strict 3.5-world-unit radius**, up from three. Conservative
+  eighth-unit rounding is retained. This accepts more close passes while
+  retaining the earlier rejection of the 3.75-unit wall-side pickup.
+- Medkit collection, item positions, healing/refill amounts, music, artwork,
+  geometry and rendering are unchanged. This is not a latency optimization.
+
+The clip can still pass below the viewport before it is collected. The radius
+change improves near-edge contact; it does not solve close-range presentation
+or the difference between the current player position and the displayed view.
+See [interaction changes and remaining limits](INTERACTION-FIX.md).
+
+The preserved ROM is
+`hangar-interactions-ntsc.nes` (local research archive; not bundled),
+131,088 bytes, with SHA-256:
+
+```text
+0ecf59bf29efb03e5619a30d8bf890500a96e505a18f661920ab02fdbc9bd086
+```
+
+See [verification](VERIFICATION.md) and the
+[archived interaction release record](../verification/interaction-release.json)
+for its tested scope. The previous optional-music ROM and its original
+evidence are preserved below.
+
+# Previous optional music and Dr C Beatz E1M1 remix
+
+`prototype-2026-10-22-optional-music` integrated the approved music experiment
+into the main local development build. Its ROM is byte-identical to the tested
+`hangar-e1m1-drums-ntsc.nes` candidate. This integration has not been pushed or
+deployed to the browser game. The later interaction and input-to-picture
+latency updates are described above.
+
+The controls guide defaults to music ON. Left selects OFF, Right selects ON,
+and Start begins the level. Retries retain the choice; a console reset returns
+to the title and defaults to ON. OFF skips the sequencer while preserving all
+sound effects. Music pauses with gameplay; gunshots and other cues retain
+priority over their music channels.
+
+The soundtrack is Bobby Prince's "At Doom's Gate," arranged for NES by
+rasteri / PiPU and remixed with noise-channel percussion by Dr C Beatz.
+That build used the supplied `e1m1-drums.s` export verbatim. The export and
+its comparison ROM are now retained only in local research history, outside
+the published package.
+No DPCM samples or expansion audio are used. Attribution and unresolved music
+license scope are documented in [provenance](PROVENANCE.md); this integration
+does not relicense the project or publish the music.
+
+The cartridge now uses **128 KiB PRG, MMC1, 8 KiB CHR-RAM and 8 KiB work RAM**.
+The FamiStudio engine, mixer and preference use 206 of 216 reserved audio RAM
+bytes. Rendering code placement changes make room for always-visible audio;
+there are no mapper switches inside the music tick or NMI. Map, artwork and
+interaction rules are unchanged from the accepted music experiment.
+
+The preserved optional-music ROM is
+`hangar-optional-music-ntsc.nes` (local research archive; not bundled),
+131,088 bytes, with SHA-256:
+
+```text
+c2a913ddd057235e11936e4c212eb0d3a93e1c6f422315d03bd05baaea80ab1b
+```
+
+The integration evidence is preserved in
+[optional-music-release.json](../verification/optional-music-release.json) and
+[optional-music-build.json](../verification/optional-music-build.json). The earlier
+no-music ROM remains reproducible from commit `b0cde0b`. See
+[music controls and architecture](MUSIC.md) and [verification](VERIFICATION.md).
+
+# Previous bronze DOOM-logo title
 
 `prototype-2026-10-21-bronze-title` adds the selected full-screen bronze title
 to the accepted soldier-stability build. Press Start to open the unchanged
@@ -26,14 +223,15 @@ palette. Their scopes and historical ROM identities are retained in the
 [title notes](TITLE-SCREEN-EXPERIMENT.md), [palette comparison](TITLE-PALETTE-COMPARISON.md)
 and [verification record](VERIFICATION.md).
 
-The current ROM is [`release/hangar-ntsc.nes`](../release/hangar-ntsc.nes),
+The preserved bronze ROM is `hangar-bronze-no-music-ntsc.nes` (local research archive; not bundled),
 65,552 bytes, with SHA-256:
 
 ```text
 c715b34bd688927579d20d6c593dbddb8436ca4a38dab4b78f553a5d04afe251
 ```
 
-`python3 tools/build.py --verify` rebuilds this bronze release. The other title
+Check out commit `b0cde0b` to rebuild this bronze-only release with
+`python3 tools/build.py --verify`. The other title
 palettes remain build options; they intentionally produce different checksums.
 The hosted browser game still uses the previous third-encounter release and
 has not been updated by this integration. Use its **Open ROM** control to load

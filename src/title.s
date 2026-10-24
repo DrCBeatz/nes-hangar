@@ -2,14 +2,17 @@
 ; only accessed in bank2 while NMI is disabled. Internal retries skip it.
 .setcpu "6502"
 .include "title-memory.inc"
+.include "title-config.inc"
 .include "newtitle-logo-config.inc"
-.import read_controller, ntsc_upload
+.import read_controller, ntsc_upload, music_disabled
+.import title_credits_gateway
 .importzp input_buttons, button_edges, copy_ptr, nmi_budget
 .importzp visible_control, publish_count
 .export title_present, title_state, title_wait_start, title_start
 .export title_loading_tick, title_first_visible, title_copy_begin, title_copy_end
 .export title_logo_present, title_logo_copy_begin, title_logo_copy_end
 .export title_logo_wait_start, title_logo_start
+.export title_music_refresh
 
 .segment "BOOTDATA"
 title_name: .incbin "title-nametable.bin"
@@ -79,7 +82,7 @@ copy_end:
  sta $2005
  lda #$0A
  sta $2001
- lda #$10               ; held Start cannot dismiss this page at cold boot
+ lda #$30               ; held Start/Select cannot skip or reopen this page
  sta input_buttons
 wait_start:
  bit $2002
@@ -87,7 +90,16 @@ wait_start:
  jsr read_controller
  lda button_edges
  and #$10
+ bne start              ; Start wins over a simultaneous Select edge
+ lda button_edges
+ and #$20
  beq wait_start
+ lda #0
+ sta $2001              ; the bank4 page copies only with rendering disabled
+ jsr title_credits_gateway
+ cpx #1
+ beq start              ; credits Start continues to the existing guide
+ jmp copy_begin         ; B restores the logo and its palette
 start:
  lda #0
  sta $2001               ; following guide uploads only while blank
@@ -144,6 +156,7 @@ palette:
  inx
  cpx #32
  bne palette
+ jsr title_music_refresh  ; use the persisted setting before showing the guide
 copy_end:
  lda #0                  ; nametable0/pattern0, NMI remains disabled
  sta $2000
@@ -151,12 +164,25 @@ copy_end:
  sta $2005
  lda #$0A                ; background only, no uninitialized OAM
  sta $2001
- lda #$10
- sta input_buttons       ; require release before the first fresh Start
+ lda #$13
+ sta input_buttons       ; require release before fresh Start/left/right presses
 wait_start:
  bit $2002
  bpl wait_start
  jsr read_controller
+.if ::MUSIC_ENABLED
+ lda button_edges
+ and #$03
+ beq check_start
+ cmp #$03                ; ignore contradictory simultaneous direction edges
+ beq check_start
+ lsr a                   ; right=$01 -> ON=0; left=$02 -> OFF=1
+ cmp music_disabled
+ beq check_start
+ sta music_disabled
+ jsr title_music_refresh ; three nametable bytes, only during polled vblank
+check_start:
+.endif
  lda button_edges
  and #$10
  beq wait_start
@@ -169,6 +195,39 @@ title_copy_begin = title_present::copy_begin
 title_copy_end = title_present::copy_end
 title_wait_start = title_present::wait_start
 title_start = title_present::start
+
+; Initial call is blanked; later calls follow the guide's vblank poll. NMI
+; remains disabled throughout. Restoring both scroll writes prevents a
+; nametable-address update from shifting the following visible frame.
+.proc title_music_refresh
+ bit $2002
+ lda #>TITLE_MUSIC_STATE_ADDR
+ sta $2006
+ lda #<TITLE_MUSIC_STATE_ADDR
+ sta $2006
+ lda #TITLE_GLYPH_O
+ sta $2007
+.if ::MUSIC_ENABLED
+ lda music_disabled
+ beq music_on
+.endif
+ lda #TITLE_GLYPH_F
+ sta $2007
+ sta $2007
+ jmp restore_scroll
+.if ::MUSIC_ENABLED
+music_on:
+ lda #TITLE_GLYPH_N
+ sta $2007
+ lda #TITLE_GLYPH_SPACE
+ sta $2007
+.endif
+restore_scroll:
+ lda #0
+ sta $2005
+ sta $2005
+ rts
+.endproc
 
 .segment "CODE"
 ; Called only during initial picture preparation, after controller polling.

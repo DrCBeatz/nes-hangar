@@ -2,6 +2,7 @@
 ; The pending state cannot deal damage. Its timer starts only when the amber
 ; palette has actually reached a currently published, same-life actor sprite.
 .setcpu "6502"
+.include "audio-write.inc"
 .import pause_sound_pulse1, pause_sound_pulse2, pause_sound_noise
 .include "coordinate-memory.inc"
 .macpack longbranch
@@ -50,9 +51,9 @@ zombie_noise_volume: .byte 0,1,3,6,10,15
  sta zombie_fire_flash
  lda #$30
  sta pause_sound_pulse1
- sta $4000
+ AUDIO_SFX_WRITE $4000
  lda #$08
- sta $4001
+ AUDIO_SFX_WRITE $4001
  rts
 .endproc
 
@@ -75,7 +76,7 @@ clear:
  sta zombie_fire_flash
  lda #$30                      ; silence pulse 1; preserve pistol noise enable
  sta pause_sound_pulse1
- sta $4000
+ AUDIO_SFX_WRITE $4000
  lda #1
  sta zombie_dirty
  done:
@@ -89,10 +90,10 @@ clear:
  bne done
  lda #$10
  sta pause_sound_noise
- sta $400C
+ AUDIO_SFX_WRITE $400C
  lda #3                       ; preserve warning pulse1 and pickup pulse2
  ora #$04                  ; retain the independent pause-cue triangle
- sta $4015
+ AUDIO_SFX_WRITE $4015
 done:
  rts
 .endproc
@@ -159,13 +160,13 @@ done:
  sta zombie_audio_timer
  lda #$BF                      ; half duty, constant volume 15
  sta pause_sound_pulse1
- sta $4000
+ AUDIO_SFX_WRITE $4000
  lda #$08                      ; disable sweep; negate avoids pulse sweep mute
- sta $4001
+ AUDIO_SFX_WRITE $4001
  lda #$90
- sta $4002
+ AUDIO_SFX_WRITE $4002
  lda #$F9
- sta $4003
+ AUDIO_SFX_WRITE $4003
  done:
  rts
  cancel:
@@ -188,7 +189,7 @@ done:
  bne flash
  lda #$30
  sta pause_sound_pulse1
- sta $4000
+ AUDIO_SFX_WRITE $4000
  jmp flash
 noise:
  ; A player shot can preempt this tail. Drop it permanently rather than
@@ -205,7 +206,7 @@ noise_tick:
  lda zombie_noise_volume,x
  ora #$10
  sta pause_sound_noise
- sta $400C
+ AUDIO_SFX_WRITE $400C
  jmp flash
 noise_done:
  jsr zombie_attack_noise_stop
@@ -261,14 +262,14 @@ fire:
  sta zombie_audio_timer
  lda #$0B                      ; preserve both independent pulse cue channels
  ora #$04                  ; retain the independent pause-cue triangle
- sta $4015
+ AUDIO_SFX_WRITE $4015
  lda #$1F
  sta pause_sound_noise
- sta $400C
+ AUDIO_SFX_WRITE $400C
  lda #$07                      ; bit7 clear: long-mode white noise, lower gun tone
- sta $400E
+ AUDIO_SFX_WRITE $400E
  lda #$F8
- sta $400F
+ AUDIO_SFX_WRITE $400F
 damage_check:
  jsr zombie_attack_in_range
  bcc done

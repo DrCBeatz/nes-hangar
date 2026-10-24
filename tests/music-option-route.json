@@ -1,0 +1,895 @@
+{
+  "source": "Accepted controller-only E1M1 route: analysis/e1m1-validation/mesen-route-on/config.json",
+  "phases": [
+    {
+      "id": "spawn-idle",
+      "duration": 120
+    },
+    {
+      "id": "opening-1",
+      "walk": [
+        52,
+        248
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "opening-2",
+      "walk": [
+        80,
+        248
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "opening-3",
+      "walk": [
+        80,
+        288
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "opening-4",
+      "walk": [
+        84,
+        292
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "opening-5",
+      "walk": [
+        84,
+        300
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "opening-6",
+      "walk": [
+        96,
+        312
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "opening-7",
+      "walk": [
+        140,
+        312
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "opening-8",
+      "walk": [
+        140,
+        320
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "first-zombie-face",
+      "face": 64
+    },
+    {
+      "id": "warning-armed",
+      "fieldEquals": {
+        "zombie_attack_state": 2
+      },
+      "maxFrames": 1800
+    },
+    {
+      "id": "pause-enemy-warning-enter",
+      "buttons": "start ",
+      "duration": 1
+    },
+    {
+      "id": "pause-enemy-warning-held",
+      "buttons": "start a b up down left right select",
+      "duration": 60
+    },
+    {
+      "id": "pause-enemy-warning-release",
+      "duration": 2
+    },
+    {
+      "id": "pause-enemy-warning-ignored-inputs",
+      "buttons": "a b up down left right select",
+      "duration": 30
+    },
+    {
+      "id": "pause-enemy-warning-quiet",
+      "duration": 2
+    },
+    {
+      "id": "pause-enemy-warning-resume",
+      "buttons": "start",
+      "duration": 1
+    },
+    {
+      "id": "pause-enemy-warning-resume-held",
+      "buttons": "start",
+      "duration": 8
+    },
+    {
+      "id": "pause-enemy-warning-resume-release",
+      "duration": 2
+    },
+    {
+      "id": "first-zombie-hits",
+      "healthBelow": 80,
+      "maxFrames": 2000
+    },
+    {
+      "id": "first-zombie-killed",
+      "kill": true,
+      "maxFrames": 1800
+    },
+    {
+      "id": "medkit-1",
+      "walk": [
+        144,
+        344
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "medkit-collected-face",
+      "face": 0
+    },
+    {
+      "id": "medkit-collected",
+      "settle": true,
+      "maxFrames": 600
+    },
+    {
+      "id": "next-passage-1",
+      "walk": [
+        144,
+        296
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "next-passage-2",
+      "walk": [
+        228,
+        296
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "next-passage-3",
+      "walk": [
+        244,
+        296
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "next-passage-4",
+      "walk": [
+        264,
+        290
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "next-passage-5",
+      "walk": [
+        288,
+        272
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "dry-placements-face",
+      "face": 137,
+      "maxFrames": 600
+    },
+    {
+      "id": "dry-placements-view",
+      "settle": true,
+      "maxFrames": 600
+    },
+    {
+      "id": "clip-approach-1",
+      "walk": [
+        290,
+        256
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "clip-approach-2",
+      "walk": [
+        282,
+        250
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "ammo-collected-face",
+      "face": 128,
+      "maxFrames": 600
+    },
+    {
+      "id": "ammo-collected",
+      "settle": true,
+      "maxFrames": 600
+    },
+    {
+      "id": "second-fight-approach-1",
+      "walk": [
+        290,
+        252
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "second-fight-approach-2",
+      "walk": [
+        296,
+        250
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "second-zombie-killed",
+      "kill": true,
+      "maxFrames": 1800
+    },
+    {
+      "id": "slime-1",
+      "walk": [
+        296,
+        222
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "slime-2",
+      "walk": [
+        280,
+        200
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "pause-slime-music-enter",
+      "buttons": "start ",
+      "duration": 1
+    },
+    {
+      "id": "pause-slime-music-held",
+      "buttons": "start a b up down left right select",
+      "duration": 60
+    },
+    {
+      "id": "pause-slime-music-release",
+      "duration": 2
+    },
+    {
+      "id": "pause-slime-music-ignored-inputs",
+      "buttons": "a b up down left right select",
+      "duration": 30
+    },
+    {
+      "id": "pause-slime-music-quiet",
+      "duration": 2
+    },
+    {
+      "id": "pause-slime-music-resume",
+      "buttons": "start",
+      "duration": 1
+    },
+    {
+      "id": "pause-slime-music-resume-held",
+      "buttons": "start",
+      "duration": 8
+    },
+    {
+      "id": "pause-slime-music-resume-release",
+      "duration": 2
+    },
+    {
+      "id": "slime-one-dose",
+      "damageDelta": 5,
+      "maxFrames": 65
+    },
+    {
+      "id": "extension-1",
+      "walk": [
+        296,
+        180
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "extension-2",
+      "walk": [
+        296,
+        166
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "extension-3",
+      "walk": [
+        296,
+        136
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "door-north-face",
+      "face": 128,
+      "maxFrames": 600
+    },
+    {
+      "id": "door-closed-view",
+      "settle": true,
+      "maxFrames": 600
+    },
+    {
+      "id": "door-hold-a-outside",
+      "buttons": "a",
+      "duration": 2
+    },
+    {
+      "id": "door-held-a-approach",
+      "walk": [
+        296,
+        124
+      ],
+      "buttons": "a",
+      "maxFrames": 1500
+    },
+    {
+      "id": "door-closed-push",
+      "buttons": "a up",
+      "duration": 90
+    },
+    {
+      "id": "door-release-a",
+      "duration": 2
+    },
+    {
+      "id": "door-a-left-slide",
+      "buttons": "a left",
+      "duration": 12
+    },
+    {
+      "id": "door-left-release",
+      "duration": 2
+    },
+    {
+      "id": "door-a-right-slide",
+      "buttons": "a right",
+      "duration": 12
+    },
+    {
+      "id": "door-right-release",
+      "duration": 2
+    },
+    {
+      "id": "door-use-ready",
+      "settle": true,
+      "maxFrames": 600
+    },
+    {
+      "id": "door-fresh-use",
+      "buttons": "a",
+      "duration": 1
+    },
+    {
+      "id": "door-wait-published-open",
+      "buttons": "up",
+      "fieldEquals": {
+        "door_state": 2,
+        "visible_door": 1
+      },
+      "maxFrames": 1500
+    },
+    {
+      "id": "door-open-settled",
+      "settle": true,
+      "maxFrames": 600
+    },
+    {
+      "id": "extension-4",
+      "walk": [
+        296,
+        116
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "first-open-doorway-face",
+      "face": 128
+    },
+    {
+      "id": "first-open-doorway",
+      "settle": true,
+      "maxFrames": 600
+    },
+    {
+      "id": "third-fight-approach",
+      "walk": [
+        296,
+        112
+      ],
+      "maxFrames": 1200
+    },
+    {
+      "id": "third-live-view",
+      "settle": true,
+      "maxFrames": 900
+    },
+    {
+      "id": "third-wait-shot",
+      "damageDelta": 10,
+      "maxFrames": 1200
+    },
+    {
+      "id": "third-zombie-killed",
+      "kill": true,
+      "maxFrames": 1800
+    },
+    {
+      "id": "third-corpse-view",
+      "duration": 30
+    },
+    {
+      "id": "pre-exit-west-1",
+      "walk": [
+        296,
+        92
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "pre-exit-west-2",
+      "walk": [
+        260,
+        80
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "pre-exit-west-side-face",
+      "face": 64
+    },
+    {
+      "id": "pre-exit-west-side",
+      "settle": true,
+      "maxFrames": 600
+    },
+    {
+      "id": "final-room-1",
+      "walk": [
+        296,
+        80
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "final-room-2",
+      "walk": [
+        296,
+        60
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "final-room-3",
+      "walk": [
+        296,
+        52
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "final-room-4",
+      "walk": [
+        296,
+        44
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "final-room-5",
+      "walk": [
+        296,
+        36
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "final-room-6",
+      "walk": [
+        296,
+        28
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "exit-chamber-face",
+      "face": 192
+    },
+    {
+      "id": "exit-chamber",
+      "settle": true,
+      "maxFrames": 600
+    },
+    {
+      "id": "critical-chamber-west-1",
+      "walk": [
+        294,
+        26
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "critical-chamber-original-worst-face",
+      "face": 244
+    },
+    {
+      "id": "critical-chamber-original-worst",
+      "settle": true,
+      "maxFrames": 600
+    },
+    {
+      "id": "critical-chamber-center-1",
+      "walk": [
+        296,
+        24
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "critical-chamber-center-view-face",
+      "face": 243
+    },
+    {
+      "id": "critical-chamber-center-view",
+      "settle": true,
+      "maxFrames": 600
+    },
+    {
+      "id": "backtrack-1",
+      "walk": [
+        296,
+        44
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "backtrack-2",
+      "walk": [
+        296,
+        60
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "backtrack-3",
+      "walk": [
+        296,
+        92
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "backtrack-4",
+      "walk": [
+        296,
+        116
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "backtrack-5",
+      "walk": [
+        296,
+        136
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "backtrack-6",
+      "walk": [
+        296,
+        166
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "backtrack-7",
+      "walk": [
+        296,
+        180
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "backtrack-8",
+      "walk": [
+        308,
+        206
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "backtrack-9",
+      "walk": [
+        296,
+        224
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "backtrack-10",
+      "walk": [
+        292,
+        250
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "backtrack-11",
+      "walk": [
+        292,
+        260
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "backtrack-12",
+      "walk": [
+        284,
+        276
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "backtrack-13",
+      "walk": [
+        264,
+        290
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "backtrack-14",
+      "walk": [
+        244,
+        296
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "backtrack-15",
+      "walk": [
+        228,
+        296
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "first-encounter-dead-reloaded-face",
+      "face": 64
+    },
+    {
+      "id": "first-encounter-dead-reloaded",
+      "settle": true,
+      "maxFrames": 600
+    },
+    {
+      "id": "return-1",
+      "walk": [
+        244,
+        296
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "return-2",
+      "walk": [
+        264,
+        290
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "return-3",
+      "walk": [
+        284,
+        276
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "return-4",
+      "walk": [
+        292,
+        260
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "return-5",
+      "walk": [
+        296,
+        246
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "return-6",
+      "walk": [
+        296,
+        224
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "return-7",
+      "walk": [
+        308,
+        206
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "return-8",
+      "walk": [
+        296,
+        180
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "return-9",
+      "walk": [
+        296,
+        166
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "return-10",
+      "walk": [
+        296,
+        136
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "return-11",
+      "walk": [
+        296,
+        116
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "return-12",
+      "walk": [
+        296,
+        92
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "return-13",
+      "walk": [
+        296,
+        60
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "return-14",
+      "walk": [
+        296,
+        44
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "return-15",
+      "walk": [
+        296,
+        28
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "second-encounter-dead-reloaded-face",
+      "face": 192
+    },
+    {
+      "id": "third-encounter-dead-reloaded",
+      "settle": true,
+      "maxFrames": 600
+    },
+    {
+      "id": "select-coarse",
+      "buttons": "select",
+      "duration": 1
+    },
+    {
+      "id": "coarse-settled",
+      "settle": true,
+      "maxFrames": 600
+    },
+    {
+      "id": "release-select",
+      "duration": 2
+    },
+    {
+      "id": "select-precise",
+      "buttons": "select",
+      "duration": 1
+    },
+    {
+      "id": "precise-settled",
+      "settle": true,
+      "maxFrames": 600
+    },
+    {
+      "id": "switch-approach-1",
+      "walk": [
+        289,
+        28
+      ],
+      "maxFrames": 1500
+    },
+    {
+      "id": "exit-prompt-face",
+      "face": 192
+    },
+    {
+      "id": "exit-prompt",
+      "settle": true,
+      "maxFrames": 600
+    },
+    {
+      "id": "activate-exit",
+      "buttons": "a",
+      "duration": 1
+    },
+    {
+      "id": "results-presented",
+      "fieldEquals": {
+        "results_screen_state": 5
+      },
+      "maxFrames": 600
+    },
+    {
+      "id": "complete-held-inputs",
+      "buttons": "a b up down left right select",
+      "duration": 120
+    },
+    {
+      "id": "completed-settled",
+      "duration": 180
+    },
+    {
+      "id": "results-capture-gap",
+      "duration": 2
+    },
+    {
+      "id": "reset-start",
+      "buttons": "start",
+      "duration": 180
+    },
+    {
+      "id": "final-spawn",
+      "duration": 60
+    }
+  ]
+}

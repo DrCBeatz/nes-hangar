@@ -1,8 +1,8 @@
 {
-  "description": "Six seconds of actual opening-room gameplay: walk forward, turn right, face forward again, then enter the recessed floor.",
+  "description": "Six seconds of actual current-candidate opening-room gameplay with music ON: walk forward, turn right, face forward again, then enter the recessed floor.",
   "rom": {
     "path": "release/hangar-ntsc.nes",
-    "sha256": "644d047c07fe9ade8c14b87c42faa5720b026e0a13c017c4326be604adebbc87"
+    "sha256": "867f9ae9999f895bea3b68f5ca13f8a2ff73047fee0b9f2a696fdb542dc4e249"
   },
   "emulator": {
     "name": "JSNES",
@@ -19,7 +19,7 @@
     ],
     "sourceRefreshRateHz": 60.098,
     "sourceRefreshes": 360,
-    "firstGameplayEmulatedFrame": 80,
+    "firstGameplayEmulatedFrame": 261,
     "firstFrameClock": 0,
     "sampleEveryRefreshes": 4,
     "sampledFrames": 90,
@@ -39,12 +39,13 @@
       "z": 219.5,
       "angle256": 0,
       "visibleX": 52,
-      "visibleZ": 211.5,
+      "visibleZ": 208.5,
       "visibleAngle256": 0,
       "titleState": 0,
-      "publications": 9,
+      "publications": 8,
       "health": 100,
       "ammo": 6,
+      "musicDisabled": 0,
       "clockFrames": 360
     },
     "controllerSegments": [
@@ -80,7 +81,10 @@
         "refreshes": 36,
         "buttons": []
       }
-    ]
+    ],
+    "music": "ON (default)",
+    "driverSha256": "c6cb16f79dbd495cfd12de9ad8535cd8027d277b759fc2641930768f98fba0fe",
+    "labelsSha256": "0bb68724a3c87d460611dabc5ac704845ba989dd6990baa0dd989c3524795f85"
   },
   "encoding": {
     "gifResolution": [
@@ -107,14 +111,19 @@
   "artifacts": [
     {
       "path": "docs/images/opening-gameplay.gif",
-      "bytes": 22867,
-      "sha256": "115cc474cd8fd0fdf3bd01b8e76f27a58af5bfc65b3c331827a2a7456d4ba0af"
+      "bytes": 21401,
+      "sha256": "464358c2b3d104a59fcd7f0ef6a39c5f568cc4fa773622820a0d99f5de1e4f9f"
     },
     {
       "path": "docs/images/opening-gameplay.png",
-      "bytes": 2687,
-      "sha256": "65a952ba0abbc6cdd6f4e557b37eba06c18dda611b8c32f7449b4597461c6d92"
+      "bytes": 2710,
+      "sha256": "2ee626935baee1063f6b36e6cc56add4c9d97cd1cff37c7d776872aab64f476e"
+    },
+    {
+      "path": "docs/images/opening-room.png",
+      "bytes": 2710,
+      "sha256": "2ee626935baee1063f6b36e6cc56add4c9d97cd1cff37c7d776872aab64f476e"
     }
   ],
-  "scope": "The stock ROM updates its world less frequently than NES refreshes; repeated source pictures and that cadence are preserved. This records JSNES output, not a physical console, browser performance benchmark or a new complete-level regression."
+  "scope": "The current candidate runs at stock NTSC with default music ON. World updates occur less often than NES refreshes; repeated pictures and cadence are preserved. This is exact JSNES output, not a physical-console capture, browser performance benchmark or full-level regression. The opening-room still is an alias of the first sampled frame; the separate encounter image remains historical."
 }

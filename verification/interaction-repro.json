@@ -1,0 +1,1384 @@
+{
+  "romSha256": "c2a913ddd057235e11936e4c212eb0d3a93e1c6f422315d03bd05baaea80ab1b",
+  "reproductionCompleted": true,
+  "gameplayChangesMade": false,
+  "usabilityIssuesRemain": true,
+  "scope": "Diagnostic legal starting poses are injected in stock-NTSC Mesen, then motion and interaction use real controller inputs; all enemies disabled to isolate interactions. No game code, ROM bytes or personal emulator settings modified. Linked eligibility tests execute actual assembled routines with injected CPU state. These are focused repros, not a normal-play full-level QA or physical-console test.",
+  "ammo": {
+    "passed": true,
+    "scope": "Controlled safe idle RAM start fixtures followed by controller-only movement.\nNo ROM edits, no changes to personal emulator settings, no state injection during a motion.\n",
+    "errors": [],
+    "frames": 2838,
+    "maxNmiDepth": 1,
+    "cases": [
+      {
+        "id": "east-visible-stop-short",
+        "passed": true,
+        "checks": {
+          "allSampledPositionsLegal": true,
+          "pickupMatchesExpected": true,
+          "onceOnly": true,
+          "pickupOnlyDuringControllerMotion": true,
+          "initialViewMatchesFixture": true,
+          "ammoCountCorrect": true,
+          "encounterCorrect": true
+        },
+        "fixture": {
+          "x": 290,
+          "expected": false,
+          "angle": 192,
+          "id": "east-visible-stop-short",
+          "z": 252,
+          "duration": 60
+        },
+        "collections": [],
+        "closest": {
+          "frame": 240,
+          "distance": 3.5,
+          "position": [
+            277.5,
+            252.0
+          ],
+          "quantizedSquared": 784,
+          "acceptedSquaredExclusive": 576
+        },
+        "maxLiveVisibleDistance": 12.25,
+        "endingAmmo": 6,
+        "images": [
+          "east-visible-stop-short-before.png",
+          "east-visible-stop-short-motion-0.png",
+          "east-visible-stop-short-motion-8.png",
+          "east-visible-stop-short-motion-16.png",
+          "east-visible-stop-short-motion-24.png",
+          "east-visible-stop-short-motion-32.png",
+          "east-visible-stop-short-motion-40.png",
+          "east-visible-stop-short-motion-48.png",
+          "east-visible-stop-short-motion-56.png",
+          "east-visible-stop-short-after.png"
+        ]
+      },
+      {
+        "id": "east-hidden-final-step",
+        "passed": true,
+        "checks": {
+          "allSampledPositionsLegal": true,
+          "pickupMatchesExpected": true,
+          "onceOnly": true,
+          "pickupOnlyDuringControllerMotion": true,
+          "initialViewMatchesFixture": true,
+          "ammoCountCorrect": true,
+          "encounterCorrect": true
+        },
+        "fixture": {
+          "x": 278,
+          "expected": true,
+          "angle": 192,
+          "id": "east-hidden-final-step",
+          "z": 252,
+          "duration": 16
+        },
+        "collections": [
+          {
+            "frame": 308,
+            "stage": "motion",
+            "distance": 2.75,
+            "position": [
+              276.75,
+              252.0
+            ],
+            "visiblePosition": [
+              278.0,
+              252.0
+            ],
+            "liveVisibleDelta": 1.25
+          }
+        ],
+        "closest": {
+          "frame": 320,
+          "distance": 0.5,
+          "position": [
+            274.5,
+            252.0
+          ],
+          "quantizedSquared": 16,
+          "acceptedSquaredExclusive": 576
+        },
+        "maxLiveVisibleDistance": 3.5,
+        "endingAmmo": 16,
+        "images": [
+          "east-hidden-final-step-before.png",
+          "east-hidden-final-step-motion-0.png",
+          "east-hidden-final-step-trigger.png",
+          "east-hidden-final-step-motion-8.png",
+          "east-hidden-final-step-after.png"
+        ]
+      },
+      {
+        "id": "east-visible-center",
+        "passed": true,
+        "checks": {
+          "allSampledPositionsLegal": true,
+          "pickupMatchesExpected": true,
+          "onceOnly": true,
+          "pickupOnlyDuringControllerMotion": true,
+          "initialViewMatchesFixture": true,
+          "ammoCountCorrect": true,
+          "encounterCorrect": true
+        },
+        "fixture": {
+          "x": 290,
+          "expected": true,
+          "angle": 192,
+          "id": "east-visible-center",
+          "z": 252,
+          "duration": 100
+        },
+        "collections": [
+          {
+            "frame": 451,
+            "stage": "motion",
+            "distance": 2.75,
+            "position": [
+              276.75,
+              252.0
+            ],
+            "visiblePosition": [
+              289.75,
+              252.0
+            ],
+            "liveVisibleDelta": 13.0
+          }
+        ],
+        "closest": {
+          "frame": 466,
+          "distance": 0.0,
+          "position": [
+            274.0,
+            252.0
+          ],
+          "quantizedSquared": 0,
+          "acceptedSquaredExclusive": 576
+        },
+        "maxLiveVisibleDistance": 14.25,
+        "endingAmmo": 16,
+        "images": [
+          "east-visible-center-before.png",
+          "east-visible-center-motion-0.png",
+          "east-visible-center-motion-8.png",
+          "east-visible-center-motion-16.png",
+          "east-visible-center-motion-24.png",
+          "east-visible-center-motion-32.png",
+          "east-visible-center-motion-40.png",
+          "east-visible-center-motion-48.png",
+          "east-visible-center-motion-56.png",
+          "east-visible-center-trigger.png",
+          "east-visible-center-motion-64.png",
+          "east-visible-center-motion-72.png",
+          "east-visible-center-motion-80.png",
+          "east-visible-center-motion-88.png",
+          "east-visible-center-motion-96.png",
+          "east-visible-center-after.png"
+        ]
+      },
+      {
+        "id": "east-visible-near-edge-miss",
+        "passed": true,
+        "checks": {
+          "allSampledPositionsLegal": true,
+          "pickupMatchesExpected": true,
+          "onceOnly": true,
+          "pickupOnlyDuringControllerMotion": true,
+          "initialViewMatchesFixture": true,
+          "ammoCountCorrect": true,
+          "encounterCorrect": true
+        },
+        "fixture": {
+          "x": 290,
+          "expected": false,
+          "angle": 192,
+          "id": "east-visible-near-edge-miss",
+          "z": 254.9,
+          "duration": 100
+        },
+        "collections": [],
+        "closest": {
+          "frame": 633,
+          "distance": 2.8984375,
+          "position": [
+            274.0,
+            254.8984375
+          ],
+          "quantizedSquared": 576,
+          "acceptedSquaredExclusive": 576
+        },
+        "maxLiveVisibleDistance": 14.75,
+        "endingAmmo": 6,
+        "images": [
+          "east-visible-near-edge-miss-before.png",
+          "east-visible-near-edge-miss-motion-0.png",
+          "east-visible-near-edge-miss-motion-8.png",
+          "east-visible-near-edge-miss-motion-16.png",
+          "east-visible-near-edge-miss-motion-24.png",
+          "east-visible-near-edge-miss-motion-32.png",
+          "east-visible-near-edge-miss-motion-40.png",
+          "east-visible-near-edge-miss-motion-48.png",
+          "east-visible-near-edge-miss-motion-56.png",
+          "east-visible-near-edge-miss-motion-64.png",
+          "east-visible-near-edge-miss-motion-72.png",
+          "east-visible-near-edge-miss-motion-80.png",
+          "east-visible-near-edge-miss-motion-88.png",
+          "east-visible-near-edge-miss-motion-96.png",
+          "east-visible-near-edge-miss-after.png"
+        ]
+      },
+      {
+        "id": "north-visible-center",
+        "passed": true,
+        "checks": {
+          "allSampledPositionsLegal": true,
+          "pickupMatchesExpected": true,
+          "onceOnly": true,
+          "pickupOnlyDuringControllerMotion": true,
+          "initialViewMatchesFixture": true,
+          "ammoCountCorrect": true,
+          "encounterCorrect": true
+        },
+        "fixture": {
+          "x": 274,
+          "expected": true,
+          "angle": 0,
+          "id": "north-visible-center",
+          "z": 234,
+          "duration": 100
+        },
+        "collections": [
+          {
+            "frame": 797,
+            "stage": "motion",
+            "distance": 2.75,
+            "position": [
+              274.0,
+              249.25
+            ],
+            "visiblePosition": [
+              274.0,
+              234.25
+            ],
+            "liveVisibleDelta": 15.0
+          }
+        ],
+        "closest": {
+          "frame": 811,
+          "distance": 0.0,
+          "position": [
+            274.0,
+            252.0
+          ],
+          "quantizedSquared": 0,
+          "acceptedSquaredExclusive": 576
+        },
+        "maxLiveVisibleDistance": 15.75,
+        "endingAmmo": 16,
+        "images": [
+          "north-visible-center-before.png",
+          "north-visible-center-motion-0.png",
+          "north-visible-center-motion-8.png",
+          "north-visible-center-motion-16.png",
+          "north-visible-center-motion-24.png",
+          "north-visible-center-motion-32.png",
+          "north-visible-center-motion-40.png",
+          "north-visible-center-motion-48.png",
+          "north-visible-center-motion-56.png",
+          "north-visible-center-motion-64.png",
+          "north-visible-center-motion-72.png",
+          "north-visible-center-trigger.png",
+          "north-visible-center-motion-80.png",
+          "north-visible-center-motion-88.png",
+          "north-visible-center-motion-96.png",
+          "north-visible-center-after.png"
+        ]
+      },
+      {
+        "id": "forward-center",
+        "passed": true,
+        "checks": {
+          "allSampledPositionsLegal": true,
+          "pickupMatchesExpected": true,
+          "onceOnly": true,
+          "pickupOnlyDuringControllerMotion": true,
+          "initialViewMatchesFixture": true,
+          "ammoCountCorrect": true,
+          "encounterCorrect": true
+        },
+        "fixture": {
+          "x": 274,
+          "expected": true,
+          "angle": 128,
+          "id": "forward-center",
+          "z": 257.5,
+          "duration": 48
+        },
+        "collections": [
+          {
+            "frame": 922,
+            "stage": "motion",
+            "distance": 2.75,
+            "position": [
+              274.0,
+              254.75
+            ],
+            "visiblePosition": [
+              274.0,
+              257.5
+            ],
+            "liveVisibleDelta": 2.75
+          }
+        ],
+        "closest": {
+          "frame": 936,
+          "distance": 0.0,
+          "position": [
+            274.0,
+            252.0
+          ],
+          "quantizedSquared": 0,
+          "acceptedSquaredExclusive": 576
+        },
+        "maxLiveVisibleDistance": 10.0,
+        "endingAmmo": 16,
+        "images": [
+          "forward-center-before.png",
+          "forward-center-motion-0.png",
+          "forward-center-motion-8.png",
+          "forward-center-trigger.png",
+          "forward-center-motion-16.png",
+          "forward-center-motion-24.png",
+          "forward-center-motion-32.png",
+          "forward-center-motion-40.png",
+          "forward-center-after.png"
+        ]
+      },
+      {
+        "id": "backward-center",
+        "passed": true,
+        "checks": {
+          "allSampledPositionsLegal": true,
+          "pickupMatchesExpected": true,
+          "onceOnly": true,
+          "pickupOnlyDuringControllerMotion": true,
+          "initialViewMatchesFixture": true,
+          "ammoCountCorrect": true,
+          "encounterCorrect": true
+        },
+        "fixture": {
+          "x": 274,
+          "expected": true,
+          "duration": 48,
+          "angle": 128,
+          "id": "backward-center",
+          "z": 246,
+          "buttons": "down"
+        },
+        "collections": [
+          {
+            "frame": 1079,
+            "stage": "motion",
+            "distance": 2.75,
+            "position": [
+              274.0,
+              249.25
+            ],
+            "visiblePosition": [
+              274.0,
+              246.0
+            ],
+            "liveVisibleDelta": 3.25
+          }
+        ],
+        "closest": {
+          "frame": 1093,
+          "distance": 0.0,
+          "position": [
+            274.0,
+            252.0
+          ],
+          "quantizedSquared": 0,
+          "acceptedSquaredExclusive": 576
+        },
+        "maxLiveVisibleDistance": 10.0,
+        "endingAmmo": 16,
+        "images": [
+          "backward-center-before.png",
+          "backward-center-motion-0.png",
+          "backward-center-motion-8.png",
+          "backward-center-trigger.png",
+          "backward-center-motion-16.png",
+          "backward-center-motion-24.png",
+          "backward-center-motion-32.png",
+          "backward-center-motion-40.png",
+          "backward-center-after.png"
+        ]
+      },
+      {
+        "id": "strafe-left-center",
+        "passed": true,
+        "checks": {
+          "allSampledPositionsLegal": true,
+          "pickupMatchesExpected": true,
+          "onceOnly": true,
+          "pickupOnlyDuringControllerMotion": true,
+          "initialViewMatchesFixture": true,
+          "ammoCountCorrect": true,
+          "encounterCorrect": true
+        },
+        "fixture": {
+          "x": 267,
+          "expected": true,
+          "duration": 60,
+          "angle": 128,
+          "id": "strafe-left-center",
+          "z": 252,
+          "buttons": "a left"
+        },
+        "collections": [
+          {
+            "frame": 1238,
+            "stage": "motion",
+            "distance": 2.75,
+            "position": [
+              271.25,
+              252.0
+            ],
+            "visiblePosition": [
+              267.0,
+              252.0
+            ],
+            "liveVisibleDelta": 4.25
+          }
+        ],
+        "closest": {
+          "frame": 1253,
+          "distance": 0.0,
+          "position": [
+            274.0,
+            252.0
+          ],
+          "quantizedSquared": 0,
+          "acceptedSquaredExclusive": 576
+        },
+        "maxLiveVisibleDistance": 12.25,
+        "endingAmmo": 16,
+        "images": [
+          "strafe-left-center-before.png",
+          "strafe-left-center-motion-0.png",
+          "strafe-left-center-motion-8.png",
+          "strafe-left-center-motion-16.png",
+          "strafe-left-center-trigger.png",
+          "strafe-left-center-motion-24.png",
+          "strafe-left-center-motion-32.png",
+          "strafe-left-center-motion-40.png",
+          "strafe-left-center-motion-48.png",
+          "strafe-left-center-motion-56.png",
+          "strafe-left-center-after.png"
+        ]
+      },
+      {
+        "id": "strafe-right-center",
+        "passed": true,
+        "checks": {
+          "allSampledPositionsLegal": true,
+          "pickupMatchesExpected": true,
+          "onceOnly": true,
+          "pickupOnlyDuringControllerMotion": true,
+          "initialViewMatchesFixture": true,
+          "ammoCountCorrect": true,
+          "encounterCorrect": true
+        },
+        "fixture": {
+          "x": 282,
+          "expected": true,
+          "duration": 60,
+          "angle": 128,
+          "id": "strafe-right-center",
+          "z": 252,
+          "buttons": "a right"
+        },
+        "collections": [
+          {
+            "frame": 1429,
+            "stage": "motion",
+            "distance": 2.75,
+            "position": [
+              276.75,
+              252.0
+            ],
+            "visiblePosition": [
+              282.0,
+              252.0
+            ],
+            "liveVisibleDelta": 5.25
+          }
+        ],
+        "closest": {
+          "frame": 1443,
+          "distance": 0.0,
+          "position": [
+            274.0,
+            252.0
+          ],
+          "quantizedSquared": 0,
+          "acceptedSquaredExclusive": 576
+        },
+        "maxLiveVisibleDistance": 12.5,
+        "endingAmmo": 16,
+        "images": [
+          "strafe-right-center-before.png",
+          "strafe-right-center-motion-0.png",
+          "strafe-right-center-motion-8.png",
+          "strafe-right-center-motion-16.png",
+          "strafe-right-center-motion-24.png",
+          "strafe-right-center-trigger.png",
+          "strafe-right-center-motion-32.png",
+          "strafe-right-center-motion-40.png",
+          "strafe-right-center-motion-48.png",
+          "strafe-right-center-motion-56.png",
+          "strafe-right-center-after.png"
+        ]
+      },
+      {
+        "id": "diagonal-center",
+        "passed": true,
+        "checks": {
+          "allSampledPositionsLegal": true,
+          "pickupMatchesExpected": true,
+          "onceOnly": true,
+          "pickupOnlyDuringControllerMotion": true,
+          "initialViewMatchesFixture": true,
+          "ammoCountCorrect": true,
+          "encounterCorrect": true
+        },
+        "fixture": {
+          "x": 280,
+          "expected": true,
+          "angle": 160,
+          "id": "diagonal-center",
+          "z": 257.5,
+          "duration": 60
+        },
+        "collections": [
+          {
+            "frame": 1596,
+            "stage": "motion",
+            "distance": 2.6860688413204343,
+            "position": [
+              276.1328125,
+              253.6328125
+            ],
+            "visiblePosition": [
+              280.0,
+              257.5
+            ],
+            "liveVisibleDelta": 5.469029010739703
+          }
+        ],
+        "closest": {
+          "frame": 1610,
+          "distance": 0.36077343403183804,
+          "position": [
+            274.19921875,
+            251.69921875
+          ],
+          "quantizedSquared": 13,
+          "acceptedSquaredExclusive": 576
+        },
+        "maxLiveVisibleDistance": 12.181019160283885,
+        "endingAmmo": 16,
+        "images": [
+          "diagonal-center-before.png",
+          "diagonal-center-motion-0.png",
+          "diagonal-center-motion-8.png",
+          "diagonal-center-motion-16.png",
+          "diagonal-center-motion-24.png",
+          "diagonal-center-trigger.png",
+          "diagonal-center-motion-32.png",
+          "diagonal-center-motion-40.png",
+          "diagonal-center-motion-48.png",
+          "diagonal-center-motion-56.png",
+          "diagonal-center-after.png"
+        ]
+      },
+      {
+        "id": "near-edge-accepted",
+        "passed": true,
+        "checks": {
+          "allSampledPositionsLegal": true,
+          "pickupMatchesExpected": true,
+          "onceOnly": true,
+          "pickupOnlyDuringControllerMotion": true,
+          "initialViewMatchesFixture": true,
+          "ammoCountCorrect": true,
+          "encounterCorrect": true
+        },
+        "fixture": {
+          "x": 276.875,
+          "expected": true,
+          "angle": 128,
+          "id": "near-edge-accepted",
+          "z": 257.5,
+          "duration": 56
+        },
+        "collections": [
+          {
+            "frame": 1751,
+            "stage": "motion",
+            "distance": 2.9712160810011783,
+            "position": [
+              276.875,
+              252.75
+            ],
+            "visiblePosition": [
+              276.875,
+              257.5
+            ],
+            "liveVisibleDelta": 4.75
+          }
+        ],
+        "closest": {
+          "frame": 1756,
+          "distance": 2.875,
+          "position": [
+            276.875,
+            252.0
+          ],
+          "quantizedSquared": 529,
+          "acceptedSquaredExclusive": 576
+        },
+        "maxLiveVisibleDistance": 11.5,
+        "endingAmmo": 16,
+        "images": [
+          "near-edge-accepted-before.png",
+          "near-edge-accepted-motion-0.png",
+          "near-edge-accepted-motion-8.png",
+          "near-edge-accepted-motion-16.png",
+          "near-edge-accepted-trigger.png",
+          "near-edge-accepted-motion-24.png",
+          "near-edge-accepted-motion-32.png",
+          "near-edge-accepted-motion-40.png",
+          "near-edge-accepted-motion-48.png",
+          "near-edge-accepted-after.png"
+        ]
+      },
+      {
+        "id": "near-edge-quantized-miss",
+        "passed": true,
+        "checks": {
+          "allSampledPositionsLegal": true,
+          "pickupMatchesExpected": true,
+          "onceOnly": true,
+          "pickupOnlyDuringControllerMotion": true,
+          "initialViewMatchesFixture": true,
+          "ammoCountCorrect": true,
+          "encounterCorrect": true
+        },
+        "fixture": {
+          "x": 276.9,
+          "expected": false,
+          "angle": 128,
+          "id": "near-edge-quantized-miss",
+          "z": 257.5,
+          "duration": 56
+        },
+        "collections": [],
+        "closest": {
+          "frame": 1924,
+          "distance": 2.8984375,
+          "position": [
+            276.8984375,
+            252.0
+          ],
+          "quantizedSquared": 576,
+          "acceptedSquaredExclusive": 576
+        },
+        "maxLiveVisibleDistance": 11.75,
+        "endingAmmo": 6,
+        "images": [
+          "near-edge-quantized-miss-before.png",
+          "near-edge-quantized-miss-motion-0.png",
+          "near-edge-quantized-miss-motion-8.png",
+          "near-edge-quantized-miss-motion-16.png",
+          "near-edge-quantized-miss-motion-24.png",
+          "near-edge-quantized-miss-motion-32.png",
+          "near-edge-quantized-miss-motion-40.png",
+          "near-edge-quantized-miss-motion-48.png",
+          "near-edge-quantized-miss-after.png"
+        ]
+      },
+      {
+        "id": "radius-edge-miss",
+        "passed": true,
+        "checks": {
+          "allSampledPositionsLegal": true,
+          "pickupMatchesExpected": true,
+          "onceOnly": true,
+          "pickupOnlyDuringControllerMotion": true,
+          "initialViewMatchesFixture": true,
+          "ammoCountCorrect": true,
+          "encounterCorrect": true
+        },
+        "fixture": {
+          "x": 277,
+          "expected": false,
+          "angle": 128,
+          "id": "radius-edge-miss",
+          "z": 257.5,
+          "duration": 56
+        },
+        "collections": [],
+        "closest": {
+          "frame": 2094,
+          "distance": 3.0,
+          "position": [
+            277.0,
+            252.0
+          ],
+          "quantizedSquared": 576,
+          "acceptedSquaredExclusive": 576
+        },
+        "maxLiveVisibleDistance": 11.75,
+        "endingAmmo": 6,
+        "images": [
+          "radius-edge-miss-before.png",
+          "radius-edge-miss-motion-0.png",
+          "radius-edge-miss-motion-8.png",
+          "radius-edge-miss-motion-16.png",
+          "radius-edge-miss-motion-24.png",
+          "radius-edge-miss-motion-32.png",
+          "radius-edge-miss-motion-40.png",
+          "radius-edge-miss-motion-48.png",
+          "radius-edge-miss-after.png"
+        ]
+      },
+      {
+        "id": "wall-side-bypass",
+        "passed": true,
+        "checks": {
+          "allSampledPositionsLegal": true,
+          "pickupMatchesExpected": true,
+          "onceOnly": true,
+          "pickupOnlyDuringControllerMotion": true,
+          "initialViewMatchesFixture": true,
+          "ammoCountCorrect": true,
+          "encounterCorrect": true
+        },
+        "fixture": {
+          "x": 277.5,
+          "expected": false,
+          "angle": 128,
+          "id": "wall-side-bypass",
+          "z": 257.5,
+          "duration": 56
+        },
+        "collections": [],
+        "closest": {
+          "frame": 2265,
+          "distance": 3.5,
+          "position": [
+            277.5,
+            252.0
+          ],
+          "quantizedSquared": 784,
+          "acceptedSquaredExclusive": 576
+        },
+        "maxLiveVisibleDistance": 11.75,
+        "endingAmmo": 6,
+        "images": [
+          "wall-side-bypass-before.png",
+          "wall-side-bypass-motion-0.png",
+          "wall-side-bypass-motion-8.png",
+          "wall-side-bypass-motion-16.png",
+          "wall-side-bypass-motion-24.png",
+          "wall-side-bypass-motion-32.png",
+          "wall-side-bypass-motion-40.png",
+          "wall-side-bypass-motion-48.png",
+          "wall-side-bypass-after.png"
+        ]
+      },
+      {
+        "id": "full-ammo-retains",
+        "passed": true,
+        "checks": {
+          "allSampledPositionsLegal": true,
+          "pickupMatchesExpected": true,
+          "onceOnly": true,
+          "pickupOnlyDuringControllerMotion": true,
+          "initialViewMatchesFixture": true,
+          "ammoCountCorrect": true,
+          "encounterCorrect": true
+        },
+        "fixture": {
+          "x": 274,
+          "ammo": 99,
+          "expected": false,
+          "angle": 128,
+          "id": "full-ammo-retains",
+          "z": 257.5,
+          "duration": 48
+        },
+        "collections": [],
+        "closest": {
+          "frame": 2435,
+          "distance": 0.0,
+          "position": [
+            274.0,
+            252.0
+          ],
+          "quantizedSquared": 0,
+          "acceptedSquaredExclusive": 576
+        },
+        "maxLiveVisibleDistance": 10.0,
+        "endingAmmo": 99,
+        "images": [
+          "full-ammo-retains-before.png",
+          "full-ammo-retains-motion-0.png",
+          "full-ammo-retains-motion-8.png",
+          "full-ammo-retains-motion-16.png",
+          "full-ammo-retains-motion-24.png",
+          "full-ammo-retains-motion-32.png",
+          "full-ammo-retains-motion-40.png",
+          "full-ammo-retains-after.png"
+        ]
+      },
+      {
+        "id": "forward-center-music-off",
+        "passed": true,
+        "checks": {
+          "allSampledPositionsLegal": true,
+          "pickupMatchesExpected": true,
+          "onceOnly": true,
+          "pickupOnlyDuringControllerMotion": true,
+          "initialViewMatchesFixture": true,
+          "ammoCountCorrect": true,
+          "encounterCorrect": true
+        },
+        "fixture": {
+          "x": 274,
+          "expected": true,
+          "musicDisabled": 1,
+          "angle": 128,
+          "id": "forward-center-music-off",
+          "z": 257.5,
+          "duration": 48
+        },
+        "collections": [
+          {
+            "frame": 2582,
+            "stage": "motion",
+            "distance": 2.75,
+            "position": [
+              274.0,
+              254.75
+            ],
+            "visiblePosition": [
+              274.0,
+              257.5
+            ],
+            "liveVisibleDelta": 2.75
+          }
+        ],
+        "closest": {
+          "frame": 2596,
+          "distance": 0.0,
+          "position": [
+            274.0,
+            252.0
+          ],
+          "quantizedSquared": 0,
+          "acceptedSquaredExclusive": 576
+        },
+        "maxLiveVisibleDistance": 10.0,
+        "endingAmmo": 16,
+        "images": [
+          "forward-center-music-off-before.png",
+          "forward-center-music-off-motion-0.png",
+          "forward-center-music-off-motion-8.png",
+          "forward-center-music-off-trigger.png",
+          "forward-center-music-off-motion-16.png",
+          "forward-center-music-off-motion-24.png",
+          "forward-center-music-off-motion-32.png",
+          "forward-center-music-off-motion-40.png",
+          "forward-center-music-off-after.png"
+        ]
+      },
+      {
+        "id": "near-edge-miss-music-off",
+        "passed": true,
+        "checks": {
+          "allSampledPositionsLegal": true,
+          "pickupMatchesExpected": true,
+          "onceOnly": true,
+          "pickupOnlyDuringControllerMotion": true,
+          "initialViewMatchesFixture": true,
+          "ammoCountCorrect": true,
+          "encounterCorrect": true
+        },
+        "fixture": {
+          "x": 276.9,
+          "expected": false,
+          "musicDisabled": 1,
+          "angle": 128,
+          "id": "near-edge-miss-music-off",
+          "z": 257.5,
+          "duration": 56
+        },
+        "collections": [],
+        "closest": {
+          "frame": 2754,
+          "distance": 2.8984375,
+          "position": [
+            276.8984375,
+            252.0
+          ],
+          "quantizedSquared": 576,
+          "acceptedSquaredExclusive": 576
+        },
+        "maxLiveVisibleDistance": 11.75,
+        "endingAmmo": 6,
+        "images": [
+          "near-edge-miss-music-off-before.png",
+          "near-edge-miss-music-off-motion-0.png",
+          "near-edge-miss-music-off-motion-8.png",
+          "near-edge-miss-music-off-motion-16.png",
+          "near-edge-miss-music-off-motion-24.png",
+          "near-edge-miss-music-off-motion-32.png",
+          "near-edge-miss-music-off-motion-40.png",
+          "near-edge-miss-music-off-motion-48.png",
+          "near-edge-miss-music-off-after.png"
+        ]
+      }
+    ],
+    "normalLevelAmmoMaximumBeforePickup": 6,
+    "normalLevelAmmoMaximumAfterPickup": 16,
+    "ammoCap": 99,
+    "romSha256": "c2a913ddd057235e11936e4c212eb0d3a93e1c6f422315d03bd05baaea80ab1b"
+  },
+  "doorAndExit": {
+    "passed": true,
+    "method": "Injected legal poses, then real controller movement/turning in stock-NTSC Mesen. Live movement and interaction code unmodified. Music setting injected per run; all enemies defeated to isolate interaction. Not a full controller-only playthrough or physical-console test.",
+    "linked": {
+      "passed": true,
+      "romSha256": "c2a913ddd057235e11936e4c212eb0d3a93e1c6f422315d03bd05baaea80ab1b",
+      "counts": {
+        "door": 20480,
+        "exit": 16384,
+        "input": 16
+      },
+      "examples": [
+        {
+          "kind": "door",
+          "x": 296,
+          "z": 124,
+          "angle": 128,
+          "note": "straight",
+          "eligible": true
+        },
+        {
+          "kind": "door",
+          "x": 296,
+          "z": 124,
+          "angle": 152,
+          "note": "same close location, 33.75 degrees off normal",
+          "eligible": false
+        },
+        {
+          "kind": "door",
+          "x": 302.5,
+          "z": 116,
+          "angle": 0,
+          "note": "south lateral side",
+          "eligible": false
+        },
+        {
+          "kind": "door",
+          "x": 300,
+          "z": 124,
+          "angle": 160,
+          "note": "aimed exactly at panel center from diagonal",
+          "eligible": false
+        },
+        {
+          "kind": "exit",
+          "x": 288,
+          "z": 28,
+          "angle": 192,
+          "note": "straight",
+          "eligible": true
+        },
+        {
+          "kind": "exit",
+          "x": 288,
+          "z": 28,
+          "angle": 216,
+          "note": "same close location, 33.75 degrees off normal",
+          "eligible": false
+        },
+        {
+          "kind": "exit",
+          "x": 288,
+          "z": 20,
+          "angle": 192,
+          "note": "near lower panel end",
+          "eligible": false
+        },
+        {
+          "kind": "exit",
+          "x": 288,
+          "z": 32,
+          "angle": 160,
+          "note": "aimed exactly at switch center from diagonal",
+          "eligible": false
+        },
+        {
+          "kind": "exit",
+          "x": 294,
+          "z": 28,
+          "angle": 192,
+          "note": "exact max distance",
+          "eligible": false
+        }
+      ],
+      "limitations": "Injected CPU poses executing linked routines; no PPU timing claim."
+    },
+    "runs": {
+      "on": {
+        "frames": 1752,
+        "promptDelays": [
+          {
+            "phase": "door-held-a-approach",
+            "frames": 1,
+            "milliseconds": 16.64,
+            "liveEligibilityFrame": 1318,
+            "promptInBothNametablesFrame": 1319,
+            "livePose": [
+              296.0,
+              128.0
+            ],
+            "displayedPose": [
+              296.0,
+              132.0
+            ]
+          },
+          {
+            "phase": "exit-held-a-approach",
+            "frames": 1,
+            "milliseconds": 16.64,
+            "liveEligibilityFrame": 1595,
+            "promptInBothNametablesFrame": 1596,
+            "livePose": [
+              293.75,
+              28.0
+            ],
+            "displayedPose": [
+              300.0,
+              28.0
+            ]
+          },
+          {
+            "phase": "door-firing-approach",
+            "frames": 1,
+            "milliseconds": 16.64,
+            "liveEligibilityFrame": 1168,
+            "promptInBothNametablesFrame": 1169,
+            "livePose": [
+              296.0,
+              128.0
+            ],
+            "displayedPose": [
+              296.0,
+              132.0
+            ]
+          }
+        ],
+        "turnMismatches": [
+          {
+            "kind": "door",
+            "eligibilityLostFrame": 260,
+            "liveAngle": 145,
+            "displayedAngle": 134,
+            "visibleAngleExceedsConeFrame": 280,
+            "frames": 20,
+            "milliseconds": 332.79
+          },
+          {
+            "kind": "exit",
+            "eligibilityLostFrame": 733,
+            "liveAngle": 213,
+            "displayedAngle": 199,
+            "visibleAngleExceedsConeFrame": 778,
+            "frames": 45,
+            "milliseconds": 748.77
+          }
+        ],
+        "examples": [
+          {
+            "id": "door-close-straight",
+            "pose": [
+              296.0,
+              124.0,
+              128
+            ],
+            "eligible": true,
+            "worldCollisionLegal": true,
+            "settledImageMatchesLivePose": true,
+            "screenshot": "analysis/interaction-repro/door-exit/mesen-music-on/door-close-straight.png"
+          },
+          {
+            "id": "door-centered-diagonal",
+            "pose": [
+              300.0,
+              124.0,
+              160
+            ],
+            "eligible": false,
+            "worldCollisionLegal": true,
+            "settledImageMatchesLivePose": true,
+            "screenshot": "analysis/interaction-repro/door-exit/mesen-music-on/door-centered-diagonal.png"
+          },
+          {
+            "id": "door-south-lateral",
+            "pose": [
+              302.5,
+              116.0,
+              0
+            ],
+            "eligible": false,
+            "worldCollisionLegal": true,
+            "settledImageMatchesLivePose": true,
+            "screenshot": "analysis/interaction-repro/door-exit/mesen-music-on/door-south-lateral.png"
+          },
+          {
+            "id": "exit-close-straight",
+            "pose": [
+              288.0,
+              28.0,
+              192
+            ],
+            "eligible": true,
+            "worldCollisionLegal": true,
+            "settledImageMatchesLivePose": true,
+            "screenshot": "analysis/interaction-repro/door-exit/mesen-music-on/exit-close-straight.png"
+          },
+          {
+            "id": "exit-centered-diagonal",
+            "pose": [
+              288.0,
+              32.0,
+              160
+            ],
+            "eligible": false,
+            "worldCollisionLegal": true,
+            "settledImageMatchesLivePose": true,
+            "screenshot": "analysis/interaction-repro/door-exit/mesen-music-on/exit-centered-diagonal.png"
+          },
+          {
+            "id": "exit-near-lower-end",
+            "pose": [
+              288.0,
+              20.0,
+              192
+            ],
+            "eligible": false,
+            "worldCollisionLegal": true,
+            "settledImageMatchesLivePose": true,
+            "screenshot": "analysis/interaction-repro/door-exit/mesen-music-on/exit-near-lower-end.png"
+          }
+        ],
+        "freshAAndHeldAGuardsPass": true,
+        "doorRequestToPublishedOpenFrames": 38
+      },
+      "off": {
+        "frames": 1752,
+        "promptDelays": [
+          {
+            "phase": "door-held-a-approach",
+            "frames": 1,
+            "milliseconds": 16.64,
+            "liveEligibilityFrame": 1318,
+            "promptInBothNametablesFrame": 1319,
+            "livePose": [
+              296.0,
+              128.0
+            ],
+            "displayedPose": [
+              296.0,
+              132.0
+            ]
+          },
+          {
+            "phase": "exit-held-a-approach",
+            "frames": 1,
+            "milliseconds": 16.64,
+            "liveEligibilityFrame": 1595,
+            "promptInBothNametablesFrame": 1596,
+            "livePose": [
+              293.75,
+              28.0
+            ],
+            "displayedPose": [
+              300.0,
+              28.0
+            ]
+          },
+          {
+            "phase": "door-firing-approach",
+            "frames": 1,
+            "milliseconds": 16.64,
+            "liveEligibilityFrame": 1168,
+            "promptInBothNametablesFrame": 1169,
+            "livePose": [
+              296.0,
+              128.0
+            ],
+            "displayedPose": [
+              296.0,
+              132.0
+            ]
+          }
+        ],
+        "turnMismatches": [
+          {
+            "kind": "door",
+            "eligibilityLostFrame": 260,
+            "liveAngle": 145,
+            "displayedAngle": 134,
+            "visibleAngleExceedsConeFrame": 279,
+            "frames": 19,
+            "milliseconds": 316.15
+          },
+          {
+            "kind": "exit",
+            "eligibilityLostFrame": 733,
+            "liveAngle": 213,
+            "displayedAngle": 199,
+            "visibleAngleExceedsConeFrame": 777,
+            "frames": 44,
+            "milliseconds": 732.13
+          }
+        ],
+        "examples": [
+          {
+            "id": "door-close-straight",
+            "pose": [
+              296.0,
+              124.0,
+              128
+            ],
+            "eligible": true,
+            "worldCollisionLegal": true,
+            "settledImageMatchesLivePose": true,
+            "screenshot": "analysis/interaction-repro/door-exit/mesen-music-off/door-close-straight.png"
+          },
+          {
+            "id": "door-centered-diagonal",
+            "pose": [
+              300.0,
+              124.0,
+              160
+            ],
+            "eligible": false,
+            "worldCollisionLegal": true,
+            "settledImageMatchesLivePose": true,
+            "screenshot": "analysis/interaction-repro/door-exit/mesen-music-off/door-centered-diagonal.png"
+          },
+          {
+            "id": "door-south-lateral",
+            "pose": [
+              302.5,
+              116.0,
+              0
+            ],
+            "eligible": false,
+            "worldCollisionLegal": true,
+            "settledImageMatchesLivePose": true,
+            "screenshot": "analysis/interaction-repro/door-exit/mesen-music-off/door-south-lateral.png"
+          },
+          {
+            "id": "exit-close-straight",
+            "pose": [
+              288.0,
+              28.0,
+              192
+            ],
+            "eligible": true,
+            "worldCollisionLegal": true,
+            "settledImageMatchesLivePose": true,
+            "screenshot": "analysis/interaction-repro/door-exit/mesen-music-off/exit-close-straight.png"
+          },
+          {
+            "id": "exit-centered-diagonal",
+            "pose": [
+              288.0,
+              32.0,
+              160
+            ],
+            "eligible": false,
+            "worldCollisionLegal": true,
+            "settledImageMatchesLivePose": true,
+            "screenshot": "analysis/interaction-repro/door-exit/mesen-music-off/exit-centered-diagonal.png"
+          },
+          {
+            "id": "exit-near-lower-end",
+            "pose": [
+              288.0,
+              20.0,
+              192
+            ],
+            "eligible": false,
+            "worldCollisionLegal": true,
+            "settledImageMatchesLivePose": true,
+            "screenshot": "analysis/interaction-repro/door-exit/mesen-music-off/exit-near-lower-end.png"
+          }
+        ],
+        "freshAAndHeldAGuardsPass": true,
+        "doorRequestToPublishedOpenFrames": 37
+      }
+    },
+    "recommendations": [
+      "Expand fixed wall-normal facing cones to +/-45 degrees, preserving exact position/side checks. Both centered diagonal examples currently fail despite directly aiming at target center.",
+      "Expand door lateral eligibility to the physical panel width X[288,304), primarily to help the wider south side. Keep the collision radius and close-side guards unchanged.",
+      "Keep fresh-A and A+Left/Right strafe protection. Prompt updates are prompt in tested cases; do not move or enlarge HUD uploads on this evidence.",
+      "Treat live-versus-visible pose lag separately in the focused latency pass; do not permit stale displayed poses to activate from physically out of range."
+    ],
+    "limitations": "The turning-delay numbers are particular close-up scenes/paths, not whole-game averages. No enemy attack/pickup priority stress. Simple approach and continuously held B were tested; no HUD starvation seen in those cases."
+  },
+  "screenshots": {
+    "ammo-visible.png": {
+      "path": "docs/images/interaction-repro/ammo-visible.png",
+      "sha256": "6d5d8c36b3e1ad9b7f6b664c4318fc9d81529137469c915e45cb71ee2b0f0d42"
+    },
+    "ammo-hidden-before-pickup.png": {
+      "path": "docs/images/interaction-repro/ammo-hidden-before-pickup.png",
+      "sha256": "22817beb803a58389d80572b8eb8b8a8b792ac18f0eef7c9e559e35cbc41dda9"
+    },
+    "ammo-collected.png": {
+      "path": "docs/images/interaction-repro/ammo-collected.png",
+      "sha256": "399aa8c9c45812a2541520f9f15a889938571b909d6ed256d1305eda47309272"
+    },
+    "door-diagonal-no-prompt.png": {
+      "path": "docs/images/interaction-repro/door-diagonal-no-prompt.png",
+      "sha256": "f16996bddf1afbd1e328c9e9a98dd3238097ddc512cec936f57e52e7cd987465"
+    },
+    "exit-diagonal-no-prompt.png": {
+      "path": "docs/images/interaction-repro/exit-diagonal-no-prompt.png",
+      "sha256": "e72f5808d27475ad9dd0ea3bf8f67104af971b3a18ea9144b645162d283465b1"
+    },
+    "door-lateral-no-prompt.png": {
+      "path": "docs/images/interaction-repro/door-lateral-no-prompt.png",
+      "sha256": "7fba276c304460c4e5f87f95fddc45d3dff3931afa535d047b87ca7bece85d78"
+    }
+  },
+  "rawReportSha256": {
+    "analysis/interaction-repro/ammo/summary.json": "97da4ac5e315d17d75d667a61134ef1caa39e53a31021ec583be717e5e56c237",
+    "analysis/interaction-repro/door-exit/summary.json": "965cbc9ee273fae2f192c6bb7f2055f616a40bb9838e3da9ac3d0a812fe3676d"
+  },
+  "recommendedNextStep": "Correct interaction usability before the separate latency optimization; retain exact reference ROM and these fixtures for comparison."
+}

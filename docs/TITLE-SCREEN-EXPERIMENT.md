@@ -1,10 +1,18 @@
 # DOOM-logo title
 
-The selected title is now part of `prototype-2026-10-21-bronze-title`.
-Cold start displays a black full-screen title with a 192×94 **bronze DOOM
-logo**, followed by the existing controls guide. Each screen requires its
-own fresh Start press; holding Start cannot skip either page. Internal level
-retries and completion restarts still skip the startup screens.
+The bronze title introduced in `prototype-2026-10-21-bronze-title` remains the
+default. Cold start displays the 192×94 **bronze DOOM logo** on black, labeled
+as an unofficial Hangar NES prototype, with **BUILD 2026-10-24** beneath it.
+**Start** opens the controls guide;
+**Select** opens an optional credits page. From credits, **B** returns to the
+logo and **Start** opens the guide. A fresh Start press begins the level;
+holding Start cannot skip the guide. Internal level retries and completion
+restarts still skip the startup screens.
+
+The guide spells out Left/Right music selection and notes that music OFF
+reduces playback overhead. These startup-only screens restore the game's
+patterns and palettes before play; the bronze logo does not reserve a gameplay
+color. See [the current release notes](RELEASE-NOTES.md) for the UI update.
 
 ![Bronze title captured in Mesen](images/doom-title.png)
 

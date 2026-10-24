@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "verifiedOn": "2026-10-22",
+  "passed": true,
+  "version": "prototype-2026-10-22-interactions",
+  "artifact": {
+    "path": "release/archive/hangar-interactions-ntsc.nes",
+    "sha256": "0ecf59bf29efb03e5619a30d8bf890500a96e505a18f661920ab02fdbc9bd086",
+    "bytes": 131088,
+    "region": "NTSC",
+    "mapper": "MMC1",
+    "prgRomBytes": 131072,
+    "chrRamBytes": 8192,
+    "workRamBytes": 8192
+  },
+  "baseline": {
+    "path": "release/archive/hangar-optional-music-ntsc.nes",
+    "sha256": "c2a913ddd057235e11936e4c212eb0d3a93e1c6f422315d03bd05baaea80ab1b",
+    "evidence": "verification/optional-music-release.json"
+  },
+  "integrity": {
+    "changedRomBytesFromOptionalMusicBaseline": 29,
+    "linkedAddressesUnchanged": true,
+    "segmentSizesUnchanged": true,
+    "sourceFileCount": 78,
+    "sourceExportUnmodified": true,
+    "rebuildEvidence": "verification/interaction-build.json"
+  },
+  "music": {
+    "enabled": true,
+    "engine": "FamiStudio",
+    "channels": 4,
+    "dpcm": false,
+    "song": "E1M1 (Dr. C Beatz noise-drum remix)",
+    "source": "music/e1m1/e1m1-drums.s",
+    "sourceSha256": "1361d483c5d461023ed6308735334c3e32e76ad5d40cee4168e70fcf29ecec02",
+    "features": {
+      "famiTrackerTempo": true,
+      "volumeTrack": true,
+      "vibrato": true,
+      "dutyCycleEffect": true
+    },
+    "ramBytes": 206,
+    "zpAliasBytes": 8,
+    "playerOption": {
+      "screen": "controls guide",
+      "default": "on",
+      "left": "off",
+      "right": "on",
+      "skipsSequencerWhenOff": true,
+      "preservesSoundEffects": true,
+      "survivesLevelRestart": true,
+      "coldResetRestoresDefault": true
+    }
+  },
+  "runtimeEvidence": {
+    "report": "verification/interaction-fix.json",
+    "testedRomSha256": "0ecf59bf29efb03e5619a30d8bf890500a96e505a18f661920ab02fdbc9bd086",
+    "doorExitLinkedCalls": 51662,
+    "ammoNativeRangeCalls": 441000,
+    "ammoTranslatedRangeCalls": 8214,
+    "ammoMesenCases": 19,
+    "controllerChecks": 30,
+    "mesenRouteFrames": 15121,
+    "mesenRouteChecks": 26,
+    "mesenPixelComparisons": 44,
+    "testScope": "Fresh final-build linked routines, controlled Mesen pickup fixtures, controller-only JSNES checks and full stock-NTSC Mesen route. Focused door/exit Mesen comparisons used the identical door/exit code in the intermediate build; scopes and hashes are recorded in the linked report."
+  },
+  "interactionRulesChanged": true,
+  "latencyOptimization": false,
+  "physicalConsoleTested": false,
+  "liveDeploymentChanged": false,
+  "licensingResolved": false,
+  "interactionAssessment": {
+    "evidence": "verification/interaction-fix.json",
+    "status": "Door and exit approach tolerance widened; ammo radius modestly expanded while retaining former side-pass rejection. Separate near-field sprite presentation and render latency limits remain."
+  }
+}

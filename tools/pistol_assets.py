@@ -23,7 +23,7 @@ WORLD_PALETTE = (0x0F, 0x17, 0x07, 0x2D)
 HUD_PALETTE = (0x0F, 0x30, 0x10, 0x2D)
 SPRITE_PALETTES = (0x0F, 0x0F, 0x17, 0x27, 0x0F, 0x0F, 0x27, 0x37)
 PISTOL_X, PISTOL_TOP = 112, 136
-HUD_NUMBERS = {'health': (4, 23, 100), 'ammo': (14, 23, 6), 'armor': (25, 23, 0)}
+HUD_NUMBERS = {'health': (4, 23, 100), 'ammo': (14, 23, 6)}
 
 
 def _glyphs():
@@ -219,12 +219,13 @@ def assets(build_dir, preview_dir=None):
     line(1, 'E1M1 / HANGAR PROTOTYPE')
     line(22, 'HEALTH', 3)
     line(22, 'AMMO', 14)
-    line(22, 'ARMOR', 24)
+    line(22, 'WEAPON', 24)
+    line(23, 'PISTOL', 24)
     for col, row, value in HUD_NUMBERS.values():
         line(row, f'{value:03}', col)
     line(25, 'B FIRE  A+L/R STRAFE')
     line(26, 'UP/DOWN WALK  L/R TURN')
-    line(27, 'SELECT EDGES  START RESET')
+    line(27, 'SELECT EDGES  START PAUSE')
     # These are the existing world attribute bytes.  All 256x144 world pixels
     # (rows 3..20) keep palette 0; title and HUD use the readable white palette.
     name[0x3C0:0x3C8] = bytes([0x05]) * 8

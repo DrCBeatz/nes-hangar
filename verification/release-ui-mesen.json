@@ -1,0 +1,2368 @@
+{
+  "passed": true,
+  "checks": {
+    "controllerOnlyRouteCompleted": true,
+    "noTimeouts": true,
+    "noRuntimeErrors": true,
+    "nmiNeverNested": true,
+    "exactPublishedWorlds": true,
+    "closedDoorThirdContextObserved": true,
+    "closedDoorEnemyCannotAttackOrTarget": true,
+    "thirdShotDamagesPlayer": true,
+    "thirdNeverCollectsItem": true,
+    "thirdDefeatedExactlyOnce": true,
+    "thirdReceivesThreeHits": true,
+    "threeContextStatesObserved": true,
+    "allRenderCapacityFits": true,
+    "thirdStaysInsideMovementBox": true,
+    "thirdActuallyMoves": true,
+    "allThreeKilled": true,
+    "nineHits": true,
+    "nominalAmmoBalance": true,
+    "bothPickupsExactlyOnce": true,
+    "thirdDeadOnReturn": true,
+    "resultsThreeKillsTwoItems": true,
+    "resetRestoresAllEnemies": true,
+    "resetRestoresAmmoDoorAndCounts": true,
+    "pauseFreezeAndResume": true,
+    "pauseEnteredDuringEnemyWarning": true,
+    "freshStartPagesAndNoCarry": true
+  },
+  "frames": 14963,
+  "phaseCount": 161,
+  "errors": [],
+  "pixelChecks": [
+    {
+      "id": "game-held-start",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "first-gameplay",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "pause-initial-music-enter",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "pause-initial-music-held",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "pause-initial-music-ignored-inputs",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "pause-initial-music-resume",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "spawn-idle",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "pause-enemy-warning-enter",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "pause-enemy-warning-held",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "pause-enemy-warning-ignored-inputs",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "pause-enemy-warning-resume",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "first-zombie-killed",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "medkit-collected",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "dry-placements-view",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "ammo-collected",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "second-zombie-killed",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "pause-slime-music-enter",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "pause-slime-music-held",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "pause-slime-music-ignored-inputs",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "pause-slime-music-resume",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "slime-one-dose",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "door-closed-view",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "door-closed-push",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "door-a-left-slide",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "door-a-right-slide",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "door-use-ready",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "door-fresh-use",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "door-wait-published-open",
+      "visibleDoor": 1,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "door-open-settled",
+      "visibleDoor": 1,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "first-open-doorway",
+      "visibleDoor": 1,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "third-live-view",
+      "visibleDoor": 1,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "third-wait-shot",
+      "visibleDoor": 1,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "third-zombie-killed",
+      "visibleDoor": 1,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "third-corpse-view",
+      "visibleDoor": 1,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "pre-exit-west-side",
+      "visibleDoor": 1,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "exit-chamber",
+      "visibleDoor": 1,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "critical-chamber-original-worst",
+      "visibleDoor": 1,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "critical-chamber-center-view",
+      "visibleDoor": 1,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "first-encounter-dead-reloaded",
+      "visibleDoor": 1,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "third-encounter-dead-reloaded",
+      "visibleDoor": 1,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "coarse-settled",
+      "visibleDoor": 1,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "precise-settled",
+      "visibleDoor": 1,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "reset-start",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    },
+    {
+      "id": "final-spawn",
+      "visibleDoor": 0,
+      "pixelMismatches": 0,
+      "paletteMatches": true,
+      "passed": true
+    }
+  ],
+  "eventCounts": {
+    "zombie_hit": 9,
+    "zombie_defeat": 3,
+    "player_damage": 10,
+    "ammo_collect": 1,
+    "pistol_shot_accepted": 9
+  },
+  "maximumPlanes": 33,
+  "maximumPatterns": 110,
+  "maximumSpans": 9,
+  "scope": "Controller-only actual ROM in stock NTSC Mesen, zero extra scanlines, independent unfiltered geometry oracle; not a physical-console test.",
+  "pauseChecks": [
+    {
+      "name": "initial-music",
+      "heldFrames": 124,
+      "checks": {
+        "allSamplesPaused": true,
+        "fieldsFrozen": true,
+        "noWorldPublication": true,
+        "picturesFrozen": true,
+        "ppuFrozen": true,
+        "freshStartResumes": true
+      },
+      "mismatches": []
+    },
+    {
+      "name": "enemy-warning",
+      "heldFrames": 94,
+      "checks": {
+        "allSamplesPaused": true,
+        "fieldsFrozen": true,
+        "noWorldPublication": true,
+        "picturesFrozen": true,
+        "ppuFrozen": true,
+        "freshStartResumes": true
+      },
+      "mismatches": []
+    },
+    {
+      "name": "slime-music",
+      "heldFrames": 94,
+      "checks": {
+        "allSamplesPaused": true,
+        "fieldsFrozen": true,
+        "noWorldPublication": true,
+        "picturesFrozen": true,
+        "ppuFrozen": true,
+        "freshStartResumes": true
+      },
+      "mismatches": []
+    }
+  ],
+  "timing": {
+    "nmiCycles": {
+      "count": 14588,
+      "minimum": 495,
+      "median": 4082.0,
+      "mean": 4071.508979983548,
+      "p95": 6229,
+      "maximum": 18907
+    },
+    "ppuWritesObserved": 13885,
+    "lastPpuMinimumMargin": {
+      "scanline": 260,
+      "dot": 153,
+      "marginCpuCycles": 62.666666666666664
+    },
+    "warningUploadNmis": [
+      {
+        "frame": 2689,
+        "cycles": 3156,
+        "scanline": 246,
+        "dot": 205,
+        "marginCpuCycles": 1636.6666666666667
+      },
+      {
+        "frame": 2945,
+        "cycles": 3430,
+        "scanline": 246,
+        "dot": 199,
+        "marginCpuCycles": 1638.6666666666667
+      },
+      {
+        "frame": 5544,
+        "cycles": 3308,
+        "scanline": 246,
+        "dot": 203,
+        "marginCpuCycles": 1637.3333333333333
+      },
+      {
+        "frame": 5886,
+        "cycles": 4109,
+        "scanline": 246,
+        "dot": 203,
+        "marginCpuCycles": 1637.3333333333333
+      },
+      {
+        "frame": 7479,
+        "cycles": 3173,
+        "scanline": 246,
+        "dot": 202,
+        "marginCpuCycles": 1637.6666666666667
+      }
+    ]
+  },
+  "phasePerformance": [
+    {
+      "id": "power-on-held-start",
+      "frames": 120,
+      "publications": 0,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": null
+    },
+    {
+      "id": "first-page-ignore-controls",
+      "frames": 60,
+      "publications": 0,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": null
+    },
+    {
+      "id": "first-page-idle",
+      "frames": 30,
+      "publications": 0,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": null
+    },
+    {
+      "id": "advance-to-guide-held-start",
+      "frames": 90,
+      "publications": 0,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": null
+    },
+    {
+      "id": "guide-ignore-controls",
+      "frames": 30,
+      "publications": 0,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": null
+    },
+    {
+      "id": "guide-idle",
+      "frames": 30,
+      "publications": 0,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": null
+    },
+    {
+      "id": "start-loading",
+      "frames": 49,
+      "publications": 0,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": {
+        "count": 1,
+        "minimum": 849233,
+        "median": 849233,
+        "mean": 849233,
+        "p95": 849233,
+        "maximum": 849233
+      }
+    },
+    {
+      "id": "game-held-start",
+      "frames": 60,
+      "publications": 1,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": null
+    },
+    {
+      "id": "pause-initial-music-held",
+      "frames": 90,
+      "publications": 0,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": null
+    },
+    {
+      "id": "pause-initial-music-ignored-inputs",
+      "frames": 30,
+      "publications": 0,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": null
+    },
+    {
+      "id": "spawn-idle",
+      "frames": 120,
+      "publications": 0,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": null
+    },
+    {
+      "id": "opening-1",
+      "frames": 363,
+      "publications": 10,
+      "publishIntervalsFrames": {
+        "count": 9,
+        "minimum": 20,
+        "median": 35,
+        "mean": 33.333333333333336,
+        "p95": 44,
+        "maximum": 44
+      },
+      "renderCpuCycles": {
+        "count": 12,
+        "minimum": 459560,
+        "median": 868701.0,
+        "mean": 807541.3333333334,
+        "p95": 1074532,
+        "maximum": 1074532
+      }
+    },
+    {
+      "id": "opening-2",
+      "frames": 282,
+      "publications": 11,
+      "publishIntervalsFrames": {
+        "count": 10,
+        "minimum": 23,
+        "median": 26.0,
+        "mean": 26.8,
+        "p95": 35,
+        "maximum": 35
+      },
+      "renderCpuCycles": {
+        "count": 10,
+        "minimum": 564808,
+        "median": 649237.5,
+        "mean": 679923.1,
+        "p95": 934174,
+        "maximum": 934174
+      }
+    },
+    {
+      "id": "opening-3",
+      "frames": 339,
+      "publications": 12,
+      "publishIntervalsFrames": {
+        "count": 11,
+        "minimum": 22,
+        "median": 27,
+        "mean": 27.90909090909091,
+        "p95": 34,
+        "maximum": 34
+      },
+      "renderCpuCycles": {
+        "count": 13,
+        "minimum": 500179,
+        "median": 681002,
+        "mean": 692871.1538461539,
+        "p95": 844778,
+        "maximum": 844778
+      }
+    },
+    {
+      "id": "opening-4",
+      "frames": 96,
+      "publications": 4,
+      "publishIntervalsFrames": {
+        "count": 3,
+        "minimum": 23,
+        "median": 26,
+        "mean": 26,
+        "p95": 29,
+        "maximum": 29
+      },
+      "renderCpuCycles": {
+        "count": 3,
+        "minimum": 608908,
+        "median": 617478,
+        "mean": 683680.3333333334,
+        "p95": 824655,
+        "maximum": 824655
+      }
+    },
+    {
+      "id": "opening-5",
+      "frames": 101,
+      "publications": 3,
+      "publishIntervalsFrames": {
+        "count": 2,
+        "minimum": 22,
+        "median": 23.0,
+        "mean": 23,
+        "p95": 24,
+        "maximum": 24
+      },
+      "renderCpuCycles": {
+        "count": 4,
+        "minimum": 581380,
+        "median": 624537.5,
+        "mean": 664581,
+        "p95": 827869,
+        "maximum": 827869
+      }
+    },
+    {
+      "id": "opening-6",
+      "frames": 151,
+      "publications": 6,
+      "publishIntervalsFrames": {
+        "count": 5,
+        "minimum": 23,
+        "median": 27,
+        "mean": 27.4,
+        "p95": 37,
+        "maximum": 37
+      },
+      "renderCpuCycles": {
+        "count": 5,
+        "minimum": 562983,
+        "median": 621937,
+        "mean": 750484,
+        "p95": 1049990,
+        "maximum": 1049990
+      }
+    },
+    {
+      "id": "opening-7",
+      "frames": 288,
+      "publications": 8,
+      "publishIntervalsFrames": {
+        "count": 7,
+        "minimum": 24,
+        "median": 32,
+        "mean": 33.42857142857143,
+        "p95": 45,
+        "maximum": 45
+      },
+      "renderCpuCycles": {
+        "count": 8,
+        "minimum": 601491,
+        "median": 806106.5,
+        "mean": 810914.625,
+        "p95": 1023384,
+        "maximum": 1023384
+      }
+    },
+    {
+      "id": "opening-8",
+      "frames": 183,
+      "publications": 8,
+      "publishIntervalsFrames": {
+        "count": 7,
+        "minimum": 19,
+        "median": 23,
+        "mean": 23.285714285714285,
+        "p95": 28,
+        "maximum": 28
+      },
+      "renderCpuCycles": {
+        "count": 8,
+        "minimum": 531110,
+        "median": 589735.5,
+        "mean": 609516.75,
+        "p95": 743423,
+        "maximum": 743423
+      }
+    },
+    {
+      "id": "first-zombie-face",
+      "frames": 148,
+      "publications": 6,
+      "publishIntervalsFrames": {
+        "count": 5,
+        "minimum": 21,
+        "median": 22,
+        "mean": 22,
+        "p95": 23,
+        "maximum": 23
+      },
+      "renderCpuCycles": {
+        "count": 7,
+        "minimum": 533600,
+        "median": 543759,
+        "mean": 603710,
+        "p95": 875236,
+        "maximum": 875236
+      }
+    },
+    {
+      "id": "pause-enemy-warning-held",
+      "frames": 60,
+      "publications": 0,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": null
+    },
+    {
+      "id": "pause-enemy-warning-ignored-inputs",
+      "frames": 30,
+      "publications": 0,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": null
+    },
+    {
+      "id": "first-zombie-hits",
+      "frames": 210,
+      "publications": 3,
+      "publishIntervalsFrames": {
+        "count": 2,
+        "minimum": 22,
+        "median": 97.5,
+        "mean": 97.5,
+        "p95": 173,
+        "maximum": 173
+      },
+      "renderCpuCycles": {
+        "count": 2,
+        "minimum": 615140,
+        "median": 616045.5,
+        "mean": 616045.5,
+        "p95": 616951,
+        "maximum": 616951
+      }
+    },
+    {
+      "id": "first-zombie-killed",
+      "frames": 100,
+      "publications": 2,
+      "publishIntervalsFrames": {
+        "count": 1,
+        "minimum": 36,
+        "median": 36,
+        "mean": 36,
+        "p95": 36,
+        "maximum": 36
+      },
+      "renderCpuCycles": {
+        "count": 3,
+        "minimum": 614401,
+        "median": 887627,
+        "mean": 804173.6666666666,
+        "p95": 910493,
+        "maximum": 910493
+      }
+    },
+    {
+      "id": "medkit-1",
+      "frames": 284,
+      "publications": 11,
+      "publishIntervalsFrames": {
+        "count": 10,
+        "minimum": 18,
+        "median": 24.0,
+        "mean": 23.8,
+        "p95": 31,
+        "maximum": 31
+      },
+      "renderCpuCycles": {
+        "count": 11,
+        "minimum": 532420,
+        "median": 598440,
+        "mean": 611418.2727272727,
+        "p95": 765200,
+        "maximum": 765200
+      }
+    },
+    {
+      "id": "next-passage-1",
+      "frames": 529,
+      "publications": 25,
+      "publishIntervalsFrames": {
+        "count": 24,
+        "minimum": 15,
+        "median": 21.0,
+        "mean": 21.5,
+        "p95": 29,
+        "maximum": 32
+      },
+      "renderCpuCycles": {
+        "count": 25,
+        "minimum": 426906,
+        "median": 515146,
+        "mean": 550304.08,
+        "p95": 810890,
+        "maximum": 851379
+      }
+    },
+    {
+      "id": "next-passage-2",
+      "frames": 551,
+      "publications": 21,
+      "publishIntervalsFrames": {
+        "count": 20,
+        "minimum": 16,
+        "median": 23.0,
+        "mean": 25.6,
+        "p95": 40,
+        "maximum": 40
+      },
+      "renderCpuCycles": {
+        "count": 22,
+        "minimum": 414508,
+        "median": 581133.5,
+        "mean": 682625.1363636364,
+        "p95": 1001002,
+        "maximum": 1172131
+      }
+    },
+    {
+      "id": "next-passage-3",
+      "frames": 77,
+      "publications": 2,
+      "publishIntervalsFrames": {
+        "count": 1,
+        "minimum": 49,
+        "median": 49,
+        "mean": 49,
+        "p95": 49,
+        "maximum": 49
+      },
+      "renderCpuCycles": {
+        "count": 2,
+        "minimum": 729725,
+        "median": 924876.0,
+        "mean": 924876,
+        "p95": 1120027,
+        "maximum": 1120027
+      }
+    },
+    {
+      "id": "next-passage-4",
+      "frames": 126,
+      "publications": 1,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": {
+        "count": 2,
+        "minimum": 1317058,
+        "median": 1552952.5,
+        "mean": 1552952.5,
+        "p95": 1788847,
+        "maximum": 1788847
+      }
+    },
+    {
+      "id": "next-passage-5",
+      "frames": 176,
+      "publications": 3,
+      "publishIntervalsFrames": {
+        "count": 2,
+        "minimum": 36,
+        "median": 40.0,
+        "mean": 40,
+        "p95": 44,
+        "maximum": 44
+      },
+      "renderCpuCycles": {
+        "count": 3,
+        "minimum": 969374,
+        "median": 990568,
+        "mean": 1291817.6666666667,
+        "p95": 1915511,
+        "maximum": 1915511
+      }
+    },
+    {
+      "id": "dry-placements-face",
+      "frames": 114,
+      "publications": 2,
+      "publishIntervalsFrames": {
+        "count": 1,
+        "minimum": 42,
+        "median": 42,
+        "mean": 42,
+        "p95": 42,
+        "maximum": 42
+      },
+      "renderCpuCycles": {
+        "count": 3,
+        "minimum": 1029806,
+        "median": 1122442,
+        "mean": 1204568,
+        "p95": 1461456,
+        "maximum": 1461456
+      }
+    },
+    {
+      "id": "dry-placements-view",
+      "frames": 59,
+      "publications": 1,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": null
+    },
+    {
+      "id": "clip-approach-1",
+      "frames": 109,
+      "publications": 2,
+      "publishIntervalsFrames": {
+        "count": 1,
+        "minimum": 97,
+        "median": 97,
+        "mean": 97,
+        "p95": 97,
+        "maximum": 97
+      },
+      "renderCpuCycles": {
+        "count": 2,
+        "minimum": 1749798,
+        "median": 1859209.5,
+        "mean": 1859209.5,
+        "p95": 1968621,
+        "maximum": 1968621
+      }
+    },
+    {
+      "id": "clip-approach-2",
+      "frames": 146,
+      "publications": 2,
+      "publishIntervalsFrames": {
+        "count": 1,
+        "minimum": 46,
+        "median": 46,
+        "mean": 46,
+        "p95": 46,
+        "maximum": 46
+      },
+      "renderCpuCycles": {
+        "count": 3,
+        "minimum": 1050294,
+        "median": 1130344,
+        "mean": 1144304.3333333333,
+        "p95": 1252275,
+        "maximum": 1252275
+      }
+    },
+    {
+      "id": "ammo-collected-face",
+      "frames": 87,
+      "publications": 2,
+      "publishIntervalsFrames": {
+        "count": 1,
+        "minimum": 43,
+        "median": 43,
+        "mean": 43,
+        "p95": 43,
+        "maximum": 43
+      },
+      "renderCpuCycles": {
+        "count": 2,
+        "minimum": 924401,
+        "median": 1249969.0,
+        "mean": 1249969,
+        "p95": 1575537,
+        "maximum": 1575537
+      }
+    },
+    {
+      "id": "ammo-collected",
+      "frames": 62,
+      "publications": 1,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": {
+        "count": 1,
+        "minimum": 1586958,
+        "median": 1586958,
+        "mean": 1586958,
+        "p95": 1586958,
+        "maximum": 1586958
+      }
+    },
+    {
+      "id": "second-fight-approach-1",
+      "frames": 209,
+      "publications": 5,
+      "publishIntervalsFrames": {
+        "count": 4,
+        "minimum": 33,
+        "median": 46.0,
+        "mean": 46.75,
+        "p95": 62,
+        "maximum": 62
+      },
+      "renderCpuCycles": {
+        "count": 4,
+        "minimum": 928805,
+        "median": 1067432.5,
+        "mean": 1062787.5,
+        "p95": 1187480,
+        "maximum": 1187480
+      }
+    },
+    {
+      "id": "second-fight-approach-2",
+      "frames": 80,
+      "publications": 2,
+      "publishIntervalsFrames": {
+        "count": 1,
+        "minimum": 30,
+        "median": 30,
+        "mean": 30,
+        "p95": 30,
+        "maximum": 30
+      },
+      "renderCpuCycles": {
+        "count": 2,
+        "minimum": 739601,
+        "median": 1033674.5,
+        "mean": 1033674.5,
+        "p95": 1327748,
+        "maximum": 1327748
+      }
+    },
+    {
+      "id": "second-zombie-killed",
+      "frames": 238,
+      "publications": 5,
+      "publishIntervalsFrames": {
+        "count": 4,
+        "minimum": 33,
+        "median": 41.5,
+        "mean": 47.5,
+        "p95": 74,
+        "maximum": 74
+      },
+      "renderCpuCycles": {
+        "count": 5,
+        "minimum": 832180,
+        "median": 1018289,
+        "mean": 1204284.8,
+        "p95": 1835812,
+        "maximum": 1835812
+      }
+    },
+    {
+      "id": "slime-1",
+      "frames": 152,
+      "publications": 2,
+      "publishIntervalsFrames": {
+        "count": 1,
+        "minimum": 54,
+        "median": 54,
+        "mean": 54,
+        "p95": 54,
+        "maximum": 54
+      },
+      "renderCpuCycles": {
+        "count": 3,
+        "minimum": 836912,
+        "median": 1188339,
+        "mean": 1109330.6666666667,
+        "p95": 1302741,
+        "maximum": 1302741
+      }
+    },
+    {
+      "id": "slime-2",
+      "frames": 189,
+      "publications": 5,
+      "publishIntervalsFrames": {
+        "count": 4,
+        "minimum": 23,
+        "median": 29.5,
+        "mean": 34,
+        "p95": 54,
+        "maximum": 54
+      },
+      "renderCpuCycles": {
+        "count": 5,
+        "minimum": 606510,
+        "median": 746578,
+        "mean": 878191.6,
+        "p95": 1413995,
+        "maximum": 1413995
+      }
+    },
+    {
+      "id": "pause-slime-music-held",
+      "frames": 60,
+      "publications": 0,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": null
+    },
+    {
+      "id": "pause-slime-music-ignored-inputs",
+      "frames": 30,
+      "publications": 0,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": null
+    },
+    {
+      "id": "slime-one-dose",
+      "frames": 34,
+      "publications": 2,
+      "publishIntervalsFrames": {
+        "count": 1,
+        "minimum": 21,
+        "median": 21,
+        "mean": 21,
+        "p95": 21,
+        "maximum": 21
+      },
+      "renderCpuCycles": null
+    },
+    {
+      "id": "extension-1",
+      "frames": 245,
+      "publications": 8,
+      "publishIntervalsFrames": {
+        "count": 7,
+        "minimum": 22,
+        "median": 25,
+        "mean": 29.714285714285715,
+        "p95": 56,
+        "maximum": 56
+      },
+      "renderCpuCycles": {
+        "count": 9,
+        "minimum": 578333,
+        "median": 648474,
+        "mean": 739457,
+        "p95": 1436448,
+        "maximum": 1436448
+      }
+    },
+    {
+      "id": "extension-2",
+      "frames": 127,
+      "publications": 5,
+      "publishIntervalsFrames": {
+        "count": 4,
+        "minimum": 19,
+        "median": 22.5,
+        "mean": 23.5,
+        "p95": 30,
+        "maximum": 30
+      },
+      "renderCpuCycles": {
+        "count": 5,
+        "minimum": 536410,
+        "median": 654943,
+        "mean": 617219.4,
+        "p95": 696878,
+        "maximum": 696878
+      }
+    },
+    {
+      "id": "extension-3",
+      "frames": 144,
+      "publications": 7,
+      "publishIntervalsFrames": {
+        "count": 6,
+        "minimum": 17,
+        "median": 19.5,
+        "mean": 19.666666666666668,
+        "p95": 22,
+        "maximum": 22
+      },
+      "renderCpuCycles": {
+        "count": 7,
+        "minimum": 476892,
+        "median": 508866,
+        "mean": 552355.7142857143,
+        "p95": 841278,
+        "maximum": 841278
+      }
+    },
+    {
+      "id": "door-held-a-approach",
+      "frames": 58,
+      "publications": 1,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": {
+        "count": 3,
+        "minimum": 419081,
+        "median": 450550,
+        "mean": 559558.6666666666,
+        "p95": 809045,
+        "maximum": 809045
+      }
+    },
+    {
+      "id": "door-closed-push",
+      "frames": 90,
+      "publications": 2,
+      "publishIntervalsFrames": {
+        "count": 1,
+        "minimum": 13,
+        "median": 13,
+        "mean": 13,
+        "p95": 13,
+        "maximum": 13
+      },
+      "renderCpuCycles": {
+        "count": 2,
+        "minimum": 329116,
+        "median": 333532.5,
+        "mean": 333532.5,
+        "p95": 337949,
+        "maximum": 337949
+      }
+    },
+    {
+      "id": "door-wait-published-open",
+      "frames": 38,
+      "publications": 0,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": {
+        "count": 1,
+        "minimum": 639066,
+        "median": 639066,
+        "mean": 639066,
+        "p95": 639066,
+        "maximum": 639066
+      }
+    },
+    {
+      "id": "door-open-settled",
+      "frames": 38,
+      "publications": 1,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": null
+    },
+    {
+      "id": "first-open-doorway",
+      "frames": 38,
+      "publications": 1,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": {
+        "count": 1,
+        "minimum": 885288,
+        "median": 885288,
+        "mean": 885288,
+        "p95": 885288,
+        "maximum": 885288
+      }
+    },
+    {
+      "id": "third-live-view",
+      "frames": 38,
+      "publications": 1,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": {
+        "count": 2,
+        "minimum": 610102,
+        "median": 610484.0,
+        "mean": 610484,
+        "p95": 610866,
+        "maximum": 610866
+      }
+    },
+    {
+      "id": "third-wait-shot",
+      "frames": 131,
+      "publications": 6,
+      "publishIntervalsFrames": {
+        "count": 5,
+        "minimum": 23,
+        "median": 24,
+        "mean": 24,
+        "p95": 26,
+        "maximum": 26
+      },
+      "renderCpuCycles": {
+        "count": 4,
+        "minimum": 624440,
+        "median": 624752.0,
+        "mean": 624783.25,
+        "p95": 625189,
+        "maximum": 625189
+      }
+    },
+    {
+      "id": "third-zombie-killed",
+      "frames": 31,
+      "publications": 0,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": {
+        "count": 1,
+        "minimum": 605460,
+        "median": 605460,
+        "mean": 605460,
+        "p95": 605460,
+        "maximum": 605460
+      }
+    },
+    {
+      "id": "third-corpse-view",
+      "frames": 30,
+      "publications": 1,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": null
+    },
+    {
+      "id": "pre-exit-west-1",
+      "frames": 96,
+      "publications": 3,
+      "publishIntervalsFrames": {
+        "count": 2,
+        "minimum": 23,
+        "median": 24.5,
+        "mean": 24.5,
+        "p95": 26,
+        "maximum": 26
+      },
+      "renderCpuCycles": {
+        "count": 4,
+        "minimum": 605295,
+        "median": 622440.0,
+        "mean": 756959.75,
+        "p95": 1177664,
+        "maximum": 1177664
+      }
+    },
+    {
+      "id": "pre-exit-west-2",
+      "frames": 300,
+      "publications": 10,
+      "publishIntervalsFrames": {
+        "count": 9,
+        "minimum": 21,
+        "median": 28,
+        "mean": 28.555555555555557,
+        "p95": 43,
+        "maximum": 43
+      },
+      "renderCpuCycles": {
+        "count": 11,
+        "minimum": 517502,
+        "median": 652843,
+        "mean": 685861.5454545454,
+        "p95": 1167427,
+        "maximum": 1167427
+      }
+    },
+    {
+      "id": "pre-exit-west-side-face",
+      "frames": 273,
+      "publications": 14,
+      "publishIntervalsFrames": {
+        "count": 13,
+        "minimum": 14,
+        "median": 19,
+        "mean": 18.846153846153847,
+        "p95": 25,
+        "maximum": 25
+      },
+      "renderCpuCycles": {
+        "count": 14,
+        "minimum": 395192,
+        "median": 511609.0,
+        "mean": 511256.5714285714,
+        "p95": 713788,
+        "maximum": 713788
+      }
+    },
+    {
+      "id": "pre-exit-west-side",
+      "frames": 31,
+      "publications": 1,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": null
+    },
+    {
+      "id": "final-room-1",
+      "frames": 170,
+      "publications": 8,
+      "publishIntervalsFrames": {
+        "count": 7,
+        "minimum": 17,
+        "median": 19,
+        "mean": 21.428571428571427,
+        "p95": 31,
+        "maximum": 31
+      },
+      "renderCpuCycles": {
+        "count": 9,
+        "minimum": 441153,
+        "median": 495492,
+        "mean": 542670.6666666666,
+        "p95": 675192,
+        "maximum": 675192
+      }
+    },
+    {
+      "id": "final-room-2",
+      "frames": 242,
+      "publications": 9,
+      "publishIntervalsFrames": {
+        "count": 8,
+        "minimum": 23,
+        "median": 25.5,
+        "mean": 28.625,
+        "p95": 49,
+        "maximum": 49
+      },
+      "renderCpuCycles": {
+        "count": 8,
+        "minimum": 558998,
+        "median": 664260.5,
+        "mean": 756697.25,
+        "p95": 1168825,
+        "maximum": 1168825
+      }
+    },
+    {
+      "id": "final-room-3",
+      "frames": 38,
+      "publications": 1,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": {
+        "count": 1,
+        "minimum": 661085,
+        "median": 661085,
+        "mean": 661085,
+        "p95": 661085,
+        "maximum": 661085
+      }
+    },
+    {
+      "id": "final-room-4",
+      "frames": 39,
+      "publications": 1,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": {
+        "count": 2,
+        "minimum": 517026,
+        "median": 525390.0,
+        "mean": 525390,
+        "p95": 533754,
+        "maximum": 533754
+      }
+    },
+    {
+      "id": "final-room-5",
+      "frames": 38,
+      "publications": 2,
+      "publishIntervalsFrames": {
+        "count": 1,
+        "minimum": 21,
+        "median": 21,
+        "mean": 21,
+        "p95": 21,
+        "maximum": 21
+      },
+      "renderCpuCycles": {
+        "count": 2,
+        "minimum": 458861,
+        "median": 493991.5,
+        "mean": 493991.5,
+        "p95": 529122,
+        "maximum": 529122
+      }
+    },
+    {
+      "id": "final-room-6",
+      "frames": 39,
+      "publications": 2,
+      "publishIntervalsFrames": {
+        "count": 1,
+        "minimum": 17,
+        "median": 17,
+        "mean": 17,
+        "p95": 17,
+        "maximum": 17
+      },
+      "renderCpuCycles": {
+        "count": 2,
+        "minimum": 490472,
+        "median": 555695.0,
+        "mean": 555695,
+        "p95": 620918,
+        "maximum": 620918
+      }
+    },
+    {
+      "id": "exit-chamber-face",
+      "frames": 152,
+      "publications": 7,
+      "publishIntervalsFrames": {
+        "count": 6,
+        "minimum": 22,
+        "median": 23.5,
+        "mean": 23.833333333333332,
+        "p95": 27,
+        "maximum": 27
+      },
+      "renderCpuCycles": {
+        "count": 7,
+        "minimum": 539420,
+        "median": 565477,
+        "mean": 596234.4285714285,
+        "p95": 761271,
+        "maximum": 761271
+      }
+    },
+    {
+      "id": "exit-chamber",
+      "frames": 36,
+      "publications": 1,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": null
+    },
+    {
+      "id": "critical-chamber-west-1",
+      "frames": 97,
+      "publications": 4,
+      "publishIntervalsFrames": {
+        "count": 3,
+        "minimum": 22,
+        "median": 29,
+        "mean": 27.666666666666668,
+        "p95": 32,
+        "maximum": 32
+      },
+      "renderCpuCycles": {
+        "count": 4,
+        "minimum": 576299,
+        "median": 585830.0,
+        "mean": 677695,
+        "p95": 962821,
+        "maximum": 962821
+      }
+    },
+    {
+      "id": "critical-chamber-original-worst-face",
+      "frames": 213,
+      "publications": 8,
+      "publishIntervalsFrames": {
+        "count": 7,
+        "minimum": 20,
+        "median": 25,
+        "mean": 25,
+        "p95": 30,
+        "maximum": 30
+      },
+      "renderCpuCycles": {
+        "count": 8,
+        "minimum": 564286,
+        "median": 622958.0,
+        "mean": 801977,
+        "p95": 1982763,
+        "maximum": 1982763
+      }
+    },
+    {
+      "id": "critical-chamber-original-worst",
+      "frames": 61,
+      "publications": 0,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": null
+    },
+    {
+      "id": "critical-chamber-center-1",
+      "frames": 282,
+      "publications": 11,
+      "publishIntervalsFrames": {
+        "count": 10,
+        "minimum": 15,
+        "median": 24.5,
+        "mean": 28.1,
+        "p95": 56,
+        "maximum": 56
+      },
+      "renderCpuCycles": {
+        "count": 11,
+        "minimum": 502843,
+        "median": 612631,
+        "mean": 692361.1818181818,
+        "p95": 1028482,
+        "maximum": 1028482
+      }
+    },
+    {
+      "id": "critical-chamber-center-view-face",
+      "frames": 278,
+      "publications": 11,
+      "publishIntervalsFrames": {
+        "count": 10,
+        "minimum": 13,
+        "median": 23.5,
+        "mean": 24.6,
+        "p95": 39,
+        "maximum": 39
+      },
+      "renderCpuCycles": {
+        "count": 11,
+        "minimum": 495773,
+        "median": 550500,
+        "mean": 737835.1818181818,
+        "p95": 1770279,
+        "maximum": 1770279
+      }
+    },
+    {
+      "id": "critical-chamber-center-view",
+      "frames": 64,
+      "publications": 0,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": null
+    },
+    {
+      "id": "backtrack-1",
+      "frames": 122,
+      "publications": 2,
+      "publishIntervalsFrames": {
+        "count": 1,
+        "minimum": 78,
+        "median": 78,
+        "mean": 78,
+        "p95": 78,
+        "maximum": 78
+      },
+      "renderCpuCycles": {
+        "count": 3,
+        "minimum": 1309337,
+        "median": 1344272,
+        "mean": 1460672.3333333333,
+        "p95": 1728408,
+        "maximum": 1728408
+      }
+    },
+    {
+      "id": "backtrack-2",
+      "frames": 77,
+      "publications": 2,
+      "publishIntervalsFrames": {
+        "count": 1,
+        "minimum": 54,
+        "median": 54,
+        "mean": 54,
+        "p95": 54,
+        "maximum": 54
+      },
+      "renderCpuCycles": {
+        "count": 1,
+        "minimum": 1498840,
+        "median": 1498840,
+        "mean": 1498840,
+        "p95": 1498840,
+        "maximum": 1498840
+      }
+    },
+    {
+      "id": "backtrack-3",
+      "frames": 154,
+      "publications": 4,
+      "publishIntervalsFrames": {
+        "count": 3,
+        "minimum": 31,
+        "median": 35,
+        "mean": 34.333333333333336,
+        "p95": 37,
+        "maximum": 37
+      },
+      "renderCpuCycles": {
+        "count": 4,
+        "minimum": 889715,
+        "median": 904895.5,
+        "mean": 1021919.5,
+        "p95": 1388172,
+        "maximum": 1388172
+      }
+    },
+    {
+      "id": "backtrack-4",
+      "frames": 115,
+      "publications": 2,
+      "publishIntervalsFrames": {
+        "count": 1,
+        "minimum": 37,
+        "median": 37,
+        "mean": 37,
+        "p95": 37,
+        "maximum": 37
+      },
+      "renderCpuCycles": {
+        "count": 3,
+        "minimum": 913426,
+        "median": 921874,
+        "mean": 1051603.3333333333,
+        "p95": 1319510,
+        "maximum": 1319510
+      }
+    },
+    {
+      "id": "backtrack-5",
+      "frames": 96,
+      "publications": 2,
+      "publishIntervalsFrames": {
+        "count": 1,
+        "minimum": 51,
+        "median": 51,
+        "mean": 51,
+        "p95": 51,
+        "maximum": 51
+      },
+      "renderCpuCycles": {
+        "count": 2,
+        "minimum": 930026,
+        "median": 1125013.5,
+        "mean": 1125013.5,
+        "p95": 1320001,
+        "maximum": 1320001
+      }
+    },
+    {
+      "id": "backtrack-6",
+      "frames": 144,
+      "publications": 4,
+      "publishIntervalsFrames": {
+        "count": 3,
+        "minimum": 40,
+        "median": 40,
+        "mean": 43.666666666666664,
+        "p95": 51,
+        "maximum": 51
+      },
+      "renderCpuCycles": {
+        "count": 3,
+        "minimum": 957750,
+        "median": 968249,
+        "mean": 1172396.6666666667,
+        "p95": 1591191,
+        "maximum": 1591191
+      }
+    },
+    {
+      "id": "backtrack-7",
+      "frames": 67,
+      "publications": 1,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": {
+        "count": 1,
+        "minimum": 1690297,
+        "median": 1690297,
+        "mean": 1690297,
+        "p95": 1690297,
+        "maximum": 1690297
+      }
+    },
+    {
+      "id": "backtrack-8",
+      "frames": 176,
+      "publications": 3,
+      "publishIntervalsFrames": {
+        "count": 2,
+        "minimum": 49,
+        "median": 52.0,
+        "mean": 52,
+        "p95": 55,
+        "maximum": 55
+      },
+      "renderCpuCycles": {
+        "count": 3,
+        "minimum": 1174003,
+        "median": 1362088,
+        "mean": 1314115.6666666667,
+        "p95": 1406256,
+        "maximum": 1406256
+      }
+    },
+    {
+      "id": "backtrack-9",
+      "frames": 200,
+      "publications": 5,
+      "publishIntervalsFrames": {
+        "count": 4,
+        "minimum": 36,
+        "median": 43.0,
+        "mean": 43,
+        "p95": 50,
+        "maximum": 50
+      },
+      "renderCpuCycles": {
+        "count": 5,
+        "minimum": 876207,
+        "median": 1154585,
+        "mean": 1073494.8,
+        "p95": 1228917,
+        "maximum": 1228917
+      }
+    },
+    {
+      "id": "backtrack-10",
+      "frames": 163,
+      "publications": 3,
+      "publishIntervalsFrames": {
+        "count": 2,
+        "minimum": 40,
+        "median": 43.5,
+        "mean": 43.5,
+        "p95": 47,
+        "maximum": 47
+      },
+      "renderCpuCycles": {
+        "count": 4,
+        "minimum": 974363,
+        "median": 1106202.5,
+        "mean": 1099338.75,
+        "p95": 1210587,
+        "maximum": 1210587
+      }
+    },
+    {
+      "id": "backtrack-11",
+      "frames": 62,
+      "publications": 2,
+      "publishIntervalsFrames": {
+        "count": 1,
+        "minimum": 39,
+        "median": 39,
+        "mean": 39,
+        "p95": 39,
+        "maximum": 39
+      },
+      "renderCpuCycles": {
+        "count": 1,
+        "minimum": 762278,
+        "median": 762278,
+        "mean": 762278,
+        "p95": 762278,
+        "maximum": 762278
+      }
+    },
+    {
+      "id": "backtrack-12",
+      "frames": 129,
+      "publications": 4,
+      "publishIntervalsFrames": {
+        "count": 3,
+        "minimum": 22,
+        "median": 39,
+        "mean": 35,
+        "p95": 44,
+        "maximum": 44
+      },
+      "renderCpuCycles": {
+        "count": 4,
+        "minimum": 572227,
+        "median": 930116.0,
+        "mean": 872467.25,
+        "p95": 1057410,
+        "maximum": 1057410
+      }
+    },
+    {
+      "id": "backtrack-13",
+      "frames": 160,
+      "publications": 5,
+      "publishIntervalsFrames": {
+        "count": 4,
+        "minimum": 23,
+        "median": 28.0,
+        "mean": 30.5,
+        "p95": 43,
+        "maximum": 43
+      },
+      "renderCpuCycles": {
+        "count": 5,
+        "minimum": 636465,
+        "median": 715057,
+        "mean": 868023.4,
+        "p95": 1266030,
+        "maximum": 1266030
+      }
+    },
+    {
+      "id": "backtrack-14",
+      "frames": 129,
+      "publications": 3,
+      "publishIntervalsFrames": {
+        "count": 2,
+        "minimum": 35,
+        "median": 36.0,
+        "mean": 36,
+        "p95": 37,
+        "maximum": 37
+      },
+      "renderCpuCycles": {
+        "count": 3,
+        "minimum": 897446,
+        "median": 930167,
+        "mean": 922382,
+        "p95": 939533,
+        "maximum": 939533
+      }
+    },
+    {
+      "id": "backtrack-15",
+      "frames": 107,
+      "publications": 2,
+      "publishIntervalsFrames": {
+        "count": 1,
+        "minimum": 78,
+        "median": 78,
+        "mean": 78,
+        "p95": 78,
+        "maximum": 78
+      },
+      "renderCpuCycles": {
+        "count": 4,
+        "minimum": 604981,
+        "median": 761083.0,
+        "mean": 726309,
+        "p95": 778089,
+        "maximum": 778089
+      }
+    },
+    {
+      "id": "first-encounter-dead-reloaded-face",
+      "frames": 303,
+      "publications": 13,
+      "publishIntervalsFrames": {
+        "count": 12,
+        "minimum": 20,
+        "median": 22.0,
+        "mean": 22.416666666666668,
+        "p95": 26,
+        "maximum": 26
+      },
+      "renderCpuCycles": {
+        "count": 13,
+        "minimum": 513023,
+        "median": 580481,
+        "mean": 648260.0769230769,
+        "p95": 1424890,
+        "maximum": 1424890
+      }
+    },
+    {
+      "id": "first-encounter-dead-reloaded",
+      "frames": 41,
+      "publications": 0,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": null
+    },
+    {
+      "id": "return-1",
+      "frames": 73,
+      "publications": 2,
+      "publishIntervalsFrames": {
+        "count": 1,
+        "minimum": 44,
+        "median": 44,
+        "mean": 44,
+        "p95": 44,
+        "maximum": 44
+      },
+      "renderCpuCycles": {
+        "count": 3,
+        "minimum": 749886,
+        "median": 833625,
+        "mean": 897161.3333333334,
+        "p95": 1107973,
+        "maximum": 1107973
+      }
+    },
+    {
+      "id": "return-2",
+      "frames": 126,
+      "publications": 3,
+      "publishIntervalsFrames": {
+        "count": 2,
+        "minimum": 45,
+        "median": 58.5,
+        "mean": 58.5,
+        "p95": 72,
+        "maximum": 72
+      },
+      "renderCpuCycles": {
+        "count": 2,
+        "minimum": 1483187,
+        "median": 1639024.5,
+        "mean": 1639024.5,
+        "p95": 1794862,
+        "maximum": 1794862
+      }
+    },
+    {
+      "id": "return-3",
+      "frames": 147,
+      "publications": 2,
+      "publishIntervalsFrames": {
+        "count": 1,
+        "minimum": 70,
+        "median": 70,
+        "mean": 70,
+        "p95": 70,
+        "maximum": 70
+      },
+      "renderCpuCycles": {
+        "count": 2,
+        "minimum": 1433432,
+        "median": 1599659.5,
+        "mean": 1599659.5,
+        "p95": 1765887,
+        "maximum": 1765887
+      }
+    },
+    {
+      "id": "return-4",
+      "frames": 130,
+      "publications": 2,
+      "publishIntervalsFrames": {
+        "count": 1,
+        "minimum": 81,
+        "median": 81,
+        "mean": 81,
+        "p95": 81,
+        "maximum": 81
+      },
+      "renderCpuCycles": {
+        "count": 2,
+        "minimum": 1571262,
+        "median": 1816083.0,
+        "mean": 1816083,
+        "p95": 2060904,
+        "maximum": 2060904
+      }
+    },
+    {
+      "id": "return-5",
+      "frames": 84,
+      "publications": 1,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": {
+        "count": 1,
+        "minimum": 1695767,
+        "median": 1695767,
+        "mean": 1695767,
+        "p95": 1695767,
+        "maximum": 1695767
+      }
+    },
+    {
+      "id": "return-6",
+      "frames": 131,
+      "publications": 2,
+      "publishIntervalsFrames": {
+        "count": 1,
+        "minimum": 61,
+        "median": 61,
+        "mean": 61,
+        "p95": 61,
+        "maximum": 61
+      },
+      "renderCpuCycles": {
+        "count": 2,
+        "minimum": 1576031,
+        "median": 1633867.0,
+        "mean": 1633867,
+        "p95": 1691703,
+        "maximum": 1691703
+      }
+    },
+    {
+      "id": "return-7",
+      "frames": 160,
+      "publications": 4,
+      "publishIntervalsFrames": {
+        "count": 3,
+        "minimum": 38,
+        "median": 49,
+        "mean": 46.666666666666664,
+        "p95": 53,
+        "maximum": 53
+      },
+      "renderCpuCycles": {
+        "count": 4,
+        "minimum": 972809,
+        "median": 1196219.0,
+        "mean": 1196479.25,
+        "p95": 1420670,
+        "maximum": 1420670
+      }
+    },
+    {
+      "id": "return-8",
+      "frames": 231,
+      "publications": 6,
+      "publishIntervalsFrames": {
+        "count": 5,
+        "minimum": 28,
+        "median": 32,
+        "mean": 34.2,
+        "p95": 45,
+        "maximum": 45
+      },
+      "renderCpuCycles": {
+        "count": 7,
+        "minimum": 635377,
+        "median": 827101,
+        "mean": 842923.8571428572,
+        "p95": 1113977,
+        "maximum": 1113977
+      }
+    },
+    {
+      "id": "return-9",
+      "frames": 104,
+      "publications": 3,
+      "publishIntervalsFrames": {
+        "count": 2,
+        "minimum": 34,
+        "median": 35.5,
+        "mean": 35.5,
+        "p95": 37,
+        "maximum": 37
+      },
+      "renderCpuCycles": {
+        "count": 3,
+        "minimum": 814676,
+        "median": 844772,
+        "mean": 849804,
+        "p95": 889964,
+        "maximum": 889964
+      }
+    },
+    {
+      "id": "return-10",
+      "frames": 144,
+      "publications": 6,
+      "publishIntervalsFrames": {
+        "count": 5,
+        "minimum": 24,
+        "median": 24,
+        "mean": 25.8,
+        "p95": 32,
+        "maximum": 32
+      },
+      "renderCpuCycles": {
+        "count": 5,
+        "minimum": 610782,
+        "median": 620826,
+        "mean": 633270.8,
+        "p95": 668729,
+        "maximum": 668729
+      }
+    },
+    {
+      "id": "return-11",
+      "frames": 96,
+      "publications": 1,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": {
+        "count": 3,
+        "minimum": 537343,
+        "median": 673562,
+        "mean": 821187.3333333334,
+        "p95": 1252657,
+        "maximum": 1252657
+      }
+    },
+    {
+      "id": "return-12",
+      "frames": 115,
+      "publications": 5,
+      "publishIntervalsFrames": {
+        "count": 4,
+        "minimum": 18,
+        "median": 23.0,
+        "mean": 22,
+        "p95": 24,
+        "maximum": 24
+      },
+      "renderCpuCycles": {
+        "count": 5,
+        "minimum": 577460,
+        "median": 581479,
+        "mean": 584258.8,
+        "p95": 596888,
+        "maximum": 596888
+      }
+    },
+    {
+      "id": "return-13",
+      "frames": 153,
+      "publications": 6,
+      "publishIntervalsFrames": {
+        "count": 5,
+        "minimum": 20,
+        "median": 26,
+        "mean": 24.2,
+        "p95": 27,
+        "maximum": 27
+      },
+      "renderCpuCycles": {
+        "count": 6,
+        "minimum": 565212,
+        "median": 608244.5,
+        "mean": 612796,
+        "p95": 681123,
+        "maximum": 681123
+      }
+    },
+    {
+      "id": "return-14",
+      "frames": 77,
+      "publications": 3,
+      "publishIntervalsFrames": {
+        "count": 2,
+        "minimum": 23,
+        "median": 25.5,
+        "mean": 25.5,
+        "p95": 28,
+        "maximum": 28
+      },
+      "renderCpuCycles": {
+        "count": 4,
+        "minimum": 512951,
+        "median": 564660.0,
+        "mean": 572001,
+        "p95": 645733,
+        "maximum": 645733
+      }
+    },
+    {
+      "id": "return-15",
+      "frames": 77,
+      "publications": 4,
+      "publishIntervalsFrames": {
+        "count": 3,
+        "minimum": 21,
+        "median": 21,
+        "mean": 22,
+        "p95": 24,
+        "maximum": 24
+      },
+      "renderCpuCycles": {
+        "count": 3,
+        "minimum": 529068,
+        "median": 533021,
+        "mean": 641824,
+        "p95": 863383,
+        "maximum": 863383
+      }
+    },
+    {
+      "id": "second-encounter-dead-reloaded-face",
+      "frames": 154,
+      "publications": 6,
+      "publishIntervalsFrames": {
+        "count": 5,
+        "minimum": 21,
+        "median": 23,
+        "mean": 23.8,
+        "p95": 27,
+        "maximum": 27
+      },
+      "renderCpuCycles": {
+        "count": 7,
+        "minimum": 542198,
+        "median": 581235,
+        "mean": 599001.2857142857,
+        "p95": 749013,
+        "maximum": 749013
+      }
+    },
+    {
+      "id": "third-encounter-dead-reloaded",
+      "frames": 36,
+      "publications": 1,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": null
+    },
+    {
+      "id": "switch-approach-1",
+      "frames": 38,
+      "publications": 1,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": {
+        "count": 1,
+        "minimum": 813505,
+        "median": 813505,
+        "mean": 813505,
+        "p95": 813505,
+        "maximum": 813505
+      }
+    },
+    {
+      "id": "complete-held-inputs",
+      "frames": 120,
+      "publications": 0,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": null
+    },
+    {
+      "id": "completed-settled",
+      "frames": 180,
+      "publications": 0,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": null
+    },
+    {
+      "id": "reset-start",
+      "frames": 180,
+      "publications": 2,
+      "publishIntervalsFrames": {
+        "count": 1,
+        "minimum": 48,
+        "median": 48,
+        "mean": 48,
+        "p95": 48,
+        "maximum": 48
+      },
+      "renderCpuCycles": {
+        "count": 1,
+        "minimum": 849233,
+        "median": 849233,
+        "mean": 849233,
+        "p95": 849233,
+        "maximum": 849233
+      }
+    },
+    {
+      "id": "final-spawn",
+      "frames": 60,
+      "publications": 0,
+      "publishIntervalsFrames": null,
+      "renderCpuCycles": null
+    }
+  ],
+  "romSha256": "867f9ae9999f895bea3b68f5ca13f8a2ff73047fee0b9f2a696fdb542dc4e249",
+  "provenance": {
+    "romSha256": "867f9ae9999f895bea3b68f5ca13f8a2ff73047fee0b9f2a696fdb542dc4e249",
+    "controllerOnly": true,
+    "stockNtsc": true,
+    "ramInjected": false,
+    "romUnmodified": true,
+    "twoPages": true,
+    "completeRoute": true,
+    "observerSha256": "9d448d240e50e03b50d3a82cb01a1a26da83a45e627373be7ed93d52d3a7e340",
+    "driverSha256": "61abd22de14bc55f635d6400fa8a6c5775c67c7baf5a6359b477ff8c8e40362b",
+    "mesenSha256": "ce4446a92096a024145e6ed2793cce8b489460bb3ac034cd9d1d77d96109fced"
+  }
+}

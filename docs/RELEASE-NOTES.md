@@ -1,8 +1,11 @@
-# Performance update — playtest candidate
+# v0.2.0 — Performance Update
 
-`prototype-2026-10-26-performance-rc1` consolidates the accepted experiments
-into the main repository. It is ready for a new gameplay pass; the hosted
-browser version and itch.io download have not been changed in this update.
+Prepared on **October 27, 2026**, following the author's successful playtest of
+`prototype-2026-10-26-performance-rc1`. Finalization changes title presentation
+only: the caption now reads **PROTOTYPE 0.2.0**, with a new period glyph stored
+in the title-only assets. Packed title assets and startup references relocate; rendering and gameplay
+logic/data remain unchanged. The hosted browser version and itch.io download have
+not been updated as part of release preparation.
 
 - Reuse valid backgrounds for stationary actor updates and avoid repeated
   tile, floor and arithmetic work during fresh rendering.
@@ -26,10 +29,11 @@ and faster work does not improve every short-window presentation measurement.
 See the [comparison and limitations](PERFORMANCE-UPDATE-20261026.md).
 
 The [ROM](../release/hangar-ntsc.nes), [metadata](../release/release.json) and
-[checksum](../release/SHA256SUMS) identify this candidate. Its title still reads
-**BUILD 2026-10-24**, preserving the exact user-tested experimental binary.
-The [verification record](VERIFICATION.md) distinguishes the build checks,
-existing emulator measurements and gameplay testing still to be completed.
+[checksum](../release/SHA256SUMS) identify v0.2.0. The
+[verification record](VERIFICATION.md) distinguishes the title-only change,
+reproducible build, accepted playtest and historical performance measurements.
+The [archived candidate record](../verification/performance-rc1-release.json)
+preserves the identity of the binary used for those measurements.
 
 # Previous door reach and alias credit
 
@@ -53,7 +57,7 @@ Only 25 ROM bytes change: two door-range constants and 23 credits nametable
 bytes. Linked segment sizes and RAM allocations are unchanged. The [archived release record](../verification/door-reach-release.json)
 identifies this historical release, published on **October 24, 2026**.
 The hosted browser ROM still uses this version, while the repository download
-now contains the performance candidate above. See
+now contains v0.2.0 above. See
 [deployment](DEPLOYMENT.md) for publication and live-site checks, and
 [verification](VERIFICATION.md) for the build and gameplay test scope.
 
@@ -84,9 +88,9 @@ ground. Its strict **3.5-unit pickup radius**, ten-round refill, collection
 sound and once-only behavior are unchanged. See [ammo notes](AMMO-PICKUP.md).
 
 This was an intermediate local candidate. Its features were included in the
-October 24 door-reach release and remain in the current performance candidate.
+October 24 door-reach release and remain in v0.2.0.
 The [current ROM](../release/hangar-ntsc.nes), [release record](../release/release.json)
-and [checksum](../release/SHA256SUMS) identify the candidate at the top of this
+and [checksum](../release/SHA256SUMS) identify the version at the top of this
 page. Rebuild it with `python3 tools/build.py --verify`. Current and historical
 evidence are distinguished in [verification](VERIFICATION.md).
 

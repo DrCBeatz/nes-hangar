@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "verifiedOn": "2026-10-27",
+  "passed": true,
+  "baselineSha256": "70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817",
+  "romSha256": "c100366ffc5b86e68ff441f2a2bd8d624a7c6f1e8d966c226f1894eeedd20977",
+  "changedProductionInputs": [
+    "tools/newtitle_logo.py"
+  ],
+  "changedGeneratedAssets": [
+    "newtitle-logo-nametable.bin",
+    "newtitle-logo-packed.bin",
+    "newtitle-logo-patterns.bin"
+  ],
+  "changedRomBytes": 1196,
+  "changedBytesByPrgBank": {
+    "0": 0,
+    "1": 0,
+    "2": 1194,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 2
+  },
+  "bootBankBytesBefore": 8020,
+  "bootBankBytesAfter": 8028,
+  "bootOnlyPackedGlyphBytes": 8,
+  "logoNametableChangedBytes": 16,
+  "logoNametableChangedRow": 23,
+  "titleCaption": "PROTOTYPE 0.2.0",
+  "fixedColdStartRelocations": [
+    {
+      "instructionAddress": "0xc063",
+      "opcode": "JSR",
+      "target": "title_present",
+      "before": "0x9ce7",
+      "after": "0x9cef",
+      "scope": "Cold-start reference; same instruction and target routine."
+    },
+    {
+      "instructionAddress": "0xf4e5",
+      "opcode": "JMP",
+      "target": "music_init_banked",
+      "before": "0x9eee",
+      "after": "0x9ef6",
+      "scope": "Cold-start reference; same instruction and target routine."
+    }
+  ],
+  "unchangedBanks": [
+    0,
+    1,
+    3,
+    4,
+    5,
+    6
+  ],
+  "allOtherSegmentSizesUnchanged": true,
+  "headerAndCartridgeCapacityUnchanged": true,
+  "gameplayAndRenderingLogicUnchanged": true,
+  "gameplayAssetsAndSoundtrackUnchanged": true,
+  "scope": "Binary/symbol/generated-asset comparison against the accepted candidate. Title caption plus one boot-only period glyph and linker relocations; fixed-bank differences are precisely two low-byte operands of cold-start transfers. No new FPS or latency benchmark was run."
+}

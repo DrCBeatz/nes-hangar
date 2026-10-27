@@ -146,12 +146,21 @@ def write_assets(build, font, preview_dir=None, palette_name=DEFAULT_PALETTE):
                 lookup[pattern] = FIRST_TILE + len(extra)
                 extra.append(pattern)
             name[ty * 32 + tx] = lookup[pattern]
+    # The shared gameplay font has no period: its remaining fixed tiles hold
+    # weapon art. Append a boot-only glyph to the logo's temporary CHR tiles.
+    # Paired rows retain the existing two-for-one title packing format.
+    period = bytes([0, 0, 0, 0, 0, 0, 0x18, 0x18] + [0] * 8)
+    if period not in lookup:
+        lookup[period] = FIRST_TILE + len(extra)
+        extra.append(period)
+    title_font = dict(font, **{'.': lookup[period]})
     lines = []
     for row, text in ((19, 'HANGAR'), (21, 'UNOFFICIAL NES PROTOTYPE'),
-                      (23, 'BUILD 2026-10-24'), (26, 'START PLAY / SELECT CREDITS')):
+                      (23, 'PROTOTYPE 0.2.0'), (26, 'START PLAY / SELECT CREDITS')):
         col = (32 - len(text)) // 2
-        assert set(text) <= set(font) and all(font[c] < FIRST_TILE for c in text)
-        name[row * 32 + col:row * 32 + col + len(text)] = bytes(font[c] for c in text)
+        assert set(text) <= set(title_font)
+        assert all(title_font[c] < FIRST_TILE or c == '.' for c in text)
+        name[row * 32 + col:row * 32 + col + len(text)] = bytes(title_font[c] for c in text)
         lines.append(dict(row=row, col=col, text=text))
         for x in range(col, col + len(text)):
             at = 960 + row // 4 * 8 + x // 4
@@ -192,7 +201,9 @@ def write_assets(build, font, preview_dir=None, palette_name=DEFAULT_PALETTE):
                   patternBytes=len(raw), storedPatternBytes=len(packed), uploadedPatternBytes=len(raw), nametableBytes=len(name), paletteBytes=len(palette),
                   additionalAssetBytes=sum(len(v) for v in output.values()), patternTable=0, fontPreserved=True,
                   patternPacking='Each stored byte is emitted twice, restoring adjacent identical pattern rows in each plane',
-                  lines=lines, spriteRendering=False, gameplayResourceCost=0,
+                  lines=lines, titleGlyphMap=title_font,
+                  bootOnlyGlyphs={'.': lookup[period]},
+                  spriteRendering=False, gameplayResourceCost=0,
                   sha256={k: hashlib.sha256(v).hexdigest() for k, v in output.items()})
     if preview_dir is not None:
         preview = Path(preview_dir)

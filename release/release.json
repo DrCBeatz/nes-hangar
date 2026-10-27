@@ -1,14 +1,14 @@
 {
   "title": "Hangar \u2014 an NES FPS prototype",
   "rom": "hangar-ntsc.nes",
-  "sha256": "70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817",
+  "sha256": "c100366ffc5b86e68ff441f2a2bd8d624a7c6f1e8d966c226f1894eeedd20977",
   "bytes": 131088,
   "region": "NTSC",
   "mapper": "MMC1",
   "prgBytes": 131072,
   "chrRamBytes": 8192,
   "workRamBytes": 8192,
-  "version": "prototype-2026-10-26-performance-rc1",
+  "version": "v0.2.0",
   "sourceBuild": "python3 tools/build.py --verify",
   "titlePalette": "bronze",
   "music": {
@@ -19,7 +19,7 @@
     "source": "music/e1m1/e1m1-drcbeatz.s",
     "sourceSha256": "d5886648b0045e97de9172af06934dff190a873286a7aff62599c4667235427a"
   },
-  "status": "repository release candidate; user playtest pending; browser remains October 24 release",
+  "status": "prepared release; accepted gameplay playtest; publication pending",
   "credits": {
     "open": "Select from bronze logo",
     "back": "B to logo",
@@ -34,7 +34,20 @@
   "playUrl": "https://8bitpocket.app/?game=hangar",
   "previousPublishedVersion": "prototype-2026-10-24-door-reach",
   "previousPublishedSha256": "db258e4c9c57ff3ef9f4bc8eb732f31b65eec85a1a639e7a9787a90dde1722a9",
-  "titleBuildCaption": "2026-10-24",
+  "titleBuildCaption": "PROTOTYPE 0.2.0",
   "notes": "docs/PERFORMANCE-UPDATE-20261026.md",
-  "browserDeploymentUpdated": false
+  "browserDeploymentUpdated": false,
+  "releaseName": "Performance Update",
+  "preparedOn": "2026-10-27",
+  "acceptedCandidateSha256": "70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817",
+  "userPlaytest": {
+    "date": "2026-10-27",
+    "result": "User reports consolidated candidate is good for the next version; specific emulator settings and coverage were not restated."
+  },
+  "downloadFilename": "hangar-v0.2.0-ntsc.nes",
+  "itchPublicationUpdated": false,
+  "finalUserPlaytest": {
+    "date": "2026-10-27",
+    "result": "User tested the final v0.2.0 build and requested GitHub and browser deployment; emulator settings and route details were not restated."
+  }
 }

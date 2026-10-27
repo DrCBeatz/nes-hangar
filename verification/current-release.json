@@ -1,12 +1,13 @@
 {
   "schemaVersion": 2,
-  "verifiedOn": "2026-10-26",
+  "verifiedOn": "2026-10-27",
   "passed": true,
-  "scope": "Consolidation and exact reproducible build; final user end-to-end playtest pending.",
-  "version": "prototype-2026-10-26-performance-rc1",
+  "scope": "Prepared v0.2.0 package, with accepted candidate gameplay and focused validation of the versioned title. Publication remains pending.",
+  "version": "v0.2.0",
   "artifact": {
     "path": "release/hangar-ntsc.nes",
-    "sha256": "70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817",
+    "downloadFilename": "hangar-v0.2.0-ntsc.nes",
+    "sha256": "c100366ffc5b86e68ff441f2a2bd8d624a7c6f1e8d966c226f1894eeedd20977",
     "bytes": 131088,
     "region": "NTSC",
     "mapper": "MMC1",
@@ -15,14 +16,9 @@
     "workRamBytes": 8192
   },
   "baseline": {
-    "sha256": "db258e4c9c57ff3ef9f4bc8eb732f31b65eec85a1a639e7a9787a90dde1722a9",
-    "version": "prototype-2026-10-24-door-reach",
-    "evidence": "verification/door-reach-release.json"
-  },
-  "acceptedExperimentalBuild": {
-    "name": "hangar-axis-rejection",
     "sha256": "70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817",
-    "byteIdentical": true
+    "version": "prototype-2026-10-26-performance-rc1",
+    "evidence": "verification/performance-rc1-release.json"
   },
   "music": {
     "enabled": true,
@@ -71,25 +67,31 @@
   "integrity": {
     "sourceHashCount": 77,
     "freshStandaloneRebuild": true,
-    "rebuildEvidence": "verification/current-build.json"
+    "rebuildEvidence": "verification/current-build.json",
+    "binaryScopeEvidence": "verification/v0.2.0-binary-scope.json"
+  },
+  "userPlaytest": {
+    "date": "2026-10-27",
+    "result": "User reports consolidated candidate is good for the next version; specific emulator settings and coverage were not restated."
   },
   "runtimeEvidence": {
-    "scope": "Previously measured accepted experimental binary; no new runtime suite was run during byte-identical consolidation.",
-    "producerSummary": "verification/performance-20261026/producer-summary.json",
-    "axisContract": "verification/performance-20261026/axis-contract.json",
-    "axisAudit": "verification/performance-20261026/axis-contract-audit.json",
-    "liveComparison": "verification/performance-20261026/live-axis-comparison.json",
-    "liveAudit": "verification/performance-20261026/live-axis-audit.json",
-    "detailedVerification": "verification/performance-20261026/axis-verification.txt",
-    "matchedLiveReport": "verification/performance-20261026/live-report.txt"
+    "scope": "Fresh focused versioned-title/startup test only. Prior renderer tests retain their accepted experimental ROM identity; binary-scope audit links unchanged gameplay to v0.2.0.",
+    "startup": "verification/v0.2.0-title.json",
+    "startupChecks": 18,
+    "startupRefreshes": 1170,
+    "previousCandidate": "verification/performance-rc1-release.json"
   },
   "performanceEvidence": "verification/performance-update-20261026.json",
   "physicalConsoleTested": false,
   "newControllerOnlyCompleteLevelTest": false,
-  "userPlaytestPending": true,
+  "userCandidatePlaytestAccepted": true,
   "liveDeploymentChanged": false,
   "itchPublicationChanged": false,
-  "titleBuildCaption": "2026-10-24",
-  "titleCaptionNote": "Preserved to retain exact identity with the accepted experimental ROM; release metadata/checksum identify this candidate.",
-  "publicAuthorCredit": "Dr C Beatz"
+  "titleBuildCaption": "PROTOTYPE 0.2.0",
+  "publicAuthorCredit": "Dr C Beatz",
+  "finalUserPlaytest": {
+    "date": "2026-10-27",
+    "result": "User tested the final v0.2.0 build and requested GitHub and browser deployment; emulator settings and route details were not restated."
+  },
+  "userFinalReleasePlaytestAccepted": true
 }

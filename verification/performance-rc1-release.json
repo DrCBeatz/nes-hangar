@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 2,
+  "verifiedOn": "2026-10-26",
+  "passed": true,
+  "scope": "Consolidation and exact reproducible build; final user end-to-end playtest pending.",
+  "version": "prototype-2026-10-26-performance-rc1",
+  "artifact": {
+    "path": "release/hangar-ntsc.nes",
+    "sha256": "70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817",
+    "bytes": 131088,
+    "region": "NTSC",
+    "mapper": "MMC1",
+    "prgRomBytes": 131072,
+    "chrRamBytes": 8192,
+    "workRamBytes": 8192
+  },
+  "baseline": {
+    "sha256": "db258e4c9c57ff3ef9f4bc8eb732f31b65eec85a1a639e7a9787a90dde1722a9",
+    "version": "prototype-2026-10-24-door-reach",
+    "evidence": "verification/door-reach-release.json"
+  },
+  "acceptedExperimentalBuild": {
+    "name": "hangar-axis-rejection",
+    "sha256": "70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817",
+    "byteIdentical": true
+  },
+  "music": {
+    "enabled": true,
+    "engine": "FamiStudio",
+    "channels": 4,
+    "dpcm": false,
+    "song": "E1M1 (Dr. C Beatz arrangement)",
+    "source": "music/e1m1/e1m1-drcbeatz.s",
+    "sourceSha256": "d5886648b0045e97de9172af06934dff190a873286a7aff62599c4667235427a",
+    "features": {
+      "famiTrackerTempo": false,
+      "volumeTrack": true,
+      "vibrato": true,
+      "dutyCycleEffect": false
+    },
+    "ramBytes": 205,
+    "zpAliasBytes": 8,
+    "playerOption": {
+      "screen": "controls guide",
+      "default": "on",
+      "left": "off",
+      "right": "on",
+      "skipsSequencerWhenOff": true,
+      "preservesSoundEffects": true,
+      "survivesLevelRestart": true,
+      "coldResetRestoresDefault": true
+    }
+  },
+  "rendererOptimizations": {
+    "geometryListPixels": 16,
+    "exactPositionAxisGate": true,
+    "axisInitBank": 6,
+    "axisScratchBytes": 4,
+    "cameraRetry": true,
+    "spriteMask": true,
+    "maskedPaint": true,
+    "exactArithmetic": true,
+    "uploadCompletion": true,
+    "streamPatternUpload": true,
+    "guardedPattern8": true,
+    "cachedFloorProjector": true,
+    "geometrySetupCheckpoint": true,
+    "quotient16": true,
+    "reclaimedLegacyHelpers": true
+  },
+  "integrity": {
+    "sourceHashCount": 77,
+    "freshStandaloneRebuild": true,
+    "rebuildEvidence": "verification/performance-rc1-build.json"
+  },
+  "runtimeEvidence": {
+    "scope": "Previously measured accepted experimental binary; no new runtime suite was run during byte-identical consolidation.",
+    "producerSummary": "verification/performance-20261026/producer-summary.json",
+    "axisContract": "verification/performance-20261026/axis-contract.json",
+    "axisAudit": "verification/performance-20261026/axis-contract-audit.json",
+    "liveComparison": "verification/performance-20261026/live-axis-comparison.json",
+    "liveAudit": "verification/performance-20261026/live-axis-audit.json",
+    "detailedVerification": "verification/performance-20261026/axis-verification.txt",
+    "matchedLiveReport": "verification/performance-20261026/live-report.txt"
+  },
+  "performanceEvidence": "verification/performance-update-20261026.json",
+  "physicalConsoleTested": false,
+  "newControllerOnlyCompleteLevelTest": false,
+  "userPlaytestPending": true,
+  "liveDeploymentChanged": false,
+  "itchPublicationChanged": false,
+  "titleBuildCaption": "2026-10-24",
+  "titleCaptionNote": "Preserved to retain exact identity with the accepted experimental ROM; release metadata/checksum identify this candidate.",
+  "publicAuthorCredit": "Dr C Beatz",
+  "archiveNote": "Historical accepted October 26 candidate, retained when v0.2.0 adds the title version caption. Artifact paths record the locations at measurement time."
+}

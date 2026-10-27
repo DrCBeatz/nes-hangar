@@ -6,9 +6,10 @@ screen. The ordinary hosted picker and local **Open ROM** loader remain availabl
 
 The current hosted ROM is `prototype-2026-10-24-door-reach`, the previously
 published release identified below. The repository's `release/hangar-ntsc.nes`
-is now `prototype-2026-10-26-performance-rc1`, awaiting the user's playtest
-before a separate browser deployment. Updating this repository does not deploy
-8-Bit Pocket. See the [candidate notes](PERFORMANCE-UPDATE-20261026.md).
+is now the prepared **v0.2.0 — Performance Update**. Its gameplay candidate
+has passed the author's playtest; browser and itch.io publication have not been
+performed for this version. Updating this repository does not deploy
+8-Bit Pocket. See the [performance notes](PERFORMANCE-UPDATE-20261026.md).
 
 The hosted October 24 release includes the bronze logo, optional
 Dr C Beatz soundtrack, revised interactions and ammo placement, credits and

@@ -1,10 +1,11 @@
 {
   "schemaVersion": 1,
-  "verifiedOn": "2026-10-26",
+  "verifiedOn": "2026-10-27",
   "passed": true,
-  "romSha256": "70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817",
+  "version": "v0.2.0",
+  "romSha256": "c100366ffc5b86e68ff441f2a2bd8d624a7c6f1e8d966c226f1894eeedd20977",
   "command": "python3 -I -S -B tools/build.py --verify",
-  "additionalCommand": "python3 tools/build.py --verify",
+  "additionalCommand": "python3 tools/build.py",
   "freshDirectory": true,
   "outsideResearchWorkspace": true,
   "noPriorBuildOutput": true,
@@ -81,7 +82,7 @@
     "tools/map_math.py": "50298e83915f0d6203a2ec7b6f73c077b1f0c41df2049e46ba1fa26036b3c873",
     "tools/medkit_assets.py": "d24bb0e75bdfe61a6b68181431519f1a998ca0f67ab5a262e6965b4a3c464254",
     "tools/movement_reference.py": "48a3f49c12040d9a43a0842457bfdd81da990eec69c4e01bbcd00b9d015211b2",
-    "tools/newtitle_logo.py": "97597afc2e75e9198063fb2531eb4b8fb4f4d57bc2ae6d732c18c93c02861ba1",
+    "tools/newtitle_logo.py": "70d0767ba4f1197587b131cc2d2c93e136f351aa36d78fa526db67b6652987f9",
     "tools/pistol_assets.py": "73a47598db88e90996dc65c28bc88bb15d2d695f14e14fd2293801cbf2ee39be",
     "tools/results_assets.py": "7c7de2f752d2d0494d1ebd4b0acdbd0fd58d01f138a0efaacfeace4433146706",
     "tools/slime_damage.py": "7c72e23d5d3c886bbaa1389063de9218f79376c4d6451d8156535dc92142a79e",
@@ -104,7 +105,7 @@
     "WORLD_REUSE_RAM": 5,
     "ACTOR_ART": 8127,
     "AXIS_INIT": 67,
-    "BOOTDATA": 8020,
+    "BOOTDATA": 8028,
     "CREDITSDATA": 1177,
     "MAPDATA": 8184,
     "WORLD_REUSE_CODE": 158,
@@ -183,10 +184,7 @@
     "reclaimedLegacyHelpers": true
   },
   "repositoryAndCleanManifestsIdentical": true,
-  "acceptedExperimentalRomIdentical": true,
-  "acceptedExperimentSourceDifferences": [
-    "tools/build.py"
-  ],
-  "sourceDifferenceExplanation": "Builder help text and manifest metadata only: experiment record renamed rendererOptimizations. All ROM-producing inputs remain identical to the accepted axis-rejection candidate.",
-  "scope": "Two successful builds: repository and fresh standalone directory containing only src/tools/assets/music/vendor and the release reference. No existing generated files, research imports, WAD, emulator or external Python packages needed in the standalone build. Both reproduce the user-tested candidate exactly. This is consolidation verification, not a new gameplay or physical-console test."
+  "binaryScopeEvidence": "verification/v0.2.0-binary-scope.json",
+  "startupEvidence": "verification/v0.2.0-title.json",
+  "scope": "Initial repository build and clean independent standard-library-only --verify rebuild produce identical ROM and manifest. The sole production input change from the playtested candidate is title asset generation. This is build verification; user playtest of the prior candidate and focused current UI testing are recorded separately."
 }

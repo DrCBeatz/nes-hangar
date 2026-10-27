@@ -1,23 +1,70 @@
 # Verification
 
-## Current performance candidate
+## Current prepared release: v0.2.0
+
+**v0.2.0 — Performance Update** was prepared on October 27, 2026, following
+the author's successful playtest of the consolidated performance candidate.
+The [reference ROM](../release/hangar-ntsc.nes) is 131,088 bytes, SHA-256:
+
+```text
+c100366ffc5b86e68ff441f2a2bd8d624a7c6f1e8d966c226f1894eeedd20977
+```
+
+The [release record](../verification/current-release.json) and
+[build record](../verification/current-build.json) identify the final source
+and binary. The title now reads **PROTOTYPE 0.2.0**, with a new period glyph
+in its title-only assets. The
+[title/startup record](../verification/v0.2.0-title.json) records the targeted
+startup checks. The [binary comparison](../verification/v0.2.0-binary-scope.json)
+compares this artifact with the accepted candidate and
+finds 1,196 changed ROM bytes: 1,194 in the boot bank from the added eight-byte
+packed glyph, caption and asset relocations, plus two fixed-bank cold-start
+jump operand bytes. All other banks are identical; rendering and gameplay
+logic/data are unchanged.
+
+The targeted JSNES startup check passes 18 checks across 1,170 stock-NTSC
+refreshes (583 with music ON, 587 with music OFF). It covers title PPU output,
+credits and B/back, held-button suppression, music selection and entry into
+gameplay in both modes. The actual
+[v0.2.0 title screenshot](images/title-v0.2.0.png) was visually checked. These
+are startup checks, not a new complete-level playthrough or audible/hardware
+verification.
+
+The repository build and a fresh standalone build reproduce the final ROM.
+The standalone check used `python3 -I -S -B tools/build.py --verify` without
+prior generated output, research-workspace dependencies or third-party Python
+packages. All 77 source hashes are recorded in the build record; the only
+build input changed from the accepted candidate is `tools/newtitle_logo.py`.
+
+The prior rendering, timing and upload measurements below describe the
+accepted October 26 candidate, not a newly benchmarked v0.2.0 build. Its
+gameplay code is preserved in v0.2.0, so the title update introduces no new
+rendering optimization or performance claim. The author's acceptance is
+recorded separately from automated test results; no extra music-mode or
+controller-route coverage is inferred from that report.
+
+Browser deployment and itch.io publication have not been performed for this
+version. Physical-console testing remains outstanding.
+
+## Previous consolidated performance candidate
 
 `prototype-2026-10-26-performance-rc1` consolidates the accepted rendering and
-input-response experiments. Its [reference ROM](../release/hangar-ntsc.nes)
+input-response experiments. Its historical ROM
 is 131,088 bytes, SHA-256:
 
 ```text
 70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817
 ```
 
-The [release record](../verification/current-release.json) identifies the
+The [archived release record](../verification/performance-rc1-release.json) identifies the
 candidate, and the [consolidation build record](../verification/build-consolidation-20261026.json)
-records source and binary identity. Both the repository build and a fresh
-standalone build outside the research workspace reproduce that ROM exactly.
-The latter used `python3 -I -S -B tools/build.py --verify`, with no previous
-generated files, sibling project or third-party Python packages. The standard
-command remains `python3 tools/build.py --verify`. The title's original October 24 caption is
-retained so the packaged ROM can match the accepted experiment exactly.
+records its source and binary identity. At consolidation, both the repository
+build and a fresh standalone build outside the research workspace reproduced
+that ROM exactly. The latter used `python3 -I -S -B tools/build.py --verify`,
+with no previous generated files, sibling project or third-party Python
+packages. That candidate retained the original October 24 title caption to
+match the accepted experiment exactly. Running the standard verification
+command in the current checkout instead checks v0.2.0.
 
 The [performance summary](../verification/performance-update-20261026.json)
 joins the already measured, matching CPU fixtures from release → sprite-response
@@ -56,11 +103,12 @@ retain their original baseline/candidate identities and detailed scope. Input-to
 vary by a refresh or two; measured regressions are retained in the report.
 These are seeded scene routes, **not a new controller-only end-to-end playthrough**.
 
-The user has playtested and accepted the component experiments. A fresh
-end-to-end pass of the consolidated candidate, with music ON and OFF, remains
-the next release step. Browser deployment and an itch.io update await that
-playtest. No physical-console test is claimed. Historical evidence below
-retains its original ROM identity and is not presented as newly run coverage.
+The author subsequently playtested this consolidated candidate and accepted
+it for the next version. The report did not specify a new test protocol or
+music settings, so no additional automated coverage is inferred. Browser
+deployment and an itch.io update remain separate steps. No physical-console
+test is claimed. Historical evidence below retains its original ROM identity
+and is not presented as newly run coverage.
 
 ## Previous door-reach and alias-credit release
 

@@ -1,10 +1,15 @@
-# October 26 performance candidate
+# v0.2.0 performance update
 
-`prototype-2026-10-26-performance-rc1` brings the accepted optimization
-experiments into the repository for playtesting. It keeps the same level,
-soundtrack, art, 256 × 144 viewport and 128 horizontal rendering samples.
+**v0.2.0 — Performance Update**, prepared October 27, 2026, finalizes the
+accepted `prototype-2026-10-26-performance-rc1` after the author's playtest.
+The title caption changes to **PROTOTYPE 0.2.0**, adding a title-only period
+glyph and relocating packed title assets and startup references. Rendering
+and gameplay logic/data remain identical to the measured candidate. It keeps
+the same level, soundtrack, gameplay art, 256 × 144 viewport and 128 horizontal
+rendering samples.
 The cartridge remains MMC1 with 128 KiB PRG, 8 KiB CHR-RAM and 8 KiB work RAM.
-The hosted browser ROM remains the October 24 prototype pending this playtest.
+The hosted browser ROM and itch.io download remain the October 24 prototype
+until the separate publication step.
 
 ## What changed
 
@@ -33,12 +38,14 @@ the missing soldier when opening the door from its center.
 
 ## Fresh-render CPU comparison
 
-These numbers compare the published October 24 ROM with the current candidate
+These numbers compare the published October 24 ROM with the accepted
+October 26 performance candidate
 at identical fixed camera and actor states, averaged across both staging
 buffers. They count the actual linked 6502 producer instructions without
-asynchronous interrupts. **They are not live frame times or FPS.**
+asynchronous interrupts. v0.2.0 has the same gameplay bytes; only its title
+presentation and supporting boot assets differ. **These numbers are not live frame times or FPS.**
 
-| Representative view | October 24 cycles | Candidate cycles | Less CPU work |
+| Representative view | October 24 cycles | Performance candidate cycles | Less CPU work |
 | --- | ---: | ---: | ---: |
 | Opening recess and pillars | 1,023,210 | 888,492 | 13.2% |
 | Simple wall | 523,225 | 448,567 | 14.3% |
@@ -57,7 +64,7 @@ The [machine-readable comparison](../verification/performance-update-20261026.js
 joins the existing matched release → sprite-response → 16-pixel-list →
 exact-position-rejection measurements. Intermediate totals agree for every
 joined case. This is a recombination of recorded CPU measurements, not a new
-live capture comparing the final candidate directly against the release.
+live capture comparing v0.2.0 directly against the original release.
 
 Stationary actor redraws are a different workload: when the same staging
 buffer retains a valid world, the eight living-actor controls use **50.3% less
@@ -99,17 +106,19 @@ distant-soldier floor correction changes some sprite pixels; the doorway
 activation change also affects when the final encounter appears. Neither is
 counted as a rendering simplification.
 
-## Playtest before deployment
+## Release status and verification
 
-Use [the candidate ROM](../release/hangar-ntsc.nes) with stock NTSC timing,
-zero extra scanlines and normal sprite limits. Play through with music ON
-and OFF, including the opening recess, all encounters, pickups, pause/retry,
-the door and exit. Check the first soldier from the corridor and the third
-soldier while opening the door from the center. Select still provides the
-coarse-boundary comparison.
+The author playtested the consolidated performance candidate and accepted it
+for this update. v0.2.0 changes title presentation and supporting boot assets
+only; the
+[binary comparison](../verification/v0.2.0-binary-scope.json) documents that
+scope. Historical performance evidence retains the measured candidate's hash
+`70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817`.
+The final artifact is identified by [release metadata](../release/release.json)
+and [SHA256SUMS](../release/SHA256SUMS).
 
-The title retains **BUILD 2026-10-24** to keep the accepted experimental binary
-unchanged. Identify this candidate through [release metadata](../release/release.json)
-and SHA-256 `70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817`.
-Build and emulator evidence, including its limits, are in
-[verification](VERIFICATION.md). Physical-console testing remains outstanding.
+Use stock NTSC timing, zero extra scanlines and normal sprite limits. Music
+OFF remains the faster option. Browser and itch.io publication are separate
+from this prepared release. Build and emulator evidence, including its limits,
+are in [verification](VERIFICATION.md). Physical-console testing remains
+outstanding.

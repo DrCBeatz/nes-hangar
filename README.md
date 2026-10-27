@@ -10,7 +10,7 @@ on the NES CPU. This is a custom engine and a compact technical/gameplay
 prototype, not a port of the Doom engine or the complete original level.
 
 **[Play in browser](https://8bitpocket.app/?game=hangar)** ·
-[Download the latest test ROM](release/hangar-ntsc.nes) ·
+[Download the v0.2.0 ROM](release/hangar-ntsc.nes) ·
 [Build from source](#build-from-source) ·
 [Technical notes](#how-it-renders) ·
 [Latest changes](docs/RELEASE-NOTES.md) ·
@@ -46,21 +46,22 @@ use **Controls** to reopen it during gameplay. **Open ROM** still supports downl
 files. Browser speed, palette and presentation may differ from Mesen. See
 the [browser deployment notes](docs/DEPLOYMENT.md).
 
-The repository now includes **`prototype-2026-10-26-performance-rc1`** for
-playtesting. It consolidates the accepted rendering, upload and input-response
+This checkout contains **v0.2.0 — Performance Update**, prepared on
+**October 27, 2026** following the author's successful playtest of the
+consolidated candidate. It includes the accepted rendering, upload and input-response
 optimizations, plus distant-soldier floor alignment and final-door encounter
-visibility fixes. The level, artwork, soundtrack and cartridge requirements
+visibility fixes. The level, gameplay artwork, soundtrack and cartridge requirements
 remain the same. Across the matched fresh-render fixtures, the CPU work needed
 to construct a picture falls **14.9%** compared with the October 24 prototype;
 that is a workload measurement, **not a 14.9% frame-rate claim**. See the
 [performance update](docs/PERFORMANCE-UPDATE-20261026.md) for scope and tradeoffs.
 
 **The browser link still runs the October 24 published prototype.** Browser
-and itch.io deployment await playtesting of this candidate. To try the update
-now, download the ROM above and open it in Mesen or the browser emulator's
-**Open ROM** loader. The in-game title retains its original **BUILD 2026-10-24**
-caption to preserve the exact accepted binary; use
-[release metadata](release/release.json) and its checksum to identify this build.
+and itch.io publication are separate steps and have not been performed for
+v0.2.0. To try the update, open the ROM above in Mesen or the browser emulator's
+**Open ROM** loader. The title now reads **PROTOTYPE 0.2.0**. Title presentation is the only change
+from the accepted performance candidate; see
+[release metadata](release/release.json) and [verification](docs/VERIFICATION.md).
 
 ## Controls
 
@@ -206,7 +207,7 @@ make clean
 Normal builds permit intentional source edits; verification is expected to
 fail if those edits change the ROM relative to the committed release.
 
-The current playtest candidate, `prototype-2026-10-26-performance-rc1`, is 131,088
+The prepared release, `v0.2.0`, is 131,088
 bytes (a 16-byte header plus 128 KiB PRG). Its exact version, checksum and cartridge metadata are recorded in
 [release/release.json](release/release.json); [SHA256SUMS](release/SHA256SUMS)
 identifies the downloadable ROM.
@@ -260,7 +261,7 @@ without the music integration is preserved as
 | `music/e1m1/e1m1-drcbeatz.s` | Supplied Dr C Beatz arrangement export used by the build |
 | `music/e1m1/` | Song history, source provenance and retained upstream notices |
 | `vendor/famistudio/` | FamiStudio sound engine, NTSC note tables and its separate notice |
-| `release/` | Current playtest ROM, checksum and version metadata |
+| `release/` | Prepared v0.2.0 ROM, checksum and version metadata |
 | `docs/` | Provenance, verification, performance notes and browser deployment history |
 | `build/` | Regenerated local output; excluded from Git |
 
@@ -357,9 +358,9 @@ See [publishing instructions](docs/PUBLISHING.md).
 The maintained 8-Bit Pocket emulator currently hosts the **October 24**
 `prototype-2026-10-24-door-reach` ROM at the
 [direct Play Hangar link](https://8bitpocket.app/?game=hangar).
-It has **not yet been updated** to the performance candidate in `release/`.
-**Open ROM** supports testing the newer local download. After playtesting,
-the source/ROM version and browser deployment can be advanced together.
+It has **not yet been updated** to v0.2.0 in `release/`.
+**Open ROM** supports the newer local file. The accepted gameplay build has
+been playtested; version labeling is finalized separately from publication.
 A dedicated landing page with download and play buttons can follow. The
 [deployment notes](docs/DEPLOYMENT.md) describe the current integration,
 remaining display work and options for a later custom domain.

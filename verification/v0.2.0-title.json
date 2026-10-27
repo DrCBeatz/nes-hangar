@@ -1,0 +1,173 @@
+{
+  "passed": true,
+  "scope": "Focused release-title check: controller-only versioned logo, credits/back navigation, held-button suppression, music selection and gameplay start in both modes. Exact generated PPU data and actual framebuffer PNG captures. Not a full-level playthrough, audible music assessment or physical-console/PPU-deadline test.",
+  "romSha256": "c100366ffc5b86e68ff441f2a2bd8d624a7c6f1e8d966c226f1894eeedd20977",
+  "checks": [
+    "Held launch buttons stay on exact new logo: on",
+    "Logo retains fixed font and exact generated artwork: on",
+    "Fresh Select opens credits without held-B skip: on",
+    "Fresh B returns to versioned logo: on",
+    "Credits Start opens exact guide and held Start cannot skip it: on",
+    "Left selects music OFF: on",
+    "Right restores music ON: on",
+    "Selected mode reaches first gameplay publication: on",
+    "Music engine follows selected option after gameplay starts: on",
+    "Held launch buttons stay on exact new logo: off",
+    "Logo retains fixed font and exact generated artwork: off",
+    "Fresh Select opens credits without held-B skip: off",
+    "Fresh B returns to versioned logo: off",
+    "Credits Start opens exact guide and held Start cannot skip it: off",
+    "Left selects music OFF: off",
+    "Right restores music ON: off",
+    "Selected mode reaches first gameplay publication: off",
+    "Music engine follows selected option after gameplay starts: off"
+  ],
+  "tests": {
+    "count": 18,
+    "failures": 0
+  },
+  "runs": [
+    {
+      "choice": "ON",
+      "frames": 583,
+      "launchFrames": 44,
+      "audioSamples": 465645,
+      "snapshots": [
+        {
+          "name": "title",
+          "file": "title-music-on.png",
+          "frame": 120,
+          "pngSha256": "ac37339922134a7d75fe1a9e32d75c49d8698698e892c5c5c6bc8b5ce7e4e877",
+          "titleState": 1,
+          "musicDisabled": 0,
+          "clock": 0
+        },
+        {
+          "name": "credits",
+          "file": "credits-music-on.png",
+          "frame": 182,
+          "pngSha256": "acb06c6fcb0a4cef423731b2f7efed2a578ecf83ae2bb4bb223df1e5c3128d09",
+          "titleState": 1,
+          "musicDisabled": 0,
+          "clock": 0
+        },
+        {
+          "name": "guide-on",
+          "file": "guide-on-music-on.png",
+          "frame": 370,
+          "pngSha256": "d7ba945f57ad283849a563f381a69789aa255add7fec8bc52d6efe88b0851987",
+          "titleState": 1,
+          "musicDisabled": 0,
+          "clock": 0
+        },
+        {
+          "name": "guide-off",
+          "file": "guide-off-music-on.png",
+          "frame": 394,
+          "pngSha256": "118f1c2f84dae8ace5326651959537437479488f98ba7efd335aef57bfe3283f",
+          "titleState": 1,
+          "musicDisabled": 1,
+          "clock": 0
+        },
+        {
+          "name": "gameplay",
+          "file": "gameplay-music-on.png",
+          "frame": 463,
+          "pngSha256": "e3e2f3a0c7aece39077e44088866ebb0f7e70d614ad6e1391b0552bc74594021",
+          "titleState": 0,
+          "musicDisabled": 0,
+          "clock": 3
+        }
+      ]
+    },
+    {
+      "choice": "OFF",
+      "frames": 587,
+      "launchFrames": 44,
+      "audioSamples": 468840,
+      "snapshots": [
+        {
+          "name": "title",
+          "file": "title-music-off.png",
+          "frame": 120,
+          "pngSha256": "ac37339922134a7d75fe1a9e32d75c49d8698698e892c5c5c6bc8b5ce7e4e877",
+          "titleState": 1,
+          "musicDisabled": 0,
+          "clock": 0
+        },
+        {
+          "name": "credits",
+          "file": "credits-music-off.png",
+          "frame": 182,
+          "pngSha256": "acb06c6fcb0a4cef423731b2f7efed2a578ecf83ae2bb4bb223df1e5c3128d09",
+          "titleState": 1,
+          "musicDisabled": 0,
+          "clock": 0
+        },
+        {
+          "name": "guide-on",
+          "file": "guide-on-music-off.png",
+          "frame": 370,
+          "pngSha256": "d7ba945f57ad283849a563f381a69789aa255add7fec8bc52d6efe88b0851987",
+          "titleState": 1,
+          "musicDisabled": 0,
+          "clock": 0
+        },
+        {
+          "name": "guide-off",
+          "file": "guide-off-music-off.png",
+          "frame": 394,
+          "pngSha256": "118f1c2f84dae8ace5326651959537437479488f98ba7efd335aef57bfe3283f",
+          "titleState": 1,
+          "musicDisabled": 1,
+          "clock": 0
+        },
+        {
+          "name": "gameplay",
+          "file": "gameplay-music-off.png",
+          "frame": 467,
+          "pngSha256": "e3e2f3a0c7aece39077e44088866ebb0f7e70d614ad6e1391b0552bc74594021",
+          "titleState": 0,
+          "musicDisabled": 1,
+          "clock": 3
+        }
+      ]
+    }
+  ],
+  "controllerOnly": true,
+  "ramInjected": false,
+  "romUnmodified": true,
+  "extraScanlines": 0,
+  "provenance": {
+    "driverSha256": "5393e7a0e9b54dcc7894b355ddee0b144b5c78d808bd7b9cd5fff7ad7eda51e5",
+    "coreEntrySha256": "0531f69c4e9e2973bdcdc89bf3ad6e6dfa3257572f8e7eccd405fa158cc3a1a7",
+    "coreCpuSha256": "17469b310738c4b3092d648289c8537a4584f6b45bc1735adb540968a75308f2",
+    "corePpuSha256": "0fc688dec33901dd7fbcecb7d3f4a7734ae6481e3194f60213b6dc6a19198de8",
+    "labelsSha256": "e1532fa4198baf45964d1ce7cc920f5916f541c43c6c9ad9d0340d6b3bf91695",
+    "manifestSha256": "565c81b6e52d6a8a2440a99352cc76b70931f18e50ea5001625324f8993b5740"
+  },
+  "recordedOn": "2026-10-27",
+  "captureDirectory": "verification/v0.2.0-ui",
+  "visualReview": {
+    "passed": true,
+    "romSha256": "c100366ffc5b86e68ff441f2a2bd8d624a7c6f1e8d966c226f1894eeedd20977",
+    "visuallyInspected": [
+      "title-music-on.png",
+      "guide-off-music-on.png",
+      "gameplay-music-on.png"
+    ],
+    "observations": [
+      "PROTOTYPE 0.2.0 is centered, legible and has visible periods; the bronze logo and surrounding captions show no visible damage.",
+      "Guide OFF option and explicit music controls are readable.",
+      "Initial gameplay shows the opening pillars/recess, pistol and HUD without an obvious new artifact."
+    ],
+    "crossModeIdenticalFramebufferCaptures": [
+      "title",
+      "credits",
+      "guide-on",
+      "guide-off",
+      "gameplay"
+    ],
+    "scope": "Manual visual review of actual unmodified 256x240 JSNES framebuffer PNGs, plus matching screenshot hashes across separately booted ON/OFF routes. No physical hardware or full-level playthrough claim."
+  }
+}

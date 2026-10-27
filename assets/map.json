@@ -6160,16 +6160,16 @@
       "from_encounter": 1,
       "to_encounter": 2,
       "axis": "z",
-      "forward_z": 128,
+      "forward_z": 132,
       "reverse_z": 136,
-      "hysteresis_width": 8,
+      "hysteresis_width": 4,
       "player_los_bounds": [
         256,
         336,
         56,
         120
       ],
-      "scope": "Activate the third soldier immediately before the Z120 passage door. Returning north to Z136 restores the second encounter. Only one actor renders or simulates at a time; after the door has opened, a living outgoing actor may visibly disappear at this boundary. Closed-door wall occlusion and the room-only sight domain prevent seeing or attacking through the closed panel."
+      "scope": "Activate the third soldier at Z132, matching the full twelve-unit use reach of the Z120 passage door. Returning north to Z136 restores the second encounter. Only one actor renders or simulates at a time; after the door has opened, a living outgoing actor may visibly disappear at this boundary. Closed-door wall occlusion and the room-only sight domain prevent seeing or attacking through the closed panel."
     }
   },
   "slime": {

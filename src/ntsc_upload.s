@@ -4,6 +4,9 @@
 ; Main-thread dirty flags are never read by NMI. Each completed buffer owns its
 ; immutable dirty list until publication; no partial picture becomes visible.
 .setcpu "6502"
+.if ::GUARDED_PATTERN8
+.assert ::STREAM_PATTERN_UPLOAD, error, "Eight-pattern batches require the streaming uploader"
+.endif
 .importzp name_ptr, lower_name_ptr, render_buffer, visible_buffer
 .importzp upload_busy, upload_phase, upload_buffer, upload_blocks
 .importzp upload_ptr, upload_vram, nmi_budget
@@ -213,11 +216,28 @@ done:
  lda upload_phase
  bne @names
  lda upload_blocks
+.if ::GUARDED_PATTERN8
+ beq @patterns_done
+ ; Both callers start with seven slots. This point can be reached with
+ ; remaining patterns only at the start of a batch: the streaming loop exits
+ ; when the budget or pattern count is zero. Eight available patterns consume
+ ; all eight slots, so this promotion can never spill into sparse name work.
+ cmp #8
+ bcc @address
+ inc nmi_budget
+ bne @address             ; seven -> eight, always nonzero
+@patterns_done:
+.else
  bne @address
+.endif
  inc upload_phase
  dec nmi_budget
  bne @names
+.if ::UPLOAD_COMPLETION_FAST
+ jmp @done              ; an empty name list can complete at this boundary too
+.else
  rts
+.endif
 @names:
  ldx upload_buffer
  lda nt_upload_index
@@ -263,6 +283,7 @@ done:
  sta $2006
  lda upload_vram
  sta $2006
+@copy:
  ldy #0
  .repeat 16
  lda (upload_ptr),y
@@ -278,6 +299,31 @@ done:
  bcc :+
  inc upload_ptr+1
 :
+.if ::STREAM_PATTERN_UPLOAD
+ ; Pattern source/destination are consecutive. Keep the PPU's incrementing
+ ; address through this batch, sharing the same byte kernel with sparse names.
+ ; Advance the CPU pointer per block so the aligned16-byte read never crosses
+ ; a page. No extra RAM, larger budget, or repeated PPUADDR write is required.
+ dec upload_blocks
+ dec nmi_budget
+ beq @finish_patterns
+ lda upload_blocks
+ beq @finish_patterns
+ jmp @copy
+@finish_patterns:
+ ; RAM$6000/$7000 -> PPU$0400/$1400: both banks differ by exactly$5C00.
+ ; Synchronize the destination pointer once per pattern batch, retaining the
+ ; original pointer state before a return or transition into sparse names.
+ lda upload_ptr
+ sta upload_vram
+ lda upload_ptr+1
+ sec
+ sbc #$5C
+ sta upload_vram+1
+ lda nmi_budget
+ beq @done
+ jmp @resume
+.else
  clc
  lda upload_vram
  adc #16
@@ -286,10 +332,25 @@ done:
  inc upload_vram+1
 :
  dec upload_blocks
+.endif
 @budget:
  dec nmi_budget
  beq @done
  jmp @resume
 @done:
+.if ::UPLOAD_COMPLETION_FAST
+ ; If the last name block exactly used the final slot, acknowledge completion
+ ; now rather than spending the next NMI discovering an already empty list.
+ ; Publication still gets its own NMI: no DMA/commit joins this full batch.
+ ; This is NMI-owned state and the completed buffer's immutable dirty count.
+ lda upload_phase
+ beq :+
+ ldx upload_buffer
+ lda nt_upload_index
+ cmp nt_dirty_count,x
+ bcc :+
+ inc upload_phase          ; phase 1 -> 2; @continuing commits next interrupt
+:
+.endif
  rts
 .endproc

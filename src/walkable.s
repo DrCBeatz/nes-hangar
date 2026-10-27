@@ -347,6 +347,7 @@ results_main_restart = reset::results_restart
  cmp #4
  bne unmarked
 found:
+ jsr world_reuse_reset     ; conservative reset after discarded/queued uploads
  txa
  pha
  eor #1
@@ -508,6 +509,7 @@ producer_discard_recovered = producer_recover_discard::recovered
 
 .segment "CODE"
 
+.import world_reuse_begin, world_reuse_reset, world_reuse_count, world_reuse_valid
 .proc render_begin
  ; A failed candidate must not poison later poses after the player moves.
  lda #0
@@ -598,6 +600,7 @@ attempt_begin:
  cmp snapshot_version
  jne @snapshot
  jsr freshness_begin
+ jsr world_reuse_begin     ; compare previous destination tags before replacing
  ldx render_buffer         ; item selection used X for the encounter, not this bank
  lda render_door
  sta buffer_door,x
@@ -643,11 +646,7 @@ attempt_begin:
  inc render_generation
  lda render_generation
  sta buffer_generation,x
- lda #0
- sta tile_count
- sta tile_ptr
- lda pattern_base_hi,x
- sta tile_ptr+1
+ ; world_reuse_begin initialized tile_count/tile_ptr to zero or retained prefix.
 .ifndef LATENCY_RESTART
  jsr nt_dirty_reset
 .endif
@@ -655,6 +654,9 @@ attempt_begin:
 .ifdef LATENCY_RESTART
  bcs abort
 .endif
+ ldx render_buffer
+ lda tile_count
+ sta world_reuse_count,x  ; actor/item patterns are appended after this prefix
 .ifndef HUD_PISTOL
  jsr update_hud
 .endif
@@ -708,6 +710,8 @@ final_check:
 complete:
  ; NMI cannot be masked. An edge in the short validated-check -> state-2
  ; window can admit one coherent older view; never cancel a queued bank.
+ lda #1
+ sta world_reuse_valid,x
  lda #2
  sta buffer_state,x
  ; Record freshness only for an accepted complete frame. Doing this after
@@ -902,7 +906,7 @@ latency_render_complete = render_done::complete
  jmp @done
 @world_upload:
 .endif
- lda #7               ; 112 bytes maximum; final margin measured in stock NTSC.
+ lda #7               ; Base budget; uploader can admit an eighth pattern-only block.
  sta nmi_budget
  jsr ntsc_upload
  jmp @done
@@ -1008,80 +1012,9 @@ results_nmi_show = nmi::results_show
 results_nmi_restart = nmi::results_restart
 results_nmi_return = nmi::restore
 
-.proc set_upload_address
- lda upload_vram+1
- sta $2006
- lda upload_vram
- sta $2006
- rts
-.endproc
-
-.proc setup_upload_phase
- ldx upload_buffer
- lda upload_phase
- bne @names
- lda #0
- sta upload_ptr
- sta upload_vram
- lda pattern_base_hi,x
- sta upload_ptr+1
- txa
- asl a
- asl a
- asl a
- asl a
- ora #4               ; first generated tile is pattern 64
- sta upload_vram+1
- lda buffer_tile_count,x
- sta upload_blocks
- rts
-@names:
- lda name_base_hi,x
- sta upload_ptr+1
- lda ppu_name_hi,x
- sta upload_vram+1
- lda upload_phase
- cmp #1
- bne @mode
- lda #$60             ; row 3, 18 rows of viewport
- sta upload_ptr
- sta upload_vram
- lda #36
- sta upload_blocks
- rts
-@mode:
- cmp #2
- bne @stats
- lda #$C0             ; row 22, one mode label row
- sta upload_ptr
- sta upload_vram
- lda #2
- sta upload_blocks
- clc
- lda upload_ptr+1
- adc #2
- sta upload_ptr+1
- clc
- lda upload_vram+1
- adc #2
- sta upload_vram+1
- rts
-@stats:
- lda #$60             ; rows 27 and 28, counts and angle
- sta upload_ptr
- sta upload_vram
- lda #4
- sta upload_blocks
- clc
- lda upload_ptr+1
- adc #3
- sta upload_ptr+1
- clc
- lda upload_vram+1
- adc #3
- sta upload_vram+1
- rts
-.endproc
+; The former set_upload_address/setup_upload_phase helpers were unreferenced
+; leftovers from the full nametable uploader. ntsc_upload owns sparse transfer
+; setup; reclaim their 124 fixed-bank bytes for exact, bounded optimizations.
 
 .proc publish_frame
  ; A completed living snapshot must not replace the immediate death overlay.

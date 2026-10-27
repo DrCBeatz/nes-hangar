@@ -1,4 +1,37 @@
-# Door reach and alias credit
+# Performance update — playtest candidate
+
+`prototype-2026-10-26-performance-rc1` consolidates the accepted experiments
+into the main repository. It is ready for a new gameplay pass; the hosted
+browser version and itch.io download have not been changed in this update.
+
+- Reuse valid backgrounds for stationary actor updates and avoid repeated
+  tile, floor and arithmetic work during fresh rendering.
+- Stream pattern transfers with a guarded eighth pattern block in eligible
+  interrupts; retain bounded NTSC transfer limits and complete-view publication.
+- Check input during geometry setup and preserve the bounded restart for
+  actual camera changes rather than spending it on actor animation alone.
+- Group geometry candidates into 16-pixel lists and reject eligible
+  behind-camera walls before transforming their vertices. The viewport,
+  128 horizontal samples, 8-pixel raster strips and visible detail are unchanged.
+- Align distant soldiers with the floor while retaining stable close-up
+  placement, and activate the final encounter at the door's reachable boundary.
+- Keep the accepted map, artwork, soundtrack, controls, pickups and cartridge
+  configuration: MMC1, 128 KiB PRG, 8 KiB CHR-RAM and 8 KiB work RAM.
+
+Matched fresh-render fixtures require **14.9% less producer CPU work** than
+in the October 24 release. Stationary actor redraws benefit more from retaining
+the background; that separate result must not be presented as a moving-view
+frame-rate gain. Complex views remain slow, optional music costs CPU time,
+and faster work does not improve every short-window presentation measurement.
+See the [comparison and limitations](PERFORMANCE-UPDATE-20261026.md).
+
+The [ROM](../release/hangar-ntsc.nes), [metadata](../release/release.json) and
+[checksum](../release/SHA256SUMS) identify this candidate. Its title still reads
+**BUILD 2026-10-24**, preserving the exact user-tested experimental binary.
+The [verification record](VERIFICATION.md) distinguishes the build checks,
+existing emulator measurements and gameplay testing still to be completed.
+
+# Previous door reach and alias credit
 
 `prototype-2026-10-24-door-reach` makes the door easier to use on centered
 approaches and credits the project as **Dr C Beatz**.
@@ -17,10 +50,10 @@ approaches and credits the project as **Dr C Beatz**.
   rather than a last-minute structural change.
 
 Only 25 ROM bytes change: two door-range constants and 23 credits nametable
-bytes. Linked segment sizes and RAM allocations are unchanged. The current
-[ROM](../release/hangar-ntsc.nes), [metadata](../release/release.json) and
-[checksum](../release/SHA256SUMS) identify the release published on
-**October 24, 2026**. The hosted browser ROM matches this download. See
+bytes. Linked segment sizes and RAM allocations are unchanged. The [archived release record](../verification/door-reach-release.json)
+identifies this historical release, published on **October 24, 2026**.
+The hosted browser ROM still uses this version, while the repository download
+now contains the performance candidate above. See
 [deployment](DEPLOYMENT.md) for publication and live-site checks, and
 [verification](VERIFICATION.md) for the build and gameplay test scope.
 
@@ -50,12 +83,12 @@ The clip now sits at **(282, 250)**, farther out from the wall corner on dry
 ground. Its strict **3.5-unit pickup radius**, ten-round refill, collection
 sound and once-only behavior are unchanged. See [ammo notes](AMMO-PICKUP.md).
 
-This was an intermediate local candidate. Its features are included in the
-published door-reach release above; the current [ROM](../release/hangar-ntsc.nes),
-[release record](../release/release.json) and [checksum](../release/SHA256SUMS)
-identify that later build. Build and compare the current release with
-`python3 tools/build.py --verify`. Current results and the earlier
-music/placement evidence are distinguished in [verification](VERIFICATION.md).
+This was an intermediate local candidate. Its features were included in the
+October 24 door-reach release and remain in the current performance candidate.
+The [current ROM](../release/hangar-ntsc.nes), [release record](../release/release.json)
+and [checksum](../release/SHA256SUMS) identify the candidate at the top of this
+page. Rebuild it with `python3 tools/build.py --verify`. Current and historical
+evidence are distinguished in [verification](VERIFICATION.md).
 
 # Previous close-angle door prompt
 

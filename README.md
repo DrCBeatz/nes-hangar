@@ -10,7 +10,7 @@ on the NES CPU. This is a custom engine and a compact technical/gameplay
 prototype, not a port of the Doom engine or the complete original level.
 
 **[Play in browser](https://8bitpocket.app/?game=hangar)** ·
-[Download the ROM](release/hangar-ntsc.nes) ·
+[Download the latest test ROM](release/hangar-ntsc.nes) ·
 [Build from source](#build-from-source) ·
 [Technical notes](#how-it-renders) ·
 [Latest changes](docs/RELEASE-NOTES.md) ·
@@ -20,7 +20,7 @@ prototype, not a port of the Doom engine or the complete original level.
   <img src="docs/images/opening-gameplay.gif" width="512" alt="Six seconds of Hangar gameplay: walking and turning among the opening room’s pillars and recessed floor." />
 </p>
 <p align="center">
-  ROM gameplay at normal NTSC timing in JSNES, music ON (GIF is silent) · <a href="docs/images/opening-gameplay.png">View the opening still</a> · <a href="docs/images/doom-title.png">Bronze title screen</a> · <a href="docs/images/title.png">Controls guide</a> · <a href="docs/images/credits.png">Credits</a>
+  October 24 prototype gameplay at normal NTSC timing in JSNES, music ON (GIF is silent) · <a href="docs/images/opening-gameplay.png">View the opening still</a> · <a href="docs/images/doom-title.png">Bronze title screen</a> · <a href="docs/images/title.png">Controls guide</a> · <a href="docs/images/credits.png">Credits</a>
 </p>
 
 ## Play
@@ -36,7 +36,7 @@ Press **Start** on the bronze DOOM-logo title to open the controls guide, or
 **Select** to view the credits. On the credits page, **B** returns to the logo
 and **Start** opens the guide. Music defaults to **ON**; press **Left for OFF**
 or **Right for ON**, then release and press Start again to play. Holding Start
-cannot skip a page. The first room takes about 0.8 seconds to prepare at normal NTSC speed; the level
+cannot skip a page. The first room takes a short time to render; the level
 timer starts when that view appears.
 
 For a browser trial, open [Play Hangar](https://8bitpocket.app/?game=hangar),
@@ -46,16 +46,21 @@ use **Controls** to reopen it during gameplay. **Open ROM** still supports downl
 files. Browser speed, palette and presentation may differ from Mesen. See
 the [browser deployment notes](docs/DEPLOYMENT.md).
 
-The published prototype includes the bronze title screen, the latest soldier
-size and positioning fixes, more forgiving door/exit and ammo interactions,
-a targeted input-to-picture latency improvement, and Dr C Beatz's new optional
-NES arrangement of E1M1. It also includes the accepted ammo repositioning,
-a title-screen credits page, clearer music instructions and a pistol label
-in place of the unused armor counter. The [door reach update](docs/DOOR-REACH.md)
-shows the prompt earlier on centered approaches, retaining the earlier
-close-angle allowance. The source and ROM were published on **October 24, 2026**;
-8-Bit Pocket serves this same release. See the
-[deployment record](docs/DEPLOYMENT.md) for the live checksum and verification.
+The repository now includes **`prototype-2026-10-26-performance-rc1`** for
+playtesting. It consolidates the accepted rendering, upload and input-response
+optimizations, plus distant-soldier floor alignment and final-door encounter
+visibility fixes. The level, artwork, soundtrack and cartridge requirements
+remain the same. Across the matched fresh-render fixtures, the CPU work needed
+to construct a picture falls **14.9%** compared with the October 24 prototype;
+that is a workload measurement, **not a 14.9% frame-rate claim**. See the
+[performance update](docs/PERFORMANCE-UPDATE-20261026.md) for scope and tradeoffs.
+
+**The browser link still runs the October 24 published prototype.** Browser
+and itch.io deployment await playtesting of this candidate. To try the update
+now, download the ROM above and open it in Mesen or the browser emulator's
+**Open ROM** loader. The in-game title retains its original **BUILD 2026-10-24**
+caption to preserve the exact accepted binary; use
+[release metadata](release/release.json) and its checksum to identify this build.
 
 ## Controls
 
@@ -75,12 +80,13 @@ the title sequence with music ON. OFF preserves sound effects and skips music
 sequencing to reduce CPU cost; it does not change the level or graphics.
 See [music notes](docs/MUSIC.md).
 
-The latency update lets a new movement or turn replace an outdated picture
+Input checkpoints let a new movement or turn replace an outdated picture
 that is still being drawn. This helps when rendering was already busy; it
 does not remove the substantial delay needed to draw and upload complex
-views. The geometry and movement rules are unchanged. See the measured
-[latency improvements and limits](docs/LATENCY-TUNING.md) and the
-[final performance assessment](docs/FINAL-PERFORMANCE.md).
+views. The geometry and movement rules are unchanged. See the current
+[performance update](docs/PERFORMANCE-UPDATE-20261026.md), plus the historical
+[latency investigation](docs/LATENCY-TUNING.md) and
+[October 24 assessment](docs/FINAL-PERFORMANCE.md).
 
 Pausing displays a message at the top and plays a short descending cue.
 Resuming restores the level heading and plays an ascending cue. Gameplay and
@@ -133,8 +139,9 @@ its room and leaves space to pass on either side.
 | --- | --- |
 | ![Recessed floor and pillars](docs/images/opening-room.png) | ![Soldier encounter](docs/images/encounter.png) |
 
-The opening still and six-second GIF were captured from the preceding
-credits/HUD build, whose opening gameplay is unchanged. They use stock-NTSC
+The opening still and six-second GIF were captured from the October 24
+credits/HUD build. They show the same opening scene, but **not the new build's
+rendering cadence**. They use stock-NTSC
 JSNES with music ON and native 256 × 240 output. The GIF preserves
 the ROM's rendering cadence without interpolated motion, using exact 2× pixel
 duplication. See the [capture record](verification/opening-gameplay.json).
@@ -199,7 +206,7 @@ make clean
 Normal builds permit intentional source edits; verification is expected to
 fail if those edits change the ROM relative to the committed release.
 
-The published release, `prototype-2026-10-24-door-reach`, is 131,088
+The current playtest candidate, `prototype-2026-10-26-performance-rc1`, is 131,088
 bytes (a 16-byte header plus 128 KiB PRG). Its exact version, checksum and cartridge metadata are recorded in
 [release/release.json](release/release.json); [SHA256SUMS](release/SHA256SUMS)
 identifies the downloadable ROM.
@@ -253,13 +260,15 @@ without the music integration is preserved as
 | `music/e1m1/e1m1-drcbeatz.s` | Supplied Dr C Beatz arrangement export used by the build |
 | `music/e1m1/` | Song history, source provenance and retained upstream notices |
 | `vendor/famistudio/` | FamiStudio sound engine, NTSC note tables and its separate notice |
-| `release/` | Playable reference ROM, checksum and release metadata |
-| `docs/` | Provenance, verification and proposed browser deployment |
+| `release/` | Current playtest ROM, checksum and version metadata |
+| `docs/` | Provenance, verification, performance notes and browser deployment history |
 | `build/` | Regenerated local output; excluded from Git |
 
 Start with `src/walkable.s` for boot, controller polling, main/NMI coordination
 and frame publication. `geometry.s` projects the scene; `raster.s` constructs
-background patterns; `ntsc_upload.s` budgets PPU transfers. Movement,
+background patterns; `ntsc_upload.s` budgets PPU transfers.
+`world_reuse.s` validates retained backgrounds; `axis_gate.s` rejects eligible
+behind-camera walls before vertex projection. Movement,
 encounters, shooting, pickups, doors, results, pause and the title screen have
 their own modules.
 
@@ -296,10 +305,14 @@ work for hidden rooms; a small camera-position filter also skips inner-enclosure
 faces when the connecting passage proves them hidden from the slime room.
 Enemies and pickups use distance-sized hardware sprites
 with foreground masks derived from the world geometry.
-Soldiers and corpses use radial distance for vertical placement as well as
-size, keeping them stable when turning. This approximates ground contact
-away from the screen center; horizontal projection and foreground masking
-still use camera depth. Pickups retain their previous projection.
+Soldiers and corpses use radial distance for size and close-range vertical
+placement, keeping them stable when turning. At medium distances the floor
+anchor blends toward camera depth; distant feet align with the projected
+floor. Horizontal projection and foreground masking use camera depth. Pickups
+retain their previous projection. Geometry candidates are grouped into
+16-pixel lists without changing the 128 rendering samples or 8-pixel raster
+strips. Exact arithmetic fast paths and retained-background reuse reduce
+repeated work without lowering resolution.
 
 The cartridge uses **MMC1 banking, 128 KiB PRG, 8 KiB CHR-RAM and 8 KiB work
 RAM**. Rendering is performed by the NES CPU; the mapper provides banking,
@@ -341,12 +354,12 @@ The suggested repository name is **`nes-hangar`**; the display title is
 only this folder needs to be published, not the surrounding research workspace.
 See [publishing instructions](docs/PUBLISHING.md).
 
-The maintained 8-Bit Pocket emulator hosts the current
+The maintained 8-Bit Pocket emulator currently hosts the **October 24**
 `prototype-2026-10-24-door-reach` ROM at the
-[direct Play Hangar link](https://8bitpocket.app/?game=hangar). It includes the
-soldier fixes, bronze title, optional music, interaction changes and credits/HUD
-polish. The hosted ROM matches the download in `release/`. **Open ROM** also
-supports local files.
+[direct Play Hangar link](https://8bitpocket.app/?game=hangar).
+It has **not yet been updated** to the performance candidate in `release/`.
+**Open ROM** supports testing the newer local download. After playtesting,
+the source/ROM version and browser deployment can be advanced together.
 A dedicated landing page with download and play buttons can follow. The
 [deployment notes](docs/DEPLOYMENT.md) describe the current integration,
 remaining display work and options for a later custom domain.

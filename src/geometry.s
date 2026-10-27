@@ -5,10 +5,39 @@
 ; rectangular exit/entry crossings. Topological rim order cannot be reversed
 ; by rounded inverse depths. Validated opaque-plane halfspaces hide the recess.
 .macpack longbranch
+.ifndef QUOTIENT16
+QUOTIENT16 = 0
+.endif
+.if QUOTIENT16
+.assert EXACT_ARITHMETIC <> 0, error, "Quotient16 requires exact arithmetic shortcuts"
+.export scaled_division_narrow, scaled_division_loop
+.endif
+.ifndef SETUP_CHECKPOINT
+SETUP_CHECKPOINT = 0
+.endif
+.if SETUP_CHECKPOINT
+.ifndef LATENCY_RESTART
+.error "Setup checkpoints require the bounded latency restart policy"
+.endif
+.import latency_checkpoint
+.export geometry_setup_checkpoint, geometry_setup_abort
+.endif
+.ifndef FLOOR_PROJECTOR
+FLOOR_PROJECTOR = 0
+.endif
+; Noncompact diagnostics still record g_acc in each span's depth metadata.
+.ifdef COMPACT_SPANS
+FLOOR_PROJECTOR_ACTIVE = FLOOR_PROJECTOR
+.else
+FLOOR_PROJECTOR_ACTIVE = 0
+.endif
 .importzp render_x, render_z, render_angle, render_eye, overflow_flag
 .importzp render_zombie_x, render_zombie_z, render_buffer, render_mode
 .import opening_candidate, opening_cache, opening_plane0
 .import prg_render, prg_map
+.import axis_gate_begin, axis_gate
+.export vertex_x, vertex_z, vertex_x_hi, vertex_z_hi
+.export segment_vertex1, segment_vertex2, VERTEX_COUNT
 ; Candidate/cache storage is dead until opening_render clears its cache,
 ; after geometry_begin returns. Coverage and exact-visibility probes run
 ; sequentially and share its contiguous 16+128 bytes. The compact strip
@@ -124,7 +153,7 @@ g_cached_step1: .res 36
 g_cached_step2: .res 36
 g_cached_step3: .res 36
 .ifdef STRIP_ACTIVE
-; Only planes whose projected interval overlaps the current eight columns.
+; Only planes whose projected interval overlaps the current 16-pixel window.
 ; Bit7 marks full-strip coverage; low7bits retain the segment ID. Original
 ; visible-list order is preserved, including its stable equal-depth tie rule.
 g_active_count: .res 1
@@ -164,6 +193,9 @@ clear_vertex_tags:
     bpl clear_vertex_tags
     jsr select_candidates
     jsr inner_visibility_begin
+    ; Four phase-local bytes are rebuilt for every immutable camera attempt.
+    ; The fixed gateway restores map bank0 before any candidate is examined.
+    jsr axis_gate_begin
     ldy render_angle
     lda geom_sine_low,y
     sta g_s
@@ -189,6 +221,19 @@ next_segment:
     lda g_candidate_cursor
     and #7
     tax
+.if ::SETUP_CHECKPOINT
+    ; A completed candidate owns no live call frames or unfinished cache slot.
+    ; Every four authored candidates, reuse the existing one-retry/current-pose/
+    ; floor-height policy. X still selects the original bitmap bit afterwards.
+    and #3
+    bne setup_current
+setup_checkpoint:
+    jsr latency_checkpoint
+    bcc setup_current
+setup_abort:
+    rts                       ; C=1: unwind in map bank0, before raster writes.
+setup_current:
+.endif
     lda geometry_candidate_bits,x
     sta g_half
     lda g_candidate_cursor
@@ -241,6 +286,11 @@ next_segment:
     sta g_den+2
 
     ldx g_segment
+    ; Safe only after the strict positive-facing test above: directed endpoint
+    ; clipping then rejects every segment wholly behind the dominant axis.
+    ; C=1 skips both transforms; X and the live plane denominator are preserved.
+    jsr axis_gate
+    jcs skip_segment
     lda segment_material,x
     sta g_material
     lda #0
@@ -362,8 +412,15 @@ finished:
     jsr slime_palette_begin
     jsr medkit_begin
     jsr zombie_begin
+.if ::SETUP_CHECKPOINT
+    clc                       ; Only an explicit checkpoint rejects this setup.
+.endif
     rts
 .endproc
+.if SETUP_CHECKPOINT
+geometry_setup_checkpoint = geometry_begin::setup_checkpoint
+geometry_setup_abort = geometry_begin::setup_abort
+.endif
 
 ; C=1 admits X's face for this immutable camera/door snapshot. The inner
 ; enclosure uses a conservative portal-cone gate before any plane transform.
@@ -535,7 +592,7 @@ unfiltered:
     stx g_column
 .ifdef STRIP_ACTIVE
     txa
-    and #7
+    and #15                 ; 16-pixel list window; still sample every 2 pixels
     bne strip_ready
     jsr prepare_strip
 strip_ready:
@@ -713,7 +770,7 @@ done:
 .endproc
 
 .ifdef STRIP_ACTIVE
-; g_column is a multiple of8. Rebuild the exact interval-overlap list without
+; g_column is a multiple of16. Rebuild the exact interval-overlap list without
 ; advancing any plane depth. A partial first/last strip still uses the old
 ; column bounds checks, so every plane advances exactly once per active sample.
 ; g_right and g_cursor are begin-frame/column scratch, never persistent state.
@@ -723,7 +780,7 @@ done:
     sta g_cursor
     lda g_column
     clc
-    adc #8
+    adc #16
     sta g_right                 ; zero means the exclusive right edge256
     lda g_visible_count
     beq done
@@ -754,7 +811,7 @@ check_full_right:
     lda g_cached_right,x
     beq full
     ldy g_right
-    beq partial                 ; finite right edge cannot cover strip248..256
+    beq partial                 ; finite right edge cannot cover strip240..256
     cmp g_right
     bcc partial
 full:
@@ -1142,6 +1199,11 @@ save_z:
 
 ; Full three-byte subtraction, with sign separate from the unsigned magnitude.
 ; The supported world bound makes that magnitude at most18 bits (Q10.8).
+.if QUOTIENT16
+; Setup-only endpoint helper: all callers already have map bank0 selected.
+; Reclaim fixed-code space without extra bank switches or new RAM.
+.segment "MAPDATA"
+.endif
 .proc vertex_delta_x
     ldx g_vertex
     lda #0
@@ -1156,6 +1218,7 @@ save_z:
     sta g_mul_a_hi
     jmp absolute_world_delta
 .endproc
+.segment "CODE"
 .proc vertex_delta_z
     ldx g_vertex
     lda #0
@@ -1668,6 +1731,72 @@ scale:
     sta g_rem+2
     sta g_rem+3
     ldx #32
+.if ::EXACT_ARITHMETIC
+    ; Preserve the exact restoring division, including its truncated32-bit
+    ; scaled numerator. A zero high byte contributes eight initial zero bits
+    ; to the zero remainder, so advance that byte without doing the loop.
+    lda g_num+3
+.if ::QUOTIENT16
+    bne quotient_width
+.else
+    bne divide_bit
+.endif
+    lda g_num+2
+    ora g_num+1
+    ora g_num
+.if ::QUOTIENT16
+    bne quotient_width
+.else
+    bne skip_zero_byte
+.endif
+    ; Positive denominators are required by this routine's existing contract.
+    ; Zero numerator leaves zero remainder/quotient and rounds down. Match X
+    ; and carry from the normal loop/round comparison before the shared tail.
+    ldx #0
+    clc
+    jmp no_round
+.if ::QUOTIENT16
+quotient_width:
+    ; N is the original modulo32 scaled numerator. If N>>16 < D, all
+    ; upper16 quotient bits are zero. Seed their exact remainder, then
+    ; process only the lower16 bits with the unchanged restoring loop.
+    lda g_den+2
+    bne narrow
+    lda g_num+3
+    cmp g_den+1
+    bcc narrow
+    bne wide_quotient
+    lda g_num+2
+    cmp g_den
+    bcs wide_quotient
+narrow:
+    lda g_num+2
+    sta g_rem
+    lda g_num+3
+    sta g_rem+1
+    ; N's low byte is always zero (the original scaling shifts by11).
+    lda g_num+1
+    sta g_num+3
+    lda #0
+    sta g_num+1
+    sta g_num+2
+    ldx #16
+    jmp divide_bit
+wide_quotient:
+    lda g_num+3
+    bne divide_bit
+.endif
+skip_zero_byte:
+    lda g_num+2
+    sta g_num+3
+    lda g_num+1
+    sta g_num+2
+    lda g_num
+    sta g_num+1
+    lda #0
+    sta g_num
+    ldx #24
+.endif
 divide_bit:
     asl g_num
     rol g_num+1
@@ -1745,6 +1874,13 @@ no_round:
     jmp sign_product
 .endproc
 
+.if QUOTIENT16
+scaled_division_narrow = scaled_division::narrow
+scaled_division_loop = scaled_division::divide_bit
+.endif
+
+.if !QUOTIENT16
+; Legacy helper has no callers. Keep it only for byte-identical comparison.
 .proc absolute_multiplicand
     lda g_mul_a+1
     bpl done
@@ -1758,6 +1894,7 @@ no_round:
 done:
     rts
 .endproc
+.endif
 .proc unsigned_multiply
     lda #0
     sta g_acc+3
@@ -1774,6 +1911,29 @@ done:
     sta g_acc+3
     rts
 normal:
+.if ::EXACT_ARITHMETIC
+    lda g_mul_b
+    bne nonzero
+    ; Match all normal-path scratch, not just the zero accumulator. After
+    ; eight shifts the multiplicand has advanced one byte, X is zero, carry
+    ; is clear, and A still holds the original high delta byte. This follows
+    ; the separate256 path so cardinal coefficients cannot alias zero.
+    lda #0
+    sta g_acc
+    sta g_acc+1
+    sta g_acc+2
+    sta g_multiplicand
+    lda g_mul_a
+    sta g_multiplicand+1
+    lda g_mul_a+1
+    sta g_multiplicand+2
+    lda g_mul_a_hi
+    sta g_multiplicand+3
+    ldx #0
+    clc
+    rts
+nonzero:
+.endif
     lda g_mul_a
     sta g_multiplicand
     lda g_mul_a+1
@@ -2256,6 +2416,9 @@ visible:
     lda span_material,y
     eor #1                    ; Gray3 <-> green2.
     sta g_material
+.if ::FLOOR_PROJECTOR_ACTIVE
+    jsr project_slime_floor
+.else
     lda g_cached_value0,x
     sta g_acc
     lda g_cached_value1,x
@@ -2266,6 +2429,7 @@ visible:
     sta g_acc+3
     lda #2
     jsr project_height
+.endif
     cmp slime_floor_clip
     bcs clipped
     lda slime_floor_clip
@@ -2326,3 +2490,72 @@ map_render_overlay_end:
 .assert INNER_VISIBILITY_FIRST / 8 = (INNER_VISIBILITY_END-1) / 8, error, "Inner visibility mask spans bitmap bytes"
 .assert (INNER_VISIBILITY_FIRST & 7) = 6 .and (INNER_VISIBILITY_END & 7) = 0, error, "Inner visibility mask requires bits6/7"
 .assert INNER_VISIBILITY_X_MAX > INNER_VISIBILITY_X_PAGE*256 .and INNER_VISIBILITY_X_MAX < (INNER_VISIBILITY_X_PAGE+1)*256, error, "Inner X bound must share the guarded page"
+
+.if FLOOR_PROJECTOR_ACTIVE
+.segment "RENDER_CODE"
+.export project_slime_floor
+; X selects a positive signed32 inverse-depth cache entry for floor height2.
+; eye6: row=72+min(72, floor((inverse+512)/1024)); eye4 uses /2048.
+; Read the rounding bits directly; low byte0 cannot affect either result.
+; Keep full depth caches for sorting and wall-visibility tests. The compact
+; cosmetic span path does not consume g_acc after this projection.
+; Both main columns and the exact palette probe have render bank3 selected.
+.proc project_slime_floor
+    lda render_eye
+    cmp #6
+    bne other_eye
+    lda g_cached_value3,x
+    bne clipped
+    lda g_cached_value2,x
+    cmp #2
+    bcs clipped
+    lsr a
+    lda g_cached_value1,x
+    ror a
+    lsr a
+    adc #0
+clamp:
+    cmp #72
+    bcc below
+clipped:
+    lda #72
+below:
+    clc
+    adc #72
+    rts
+other_eye:
+    cmp #4
+    bne generic
+    lda g_cached_value3,x
+    bne clipped
+    lda g_cached_value2,x
+    cmp #4
+    bcs clipped
+    asl a
+    asl a
+    asl a
+    asl a
+    asl a
+    sta g_half
+    lda g_cached_value1,x
+    lsr a
+    lsr a
+    lsr a
+    ora g_half
+    adc #0
+    jmp clamp
+generic:
+    ; Preserve the existing projector for synthetic or future camera heights.
+    lda g_cached_value0,x
+    sta g_acc
+    lda g_cached_value1,x
+    sta g_acc+1
+    lda g_cached_value2,x
+    sta g_acc+2
+    lda g_cached_value3,x
+    sta g_acc+3
+    lda #2
+    jmp project_height
+.endproc
+.assert project_slime_floor >= __RENDER_CODE_LOAD__, lderror, "Floor projector must be in render bank"
+.endif

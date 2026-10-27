@@ -4,6 +4,9 @@
 .setcpu "6502"
 .include "coordinate-memory.inc"
 .macpack longbranch
+.ifndef SPRITE_MASK
+SPRITE_MASK = 0
+.endif
 .importzp render_buffer, render_eye, render_x, render_z, render_mode
 .import render_zombie_hp
 .importzp render_zombie_x, render_zombie_z, render_zombie_pose
@@ -63,7 +66,8 @@ z_proj_quotient = g_right
 z_threshold_index = g_right+1
 ; Producer-only floor anchor, consumed before geometry columns begin. Keep
 ; this outside transform scratch; neither NMI nor geometry uses these bytes.
-z_radial_foot = coordinate_producer_scratch
+z_ground_radius = coordinate_producer_scratch
+.export z_ground_radius, soldier_floor_anchor
 
 ; Only used by zombie_render, after all geometry and world raster work ends.
 z_source_ptr = g_num
@@ -84,6 +88,16 @@ z_opaque = g_multiplicand+2
 z_shift = g_multiplicand+3
 z_row_mask = g_base
 z_column_source = g_base+1
+.if ::SPRITE_MASK
+; Two dead compositor bytes. NMI never uses producer geometry scratch.
+; Positive cutoffs agree: mask is z_mask_bits before z_mask_cutoff, else zero.
+; $FF selects the original eight-pixel loop for nonuniform positive cutoffs.
+z_mask_cutoff = g_base+1
+z_mask_bits = g_base+2
+.exportzp z_mask_cutoff, z_mask_bits
+.export classify_actor_mask
+.endif
+.export actor_row_mask, actor_row_mask_done
 z_tile_opaque = g_base+3
 z_row_limits = opening_plane0      ; eight dead streamed-raster bytes
 
@@ -146,12 +160,12 @@ medkit_start:
  jcs done
  lda actor_kind
  bne :+
- jsr radial_floor_anchor
+ jsr ground_radius
 :
  jsr geometry_zombie_transform
  ; Positive camera depth, rounded from Q16 to Q8.8. This depth is used only
- ; for center and occlusion (also pickup floor anchors). Soldiers use radius
- ; for both body size and vertical placement, avoiding turn-induced sinking.
+ ; for center, occlusion and distant floor contact. Nearby soldiers retain
+ ; radial anchoring; medium distances blend smoothly into camera depth.
  lda g_camera_z+3
  jmi done
  lda g_camera_z
@@ -268,17 +282,16 @@ save_inverse:
  sta z_inverse,x
  dex
  bpl save_inverse
- ; Soldiers and corpses share the radial vertical projection. Horizontal
- ; perspective and foreground coverage keep the true camera-depth reciprocal.
+ ; Close soldiers/corpses retain the accepted radial floor anchor. Distant
+ ; ones share the exact physical floor projection already used by pickups.
  lda actor_kind
  bne pickup_floor
- lda z_radial_foot
- sta z_foot
- lda z_radial_foot+1
- sta z_foot+1
+ lda z_ground_radius+1
+ cmp #64
+ bcs pickup_floor
+ jsr soldier_floor_anchor
  jmp floor_ready
 pickup_floor:
- ; Pickups retain their existing physical camera-depth floor anchor.
  lda render_eye
  sec
  sbc #ZOMBIE_FLOOR
@@ -451,14 +464,10 @@ done:
  rts
 .endproc
 
-; The body tiers use radial distance. Use the same continuous distance for
-; vertical placement, not a tier-derived baseline: turning cannot move a
-; fixed-size body down, and crossing a size boundary cannot jump its feet.
-; This is a deliberate radial billboard convention, not planar perspective.
-; The true camera-depth reciprocal remains untouched for wall/floor masking.
-; Input: exact radius squared from choose_radial_size. Scratch is dead before
-; geometry_zombie_transform. Output: two producer-only WRAM bytes.
-.proc radial_floor_anchor
+; Exact Q8 radius is needed for continuous floor placement, independent of
+; pre-scaled artwork tiers. Keep it in the same producer-only two-byte reserve
+; formerly occupied by the rounded radial foot. No new RAM is allocated.
+.proc ground_radius
  lda #0
  sta g_value
  sta g_value+1
@@ -508,16 +517,86 @@ root_next:
  dex
  bne root_bit
  lda g_value
- sta g_den
+ sta z_ground_radius
  lda g_value+1
- sta g_den+1
- bne radius_ready
- lda g_den
+ sta z_ground_radius+1
+ bne done
+ lda z_ground_radius
  cmp #64
- bcs radius_ready
- lda #64                   ; bounded fallback for an overlapping actor
+ bcs done
+ lda #64                  ; same quarter-unit overlap fallback as before
+ sta z_ground_radius
+done:
+ rts
+.endproc
+
+; Use the exact old radial denominator through R=32, and transition toward
+; true depth over 32<R<64. Farther actors take pickup_floor directly. Blend
+; subpixel distances BEFORE the sole final pixel rounding; interpolating
+; rounded feet or quantizing the weight caused one-pixel approach reversals.
+;
+; Q8 d = r - round((r-cameraDepth)*(r-32*256)/(32*256)). The full 13-bit
+; weight and signed 32-bit product retain fractional camera positions.
+; True depth/inverse stay untouched for wall/floor occlusion and targeting.
+.proc soldier_floor_anchor
+ lda z_ground_radius
  sta g_den
-radius_ready:
+ lda z_ground_radius+1
+ sta g_den+1
+ sec
+ sbc #32
+ bcc project
+ sta g_mul_b+1
+ lda z_ground_radius
+ sta g_mul_b
+ ora g_mul_b+1
+ beq project
+ ; A signed difference also handles a camera basis rounding depth slightly
+ ; beyond the radius. The existing angular pre-cull bounds this product.
+ lda z_ground_radius
+ sec
+ sbc z_depth_q8
+ sta g_multiplicand
+ lda z_ground_radius+1
+ sbc z_depth_q8+1
+ sta g_multiplicand+1
+ lda #0
+ bcs :+
+ lda #$FF
+:
+ sta g_multiplicand+2
+ sta g_multiplicand+3
+ lda #0
+ sta g_acc
+ sta g_acc+1
+ sta g_acc+2
+ sta g_acc+3
+ ldx #13
+ jsr zombie_multiply_bits ; shared shift/add multiply; no second square root
+ ; Round by4096, then extract product bits13..28 as a signed16-bit result.
+ lda g_acc+1
+ clc
+ adc #$10
+ sta g_acc+1
+ lda g_acc+2
+ adc #0
+ sta g_acc+2
+ lda g_acc+3
+ adc #0
+ sta g_acc+3
+ .repeat 5
+ lsr g_acc+3
+ ror g_acc+2
+ ror g_acc+1
+ .endrepeat
+ lda z_ground_radius
+ sec
+ sbc g_acc+1
+ sta g_den
+ lda z_ground_radius+1
+ sbc g_acc+2
+ sta g_den+1
+project:
  lda #0
  sta g_den+2
  sta g_value+1
@@ -529,14 +608,14 @@ radius_ready:
  asl a
  .endrepeat
  sta g_value
- jsr scaled_division       ; round(128 * eyeHeight / radius), in pixels
+ jsr scaled_division       ; same round(128*eyeHeight/distance) as before
  lda g_acc
  clc
  adc #96
- sta z_radial_foot
+ sta z_foot
  lda g_acc+1
  adc #0
- sta z_radial_foot+1
+ sta z_foot+1
  rts
 .endproc
 
@@ -782,6 +861,8 @@ shift:
  bne bit_loop
  rts
 .endproc
+
+zombie_multiply_bits = square_delta::bit_loop
 
 .segment "RENDER_CODE"
 
@@ -1051,6 +1132,21 @@ tile:
  sta z_inner_row
  sta z_tile_opaque
 row:
+.if ::SPRITE_MASK
+ ldx #8                    ; Match the original loop's exit X.
+ lda z_mask_cutoff
+ cmp #$FF
+ beq general_mask
+ lda z_row
+ cmp z_mask_cutoff
+ lda #0
+ bcs cached_mask
+ lda z_mask_bits
+cached_mask:
+ sta z_row_mask
+ jmp mask_ready
+general_mask:
+.endif
  lda #0
  sta z_row_mask
  ldx #0
@@ -1065,6 +1161,7 @@ mask_pixel:
  lda z_row_mask
  eor #$FF
  sta z_row_mask
+mask_ready:
  beq blank_row             ; fully masked/padded rows need no source ROM read
  ldy #0
  lda (z_source_ptr),y
@@ -1195,6 +1292,8 @@ done:
 return:
  rts
 .endproc
+actor_row_mask = zombie_render_shared::row
+actor_row_mask_done = zombie_render_shared::mask_ready
 
 ; Convert each of this sprite column's screen clip boundaries into exclusive
 ; source-row limits. This is done once per8px column and reused for every row.
@@ -1251,8 +1350,44 @@ next:
  inx
  cpx #8
  bne pixel
+.if ::SPRITE_MASK
+ jmp classify_actor_mask
+.else
+ rts
+.endif
+.endproc
+
+.if ::SPRITE_MASK
+; Eight source-row limits have just been finalized. Zero cutoffs describe
+; padding or completely hidden pixels. If all other cutoffs agree, one mask
+; and cutoff reproduce every row exactly. Otherwise retain the general loop.
+; The builder checks every shared actor/item/corpse height is below $FF.
+; Recomputed for every column/invocation, never cached across world frames.
+.proc classify_actor_mask
+ lda #0
+ sta z_mask_cutoff
+ sta z_mask_bits
+ ldx #0
+pixel:
+ lda z_row_limits,x
+ cmp #1
+ rol z_mask_bits             ; Source pixel0 becomes bit7 after eight shifts.
+ cmp #0
+ beq next
+ ldy z_mask_cutoff
+ beq store
+ cmp z_mask_cutoff
+ beq next
+ lda #$FF                   ; Once mismatched, positive limits cannot clear it.
+store:
+ sta z_mask_cutoff
+next:
+ inx
+ cpx #8
+ bne pixel
  rts
 .endproc
+.endif
 
 ; Doom-style vertical autoaim, still silhouette-tight horizontally. Any
 ; visible opaque source pixel at screenX128 makes this snapshot targetable.

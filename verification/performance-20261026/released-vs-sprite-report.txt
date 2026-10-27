@@ -1,0 +1,236 @@
+HISTORICAL EVIDENCE — OCTOBER 24 RELEASE VS SPRITE-RESPONSE BUILD
+
+This report predates the 16-pixel active-list and exact-position rejection
+experiments. Its “latest” build means the intermediate sprite-response ROM:
+fdce718795e5ea56fa2e5ddc8647cbd8888a9cc3102807ecebb0b82a3e748081
+It is NOT the later consolidated candidate:
+70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817
+
+Its release baseline is the October 24 published prototype:
+db258e4c9c57ff3ef9f4bc8eb732f31b65eec85a1a639e7a9787a90dde1722a9
+
+Relative evidence and executable-test paths below refer to the local archive
+analysis/release-comparison-20261026/ in the research workspace. Those raw
+captures, large JSON data and test harnesses are not bundled here. This copy
+preserves the measured intermediate comparison and its limitations; it does
+not claim a fresh latest-vs-release live capture, controller-only end-to-end
+playthrough, physical-console validation, or browser/itch.io deployment.
+Any cumulative latest-build comparison must identify its separately matched
+CPU measurements; live latency figures below belong only to these two ROMs.
+
+Original report follows unchanged.
+------------------------------------------------------------------------
+
+HANGAR: RELEASED PROTOTYPE VS CURRENT BUILD
+Measured 2026-10-26
+
+The latest version is measurably better, with the largest practical change in
+initial response when the moving zombie is present at the slime-room entrance.
+Fresh rendering is moderately faster; stationary combat benefits much more
+from background reuse. Continuous movement still exposes a slow renderer.
+
+Exact versions (no ROM/source changes made for this comparison)
+  Released October 24: db258e4c9c57ff3ef9f4bc8eb732f31b65eec85a1a639e7a9787a90dde1722a9
+  Latest sprite-response: fdce718795e5ea56fa2e5ddc8647cbd8888a9cc3102807ecebb0b82a3e748081
+
+Both use stock NTSC timing, the same 128 KiB MMC1 cartridge configuration,
+8 KiB CHR-RAM,8 KiB WRAM, 256x144 viewport and 128 geometry columns. Music and
+source artwork are identical. No overclock, extra scanlines or reduced
+resolution accounts for the improvement.
+
+1. CPU required to construct a fresh picture
+
+Actual linked 6502, fixed camera/actor state, both staging buffers. These are
+active CPU milliseconds WITHOUT interrupts; they are NOT live frame times.
+Lower is better. Representative views, not an arbitrary overall average:
+
+Fixed view            | Release CPU ms | Latest CPU ms | Less CPU work
+----------------------+----------------+---------------+--------------
+Opening / recess      | 571.7          | 505.7         | 11.5%
+Simple wall           | 292.3          | 262.6         | 10.2%
+Corridor, no zombie   | 475.7          | 416.9         | 12.4%
+Square room           | 331.6          | 292.3         | 11.9%
+Slime entry + zombie  | 566.1          | 488.6         | 13.7%
+Slime center + zombie | 533.5          | 477.9         | 10.4%
+Close zombie          | 541.5          | 460.7         | 14.9%
+
+Broader moving-view pose sets, with no enemy and summed-cycle weighting:
+
+Pose set                | Cameras | Release cycles/picture | Latest cycles/picture | Less CPU
+------------------------+---------+------------------------+-----------------------+---------
+Opening room            | 13      | 930,252                | 844,063               | 9.27%
+Slime entrance route    | 16      | 892,359                | 792,999               | 11.13%
+Slime middle/exit route | 16      | 678,257                | 613,369               | 9.57%
+
+Across these 45 specified camera poses: 10.07% less CPU.
+That is a corpus result, not a prediction of average gameplay FPS.
+
+
+2. Stationary combat: reuse the existing background
+
+The camera stays fixed, the actor walking pose changes, and the same staging
+buffer already contains a valid world image. Do not pool this with moving views.
+The live game normally need not redraw a completely unchanged empty scene.
+
+Stationary zombie view | Release CPU ms | Latest CPU ms | Less CPU
+-----------------------+----------------+---------------+---------
+Slime entry            | 561.3          | 289.9         | 48.34%
+Slime center           | 528.6          | 276.2         | 47.76%
+Close zombie           | 536.5          | 275.3         | 48.68%
+
+3. Input response in Mesen
+
+Milliseconds from the controller POLL to the first observed viewport containing
+a newly sampled, changed camera. This excludes physical controller, OS and
+monitor latency. Values are medians for n trials per ROM/music condition.
+Opening-turn and live-entry n=3 vary onset over 150/151/152 settle refreshes;
+other rows are one bounded trial per condition, not population estimates.
+Every arrow is RELEASE -> LATEST. Lower is better.
+
+Scene/action               | n | Music OFF ms | Music ON ms
+---------------------------+---+--------------+------------
+Opening room turn          | 3 | 915 -> 849   | 948 -> 865
+Opening floor step         | 1 | 948 -> 832   | 982 -> 865
+Corridor turn              | 1 | 782 -> 715   | 799 -> 732
+Square room turn           | 1 | 566 -> 516   | 582 -> 532
+Slime entry: zombie alive  | 3 | 1581 -> 832  | 1631 -> 849
+Slime entry: zombie gone   | 1 | 898 -> 815   | 982 -> 882
+Slime center: zombie alive | 1 | 882 -> 799   | 898 -> 815
+Slime center: zombie gone  | 1 | 865 -> 815   | 898 -> 832
+Close zombie turn          | 1 | 932 -> 815   | 948 -> 849
+
+Stopping: release POLL to publication of the final camera, milliseconds.
+This does not mean simulation continues moving for this long; it measures
+how long the displayed camera takes to catch up. Lower is better.
+
+Scene/action               | Music OFF ms | Music ON ms
+---------------------------+--------------+------------
+Opening room turn          | 534 -> 450   | 500 -> 467
+Opening floor step         | 567 -> 517   | 567 -> 517
+Corridor turn              | 650 -> 600   | 783 -> 617
+Square room turn           | 500 -> 450   | 500 -> 467
+Slime entry: zombie alive  | 683 -> 633   | 783 -> 650
+Slime entry: zombie gone   | 667 -> 617   | 700 -> 650
+Slime center: zombie alive | 583 -> 567   | 633 -> 567
+Slime center: zombie gone  | 567 -> 534   | 584 -> 550
+Close zombie turn          | 750 -> 683   | 783 -> 700
+
+All 26 primary paired trials improve both first-visible and stopping response.
+The simulation itself still responds within about one 50 Hz tick. The large
+entry gain comes from when useful pictures reach the screen, not faster
+player physics. Real AI remains active during the entire live measurement.
+Player camera endpoints and initial simulation phases match. One middle-room
+music-OFF trial begins with a slightly different enemy position after settling
+(294.5625,219.5 released;294.46875,219.25 latest). Live costs therefore describe
+the actual running versions; the fixed-state CPU comparisons isolate costs
+at identical actor/camera inputs. See live/REPORT.txt for the recorded states.
+
+Separate opening-room reversal control, right 120 refreshes then left 120:
+
+Music | First visibly reversed view ms | Final stop ms
+------+--------------------------------+--------------
+OFF   | 1265 -> 1165                   | 900 -> 817
+ON    | 1314 -> 1198                   | 916 -> 833
+
+Residual reversal latency is still substantial. These are two supplemental
+paired controls, reported separately from the primary turn-throughput table.
+
+4. New camera pictures during movement
+
+Completed, genuinely changed-camera pictures / exact held-input time.
+Turning windows are approximately 3.993 s; the floor-step window is 2.662 s.
+The onset delay IS included. These short-window counts are response throughput,
+not emulator refresh rate or a stable 60 Hz rendering claim. Higher is better.
+
+Scene/action               | Music OFF pictures/s | Music ON pictures/s
+---------------------------+----------------------+--------------------
+Opening room turn          | 2.00 -> 2.25         | 1.92 -> 2.00
+Opening floor step         | 1.50 -> 1.50         | 1.13 -> 1.50
+Corridor turn              | 1.75 -> 2.00         | 1.75 -> 2.00
+Square room turn           | 2.75 -> 3.00         | 2.75 -> 3.00
+Slime entry: zombie alive  | 1.59 -> 1.75         | 1.34 -> 1.67
+Slime entry: zombie gone   | 1.75 -> 2.00         | 1.50 -> 1.75
+Slime center: zombie alive | 1.75 -> 2.00         | 1.75 -> 2.00
+Slime center: zombie gone  | 2.00 -> 2.25         | 1.75 -> 2.00
+Close zombie turn          | 1.75 -> 2.00         | 1.50 -> 1.75
+
+The raw live table also reports consecutive-publication intervals separately.
+For the live slime entry, interval-based rates improve 2.03->2.12 OFF and
+1.91->2.06 ON. That modest change is distinct from roughly halving onset delay.
+The floor-step ON count changes from 3 to 4 pictures in a short window; its 33%
+count increase must not be advertised as a general 33% frame-rate improvement.
+
+5. Tradeoffs and limits
+
+- 1 scene/music median-interval summary worsens: opening turn OFF
+  332.8->349.4ms, even though its whole-window picture rate improves. The
+  builds sample different angles at different times during continuous turns.
+- 8/26 paired trials spend over 1 ms more CPU on abandoned render attempts,
+  up to 246.6 ms extra in a trial. Faster visible response does
+  not guarantee less discarded work. The bounded restart policy is retained.
+- 4 first-simulation response measurements worsen by approximately 1 ms;
+  all tested first-visible and stop responses nevertheless improve.
+- Fresh-pose upload byte COUNTS are identical. The latest uploader transfers
+  up to 128 pattern bytes in eligible interrupts versus 112 before; sparse
+  name transfers remain capped at 96 bytes, with publication/DMA separate.
+  Upload and next-frame production overlap; their durations cannot simply
+  be added to predict continuous frame rate. Live sampled payload means can
+  differ because the versions display different poses along the same route.
+
+Resource                       | Release | Latest
+-------------------------------+---------+--------------------------------
+Extra background-cache RAM     | 0 bytes | 5 bytes from unused reservation
+Free actor-bank bytes          | 127     | 65
+Free fixed code/audio bytes    | 20      | 65
+Free common-region bytes       | 11      | 2
+Free configured renderer bytes | 108     | 55
+
+Some code regions are nearly full. This constrains implementation/layout of
+future optimizations even though cartridge capacity and RAM hardware match.
+
+6. Graphics and correctness
+
+190 matched render pairs across 67 legal camera fixtures (172 fresh, 18 warm)
+pass. All world pixels/palettes match exactly. 182 pairs also have exact actor
+pixels, staging OAM, pattern/name bytes, targeting metadata and hidden-corpse
+payloads. 8 differences are due solely to the intentional distant-soldier floor
+anchor correction; separate untimed diagnostic substitution restores exact
+output. The map's third-encounter activation boundary moved Z128->132 to match
+door reach. That behavior fix is documented, not treated as a performance trick.
+
+The 52 primary live trials and 4 reversal trials use 8 isolated Mesen captures.
+29,952 recorded frame positions/floor states pass independent map validation.
+Both builds have coherent publications, legal upload limits and no observed
+PPUDATA writes outside VBlank. The actor-layer CPU oracle is not a hardware
+scanout simulation; Mesen supplies the separate display/timing checks. Personal
+settings and 164 protected project inputs remain unchanged. Neither version
+was tested on a physical console in this comparison.
+
+7. What to investigate next
+
+At the selected latest slime-entry view with a living zombie, geometry setup
+and per-column geometry consume 51.9% of producer CPU; wall/floor painting
+and tile encoding consume 41.2%. The distant sprite itself is a smaller
+component. These are workload shares, not promised optimization percentages.
+
+Keep this build as the measured comparison point. The next focused profile
+should split geometry candidate preparation/rejection and per-column work to
+find calculations repeated for invisible or already-covered surfaces. After
+that, inspect painting/tile encoding if the geometry work proves necessary.
+Avoid raising upload limits simply to chase FPS; the existing VBlank budget
+needs to remain safe. More sprite work is secondary unless close combat is
+the particular feature being targeted. A release-candidate gameplay pass is
+reasonable before publishing an update; this benchmark made no deployment.
+
+
+Evidence and reproduction
+  producer/REPORT.txt, README.txt, results.json, summary.json
+  live/REPORT.txt, README.txt, comparison.json, reversal-comparison.json
+  live/audit.json and per-version captures
+  audit/REPORT.txt, source-audit.json, metrics-audit.json
+  preservation.json
+
+results.json is the consolidated machine-readable progress baseline. This
+document is generated with python3 make-report.py from the audited results.
+Recheck input preservation with python3 check-preservation.py. Source hashes
+and exact fixture definitions accompany each measurement layer.

@@ -54,11 +54,23 @@ def portable(value):
 def main():
     logo_module = load('newtitle_logo', TOOLS/'newtitle_logo.py')
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--no-music', action='store_true', help='Build the same experimental bank layout with music updates disabled')
+    parser.add_argument('--no-music', action='store_true', help='Build the same bank layout with music updates disabled')
+    parser.add_argument('--no-exact-arithmetic', action='store_true', help='Disable exact arithmetic shortcuts for comparison')
+    parser.add_argument('--no-upload-completion', action='store_true', help='Keep the original upload-completion schedule for comparison')
+    parser.add_argument('--no-stream-upload', action='store_true', help='Use the accepted per-block pattern uploader for comparison')
+    parser.add_argument('--no-pattern8', action='store_true', help='Retain the seven-slot streaming uploader for comparison')
+    parser.add_argument('--no-floor-projector', action='store_true', help='Retain the general cosmetic floor projector for exact comparison')
+    parser.add_argument('--no-setup-checkpoint', action='store_true', help='Retain raster-only input restart checkpoints for comparison')
+    parser.add_argument('--no-quotient16', action='store_true', help='Retain original24/32iteration exact divider for comparison')
+    parser.add_argument('--no-masked-paint', action='store_true', help='Retain generic partial-tile paint composition for exact comparison')
+    parser.add_argument('--no-camera-retry', action='store_true', help='Retain actor-sensitive soft-retry predicate for comparison')
+    parser.add_argument('--no-sprite-mask', action='store_true', help='Retain the general per-row sprite visibility loop for comparison')
     parser.add_argument('--verify', action='store_true', help='Require exact identity with the included accepted release')
     parser.add_argument('--title-palette', choices=logo_module.PALETTES, default=logo_module.DEFAULT_PALETTE,
                         help='Logo colours only; guide and gameplay stay unchanged (default: bronze)')
     args = parser.parse_args()
+    if args.no_stream_upload and not args.no_pattern8:
+        parser.error('The guarded eighth pattern block requires streaming; use --no-pattern8 with --no-stream-upload.')
     if sys.flags.optimize:
         raise SystemExit('Do not use python -O: build-time geometry/resource assertions are required.')
     sys.dont_write_bytecode = True
@@ -78,6 +90,10 @@ def main():
     for wall in scene['segments']:
         assert wall['material'] in (1,2)
         assert (wall['nx'],wall['nz']) != (0,0)
+        # Early axis rejection depends on the existing positive-facing winding.
+        dx,dz=wall['x2']-wall['x1'],wall['z2']-wall['z1']
+        assert dx*wall['nx']+dz*wall['nz']==0
+        assert dx*wall['nz']-dz*wall['nx']>0
         for end in (1,2):
             x,z=wall[f'x{end}'],wall[f'z{end}']
             assert 0<=x<=1023 and 0<=z<=1023
@@ -185,11 +201,27 @@ def main():
     generated['encounters']=encounter_reference.write_assets(BUILD)
     flags=['STEP','NTSC','NTSC_OPT','NTSC_LATENCY','COMPACT_SPANS','STRIP_ACTIVE',
            'LATENCY_RESTART','LATENCY_HEIGHT_PRIORITY','HUD_PISTOL','COMBAT','COMBAT_GROUNDED','ZOMBIE']
+    if not args.no_sprite_mask:
+        # $FF is reserved for the compositor's nonuniform-cutoff fallback.
+        # Check all users of its shared row-mask path, including padded rows.
+        for filename in ('zombie-assets.json', 'corpse-assets.json', 'medkit-assets.json', 'ammo-assets.json'):
+            variants = json.loads((BUILD/filename).read_text())['variants']
+            assert all(0 < v['height'] < 255 and ((v['height']+7)//8)*8 < 255 for v in variants), filename
     defines=[arg for flag in flags for arg in ('-D',flag+'=1')]+['-D','FRESHNESS_MARGIN=0','-D',f'MUSIC_ENABLED={0 if args.no_music else 1}']
+    defines += ['-D', f'EXACT_ARITHMETIC={0 if args.no_exact_arithmetic else 1}',
+                '-D', f'UPLOAD_COMPLETION_FAST={0 if args.no_upload_completion else 1}',
+                '-D', f'STREAM_PATTERN_UPLOAD={0 if args.no_stream_upload else 1}',
+                '-D', f'GUARDED_PATTERN8={0 if args.no_pattern8 else 1}',
+                '-D', f'FLOOR_PROJECTOR={0 if args.no_floor_projector else 1}',
+                '-D', f'SETUP_CHECKPOINT={0 if args.no_setup_checkpoint else 1}',
+                '-D', f'QUOTIENT16={0 if args.no_quotient16 or args.no_exact_arithmetic else 1}',
+                '-D', f'MASKED_PAINT={0 if args.no_masked_paint else 1}',
+                '-D', f'CAMERA_RETRY={0 if args.no_camera_retry else 1}',
+                '-D', f'SPRITE_MASK={0 if args.no_sprite_mask else 1}']
     modules=[SOURCE/'walkable.s',SOURCE/'geometry.s',SOURCE/'movement.s',SOURCE/'raster.s',
              SOURCE/'ntsc_movement.s',SOURCE/'ntsc_upload.s',SOURCE/'freshness.s',
              SOURCE/'latency_restart.s',SOURCE/'pistol.s',
-             SOURCE/'zombie_render.s',SOURCE/'zombie_gameplay.s',SOURCE/'zombie_ai.s',SOURCE/'zombie_attack.s',SOURCE/'door.s',SOURCE/'exit.s',SOURCE/'medkit.s',SOURCE/'medkit_render.s',SOURCE/'corpse_prepare.s',SOURCE/'corpse_fast.s',SOURCE/'prg_banks.s',SOURCE/'coordinate_math.s',SOURCE/'encounters.s',SOURCE/'encounter_select.s',SOURCE/'slime_damage.s',SOURCE/'results.s',SOURCE/'results_screen.s',SOURCE/'pause.s',SOURCE/'title.s',SOURCE/'credits.s',SOURCE/'music.s',SOURCE/'audio.s']
+             SOURCE/'zombie_render.s',SOURCE/'zombie_gameplay.s',SOURCE/'zombie_ai.s',SOURCE/'zombie_attack.s',SOURCE/'door.s',SOURCE/'exit.s',SOURCE/'medkit.s',SOURCE/'medkit_render.s',SOURCE/'corpse_prepare.s',SOURCE/'corpse_fast.s',SOURCE/'prg_banks.s',SOURCE/'coordinate_math.s',SOURCE/'encounters.s',SOURCE/'encounter_select.s',SOURCE/'slime_damage.s',SOURCE/'results.s',SOURCE/'results_screen.s',SOURCE/'pause.s',SOURCE/'title.s',SOURCE/'credits.s',SOURCE/'world_reuse.s',SOURCE/'music.s',SOURCE/'audio.s',SOURCE/'axis_gate.s']
     for source in modules:
         subprocess.run([ca65,'-g',*defines,'-I',str(BUILD),'-I',str(ROOT/'vendor/famistudio'),'-l',source.stem+'.lst',
                         '-o',source.stem+'.o',os.path.relpath(source,BUILD)],cwd=BUILD,check=True)
@@ -201,12 +233,12 @@ def main():
     assert data[:16]==b'NES\x1a\x08\x00\x10\x08\x00\x00\x07\x07\x00\x00\x00\x00'
     sizes={}
     for line in (BUILD/'hangar.map').read_text().splitlines():
-        m=re.fullmatch(r'(ZEROPAGE|BSS|CODE|AUDIO_CODE|AUDIO_ENGINE|AUDIO_DRIVER|AUDIO_SETTINGS|AUDIO_ZP|RENDER_CODE|RODATA|MAPDATA|ACTOR_ART|BOOTDATA|CREDITSDATA|STARTUP)\s+[0-9A-F]{6}\s+[0-9A-F]{6}\s+([0-9A-F]{6})\s+[0-9A-F]+',line)
+        m=re.fullmatch(r'(ZEROPAGE|BSS|CODE|AUDIO_CODE|AUDIO_ENGINE|AUDIO_DRIVER|AUDIO_SETTINGS|AUDIO_ZP|RENDER_CODE|RODATA|MAPDATA|ACTOR_ART|BOOTDATA|CREDITSDATA|WORLD_REUSE_RAM|WORLD_REUSE_CODE|AXIS_INIT|STARTUP)\s+[0-9A-F]{6}\s+[0-9A-F]{6}\s+([0-9A-F]{6})\s+[0-9A-F]+',line)
         if m:sizes[m[1]]=int(m[2],16)
-    assert set(sizes)-{'AUDIO_CODE','AUDIO_ENGINE','AUDIO_DRIVER','AUDIO_SETTINGS','AUDIO_ZP'}=={'ZEROPAGE','BSS','CODE','RENDER_CODE','RODATA','MAPDATA','ACTOR_ART','BOOTDATA','CREDITSDATA','STARTUP'}
+    assert set(sizes)-{'AUDIO_CODE','AUDIO_ENGINE','AUDIO_DRIVER','AUDIO_SETTINGS','AUDIO_ZP','WORLD_REUSE_RAM','WORLD_REUSE_CODE','AXIS_INIT'}=={'ZEROPAGE','BSS','CODE','RENDER_CODE','RODATA','MAPDATA','ACTOR_ART','BOOTDATA','CREDITSDATA','STARTUP'}
     assert sizes['ZEROPAGE']<=256 and sizes['BSS']<=1536
     audio_ram_bytes=sum(sizes[n] for n in ('AUDIO_ENGINE','AUDIO_DRIVER','AUDIO_SETTINGS'))
-    assert audio_ram_bytes<=216 and sizes['AUDIO_ZP']<=8 and sizes['AUDIO_SETTINGS']==1
+    assert audio_ram_bytes+sizes['WORLD_REUSE_RAM']<=216 and sizes['AUDIO_ZP']<=8 and sizes['AUDIO_SETTINGS']==1
     # Common routines/data have identical CPU addresses in every switchable
     # bank. Copy the linked common window and the fixed-bank reset trampoline.
     # The latter establishes a known mapping even with non-default power-on mode.
@@ -226,13 +258,24 @@ def main():
     assert labels['__AUDIO_SETTINGS_RUN__']==labels['music_disabled']==labels['audio_driver_end']
     assert labels['music_disabled']+sizes['AUDIO_SETTINGS']<=labels['audio_workspace_end']
     assert labels['__AUDIO_ZP_RUN__']==labels['movement_scratch_begin']==0xB9
+    assert sizes['WORLD_REUSE_RAM']==5 and sizes['WORLD_REUSE_CODE']<=0x2000
+    assert labels['__WORLD_REUSE_RAM_RUN__']==labels['music_disabled']+1
+    assert labels['__WORLD_REUSE_RAM_RUN__']+5<=labels['audio_workspace_end']
+    assert labels['__WORLD_REUSE_CODE_LOAD__']==0x8000
+    assert labels['__AXIS_INIT_LOAD__']==labels['axis_gate_init']==0x8000
+    assert sizes['AXIS_INIT']==labels['axis_gate_init_end']-labels['axis_gate_init']<=0x2000
+    assert 0xC000 <= labels['axis_gate_begin'] < 0xFFF0
+    assert labels['axis_gate_end'] <= 0xA000
+    assert labels['axis_gate'] >= labels['map_render_overlay_end']
+    assert labels['gate_axis_offset']==labels['opening_candidate']
+    assert labels['gate_polarity'] < labels['opening_cache']
     assert 0xA000 <= labels['title_credits_gateway'] < 0xBFF0
     assert 0x8000 <= labels['credits_present'] < 0xA000
     assert labels['__CREDITSDATA_SIZE__'] == sizes['CREDITSDATA']
     render_start=labels['__RENDER_CODE_LOAD__']
     render_size=labels['__RENDER_CODE_SIZE__']
     render_end=render_start+render_size
-    assert render_size==sizes['RENDER_CODE'] and render_size<=0x1000
+    assert render_size==sizes['RENDER_CODE'] and render_size<=0x1100
     assert labels['map_render_overlay_start']<=render_start<render_end<=labels['map_render_overlay_end']
     assert render_start<=labels['geometry_column']<render_end
     # Reset-only code may use bank2; NMI audio and all song data must remain fixed.
@@ -268,6 +311,18 @@ def main():
                           if p.is_file() and '__pycache__' not in p.parts
                           and not any(part.startswith('.') for part in p.relative_to(ROOT).parts))
     report = dict(rom='build/hangar-ntsc.nes', sha256=sha(ROM), bytes=len(data),
+        rendererOptimizations=dict(geometryListPixels=16,
+                        exactPositionAxisGate=True, axisInitBank=6, axisScratchBytes=4,
+                        cameraRetry=not args.no_camera_retry,
+                        spriteMask=not args.no_sprite_mask, maskedPaint=not args.no_masked_paint,
+                        exactArithmetic=not args.no_exact_arithmetic,
+                        uploadCompletion=not args.no_upload_completion,
+                        streamPatternUpload=not args.no_stream_upload,
+                        guardedPattern8=not args.no_pattern8,
+                        cachedFloorProjector=not args.no_floor_projector,
+                        geometrySetupCheckpoint=not args.no_setup_checkpoint,
+                        quotient16=not (args.no_quotient16 or args.no_exact_arithmetic),
+                        reclaimedLegacyHelpers=True),
         region='NTSC', mapper='MMC1', prgBytes=131072, chrRamBytes=8192, workRamBytes=8192,
         viewport=[256,144], worldGeometryColumns=128, segmentBytes=sizes,
         music=dict(enabled=not args.no_music, engine='FamiStudio', channels=4, dpcm=False,
@@ -280,7 +335,7 @@ def main():
                                      skipsSequencerWhenOff=True, preservesSoundEffects=True,
                                      survivesLevelRestart=True, coldResetRestoresDefault=True)),
         banking=dict(fixedBank=7, mapBank=0, artBank=1, bootBank=2, renderBank=3, creditsBank=4,
-                     commonCopies=7, nmiSwitchesBanks=False, musicInitBank=2, musicPlaybackBank=7,
+                     worldReuseBank=5, axisInitBank=6, commonCopies=7, nmiSwitchesBanks=False, musicInitBank=2, musicPlaybackBank=7,
                      renderOverlay=dict(start=render_start,end=render_end,bytes=render_size,
                                         availableStart=labels['map_render_overlay_start'],
                                         availableEnd=labels['map_render_overlay_end'],

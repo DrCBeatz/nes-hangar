@@ -4,12 +4,17 @@
 8-Bit Pocket site. Click **Play Hangar**, then press **Start** on the game title
 screen. The ordinary hosted picker and local **Open ROM** loader remain available.
 
-The current hosted ROM is `prototype-2026-10-24-door-reach`, matching
-`release/hangar-ntsc.nes` byte for byte. It includes the bronze logo, optional
+The current hosted ROM is `prototype-2026-10-24-door-reach`, the previously
+published release identified below. The repository's `release/hangar-ntsc.nes`
+is now `prototype-2026-10-26-performance-rc1`, awaiting the user's playtest
+before a separate browser deployment. Updating this repository does not deploy
+8-Bit Pocket. See the [candidate notes](PERFORMANCE-UPDATE-20261026.md).
+
+The hosted October 24 release includes the bronze logo, optional
 Dr C Beatz soundtrack, revised interactions and ammo placement, credits and
 HUD polish. The public author credit is **Dr C Beatz**.
 
-## Current release: 2026-10-24
+## Current hosted release: 2026-10-24
 
 The game source and ROM were published in
 [eba6c06](https://github.com/DrCBeatz/nes-hangar/commit/eba6c0604989c7313ae3575e1968a81562df9329).

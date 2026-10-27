@@ -1,14 +1,14 @@
 {
   "title": "Hangar \u2014 an NES FPS prototype",
   "rom": "hangar-ntsc.nes",
-  "sha256": "db258e4c9c57ff3ef9f4bc8eb732f31b65eec85a1a639e7a9787a90dde1722a9",
+  "sha256": "70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817",
   "bytes": 131088,
   "region": "NTSC",
   "mapper": "MMC1",
   "prgBytes": 131072,
   "chrRamBytes": 8192,
   "workRamBytes": 8192,
-  "version": "prototype-2026-10-24-door-reach",
+  "version": "prototype-2026-10-26-performance-rc1",
   "sourceBuild": "python3 tools/build.py --verify",
   "titlePalette": "bronze",
   "music": {
@@ -19,7 +19,7 @@
     "source": "music/e1m1/e1m1-drcbeatz.s",
     "sourceSha256": "d5886648b0045e97de9172af06934dff190a873286a7aff62599c4667235427a"
   },
-  "status": "published prototype; browser deployment verified",
+  "status": "repository release candidate; user playtest pending; browser remains October 24 release",
   "credits": {
     "open": "Select from bronze logo",
     "back": "B to logo",
@@ -31,5 +31,10 @@
   },
   "authorCredit": "Dr C Beatz",
   "doorUseReachUnits": 12,
-  "playUrl": "https://8bitpocket.app/?game=hangar"
+  "playUrl": "https://8bitpocket.app/?game=hangar",
+  "previousPublishedVersion": "prototype-2026-10-24-door-reach",
+  "previousPublishedSha256": "db258e4c9c57ff3ef9f4bc8eb732f31b65eec85a1a639e7a9787a90dde1722a9",
+  "titleBuildCaption": "2026-10-24",
+  "notes": "docs/PERFORMANCE-UPDATE-20261026.md",
+  "browserDeploymentUpdated": false
 }

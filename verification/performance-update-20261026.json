@@ -1,0 +1,5618 @@
+{
+  "schemaVersion": 1,
+  "recordedOn": "2026-10-26",
+  "passed": true,
+  "baselineSha256": "db258e4c9c57ff3ef9f4bc8eb732f31b65eec85a1a639e7a9787a90dde1722a9",
+  "candidateSha256": "70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817",
+  "method": "Join three saved linked-6502 producer comparisons on (pose.id, bank, hp, warm); require identical pose objects, matching intermediate ROM hashes and exact intermediate cycle equality. This recombines existing measurements; no new live measurement.",
+  "scope": "Completed isolated CPU work excluding asynchronous music, NMI, PPU uploads and display time; not FPS or whole-playthrough averages. Stationary reuse is separate from moving fresh views.",
+  "inputs": [
+    {
+      "workspaceRelativePath": "analysis/release-comparison-20261026/producer/results.json",
+      "sha256": "190d83f06f60cfa4c823648abce63e6789056a5555d686abb4cab0cafc5adaf2",
+      "baselineSha256": "db258e4c9c57ff3ef9f4bc8eb732f31b65eec85a1a639e7a9787a90dde1722a9",
+      "candidateSha256": "fdce718795e5ea56fa2e5ddc8647cbd8888a9cc3102807ecebb0b82a3e748081",
+      "scriptSha256": "bfcdb17e847852b9e520a06f5da8cd07300935bd52ad1ec1981bd68935bda8a5",
+      "cpuSha256": "17469b310738c4b3092d648289c8537a4584f6b45bc1735adb540968a75308f2",
+      "posesSha256": "ead0c75d8fd1c18dab75e9b0bae78fc54aaed64e1db15587dcdba71150bb82b8"
+    },
+    {
+      "workspaceRelativePath": "experiments/hangar-strip16-active-list/verification/producer-results.json",
+      "sha256": "f5be9071060719a9024b3c90f0b7466f913c3dcd8a6230cc35d71aded78e2036",
+      "baselineSha256": "fdce718795e5ea56fa2e5ddc8647cbd8888a9cc3102807ecebb0b82a3e748081",
+      "candidateSha256": "cf8d701e9829342ab89bc7b817c5d39925eb9c8cc5a7520d568563f69f31ac87",
+      "scriptSha256": "4547a1d8a223fb9aabe48b545a9f405234a503b748086bfc4f84d6bfaf05bbd8",
+      "cpuSha256": "17469b310738c4b3092d648289c8537a4584f6b45bc1735adb540968a75308f2",
+      "posesSha256": "ead0c75d8fd1c18dab75e9b0bae78fc54aaed64e1db15587dcdba71150bb82b8"
+    },
+    {
+      "workspaceRelativePath": "experiments/hangar-axis-rejection/verification/producer-results.json",
+      "sha256": "c6e9c009e2d77ef289c4e45280c5d5cd14bba555d8e5c7d1bd581cc241f52298",
+      "baselineSha256": "cf8d701e9829342ab89bc7b817c5d39925eb9c8cc5a7520d568563f69f31ac87",
+      "candidateSha256": "70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817",
+      "scriptSha256": "81281ea8b3929c2af82f5fdb4a0f3c90b92b4af008a998b15fd0ea9ab65c2b41",
+      "cpuSha256": "17469b310738c4b3092d648289c8537a4584f6b45bc1735adb540968a75308f2",
+      "posesSha256": "ead0c75d8fd1c18dab75e9b0bae78fc54aaed64e1db15587dcdba71150bb82b8"
+    }
+  ],
+  "groups": {
+    "fresh": {
+      "pairs": 172,
+      "cameras": 67,
+      "releaseCycles": 144356328,
+      "candidateCycles": 122875402,
+      "savedPercent": 14.880487954778124,
+      "regressions": 0
+    },
+    "primaryWorldRoute": {
+      "pairs": 90,
+      "cameras": 45,
+      "releaseCycles": 74446257,
+      "candidateCycles": 64038555,
+      "savedPercent": 13.980154838409137,
+      "regressions": 0
+    },
+    "stationaryLivingActor": {
+      "pairs": 8,
+      "cameras": 4,
+      "releaseCycles": 7194724,
+      "candidateCycles": 3574260,
+      "savedPercent": 50.321096403420064,
+      "regressions": 0
+    }
+  },
+  "representatives": [
+    {
+      "scene": "Opening room",
+      "pose": "profile/opening-walk-8",
+      "actor": "absent",
+      "pairs": 2,
+      "cameras": 1,
+      "releaseCycles": 2046419,
+      "candidateCycles": 1776983,
+      "savedPercent": 13.166218648282683,
+      "regressions": 0,
+      "releaseMeanCycles": 1023209.5,
+      "candidateMeanCycles": 888491.5
+    },
+    {
+      "scene": "Simple wall",
+      "pose": "simple-wall",
+      "actor": "absent",
+      "pairs": 2,
+      "cameras": 1,
+      "releaseCycles": 1046449,
+      "candidateCycles": 897133,
+      "savedPercent": 14.268827243372586,
+      "regressions": 0,
+      "releaseMeanCycles": 523224.5,
+      "candidateMeanCycles": 448566.5
+    },
+    {
+      "scene": "Square room",
+      "pose": "square-entry",
+      "actor": "absent",
+      "pairs": 2,
+      "cameras": 1,
+      "releaseCycles": 1186995,
+      "candidateCycles": 1002123,
+      "savedPercent": 15.57479180619969,
+      "regressions": 0,
+      "releaseMeanCycles": 593497.5,
+      "candidateMeanCycles": 501061.5
+    },
+    {
+      "scene": "Slime entrance",
+      "pose": "entrance-turn-128",
+      "actor": "alive",
+      "pairs": 2,
+      "cameras": 1,
+      "releaseCycles": 2026307,
+      "candidateCycles": 1681721,
+      "savedPercent": 17.005616621765608,
+      "regressions": 0,
+      "releaseMeanCycles": 1013153.5,
+      "candidateMeanCycles": 840860.5
+    },
+    {
+      "scene": "Slime entrance, angle112",
+      "pose": "entrance-turn-112",
+      "actor": "alive",
+      "pairs": 2,
+      "cameras": 1,
+      "releaseCycles": 2171781,
+      "candidateCycles": 1809803,
+      "savedPercent": 16.66733432146243,
+      "regressions": 0,
+      "releaseMeanCycles": 1085890.5,
+      "candidateMeanCycles": 904901.5
+    },
+    {
+      "scene": "Slime entrance, angle144",
+      "pose": "entrance-turn-144",
+      "actor": "alive",
+      "pairs": 2,
+      "cameras": 1,
+      "releaseCycles": 2087793,
+      "candidateCycles": 1737795,
+      "savedPercent": 16.764018271926382,
+      "regressions": 0,
+      "releaseMeanCycles": 1043896.5,
+      "candidateMeanCycles": 868897.5
+    },
+    {
+      "scene": "Slime center",
+      "pose": "middle-turn-160",
+      "actor": "alive",
+      "pairs": 2,
+      "cameras": 1,
+      "releaseCycles": 1909735,
+      "candidateCycles": 1651951,
+      "savedPercent": 13.49841731968048,
+      "regressions": 0,
+      "releaseMeanCycles": 954867.5,
+      "candidateMeanCycles": 825975.5
+    },
+    {
+      "scene": "Close slime enemy",
+      "pose": "near8-128",
+      "actor": "alive",
+      "pairs": 2,
+      "cameras": 1,
+      "releaseCycles": 1938435,
+      "candidateCycles": 1587569,
+      "savedPercent": 18.100477962892747,
+      "regressions": 0,
+      "releaseMeanCycles": 969217.5,
+      "candidateMeanCycles": 793784.5
+    },
+    {
+      "scene": "Before exit",
+      "pose": "pre-exit",
+      "actor": "absent",
+      "pairs": 2,
+      "cameras": 1,
+      "releaseCycles": 1164385,
+      "candidateCycles": 918471,
+      "savedPercent": 21.119646852200948,
+      "regressions": 0,
+      "releaseMeanCycles": 582192.5,
+      "candidateMeanCycles": 459235.5
+    }
+  ],
+  "diagnostics": [
+    {
+      "pose": "corridor-approach-128",
+      "bank": 0,
+      "hp": 3,
+      "warm": false,
+      "releasedFeet": [
+        103
+      ],
+      "latestFeet": [
+        104
+      ],
+      "substitutedReleasedFeetRestoresExactPublicOutput": true,
+      "excludedFromTiming": true
+    },
+    {
+      "pose": "corridor-approach-128",
+      "bank": 1,
+      "hp": 3,
+      "warm": false,
+      "releasedFeet": [
+        103
+      ],
+      "latestFeet": [
+        104
+      ],
+      "substitutedReleasedFeetRestoresExactPublicOutput": true,
+      "excludedFromTiming": true
+    },
+    {
+      "pose": "entrance-turn-112",
+      "bank": 0,
+      "hp": 3,
+      "warm": false,
+      "releasedFeet": [
+        109
+      ],
+      "latestFeet": [
+        110
+      ],
+      "substitutedReleasedFeetRestoresExactPublicOutput": true,
+      "excludedFromTiming": true
+    },
+    {
+      "pose": "entrance-turn-112",
+      "bank": 1,
+      "hp": 3,
+      "warm": false,
+      "releasedFeet": [
+        109
+      ],
+      "latestFeet": [
+        110
+      ],
+      "substitutedReleasedFeetRestoresExactPublicOutput": true,
+      "excludedFromTiming": true
+    },
+    {
+      "pose": "entrance-turn-144",
+      "bank": 0,
+      "hp": 3,
+      "warm": false,
+      "releasedFeet": [
+        109
+      ],
+      "latestFeet": [
+        110
+      ],
+      "substitutedReleasedFeetRestoresExactPublicOutput": true,
+      "excludedFromTiming": true
+    },
+    {
+      "pose": "entrance-turn-144",
+      "bank": 1,
+      "hp": 3,
+      "warm": false,
+      "releasedFeet": [
+        109
+      ],
+      "latestFeet": [
+        110
+      ],
+      "substitutedReleasedFeetRestoresExactPublicOutput": true,
+      "excludedFromTiming": true
+    },
+    {
+      "pose": "occluded-corridor-128",
+      "bank": 0,
+      "hp": 3,
+      "warm": false,
+      "releasedFeet": [
+        102
+      ],
+      "latestFeet": [
+        103
+      ],
+      "substitutedReleasedFeetRestoresExactPublicOutput": true,
+      "excludedFromTiming": true
+    },
+    {
+      "pose": "occluded-corridor-128",
+      "bank": 1,
+      "hp": 3,
+      "warm": false,
+      "releasedFeet": [
+        102
+      ],
+      "latestFeet": [
+        103
+      ],
+      "substitutedReleasedFeetRestoresExactPublicOutput": true,
+      "excludedFromTiming": true
+    }
+  ],
+  "visualNote": "The release comparison permits the separately verified distant-foot alignment fix. The strip16 and axis stages require exact public output. Diagnostic substitutions are excluded from timing.",
+  "rows": [
+    {
+      "pose": {
+        "id": "profile/opening-walk-8",
+        "route": "opening-walk",
+        "x": 52,
+        "z": 192,
+        "angle": 0,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Opening room"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 1022568,
+      "spriteResponseCycles": 904499,
+      "strip16Cycles": 893905,
+      "candidateCycles": 887850,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 13.17447837209848
+    },
+    {
+      "pose": {
+        "id": "profile/opening-walk-8",
+        "route": "opening-walk",
+        "x": 52,
+        "z": 192,
+        "angle": 0,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Opening room"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 1023851,
+      "spriteResponseCycles": 905782,
+      "strip16Cycles": 895188,
+      "candidateCycles": 889133,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 13.157969274826122
+    },
+    {
+      "pose": {
+        "id": "profile/opening-walk-2",
+        "route": "opening-walk",
+        "x": 52,
+        "z": 192.25,
+        "angle": 0,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Opening room"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 1015106,
+      "spriteResponseCycles": 898083,
+      "strip16Cycles": 888012,
+      "candidateCycles": 881952,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 13.11725080927509
+    },
+    {
+      "pose": {
+        "id": "profile/opening-walk-2",
+        "route": "opening-walk",
+        "x": 52,
+        "z": 192.25,
+        "angle": 0,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Opening room"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 1016389,
+      "spriteResponseCycles": 899366,
+      "strip16Cycles": 889295,
+      "candidateCycles": 883235,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 13.10069274657636
+    },
+    {
+      "pose": {
+        "id": "profile/opening-walk-9",
+        "route": "opening-walk",
+        "x": 52,
+        "z": 199.75,
+        "angle": 0,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Opening room"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 906467,
+      "spriteResponseCycles": 819726,
+      "strip16Cycles": 810453,
+      "candidateCycles": 804386,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 11.261413818704929
+    },
+    {
+      "pose": {
+        "id": "profile/opening-walk-9",
+        "route": "opening-walk",
+        "x": 52,
+        "z": 199.75,
+        "angle": 0,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Opening room"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 907494,
+      "spriteResponseCycles": 820753,
+      "strip16Cycles": 811480,
+      "candidateCycles": 805413,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 11.248669412690331
+    },
+    {
+      "pose": {
+        "id": "profile/opening-walk-3",
+        "route": "opening-walk",
+        "x": 52,
+        "z": 200,
+        "angle": 0,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Opening room"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 902809,
+      "spriteResponseCycles": 817194,
+      "strip16Cycles": 806426,
+      "candidateCycles": 800281,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 11.356554930223336
+    },
+    {
+      "pose": {
+        "id": "profile/opening-walk-3",
+        "route": "opening-walk",
+        "x": 52,
+        "z": 200,
+        "angle": 0,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Opening room"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 903836,
+      "spriteResponseCycles": 818221,
+      "strip16Cycles": 807453,
+      "candidateCycles": 801308,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 11.343650839311557
+    },
+    {
+      "pose": {
+        "id": "profile/opening-walk-12",
+        "route": "opening-walk",
+        "x": 52,
+        "z": 203,
+        "angle": 0,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Opening room"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 885398,
+      "spriteResponseCycles": 803061,
+      "strip16Cycles": 791340,
+      "candidateCycles": 785183,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 11.318638623534275
+    },
+    {
+      "pose": {
+        "id": "profile/opening-walk-12",
+        "route": "opening-walk",
+        "x": 52,
+        "z": 203,
+        "angle": 0,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Opening room"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 886425,
+      "spriteResponseCycles": 804088,
+      "strip16Cycles": 792367,
+      "candidateCycles": 786210,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 11.305525002115239
+    },
+    {
+      "pose": {
+        "id": "profile/opening-walk-4",
+        "route": "opening-walk",
+        "x": 52,
+        "z": 207,
+        "angle": 0,
+        "actor": 0,
+        "floor": 0,
+        "eye": 4,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Opening room"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 891883,
+      "spriteResponseCycles": 810545,
+      "strip16Cycles": 800954,
+      "candidateCycles": 789901,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 11.43445945264121
+    },
+    {
+      "pose": {
+        "id": "profile/opening-walk-4",
+        "route": "opening-walk",
+        "x": 52,
+        "z": 207,
+        "angle": 0,
+        "actor": 0,
+        "floor": 0,
+        "eye": 4,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Opening room"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 892910,
+      "spriteResponseCycles": 811572,
+      "strip16Cycles": 801981,
+      "candidateCycles": 790928,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 11.421307858574773
+    },
+    {
+      "pose": {
+        "id": "profile/opening-walk-5",
+        "route": "opening-walk",
+        "x": 52,
+        "z": 209.75,
+        "angle": 0,
+        "actor": 0,
+        "floor": 0,
+        "eye": 4,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Opening room"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 904667,
+      "spriteResponseCycles": 825802,
+      "strip16Cycles": 815707,
+      "candidateCycles": 806775,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 10.820777147834507
+    },
+    {
+      "pose": {
+        "id": "profile/opening-walk-5",
+        "route": "opening-walk",
+        "x": 52,
+        "z": 209.75,
+        "angle": 0,
+        "actor": 0,
+        "floor": 0,
+        "eye": 4,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Opening room"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 905694,
+      "spriteResponseCycles": 826829,
+      "strip16Cycles": 816734,
+      "candidateCycles": 807802,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 10.808507067508453
+    },
+    {
+      "pose": {
+        "id": "profile/opening-walk-11",
+        "route": "opening-walk",
+        "x": 52,
+        "z": 210,
+        "angle": 0,
+        "actor": 0,
+        "floor": 0,
+        "eye": 4,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Opening room"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 898734,
+      "spriteResponseCycles": 819947,
+      "strip16Cycles": 809852,
+      "candidateCycles": 800924,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 10.883086653003001
+    },
+    {
+      "pose": {
+        "id": "profile/opening-walk-11",
+        "route": "opening-walk",
+        "x": 52,
+        "z": 210,
+        "angle": 0,
+        "actor": 0,
+        "floor": 0,
+        "eye": 4,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Opening room"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 899761,
+      "spriteResponseCycles": 820974,
+      "strip16Cycles": 810879,
+      "candidateCycles": 801951,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 10.870664543139789
+    },
+    {
+      "pose": {
+        "id": "profile/opening-turn-22",
+        "route": "opening-turn",
+        "x": 52,
+        "z": 192,
+        "angle": 1,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Opening room"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 1027135,
+      "spriteResponseCycles": 934437,
+      "strip16Cycles": 923374,
+      "candidateCycles": 913395,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 11.073520033880648
+    },
+    {
+      "pose": {
+        "id": "profile/opening-turn-22",
+        "route": "opening-turn",
+        "x": 52,
+        "z": 192,
+        "angle": 1,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Opening room"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 1028418,
+      "spriteResponseCycles": 935720,
+      "strip16Cycles": 924657,
+      "candidateCycles": 914678,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 11.059705294928715
+    },
+    {
+      "pose": {
+        "id": "profile/opening-turn-29",
+        "route": "opening-turn",
+        "x": 52,
+        "z": 192,
+        "angle": 15,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Opening room"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 986735,
+      "spriteResponseCycles": 903873,
+      "strip16Cycles": 892740,
+      "candidateCycles": 875664,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 11.256416363055937
+    },
+    {
+      "pose": {
+        "id": "profile/opening-turn-29",
+        "route": "opening-turn",
+        "x": 52,
+        "z": 192,
+        "angle": 15,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Opening room"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 987874,
+      "spriteResponseCycles": 905012,
+      "strip16Cycles": 893879,
+      "candidateCycles": 876803,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 11.243437928318794
+    },
+    {
+      "pose": {
+        "id": "profile/opening-turn-23",
+        "route": "opening-turn",
+        "x": 52,
+        "z": 192,
+        "angle": 16,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Opening room"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 968952,
+      "spriteResponseCycles": 887845,
+      "strip16Cycles": 876657,
+      "candidateCycles": 860356,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 11.207572717740405
+    },
+    {
+      "pose": {
+        "id": "profile/opening-turn-23",
+        "route": "opening-turn",
+        "x": 52,
+        "z": 192,
+        "angle": 16,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Opening room"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 970079,
+      "spriteResponseCycles": 888972,
+      "strip16Cycles": 877784,
+      "candidateCycles": 861483,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 11.194552196264429
+    },
+    {
+      "pose": {
+        "id": "profile/opening-turn-26",
+        "route": "opening-turn",
+        "x": 52,
+        "z": 192,
+        "angle": 28,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Opening room"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 853095,
+      "spriteResponseCycles": 785855,
+      "strip16Cycles": 777730,
+      "candidateCycles": 762081,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 10.668682854781707
+    },
+    {
+      "pose": {
+        "id": "profile/opening-turn-26",
+        "route": "opening-turn",
+        "x": 52,
+        "z": 192,
+        "angle": 28,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Opening room"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 854090,
+      "spriteResponseCycles": 786850,
+      "strip16Cycles": 778725,
+      "candidateCycles": 763076,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 10.65625402475149
+    },
+    {
+      "pose": {
+        "id": "profile/opening-turn-25",
+        "route": "opening-turn",
+        "x": 52,
+        "z": 192,
+        "angle": 40,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Opening room"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 822646,
+      "spriteResponseCycles": 754872,
+      "strip16Cycles": 746505,
+      "candidateCycles": 724557,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 11.92359775650766
+    },
+    {
+      "pose": {
+        "id": "profile/opening-turn-25",
+        "route": "opening-turn",
+        "x": 52,
+        "z": 192,
+        "angle": 40,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Opening room"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 823527,
+      "spriteResponseCycles": 755753,
+      "strip16Cycles": 747386,
+      "candidateCycles": 725438,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 11.910842024608787
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-on-17",
+        "route": "slime-entry-walk",
+        "x": 292,
+        "z": 224.25,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 834807,
+      "spriteResponseCycles": 731880,
+      "strip16Cycles": 724233,
+      "candidateCycles": 701363,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.985012104594235
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-on-17",
+        "route": "slime-entry-walk",
+        "x": 292,
+        "z": 224.25,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 835322,
+      "spriteResponseCycles": 732395,
+      "strip16Cycles": 724748,
+      "candidateCycles": 701878,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.975156885608184
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-off-15",
+        "route": "slime-entry-walk",
+        "x": 292,
+        "z": 226.25,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 828108,
+      "spriteResponseCycles": 726172,
+      "strip16Cycles": 718382,
+      "candidateCycles": 695472,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.016751438218204
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-off-15",
+        "route": "slime-entry-walk",
+        "x": 292,
+        "z": 226.25,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 828623,
+      "spriteResponseCycles": 726687,
+      "strip16Cycles": 718897,
+      "candidateCycles": 695987,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.006796818335964
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-off-6",
+        "route": "slime-entry-walk",
+        "x": 292,
+        "z": 231,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 862968,
+      "spriteResponseCycles": 751754,
+      "strip16Cycles": 743246,
+      "candidateCycles": 721580,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.38392153590863
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-off-6",
+        "route": "slime-entry-walk",
+        "x": 292,
+        "z": 231,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 863483,
+      "spriteResponseCycles": 752269,
+      "strip16Cycles": 743761,
+      "candidateCycles": 722095,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.374149809550392
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-on-15",
+        "route": "slime-entry-walk",
+        "x": 292,
+        "z": 235.5,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 905478,
+      "spriteResponseCycles": 785138,
+      "strip16Cycles": 775937,
+      "candidateCycles": 754193,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.707749939810796
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-on-15",
+        "route": "slime-entry-walk",
+        "x": 292,
+        "z": 235.5,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 905993,
+      "spriteResponseCycles": 785653,
+      "strip16Cycles": 776452,
+      "candidateCycles": 754708,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.698252635506012
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-off-4",
+        "route": "slime-entry-walk",
+        "x": 292,
+        "z": 240.75,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 936308,
+      "spriteResponseCycles": 811000,
+      "strip16Cycles": 801722,
+      "candidateCycles": 775702,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 17.153116282249005
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-off-4",
+        "route": "slime-entry-walk",
+        "x": 292,
+        "z": 240.75,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 936823,
+      "spriteResponseCycles": 811515,
+      "strip16Cycles": 802237,
+      "candidateCycles": 776217,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 17.14368669428483
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-on-12",
+        "route": "slime-entry-walk",
+        "x": 292,
+        "z": 247.75,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 1022507,
+      "spriteResponseCycles": 889182,
+      "strip16Cycles": 878735,
+      "candidateCycles": 855742,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.309423798565682
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-on-12",
+        "route": "slime-entry-walk",
+        "x": 292,
+        "z": 247.75,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 1023022,
+      "spriteResponseCycles": 889697,
+      "strip16Cycles": 879250,
+      "candidateCycles": 856257,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.301213463640078
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-off-13",
+        "route": "slime-entry-walk",
+        "x": 292,
+        "z": 249.25,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 1024039,
+      "spriteResponseCycles": 886943,
+      "strip16Cycles": 876541,
+      "candidateCycles": 853503,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.653271994523646
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-off-13",
+        "route": "slime-entry-walk",
+        "x": 292,
+        "z": 249.25,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 1024554,
+      "spriteResponseCycles": 887458,
+      "strip16Cycles": 877056,
+      "candidateCycles": 854018,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.64490109842917
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-on-2",
+        "route": "slime-entry-walk",
+        "x": 292,
+        "z": 255.75,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 985137,
+      "spriteResponseCycles": 850667,
+      "strip16Cycles": 840163,
+      "candidateCycles": 816067,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 17.16207999496517
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-on-2",
+        "route": "slime-entry-walk",
+        "x": 292,
+        "z": 255.75,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 985652,
+      "spriteResponseCycles": 851182,
+      "strip16Cycles": 840678,
+      "candidateCycles": 816582,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 17.15311286336354
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-on-19",
+        "route": "slime-entry-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 129,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 991399,
+      "spriteResponseCycles": 884465,
+      "strip16Cycles": 874083,
+      "candidateCycles": 837975,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.47550481693042
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-on-19",
+        "route": "slime-entry-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 129,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 991914,
+      "spriteResponseCycles": 884980,
+      "strip16Cycles": 874598,
+      "candidateCycles": 838490,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.46746996211365
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-on-20",
+        "route": "slime-entry-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 143,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 1024331,
+      "spriteResponseCycles": 916321,
+      "strip16Cycles": 906973,
+      "candidateCycles": 847975,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 17.216700461081427
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-on-20",
+        "route": "slime-entry-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 143,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 1024846,
+      "spriteResponseCycles": 916836,
+      "strip16Cycles": 907488,
+      "candidateCycles": 848490,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 17.20804881904208
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-on-23",
+        "route": "slime-entry-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 154,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 935569,
+      "spriteResponseCycles": 837953,
+      "strip16Cycles": 828840,
+      "candidateCycles": 773000,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 17.376484257173978
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-on-23",
+        "route": "slime-entry-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 154,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 936084,
+      "spriteResponseCycles": 838468,
+      "strip16Cycles": 829355,
+      "candidateCycles": 773515,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 17.3669243358502
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-off-24",
+        "route": "slime-entry-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 164,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 846538,
+      "spriteResponseCycles": 767482,
+      "strip16Cycles": 758744,
+      "candidateCycles": 722077,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 14.702352404735523
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-off-24",
+        "route": "slime-entry-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 164,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 847053,
+      "spriteResponseCycles": 767997,
+      "strip16Cycles": 759259,
+      "candidateCycles": 722592,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 14.69341351721793
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-on-22",
+        "route": "slime-entry-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 173,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 843414,
+      "spriteResponseCycles": 773229,
+      "strip16Cycles": 763952,
+      "candidateCycles": 725212,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 14.014706893648908
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-on-22",
+        "route": "slime-entry-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 173,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 843929,
+      "spriteResponseCycles": 773744,
+      "strip16Cycles": 764467,
+      "candidateCycles": 725727,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 14.006154546176278
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-off-23",
+        "route": "slime-entry-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 184,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 734480,
+      "spriteResponseCycles": 681979,
+      "strip16Cycles": 673578,
+      "candidateCycles": 635253,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 13.50983008386886
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-off-23",
+        "route": "slime-entry-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 184,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 734995,
+      "spriteResponseCycles": 682494,
+      "strip16Cycles": 674093,
+      "candidateCycles": 635768,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 13.50036394805407
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-on-26",
+        "route": "slime-entry-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 187,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 749663,
+      "spriteResponseCycles": 696055,
+      "strip16Cycles": 687530,
+      "candidateCycles": 647795,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 13.58850576859202
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-on-26",
+        "route": "slime-entry-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 187,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 750178,
+      "spriteResponseCycles": 696570,
+      "strip16Cycles": 688045,
+      "candidateCycles": 648310,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 13.579177208609156
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-on-27",
+        "route": "slime-entry-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 197,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 748872,
+      "spriteResponseCycles": 693640,
+      "strip16Cycles": 684194,
+      "candidateCycles": 645112,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 13.855505346708116
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-on-27",
+        "route": "slime-entry-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 197,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime entrance route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 749387,
+      "spriteResponseCycles": 694155,
+      "strip16Cycles": 684709,
+      "candidateCycles": 645627,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 13.84598345047352
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-on-51",
+        "route": "slime-middle-walk",
+        "x": 304,
+        "z": 179.5,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 471328,
+      "spriteResponseCycles": 428428,
+      "strip16Cycles": 425484,
+      "candidateCycles": 398199,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.515522099259963
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-on-51",
+        "route": "slime-middle-walk",
+        "x": 304,
+        "z": 179.5,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 471843,
+      "spriteResponseCycles": 428943,
+      "strip16Cycles": 425999,
+      "candidateCycles": 398714,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.498587453877667
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-on-64",
+        "route": "slime-middle-walk",
+        "x": 304,
+        "z": 182.25,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 456623,
+      "spriteResponseCycles": 413372,
+      "strip16Cycles": 410428,
+      "candidateCycles": 384319,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.83450680320527
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-on-64",
+        "route": "slime-middle-walk",
+        "x": 304,
+        "z": 182.25,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 457138,
+      "spriteResponseCycles": 413887,
+      "strip16Cycles": 410943,
+      "candidateCycles": 384834,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.816668052098054
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-on-49",
+        "route": "slime-middle-walk",
+        "x": 304,
+        "z": 185.5,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 458106,
+      "spriteResponseCycles": 413919,
+      "strip16Cycles": 410427,
+      "candidateCycles": 385286,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.895884358641887
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-on-49",
+        "route": "slime-middle-walk",
+        "x": 304,
+        "z": 185.5,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 458621,
+      "spriteResponseCycles": 414434,
+      "strip16Cycles": 410942,
+      "candidateCycles": 385801,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.87803436824742
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-off-43",
+        "route": "slime-middle-walk",
+        "x": 304,
+        "z": 189.25,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 550935,
+      "spriteResponseCycles": 492776,
+      "strip16Cycles": 487650,
+      "candidateCycles": 463696,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.834717344151306
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-off-43",
+        "route": "slime-middle-walk",
+        "x": 304,
+        "z": 189.25,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 551450,
+      "spriteResponseCycles": 493291,
+      "strip16Cycles": 488165,
+      "candidateCycles": 464211,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.819929277359687
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-off-42",
+        "route": "slime-middle-walk",
+        "x": 304,
+        "z": 194,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 606707,
+      "spriteResponseCycles": 536359,
+      "strip16Cycles": 531665,
+      "candidateCycles": 505420,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.69454942830724
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-off-42",
+        "route": "slime-middle-walk",
+        "x": 304,
+        "z": 194,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 607222,
+      "spriteResponseCycles": 536874,
+      "strip16Cycles": 532180,
+      "candidateCycles": 505935,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.68039036793792
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-off-41",
+        "route": "slime-middle-walk",
+        "x": 304,
+        "z": 198.5,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 612994,
+      "spriteResponseCycles": 544679,
+      "strip16Cycles": 539987,
+      "candidateCycles": 516019,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.819893832566061
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-off-41",
+        "route": "slime-middle-walk",
+        "x": 304,
+        "z": 198.5,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 613509,
+      "spriteResponseCycles": 545194,
+      "strip16Cycles": 540502,
+      "candidateCycles": 516534,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.80661408390097
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-on-44",
+        "route": "slime-middle-walk",
+        "x": 304,
+        "z": 205.5,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 716039,
+      "spriteResponseCycles": 632767,
+      "strip16Cycles": 626037,
+      "candidateCycles": 603269,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.749142155664705
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-on-44",
+        "route": "slime-middle-walk",
+        "x": 304,
+        "z": 205.5,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 716554,
+      "spriteResponseCycles": 633282,
+      "strip16Cycles": 626552,
+      "candidateCycles": 603784,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.737822969378442
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-on-36",
+        "route": "slime-middle-walk",
+        "x": 304,
+        "z": 215.75,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 810330,
+      "spriteResponseCycles": 710711,
+      "strip16Cycles": 703185,
+      "candidateCycles": 683865,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.606604716596943
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-on-36",
+        "route": "slime-middle-walk",
+        "x": 304,
+        "z": 215.75,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 810845,
+      "spriteResponseCycles": 711226,
+      "strip16Cycles": 703700,
+      "candidateCycles": 684380,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.59669233947302
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-on-59",
+        "route": "slime-middle-turn",
+        "x": 304,
+        "z": 216,
+        "angle": 129,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 830856,
+      "spriteResponseCycles": 745966,
+      "strip16Cycles": 737803,
+      "candidateCycles": 707149,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 14.889102323386965
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-on-59",
+        "route": "slime-middle-turn",
+        "x": 304,
+        "z": 216,
+        "angle": 129,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 831371,
+      "spriteResponseCycles": 746481,
+      "strip16Cycles": 738318,
+      "candidateCycles": 707664,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 14.879879139397453
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-on-60",
+        "route": "slime-middle-turn",
+        "x": 304,
+        "z": 216,
+        "angle": 141,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 860252,
+      "spriteResponseCycles": 776482,
+      "strip16Cycles": 769367,
+      "candidateCycles": 723985,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.840358406606436
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-on-60",
+        "route": "slime-middle-turn",
+        "x": 304,
+        "z": 216,
+        "angle": 141,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 860767,
+      "spriteResponseCycles": 776997,
+      "strip16Cycles": 769882,
+      "candidateCycles": 724500,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.830881063051907
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-off-63",
+        "route": "slime-middle-turn",
+        "x": 304,
+        "z": 216,
+        "angle": 153,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 826754,
+      "spriteResponseCycles": 749474,
+      "strip16Cycles": 742798,
+      "candidateCycles": 697244,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.664877339571383
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-off-63",
+        "route": "slime-middle-turn",
+        "x": 304,
+        "z": 216,
+        "angle": 153,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 827269,
+      "spriteResponseCycles": 749989,
+      "strip16Cycles": 743313,
+      "candidateCycles": 697759,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.655125479136775
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-off-64",
+        "route": "slime-middle-turn",
+        "x": 304,
+        "z": 216,
+        "angle": 166,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 754069,
+      "spriteResponseCycles": 692270,
+      "strip16Cycles": 687045,
+      "candidateCycles": 665438,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 11.753698932060594
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-off-64",
+        "route": "slime-middle-turn",
+        "x": 304,
+        "z": 216,
+        "angle": 166,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 754584,
+      "spriteResponseCycles": 692785,
+      "strip16Cycles": 687560,
+      "candidateCycles": 665953,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 11.745677088302958
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-off-65",
+        "route": "slime-middle-turn",
+        "x": 304,
+        "z": 216,
+        "angle": 177,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 720619,
+      "spriteResponseCycles": 667502,
+      "strip16Cycles": 662739,
+      "candidateCycles": 639742,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 11.223267773955447
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-off-65",
+        "route": "slime-middle-turn",
+        "x": 304,
+        "z": 216,
+        "angle": 177,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 721134,
+      "spriteResponseCycles": 668017,
+      "strip16Cycles": 663254,
+      "candidateCycles": 640257,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 11.215252643752756
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-off-75",
+        "route": "slime-middle-turn",
+        "x": 304,
+        "z": 216,
+        "angle": 186,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 702155,
+      "spriteResponseCycles": 653675,
+      "strip16Cycles": 649331,
+      "candidateCycles": 626826,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 10.72825800571099
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-off-75",
+        "route": "slime-middle-turn",
+        "x": 304,
+        "z": 216,
+        "angle": 186,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 702670,
+      "spriteResponseCycles": 654190,
+      "strip16Cycles": 649846,
+      "candidateCycles": 627341,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 10.720395064539542
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-on-64",
+        "route": "slime-middle-turn",
+        "x": 304,
+        "z": 216,
+        "angle": 190,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 685075,
+      "spriteResponseCycles": 632263,
+      "strip16Cycles": 626827,
+      "candidateCycles": 612405,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 10.607597708280116
+    },
+    {
+      "pose": {
+        "id": "profile/latest-normal-on-64",
+        "route": "slime-middle-turn",
+        "x": 304,
+        "z": 216,
+        "angle": 190,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 685590,
+      "spriteResponseCycles": 632778,
+      "strip16Cycles": 627342,
+      "candidateCycles": 612920,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 10.59962951618314
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-on-88",
+        "route": "slime-middle-turn",
+        "x": 304,
+        "z": 216,
+        "angle": 197,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 785157,
+      "spriteResponseCycles": 719138,
+      "strip16Cycles": 712498,
+      "candidateCycles": 689773,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 12.148398345808545
+    },
+    {
+      "pose": {
+        "id": "profile/latest-coarse-on-88",
+        "route": "slime-middle-turn",
+        "x": 304,
+        "z": 216,
+        "angle": 197,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "world-route",
+        "group": "Slime middle/exit route"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 785672,
+      "spriteResponseCycles": 719653,
+      "strip16Cycles": 713013,
+      "candidateCycles": 690288,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 12.14043519433046
+    },
+    {
+      "pose": {
+        "id": "corridor-approach-128",
+        "route": "corridor-approach",
+        "x": 276,
+        "z": 284,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Corridor/occlusion controls",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 851155,
+      "spriteResponseCycles": 745857,
+      "strip16Cycles": 735070,
+      "candidateCycles": 725412,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 14.773219918816197
+    },
+    {
+      "pose": {
+        "id": "corridor-approach-128",
+        "route": "corridor-approach",
+        "x": 276,
+        "z": 284,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Corridor/occlusion controls",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 879224,
+      "spriteResponseCycles": 768235,
+      "strip16Cycles": 757448,
+      "candidateCycles": 747790,
+      "releaseComparisonVisual": "ground-anchor-only",
+      "savedPercent": 14.948863998253005
+    },
+    {
+      "pose": {
+        "id": "corridor-approach-128",
+        "route": "corridor-approach",
+        "x": 276,
+        "z": 284,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Corridor/occlusion controls",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 851670,
+      "spriteResponseCycles": 746372,
+      "strip16Cycles": 735585,
+      "candidateCycles": 725927,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 14.76428663684291
+    },
+    {
+      "pose": {
+        "id": "corridor-approach-128",
+        "route": "corridor-approach",
+        "x": 276,
+        "z": 284,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Corridor/occlusion controls",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 879739,
+      "spriteResponseCycles": 768750,
+      "strip16Cycles": 757963,
+      "candidateCycles": 748305,
+      "releaseComparisonVisual": "ground-anchor-only",
+      "savedPercent": 14.940112919854638
+    },
+    {
+      "pose": {
+        "id": "corridor-entry-128",
+        "route": "corridor-entry",
+        "x": 288,
+        "z": 272,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Corridor/occlusion controls",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 954049,
+      "spriteResponseCycles": 825881,
+      "strip16Cycles": 811508,
+      "candidateCycles": 797300,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.429868906104403
+    },
+    {
+      "pose": {
+        "id": "corridor-entry-128",
+        "route": "corridor-entry",
+        "x": 288,
+        "z": 272,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Corridor/occlusion controls",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 981982,
+      "spriteResponseCycles": 850514,
+      "strip16Cycles": 836141,
+      "candidateCycles": 821933,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.29856759085197
+    },
+    {
+      "pose": {
+        "id": "corridor-entry-128",
+        "route": "corridor-entry",
+        "x": 288,
+        "z": 272,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Corridor/occlusion controls",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 954564,
+      "spriteResponseCycles": 826396,
+      "strip16Cycles": 812023,
+      "candidateCycles": 797815,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.42100477285965
+    },
+    {
+      "pose": {
+        "id": "corridor-entry-128",
+        "route": "corridor-entry",
+        "x": 288,
+        "z": 272,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Corridor/occlusion controls",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 982497,
+      "spriteResponseCycles": 851029,
+      "strip16Cycles": 836656,
+      "candidateCycles": 822448,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.29002429523958
+    },
+    {
+      "pose": {
+        "id": "entrance-forward-128",
+        "route": "entrance-forward",
+        "x": 290,
+        "z": 264,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime entrance",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 941146,
+      "spriteResponseCycles": 814636,
+      "strip16Cycles": 804364,
+      "candidateCycles": 787168,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.360692177409245
+    },
+    {
+      "pose": {
+        "id": "entrance-forward-128",
+        "route": "entrance-forward",
+        "x": 290,
+        "z": 264,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime entrance",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 971972,
+      "spriteResponseCycles": 841058,
+      "strip16Cycles": 830786,
+      "candidateCycles": 813590,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.2949138452548
+    },
+    {
+      "pose": {
+        "id": "entrance-forward-128",
+        "route": "entrance-forward",
+        "x": 290,
+        "z": 264,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime entrance",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 941661,
+      "spriteResponseCycles": 815151,
+      "strip16Cycles": 804879,
+      "candidateCycles": 787683,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.351744417577027
+    },
+    {
+      "pose": {
+        "id": "entrance-forward-128",
+        "route": "entrance-forward",
+        "x": 290,
+        "z": 264,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime entrance",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 972487,
+      "spriteResponseCycles": 841573,
+      "strip16Cycles": 831301,
+      "candidateCycles": 814105,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.2862845467343
+    },
+    {
+      "pose": {
+        "id": "entrance-turn-112",
+        "route": "entrance-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 112,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime entrance",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 1054288,
+      "spriteResponseCycles": 943748,
+      "strip16Cycles": 932137,
+      "candidateCycles": 877273,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.79000424931328
+    },
+    {
+      "pose": {
+        "id": "entrance-turn-112",
+        "route": "entrance-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 112,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime entrance",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 1085633,
+      "spriteResponseCycles": 971119,
+      "strip16Cycles": 959508,
+      "candidateCycles": 904644,
+      "releaseComparisonVisual": "ground-anchor-only",
+      "savedPercent": 16.671287626665734
+    },
+    {
+      "pose": {
+        "id": "entrance-turn-112",
+        "route": "entrance-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 112,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime entrance",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 1054803,
+      "spriteResponseCycles": 944263,
+      "strip16Cycles": 932652,
+      "candidateCycles": 877788,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.781806650151733
+    },
+    {
+      "pose": {
+        "id": "entrance-turn-112",
+        "route": "entrance-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 112,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime entrance",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 1086148,
+      "spriteResponseCycles": 971634,
+      "strip16Cycles": 960023,
+      "candidateCycles": 905159,
+      "releaseComparisonVisual": "ground-anchor-only",
+      "savedPercent": 16.66338289072944
+    },
+    {
+      "pose": {
+        "id": "entrance-turn-128",
+        "route": "entrance-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime entrance",
+        "reuse": true
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 982065,
+      "spriteResponseCycles": 847837,
+      "strip16Cycles": 837201,
+      "candidateCycles": 814214,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 17.091638537164037
+    },
+    {
+      "pose": {
+        "id": "entrance-turn-128",
+        "route": "entrance-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime entrance",
+        "reuse": true
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": true,
+      "releaseCycles": 973441,
+      "spriteResponseCycles": 492289,
+      "strip16Cycles": 481653,
+      "candidateCycles": 458666,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 52.8819928480514
+    },
+    {
+      "pose": {
+        "id": "entrance-turn-128",
+        "route": "entrance-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime entrance",
+        "reuse": true
+      },
+      "bank": 0,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 1012896,
+      "spriteResponseCycles": 874226,
+      "strip16Cycles": 863590,
+      "candidateCycles": 840603,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 17.009939816131173
+    },
+    {
+      "pose": {
+        "id": "entrance-turn-128",
+        "route": "entrance-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime entrance",
+        "reuse": true
+      },
+      "bank": 0,
+      "hp": 3,
+      "warm": true,
+      "releaseCycles": 1004274,
+      "spriteResponseCycles": 518680,
+      "strip16Cycles": 508044,
+      "candidateCycles": 485057,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 51.70073107538381
+    },
+    {
+      "pose": {
+        "id": "entrance-turn-128",
+        "route": "entrance-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime entrance",
+        "reuse": true
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 982580,
+      "spriteResponseCycles": 848352,
+      "strip16Cycles": 837716,
+      "candidateCycles": 814729,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 17.082680290663355
+    },
+    {
+      "pose": {
+        "id": "entrance-turn-128",
+        "route": "entrance-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime entrance",
+        "reuse": true
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": true,
+      "releaseCycles": 973956,
+      "spriteResponseCycles": 492804,
+      "strip16Cycles": 482168,
+      "candidateCycles": 459181,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 52.85403036687489
+    },
+    {
+      "pose": {
+        "id": "entrance-turn-128",
+        "route": "entrance-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime entrance",
+        "reuse": true
+      },
+      "bank": 1,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 1013411,
+      "spriteResponseCycles": 874741,
+      "strip16Cycles": 864105,
+      "candidateCycles": 841118,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 17.00129562438142
+    },
+    {
+      "pose": {
+        "id": "entrance-turn-128",
+        "route": "entrance-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime entrance",
+        "reuse": true
+      },
+      "bank": 1,
+      "hp": 3,
+      "warm": true,
+      "releaseCycles": 1004789,
+      "spriteResponseCycles": 519195,
+      "strip16Cycles": 508559,
+      "candidateCycles": 485572,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 51.67423210246131
+    },
+    {
+      "pose": {
+        "id": "entrance-turn-144",
+        "route": "entrance-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 144,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime entrance",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 1011297,
+      "spriteResponseCycles": 905632,
+      "strip16Cycles": 896847,
+      "candidateCycles": 840270,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.91164910011599
+    },
+    {
+      "pose": {
+        "id": "entrance-turn-144",
+        "route": "entrance-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 144,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime entrance",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 1043639,
+      "spriteResponseCycles": 934002,
+      "strip16Cycles": 925217,
+      "candidateCycles": 868640,
+      "releaseComparisonVisual": "ground-anchor-only",
+      "savedPercent": 16.768154505533044
+    },
+    {
+      "pose": {
+        "id": "entrance-turn-144",
+        "route": "entrance-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 144,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime entrance",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 1011812,
+      "spriteResponseCycles": 906147,
+      "strip16Cycles": 897362,
+      "candidateCycles": 840785,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.90304127644266
+    },
+    {
+      "pose": {
+        "id": "entrance-turn-144",
+        "route": "entrance-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 144,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime entrance",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 1044154,
+      "spriteResponseCycles": 934517,
+      "strip16Cycles": 925732,
+      "candidateCycles": 869155,
+      "releaseComparisonVisual": "ground-anchor-only",
+      "savedPercent": 16.759884078402226
+    },
+    {
+      "pose": {
+        "id": "entrance-turn-160",
+        "route": "entrance-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 160,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime entrance",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 896689,
+      "spriteResponseCycles": 808296,
+      "strip16Cycles": 800361,
+      "candidateCycles": 761020,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.129994903472664
+    },
+    {
+      "pose": {
+        "id": "entrance-turn-160",
+        "route": "entrance-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 160,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime entrance",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 909907,
+      "spriteResponseCycles": 820353,
+      "strip16Cycles": 812418,
+      "candidateCycles": 773077,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.037800566431514
+    },
+    {
+      "pose": {
+        "id": "entrance-turn-160",
+        "route": "entrance-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 160,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime entrance",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 897204,
+      "spriteResponseCycles": 808811,
+      "strip16Cycles": 800876,
+      "candidateCycles": 761535,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.121310203699494
+    },
+    {
+      "pose": {
+        "id": "entrance-turn-160",
+        "route": "entrance-turn",
+        "x": 292,
+        "z": 256,
+        "angle": 160,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime entrance",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 910422,
+      "spriteResponseCycles": 820868,
+      "strip16Cycles": 812933,
+      "candidateCycles": 773592,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.029294107567699
+    },
+    {
+      "pose": {
+        "id": "middle-turn-144",
+        "route": "middle-turn",
+        "x": 304,
+        "z": 240,
+        "angle": 144,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime center",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 969950,
+      "spriteResponseCycles": 873132,
+      "strip16Cycles": 863958,
+      "candidateCycles": 799079,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 17.616475076034845
+    },
+    {
+      "pose": {
+        "id": "middle-turn-144",
+        "route": "middle-turn",
+        "x": 304,
+        "z": 240,
+        "angle": 144,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime center",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 1018202,
+      "spriteResponseCycles": 911527,
+      "strip16Cycles": 902353,
+      "candidateCycles": 837474,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 17.74971960377214
+    },
+    {
+      "pose": {
+        "id": "middle-turn-144",
+        "route": "middle-turn",
+        "x": 304,
+        "z": 240,
+        "angle": 144,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime center",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 970465,
+      "spriteResponseCycles": 873647,
+      "strip16Cycles": 864473,
+      "candidateCycles": 799594,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 17.60712648060466
+    },
+    {
+      "pose": {
+        "id": "middle-turn-144",
+        "route": "middle-turn",
+        "x": 304,
+        "z": 240,
+        "angle": 144,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime center",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 1018717,
+      "spriteResponseCycles": 912042,
+      "strip16Cycles": 902868,
+      "candidateCycles": 837989,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 17.74074644871932
+    },
+    {
+      "pose": {
+        "id": "middle-turn-160",
+        "route": "middle-turn",
+        "x": 304,
+        "z": 240,
+        "angle": 160,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime center",
+        "reuse": true
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 906278,
+      "spriteResponseCycles": 816515,
+      "strip16Cycles": 809662,
+      "candidateCycles": 787244,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 13.134380399833164
+    },
+    {
+      "pose": {
+        "id": "middle-turn-160",
+        "route": "middle-turn",
+        "x": 304,
+        "z": 240,
+        "angle": 160,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime center",
+        "reuse": true
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": true,
+      "releaseCycles": 897479,
+      "spriteResponseCycles": 455538,
+      "strip16Cycles": 448685,
+      "candidateCycles": 426267,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 52.503958309888034
+    },
+    {
+      "pose": {
+        "id": "middle-turn-160",
+        "route": "middle-turn",
+        "x": 304,
+        "z": 240,
+        "angle": 160,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime center",
+        "reuse": true
+      },
+      "bank": 0,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 954610,
+      "spriteResponseCycles": 854989,
+      "strip16Cycles": 848136,
+      "candidateCycles": 825718,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 13.502058432239345
+    },
+    {
+      "pose": {
+        "id": "middle-turn-160",
+        "route": "middle-turn",
+        "x": 304,
+        "z": 240,
+        "angle": 160,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime center",
+        "reuse": true
+      },
+      "bank": 0,
+      "hp": 3,
+      "warm": true,
+      "releaseCycles": 945819,
+      "spriteResponseCycles": 494020,
+      "strip16Cycles": 487167,
+      "candidateCycles": 464749,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 50.86279721595781
+    },
+    {
+      "pose": {
+        "id": "middle-turn-160",
+        "route": "middle-turn",
+        "x": 304,
+        "z": 240,
+        "angle": 160,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime center",
+        "reuse": true
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 906793,
+      "spriteResponseCycles": 817030,
+      "strip16Cycles": 810177,
+      "candidateCycles": 787759,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 13.12692091800444
+    },
+    {
+      "pose": {
+        "id": "middle-turn-160",
+        "route": "middle-turn",
+        "x": 304,
+        "z": 240,
+        "angle": 160,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime center",
+        "reuse": true
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": true,
+      "releaseCycles": 897994,
+      "spriteResponseCycles": 456053,
+      "strip16Cycles": 449200,
+      "candidateCycles": 426782,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 52.4738472640129
+    },
+    {
+      "pose": {
+        "id": "middle-turn-160",
+        "route": "middle-turn",
+        "x": 304,
+        "z": 240,
+        "angle": 160,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime center",
+        "reuse": true
+      },
+      "bank": 1,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 955125,
+      "spriteResponseCycles": 855504,
+      "strip16Cycles": 848651,
+      "candidateCycles": 826233,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 13.494778170396545
+    },
+    {
+      "pose": {
+        "id": "middle-turn-160",
+        "route": "middle-turn",
+        "x": 304,
+        "z": 240,
+        "angle": 160,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime center",
+        "reuse": true
+      },
+      "bank": 1,
+      "hp": 3,
+      "warm": true,
+      "releaseCycles": 946334,
+      "spriteResponseCycles": 494535,
+      "strip16Cycles": 487682,
+      "candidateCycles": 465264,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 50.83511741097752
+    },
+    {
+      "pose": {
+        "id": "middle-turn-176",
+        "route": "middle-turn",
+        "x": 304,
+        "z": 240,
+        "angle": 176,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime center",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 785192,
+      "spriteResponseCycles": 720575,
+      "strip16Cycles": 713054,
+      "candidateCycles": 691591,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 11.920778612110158
+    },
+    {
+      "pose": {
+        "id": "middle-turn-176",
+        "route": "middle-turn",
+        "x": 304,
+        "z": 240,
+        "angle": 176,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime center",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 834475,
+      "spriteResponseCycles": 759992,
+      "strip16Cycles": 752471,
+      "candidateCycles": 731008,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 12.399053296983134
+    },
+    {
+      "pose": {
+        "id": "middle-turn-176",
+        "route": "middle-turn",
+        "x": 304,
+        "z": 240,
+        "angle": 176,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime center",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 785707,
+      "spriteResponseCycles": 721090,
+      "strip16Cycles": 713569,
+      "candidateCycles": 692106,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 11.912965011130103
+    },
+    {
+      "pose": {
+        "id": "middle-turn-176",
+        "route": "middle-turn",
+        "x": 304,
+        "z": 240,
+        "angle": 176,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Slime center",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 834990,
+      "spriteResponseCycles": 760507,
+      "strip16Cycles": 752986,
+      "candidateCycles": 731523,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 12.39140588510042
+    },
+    {
+      "pose": {
+        "id": "near18-128",
+        "route": "near18",
+        "x": 294,
+        "z": 236,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Close enemy",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 938843,
+      "spriteResponseCycles": 812397,
+      "strip16Cycles": 801968,
+      "candidateCycles": 780289,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.88823370893749
+    },
+    {
+      "pose": {
+        "id": "near18-128",
+        "route": "near18",
+        "x": 294,
+        "z": 236,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Close enemy",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 992844,
+      "spriteResponseCycles": 853956,
+      "strip16Cycles": 843527,
+      "candidateCycles": 821848,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 17.222846690920225
+    },
+    {
+      "pose": {
+        "id": "near18-128",
+        "route": "near18",
+        "x": 294,
+        "z": 236,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Close enemy",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 939358,
+      "spriteResponseCycles": 812912,
+      "strip16Cycles": 802483,
+      "candidateCycles": 780804,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.878974789164513
+    },
+    {
+      "pose": {
+        "id": "near18-128",
+        "route": "near18",
+        "x": 294,
+        "z": 236,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Close enemy",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 993359,
+      "spriteResponseCycles": 854471,
+      "strip16Cycles": 844042,
+      "candidateCycles": 822363,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 17.213917626960647
+    },
+    {
+      "pose": {
+        "id": "near12-128",
+        "route": "near12",
+        "x": 294,
+        "z": 230,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Close enemy",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 891066,
+      "spriteResponseCycles": 774871,
+      "strip16Cycles": 765372,
+      "candidateCycles": 743572,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.552533706818576
+    },
+    {
+      "pose": {
+        "id": "near12-128",
+        "route": "near12",
+        "x": 294,
+        "z": 230,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Close enemy",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 969343,
+      "spriteResponseCycles": 832351,
+      "strip16Cycles": 822852,
+      "candidateCycles": 801052,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 17.36134680912742
+    },
+    {
+      "pose": {
+        "id": "near12-128",
+        "route": "near12",
+        "x": 294,
+        "z": 230,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Close enemy",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 891581,
+      "spriteResponseCycles": 775386,
+      "strip16Cycles": 765887,
+      "candidateCycles": 744087,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.542972539791673
+    },
+    {
+      "pose": {
+        "id": "near12-128",
+        "route": "near12",
+        "x": 294,
+        "z": 230,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Close enemy",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 969858,
+      "spriteResponseCycles": 832866,
+      "strip16Cycles": 823367,
+      "candidateCycles": 801567,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 17.352127837271023
+    },
+    {
+      "pose": {
+        "id": "near8-128",
+        "route": "near8",
+        "x": 294,
+        "z": 226,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Close enemy",
+        "reuse": true
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 826920,
+      "spriteResponseCycles": 725543,
+      "strip16Cycles": 717766,
+      "candidateCycles": 694812,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.975910608039472
+    },
+    {
+      "pose": {
+        "id": "near8-128",
+        "route": "near8",
+        "x": 294,
+        "z": 226,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Close enemy",
+        "reuse": true
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": true,
+      "releaseCycles": 817871,
+      "spriteResponseCycles": 393832,
+      "strip16Cycles": 386055,
+      "candidateCycles": 363101,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 55.60412338865176
+    },
+    {
+      "pose": {
+        "id": "near8-128",
+        "route": "near8",
+        "x": 294,
+        "z": 226,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Close enemy",
+        "reuse": true
+      },
+      "bank": 0,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 968960,
+      "spriteResponseCycles": 824258,
+      "strip16Cycles": 816481,
+      "candidateCycles": 793527,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 18.105288143989434
+    },
+    {
+      "pose": {
+        "id": "near8-128",
+        "route": "near8",
+        "x": 294,
+        "z": 226,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Close enemy",
+        "reuse": true
+      },
+      "bank": 0,
+      "hp": 3,
+      "warm": true,
+      "releaseCycles": 959892,
+      "spriteResponseCycles": 492528,
+      "strip16Cycles": 484751,
+      "candidateCycles": 461797,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 51.89073354085668
+    },
+    {
+      "pose": {
+        "id": "near8-128",
+        "route": "near8",
+        "x": 294,
+        "z": 226,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Close enemy",
+        "reuse": true
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 827435,
+      "spriteResponseCycles": 726058,
+      "strip16Cycles": 718281,
+      "candidateCycles": 695327,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.96596711524168
+    },
+    {
+      "pose": {
+        "id": "near8-128",
+        "route": "near8",
+        "x": 294,
+        "z": 226,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Close enemy",
+        "reuse": true
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": true,
+      "releaseCycles": 818386,
+      "spriteResponseCycles": 394347,
+      "strip16Cycles": 386570,
+      "candidateCycles": 363616,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 55.56913241428861
+    },
+    {
+      "pose": {
+        "id": "near8-128",
+        "route": "near8",
+        "x": 294,
+        "z": 226,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Close enemy",
+        "reuse": true
+      },
+      "bank": 1,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 969475,
+      "spriteResponseCycles": 824773,
+      "strip16Cycles": 816996,
+      "candidateCycles": 794042,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 18.095670337038086
+    },
+    {
+      "pose": {
+        "id": "near8-128",
+        "route": "near8",
+        "x": 294,
+        "z": 226,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Close enemy",
+        "reuse": true
+      },
+      "bank": 1,
+      "hp": 3,
+      "warm": true,
+      "releaseCycles": 960407,
+      "spriteResponseCycles": 493043,
+      "strip16Cycles": 485266,
+      "candidateCycles": 462312,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 51.86290812124443
+    },
+    {
+      "pose": {
+        "id": "near-turn-160",
+        "route": "near-turn",
+        "x": 300,
+        "z": 226,
+        "angle": 160,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Close enemy",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 830580,
+      "spriteResponseCycles": 758318,
+      "strip16Cycles": 750296,
+      "candidateCycles": 716280,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 13.761467889908257
+    },
+    {
+      "pose": {
+        "id": "near-turn-160",
+        "route": "near-turn",
+        "x": 300,
+        "z": 226,
+        "angle": 160,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Close enemy",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 960947,
+      "spriteResponseCycles": 848901,
+      "strip16Cycles": 840879,
+      "candidateCycles": 806863,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.034599202661543
+    },
+    {
+      "pose": {
+        "id": "near-turn-160",
+        "route": "near-turn",
+        "x": 300,
+        "z": 226,
+        "angle": 160,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Close enemy",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 831095,
+      "spriteResponseCycles": 758833,
+      "strip16Cycles": 750811,
+      "candidateCycles": 716795,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 13.752940397908784
+    },
+    {
+      "pose": {
+        "id": "near-turn-160",
+        "route": "near-turn",
+        "x": 300,
+        "z": 226,
+        "angle": 160,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Close enemy",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 961462,
+      "spriteResponseCycles": 849416,
+      "strip16Cycles": 841394,
+      "candidateCycles": 807378,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.02601038834608
+    },
+    {
+      "pose": {
+        "id": "near-turn-176",
+        "route": "near-turn",
+        "x": 300,
+        "z": 226,
+        "angle": 176,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Close enemy",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 787984,
+      "spriteResponseCycles": 725406,
+      "strip16Cycles": 718631,
+      "candidateCycles": 685612,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 12.991634347905542
+    },
+    {
+      "pose": {
+        "id": "near-turn-176",
+        "route": "near-turn",
+        "x": 300,
+        "z": 226,
+        "angle": 176,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Close enemy",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 917733,
+      "spriteResponseCycles": 815368,
+      "strip16Cycles": 808593,
+      "candidateCycles": 775574,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.490235177333712
+    },
+    {
+      "pose": {
+        "id": "near-turn-176",
+        "route": "near-turn",
+        "x": 300,
+        "z": 226,
+        "angle": 176,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Close enemy",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 788499,
+      "spriteResponseCycles": 725921,
+      "strip16Cycles": 719146,
+      "candidateCycles": 686127,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 12.983148995750152
+    },
+    {
+      "pose": {
+        "id": "near-turn-176",
+        "route": "near-turn",
+        "x": 300,
+        "z": 226,
+        "angle": 176,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Close enemy",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 918248,
+      "spriteResponseCycles": 815883,
+      "strip16Cycles": 809108,
+      "candidateCycles": 776089,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.481547468657705
+    },
+    {
+      "pose": {
+        "id": "offscreen-0",
+        "route": "offscreen",
+        "x": 292,
+        "z": 256,
+        "angle": 0,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Corridor/occlusion controls",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 538706,
+      "spriteResponseCycles": 481358,
+      "strip16Cycles": 477986,
+      "candidateCycles": 447163,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.99312797704128
+    },
+    {
+      "pose": {
+        "id": "offscreen-0",
+        "route": "offscreen",
+        "x": 292,
+        "z": 256,
+        "angle": 0,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Corridor/occlusion controls",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 547021,
+      "spriteResponseCycles": 486633,
+      "strip16Cycles": 483261,
+      "candidateCycles": 452438,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 17.290561057070935
+    },
+    {
+      "pose": {
+        "id": "offscreen-0",
+        "route": "offscreen",
+        "x": 292,
+        "z": 256,
+        "angle": 0,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Corridor/occlusion controls",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 539221,
+      "spriteResponseCycles": 481873,
+      "strip16Cycles": 478501,
+      "candidateCycles": 447678,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 16.97689815493091
+    },
+    {
+      "pose": {
+        "id": "offscreen-0",
+        "route": "offscreen",
+        "x": 292,
+        "z": 256,
+        "angle": 0,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Corridor/occlusion controls",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 547536,
+      "spriteResponseCycles": 487148,
+      "strip16Cycles": 483776,
+      "candidateCycles": 452953,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 17.274297945705854
+    },
+    {
+      "pose": {
+        "id": "occluded-corridor-128",
+        "route": "occluded-corridor",
+        "x": 260,
+        "z": 290,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Corridor/occlusion controls",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 760754,
+      "spriteResponseCycles": 675039,
+      "strip16Cycles": 664165,
+      "candidateCycles": 655558,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 13.827860254431787
+    },
+    {
+      "pose": {
+        "id": "occluded-corridor-128",
+        "route": "occluded-corridor",
+        "x": 260,
+        "z": 290,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Corridor/occlusion controls",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 784746,
+      "spriteResponseCycles": 694205,
+      "strip16Cycles": 683331,
+      "candidateCycles": 674724,
+      "releaseComparisonVisual": "ground-anchor-only",
+      "savedPercent": 14.020077834101734
+    },
+    {
+      "pose": {
+        "id": "occluded-corridor-128",
+        "route": "occluded-corridor",
+        "x": 260,
+        "z": 290,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Corridor/occlusion controls",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 761269,
+      "spriteResponseCycles": 675554,
+      "strip16Cycles": 664680,
+      "candidateCycles": 656073,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 13.818505679332798
+    },
+    {
+      "pose": {
+        "id": "occluded-corridor-128",
+        "route": "occluded-corridor",
+        "x": 260,
+        "z": 290,
+        "angle": 128,
+        "actor": 1,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Corridor/occlusion controls",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 785261,
+      "spriteResponseCycles": 694720,
+      "strip16Cycles": 683846,
+      "candidateCycles": 675239,
+      "releaseComparisonVisual": "ground-anchor-only",
+      "savedPercent": 14.010883005777696
+    },
+    {
+      "pose": {
+        "id": "simpler-far-64",
+        "route": "simpler-far",
+        "x": 138,
+        "z": 312,
+        "angle": 64,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Square room",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 569565,
+      "spriteResponseCycles": 510196,
+      "strip16Cycles": 503859,
+      "candidateCycles": 478645,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.963059527885315
+    },
+    {
+      "pose": {
+        "id": "simpler-far-64",
+        "route": "simpler-far",
+        "x": 138,
+        "z": 312,
+        "angle": 64,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Square room",
+        "reuse": false
+      },
+      "bank": 0,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 600431,
+      "spriteResponseCycles": 536516,
+      "strip16Cycles": 530179,
+      "candidateCycles": 504965,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.89957880256016
+    },
+    {
+      "pose": {
+        "id": "simpler-far-64",
+        "route": "simpler-far",
+        "x": 138,
+        "z": 312,
+        "angle": 64,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Square room",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 570080,
+      "spriteResponseCycles": 510711,
+      "strip16Cycles": 504374,
+      "candidateCycles": 479160,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.948638787538592
+    },
+    {
+      "pose": {
+        "id": "simpler-far-64",
+        "route": "simpler-far",
+        "x": 138,
+        "z": 312,
+        "angle": 64,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Square room",
+        "reuse": false
+      },
+      "bank": 1,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 600946,
+      "spriteResponseCycles": 537031,
+      "strip16Cycles": 530694,
+      "candidateCycles": 505480,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.885953147204575
+    },
+    {
+      "pose": {
+        "id": "simpler-near-64",
+        "route": "simpler-near",
+        "x": 164,
+        "z": 312,
+        "angle": 64,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Square room",
+        "reuse": true
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 618580,
+      "spriteResponseCycles": 553924,
+      "strip16Cycles": 543785,
+      "candidateCycles": 532258,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 13.954864366775519
+    },
+    {
+      "pose": {
+        "id": "simpler-near-64",
+        "route": "simpler-near",
+        "x": 164,
+        "z": 312,
+        "angle": 64,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Square room",
+        "reuse": true
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": true,
+      "releaseCycles": 608142,
+      "spriteResponseCycles": 338753,
+      "strip16Cycles": 328614,
+      "candidateCycles": 317087,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 47.85971039658501
+    },
+    {
+      "pose": {
+        "id": "simpler-near-64",
+        "route": "simpler-near",
+        "x": 164,
+        "z": 312,
+        "angle": 64,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Square room",
+        "reuse": true
+      },
+      "bank": 0,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 696664,
+      "spriteResponseCycles": 611213,
+      "strip16Cycles": 601074,
+      "candidateCycles": 589547,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.375704787386747
+    },
+    {
+      "pose": {
+        "id": "simpler-near-64",
+        "route": "simpler-near",
+        "x": 164,
+        "z": 312,
+        "angle": 64,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Square room",
+        "reuse": true
+      },
+      "bank": 0,
+      "hp": 3,
+      "warm": true,
+      "releaseCycles": 686347,
+      "spriteResponseCycles": 396163,
+      "strip16Cycles": 386024,
+      "candidateCycles": 374497,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 45.436200639035356
+    },
+    {
+      "pose": {
+        "id": "simpler-near-64",
+        "route": "simpler-near",
+        "x": 164,
+        "z": 312,
+        "angle": 64,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Square room",
+        "reuse": true
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 619095,
+      "spriteResponseCycles": 554439,
+      "strip16Cycles": 544300,
+      "candidateCycles": 532773,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 13.943255881569064
+    },
+    {
+      "pose": {
+        "id": "simpler-near-64",
+        "route": "simpler-near",
+        "x": 164,
+        "z": 312,
+        "angle": 64,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Square room",
+        "reuse": true
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": true,
+      "releaseCycles": 608657,
+      "spriteResponseCycles": 339268,
+      "strip16Cycles": 329129,
+      "candidateCycles": 317602,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 47.819215091586884
+    },
+    {
+      "pose": {
+        "id": "simpler-near-64",
+        "route": "simpler-near",
+        "x": 164,
+        "z": 312,
+        "angle": 64,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Square room",
+        "reuse": true
+      },
+      "bank": 1,
+      "hp": 3,
+      "warm": false,
+      "releaseCycles": 697179,
+      "spriteResponseCycles": 611728,
+      "strip16Cycles": 601589,
+      "candidateCycles": 590062,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.364346889392824
+    },
+    {
+      "pose": {
+        "id": "simpler-near-64",
+        "route": "simpler-near",
+        "x": 164,
+        "z": 312,
+        "angle": 64,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0,
+          3
+        ],
+        "cohort": "actor-control",
+        "group": "Square room",
+        "reuse": true
+      },
+      "bank": 1,
+      "hp": 3,
+      "warm": true,
+      "releaseCycles": 686862,
+      "spriteResponseCycles": 396678,
+      "strip16Cycles": 386539,
+      "candidateCycles": 375012,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 45.40213317959066
+    },
+    {
+      "pose": {
+        "id": "simple-wall",
+        "group": "Simple wall",
+        "route": "simple-wall",
+        "x": 52,
+        "z": 192,
+        "angle": 192,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "extra",
+        "reuse": true
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 522919,
+      "spriteResponseCycles": 469707,
+      "strip16Cycles": 464170,
+      "candidateCycles": 448261,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 14.27716338476896
+    },
+    {
+      "pose": {
+        "id": "simple-wall",
+        "group": "Simple wall",
+        "route": "simple-wall",
+        "x": 52,
+        "z": 192,
+        "angle": 192,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "extra",
+        "reuse": true
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": true,
+      "releaseCycles": 513156,
+      "spriteResponseCycles": 238783,
+      "strip16Cycles": 233246,
+      "candidateCycles": 217337,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 57.64699233761274
+    },
+    {
+      "pose": {
+        "id": "simple-wall",
+        "group": "Simple wall",
+        "route": "simple-wall",
+        "x": 52,
+        "z": 192,
+        "angle": 192,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "extra",
+        "reuse": true
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 523530,
+      "spriteResponseCycles": 470318,
+      "strip16Cycles": 464781,
+      "candidateCycles": 448872,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 14.260500830897943
+    },
+    {
+      "pose": {
+        "id": "simple-wall",
+        "group": "Simple wall",
+        "route": "simple-wall",
+        "x": 52,
+        "z": 192,
+        "angle": 192,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "extra",
+        "reuse": true
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": true,
+      "releaseCycles": 513767,
+      "spriteResponseCycles": 239394,
+      "strip16Cycles": 233857,
+      "candidateCycles": 217948,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 57.57843536077638
+    },
+    {
+      "pose": {
+        "id": "square-entry",
+        "group": "Square room",
+        "route": "square",
+        "x": 172,
+        "z": 292,
+        "angle": 64,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "extra"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 593240,
+      "spriteResponseCycles": 522845,
+      "strip16Cycles": 514550,
+      "candidateCycles": 500804,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.581552154271458
+    },
+    {
+      "pose": {
+        "id": "square-entry",
+        "group": "Square room",
+        "route": "square",
+        "x": 172,
+        "z": 292,
+        "angle": 64,
+        "actor": 0,
+        "floor": 2,
+        "eye": 6,
+        "door": 0,
+        "actorStates": [
+          0
+        ],
+        "cohort": "extra"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 593755,
+      "spriteResponseCycles": 523360,
+      "strip16Cycles": 515065,
+      "candidateCycles": 501319,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 15.568037321790975
+    },
+    {
+      "pose": {
+        "id": "pre-exit",
+        "group": "Pre-exit room",
+        "route": "pre-exit",
+        "x": 296,
+        "z": 96,
+        "angle": 128,
+        "actor": 2,
+        "floor": 2,
+        "eye": 6,
+        "door": 2,
+        "actorStates": [
+          0
+        ],
+        "cohort": "extra"
+      },
+      "bank": 0,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 581935,
+      "spriteResponseCycles": 513163,
+      "strip16Cycles": 506804,
+      "candidateCycles": 458978,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 21.128992069561033
+    },
+    {
+      "pose": {
+        "id": "pre-exit",
+        "group": "Pre-exit room",
+        "route": "pre-exit",
+        "x": 296,
+        "z": 96,
+        "angle": 128,
+        "actor": 2,
+        "floor": 2,
+        "eye": 6,
+        "door": 2,
+        "actorStates": [
+          0
+        ],
+        "cohort": "extra"
+      },
+      "bank": 1,
+      "hp": 0,
+      "warm": false,
+      "releaseCycles": 582450,
+      "spriteResponseCycles": 513678,
+      "strip16Cycles": 507319,
+      "candidateCycles": 459493,
+      "releaseComparisonVisual": "exact",
+      "savedPercent": 21.11030989784531
+    }
+  ]
+}

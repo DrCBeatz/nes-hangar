@@ -1,0 +1,170 @@
+{
+  "passed": true,
+  "pairedTrials": 2,
+  "individualTrials": 4,
+  "pairs": [
+    {
+      "music": "music-off",
+      "release": {
+        "variant": "baseline",
+        "music": "music-off",
+        "romSha256": "cf8d701e9829342ab89bc7b817c5d39925eb9c8cc5a7520d568563f69f31ac87",
+        "reverseInitialPose": [
+          52.0,
+          192.0,
+          50,
+          2,
+          6
+        ],
+        "terminalPose": [
+          52.0,
+          192.0,
+          0,
+          2,
+          6
+        ],
+        "pollToReverseSimulationMs": 16.91052440728517,
+        "pollToFreshPostReversalPublicationMs": 1149.3016153445158,
+        "pollToVisiblyReversedCameraPublicationMs": 1149.3016153445158,
+        "pollToReversedViewportMs": 1164.6845717306048,
+        "reversalVisibleBeforeRelease": true,
+        "releaseToFinalCameraPublicationMs": 816.5163962133745,
+        "visibleAngleAtInput": 28,
+        "previousPublishedAngle": 50,
+        "firstReversedPublishedAngle": 40,
+        "firstFreshCameraAngle": 40,
+        "reversedSampleAgeMs": 752.4362028033722,
+        "firstReversalSimPhase": {
+          "sim": 225,
+          "accumulator": 0
+        },
+        "abortedAttempts": 2
+      },
+      "latest": {
+        "variant": "candidate",
+        "music": "music-off",
+        "romSha256": "70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817",
+        "reverseInitialPose": [
+          52.0,
+          192.0,
+          50,
+          2,
+          6
+        ],
+        "terminalPose": [
+          52.0,
+          192.0,
+          0,
+          2,
+          6
+        ],
+        "pollToReverseSimulationMs": 16.91052440728517,
+        "pollToFreshPostReversalPublicationMs": 1116.0236521614752,
+        "pollToVisiblyReversedCameraPublicationMs": 1116.0236521614752,
+        "pollToReversedViewportMs": 1131.4060498174908,
+        "reversalVisibleBeforeRelease": true,
+        "releaseToFinalCameraPublicationMs": 799.8774146218543,
+        "visibleAngleAtInput": 28,
+        "previousPublishedAngle": 50,
+        "firstReversedPublishedAngle": 40,
+        "firstFreshCameraAngle": 40,
+        "reversedSampleAgeMs": 735.5156212547624,
+        "firstReversalSimPhase": {
+          "sim": 225,
+          "accumulator": 0
+        },
+        "abortedAttempts": 2
+      },
+      "deltaMs": {
+        "pollToReverseSimulationMs": 0.0,
+        "pollToFreshPostReversalPublicationMs": -33.27796318304058,
+        "pollToVisiblyReversedCameraPublicationMs": -33.27796318304058,
+        "pollToReversedViewportMs": -33.27852191311399,
+        "releaseToFinalCameraPublicationMs": -16.638981591520178,
+        "reversedSampleAgeMs": -16.92058154860979
+      }
+    },
+    {
+      "music": "music-on",
+      "release": {
+        "variant": "baseline",
+        "music": "music-on",
+        "romSha256": "cf8d701e9829342ab89bc7b817c5d39925eb9c8cc5a7520d568563f69f31ac87",
+        "reverseInitialPose": [
+          52.0,
+          192.0,
+          50,
+          2,
+          6
+        ],
+        "terminalPose": [
+          52.0,
+          192.0,
+          0,
+          2,
+          6
+        ],
+        "pollToReverseSimulationMs": 16.90996567721158,
+        "pollToFreshPostReversalPublicationMs": 1182.5795785275564,
+        "pollToVisiblyReversedCameraPublicationMs": 1182.5795785275564,
+        "pollToReversedViewportMs": 1197.963093643719,
+        "reversalVisibleBeforeRelease": true,
+        "releaseToFinalCameraPublicationMs": 799.8785320820015,
+        "visibleAngleAtInput": 29,
+        "previousPublishedAngle": 50,
+        "firstReversedPublishedAngle": 40,
+        "firstFreshCameraAngle": 40,
+        "reversedSampleAgeMs": 770.2731016726702,
+        "firstReversalSimPhase": {
+          "sim": 225,
+          "accumulator": 0
+        },
+        "abortedAttempts": 1
+      },
+      "latest": {
+        "variant": "candidate",
+        "music": "music-on",
+        "romSha256": "70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817",
+        "reverseInitialPose": [
+          52.0,
+          192.0,
+          50,
+          2,
+          6
+        ],
+        "terminalPose": [
+          52.0,
+          192.0,
+          0,
+          2,
+          6
+        ],
+        "pollToReverseSimulationMs": 16.90996567721158,
+        "pollToFreshPostReversalPublicationMs": 1149.3016153445158,
+        "pollToVisiblyReversedCameraPublicationMs": 1149.3016153445158,
+        "pollToReversedViewportMs": 1164.6845717306048,
+        "reversalVisibleBeforeRelease": true,
+        "releaseToFinalCameraPublicationMs": 833.1564952650419,
+        "visibleAngleAtInput": 28,
+        "previousPublishedAngle": 50,
+        "firstReversedPublishedAngle": 40,
+        "firstFreshCameraAngle": 40,
+        "reversedSampleAgeMs": 750.937688746003,
+        "firstReversalSimPhase": {
+          "sim": 225,
+          "accumulator": 0
+        },
+        "abortedAttempts": 2
+      },
+      "deltaMs": {
+        "pollToReverseSimulationMs": 0.0,
+        "pollToFreshPostReversalPublicationMs": -33.27796318304058,
+        "pollToVisiblyReversedCameraPublicationMs": -33.27796318304058,
+        "pollToReversedViewportMs": -33.27852191311422,
+        "releaseToFinalCameraPublicationMs": 33.27796318304047,
+        "reversedSampleAgeMs": -19.33541292666723
+      }
+    }
+  ],
+  "scope": "One opening-room route per musicsetting: settle150, right120, immediatelyleft120, release150. Firstfresh post-reversal snapshot may initially still look like continuedold-direction motion because the screen lagged. Actual visible reversal is the first accepted camera with negative signedangle delta versus the preceding publishedcamera, associated with a post-reversal simulation snapshot; viewport observation is separate. No stationary artificial reset at reversal. This boundedcontrol is excluded from sustained-turn rate table."
+}

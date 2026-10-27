@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "verifiedOn": "2026-10-24",
+  "passed": true,
+  "version": "prototype-2026-10-24-door-reach",
+  "artifact": {
+    "path": "release/hangar-ntsc.nes",
+    "sha256": "db258e4c9c57ff3ef9f4bc8eb732f31b65eec85a1a639e7a9787a90dde1722a9",
+    "bytes": 131088,
+    "region": "NTSC",
+    "mapper": "MMC1",
+    "prgRomBytes": 131072,
+    "chrRamBytes": 8192,
+    "workRamBytes": 8192
+  },
+  "baseline": {
+    "sha256": "867f9ae9999f895bea3b68f5ca13f8a2ff73047fee0b9f2a696fdb542dc4e249",
+    "evidence": "verification/release-ui-release.json"
+  },
+  "music": {
+    "enabled": true,
+    "engine": "FamiStudio",
+    "channels": 4,
+    "dpcm": false,
+    "song": "E1M1 (Dr. C Beatz arrangement)",
+    "source": "music/e1m1/e1m1-drcbeatz.s",
+    "sourceSha256": "d5886648b0045e97de9172af06934dff190a873286a7aff62599c4667235427a",
+    "features": {
+      "famiTrackerTempo": false,
+      "volumeTrack": true,
+      "vibrato": true,
+      "dutyCycleEffect": false
+    },
+    "ramBytes": 205,
+    "zpAliasBytes": 8,
+    "playerOption": {
+      "screen": "controls guide",
+      "default": "on",
+      "left": "off",
+      "right": "on",
+      "skipsSequencerWhenOff": true,
+      "preservesSoundEffects": true,
+      "survivesLevelRestart": true,
+      "coldResetRestoresDefault": true
+    }
+  },
+  "change": {
+    "doorUseReachBefore": 8,
+    "doorUseReachAfter": 12,
+    "doorRuntimeBytesChanged": 2,
+    "creditsNametableBytesChanged": 23,
+    "publicAuthorCredit": "Dr C Beatz",
+    "segmentSizesUnchanged": true,
+    "ramAllocationUnchanged": true,
+    "rendererChanged": false
+  },
+  "integrity": {
+    "sourceHashCount": 75,
+    "freshStandaloneRebuild": true,
+    "rebuildEvidence": "verification/door-reach-build.json"
+  },
+  "runtimeEvidence": {
+    "controllerReport": "verification/door-reach-controller.json",
+    "controllerChecks": 44,
+    "controllerRuns": [
+      {
+        "choice": "ON",
+        "frames": 1823
+      },
+      {
+        "choice": "OFF",
+        "frames": 20007
+      }
+    ],
+    "mesenReport": "verification/door-reach-mesen.json",
+    "mesenChecks": 26,
+    "mesenFrames": 14963,
+    "mesenPhases": 161,
+    "worldPixelComparisons": 44,
+    "doorReport": "verification/door-center.json",
+    "performanceReport": "verification/final-performance.json",
+    "screenshots": "verification/door-reach-screenshots.json"
+  },
+  "finding": "Reproduced missing prompt at settled centered views 8.25\u201312 units from the door; extending reach repairs these cases. No intermittent failure at actual collision contact was reproduced.",
+  "performance": "18 producer fixtures retain identical CPU cycles and generated work; controlled stock-NTSC camera timing matches baseline. No rendering optimization introduced.",
+  "physicalConsoleTested": false,
+  "liveDeploymentChanged": true,
+  "licensingResolved": false,
+  "publicationPackaging": {
+    "historicalMusicAndRomsBundled": false,
+    "runtimeBinaryUnchanged": true
+  },
+  "deploymentEvidence": "verification/release-browser-deployment.json",
+  "archiveNote": "Historical October 24 release evidence. Artifact path records its location at that time; the current release path now contains the October 26 candidate."
+}

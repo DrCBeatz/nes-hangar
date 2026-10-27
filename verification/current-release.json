@@ -1,11 +1,12 @@
 {
-  "schemaVersion": 1,
-  "verifiedOn": "2026-10-24",
+  "schemaVersion": 2,
+  "verifiedOn": "2026-10-26",
   "passed": true,
-  "version": "prototype-2026-10-24-door-reach",
+  "scope": "Consolidation and exact reproducible build; final user end-to-end playtest pending.",
+  "version": "prototype-2026-10-26-performance-rc1",
   "artifact": {
     "path": "release/hangar-ntsc.nes",
-    "sha256": "db258e4c9c57ff3ef9f4bc8eb732f31b65eec85a1a639e7a9787a90dde1722a9",
+    "sha256": "70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817",
     "bytes": 131088,
     "region": "NTSC",
     "mapper": "MMC1",
@@ -14,8 +15,14 @@
     "workRamBytes": 8192
   },
   "baseline": {
-    "sha256": "867f9ae9999f895bea3b68f5ca13f8a2ff73047fee0b9f2a696fdb542dc4e249",
-    "evidence": "verification/release-ui-release.json"
+    "sha256": "db258e4c9c57ff3ef9f4bc8eb732f31b65eec85a1a639e7a9787a90dde1722a9",
+    "version": "prototype-2026-10-24-door-reach",
+    "evidence": "verification/door-reach-release.json"
+  },
+  "acceptedExperimentalBuild": {
+    "name": "hangar-axis-rejection",
+    "sha256": "70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817",
+    "byteIdentical": true
   },
   "music": {
     "enabled": true,
@@ -44,51 +51,45 @@
       "coldResetRestoresDefault": true
     }
   },
-  "change": {
-    "doorUseReachBefore": 8,
-    "doorUseReachAfter": 12,
-    "doorRuntimeBytesChanged": 2,
-    "creditsNametableBytesChanged": 23,
-    "publicAuthorCredit": "Dr C Beatz",
-    "segmentSizesUnchanged": true,
-    "ramAllocationUnchanged": true,
-    "rendererChanged": false
+  "rendererOptimizations": {
+    "geometryListPixels": 16,
+    "exactPositionAxisGate": true,
+    "axisInitBank": 6,
+    "axisScratchBytes": 4,
+    "cameraRetry": true,
+    "spriteMask": true,
+    "maskedPaint": true,
+    "exactArithmetic": true,
+    "uploadCompletion": true,
+    "streamPatternUpload": true,
+    "guardedPattern8": true,
+    "cachedFloorProjector": true,
+    "geometrySetupCheckpoint": true,
+    "quotient16": true,
+    "reclaimedLegacyHelpers": true
   },
   "integrity": {
-    "sourceHashCount": 75,
+    "sourceHashCount": 77,
     "freshStandaloneRebuild": true,
     "rebuildEvidence": "verification/current-build.json"
   },
   "runtimeEvidence": {
-    "controllerReport": "verification/door-reach-controller.json",
-    "controllerChecks": 44,
-    "controllerRuns": [
-      {
-        "choice": "ON",
-        "frames": 1823
-      },
-      {
-        "choice": "OFF",
-        "frames": 20007
-      }
-    ],
-    "mesenReport": "verification/door-reach-mesen.json",
-    "mesenChecks": 26,
-    "mesenFrames": 14963,
-    "mesenPhases": 161,
-    "worldPixelComparisons": 44,
-    "doorReport": "verification/door-center.json",
-    "performanceReport": "verification/final-performance.json",
-    "screenshots": "verification/door-reach-screenshots.json"
+    "scope": "Previously measured accepted experimental binary; no new runtime suite was run during byte-identical consolidation.",
+    "producerSummary": "verification/performance-20261026/producer-summary.json",
+    "axisContract": "verification/performance-20261026/axis-contract.json",
+    "axisAudit": "verification/performance-20261026/axis-contract-audit.json",
+    "liveComparison": "verification/performance-20261026/live-axis-comparison.json",
+    "liveAudit": "verification/performance-20261026/live-axis-audit.json",
+    "detailedVerification": "verification/performance-20261026/axis-verification.txt",
+    "matchedLiveReport": "verification/performance-20261026/live-report.txt"
   },
-  "finding": "Reproduced missing prompt at settled centered views 8.25\u201312 units from the door; extending reach repairs these cases. No intermittent failure at actual collision contact was reproduced.",
-  "performance": "18 producer fixtures retain identical CPU cycles and generated work; controlled stock-NTSC camera timing matches baseline. No rendering optimization introduced.",
+  "performanceEvidence": "verification/performance-update-20261026.json",
   "physicalConsoleTested": false,
-  "liveDeploymentChanged": true,
-  "licensingResolved": false,
-  "publicationPackaging": {
-    "historicalMusicAndRomsBundled": false,
-    "runtimeBinaryUnchanged": true
-  },
-  "deploymentEvidence": "verification/release-browser-deployment.json"
+  "newControllerOnlyCompleteLevelTest": false,
+  "userPlaytestPending": true,
+  "liveDeploymentChanged": false,
+  "itchPublicationChanged": false,
+  "titleBuildCaption": "2026-10-24",
+  "titleCaptionNote": "Preserved to retain exact identity with the accepted experimental ROM; release metadata/checksum identify this candidate.",
+  "publicAuthorCredit": "Dr C Beatz"
 }

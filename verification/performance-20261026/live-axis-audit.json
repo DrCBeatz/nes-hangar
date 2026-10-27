@@ -1,0 +1,205 @@
+{
+  "passed": true,
+  "primaryPairedTrials": 18,
+  "reversalPairedTrials": 2,
+  "individualTrials": 40,
+  "captures": [
+    {
+      "suite": "live-axis",
+      "variant": "baseline",
+      "music": "music-on",
+      "romSha256": "cf8d701e9829342ab89bc7b817c5d39925eb9c8cc5a7520d568563f69f31ac87",
+      "frames": 5266,
+      "events": 12865,
+      "ppuViolations": 0,
+      "bank": {
+        "initializerEntries": 0,
+        "commits": 1324,
+        "setupCheckpoints": 4575,
+        "gatewayReturns": 0,
+        "bank6Commits": 0,
+        "gatewayEntries": 0,
+        "setupAborts": 5
+      },
+      "capturedFiles": {
+        "driver.py": "b503d4c19155196f4c780abda419e2499db103caef57845c58bb49cd3f05cb67",
+        "observer.lua": "821a0fe4dd9166223613acd70022ab6129c9e7adc66780af469a084556a0cfca",
+        "settings.json": "d359e66b4f204fc0c3990a679f55fc1cd7a48bab85e3cffbeb4564498cbd21dd"
+      },
+      "mesenSha256": "ce4446a92096a024145e6ed2793cce8b489460bb3ac034cd9d1d77d96109fced"
+    },
+    {
+      "suite": "live-axis",
+      "variant": "candidate",
+      "music": "music-on",
+      "romSha256": "70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817",
+      "frames": 5266,
+      "events": 13057,
+      "ppuViolations": 0,
+      "bank": {
+        "gatewayEntries": 165,
+        "bank6Commits": 165,
+        "initializerEntries": 165,
+        "commits": 1756,
+        "setupAborts": 2,
+        "setupCheckpoints": 4946,
+        "gatewayReturns": 165
+      },
+      "capturedFiles": {
+        "driver.py": "b503d4c19155196f4c780abda419e2499db103caef57845c58bb49cd3f05cb67",
+        "observer.lua": "821a0fe4dd9166223613acd70022ab6129c9e7adc66780af469a084556a0cfca",
+        "settings.json": "d359e66b4f204fc0c3990a679f55fc1cd7a48bab85e3cffbeb4564498cbd21dd"
+      },
+      "mesenSha256": "ce4446a92096a024145e6ed2793cce8b489460bb3ac034cd9d1d77d96109fced"
+    },
+    {
+      "suite": "live-axis",
+      "variant": "baseline",
+      "music": "music-off",
+      "romSha256": "cf8d701e9829342ab89bc7b817c5d39925eb9c8cc5a7520d568563f69f31ac87",
+      "frames": 5266,
+      "events": 13080,
+      "ppuViolations": 0,
+      "bank": {
+        "commits": 1384,
+        "bank6Commits": 0,
+        "gatewayReturns": 0,
+        "setupAborts": 0,
+        "setupCheckpoints": 4740,
+        "gatewayEntries": 0,
+        "initializerEntries": 0
+      },
+      "capturedFiles": {
+        "driver.py": "b503d4c19155196f4c780abda419e2499db103caef57845c58bb49cd3f05cb67",
+        "observer.lua": "821a0fe4dd9166223613acd70022ab6129c9e7adc66780af469a084556a0cfca",
+        "settings.json": "d359e66b4f204fc0c3990a679f55fc1cd7a48bab85e3cffbeb4564498cbd21dd"
+      },
+      "mesenSha256": "ce4446a92096a024145e6ed2793cce8b489460bb3ac034cd9d1d77d96109fced"
+    },
+    {
+      "suite": "live-axis",
+      "variant": "candidate",
+      "music": "music-off",
+      "romSha256": "70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817",
+      "frames": 5266,
+      "events": 13273,
+      "ppuViolations": 0,
+      "bank": {
+        "commits": 1828,
+        "bank6Commits": 171,
+        "setupCheckpoints": 5114,
+        "gatewayReturns": 171,
+        "initializerEntries": 171,
+        "gatewayEntries": 171,
+        "setupAborts": 2
+      },
+      "capturedFiles": {
+        "driver.py": "b503d4c19155196f4c780abda419e2499db103caef57845c58bb49cd3f05cb67",
+        "observer.lua": "821a0fe4dd9166223613acd70022ab6129c9e7adc66780af469a084556a0cfca",
+        "settings.json": "d359e66b4f204fc0c3990a679f55fc1cd7a48bab85e3cffbeb4564498cbd21dd"
+      },
+      "mesenSha256": "ce4446a92096a024145e6ed2793cce8b489460bb3ac034cd9d1d77d96109fced"
+    },
+    {
+      "suite": "live-axis-reversal",
+      "variant": "baseline",
+      "music": "music-on",
+      "romSha256": "cf8d701e9829342ab89bc7b817c5d39925eb9c8cc5a7520d568563f69f31ac87",
+      "frames": 940,
+      "events": 1380,
+      "ppuViolations": 0,
+      "bank": {
+        "setupAborts": 0,
+        "gatewayReturns": 0,
+        "commits": 78,
+        "setupCheckpoints": 300,
+        "initializerEntries": 0,
+        "bank6Commits": 0,
+        "gatewayEntries": 0
+      },
+      "capturedFiles": {
+        "driver.py": "b503d4c19155196f4c780abda419e2499db103caef57845c58bb49cd3f05cb67",
+        "observer.lua": "821a0fe4dd9166223613acd70022ab6129c9e7adc66780af469a084556a0cfca",
+        "settings.json": "d359e66b4f204fc0c3990a679f55fc1cd7a48bab85e3cffbeb4564498cbd21dd"
+      },
+      "mesenSha256": "ce4446a92096a024145e6ed2793cce8b489460bb3ac034cd9d1d77d96109fced"
+    },
+    {
+      "suite": "live-axis-reversal",
+      "variant": "candidate",
+      "music": "music-on",
+      "romSha256": "70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817",
+      "frames": 940,
+      "events": 1336,
+      "ppuViolations": 0,
+      "bank": {
+        "initializerEntries": 11,
+        "gatewayEntries": 11,
+        "commits": 102,
+        "setupAborts": 1,
+        "gatewayReturns": 11,
+        "bank6Commits": 11,
+        "setupCheckpoints": 325
+      },
+      "capturedFiles": {
+        "driver.py": "b503d4c19155196f4c780abda419e2499db103caef57845c58bb49cd3f05cb67",
+        "observer.lua": "821a0fe4dd9166223613acd70022ab6129c9e7adc66780af469a084556a0cfca",
+        "settings.json": "d359e66b4f204fc0c3990a679f55fc1cd7a48bab85e3cffbeb4564498cbd21dd"
+      },
+      "mesenSha256": "ce4446a92096a024145e6ed2793cce8b489460bb3ac034cd9d1d77d96109fced"
+    },
+    {
+      "suite": "live-axis-reversal",
+      "variant": "baseline",
+      "music": "music-off",
+      "romSha256": "cf8d701e9829342ab89bc7b817c5d39925eb9c8cc5a7520d568563f69f31ac87",
+      "frames": 940,
+      "events": 1338,
+      "ppuViolations": 0,
+      "bank": {
+        "setupAborts": 0,
+        "bank6Commits": 0,
+        "commits": 84,
+        "setupCheckpoints": 330,
+        "initializerEntries": 0,
+        "gatewayReturns": 0,
+        "gatewayEntries": 0
+      },
+      "capturedFiles": {
+        "driver.py": "b503d4c19155196f4c780abda419e2499db103caef57845c58bb49cd3f05cb67",
+        "observer.lua": "821a0fe4dd9166223613acd70022ab6129c9e7adc66780af469a084556a0cfca",
+        "settings.json": "d359e66b4f204fc0c3990a679f55fc1cd7a48bab85e3cffbeb4564498cbd21dd"
+      },
+      "mesenSha256": "ce4446a92096a024145e6ed2793cce8b489460bb3ac034cd9d1d77d96109fced"
+    },
+    {
+      "suite": "live-axis-reversal",
+      "variant": "candidate",
+      "music": "music-off",
+      "romSha256": "70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817",
+      "frames": 940,
+      "events": 1340,
+      "ppuViolations": 0,
+      "bank": {
+        "setupCheckpoints": 330,
+        "setupAborts": 0,
+        "commits": 106,
+        "bank6Commits": 11,
+        "gatewayEntries": 11,
+        "initializerEntries": 11,
+        "gatewayReturns": 11
+      },
+      "capturedFiles": {
+        "driver.py": "b503d4c19155196f4c780abda419e2499db103caef57845c58bb49cd3f05cb67",
+        "observer.lua": "821a0fe4dd9166223613acd70022ab6129c9e7adc66780af469a084556a0cfca",
+        "settings.json": "d359e66b4f204fc0c3990a679f55fc1cd7a48bab85e3cffbeb4564498cbd21dd"
+      },
+      "mesenSha256": "ce4446a92096a024145e6ed2793cce8b489460bb3ac034cd9d1d77d96109fced"
+    }
+  ],
+  "identicalDriversObserversSettingsAndInputRoutes": true,
+  "personalSettingsAndProtectedRomsUnchanged": true,
+  "actualMapperCommitAndGatewayContractsPassed": true,
+  "totalRefreshes": 24824,
+  "scope": "Stock-NTSC isolated Mesen captures; not physical hardware. PPUDATA scanline audit, not all-register deadline audit."
+}

@@ -94,7 +94,7 @@ second:
  rts
 from_third:
  ; Any fractional position at Z>=136 crosses the reverse threshold. The
- ; eight-unit band prevents rapid actor swaps at the final passage entrance.
+ ; four-unit band prevents rapid actor swaps at the final passage entrance.
  lda player_z_hi
  cmp #>ENCOUNTER2_GATE_REVERSE_Z
  bcc unchanged

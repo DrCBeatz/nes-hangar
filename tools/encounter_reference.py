@@ -13,7 +13,7 @@ OFFSET = (0,160)
 BOUNDS = ((132,238,114,206),(280,296,44,74),(282,310,-84,-68))
 SPAWNS = ((176,152),(294,58),(296,-76))
 GATE = dict(forward_x=248, reverse_x=244, reverse_z_min=8)
-THIRD_GATE = dict(forward_z=-32, reverse_z=-24)
+THIRD_GATE = dict(forward_z=-28, reverse_z=-24)
 THIRD_LOS = (256,336,-104,-40)
 AMMO = dict(x=282,z=90,floor=2,pickup_radius=3.5,amount=10,maximum=99,
     kind='collectible_ammo',at_full_ammo='remain',encounter_id=1,
@@ -248,12 +248,19 @@ def validate_third(scene,original):
     assert authored['forward_z']==THIRD_GATE['forward_z']+oz
     assert authored['reverse_z']==THIRD_GATE['reverse_z']+oz
     assert authored['player_los_bounds']==[pa+ox,pb+ox,pc+oz,pd+oz]
-    assert authored['hysteresis_width']==THIRD_GATE['reverse_z']-THIRD_GATE['forward_z']==8
+    assert authored['hysteresis_width']==THIRD_GATE['reverse_z']-THIRD_GATE['forward_z']==4
     assert original['door']['z']==pd+oz==120
+    # Select the incoming actor throughout the door's twelve-unit use reach.
+    # The sprite remains hidden by the closed panel, and LOS still ends at Z120.
+    assert authored['forward_z']==original['door']['z']+12==132
     assert original['exit_extension']['extra_actors']==1
     # Exact 16.8 threshold boundaries, including one fractional quantum.
     qx=(296+ox)*256; forward=authored['forward_z']*256; reverse=authored['reverse_z']*256
-    cases=[(1,forward+1,1),(1,forward,2),(2,forward,2),(2,reverse-1,2),(2,reverse,1)]
+    cases=[(1,forward+1,1),(1,forward,2),(1,forward-1,2),
+           (2,forward,2),(2,reverse-1,2),(2,reverse,1),(2,reverse+1,1)]
+    # Earlier activation cannot allow a shot through the closed door.
+    for z in (120*256+1,122*256+64,128*256,130*256,132*256):
+        assert not third_los(296*256,84*256,296*256,z)
     for state,z,want in cases:assert select(state,qx,z)==want
     return dict(passed=True,spawn=[SPAWNS[2][0]+ox,SPAWNS[2][1]+oz],
         movementBounds=[a+ox,b+ox,c+oz,d+oz],playerLosBounds=authored['player_los_bounds'],
@@ -263,7 +270,8 @@ def validate_third(scene,original):
         walkaroundRoutes=[[[x+ox,z+oz] for x,z in route] for route in routes],
         secondAliveBypass=[[x+ox,z+oz] for x,z in second_bypass],continuousSweptRadius2Checks=checks,
         forwardZ=authored['forward_z'],reverseZ=authored['reverse_z'],fractionalGateCases=len(cases),
-        closedDoorSafety='The opaque door hides the sprite; LOS accepts only legal players on the room side at Z<=120, so rays never cross the closed door plane. The state handoff occurs earlier, at Z<=128.',
+        doorUseReach=12,actorSelectedThroughoutDoorUseReach=True,
+        closedDoorSafety='The opaque door hides the sprite; LOS accepts only legal players on the room side at Z<=120, so rays never cross the closed door plane. The state handoff occurs at Z<=132, including the entire twelve-unit door interaction reach.',
         visibilityProof='The expanded actor rectangle is strictly inside every inward room-edge halfplane, hence inside the polygon visibility kernel. Every legal player point accepted by the LOS bounding rectangle is in this room. This proves continuous sight segments, including fractional coordinates and the entry neck.',
         handoffLimitation='Only one actor simulates/renders. If an earlier soldier survives, its saved state is restored on return, but an outgoing actor may visibly disappear when crossing a handoff after the door has opened.')
 

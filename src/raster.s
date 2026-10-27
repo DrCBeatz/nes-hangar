@@ -9,7 +9,14 @@
 ; No full-height pixel-strip initialization or painting of solid interiors.
 .setcpu "6502"
 .macpack longbranch
+.ifndef SETUP_CHECKPOINT
+SETUP_CHECKPOINT = 0
+.endif
+.ifndef MASKED_PAINT
+MASKED_PAINT = 0
+.endif
 .import prg_map, prg_render
+.import world_reuse_active
 .import geometry_begin, geometry_column, span_count, span_top, span_bottom, span_material
 .import pattern_base_hi, name_base_hi, nt_dirty_flags
 .importzp render_buffer, render_mode, overflow_flag
@@ -49,6 +56,8 @@ opening_cache_misses: .res 2
 span_index: .res 1
 span_last: .res 1
 span_last_mask: .res 1
+; Retain these legacy scratch addresses even when direct material painting
+; makes the two per-span fill bytes unnecessary.
 span_color0: .res 1
 span_color1: .res 1
 cache_slot: .res 1
@@ -63,6 +72,9 @@ previous_material: .res 16
 ; Conservative suffix coverage removes only rows wholly hidden by later spans.
 clipped_bottom: .res 16
 covered_top: .res 1
+; Suffix clipping finishes before painting begins. Reuse its dead scratch as
+; a conservative bound on every earlier painted interval, without extra RAM.
+painted_bottom = covered_top
 
 .segment "RODATA"
 start_masks: .byte $FF,$FE,$FC,$F8,$F0,$E0,$C0,$80
@@ -77,6 +89,11 @@ material_plane1: .byte $00,$00,$FF,$FF
 ; successful and latency-abort return paths. NMI never changes this mapping.
 .proc opening_render
  jsr geometry_begin
+.if ::SETUP_CHECKPOINT
+ bcc setup_current
+ rts                    ; C=1; geometry setup already left bank0 selected.
+setup_current:
+.endif
  jsr prg_render
  jsr opening_render_banked
  php
@@ -92,6 +109,9 @@ material_plane1: .byte $00,$00,$FF,$FF
  sta opening_cache_hits+1
  sta opening_cache_misses
  sta opening_cache_misses+1
+ lda world_reuse_active
+ jne reuse_world
+ lda #0
  ldx #127
 cache_clear:
  sta opening_cache,x
@@ -193,6 +213,11 @@ clipped:
  dey
  bpl clip_span
 spans_clipped:
+ ; Rows72..143 start as material3. No earlier paint can affect pixels at or
+ ; below painted_bottom. Only skip gray spans wholly in that untouched region;
+ ; overlapping gray restores take the normal path regardless of scene topology.
+ lda #72
+ sta painted_bottom
  lda #0
  sta span_index
 span:
@@ -201,7 +226,21 @@ span:
  jeq column_done
  lda span_top,y
  cmp clipped_bottom,y
- bcs next_span
+ jcs next_span
+ cmp painted_bottom
+ bcc paint_span
+ lda span_material,y
+ cmp #3
+ jeq next_span
+paint_span:
+ ; Empty and skipped spans never raise the bound. Updating before this paint
+ ; is safe: the loop completes before any later span can inspect the bound.
+ lda clipped_bottom,y
+ cmp painted_bottom
+ bcc :+
+ sta painted_bottom
+:
+ lda span_top,y
  and #7
  tax
  lda start_masks,x
@@ -220,6 +259,7 @@ span:
  sta span_last
  lda span_material,y
  sta temp2
+.if !::MASKED_PAINT
  lsr a
  lda #0
  sbc #0                    ; C=1 material low bit:0, invert for set bits
@@ -231,6 +271,7 @@ span:
  lda #$FF
 :
  sta span_color1
+.endif
  lda span_top,y
  and #$F8
  lsr a
@@ -339,6 +380,32 @@ aborted:
  sec
  rts
 .endif
+reuse_world:
+ ; Keep all 128 ordered depth/occlusion samples and the same strip checkpoint
+ ; cadence. Retain the exact world pattern prefix and viewport name bytes.
+ lda #0
+ sta cell_col
+ sta cell_x
+reuse_strip:
+ lda #0
+ sta column_index
+reuse_geometry_column:
+ ldx cell_x
+ jsr geometry_column
+ inc cell_x
+ inc cell_x
+ inc column_index
+ lda column_index
+ cmp #4
+ bne reuse_geometry_column
+ inc cell_col
+ jsr latency_checkpoint
+ bcs aborted
+ lda cell_col
+ cmp #32
+ bne reuse_strip
+ clc
+ rts
 .endproc
 .ifdef LATENCY_RESTART
 latency_strip_checkpoint = opening_render_banked::strip_checkpoint
@@ -369,6 +436,39 @@ partial:
  lda #4
  sta opening_cell_color,x
 compose:
+.if ::MASKED_PAINT
+ ; Material bits are exactly the two plane fill bits. A set bit needs OR
+ ; with the coverage mask; a clear bit needs AND with its complement.
+ ; The second LSR keeps the high material bit in carry across LDA/AND/ORA/
+ ; EOR/STA, all of which preserve carry. NMI/RTI also restores it.
+ ; Keep the original solid-to-mixed conversion, even for an empty mask.
+ ; X/temp2 stay live for the caller; no extra RAM or mutable code is used.
+ lda temp2
+ lsr a
+ bcc low_clear
+ lsr a
+ lda opening_plane0,x
+ ora mask_wall
+ sta opening_plane0,x
+ bcs high_set
+high_clear:
+ lda mask_wall
+ eor #$FF
+ and opening_plane1,x
+ sta opening_plane1,x
+ rts
+low_clear:
+ lsr a
+ lda mask_wall
+ eor #$FF
+ and opening_plane0,x
+ sta opening_plane0,x
+ bcc high_clear
+high_set:
+ lda opening_plane1,x
+ ora mask_wall
+ sta opening_plane1,x
+.else
  lda mask_wall
  eor #$FF
  sta mask_ceiling
@@ -386,6 +486,7 @@ compose:
  and mask_ceiling
  ora mask_floor
  sta opening_plane1,x
+.endif
  rts
 .endproc
 

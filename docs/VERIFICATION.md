@@ -1,9 +1,71 @@
 # Verification
 
-## Current door-reach and alias-credit release
+## Current performance candidate
 
-The published release is `prototype-2026-10-24-door-reach`,
-[`release/hangar-ntsc.nes`](../release/hangar-ntsc.nes), 131,088 bytes:
+`prototype-2026-10-26-performance-rc1` consolidates the accepted rendering and
+input-response experiments. Its [reference ROM](../release/hangar-ntsc.nes)
+is 131,088 bytes, SHA-256:
+
+```text
+70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817
+```
+
+The [release record](../verification/current-release.json) identifies the
+candidate, and the [consolidation build record](../verification/build-consolidation-20261026.json)
+records source and binary identity. Both the repository build and a fresh
+standalone build outside the research workspace reproduce that ROM exactly.
+The latter used `python3 -I -S -B tools/build.py --verify`, with no previous
+generated files, sibling project or third-party Python packages. The standard
+command remains `python3 tools/build.py --verify`. The title's original October 24 caption is
+retained so the packaged ROM can match the accepted experiment exactly.
+
+The [performance summary](../verification/performance-update-20261026.json)
+joins the already measured, matching CPU fixtures from release → sprite-response
+→ 16-pixel lists → exact-position rejection. Intermediate cycle totals agree
+for each case. Across 172 fresh renders, the accumulated reduction is **14.9%**;
+the 90-row primary world-route subset is **14.0%**. These are completed-producer
+CPU costs excluding interrupt, music and upload/display time. They do not
+establish an equivalent frame-rate increase. Stationary retained-background
+controls are reported separately. See [the readable comparison](PERFORMANCE-UPDATE-20261026.md).
+
+The final exact-position rejection experiment passed 354 paired renders,
+49,232 column depth/span comparisons, and exact meaningful world, sprite and
+upload-output checks against its immediately preceding baseline. Fractional
+positions, heading boundaries, normal/coarse modes, both staging buffers,
+doors, recess, pickups and modeled abort/retry cases were covered. Relative
+to the public release, the deliberate distant-soldier floor correction changes
+some actor pixels and the final encounter activates earlier at the doorway;
+world rendering remains unchanged in the comparison fixtures.
+
+Linked initializer/gate checks cover 11,264 initializations, 88,264 gate calls
+and 699 modeled interrupt-state interference cases. Upload deadline tests cover
+4,878 cases and 358 complete jobs, including title transfers. The worst final
+PPU access is 2,254 of 2,273 available CPU cycles after the suite's instruction
+and DMA allowances: a **19-cycle margin**. This is bounded test evidence,
+not a reason to raise transfer limits further.
+
+The final experiment's matched live Mesen comparison covers 18 primary trial
+pairs and two reversal pairs, totaling 24,824 refreshes. It uses stock NTSC,
+zero extra scanlines, normal sprite limits and music ON/OFF. The actual bank
+state is checked at 358 initializer returns and 10,715 setup checkpoints;
+no observed out-of-window PPUDATA write, overflow, stale terminal camera or
+post-release simulation movement occurs. The archived
+[final experiment report](../verification/performance-20261026/axis-verification.txt)
+and [live timing report](../verification/performance-20261026/live-report.txt)
+retain their original baseline/candidate identities and detailed scope. Input-to-picture timing can still
+vary by a refresh or two; measured regressions are retained in the report.
+These are seeded scene routes, **not a new controller-only end-to-end playthrough**.
+
+The user has playtested and accepted the component experiments. A fresh
+end-to-end pass of the consolidated candidate, with music ON and OFF, remains
+the next release step. Browser deployment and an itch.io update await that
+playtest. No physical-console test is claimed. Historical evidence below
+retains its original ROM identity and is not presented as newly run coverage.
+
+## Previous door-reach and alias-credit release
+
+The October 24 published release was `prototype-2026-10-24-door-reach`,
+131,088 bytes; the browser still serves this historical version:
 
 ```text
 db258e4c9c57ff3ef9f4bc8eb732f31b65eec85a1a639e7a9787a90dde1722a9
@@ -13,7 +75,7 @@ It extends door use reach from eight to twelve units and uses **Dr C Beatz**
 as the public author credit. Only 25 ROM bytes change from the preceding
 credits/HUD build: two door-distance immediates and 23 credits nametable
 bytes. Linked addresses, segment sizes and RAM allocations are unchanged.
-The [release record](../verification/current-release.json) identifies the
+The [release record](../verification/door-reach-release.json) identifies the
 release and its evidence.
 
 The [door report](../verification/door-center.json) reproduces a settled,
@@ -55,7 +117,7 @@ the two builds. Those camera trials remove actors during setup to isolate
 latency. The [assessment](FINAL-PERFORMANCE.md) explains why the renderer is
 retained for release; no new rendering-speed gain is claimed.
 
-A [fresh standalone build](../verification/current-build.json) outside the
+A [fresh standalone build](../verification/door-reach-build.json) outside the
 research workspace reproduces the ROM byte for byte with
 `python3 -I -S -B tools/build.py --verify`. All 75 source hashes match, with
 no prior generated files, sibling project, WAD or third-party Python package

@@ -1,0 +1,177 @@
+HISTORICAL EVIDENCE — PRE-CONSOLIDATION TESTS
+
+This report records tests performed in the local experiment archive before
+consolidation into this repository. Its axis-rejection candidate is the exact
+ROM now being consolidated, SHA-256:
+70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817
+
+Relative evidence, capture and executable-test paths in the original report
+refer to experiments/hangar-axis-rejection/ in the local research workspace.
+Those archives and test harnesses are not bundled in this repository. Selected
+JSON summaries are included alongside this report. “Fresh,” “current,” and
+“new” below describe the original experiment at its measurement date; this
+copy does not claim a new test run, controller-only end-to-end playthrough,
+physical-console validation, or browser/itch.io deployment.
+
+Original report follows unchanged.
+------------------------------------------------------------------------
+
+EXACT-POSITION AXIS REJECTION: MATCHED LIVE MESEN COMPARISON
+2026-10-26
+
+Outcome
+
+The new build shows modest improvements in most tested first-view and stopping
+responses. Several bounded routes also produce more changing camera pictures
+during the same input hold. There are individual timing regressions, retained
+below. These measurements support a playable comparison build; they do not
+establish one universal frame rate or latency improvement throughout the map.
+
+Baseline: accepted 16-pixel active-list build
+  cf8d701e9829342ab89bc7b817c5d39925eb9c8cc5a7520d568563f69f31ac87
+Candidate: exact-position axis rejection
+  70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817
+
+Scope and matching
+
+Fresh baseline/candidate captures use identical observer, driver, settings,
+scene order and controls. The primary test has 18 paired trials: opening-turn
+and live-zombie slime entrance each use three onset phases (150/151/152 settle
+refreshes); slime center alive/gone and close enemy each use one. All run with
+music ON/OFF. A separate opening-room right-to-left reversal adds two pairs.
+Across primary and reversal controls there are 40 individual trials and 24,824
+captured refreshes, including menus, setup and settling.
+
+Settings enforce stock NTSC, zero extra scanlines, no run-ahead and normal
+sprite limits. Only an isolated portable Mesen testRunner is launched; the
+user's existing Mesen process and personal settings are untouched. The fixtures
+set camera/encounter state at scene start; actual controls, AI, animation,
+attacks and music run after that. This is not a controller-only complete-level
+playthrough or a physical-hardware test.
+
+The music sequence is not reset per trial. Identical scene order and fixed
+phase lengths are therefore necessary for a meaningful comparison. The prior
+strip16 captures used a smaller scene set and were not reused as this baseline.
+Initial/terminal camera poses and initial 50 Hz simulation phase match in every
+pair; pipeline state and moving-actor snapshots may differ as rendering speeds
+change. Those differences remain visible in the data rather than being erased.
+
+First changed viewport after pressing turn, milliseconds
+
+Scene / music                        Baseline    Candidate
+Opening / OFF (median of 3)              831.9        831.9
+Opening / ON  (median of 3)              865.2        848.5
+Slime entrance / OFF (median of 3)        815.3        798.6
+Slime entrance / ON  (median of 3)        848.5        831.9
+Slime center, alive / OFF                782.0        782.0
+Slime center, alive / ON                 815.3        798.6
+Slime center, gone / OFF                 782.0        798.6
+Slime center, gone / ON                  831.9        815.3
+Close enemy / OFF                       815.3        798.6
+Close enemy / ON                        831.9        815.3
+
+Release to final camera publication, milliseconds
+
+Scene / music                        Baseline    Candidate
+Opening / OFF (median of 3)              433.8        417.2
+Opening / ON  (median of 3)              450.5        417.2
+Slime entrance / OFF (median of 3)        616.7        583.4
+Slime entrance / ON  (median of 3)        633.3        600.0
+Slime center, alive / OFF                550.1        516.9
+Slime center, alive / ON                 566.8        533.5
+Slime center, gone / OFF                 533.7        517.0
+Slime center, gone / ON                  550.3        517.0
+Close enemy / OFF                       666.6        650.0
+Close enemy / ON                        699.9        666.6
+
+Timing starts at Mesen's input poll, excluding physical controller, OS and
+monitor delay. The first-view observation includes emulated scanout delay;
+camera publication and simulation timing are recorded separately.
+
+Primary timing regression: the actor-free slime-center/music-OFF trial shows
+its first changed view one refresh later (16.64 ms). No primary stopping case
+regresses by more than 1 ms. Some attempts spend more CPU on discarded renders
+because the checkpoint/retry and presentation phases move relative to input;
+that metric and all individual deltas remain in live-axis-comparison.json.
+Faster completed-frame work does not guarantee less discarded work in every
+phase, or earlier presentation for every button press.
+
+Changing camera pictures during the input holds
+
+Each primary hold lasts 240 refreshes (about four seconds). For the three-phase
+groups, counts below are summed across all three holds, not a single trial.
+
+Scene / music                     Baseline count    Candidate count
+Opening / OFF (3 holds)                         27                 27
+Opening / ON  (3 holds)                         26                 27
+Slime entrance / OFF (3 holds)                  21                 24
+Slime entrance / ON  (3 holds)                  21                 22
+Slime center, alive / OFF                        8                  9
+Slime center, alive / ON                         8                  8
+Slime center, gone / OFF                         9                  9
+Slime center, gone / ON                          8                  9
+Close enemy / OFF                               8                  8
+Close enemy / ON                                7                  8
+
+The slime-entry/music-OFF full-window rate rises from about 1.75 to 2.00
+changing pictures/second on these routes. This includes the initial response
+wait and excludes stationary actor-only redraws. Interval-derived rates are
+also recorded. Short discrete counts amplify small scheduling shifts; do not
+generalize this to a fixed percentage FPS increase over the entire game.
+
+Completed-producer averages on these moving routes are lower in every group,
+but they include different camera/actor snapshots. The separate matched fixed-
+snapshot CPU suite is the appropriate source for causal arithmetic savings.
+
+Right-to-left reversal control
+
+One route per music setting: settle 150, right 120, left 120, release 150 refreshes.
+The camera reverses without an artificial stationary reset.
+
+                                      Baseline    Candidate
+First reversed viewport / OFF           1164.7       1131.4 ms
+First reversed viewport / ON            1198.0       1164.7 ms
+Release to final camera / OFF             816.5        799.9 ms
+Release to final camera / ON              799.9        833.2 ms
+
+The visible reversal improves by about 33.3 ms in both settings. The music-ON
+post-reversal stop regresses by about 33.3 ms; this remains an explicit tradeoff
+in live-axis-reversal-comparison.json. Fresh post-reversal publication is tracked
+separately from visibly reversed motion, because a delayed screen can initially
+continue showing old-direction movement even from a newer camera snapshot.
+
+Bank and rendering safety observations
+
+- MMC1 writes are reconstructed at actual five-write serial commits, separately
+  from the existing stage observer's predicted bank selection.
+- Across primary/reversal candidate captures, all 358 gateway entries, bank6
+  initializer entries and returns match. Every observed return restored map0
+  with no partial mapper transaction remaining.
+- All 10,715 candidate setup-checkpoint entries and five setup-abort entries
+  see committed map0. The baseline has no bank6 initializations.
+- No observed pattern overflow, PPUDATA write outside scanlines 241–260, invalid
+  pattern/name payload, mixed DMA/world transfer, post-release simulation
+  movement, final-camera publication regression or old-camera retry occurs.
+- Existing one-abort budget and coherent snapshot-to-publication contracts pass.
+- Opening-room setup, slime-entry release and close-enemy setup screenshots
+  were visually inspected with no obvious wall, floor, sprite or HUD defect.
+
+The observer audits PPUDATA timing and transfer bounds, not every PPU register's
+deadline. The separate linked upload/deadline suite covers that additional scope.
+Coarse mode, door/recess boundaries, fractional coordinate cases and exact
+pixels belong to the producer suite rather than these live timing routes.
+
+Evidence and reproduction
+
+live-axis-baseline/ and live-axis-candidate/: captured ROMs, labels, driver,
+observer, settings, events and screenshots. live-axis-reversal-* preserve the
+separate reversal controls. All captures verify protected ROMs and personal
+settings unchanged. live-axis-audit.json checks capture identities and matching
+routes; the two comparison JSON files retain every measured difference.
+Reproduction commands are in tests/live-axis/README.txt.
+
+An initial harness configuration attempt used a null optional baseline return
+address, unsupported by the existing Lua serializer. It failed before Mesen
+launched. That config-only artifact remains in live-axis-baseline-config-failure/;
+the driver now uses 0 for the absent optional address. All reported captures use
+the corrected identical driver, and no ROM change was needed for this issue.

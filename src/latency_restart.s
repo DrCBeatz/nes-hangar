@@ -1,6 +1,9 @@
 ; Bounded producer-only restart policy for stale directional-input snapshots.
 ; No physics, uploader, queued-buffer or visible-PPU state is changed here.
 .setcpu "6502"
+.ifndef CAMERA_RETRY
+CAMERA_RETRY = 0
+.endif
 .include "coordinate-memory.inc"
 .include "door-memory.inc"
 .importzp player_x, player_z, pending_angle, requested_mode
@@ -9,7 +12,7 @@
 .importzp zombie_x, zombie_z, zombie_epoch, zombie_walk_counter
 .importzp render_zombie_x, render_zombie_z, render_zombie_epoch, render_zombie_pose
 .import zombie_hp, corpse_state, render_zombie_hp, active_encounter, render_medkit_state
-.export latency_snapshot_current, latency_current_check
+.export latency_snapshot_current, latency_current_check, latency_camera_safe
 .importzp input_buttons, button_edges, nmi_count
 .ifdef LATENCY_HEIGHT_PRIORITY
 .importzp render_floor, render_eye, player_floor, player_eye, visible_floor, visible_eye
@@ -172,10 +175,11 @@ height_snapshot:
  lda latency_hard_epoch+1
  cmp latency_render_hard_epoch+1
  bne height_consistent
- ; A soft input edge can arrive after the final camera was sampled. Keep
- ; that work only when every producer-facing field is still current. Do not
- ; acknowledge the intent epoch: later checkpoints must reconsider motion
- ; resumed without another stop/reversal edge, or a later scene change.
+ ; A soft edge can arrive before the next simulation tick moves the camera.
+ ; With CAMERA_RETRY, actor position/walk aging alone must not spend the one
+ ; retry on that same camera. Scene/lifecycle/door checks remain mandatory.
+ ; Do not acknowledge the intent epoch: later checkpoints must reconsider
+ ; the still-pending edge once the camera progresses.
 current_check:
  jsr latency_snapshot_current
  bcs height_protected
@@ -222,7 +226,10 @@ latency_height_protected = latency_checkpoint::height_protected
 .endproc
 
 
-; C=1 exactly when the immutable producer snapshot matches live world inputs.
+; C=1 when it is safe to retain this camera for a soft input edge. CAMERA_RETRY
+; ignores only actor position/walk-pose aging; camera, scene, lifecycle, pickup
+; and door inputs must still match. Disabled builds retain the original exact
+; snapshot predicate. The legacy export remains for existing diagnostic tools.
 ; Caller guards the whole decision with nmi_count and rejects hard controls.
 ; A/C are scratch; X/Y and every live/producer/buffer field are untouched.
 ; Independently published weapon/HUD/palette timers are deliberately absent.
@@ -248,6 +255,7 @@ latency_height_protected = latency_checkpoint::height_protected
  CURRENT_EQUALS requested_mode, render_mode
  CURRENT_EQUALS scene_version, render_scene_version
  CURRENT_EQUALS zombie_epoch, render_zombie_epoch
+.if !::CAMERA_RETRY
  CURRENT_EQUALS zombie_x, render_zombie_x
  CURRENT_EQUALS zombie_x+1, render_zombie_x+1
  CURRENT_EQUALS zombie_x_hi, render_zombie_x_hi
@@ -261,6 +269,7 @@ latency_height_protected = latency_checkpoint::height_protected
  clc
  rts
 :
+.endif
  ; Exactly the live/corpse/absent type normalization used by render_begin.
  lda zombie_hp
  bne actor_type
@@ -309,3 +318,4 @@ door_type:
  sec
  rts
 .endproc
+latency_camera_safe = latency_snapshot_current

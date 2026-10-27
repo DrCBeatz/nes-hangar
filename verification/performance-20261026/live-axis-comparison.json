@@ -1,0 +1,2692 @@
+{
+  "passed": true,
+  "releaseSha256": "cf8d701e9829342ab89bc7b817c5d39925eb9c8cc5a7520d568563f69f31ac87",
+  "latestSha256": "70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817",
+  "pairedTrials": 18,
+  "individualTrials": 36,
+  "rows": [
+    {
+      "scene": "opening-turn",
+      "music": "music-off",
+      "release": {
+        "pollToFirstSimulationMs": 16.9088482170644,
+        "pollToFirstCameraPublicationMs": 816.5169549434481,
+        "pollToFirstChangedViewportMs": 831.8993525994638,
+        "releaseToFinalCameraPublicationMs": 433.8142323076725,
+        "discardedProducerMs": 259.6368366267678,
+        "trials": 3,
+        "changedCameraPictures": 27,
+        "inputWindowSeconds": 11.980267888721082,
+        "changedPicturesPerSecond": 2.2537058645758132,
+        "intervalCount": 24,
+        "intervalPicturesPerSecond": 2.6129919888498203,
+        "medianIntervalMs": 332.7852191311412,
+        "worstIntervalMs": 615.6523760275744,
+        "abortedAttempts": 2,
+        "lostHealth": 0,
+        "oldCameraRetries": 0,
+        "movingCompletedFrames": 27,
+        "producerCpuMean": 664914,
+        "producerWallMean": 731174.1111111111,
+        "completeToUploadMean": 14950.074074074075,
+        "uploadToPublishMean": 401120.1111111111,
+        "patternBytesMean": 1193.4814814814815,
+        "nameBytesMean": 317.6296296296296,
+        "uploadCallsMean": 14.407407407407407,
+        "producerCpuMsMean": 371.507448151246,
+        "uploadToPublishMsMean": 224.11786919967565
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 16.90996567721158,
+        "pollToFirstCameraPublicationMs": 816.5163962133745,
+        "pollToFirstChangedViewportMs": 831.8993525994638,
+        "releaseToFinalCameraPublicationMs": 417.17413325600506,
+        "discardedProducerMs": 59.49078458553124,
+        "trials": 3,
+        "changedCameraPictures": 27,
+        "inputWindowSeconds": 11.980267888721082,
+        "changedPicturesPerSecond": 2.2537058645758132,
+        "intervalCount": 24,
+        "intervalPicturesPerSecond": 2.6563018179052253,
+        "medianIntervalMs": 316.14735499976814,
+        "worstIntervalMs": 599.0133944360542,
+        "abortedAttempts": 3,
+        "lostHealth": 0,
+        "oldCameraRetries": 0,
+        "movingCompletedFrames": 27,
+        "producerCpuMean": 654985.074074074,
+        "producerWallMean": 720909.2592592592,
+        "completeToUploadMean": 12783.185185185184,
+        "uploadToPublishMean": 402222.55555555556,
+        "patternBytesMean": 1205.9259259259259,
+        "nameBytesMean": 317.6296296296296,
+        "uploadCallsMean": 14.444444444444445,
+        "producerCpuMsMean": 365.95985863798035,
+        "uploadToPublishMsMean": 224.7338380652494
+      },
+      "onsetReductionPercent": 0.0,
+      "stopReductionPercent": 3.835766052015055,
+      "pictureRateIncreasePercent": 0.0,
+      "regressions": []
+    },
+    {
+      "scene": "opening-turn",
+      "music": "music-on",
+      "release": {
+        "pollToFirstSimulationMs": 16.909406947137988,
+        "pollToFirstCameraPublicationMs": 849.7965943167094,
+        "pollToFirstChangedViewportMs": 865.1778745125779,
+        "releaseToFinalCameraPublicationMs": 450.4532138991928,
+        "discardedProducerMs": 159.6783502712355,
+        "trials": 3,
+        "changedCameraPictures": 26,
+        "inputWindowSeconds": 11.980267888721082,
+        "changedPicturesPerSecond": 2.1702352769989313,
+        "intervalCount": 23,
+        "intervalPicturesPerSecond": 2.5316361819092914,
+        "medianIntervalMs": 349.42420072266145,
+        "worstIntervalMs": 615.6523760275744,
+        "abortedAttempts": 3,
+        "lostHealth": 0,
+        "oldCameraRetries": 0,
+        "movingCompletedFrames": 26,
+        "producerCpuMean": 662184.7307692308,
+        "producerWallMean": 759356.1538461539,
+        "completeToUploadMean": 12434.346153846154,
+        "uploadToPublishMean": 384406.76923076925,
+        "patternBytesMean": 1153.8461538461538,
+        "nameBytesMean": 316.9230769230769,
+        "uploadCallsMean": 13.846153846153847,
+        "producerCpuMsMean": 369.9825233530904,
+        "uploadToPublishMsMean": 214.7796224609318
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 16.9088482170644,
+        "pollToFirstCameraPublicationMs": 833.1553778048948,
+        "pollToFirstChangedViewportMs": 848.5388929210576,
+        "releaseToFinalCameraPublicationMs": 417.17413325600506,
+        "discardedProducerMs": 218.00306519318372,
+        "trials": 3,
+        "changedCameraPictures": 27,
+        "inputWindowSeconds": 11.980267888721082,
+        "changedPicturesPerSecond": 2.2537058645758132,
+        "intervalCount": 24,
+        "intervalPicturesPerSecond": 2.598868259873322,
+        "medianIntervalMs": 349.4247594527351,
+        "worstIntervalMs": 599.0145118962014,
+        "abortedAttempts": 3,
+        "lostHealth": 0,
+        "oldCameraRetries": 0,
+        "movingCompletedFrames": 27,
+        "producerCpuMean": 644307.2222222222,
+        "producerWallMean": 739733.4444444445,
+        "completeToUploadMean": 15529.962962962964,
+        "uploadToPublishMean": 388987.0740740741,
+        "patternBytesMean": 1179.2592592592594,
+        "nameBytesMean": 316.44444444444446,
+        "uploadCallsMean": 14,
+        "producerCpuMsMean": 359.99382168700845,
+        "uploadToPublishMsMean": 217.33877652309766
+      },
+      "onsetReductionPercent": 1.9231862119560517,
+      "stopReductionPercent": 7.387910579018597,
+      "pictureRateIncreasePercent": 3.8461538461538547,
+      "regressions": []
+    },
+    {
+      "scene": "slime-entry-alive",
+      "music": "music-off",
+      "release": {
+        "pollToFirstSimulationMs": 16.932314880155193,
+        "pollToFirstCameraPublicationMs": 799.7204114711753,
+        "pollToFirstChangedViewportMs": 815.2598122778699,
+        "releaseToFinalCameraPublicationMs": 616.6871441238637,
+        "discardedProducerMs": 287.82700375969466,
+        "trials": 3,
+        "changedCameraPictures": 21,
+        "inputWindowSeconds": 11.980267888721082,
+        "changedPicturesPerSecond": 1.7528823391145214,
+        "intervalCount": 18,
+        "intervalPicturesPerSecond": 2.1463873957101183,
+        "medianIntervalMs": 465.89874805352406,
+        "worstIntervalMs": 582.3744128445339,
+        "abortedAttempts": 6,
+        "lostHealth": 0,
+        "oldCameraRetries": 0,
+        "movingCompletedFrames": 21,
+        "producerCpuMean": 773873.7142857143,
+        "producerWallMean": 866169.7142857143,
+        "completeToUploadMean": 14682.714285714286,
+        "uploadToPublishMean": 367433.38095238095,
+        "patternBytesMean": 1091.8095238095239,
+        "nameBytesMean": 308.57142857142856,
+        "uploadCallsMean": 13.285714285714286,
+        "producerCpuMsMean": 432.3865173324853,
+        "uploadToPublishMsMean": 205.2960799790705
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 16.9088482170644,
+        "pollToFirstCameraPublicationMs": 783.0808711495815,
+        "pollToFirstChangedViewportMs": 798.6208306863496,
+        "releaseToFinalCameraPublicationMs": 583.4091809408233,
+        "discardedProducerMs": 536.6043626761606,
+        "trials": 3,
+        "changedCameraPictures": 24,
+        "inputWindowSeconds": 11.980267888721082,
+        "changedPicturesPerSecond": 2.0032941018451673,
+        "intervalCount": 21,
+        "intervalPicturesPerSecond": 2.303057087887692,
+        "medianIntervalMs": 432.62022614041,
+        "worstIntervalMs": 549.0964496614934,
+        "abortedAttempts": 5,
+        "lostHealth": 0,
+        "oldCameraRetries": 0,
+        "movingCompletedFrames": 24,
+        "producerCpuMean": 719529.25,
+        "producerWallMean": 805780.2083333334,
+        "completeToUploadMean": 10766.083333333334,
+        "uploadToPublishMean": 362647.1666666667,
+        "patternBytesMean": 1083.3333333333333,
+        "nameBytesMean": 306.6666666666667,
+        "uploadCallsMean": 13.125,
+        "producerCpuMsMean": 402.0226308029007,
+        "uploadToPublishMsMean": 202.62187811899423
+      },
+      "onsetReductionPercent": 2.040942205286711,
+      "stopReductionPercent": 5.396247270618715,
+      "pictureRateIncreasePercent": 14.28571428571428,
+      "regressions": []
+    },
+    {
+      "scene": "slime-entry-alive",
+      "music": "music-on",
+      "release": {
+        "pollToFirstSimulationMs": 17.906740128496743,
+        "pollToFirstCameraPublicationMs": 832.9983746542159,
+        "pollToFirstChangedViewportMs": 848.538334190984,
+        "releaseToFinalCameraPublicationMs": 633.326125715384,
+        "discardedProducerMs": 402.95557034327817,
+        "trials": 3,
+        "changedCameraPictures": 21,
+        "inputWindowSeconds": 11.980267888721082,
+        "changedPicturesPerSecond": 1.7528823391145214,
+        "intervalCount": 18,
+        "intervalPicturesPerSecond": 2.025802642177882,
+        "medianIntervalMs": 499.1778286967118,
+        "worstIntervalMs": 615.6534934877217,
+        "abortedAttempts": 6,
+        "lostHealth": 0,
+        "oldCameraRetries": 0,
+        "movingCompletedFrames": 21,
+        "producerCpuMean": 773919.0952380953,
+        "producerWallMean": 907205.619047619,
+        "completeToUploadMean": 13699.285714285714,
+        "uploadToPublishMean": 387286.5714285714,
+        "patternBytesMean": 1145.142857142857,
+        "nameBytesMean": 322.2857142857143,
+        "uploadCallsMean": 13.952380952380953,
+        "producerCpuMsMean": 432.4118730353488,
+        "uploadToPublishMsMean": 216.3886545548354
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 17.907298858570332,
+        "pollToFirstCameraPublicationMs": 816.3588343326221,
+        "pollToFirstChangedViewportMs": 831.8993525994638,
+        "releaseToFinalCameraPublicationMs": 600.0470450721963,
+        "discardedProducerMs": 277.0139006455008,
+        "trials": 3,
+        "changedCameraPictures": 22,
+        "inputWindowSeconds": 11.980267888721082,
+        "changedPicturesPerSecond": 1.8363529266914034,
+        "intervalCount": 19,
+        "intervalPicturesPerSecond": 2.1875058980413193,
+        "medianIntervalMs": 449.2614426522246,
+        "worstIntervalMs": 582.3744128445339,
+        "abortedAttempts": 6,
+        "lostHealth": 0,
+        "oldCameraRetries": 0,
+        "movingCompletedFrames": 22,
+        "producerCpuMean": 725492.5,
+        "producerWallMean": 850658.9090909091,
+        "completeToUploadMean": 14236.5,
+        "uploadToPublishMean": 368400.13636363635,
+        "patternBytesMean": 1098.1818181818182,
+        "nameBytesMean": 311.27272727272725,
+        "uploadCallsMean": 13.318181818181818,
+        "producerCpuMsMean": 405.35447791423826,
+        "uploadToPublishMsMean": 205.8362353011451
+      },
+      "onsetReductionPercent": 1.9608992217640009,
+      "stopReductionPercent": 5.254651480798589,
+      "pictureRateIncreasePercent": 4.761904761904767,
+      "regressions": []
+    },
+    {
+      "scene": "slime-middle-alive",
+      "music": "music-off",
+      "release": {
+        "pollToFirstSimulationMs": 16.909406947137988,
+        "pollToFirstCameraPublicationMs": 766.4407720979141,
+        "pollToFirstChangedViewportMs": 781.9812903647558,
+        "releaseToFinalCameraPublicationMs": 550.1323352179298,
+        "discardedProducerMs": 126.7121584692584,
+        "trials": 1,
+        "changedCameraPictures": 8,
+        "inputWindowSeconds": 3.9934226295736943,
+        "changedPicturesPerSecond": 2.0032941018451673,
+        "intervalCount": 7,
+        "intervalPicturesPerSecond": 2.4039531528496023,
+        "medianIntervalMs": 432.62134360055717,
+        "worstIntervalMs": 482.538288375118,
+        "abortedAttempts": 1,
+        "lostHealth": 10,
+        "oldCameraRetries": 0,
+        "movingCompletedFrames": 8,
+        "producerCpuMean": 700779.375,
+        "producerWallMean": 771602.5,
+        "completeToUploadMean": 11883.25,
+        "uploadToPublishMean": 347757.125,
+        "patternBytesMean": 1008,
+        "nameBytesMean": 302,
+        "uploadCallsMean": 12.375,
+        "producerCpuMsMean": 391.54651176434106,
+        "uploadToPublishMsMean": 194.30236404281436
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 16.9088482170644,
+        "pollToFirstCameraPublicationMs": 766.4430070182085,
+        "pollToFirstChangedViewportMs": 781.9812903647558,
+        "releaseToFinalCameraPublicationMs": 516.8521371145949,
+        "discardedProducerMs": 201.00202651397692,
+        "trials": 1,
+        "changedCameraPictures": 9,
+        "inputWindowSeconds": 3.9934226295736943,
+        "changedPicturesPerSecond": 2.2537058645758132,
+        "intervalCount": 8,
+        "intervalPicturesPerSecond": 2.4911444415466333,
+        "medianIntervalMs": 415.9812445488897,
+        "worstIntervalMs": 449.25920773193025,
+        "abortedAttempts": 1,
+        "lostHealth": 0,
+        "oldCameraRetries": 0,
+        "movingCompletedFrames": 9,
+        "producerCpuMean": 662330.8888888889,
+        "producerWallMean": 743219.1111111111,
+        "completeToUploadMean": 16411.222222222223,
+        "uploadToPublishMean": 348998.77777777775,
+        "patternBytesMean": 1024,
+        "nameBytesMean": 305.77777777777777,
+        "uploadCallsMean": 12.666666666666666,
+        "producerCpuMsMean": 370.0641862900428,
+        "uploadToPublishMsMean": 194.99611279071576
+      },
+      "onsetReductionPercent": 0.0,
+      "stopReductionPercent": 6.049489545120313,
+      "pictureRateIncreasePercent": 12.5,
+      "regressions": []
+    },
+    {
+      "scene": "slime-middle-alive",
+      "music": "music-on",
+      "release": {
+        "pollToFirstSimulationMs": 16.909406947137988,
+        "pollToFirstCameraPublicationMs": 799.7198527411018,
+        "pollToFirstChangedViewportMs": 815.2598122778699,
+        "releaseToFinalCameraPublicationMs": 566.7690818891558,
+        "discardedProducerMs": 297.8400054085071,
+        "trials": 1,
+        "changedCameraPictures": 8,
+        "inputWindowSeconds": 3.9934226295736943,
+        "changedPicturesPerSecond": 2.0032941018451673,
+        "intervalCount": 7,
+        "intervalPicturesPerSecond": 2.298863138641598,
+        "medianIntervalMs": 432.62134360055717,
+        "worstIntervalMs": 482.53940583526514,
+        "abortedAttempts": 1,
+        "lostHealth": 10,
+        "oldCameraRetries": 0,
+        "movingCompletedFrames": 8,
+        "producerCpuMean": 690123.875,
+        "producerWallMean": 808332.875,
+        "completeToUploadMean": 13602.375,
+        "uploadToPublishMean": 355202.625,
+        "patternBytesMean": 1022,
+        "nameBytesMean": 308,
+        "uploadCallsMean": 12.875,
+        "producerCpuMsMean": 385.5929634651992,
+        "uploadToPublishMsMean": 198.46238880573122
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 16.909406947137988,
+        "pollToFirstCameraPublicationMs": 783.0797536894344,
+        "pollToFirstChangedViewportMs": 798.6208306863496,
+        "releaseToFinalCameraPublicationMs": 533.4911187061152,
+        "discardedProducerMs": 87.97428500709307,
+        "trials": 1,
+        "changedCameraPictures": 8,
+        "inputWindowSeconds": 3.9934226295736943,
+        "changedPicturesPerSecond": 2.0032941018451673,
+        "intervalCount": 7,
+        "intervalPicturesPerSecond": 2.3902927306615007,
+        "medianIntervalMs": 432.62022614041,
+        "worstIntervalMs": 465.8993067835977,
+        "abortedAttempts": 1,
+        "lostHealth": 10,
+        "oldCameraRetries": 0,
+        "movingCompletedFrames": 8,
+        "producerCpuMean": 668325.375,
+        "producerWallMean": 783427.375,
+        "completeToUploadMean": 11985.75,
+        "uploadToPublishMean": 340309.875,
+        "patternBytesMean": 976,
+        "nameBytesMean": 308,
+        "uploadCallsMean": 12.375,
+        "producerCpuMsMean": 373.41348595604023,
+        "uploadToPublishMsMean": 190.14136150226872
+      },
+      "onsetReductionPercent": 2.040942205286711,
+      "stopReductionPercent": 5.871520562151766,
+      "pictureRateIncreasePercent": 0.0,
+      "regressions": []
+    },
+    {
+      "scene": "slime-middle-gone",
+      "music": "music-off",
+      "release": {
+        "pollToFirstSimulationMs": 16.90996567721158,
+        "pollToFirstCameraPublicationMs": 766.6028038192553,
+        "pollToFirstChangedViewportMs": 781.9812903647558,
+        "releaseToFinalCameraPublicationMs": 533.6531504274565,
+        "discardedProducerMs": 209.76291406787342,
+        "trials": 1,
+        "changedCameraPictures": 9,
+        "inputWindowSeconds": 3.9934226295736943,
+        "changedPicturesPerSecond": 2.2537058645758132,
+        "intervalCount": 8,
+        "intervalPicturesPerSecond": 2.504118065253491,
+        "medianIntervalMs": 415.97984772370575,
+        "worstIntervalMs": 432.62134360055717,
+        "abortedAttempts": 1,
+        "lostHealth": 0,
+        "oldCameraRetries": 0,
+        "movingCompletedFrames": 9,
+        "producerCpuMean": 674781.2222222222,
+        "producerWallMean": 741170.4444444445,
+        "completeToUploadMean": 12585.222222222223,
+        "uploadToPublishMean": 349288,
+        "patternBytesMean": 997.3333333333334,
+        "nameBytesMean": 321.77777777777777,
+        "uploadCallsMean": 12.666666666666666,
+        "producerCpuMsMean": 377.02056194960045,
+        "uploadToPublishMsMean": 195.15770994422198
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 16.9088482170644,
+        "pollToFirstCameraPublicationMs": 783.2417854107756,
+        "pollToFirstChangedViewportMs": 798.6208306863496,
+        "releaseToFinalCameraPublicationMs": 517.0141688359362,
+        "discardedProducerMs": 43.10379025720022,
+        "trials": 1,
+        "changedCameraPictures": 9,
+        "inputWindowSeconds": 3.9934226295736943,
+        "changedPicturesPerSecond": 2.2537058645758132,
+        "intervalCount": 8,
+        "intervalPicturesPerSecond": 2.6272711942810703,
+        "medianIntervalMs": 366.06485850440254,
+        "worstIntervalMs": 432.62134360055717,
+        "abortedAttempts": 1,
+        "lostHealth": 0,
+        "oldCameraRetries": 0,
+        "movingCompletedFrames": 9,
+        "producerCpuMean": 647778.5555555555,
+        "producerWallMean": 712831.7777777778,
+        "completeToUploadMean": 14332.111111111111,
+        "uploadToPublishMean": 352596.44444444444,
+        "patternBytesMean": 981.3333333333334,
+        "nameBytesMean": 334.22222222222223,
+        "uploadCallsMean": 12.777777777777779,
+        "producerCpuMsMean": 361.93336001579837,
+        "uploadToPublishMsMean": 197.00623735213594
+      },
+      "onsetReductionPercent": -2.1278693654975145,
+      "stopReductionPercent": 3.1179393540902822,
+      "pictureRateIncreasePercent": 0.0,
+      "regressions": [
+        {
+          "rep": 0,
+          "metric": "pollToFirstCameraPublicationMs",
+          "deltaMs": 16.63898159152029
+        },
+        {
+          "rep": 0,
+          "metric": "pollToFirstChangedViewportMs",
+          "deltaMs": 16.639540321593813
+        }
+      ]
+    },
+    {
+      "scene": "slime-middle-gone",
+      "music": "music-on",
+      "release": {
+        "pollToFirstSimulationMs": 16.9088482170644,
+        "pollToFirstCameraPublicationMs": 816.5208660539632,
+        "pollToFirstChangedViewportMs": 831.8993525994638,
+        "releaseToFinalCameraPublicationMs": 550.2921320189768,
+        "discardedProducerMs": 77.94843256658805,
+        "trials": 1,
+        "changedCameraPictures": 8,
+        "inputWindowSeconds": 3.9934226295736943,
+        "changedPicturesPerSecond": 2.0032941018451673,
+        "intervalCount": 7,
+        "intervalPicturesPerSecond": 2.4177678104306817,
+        "medianIntervalMs": 415.9834794691841,
+        "worstIntervalMs": 449.2603251920774,
+        "abortedAttempts": 1,
+        "lostHealth": 0,
+        "oldCameraRetries": 0,
+        "movingCompletedFrames": 8,
+        "producerCpuMean": 681011.375,
+        "producerWallMean": 781731.5,
+        "completeToUploadMean": 13874.375,
+        "uploadToPublishMean": 348047.75,
+        "patternBytesMean": 946,
+        "nameBytesMean": 344,
+        "uploadCallsMean": 12.625,
+        "producerCpuMsMean": 380.5015356696073,
+        "uploadToPublishMsMean": 194.46474497045156
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 16.909406947137988,
+        "pollToFirstCameraPublicationMs": 799.881884462443,
+        "pollToFirstChangedViewportMs": 815.2598122778699,
+        "releaseToFinalCameraPublicationMs": 517.013051375789,
+        "discardedProducerMs": 191.6980533285506,
+        "trials": 1,
+        "changedCameraPictures": 9,
+        "inputWindowSeconds": 3.9934226295736943,
+        "changedPicturesPerSecond": 2.2537058645758132,
+        "intervalCount": 8,
+        "intervalPicturesPerSecond": 2.543866204093337,
+        "medianIntervalMs": 407.661195023056,
+        "worstIntervalMs": 432.62134360055717,
+        "abortedAttempts": 1,
+        "lostHealth": 0,
+        "oldCameraRetries": 0,
+        "movingCompletedFrames": 9,
+        "producerCpuMean": 646860,
+        "producerWallMean": 745254.1111111111,
+        "completeToUploadMean": 13780.555555555555,
+        "uploadToPublishMean": 352596.3333333333,
+        "patternBytesMean": 993.7777777777778,
+        "nameBytesMean": 337.77777777777777,
+        "uploadCallsMean": 12.777777777777779,
+        "producerCpuMsMean": 361.42013540264605,
+        "uploadToPublishMsMean": 197.00617527101667
+      },
+      "onsetReductionPercent": 2.00018671364508,
+      "stopReductionPercent": 6.0475297949635465,
+      "pictureRateIncreasePercent": 12.5,
+      "regressions": []
+    },
+    {
+      "scene": "near-enemy-turn",
+      "music": "music-off",
+      "release": {
+        "pollToFirstSimulationMs": 16.90996567721158,
+        "pollToFirstCameraPublicationMs": 799.7187352809547,
+        "pollToFirstChangedViewportMs": 815.2598122778699,
+        "releaseToFinalCameraPublicationMs": 666.6046476284981,
+        "discardedProducerMs": 282.1413665308394,
+        "trials": 1,
+        "changedCameraPictures": 8,
+        "inputWindowSeconds": 3.9934226295736943,
+        "changedPicturesPerSecond": 2.0032941018451673,
+        "intervalCount": 7,
+        "intervalPicturesPerSecond": 2.249688361584599,
+        "medianIntervalMs": 465.8993067835977,
+        "worstIntervalMs": 515.8173690183057,
+        "abortedAttempts": 1,
+        "lostHealth": 10,
+        "oldCameraRetries": 0,
+        "movingCompletedFrames": 8,
+        "producerCpuMean": 739364.875,
+        "producerWallMean": 817821.125,
+        "completeToUploadMean": 16795.875,
+        "uploadToPublishMean": 403594,
+        "patternBytesMean": 1244,
+        "nameBytesMean": 272,
+        "uploadCallsMean": 14.125,
+        "producerCpuMsMean": 413.10539101886104,
+        "uploadToPublishMsMean": 225.50010532061887
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 16.909406947137988,
+        "pollToFirstCameraPublicationMs": 783.0797536894344,
+        "pollToFirstChangedViewportMs": 798.6208306863496,
+        "releaseToFinalCameraPublicationMs": 649.9656660369778,
+        "discardedProducerMs": 97.51124863320656,
+        "trials": 1,
+        "changedCameraPictures": 8,
+        "inputWindowSeconds": 3.9934226295736943,
+        "changedPicturesPerSecond": 2.0032941018451673,
+        "intervalCount": 7,
+        "intervalPicturesPerSecond": 2.4458804236419542,
+        "medianIntervalMs": 415.9812445488897,
+        "worstIntervalMs": 482.5405232954123,
+        "abortedAttempts": 1,
+        "lostHealth": 10,
+        "oldCameraRetries": 0,
+        "movingCompletedFrames": 8,
+        "producerCpuMean": 687982.25,
+        "producerWallMean": 761705.375,
+        "completeToUploadMean": 16495.25,
+        "uploadToPublishMean": 403595.625,
+        "patternBytesMean": 1248,
+        "nameBytesMean": 270,
+        "uploadCallsMean": 14.25,
+        "producerCpuMsMean": 384.3963731713463,
+        "uploadToPublishMsMean": 225.50101325698844
+      },
+      "onsetReductionPercent": 2.040942205286711,
+      "stopReductionPercent": 2.4960794453976365,
+      "pictureRateIncreasePercent": 0.0,
+      "regressions": []
+    },
+    {
+      "scene": "near-enemy-turn",
+      "music": "music-on",
+      "release": {
+        "pollToFirstSimulationMs": 16.909406947137988,
+        "pollToFirstCameraPublicationMs": 816.3577168724748,
+        "pollToFirstChangedViewportMs": 831.8993525994638,
+        "releaseToFinalCameraPublicationMs": 699.884845731833,
+        "discardedProducerMs": 95.07909662286782,
+        "trials": 1,
+        "changedCameraPictures": 7,
+        "inputWindowSeconds": 3.9934226295736943,
+        "changedPicturesPerSecond": 1.7528823391145214,
+        "intervalCount": 6,
+        "intervalPicturesPerSecond": 2.198737428854452,
+        "medianIntervalMs": 457.5786985276904,
+        "worstIntervalMs": 549.0986845817878,
+        "abortedAttempts": 1,
+        "lostHealth": 10,
+        "oldCameraRetries": 0,
+        "movingCompletedFrames": 7,
+        "producerCpuMean": 739919.2857142857,
+        "producerWallMean": 855443.1428571428,
+        "completeToUploadMean": 12895,
+        "uploadToPublishMean": 409977.71428571426,
+        "patternBytesMean": 1273.142857142857,
+        "nameBytesMean": 278.85714285714283,
+        "uploadCallsMean": 14.428571428571429,
+        "producerCpuMsMean": 413.4151569580532,
+        "uploadToPublishMsMean": 229.06687847325568
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 16.9088482170644,
+        "pollToFirstCameraPublicationMs": 799.7220876613961,
+        "pollToFirstChangedViewportMs": 815.2598122778699,
+        "releaseToFinalCameraPublicationMs": 666.6057650886453,
+        "discardedProducerMs": 313.29280305379507,
+        "trials": 1,
+        "changedCameraPictures": 8,
+        "inputWindowSeconds": 3.9934226295736943,
+        "changedPicturesPerSecond": 2.0032941018451673,
+        "intervalCount": 7,
+        "intervalPicturesPerSecond": 2.3114953267924294,
+        "medianIntervalMs": 482.5371709149708,
+        "worstIntervalMs": 499.17615250649106,
+        "abortedAttempts": 1,
+        "lostHealth": 10,
+        "oldCameraRetries": 0,
+        "movingCompletedFrames": 8,
+        "producerCpuMean": 695732.375,
+        "producerWallMean": 805549.75,
+        "completeToUploadMean": 9989.125,
+        "uploadToPublishMean": 399874.5,
+        "patternBytesMean": 1226,
+        "nameBytesMean": 272,
+        "uploadCallsMean": 14,
+        "producerCpuMsMean": 388.72660108293064,
+        "uploadToPublishMsMean": 223.4219088118996
+      },
+      "onsetReductionPercent": 2.00018671364508,
+      "stopReductionPercent": 4.754936593660563,
+      "pictureRateIncreasePercent": 14.28571428571428,
+      "regressions": []
+    }
+  ],
+  "pairs": [
+    {
+      "scene": "opening-turn",
+      "music": "music-on",
+      "rep": 0,
+      "setupFrames": 150,
+      "holdFrames": 240,
+      "initialPose": [
+        52.0,
+        192.0,
+        0,
+        2,
+        6
+      ],
+      "terminalPose": [
+        52.0,
+        192.0,
+        100,
+        2,
+        6
+      ],
+      "release": {
+        "pollToFirstSimulationMs": 16.909406947137988,
+        "pollToFirstCameraPublicationMs": 849.7965943167094,
+        "pollToFirstChangedViewportMs": 865.1778745125779,
+        "releaseToFinalCameraPublicationMs": 450.4532138991928,
+        "discardedProducerMs": 152.5025799361148
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 16.9088482170644,
+        "pollToFirstCameraPublicationMs": 833.1553778048948,
+        "pollToFirstChangedViewportMs": 848.538334190984,
+        "releaseToFinalCameraPublicationMs": 417.17413325600506,
+        "discardedProducerMs": 229.50061264752568
+      },
+      "deltaMs": {
+        "pollToFirstSimulationMs": -0.0005587300735889755,
+        "pollToFirstCameraPublicationMs": -16.641216511814605,
+        "pollToFirstChangedViewportMs": -16.639540321593927,
+        "releaseToFinalCameraPublicationMs": -33.27908064318774,
+        "discardedProducerMs": 76.99803271141087
+      },
+      "pictures": {
+        "release": {
+          "count": 8,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.0032941018451673,
+          "intervalCount": 7,
+          "intervalMs": [
+            582.3744128445339,
+            515.8151340980113,
+            432.62134360055717,
+            349.42420072266145,
+            299.5061384879535,
+            349.42420072266145,
+            299.50837340824785
+          ],
+          "intervalRatePerSecond": 2.474657908729836,
+          "medianIntervalMs": 349.42420072266145,
+          "worstIntervalMs": 582.3744128445339
+        },
+        "latest": {
+          "count": 9,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.2537058645758132,
+          "intervalCount": 8,
+          "intervalMs": [
+            582.3732953843868,
+            499.17838742678543,
+            449.2603251920774,
+            332.7863365912884,
+            282.86603943628603,
+            349.42531818280867,
+            282.8693918167276,
+            299.50390356765917
+          ],
+          "intervalRatePerSecond": 2.598868259873322,
+          "medianIntervalMs": 341.1058273870485,
+          "worstIntervalMs": 582.3732953843868
+        }
+      },
+      "healthLost": {
+        "release": 0,
+        "latest": 0
+      },
+      "initialActorPosition": {
+        "release": [
+          294.0,
+          218.0
+        ],
+        "latest": [
+          294.0,
+          218.0
+        ]
+      },
+      "initialPipeline": {
+        "release": {
+          "busy": 0,
+          "state0": 0,
+          "state1": 0,
+          "budget": 1,
+          "epoch": 0,
+          "renderEpoch": 0
+        },
+        "latest": {
+          "busy": 0,
+          "state0": 0,
+          "state1": 0,
+          "budget": 1,
+          "epoch": 0,
+          "renderEpoch": 0
+        }
+      }
+    },
+    {
+      "scene": "opening-turn",
+      "music": "music-on",
+      "rep": 1,
+      "setupFrames": 151,
+      "holdFrames": 240,
+      "initialPose": [
+        52.0,
+        192.0,
+        0,
+        2,
+        6
+      ],
+      "terminalPose": [
+        52.0,
+        192.0,
+        100,
+        2,
+        6
+      ],
+      "release": {
+        "pollToFirstSimulationMs": 0.27154281576490424,
+        "pollToFirstCameraPublicationMs": 833.1576127251892,
+        "pollToFirstChangedViewportMs": 848.5388929210576,
+        "releaseToFinalCameraPublicationMs": 450.4532138991928,
+        "discardedProducerMs": 181.67946437900224
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 0.2704253556177236,
+        "pollToFirstCameraPublicationMs": 833.1553778048948,
+        "pollToFirstChangedViewportMs": 848.5388929210576,
+        "releaseToFinalCameraPublicationMs": 417.17413325600506,
+        "discardedProducerMs": 218.00306519318372
+      },
+      "deltaMs": {
+        "pollToFirstSimulationMs": -0.001117460147180671,
+        "pollToFirstCameraPublicationMs": -0.0022349202944269564,
+        "pollToFirstChangedViewportMs": 0.0,
+        "releaseToFinalCameraPublicationMs": -33.27908064318774,
+        "discardedProducerMs": 36.323600814181475
+      },
+      "pictures": {
+        "release": {
+          "count": 9,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.2537058645758132,
+          "intervalCount": 8,
+          "intervalMs": [
+            615.6523760275744,
+            482.53940583526514,
+            449.2580902717831,
+            349.42420072266145,
+            266.22817530491295,
+            332.7852191311412,
+            316.1462375396209,
+            316.14735499976814
+          ],
+          "intervalRatePerSecond": 2.5573967257597876,
+          "medianIntervalMs": 341.10470992690136,
+          "worstIntervalMs": 615.6523760275744
+        },
+        "latest": {
+          "count": 9,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.2537058645758132,
+          "intervalCount": 8,
+          "intervalMs": [
+            599.0145118962014,
+            499.1772699666382,
+            415.9812445488897,
+            349.42531818280867,
+            282.8682743565804,
+            349.42196580236714,
+            299.50837340824785,
+            282.86603943628603
+          ],
+          "intervalRatePerSecond": 2.598868259873322,
+          "medianIntervalMs": 349.42364199258793,
+          "worstIntervalMs": 599.0145118962014
+        }
+      },
+      "healthLost": {
+        "release": 0,
+        "latest": 0
+      },
+      "initialActorPosition": {
+        "release": [
+          294.0,
+          218.0
+        ],
+        "latest": [
+          294.0,
+          218.0
+        ]
+      },
+      "initialPipeline": {
+        "release": {
+          "busy": 0,
+          "state0": 0,
+          "state1": 0,
+          "budget": 1,
+          "epoch": 2,
+          "renderEpoch": 2
+        },
+        "latest": {
+          "busy": 0,
+          "state0": 0,
+          "state1": 0,
+          "budget": 1,
+          "epoch": 2,
+          "renderEpoch": 2
+        }
+      }
+    },
+    {
+      "scene": "opening-turn",
+      "music": "music-on",
+      "rep": 2,
+      "setupFrames": 152,
+      "holdFrames": 240,
+      "initialPose": [
+        52.0,
+        192.0,
+        0,
+        2,
+        6
+      ],
+      "terminalPose": [
+        52.0,
+        192.0,
+        100,
+        2,
+        6
+      ],
+      "release": {
+        "pollToFirstSimulationMs": 16.91052440728517,
+        "pollToFirstCameraPublicationMs": 849.797153046783,
+        "pollToFirstChangedViewportMs": 865.1778745125779,
+        "releaseToFinalCameraPublicationMs": 450.4537726292664,
+        "discardedProducerMs": 159.6783502712355
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 16.909406947137988,
+        "pollToFirstCameraPublicationMs": 849.7949181264887,
+        "pollToFirstChangedViewportMs": 865.1778745125779,
+        "releaseToFinalCameraPublicationMs": 417.17580944622586,
+        "discardedProducerMs": 205.91494005105676
+      },
+      "deltaMs": {
+        "pollToFirstSimulationMs": -0.0011174601471815038,
+        "pollToFirstCameraPublicationMs": -0.0022349202943132696,
+        "pollToFirstChangedViewportMs": 0.0,
+        "releaseToFinalCameraPublicationMs": -33.27796318304053,
+        "discardedProducerMs": 46.23658977982126
+      },
+      "pictures": {
+        "release": {
+          "count": 9,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.2537058645758132,
+          "intervalCount": 8,
+          "intervalMs": [
+            599.0133944360542,
+            515.8151340980113,
+            432.62134360055717,
+            366.0654172344761,
+            249.58695879309835,
+            349.42531818280867,
+            316.14512007947377,
+            299.5061384879535
+          ],
+          "intervalRatePerSecond": 2.557398552886101,
+          "medianIntervalMs": 357.7453677086424,
+          "worstIntervalMs": 599.0133944360542
+        },
+        "latest": {
+          "count": 9,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.2537058645758132,
+          "intervalCount": 8,
+          "intervalMs": [
+            582.3744128445339,
+            515.8184864784529,
+            415.97900962859535,
+            349.4264356429558,
+            282.86603943628603,
+            349.42420072266145,
+            282.8682743565804,
+            299.5061384879535
+          ],
+          "intervalRatePerSecond": 2.598868259873322,
+          "medianIntervalMs": 349.4253181828086,
+          "worstIntervalMs": 582.3744128445339
+        }
+      },
+      "healthLost": {
+        "release": 0,
+        "latest": 0
+      },
+      "initialActorPosition": {
+        "release": [
+          294.0,
+          218.0
+        ],
+        "latest": [
+          294.0,
+          218.0
+        ]
+      },
+      "initialPipeline": {
+        "release": {
+          "busy": 0,
+          "state0": 0,
+          "state1": 0,
+          "budget": 1,
+          "epoch": 4,
+          "renderEpoch": 4
+        },
+        "latest": {
+          "busy": 0,
+          "state0": 0,
+          "state1": 0,
+          "budget": 1,
+          "epoch": 4,
+          "renderEpoch": 4
+        }
+      }
+    },
+    {
+      "scene": "slime-entry-alive",
+      "music": "music-on",
+      "rep": 0,
+      "setupFrames": 150,
+      "holdFrames": 240,
+      "initialPose": [
+        292.0,
+        256.0,
+        128,
+        2,
+        6
+      ],
+      "terminalPose": [
+        292.0,
+        256.0,
+        228,
+        2,
+        6
+      ],
+      "release": {
+        "pollToFirstSimulationMs": 17.906740128496743,
+        "pollToFirstCameraPublicationMs": 849.6367975156626,
+        "pollToFirstChangedViewportMs": 865.1778745125779,
+        "releaseToFinalCameraPublicationMs": 633.326125715384,
+        "discardedProducerMs": 389.4790009682792
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 17.911209969085466,
+        "pollToFirstCameraPublicationMs": 816.3610692529164,
+        "pollToFirstChangedViewportMs": 831.8993525994638,
+        "releaseToFinalCameraPublicationMs": 600.0470450721963,
+        "discardedProducerMs": 277.0139006455008
+      },
+      "deltaMs": {
+        "pollToFirstSimulationMs": 0.004469840588722462,
+        "pollToFirstCameraPublicationMs": -33.275728262746156,
+        "pollToFirstChangedViewportMs": -33.278521913114105,
+        "releaseToFinalCameraPublicationMs": -33.27908064318774,
+        "discardedProducerMs": -112.46510032277837
+      },
+      "pictures": {
+        "release": {
+          "count": 7,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 1.7528823391145212,
+          "intervalCount": 6,
+          "intervalMs": [
+            615.6534934877217,
+            532.4552331496787,
+            515.8184864784529,
+            349.42420072266145,
+            482.53940583526514,
+            465.8993067835977
+          ],
+          "intervalRatePerSecond": 2.0258018778584597,
+          "medianIntervalMs": 499.178946156859,
+          "worstIntervalMs": 615.6534934877217
+        },
+        "latest": {
+          "count": 7,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 1.7528823391145212,
+          "intervalCount": 6,
+          "intervalMs": [
+            565.7331963327193,
+            515.8162515581585,
+            482.53940583526514,
+            366.0642997743289,
+            399.3422629573694,
+            432.62022614041
+          ],
+          "intervalRatePerSecond": 2.172247934686744,
+          "medianIntervalMs": 457.5798159878376,
+          "worstIntervalMs": 565.7331963327193
+        }
+      },
+      "healthLost": {
+        "release": 0,
+        "latest": 0
+      },
+      "initialActorPosition": {
+        "release": [
+          294.0,
+          221.90625
+        ],
+        "latest": [
+          294.0,
+          221.90625
+        ]
+      },
+      "initialPipeline": {
+        "release": {
+          "busy": 1,
+          "state0": 3,
+          "state1": 1,
+          "budget": 1,
+          "epoch": 6,
+          "renderEpoch": 6
+        },
+        "latest": {
+          "busy": 1,
+          "state0": 3,
+          "state1": 1,
+          "budget": 1,
+          "epoch": 6,
+          "renderEpoch": 6
+        }
+      }
+    },
+    {
+      "scene": "slime-entry-alive",
+      "music": "music-on",
+      "rep": 1,
+      "setupFrames": 151,
+      "holdFrames": 240,
+      "initialPose": [
+        292.0,
+        256.0,
+        128,
+        2,
+        6
+      ],
+      "terminalPose": [
+        292.0,
+        256.0,
+        228,
+        2,
+        6
+      ],
+      "release": {
+        "pollToFirstSimulationMs": 1.269434727197248,
+        "pollToFirstCameraPublicationMs": 832.9983746542159,
+        "pollToFirstChangedViewportMs": 848.538334190984,
+        "releaseToFinalCameraPublicationMs": 633.3266844454577,
+        "discardedProducerMs": 402.95557034327817
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 1.2711109174180188,
+        "pollToFirstCameraPublicationMs": 799.7204114711753,
+        "pollToFirstChangedViewportMs": 815.2598122778699,
+        "releaseToFinalCameraPublicationMs": 600.0476038022699,
+        "discardedProducerMs": 234.57499917587313
+      },
+      "deltaMs": {
+        "pollToFirstSimulationMs": 0.0016761902207709234,
+        "pollToFirstCameraPublicationMs": -33.27796318304058,
+        "pollToFirstChangedViewportMs": -33.278521913114105,
+        "releaseToFinalCameraPublicationMs": -33.27908064318774,
+        "discardedProducerMs": -168.38057116740504
+      },
+      "pictures": {
+        "release": {
+          "count": 7,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 1.7528823391145212,
+          "intervalCount": 6,
+          "intervalMs": [
+            615.6523760275744,
+            532.4574680699732,
+            515.8162515581585,
+            349.4230832625143,
+            482.53940583526514,
+            465.90042424374485
+          ],
+          "intervalRatePerSecond": 2.025802642177882,
+          "medianIntervalMs": 499.1778286967118,
+          "worstIntervalMs": 615.6523760275744
+        },
+        "latest": {
+          "count": 7,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 1.7528823391145212,
+          "intervalCount": 6,
+          "intervalMs": [
+            582.3744128445339,
+            499.17615250649106,
+            482.538288375118,
+            366.0654172344761,
+            399.34338041751664,
+            449.2580902717831
+          ],
+          "intervalRatePerSecond": 2.1592398029333193,
+          "medianIntervalMs": 465.89818932345054,
+          "worstIntervalMs": 582.3744128445339
+        }
+      },
+      "healthLost": {
+        "release": 0,
+        "latest": 0
+      },
+      "initialActorPosition": {
+        "release": [
+          294.0,
+          221.90625
+        ],
+        "latest": [
+          294.0,
+          221.90625
+        ]
+      },
+      "initialPipeline": {
+        "release": {
+          "busy": 1,
+          "state0": 3,
+          "state1": 1,
+          "budget": 1,
+          "epoch": 8,
+          "renderEpoch": 8
+        },
+        "latest": {
+          "busy": 1,
+          "state0": 1,
+          "state1": 3,
+          "budget": 1,
+          "epoch": 8,
+          "renderEpoch": 8
+        }
+      }
+    },
+    {
+      "scene": "slime-entry-alive",
+      "music": "music-on",
+      "rep": 2,
+      "setupFrames": 152,
+      "holdFrames": 240,
+      "initialPose": [
+        292.0,
+        256.0,
+        128,
+        2,
+        6
+      ],
+      "terminalPose": [
+        292.0,
+        256.0,
+        228,
+        2,
+        6
+      ],
+      "release": {
+        "pollToFirstSimulationMs": 17.908416318717514,
+        "pollToFirstCameraPublicationMs": 832.9978159241423,
+        "pollToFirstChangedViewportMs": 848.538334190984,
+        "releaseToFinalCameraPublicationMs": 633.326125715384,
+        "discardedProducerMs": 425.9054081160013
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 17.907298858570332,
+        "pollToFirstCameraPublicationMs": 816.3588343326221,
+        "pollToFirstChangedViewportMs": 831.8993525994638,
+        "releaseToFinalCameraPublicationMs": 583.4091809408233,
+        "discardedProducerMs": 286.9514737343786
+      },
+      "deltaMs": {
+        "pollToFirstSimulationMs": -0.0011174601471815038,
+        "pollToFirstCameraPublicationMs": -16.638981591520178,
+        "pollToFirstChangedViewportMs": -16.638981591520178,
+        "releaseToFinalCameraPublicationMs": -49.91694477456076,
+        "discardedProducerMs": -138.95393438162267
+      },
+      "pictures": {
+        "release": {
+          "count": 7,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 1.7528823391145212,
+          "intervalCount": 6,
+          "intervalMs": [
+            615.6523760275744,
+            532.4563506098259,
+            515.8184864784529,
+            366.0620648540346,
+            449.2625601123718,
+            482.5360534548236
+          ],
+          "intervalRatePerSecond": 2.025803406497881,
+          "medianIntervalMs": 499.1772699666383,
+          "worstIntervalMs": 615.6523760275744
+        },
+        "latest": {
+          "count": 8,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.0032941018451673,
+          "intervalCount": 7,
+          "intervalMs": [
+            565.7343137928665,
+            499.1772699666382,
+            499.17838742678543,
+            349.42531818280867,
+            382.702163905702,
+            449.2614426522246,
+            399.3405867671487
+          ],
+          "intervalRatePerSecond": 2.2258829285816697,
+          "medianIntervalMs": 449.2614426522246,
+          "worstIntervalMs": 565.7343137928665
+        }
+      },
+      "healthLost": {
+        "release": 0,
+        "latest": 0
+      },
+      "initialActorPosition": {
+        "release": [
+          294.0,
+          221.9375
+        ],
+        "latest": [
+          294.0,
+          221.9375
+        ]
+      },
+      "initialPipeline": {
+        "release": {
+          "busy": 1,
+          "state0": 3,
+          "state1": 1,
+          "budget": 1,
+          "epoch": 10,
+          "renderEpoch": 10
+        },
+        "latest": {
+          "busy": 1,
+          "state0": 3,
+          "state1": 1,
+          "budget": 1,
+          "epoch": 10,
+          "renderEpoch": 10
+        }
+      }
+    },
+    {
+      "scene": "slime-middle-alive",
+      "music": "music-on",
+      "rep": 0,
+      "setupFrames": 150,
+      "holdFrames": 240,
+      "initialPose": [
+        304.0,
+        240.0,
+        160,
+        2,
+        6
+      ],
+      "terminalPose": [
+        304.0,
+        240.0,
+        4,
+        2,
+        6
+      ],
+      "release": {
+        "pollToFirstSimulationMs": 16.909406947137988,
+        "pollToFirstCameraPublicationMs": 799.7198527411018,
+        "pollToFirstChangedViewportMs": 815.2598122778699,
+        "releaseToFinalCameraPublicationMs": 566.7690818891558,
+        "discardedProducerMs": 297.8400054085071
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 16.909406947137988,
+        "pollToFirstCameraPublicationMs": 783.0797536894344,
+        "pollToFirstChangedViewportMs": 798.6208306863496,
+        "releaseToFinalCameraPublicationMs": 533.4911187061152,
+        "discardedProducerMs": 87.97428500709307
+      },
+      "deltaMs": {
+        "pollToFirstSimulationMs": 0.0,
+        "pollToFirstCameraPublicationMs": -16.64009905166745,
+        "pollToFirstChangedViewportMs": -16.63898159152029,
+        "releaseToFinalCameraPublicationMs": -33.27796318304058,
+        "discardedProducerMs": -209.86572040141405
+      },
+      "pictures": {
+        "release": {
+          "count": 8,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.0032941018451673,
+          "intervalCount": 7,
+          "intervalMs": [
+            482.53940583526514,
+            382.7032813658492,
+            432.62134360055717,
+            465.8970718633033,
+            432.62134360055717,
+            465.8976305933769,
+            382.7032813658492
+          ],
+          "intervalRatePerSecond": 2.2988631386415976,
+          "medianIntervalMs": 432.62134360055717,
+          "worstIntervalMs": 482.53940583526514
+        },
+        "latest": {
+          "count": 8,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.0032941018451673,
+          "intervalCount": 7,
+          "intervalMs": [
+            465.8993067835977,
+            366.0642997743289,
+            415.9812445488897,
+            465.8993067835977,
+            432.62022614041,
+            432.62134360055717,
+            349.42587691288225
+          ],
+          "intervalRatePerSecond": 2.3902927306615007,
+          "medianIntervalMs": 432.62022614041,
+          "worstIntervalMs": 465.8993067835977
+        }
+      },
+      "healthLost": {
+        "release": 10,
+        "latest": 10
+      },
+      "initialActorPosition": {
+        "release": [
+          294.9375,
+          220.5
+        ],
+        "latest": [
+          294.9375,
+          220.5
+        ]
+      },
+      "initialPipeline": {
+        "release": {
+          "busy": 0,
+          "state0": 0,
+          "state1": 0,
+          "budget": 1,
+          "epoch": 12,
+          "renderEpoch": 12
+        },
+        "latest": {
+          "busy": 0,
+          "state0": 0,
+          "state1": 0,
+          "budget": 1,
+          "epoch": 12,
+          "renderEpoch": 12
+        }
+      }
+    },
+    {
+      "scene": "slime-middle-gone",
+      "music": "music-on",
+      "rep": 0,
+      "setupFrames": 150,
+      "holdFrames": 240,
+      "initialPose": [
+        304.0,
+        240.0,
+        160,
+        2,
+        6
+      ],
+      "terminalPose": [
+        304.0,
+        240.0,
+        4,
+        2,
+        6
+      ],
+      "release": {
+        "pollToFirstSimulationMs": 16.9088482170644,
+        "pollToFirstCameraPublicationMs": 816.5208660539632,
+        "pollToFirstChangedViewportMs": 831.8993525994638,
+        "releaseToFinalCameraPublicationMs": 550.2921320189768,
+        "discardedProducerMs": 77.94843256658805
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 16.909406947137988,
+        "pollToFirstCameraPublicationMs": 799.881884462443,
+        "pollToFirstChangedViewportMs": 815.2598122778699,
+        "releaseToFinalCameraPublicationMs": 517.013051375789,
+        "discardedProducerMs": 191.6980533285506
+      },
+      "deltaMs": {
+        "pollToFirstSimulationMs": 0.0005587300735889755,
+        "pollToFirstCameraPublicationMs": -16.638981591520178,
+        "pollToFirstChangedViewportMs": -16.639540321593927,
+        "releaseToFinalCameraPublicationMs": -33.27908064318774,
+        "discardedProducerMs": 113.74962076196255
+      },
+      "pictures": {
+        "release": {
+          "count": 8,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.0032941018451673,
+          "intervalCount": 7,
+          "intervalMs": [
+            415.9834794691841,
+            349.4230832625143,
+            449.25920773193025,
+            449.2603251920774,
+            432.62134360055717,
+            415.9812445488897,
+            382.70384009592277
+          ],
+          "intervalRatePerSecond": 2.4177678104306817,
+          "medianIntervalMs": 415.9834794691841,
+          "worstIntervalMs": 449.2603251920774
+        },
+        "latest": {
+          "count": 9,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.2537058645758132,
+          "intervalCount": 8,
+          "intervalMs": [
+            399.34114549722227,
+            349.42531818280867,
+            432.62022614041,
+            415.9812445488897,
+            432.62134360055717,
+            415.9834794691841,
+            399.3405867671487,
+            299.5061384879535
+          ],
+          "intervalRatePerSecond": 2.543866204093337,
+          "medianIntervalMs": 407.661195023056,
+          "worstIntervalMs": 432.62134360055717
+        }
+      },
+      "healthLost": {
+        "release": 0,
+        "latest": 0
+      },
+      "initialActorPosition": {
+        "release": [
+          294.0,
+          218.0
+        ],
+        "latest": [
+          294.0,
+          218.0
+        ]
+      },
+      "initialPipeline": {
+        "release": {
+          "busy": 0,
+          "state0": 0,
+          "state1": 0,
+          "budget": 1,
+          "epoch": 14,
+          "renderEpoch": 14
+        },
+        "latest": {
+          "busy": 0,
+          "state0": 0,
+          "state1": 0,
+          "budget": 1,
+          "epoch": 14,
+          "renderEpoch": 14
+        }
+      }
+    },
+    {
+      "scene": "near-enemy-turn",
+      "music": "music-on",
+      "rep": 0,
+      "setupFrames": 150,
+      "holdFrames": 240,
+      "initialPose": [
+        294.0,
+        226.0,
+        128,
+        2,
+        6
+      ],
+      "terminalPose": [
+        294.0,
+        226.0,
+        228,
+        2,
+        6
+      ],
+      "release": {
+        "pollToFirstSimulationMs": 16.909406947137988,
+        "pollToFirstCameraPublicationMs": 816.3577168724748,
+        "pollToFirstChangedViewportMs": 831.8993525994638,
+        "releaseToFinalCameraPublicationMs": 699.884845731833,
+        "discardedProducerMs": 95.07909662286782
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 16.9088482170644,
+        "pollToFirstCameraPublicationMs": 799.7220876613961,
+        "pollToFirstChangedViewportMs": 815.2598122778699,
+        "releaseToFinalCameraPublicationMs": 666.6057650886453,
+        "discardedProducerMs": 313.29280305379507
+      },
+      "deltaMs": {
+        "pollToFirstSimulationMs": -0.0005587300735889755,
+        "pollToFirstCameraPublicationMs": -16.635629211078708,
+        "pollToFirstChangedViewportMs": -16.639540321593927,
+        "releaseToFinalCameraPublicationMs": -33.27908064318774,
+        "discardedProducerMs": 218.21370643092723
+      },
+      "pictures": {
+        "release": {
+          "count": 7,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 1.7528823391145212,
+          "intervalCount": 6,
+          "intervalMs": [
+            549.0986845817878,
+            532.4552331496787,
+            432.62134360055717,
+            349.4230832625143,
+            382.70439882599635,
+            482.5360534548236
+          ],
+          "intervalRatePerSecond": 2.1987374288544514,
+          "medianIntervalMs": 457.5786985276904,
+          "worstIntervalMs": 549.0986845817878
+        },
+        "latest": {
+          "count": 8,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.0032941018451673,
+          "intervalCount": 7,
+          "intervalMs": [
+            499.17615250649106,
+            482.53940583526514,
+            432.6191086802628,
+            332.7852191311412,
+            316.1462375396209,
+            482.53940583526514,
+            482.5371709149708
+          ],
+          "intervalRatePerSecond": 2.3114953267924294,
+          "medianIntervalMs": 482.5371709149708,
+          "worstIntervalMs": 499.17615250649106
+        }
+      },
+      "healthLost": {
+        "release": 10,
+        "latest": 10
+      },
+      "initialActorPosition": {
+        "release": [
+          294.0,
+          218.0
+        ],
+        "latest": [
+          294.0,
+          218.0
+        ]
+      },
+      "initialPipeline": {
+        "release": {
+          "busy": 0,
+          "state0": 0,
+          "state1": 0,
+          "budget": 1,
+          "epoch": 16,
+          "renderEpoch": 16
+        },
+        "latest": {
+          "busy": 0,
+          "state0": 0,
+          "state1": 0,
+          "budget": 1,
+          "epoch": 16,
+          "renderEpoch": 16
+        }
+      }
+    },
+    {
+      "scene": "opening-turn",
+      "music": "music-off",
+      "rep": 0,
+      "setupFrames": 150,
+      "holdFrames": 240,
+      "initialPose": [
+        52.0,
+        192.0,
+        0,
+        2,
+        6
+      ],
+      "terminalPose": [
+        52.0,
+        192.0,
+        100,
+        2,
+        6
+      ],
+      "release": {
+        "pollToFirstSimulationMs": 16.9088482170644,
+        "pollToFirstCameraPublicationMs": 816.5175136735218,
+        "pollToFirstChangedViewportMs": 831.8993525994638,
+        "releaseToFinalCameraPublicationMs": 433.8142323076725,
+        "discardedProducerMs": 259.6368366267678
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 16.90996567721158,
+        "pollToFirstCameraPublicationMs": 816.5163962133745,
+        "pollToFirstChangedViewportMs": 831.8993525994638,
+        "releaseToFinalCameraPublicationMs": 417.17413325600506,
+        "discardedProducerMs": 59.49078458553124
+      },
+      "deltaMs": {
+        "pollToFirstSimulationMs": 0.0011174601471815038,
+        "pollToFirstCameraPublicationMs": -0.0011174601472703216,
+        "pollToFirstChangedViewportMs": 0.0,
+        "releaseToFinalCameraPublicationMs": -16.64009905166745,
+        "discardedProducerMs": -200.14605204123654
+      },
+      "pictures": {
+        "release": {
+          "count": 9,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.2537058645758132,
+          "intervalCount": 8,
+          "intervalMs": [
+            615.6523760275744,
+            465.89818932345054,
+            465.90042424374485,
+            332.7852191311412,
+            282.86603943628603,
+            332.7874540514356,
+            282.86603943628603,
+            282.8682743565804
+          ],
+          "intervalRatePerSecond": 2.612992306754566,
+          "medianIntervalMs": 332.78633659128843,
+          "worstIntervalMs": 615.6523760275744
+        },
+        "latest": {
+          "count": 9,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.2537058645758132,
+          "intervalCount": 8,
+          "intervalMs": [
+            599.012276975907,
+            449.2625601123718,
+            449.2580902717831,
+            316.14735499976814,
+            299.5061384879535,
+            316.14512007947377,
+            316.1462375396209,
+            266.22817530491295
+          ],
+          "intervalRatePerSecond": 2.656301817905226,
+          "medianIntervalMs": 316.1467962696945,
+          "worstIntervalMs": 599.012276975907
+        }
+      },
+      "healthLost": {
+        "release": 0,
+        "latest": 0
+      },
+      "initialActorPosition": {
+        "release": [
+          294.0,
+          218.0
+        ],
+        "latest": [
+          294.0,
+          218.0
+        ]
+      },
+      "initialPipeline": {
+        "release": {
+          "busy": 0,
+          "state0": 0,
+          "state1": 0,
+          "budget": 1,
+          "epoch": 0,
+          "renderEpoch": 0
+        },
+        "latest": {
+          "busy": 0,
+          "state0": 0,
+          "state1": 0,
+          "budget": 1,
+          "epoch": 0,
+          "renderEpoch": 0
+        }
+      }
+    },
+    {
+      "scene": "opening-turn",
+      "music": "music-off",
+      "rep": 1,
+      "setupFrames": 151,
+      "holdFrames": 240,
+      "initialPose": [
+        52.0,
+        192.0,
+        0,
+        2,
+        6
+      ],
+      "terminalPose": [
+        52.0,
+        192.0,
+        100,
+        2,
+        6
+      ],
+      "release": {
+        "pollToFirstSimulationMs": 0.26986662554413327,
+        "pollToFirstCameraPublicationMs": 799.8774146218543,
+        "pollToFirstChangedViewportMs": 815.2603710079435,
+        "releaseToFinalCameraPublicationMs": 433.8142323076725,
+        "discardedProducerMs": 0.0
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 0.2704253556177236,
+        "pollToFirstCameraPublicationMs": 799.8774146218543,
+        "pollToFirstChangedViewportMs": 815.2603710079435,
+        "releaseToFinalCameraPublicationMs": 417.17413325600506,
+        "discardedProducerMs": 76.3951629620069
+      },
+      "deltaMs": {
+        "pollToFirstSimulationMs": 0.0005587300735903078,
+        "pollToFirstCameraPublicationMs": 0.0,
+        "pollToFirstChangedViewportMs": 0.0,
+        "releaseToFinalCameraPublicationMs": -16.64009905166745,
+        "discardedProducerMs": 76.3951629620069
+      },
+      "pictures": {
+        "release": {
+          "count": 9,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.2537058645758132,
+          "intervalCount": 8,
+          "intervalMs": [
+            582.3744128445339,
+            482.538288375118,
+            465.8993067835977,
+            332.7852191311412,
+            282.8682743565804,
+            332.7852191311412,
+            282.86715689643324,
+            299.5061384879535
+          ],
+          "intervalRatePerSecond": 2.612992306754566,
+          "medianIntervalMs": 332.7852191311412,
+          "worstIntervalMs": 582.3744128445339
+        },
+        "latest": {
+          "count": 9,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.2537058645758132,
+          "intervalCount": 8,
+          "intervalMs": [
+            599.0133944360542,
+            465.90042424374485,
+            432.6191086802628,
+            332.7852191311412,
+            282.8682743565804,
+            316.14735499976814,
+            316.14400261932656,
+            266.22817530491295
+          ],
+          "intervalRatePerSecond": 2.656301817905226,
+          "medianIntervalMs": 324.4662870654547,
+          "worstIntervalMs": 599.0133944360542
+        }
+      },
+      "healthLost": {
+        "release": 0,
+        "latest": 0
+      },
+      "initialActorPosition": {
+        "release": [
+          294.0,
+          218.0
+        ],
+        "latest": [
+          294.0,
+          218.0
+        ]
+      },
+      "initialPipeline": {
+        "release": {
+          "busy": 0,
+          "state0": 0,
+          "state1": 0,
+          "budget": 1,
+          "epoch": 2,
+          "renderEpoch": 2
+        },
+        "latest": {
+          "busy": 0,
+          "state0": 0,
+          "state1": 0,
+          "budget": 1,
+          "epoch": 2,
+          "renderEpoch": 2
+        }
+      }
+    },
+    {
+      "scene": "opening-turn",
+      "music": "music-off",
+      "rep": 2,
+      "setupFrames": 152,
+      "holdFrames": 240,
+      "initialPose": [
+        52.0,
+        192.0,
+        0,
+        2,
+        6
+      ],
+      "terminalPose": [
+        52.0,
+        192.0,
+        100,
+        2,
+        6
+      ],
+      "release": {
+        "pollToFirstSimulationMs": 16.90996567721158,
+        "pollToFirstCameraPublicationMs": 816.5169549434481,
+        "pollToFirstChangedViewportMs": 831.8993525994638,
+        "releaseToFinalCameraPublicationMs": 433.81479103774615,
+        "discardedProducerMs": 259.9245826146668
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 16.90996567721158,
+        "pollToFirstCameraPublicationMs": 816.5169549434481,
+        "pollToFirstChangedViewportMs": 831.8993525994638,
+        "releaseToFinalCameraPublicationMs": 417.1746919860787,
+        "discardedProducerMs": 59.49078458553124
+      },
+      "deltaMs": {
+        "pollToFirstSimulationMs": 0.0,
+        "pollToFirstCameraPublicationMs": 0.0,
+        "pollToFirstChangedViewportMs": 0.0,
+        "releaseToFinalCameraPublicationMs": -16.64009905166745,
+        "discardedProducerMs": -200.43379802913557
+      },
+      "pictures": {
+        "release": {
+          "count": 9,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.2537058645758132,
+          "intervalCount": 8,
+          "intervalMs": [
+            615.6523760275744,
+            465.8993067835977,
+            465.8993067835977,
+            332.7852191311412,
+            282.86715689643324,
+            332.7852191311412,
+            282.8682743565804,
+            282.8682743565804
+          ],
+          "intervalRatePerSecond": 2.612991353040561,
+          "medianIntervalMs": 332.7852191311412,
+          "worstIntervalMs": 615.6523760275744
+        },
+        "latest": {
+          "count": 9,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.2537058645758132,
+          "intervalCount": 8,
+          "intervalMs": [
+            599.0133944360542,
+            465.90042424374485,
+            432.6191086802628,
+            332.7852191311412,
+            282.8693918167276,
+            316.14400261932656,
+            316.14512007947377,
+            266.22929276506017
+          ],
+          "intervalRatePerSecond": 2.6563018179052253,
+          "medianIntervalMs": 324.4651696053075,
+          "worstIntervalMs": 599.0133944360542
+        }
+      },
+      "healthLost": {
+        "release": 0,
+        "latest": 0
+      },
+      "initialActorPosition": {
+        "release": [
+          294.0,
+          218.0
+        ],
+        "latest": [
+          294.0,
+          218.0
+        ]
+      },
+      "initialPipeline": {
+        "release": {
+          "busy": 0,
+          "state0": 0,
+          "state1": 0,
+          "budget": 1,
+          "epoch": 4,
+          "renderEpoch": 4
+        },
+        "latest": {
+          "busy": 0,
+          "state0": 0,
+          "state1": 0,
+          "budget": 1,
+          "epoch": 4,
+          "renderEpoch": 4
+        }
+      }
+    },
+    {
+      "scene": "slime-entry-alive",
+      "music": "music-off",
+      "rep": 0,
+      "setupFrames": 150,
+      "holdFrames": 240,
+      "initialPose": [
+        292.0,
+        256.0,
+        128,
+        2,
+        6
+      ],
+      "terminalPose": [
+        292.0,
+        256.0,
+        228,
+        2,
+        6
+      ],
+      "release": {
+        "pollToFirstSimulationMs": 17.909533778864695,
+        "pollToFirstCameraPublicationMs": 816.3599517927693,
+        "pollToFirstChangedViewportMs": 831.8993525994638,
+        "releaseToFinalCameraPublicationMs": 616.6871441238637,
+        "discardedProducerMs": 287.82700375969466
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 16.909406947137988,
+        "pollToFirstCameraPublicationMs": 783.0808711495815,
+        "pollToFirstChangedViewportMs": 798.6208306863496,
+        "releaseToFinalCameraPublicationMs": 583.4091809408233,
+        "discardedProducerMs": 536.6043626761606
+      },
+      "deltaMs": {
+        "pollToFirstSimulationMs": -1.000126831726707,
+        "pollToFirstCameraPublicationMs": -33.27908064318774,
+        "pollToFirstChangedViewportMs": -33.27852191311422,
+        "releaseToFinalCameraPublicationMs": -33.27796318304047,
+        "discardedProducerMs": 248.77735891646591
+      },
+      "pictures": {
+        "release": {
+          "count": 7,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 1.7528823391145212,
+          "intervalCount": 6,
+          "intervalMs": [
+            582.3744128445339,
+            515.8151340980113,
+            482.53940583526514,
+            366.06318231418174,
+            399.3422629573694,
+            449.2603251920774
+          ],
+          "intervalRatePerSecond": 2.1463873957101187,
+          "medianIntervalMs": 465.8998655136713,
+          "worstIntervalMs": 582.3744128445339
+        },
+        "latest": {
+          "count": 8,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.0032941018451673,
+          "intervalCount": 7,
+          "intervalMs": [
+            549.0964496614934,
+            482.538288375118,
+            449.25920773193025,
+            382.702163905702,
+            366.0642997743289,
+            415.9823620090369,
+            399.3422629573694
+          ],
+          "intervalRatePerSecond": 2.298861873173338,
+          "medianIntervalMs": 415.9823620090369,
+          "worstIntervalMs": 549.0964496614934
+        }
+      },
+      "healthLost": {
+        "release": 0,
+        "latest": 0
+      },
+      "initialActorPosition": {
+        "release": [
+          294.0,
+          221.90625
+        ],
+        "latest": [
+          294.0,
+          221.90625
+        ]
+      },
+      "initialPipeline": {
+        "release": {
+          "busy": 1,
+          "state0": 1,
+          "state1": 3,
+          "budget": 1,
+          "epoch": 6,
+          "renderEpoch": 6
+        },
+        "latest": {
+          "busy": 0,
+          "state0": 1,
+          "state1": 0,
+          "budget": 1,
+          "epoch": 6,
+          "renderEpoch": 6
+        }
+      }
+    },
+    {
+      "scene": "slime-entry-alive",
+      "music": "music-off",
+      "rep": 1,
+      "setupFrames": 151,
+      "holdFrames": 240,
+      "initialPose": [
+        292.0,
+        256.0,
+        128,
+        2,
+        6
+      ],
+      "terminalPose": [
+        292.0,
+        256.0,
+        228,
+        2,
+        6
+      ],
+      "release": {
+        "pollToFirstSimulationMs": 1.2671998069028865,
+        "pollToFirstCameraPublicationMs": 799.7204114711753,
+        "pollToFirstChangedViewportMs": 815.2598122778699,
+        "releaseToFinalCameraPublicationMs": 616.6865853937902,
+        "discardedProducerMs": 287.0609848288023
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 0.26986662554413327,
+        "pollToFirstCameraPublicationMs": 766.4402133678406,
+        "pollToFirstChangedViewportMs": 781.9812903647558,
+        "releaseToFinalCameraPublicationMs": 600.0476038022699,
+        "discardedProducerMs": 242.11617897912194
+      },
+      "deltaMs": {
+        "pollToFirstSimulationMs": -0.9973331813587532,
+        "pollToFirstCameraPublicationMs": -33.28019810333478,
+        "pollToFirstChangedViewportMs": -33.278521913114105,
+        "releaseToFinalCameraPublicationMs": -16.63898159152029,
+        "discardedProducerMs": -44.944805849680364
+      },
+      "pictures": {
+        "release": {
+          "count": 7,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 1.7528823391145212,
+          "intervalCount": 6,
+          "intervalMs": [
+            582.3732953843868,
+            515.8184864784529,
+            482.5371709149708,
+            366.06318231418174,
+            399.34338041751664,
+            449.25920773193025
+          ],
+          "intervalRatePerSecond": 2.1463873957101187,
+          "medianIntervalMs": 465.89818932345054,
+          "worstIntervalMs": 582.3732953843868
+        },
+        "latest": {
+          "count": 8,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.0032941018451673,
+          "intervalCount": 7,
+          "intervalMs": [
+            549.0953322013462,
+            482.5416407555595,
+            449.2580902717831,
+            382.7032813658492,
+            349.42420072266145,
+            432.62022614041,
+            382.7032813658492
+          ],
+          "intervalRatePerSecond": 2.311492767966064,
+          "medianIntervalMs": 432.62022614041,
+          "worstIntervalMs": 549.0953322013462
+        }
+      },
+      "healthLost": {
+        "release": 0,
+        "latest": 0
+      },
+      "initialActorPosition": {
+        "release": [
+          294.0,
+          221.90625
+        ],
+        "latest": [
+          294.0,
+          221.90625
+        ]
+      },
+      "initialPipeline": {
+        "release": {
+          "busy": 1,
+          "state0": 1,
+          "state1": 3,
+          "budget": 1,
+          "epoch": 8,
+          "renderEpoch": 8
+        },
+        "latest": {
+          "busy": 0,
+          "state0": 0,
+          "state1": 1,
+          "budget": 1,
+          "epoch": 8,
+          "renderEpoch": 8
+        }
+      }
+    },
+    {
+      "scene": "slime-entry-alive",
+      "music": "music-off",
+      "rep": 2,
+      "setupFrames": 152,
+      "holdFrames": 240,
+      "initialPose": [
+        292.0,
+        256.0,
+        128,
+        2,
+        6
+      ],
+      "terminalPose": [
+        292.0,
+        256.0,
+        228,
+        2,
+        6
+      ],
+      "release": {
+        "pollToFirstSimulationMs": 16.932314880155193,
+        "pollToFirstCameraPublicationMs": 799.7198527411018,
+        "pollToFirstChangedViewportMs": 815.2598122778699,
+        "releaseToFinalCameraPublicationMs": 616.6871441238637,
+        "discardedProducerMs": 304.8850329064077
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 16.9088482170644,
+        "pollToFirstCameraPublicationMs": 783.0808711495815,
+        "pollToFirstChangedViewportMs": 798.6208306863496,
+        "releaseToFinalCameraPublicationMs": 583.408063480676,
+        "discardedProducerMs": 585.451339359796
+      },
+      "deltaMs": {
+        "pollToFirstSimulationMs": -0.023466663090793816,
+        "pollToFirstCameraPublicationMs": -16.63898159152029,
+        "pollToFirstChangedViewportMs": -16.63898159152029,
+        "releaseToFinalCameraPublicationMs": -33.27908064318774,
+        "discardedProducerMs": 280.5663064533883
+      },
+      "pictures": {
+        "release": {
+          "count": 7,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 1.7528823391145212,
+          "intervalCount": 6,
+          "intervalMs": [
+            582.3744128445339,
+            515.8173690183057,
+            499.17838742678543,
+            366.0620648540346,
+            382.70439882599635,
+            449.2580902717831
+          ],
+          "intervalRatePerSecond": 2.1463873957101187,
+          "medianIntervalMs": 474.21823884928426,
+          "worstIntervalMs": 582.3744128445339
+        },
+        "latest": {
+          "count": 8,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.0032941018451673,
+          "intervalCount": 7,
+          "intervalMs": [
+            549.0953322013462,
+            465.8993067835977,
+            465.8993067835977,
+            382.702163905702,
+            349.42531818280867,
+            449.25920773193025,
+            382.7032813658492
+          ],
+          "intervalRatePerSecond": 2.2988627168186895,
+          "medianIntervalMs": 449.25920773193025,
+          "worstIntervalMs": 549.0953322013462
+        }
+      },
+      "healthLost": {
+        "release": 0,
+        "latest": 0
+      },
+      "initialActorPosition": {
+        "release": [
+          294.0,
+          221.9375
+        ],
+        "latest": [
+          294.0,
+          221.9375
+        ]
+      },
+      "initialPipeline": {
+        "release": {
+          "busy": 1,
+          "state0": 1,
+          "state1": 3,
+          "budget": 1,
+          "epoch": 10,
+          "renderEpoch": 10
+        },
+        "latest": {
+          "busy": 0,
+          "state0": 0,
+          "state1": 1,
+          "budget": 1,
+          "epoch": 10,
+          "renderEpoch": 10
+        }
+      }
+    },
+    {
+      "scene": "slime-middle-alive",
+      "music": "music-off",
+      "rep": 0,
+      "setupFrames": 150,
+      "holdFrames": 240,
+      "initialPose": [
+        304.0,
+        240.0,
+        160,
+        2,
+        6
+      ],
+      "terminalPose": [
+        304.0,
+        240.0,
+        4,
+        2,
+        6
+      ],
+      "release": {
+        "pollToFirstSimulationMs": 16.909406947137988,
+        "pollToFirstCameraPublicationMs": 766.4407720979141,
+        "pollToFirstChangedViewportMs": 781.9812903647558,
+        "releaseToFinalCameraPublicationMs": 550.1323352179298,
+        "discardedProducerMs": 126.7121584692584
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 16.9088482170644,
+        "pollToFirstCameraPublicationMs": 766.4430070182085,
+        "pollToFirstChangedViewportMs": 781.9812903647558,
+        "releaseToFinalCameraPublicationMs": 516.8521371145949,
+        "discardedProducerMs": 201.00202651397692
+      },
+      "deltaMs": {
+        "pollToFirstSimulationMs": -0.0005587300735889755,
+        "pollToFirstCameraPublicationMs": 0.0022349202944269564,
+        "pollToFirstChangedViewportMs": 0.0,
+        "releaseToFinalCameraPublicationMs": -33.2801981033349,
+        "discardedProducerMs": 74.28986804471852
+      },
+      "pictures": {
+        "release": {
+          "count": 8,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.0032941018451673,
+          "intervalCount": 7,
+          "intervalMs": [
+            482.538288375118,
+            332.7863365912884,
+            432.62134360055717,
+            449.2603251920774,
+            382.702163905702,
+            449.25920773193025,
+            382.7027226357756
+          ],
+          "intervalRatePerSecond": 2.4039531528496023,
+          "medianIntervalMs": 432.62134360055717,
+          "worstIntervalMs": 482.538288375118
+        },
+        "latest": {
+          "count": 9,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.2537058645758132,
+          "intervalCount": 8,
+          "intervalMs": [
+            449.25920773193025,
+            332.7852191311412,
+            415.98012708874256,
+            432.62022614041,
+            415.9823620090369,
+            432.62134360055717,
+            382.7027226357756,
+            349.42420072266145
+          ],
+          "intervalRatePerSecond": 2.4911444415466333,
+          "medianIntervalMs": 415.9812445488897,
+          "worstIntervalMs": 449.25920773193025
+        }
+      },
+      "healthLost": {
+        "release": 10,
+        "latest": 0
+      },
+      "initialActorPosition": {
+        "release": [
+          294.5625,
+          219.5
+        ],
+        "latest": [
+          294.84375,
+          220.25
+        ]
+      },
+      "initialPipeline": {
+        "release": {
+          "busy": 0,
+          "state0": 0,
+          "state1": 0,
+          "budget": 1,
+          "epoch": 12,
+          "renderEpoch": 12
+        },
+        "latest": {
+          "busy": 0,
+          "state0": 0,
+          "state1": 0,
+          "budget": 1,
+          "epoch": 12,
+          "renderEpoch": 12
+        }
+      }
+    },
+    {
+      "scene": "slime-middle-gone",
+      "music": "music-off",
+      "rep": 0,
+      "setupFrames": 150,
+      "holdFrames": 240,
+      "initialPose": [
+        304.0,
+        240.0,
+        160,
+        2,
+        6
+      ],
+      "terminalPose": [
+        304.0,
+        240.0,
+        4,
+        2,
+        6
+      ],
+      "release": {
+        "pollToFirstSimulationMs": 16.90996567721158,
+        "pollToFirstCameraPublicationMs": 766.6028038192553,
+        "pollToFirstChangedViewportMs": 781.9812903647558,
+        "releaseToFinalCameraPublicationMs": 533.6531504274565,
+        "discardedProducerMs": 209.76291406787342
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 16.9088482170644,
+        "pollToFirstCameraPublicationMs": 783.2417854107756,
+        "pollToFirstChangedViewportMs": 798.6208306863496,
+        "releaseToFinalCameraPublicationMs": 517.0141688359362,
+        "discardedProducerMs": 43.10379025720022
+      },
+      "deltaMs": {
+        "pollToFirstSimulationMs": -0.0011174601471815038,
+        "pollToFirstCameraPublicationMs": 16.63898159152029,
+        "pollToFirstChangedViewportMs": 16.639540321593813,
+        "releaseToFinalCameraPublicationMs": -16.63898159152029,
+        "discardedProducerMs": -166.6591238106732
+      },
+      "pictures": {
+        "release": {
+          "count": 9,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.2537058645758132,
+          "intervalCount": 8,
+          "intervalMs": [
+            415.9812445488897,
+            349.4264356429558,
+            415.98012708874256,
+            415.9812445488897,
+            432.62134360055717,
+            399.3444978776638,
+            415.9795683586689,
+            349.4230832625143
+          ],
+          "intervalRatePerSecond": 2.504118065253491,
+          "medianIntervalMs": 415.97984772370575,
+          "worstIntervalMs": 432.62134360055717
+        },
+        "latest": {
+          "count": 9,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.2537058645758132,
+          "intervalCount": 8,
+          "intervalMs": [
+            366.0642997743289,
+            349.42420072266145,
+            366.0654172344761,
+            415.98012708874256,
+            399.3422629573694,
+            432.62134360055717,
+            366.06262358410817,
+            349.42420072266145
+          ],
+          "intervalRatePerSecond": 2.6272711942810703,
+          "medianIntervalMs": 366.06485850440254,
+          "worstIntervalMs": 432.62134360055717
+        }
+      },
+      "healthLost": {
+        "release": 0,
+        "latest": 0
+      },
+      "initialActorPosition": {
+        "release": [
+          294.0,
+          218.0
+        ],
+        "latest": [
+          294.0,
+          218.0
+        ]
+      },
+      "initialPipeline": {
+        "release": {
+          "busy": 0,
+          "state0": 0,
+          "state1": 0,
+          "budget": 0,
+          "epoch": 14,
+          "renderEpoch": 14
+        },
+        "latest": {
+          "busy": 0,
+          "state0": 0,
+          "state1": 0,
+          "budget": 1,
+          "epoch": 14,
+          "renderEpoch": 14
+        }
+      }
+    },
+    {
+      "scene": "near-enemy-turn",
+      "music": "music-off",
+      "rep": 0,
+      "setupFrames": 150,
+      "holdFrames": 240,
+      "initialPose": [
+        294.0,
+        226.0,
+        128,
+        2,
+        6
+      ],
+      "terminalPose": [
+        294.0,
+        226.0,
+        228,
+        2,
+        6
+      ],
+      "release": {
+        "pollToFirstSimulationMs": 16.90996567721158,
+        "pollToFirstCameraPublicationMs": 799.7187352809547,
+        "pollToFirstChangedViewportMs": 815.2598122778699,
+        "releaseToFinalCameraPublicationMs": 666.6046476284981,
+        "discardedProducerMs": 282.1413665308394
+      },
+      "latest": {
+        "pollToFirstSimulationMs": 16.909406947137988,
+        "pollToFirstCameraPublicationMs": 783.0797536894344,
+        "pollToFirstChangedViewportMs": 798.6208306863496,
+        "releaseToFinalCameraPublicationMs": 649.9656660369778,
+        "discardedProducerMs": 97.51124863320656
+      },
+      "deltaMs": {
+        "pollToFirstSimulationMs": -0.0005587300735925282,
+        "pollToFirstCameraPublicationMs": -16.63898159152029,
+        "pollToFirstChangedViewportMs": -16.63898159152029,
+        "releaseToFinalCameraPublicationMs": -16.63898159152029,
+        "discardedProducerMs": -184.63011789763283
+      },
+      "pictures": {
+        "release": {
+          "count": 8,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.0032941018451673,
+          "intervalCount": 7,
+          "intervalMs": [
+            515.8173690183057,
+            482.538288375118,
+            449.2603251920774,
+            316.1462375396209,
+            366.0642997743289,
+            465.8993067835977,
+            515.8162515581585
+          ],
+          "intervalRatePerSecond": 2.249688361584599,
+          "medianIntervalMs": 465.8993067835977,
+          "worstIntervalMs": 515.8173690183057
+        },
+        "latest": {
+          "count": 8,
+          "windowMs": 3993.4226295736944,
+          "wholeWindowPerSecond": 2.0032941018451673,
+          "intervalCount": 7,
+          "intervalMs": [
+            482.53940583526514,
+            449.2603251920774,
+            415.9812445488897,
+            316.14512007947377,
+            349.42531818280867,
+            366.06318231418174,
+            482.5405232954123
+          ],
+          "intervalRatePerSecond": 2.4458804236419542,
+          "medianIntervalMs": 415.9812445488897,
+          "worstIntervalMs": 482.5405232954123
+        }
+      },
+      "healthLost": {
+        "release": 10,
+        "latest": 10
+      },
+      "initialActorPosition": {
+        "release": [
+          294.0,
+          218.0
+        ],
+        "latest": [
+          294.0,
+          218.0
+        ]
+      },
+      "initialPipeline": {
+        "release": {
+          "busy": 0,
+          "state0": 0,
+          "state1": 0,
+          "budget": 1,
+          "epoch": 16,
+          "renderEpoch": 16
+        },
+        "latest": {
+          "busy": 0,
+          "state0": 0,
+          "state1": 0,
+          "budget": 1,
+          "epoch": 16,
+          "renderEpoch": 16
+        }
+      }
+    }
+  ],
+  "method": [
+    "Exact accepted16px and candidateaxis-rejection binaries in isolated stockNTSC Mesen. Same scripted controls, initial camera, simulated50Hzphase, setup/hold/release lengths and verified matching terminal camera poses.",
+    "Input-to-first-view timing starts at Mesen inputPolled and ends at associated changed viewport observation; physical controller/OS/display latency is excluded. Publication timing is separately recorded.",
+    "Changed-picture full-window rate counts unique changing camera publications during exact input-poll torelease interval, including startup wait. Consecutive changed-publication intervalrate excludes that startup wait. Both use counts and elapsedtime; stationary actor redraws do not count.",
+    "Live routes rotate across changing view complexity with realAI and music; they are region-started routes, not invariant cameraFPS or causal CPU comparisons. Fixed-snapshot CPU tests are separate.",
+    "Opening-turn and aliveentry each have3 onsetphases150/151/152; other rows have1 paired route per musicsetting. No confidenceinterval or population claim. All regressions remain listed.",
+    "Music is notresetpertrial. Initial pipeline states may differ because optimization changes render/reuse scheduling. These differences are retained and are part of end-to-end behavior."
+  ]
+}

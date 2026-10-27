@@ -1,0 +1,160 @@
+HISTORICAL EVIDENCE — PRE-CONSOLIDATION TESTS
+
+This report records tests performed in the local experiment archive before
+consolidation into this repository. Its axis-rejection candidate is the exact
+ROM now being consolidated, SHA-256:
+70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817
+
+Relative evidence, capture and executable-test paths in the original report
+refer to experiments/hangar-axis-rejection/ in the local research workspace.
+Those archives and test harnesses are not bundled in this repository. Selected
+JSON summaries are included alongside this report. “Fresh,” “current,” and
+“new” below describe the original experiment at its measurement date; this
+copy does not claim a new test run, controller-only end-to-end playthrough,
+physical-console validation, or browser/itch.io deployment.
+
+Original report follows unchanged.
+------------------------------------------------------------------------
+
+HANGAR AXIS REJECTION: VERIFICATION AND TRADEOFFS
+2026-10-26
+
+Identity and scope
+
+Accepted 16-pixel baseline:
+cf8d701e9829342ab89bc7b817c5d39925eb9c8cc5a7520d568563f69f31ac87
+New exact-position rejection build:
+70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817
+
+The default full build and roms/hangar-axis-rejection-ntsc.nes are identical.
+Two full builds produced the same ROM. The final build has no linker warnings
+and its manifest matches the current sources. Changes are restricted to:
+  src/geometry.s: initializer/gate calls, exports and comments
+  src/axis_gate.s: new fixed gateway, banked initializer and map-bank gate
+  src/hangar.cfg: assign the existing unused bank6 window to initialization
+  tools/build.py: module/segment registration, assertions and metadata
+
+All 247 protected prior source/build files remain unchanged. Generated geometry
+and visibility tables, fixed patterns, nametable, artwork, soundtrack and map
+inputs remain unchanged. This is a local experiment, not a public deployment.
+
+Implementation contract
+
+The gate follows the existing strictly positive plane-side test, before either
+endpoint projection. It preserves X and the current wall denominator. The
+direction index uses the dominant world axis implied by the actual quantized
+trig table. Integer thresholds retain fractional camera equality exactly.
+Builder assertions guard authored winding/normal relationships and adjacent
+coordinate arrays with a combined index no larger than 255.
+
+The initializer executes once on every geometry attempt, including retries.
+Its four borrowed opening_candidate bytes remain valid throughout setup and
+are released before palette/raster processing. The fixed gateway restores
+map bank0 before candidate work. The gate itself never switches banks. NMI
+uses fixed/common memory and does not touch this scratch or mapper state.
+
+The accepted 16-pixel geometry lists, 128 samples, physical 8-pixel raster
+strips, every-four-candidate setup checkpoints and retry policy are retained.
+
+Linked render comparisons
+
+354 paired baseline/candidate renders pass exact public-output checks:
+190 primary fixed-camera cases, plus 164 targeted boundary/control cases.
+49,232 main/palette-probe column depth/span states and all live mixed-tile
+candidate buffers match exactly. Checks include world pixels, palette choice,
+sprites/OAM, tile/name payloads, projection/target metadata and corpse data.
+
+Primary profiles are replayed without profiling hooks, requiring the same CPU
+count and full RAM within each ROM. Targeted fixtures include normal/coarse
+views, both staging buffers, warm redraws, closed/open doors, recess, pickups,
+fractional camera positions, all 12 heading neighbors around dominant-axis
+boundaries, and modeled mid-render abort/retry sequences. The latter include
+heading30 ->33 and playerX304.75 ->305.25 in both buffers, exercising a changed
+dominant axis and integer threshold when initialization must run again.
+
+The new gate intentionally changes endpoint-cache contents and borrows scratch,
+so raw unused private bytes are not an output-equivalence requirement. Initial
+targeted assertions exposed three overly broad comparisons, corrected without
+changing the ROM:
+- Solid tile markers do not consume their stored plane bytes.
+- Candidate bytes 0..3 may retain gate parameters before mixed-tile encoding.
+- Retained-world redraws with zero encoder calls do not consume raster planes.
+
+All meaningful marker/plane data remain strict; every 16-byte candidate is
+compared at the encoder's initialized hashing point; all public payload and
+depth states remain strict. Independent source review confirmed each lifetime.
+Failed raw assertions and phase-aware diagnostics are retained in the producer
+logs and producer-oracle-note.txt. They were test-oracle corrections, not
+accepted visual or geometric differences.
+
+Actual CPU costs
+
+Across 172 fresh primary renders, total producer CPU falls 3.508% in aggregate,
+with individual reductions 0.676–9.437%. No measured primary or targeted CPU
+case regresses. The representative opening-room reduction is about 0.68%.
+Selected live-enemy averages: slime entrance 2.661% straight, 5.716% at angle112,
+6.113% at angle144; center 2.642%; close enemy 2.810%.
+
+These are isolated completed-producer costs without asynchronous NMI/music or
+PPU/upload/display time. They are not corresponding FPS percentages. Separate
+retained-world controls are not pooled into movement-performance figures.
+
+Gate, memory and upload checks
+
+The linked contract suite passes 11,264 initializer executions and 88,264 gate
+calls, checking all 256 initialization headings, fractional/integer thresholds,
+high-coordinate boundaries, return values, stack, permitted writes and live
+denominator/X preservation. Another 699 instruction-boundary tests model atomic
+NMI-owned state changes during initialization/gating; actual live interrupts
+are tested separately below. Every initializer returns map bank0.
+
+The cartridge remains MMC1 with 128 KiB PRG, 8 KiB CHR-RAM and 8 KiB WRAM.
+No persistent RAM is added. The gate adds 47 map-bank bytes, initializer 67
+bank6 bytes and gateway/calls 22 fixed-code bytes. Remaining space is 8 bytes
+in the map bank and 43 in fixed code. Common mirrors and existing RAM addresses
+are preserved; source/manifest checks are in build-audit.json and REVIEW.txt.
+
+The bounded uploader suite passes 4,878 cases and 358 complete jobs, including
+50 title cases. Its worst final PPU access with instruction/DMA allowances is
+2,254 cycles against 2,273 available: a 19-cycle margin. This inherited suite's
+historical seven-slot comparison is a data/deadline oracle, not an axis-gate
+performance comparison. Upload algorithms and limits were not changed.
+
+Matched live Mesen checks
+
+Fresh stock-NTSC captures cover 18 primary comparison pairs and two reversal
+pairs with music ON/OFF, totaling 24,824 refreshes including setup/settling.
+Opening/entrance onset phases, slime center with living/absent zombie, and close
+enemy routes use identical scene/input/music-start order between builds.
+
+At the slime entrance, median first changed viewport improves approximately
+16.6 ms with music ON/OFF; final stopped-camera publication improves about
+33.3 ms. Several routes show more changed camera pictures over the same input
+hold, but improvements are not universal. Explicit regressions remain:
+- Actor-free slime-center music-OFF onset is 16.64 ms later.
+- Music-ON reversal stopping completes about 33.3 ms later.
+
+All 358 candidate bank6 initialization/return observations and 10,715 setup
+checkpoints satisfy actual committed MMC1-bank contracts. No observed pattern
+overflow, PPUDATA timing violation, post-release simulation movement or stale
+terminal-camera publication occurs. Guarded transfer limits remain respected.
+Opening, slime-entry and close-enemy screenshots were visually inspected.
+
+Timing starts at the emulator's input poll, excluding physical input/OS/display
+delay. Settings enforce NTSC, no extra scanlines, no run-ahead and normal sprite
+limits; personal settings and protected ROMs are untouched. These are seeded
+scene routes, not a controller-only end-to-end playthrough or physical-NES test.
+Live PPUDATA observations complement the bounded register-deadline suite.
+
+Detailed evidence and reproduction
+
+verification/producer-REPORT.txt, producer-results.json, producer-boundaries.json
+verification/axis-contract.json, axis-contract-audit.json, upload-deadlines.json
+verification/LIVE-REPORT.txt, live-axis-comparison.json,
+verification/live-axis-reversal-comparison.json, live-axis-audit.json
+verification/REVIEW.txt, build-audit.json
+
+Corresponding executable tests and README files are in tests/. The actual linked
+ROM, labels/listings, pinned JSNES core and isolated local Mesen are recorded
+with their hashes in the evidence. The accepted baseline remains available for
+the user's comparison before any decision to publish this experiment.

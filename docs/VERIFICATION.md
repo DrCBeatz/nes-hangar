@@ -1,9 +1,9 @@
 # Verification
 
-## Current prepared release: v0.2.0
+## Current published release: v0.2.0
 
-**v0.2.0 — Performance Update** was prepared on October 27, 2026, following
-the author's successful playtest of the consolidated performance candidate.
+**v0.2.0 — Performance Update** was published on October 27, 2026, following
+the author's successful playtests of the consolidated candidate and final build.
 The [reference ROM](../release/hangar-ntsc.nes) is 131,088 bytes, SHA-256:
 
 ```text
@@ -43,8 +43,21 @@ rendering optimization or performance claim. The author's acceptance is
 recorded separately from automated test results; no extra music-mode or
 controller-route coverage is inferred from that report.
 
-Browser deployment and itch.io publication have not been performed for this
-version. Physical-console testing remains outstanding.
+The [GitHub build](https://github.com/DrCBeatz/nes-hangar/actions/runs/40605169283)
+reproduced the source ROM. The emulator integration passed all 19 local tests,
+including controller-only full-level routes with music ON (7,916 refreshes)
+and OFF (7,821 refreshes). Both routes cover all three kills, both pickups,
+door/exit, pause and restart; all 48 read-only test symbols match this build.
+These later integration routes supplement the focused startup test above.
+
+The S3 deployment workflow passed and submitted its CloudFront invalidation.
+Live HTML, manifest, ROM, JavaScript and CSS returned HTTP 200 and matched
+the local production build. The
+[deployment record](../verification/v0.2.0-browser-deployment.json) separates
+those checks from the incomplete interactive browser attempt. Audible playback,
+mobile behavior, worldwide cache propagation and physical-console operation
+were not verified by that deployment check. The itch.io download and devlog
+were not updated.
 
 ## Previous consolidated performance candidate
 
@@ -113,7 +126,7 @@ and is not presented as newly run coverage.
 ## Previous door-reach and alias-credit release
 
 The October 24 published release was `prototype-2026-10-24-door-reach`,
-131,088 bytes; the browser still serves this historical version:
+131,088 bytes; it preceded the current browser version:
 
 ```text
 db258e4c9c57ff3ef9f4bc8eb732f31b65eec85a1a639e7a9787a90dde1722a9
@@ -536,8 +549,9 @@ both pickups, pause, the empty-gun cue, the door, completion and restart.
 It finished with twelve shots, nine hits, four rounds and 90 health; three
 rounds were deliberately wasted to test the empty-gun cue. All 46 read-only
 RAM symbols matched the new linker output. See
-[sprite-stability-browser.json](../verification/sprite-stability-browser.json). The live site
-still serves the previous release; these tests did not deploy an update.
+[sprite-stability-browser.json](../verification/sprite-stability-browser.json).
+At that stage the live site still served the previous release; those tests
+did not deploy an update.
 
 The normal build does not rerun the research emulator harnesses. Detailed
 traces remain in the research workspace rather than this standalone package.

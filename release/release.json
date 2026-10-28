@@ -19,7 +19,7 @@
     "source": "music/e1m1/e1m1-drcbeatz.s",
     "sourceSha256": "d5886648b0045e97de9172af06934dff190a873286a7aff62599c4667235427a"
   },
-  "status": "prepared release; accepted gameplay playtest; publication pending",
+  "status": "published v0.2.0; browser deployment verified",
   "credits": {
     "open": "Select from bronze logo",
     "back": "B to logo",
@@ -36,7 +36,7 @@
   "previousPublishedSha256": "db258e4c9c57ff3ef9f4bc8eb732f31b65eec85a1a639e7a9787a90dde1722a9",
   "titleBuildCaption": "PROTOTYPE 0.2.0",
   "notes": "docs/PERFORMANCE-UPDATE-20261026.md",
-  "browserDeploymentUpdated": false,
+  "browserDeploymentUpdated": true,
   "releaseName": "Performance Update",
   "preparedOn": "2026-10-27",
   "acceptedCandidateSha256": "70a7593068e3e73eec3f448627dc1e930867069aea08aa73a6bd90f54f087817",
@@ -49,5 +49,9 @@
   "finalUserPlaytest": {
     "date": "2026-10-27",
     "result": "User tested the final v0.2.0 build and requested GitHub and browser deployment; emulator settings and route details were not restated."
-  }
+  },
+  "publishedOn": "2026-10-27",
+  "browserRomUrl": "https://8bitpocket.app/roms/hangar-ntsc-c100366f.nes",
+  "deploymentEvidence": "verification/v0.2.0-browser-deployment.json",
+  "githubReleaseUrl": "https://github.com/DrCBeatz/nes-hangar/releases/tag/v0.2.0"
 }

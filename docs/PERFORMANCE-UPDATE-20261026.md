@@ -1,15 +1,16 @@
 # v0.2.0 performance update
 
-**v0.2.0 — Performance Update**, prepared October 27, 2026, finalizes the
-accepted `prototype-2026-10-26-performance-rc1` after the author's playtest.
+**v0.2.0 — Performance Update**, published October 27, 2026, finalizes the
+accepted `prototype-2026-10-26-performance-rc1`. The author playtested both the
+candidate and final versioned build.
 The title caption changes to **PROTOTYPE 0.2.0**, adding a title-only period
 glyph and relocating packed title assets and startup references. Rendering
 and gameplay logic/data remain identical to the measured candidate. It keeps
 the same level, soundtrack, gameplay art, 256 × 144 viewport and 128 horizontal
 rendering samples.
 The cartridge remains MMC1 with 128 KiB PRG, 8 KiB CHR-RAM and 8 KiB work RAM.
-The hosted browser ROM and itch.io download remain the October 24 prototype
-until the separate publication step.
+The GitHub download and hosted browser ROM now match v0.2.0. The itch.io
+download and devlog were not changed by this publication.
 
 ## What changed
 
@@ -83,8 +84,10 @@ stopped view about two refreshes earlier.
 Those experiments used different version pairs. Their live timing improvements
 must not be added together as if they were a direct release-to-candidate run.
 Timing starts at the emulator's controller poll and excludes physical input,
-the operating system and monitor delay. The latest live tests use seeded
+the operating system and monitor delay. Those latency tests used seeded
 scenes with actual AI and music rather than a controller-only level playthrough.
+The later full-level integration routes validate gameplay; they do not add
+a new release-to-release latency measurement.
 
 Important remaining limits:
 
@@ -108,8 +111,8 @@ counted as a rendering simplification.
 
 ## Release status and verification
 
-The author playtested the consolidated performance candidate and accepted it
-for this update. v0.2.0 changes title presentation and supporting boot assets
+The author playtested both the consolidated performance candidate and final
+build. v0.2.0 changes title presentation and supporting boot assets
 only; the
 [binary comparison](../verification/v0.2.0-binary-scope.json) documents that
 scope. Historical performance evidence retains the measured candidate's hash
@@ -118,7 +121,6 @@ The final artifact is identified by [release metadata](../release/release.json)
 and [SHA256SUMS](../release/SHA256SUMS).
 
 Use stock NTSC timing, zero extra scanlines and normal sprite limits. Music
-OFF remains the faster option. Browser and itch.io publication are separate
-from this prepared release. Build and emulator evidence, including its limits,
-are in [verification](VERIFICATION.md). Physical-console testing remains
-outstanding.
+OFF remains the faster option. The [browser deployment](DEPLOYMENT.md) serves
+this same release. Build and emulator evidence, including its limits, are in
+[verification](VERIFICATION.md). Physical-console testing remains outstanding.

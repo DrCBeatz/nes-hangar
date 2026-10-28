@@ -46,9 +46,9 @@ use **Controls** to reopen it during gameplay. **Open ROM** still supports downl
 files. Browser speed, palette and presentation may differ from Mesen. See
 the [browser deployment notes](docs/DEPLOYMENT.md).
 
-This checkout contains **v0.2.0 — Performance Update**, prepared on
-**October 27, 2026** following the author's successful playtest of the
-consolidated candidate. It includes the accepted rendering, upload and input-response
+The current release is **v0.2.0 — Performance Update**, published on
+**October 27, 2026** following the author's successful playtest of the final
+build. It includes the accepted rendering, upload and input-response
 optimizations, plus distant-soldier floor alignment and final-door encounter
 visibility fixes. The level, gameplay artwork, soundtrack and cartridge requirements
 remain the same. Across the matched fresh-render fixtures, the CPU work needed
@@ -56,12 +56,12 @@ to construct a picture falls **14.9%** compared with the October 24 prototype;
 that is a workload measurement, **not a 14.9% frame-rate claim**. See the
 [performance update](docs/PERFORMANCE-UPDATE-20261026.md) for scope and tradeoffs.
 
-**The browser link still runs the October 24 published prototype.** Browser
-and itch.io publication are separate steps and have not been performed for
-v0.2.0. To try the update, open the ROM above in Mesen or the browser emulator's
-**Open ROM** loader. The title now reads **PROTOTYPE 0.2.0**. Title presentation is the only change
-from the accepted performance candidate; see
-[release metadata](release/release.json) and [verification](docs/VERIFICATION.md).
+**The browser version and downloadable ROM both run v0.2.0.** The title reads
+**PROTOTYPE 0.2.0**. The [GitHub Release](https://github.com/DrCBeatz/nes-hangar/releases/tag/v0.2.0)
+provides a versioned ROM and checksum. Title presentation is the only change
+from the accepted performance candidate; see [release metadata](release/release.json),
+[verification](docs/VERIFICATION.md) and the [deployment record](docs/DEPLOYMENT.md).
+The itch.io download and devlog are updated separately.
 
 ## Controls
 
@@ -207,7 +207,7 @@ make clean
 Normal builds permit intentional source edits; verification is expected to
 fail if those edits change the ROM relative to the committed release.
 
-The prepared release, `v0.2.0`, is 131,088
+The published release, `v0.2.0`, is 131,088
 bytes (a 16-byte header plus 128 KiB PRG). Its exact version, checksum and cartridge metadata are recorded in
 [release/release.json](release/release.json); [SHA256SUMS](release/SHA256SUMS)
 identifies the downloadable ROM.
@@ -261,7 +261,7 @@ without the music integration is preserved as
 | `music/e1m1/e1m1-drcbeatz.s` | Supplied Dr C Beatz arrangement export used by the build |
 | `music/e1m1/` | Song history, source provenance and retained upstream notices |
 | `vendor/famistudio/` | FamiStudio sound engine, NTSC note tables and its separate notice |
-| `release/` | Prepared v0.2.0 ROM, checksum and version metadata |
+| `release/` | Published v0.2.0 ROM, checksum and version metadata |
 | `docs/` | Provenance, verification, performance notes and browser deployment history |
 | `build/` | Regenerated local output; excluded from Git |
 
@@ -355,12 +355,13 @@ The suggested repository name is **`nes-hangar`**; the display title is
 only this folder needs to be published, not the surrounding research workspace.
 See [publishing instructions](docs/PUBLISHING.md).
 
-The maintained 8-Bit Pocket emulator currently hosts the **October 24**
-`prototype-2026-10-24-door-reach` ROM at the
+The maintained 8-Bit Pocket emulator hosts **v0.2.0** at the
 [direct Play Hangar link](https://8bitpocket.app/?game=hangar).
-It has **not yet been updated** to v0.2.0 in `release/`.
-**Open ROM** supports the newer local file. The accepted gameplay build has
-been playtested; version labeling is finalized separately from publication.
+Its versioned ROM matches the download in `release/` byte for byte.
+**Open ROM** also supports local files. The source build, emulator tests,
+deployment workflow and live file checks passed; the
+[deployment notes](docs/DEPLOYMENT.md) distinguish those checks from
+interactive browser, audio and physical-hardware testing.
 A dedicated landing page with download and play buttons can follow. The
 [deployment notes](docs/DEPLOYMENT.md) describe the current integration,
 remaining display work and options for a later custom domain.

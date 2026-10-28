@@ -4,18 +4,48 @@
 8-Bit Pocket site. Click **Play Hangar**, then press **Start** on the game title
 screen. The ordinary hosted picker and local **Open ROM** loader remain available.
 
-The current hosted ROM is `prototype-2026-10-24-door-reach`, the previously
-published release identified below. The repository's `release/hangar-ntsc.nes`
-is now the prepared **v0.2.0 — Performance Update**. Its gameplay candidate
-has passed the author's playtest; browser and itch.io publication have not been
-performed for this version. Updating this repository does not deploy
-8-Bit Pocket. See the [performance notes](PERFORMANCE-UPDATE-20261026.md).
+The current hosted ROM is **v0.2.0 — Performance Update**, published on
+October 27, 2026. It matches `release/hangar-ntsc.nes` byte for byte and displays
+**PROTOTYPE 0.2.0** on the title screen. The final build passed the author's
+playtest. The itch.io download and devlog were not changed by this deployment.
+See the [performance notes](PERFORMANCE-UPDATE-20261026.md).
 
-The hosted October 24 release includes the bronze logo, optional
-Dr C Beatz soundtrack, revised interactions and ammo placement, credits and
-HUD polish. The public author credit is **Dr C Beatz**.
+## Current hosted release: v0.2.0
 
-## Current hosted release: 2026-10-24
+The source and ROM were published in
+[fecef50](https://github.com/DrCBeatz/nes-hangar/commit/fecef50b65f186806018b306a43e9d57b515bd4c).
+The [clean GitHub build](https://github.com/DrCBeatz/nes-hangar/actions/runs/40605169283)
+reproduced the checked-in ROM. The
+[v0.2.0 release](https://github.com/DrCBeatz/nes-hangar/releases/tag/v0.2.0)
+provides the versioned download and checksum.
+
+The emulator integration is
+[9e1f545](https://github.com/DrCBeatz/nes-emulator-mobile-web-app/commit/9e1f5454d6106266f5297e8762685556e358e73f).
+Its [deployment workflow](https://github.com/DrCBeatz/nes-emulator-mobile-web-app/actions/runs/40605563426)
+passed, including the production build, S3 synchronization and submission of
+the CloudFront invalidation. The separate
+[build workflow](https://github.com/DrCBeatz/nes-emulator-mobile-web-app/actions/runs/40605563513)
+also passed. Hosting, controls and the stable Play link are unchanged.
+
+- The hosted ROM is `/roms/hangar-ntsc-c100366f.nes`, 131,088 bytes.
+- SHA-256: `c100366ffc5b86e68ff441f2a2bd8d624a7c6f1e8d966c226f1894eeedd20977`.
+- All 19 local emulator tests passed. Controller-only JSNES routes completed
+  the level with music ON (7,916 refreshes) and OFF (7,821 refreshes), including
+  all three kills, both pickups, door/exit, pause and restart. The 48 test
+  symbols were checked against this release's linker output.
+- Live HTTP checks returned 200 for the HTML, manifest, ROM, JavaScript and
+  CSS. Their bytes match the local production build. These requests received
+  the new files through CloudFront; they do not establish worldwide cache
+  propagation.
+- An interactive browser check could not be completed: native browser
+  automation was interrupted and the isolated browser was unavailable.
+  Emulator-core and HTTP checks do not certify audible playback or mobile
+  performance. Physical-console testing also remains outstanding.
+
+The [deployment record](../verification/v0.2.0-browser-deployment.json)
+and [ROM verification](VERIFICATION.md) retain the exact checks and their scope.
+
+## Previous hosted release: 2026-10-24
 
 The game source and ROM were published in
 [eba6c06](https://github.com/DrCBeatz/nes-hangar/commit/eba6c0604989c7313ae3575e1968a81562df9329).
@@ -41,7 +71,8 @@ CloudFront invalidation. Existing hosting and the stable Play link are unchanged
 
 See the [deployment record](../verification/release-browser-deployment.json),
 [ROM verification](VERIFICATION.md), and [itch.io page draft](itch-page-copy.txt).
-The five [itch.io screenshots](itch-assets/) are actual captures of this release.
+The five [itch.io screenshots](itch-assets/) are actual captures of that
+October 24 release.
 
 ## Historical integrations
 

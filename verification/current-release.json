@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "verifiedOn": "2026-10-27",
   "passed": true,
-  "scope": "Prepared v0.2.0 package, with accepted candidate gameplay and focused validation of the versioned title. Publication remains pending.",
+  "scope": "Published v0.2.0 with verified GitHub build, complete controller-only JSNES routes in both music modes, and matching live S3/CloudFront assets.",
   "version": "v0.2.0",
   "artifact": {
     "path": "release/hangar-ntsc.nes",
@@ -75,17 +75,18 @@
     "result": "User reports consolidated candidate is good for the next version; specific emulator settings and coverage were not restated."
   },
   "runtimeEvidence": {
-    "scope": "Fresh focused versioned-title/startup test only. Prior renderer tests retain their accepted experimental ROM identity; binary-scope audit links unchanged gameplay to v0.2.0.",
+    "scope": "Versioned-title/startup checks plus final complete controller-only JSNES level routes. Historical renderer benchmarks retain their accepted experimental ROM identity; the binary-scope audit links unchanged gameplay to v0.2.0.",
     "startup": "verification/v0.2.0-title.json",
     "startupChecks": 18,
     "startupRefreshes": 1170,
-    "previousCandidate": "verification/performance-rc1-release.json"
+    "previousCandidate": "verification/performance-rc1-release.json",
+    "browserDeployment": "verification/v0.2.0-browser-deployment.json"
   },
   "performanceEvidence": "verification/performance-update-20261026.json",
   "physicalConsoleTested": false,
-  "newControllerOnlyCompleteLevelTest": false,
+  "newControllerOnlyCompleteLevelTest": true,
   "userCandidatePlaytestAccepted": true,
-  "liveDeploymentChanged": false,
+  "liveDeploymentChanged": true,
   "itchPublicationChanged": false,
   "titleBuildCaption": "PROTOTYPE 0.2.0",
   "publicAuthorCredit": "Dr C Beatz",
@@ -93,5 +94,6 @@
     "date": "2026-10-27",
     "result": "User tested the final v0.2.0 build and requested GitHub and browser deployment; emulator settings and route details were not restated."
   },
-  "userFinalReleasePlaytestAccepted": true
+  "userFinalReleasePlaytestAccepted": true,
+  "deploymentEvidence": "verification/v0.2.0-browser-deployment.json"
 }

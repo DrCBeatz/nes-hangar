@@ -1,11 +1,11 @@
 # v0.2.0 — Performance Update
 
-Prepared on **October 27, 2026**, following the author's successful playtest of
-`prototype-2026-10-26-performance-rc1`. Finalization changes title presentation
+Published on **October 27, 2026**, following the author's successful playtests
+of the consolidated candidate and final v0.2.0 build. Finalization changes title presentation
 only: the caption now reads **PROTOTYPE 0.2.0**, with a new period glyph stored
 in the title-only assets. Packed title assets and startup references relocate; rendering and gameplay
-logic/data remain unchanged. The hosted browser version and itch.io download have
-not been updated as part of release preparation.
+logic/data remain unchanged. GitHub and the hosted 8-Bit Pocket browser version
+now provide the same ROM. The itch.io download and devlog remain separate.
 
 - Reuse valid backgrounds for stationary actor updates and avoid repeated
   tile, floor and arithmetic work during fresh rendering.
@@ -34,6 +34,8 @@ The [ROM](../release/hangar-ntsc.nes), [metadata](../release/release.json) and
 reproducible build, accepted playtest and historical performance measurements.
 The [archived candidate record](../verification/performance-rc1-release.json)
 preserves the identity of the binary used for those measurements.
+The [v0.2.0 release](https://github.com/DrCBeatz/nes-hangar/releases/tag/v0.2.0)
+and [deployment record](DEPLOYMENT.md) identify the published files and checks.
 
 # Previous door reach and alias credit
 
@@ -56,8 +58,7 @@ approaches and credits the project as **Dr C Beatz**.
 Only 25 ROM bytes change: two door-range constants and 23 credits nametable
 bytes. Linked segment sizes and RAM allocations are unchanged. The [archived release record](../verification/door-reach-release.json)
 identifies this historical release, published on **October 24, 2026**.
-The hosted browser ROM still uses this version, while the repository download
-now contains v0.2.0 above. See
+The hosted browser ROM used this version before the v0.2.0 update above. See
 [deployment](DEPLOYMENT.md) for publication and live-site checks, and
 [verification](VERIFICATION.md) for the build and gameplay test scope.
 

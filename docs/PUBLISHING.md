@@ -50,11 +50,18 @@ describes setup and authentication.
 
 ## Release download
 
-The ROM is directly available in `release/`. For a clearer public download,
-create a GitHub Release after reviewing the repository and attach
-`hangar-ntsc.nes` and `SHA256SUMS`. Use a prototype tag such as
-`v0.1.0-prototype`; include the NTSC target, controls, known performance limits
-and physical-hardware test status in the release notes.
+The canonical ROM remains `release/hangar-ntsc.nes`. Public releases use
+numbered tags, beginning with
+[v0.2.0](https://github.com/DrCBeatz/nes-hangar/releases/tag/v0.2.0).
+Attach a versioned copy such as `hangar-v0.2.0-ntsc.nes` and a `SHA256SUMS`
+whose filename matches that attachment. Include the NTSC target, controls,
+known performance limits and physical-hardware test status in release notes.
+
+Keep each published tag and its ROM/checksum as an immutable version archive.
+Small fixes can advance to `v0.2.1`; a substantial subsequent update can use
+`v0.3.0`. The itch.io page can offer one clearly labeled latest ROM and link to
+GitHub Releases for earlier versions. Its download and devlog are updated
+separately from the browser deployment.
 
 The included Actions workflow builds/verifies the ROM and uploads a workflow
 artifact. It does not create a tag, publish a Release, or deploy the website.
